@@ -1,0 +1,8 @@
+name: specify.github.io
+channels:
+  - conda-forge
+dependencies:
+  - sphinx-rtd-theme
+    sphinx-autoapi
+    myst-parser
+
