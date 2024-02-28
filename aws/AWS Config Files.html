@@ -1,0 +1,1246 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" data-content_root="../">
+<head>
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Specify 7 Docker Config Example &mdash; Specify Developer Documentation  documentation</title>
+      <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=80d5e7a1" />
+      <link rel="stylesheet" type="text/css" href="../_static/css/theme.css?v=19f00094" />
+
+  
+  <!--[if lt IE 9]>
+    <script src="../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script src="../_static/jquery.js?v=5d32c60e"></script>
+        <script src="../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+        <script src="../_static/documentation_options.js?v=5929fcd5"></script>
+        <script src="../_static/doctools.js?v=888ff710"></script>
+        <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="../index.html" class="icon icon-home">
+            Specify Developer Documentation
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <!-- Local TOC -->
+              <div class="local-toc"><ul>
+<li><a class="reference internal" href="#">Specify 7 Docker Config Example</a><ul>
+<li><a class="reference internal" href="#example-defaults-env">Example defaults.env</a></li>
+<li><a class="reference internal" href="#example-docker-compose-yml">Example docker-compose.yml</a></li>
+<li><a class="reference internal" href="#example-nginx-conf">Example nginx.conf</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#asset-server">Asset Server</a><ul>
+<li><a class="reference internal" href="#example-settings-py-file">Example settings.py file</a></li>
+<li><a class="reference internal" href="#possible-dockerfile-for-ecs-build-unfinished">Possible Dockerfile for ECS Build (Unfinished)</a></li>
+<li><a class="reference internal" href="#asset-nginx-web-server-config">Asset nginx web-server config</a></li>
+</ul>
+</li>
+</ul>
+</div>
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">Specify Developer Documentation</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../index.html" class="icon icon-home" aria-label="Home"></a></li>
+      <li class="breadcrumb-item active">Specify 7 Docker Config Example</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="../_sources/aws/AWS Config Files.md.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="specify-7-docker-config-example">
+<h1>Specify 7 Docker Config Example<a class="headerlink" href="#specify-7-docker-config-example" title="Link to this heading"></a></h1>
+<section id="example-defaults-env">
+<h2>Example defaults.env<a class="headerlink" href="#example-defaults-env" title="Link to this heading"></a></h2>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">DATABASE_HOST</span><span class="o">=</span><span class="mf">10.133.58.98</span>
+<span class="n">DATABASE_PORT</span><span class="o">=</span><span class="mi">3306</span>
+<span class="n">MASTER_NAME</span><span class="o">=</span><span class="n">master</span>
+<span class="n">MASTER_PASSWORD</span><span class="o">=</span><span class="n">master_password</span>
+<span class="n">SECRET_KEY</span><span class="o">=</span><span class="n">secret_key</span>
+<span class="n">ASSET_SERVER_URL</span><span class="o">=</span><span class="n">https</span><span class="p">:</span><span class="o">//</span><span class="n">assets1</span><span class="o">.</span><span class="n">specifycloud</span><span class="o">.</span><span class="n">org</span><span class="o">/</span><span class="n">web_asset_store</span><span class="o">.</span><span class="n">xml</span>
+<span class="n">ASSET_SERVER_KEY</span><span class="o">=</span><span class="n">asset_server_key</span>
+<span class="n">REPORT_RUNNER_HOST</span><span class="o">=</span><span class="mf">10.133.58.98</span>
+<span class="n">REPORT_RUNNER_PORT</span><span class="o">=</span><span class="mi">8080</span>
+<span class="n">CELERY_BROKER_URL</span><span class="o">=</span><span class="n">redis</span><span class="p">:</span><span class="o">//</span><span class="n">redis</span><span class="o">/</span><span class="mi">0</span>
+<span class="n">CELERY_RESULT_BACKEND</span><span class="o">=</span><span class="n">redis</span><span class="p">:</span><span class="o">//</span><span class="n">redis</span><span class="o">/</span><span class="mi">1</span>
+<span class="n">LOG_LEVEL</span><span class="o">=</span><span class="n">WARNING</span>
+<span class="n">SP7_DEBUG</span><span class="o">=</span><span class="n">false</span>
+</pre></div>
+</div>
+</section>
+<section id="example-docker-compose-yml">
+<h2>Example docker-compose.yml<a class="headerlink" href="#example-docker-compose-yml" title="Link to this heading"></a></h2>
+<div class="highlight-yml notranslate"><div class="highlight"><pre><span></span>version: &#39;3.7&#39;
+
+services:
+
+
+
+  sp7demofish-eu:
+    image: specifyconsortium/specify7-service:v7
+    command: [&quot;ve/bin/gunicorn&quot;, &quot;-w&quot;, &quot;1&quot;, &quot;--threads&quot;, &quot;5&quot;, &quot;-b&quot;, &quot;0.0.0.0:8000&quot;, &quot;-t&quot;, &quot;300&quot;, &quot;specifyweb_wsgi&quot;]
+    init: true
+    restart: unless-stopped
+    volumes:
+      - &quot;specify6801:/opt/Specify:ro&quot;
+      - &quot;static-files-sp7demofish-eu:/volumes/static-files&quot;
+
+    env_file: defaults.env
+    environment:
+      - DATABASE_NAME=sp7demofish_eu
+      - ASSET_SERVER_COLLECTION=sp7demofish_eu
+
+
+      - ASSET_SERVER_URL=https://demo-assets.specifycloud.org/web_asset_store.xml
+
+
+
+  sp7demofish-eu-worker:
+    image: specifyconsortium/specify7-service:v7
+    command: ve/bin/celery -A specifyweb worker -l INFO --concurrency=1 -Q sp7demofish_eu
+    init: true
+    restart: unless-stopped
+    volumes:
+      - &quot;specify6801:/opt/Specify:ro&quot;
+      - &quot;static-files-sp7demofish-eu:/volumes/static-files&quot;
+    env_file: defaults.env
+    environment:
+      - DATABASE_NAME=sp7demofish_eu
+      - ASSET_SERVER_COLLECTION=sp7demofish_eu
+
+
+      - ASSET_SERVER_URL=https://demo-assets.specifycloud.org/web_asset_store.xml
+
+
+
+
+  rjb-madrid:
+    image: specifyconsortium/specify7-service:v7
+    command: [&quot;ve/bin/gunicorn&quot;, &quot;-w&quot;, &quot;1&quot;, &quot;--threads&quot;, &quot;5&quot;, &quot;-b&quot;, &quot;0.0.0.0:8000&quot;, &quot;-t&quot;, &quot;300&quot;, &quot;specifyweb_wsgi&quot;]
+    init: true
+    restart: unless-stopped
+    volumes:
+      - &quot;specify6803:/opt/Specify:ro&quot;
+      - &quot;static-files-rjb-madrid:/volumes/static-files&quot;
+
+    env_file: defaults.env
+    environment:
+      - DATABASE_NAME=rjb_madrid
+      - ASSET_SERVER_COLLECTION=rjb_madrid
+
+
+      - ASSET_SERVER_URL=
+
+      - ASSET_SERVER_COLLECTION=Fanerogamia
+
+
+
+  rjb-madrid-worker:
+    image: specifyconsortium/specify7-service:v7
+    command: ve/bin/celery -A specifyweb worker -l INFO --concurrency=1 -Q rjb_madrid
+    init: true
+    restart: unless-stopped
+    volumes:
+      - &quot;specify6803:/opt/Specify:ro&quot;
+      - &quot;static-files-rjb-madrid:/volumes/static-files&quot;
+    env_file: defaults.env
+    environment:
+      - DATABASE_NAME=rjb_madrid
+      - ASSET_SERVER_COLLECTION=rjb_madrid
+
+
+      - ASSET_SERVER_URL=
+
+      - ASSET_SERVER_COLLECTION=Fanerogamia
+
+
+
+
+  mcnb:
+    image: specifyconsortium/specify7-service:v7
+    command: [&quot;ve/bin/gunicorn&quot;, &quot;-w&quot;, &quot;1&quot;, &quot;--threads&quot;, &quot;5&quot;, &quot;-b&quot;, &quot;0.0.0.0:8000&quot;, &quot;-t&quot;, &quot;300&quot;, &quot;specifyweb_wsgi&quot;]
+    init: true
+    restart: unless-stopped
+    volumes:
+      - &quot;specify6803:/opt/Specify:ro&quot;
+      - &quot;static-files-mcnb:/volumes/static-files&quot;
+
+    env_file: defaults.env
+    environment:
+      - DATABASE_NAME=mcnb
+      - ASSET_SERVER_COLLECTION=mcnb
+
+
+  mcnb-worker:
+    image: specifyconsortium/specify7-service:v7
+    command: ve/bin/celery -A specifyweb worker -l INFO --concurrency=1 -Q mcnb
+    init: true
+    restart: unless-stopped
+    volumes:
+      - &quot;specify6803:/opt/Specify:ro&quot;
+      - &quot;static-files-mcnb:/volumes/static-files&quot;
+    env_file: defaults.env
+    environment:
+      - DATABASE_NAME=mcnb
+      - ASSET_SERVER_COLLECTION=mcnb
+
+
+
+  herb-rbge:
+    image: specifyconsortium/specify7-service:v7
+    command: [&quot;ve/bin/gunicorn&quot;, &quot;-w&quot;, &quot;1&quot;, &quot;--threads&quot;, &quot;5&quot;, &quot;-b&quot;, &quot;0.0.0.0:8000&quot;, &quot;-t&quot;, &quot;300&quot;, &quot;specifyweb_wsgi&quot;]
+    init: true
+    restart: unless-stopped
+    volumes:
+      - &quot;specify6803:/opt/Specify:ro&quot;
+      - &quot;static-files-herb-rbge:/volumes/static-files&quot;
+
+      - &quot;./settings/herb-rbge-settings.py:/opt/specify7/settings/local_specify_settings.py:ro&quot;
+
+    env_file: defaults.env
+    environment:
+      - DATABASE_NAME=herb_rbge
+      - ASSET_SERVER_COLLECTION=herb_rbge
+
+
+  herb-rbge-worker:
+    image: specifyconsortium/specify7-service:v7
+    command: ve/bin/celery -A specifyweb worker -l INFO --concurrency=1 -Q herb_rbge
+    init: true
+    restart: unless-stopped
+    volumes:
+      - &quot;specify6803:/opt/Specify:ro&quot;
+      - &quot;static-files-herb-rbge:/volumes/static-files&quot;
+    env_file: defaults.env
+    environment:
+      - DATABASE_NAME=herb_rbge
+      - ASSET_SERVER_COLLECTION=herb_rbge
+
+
+
+  sandbox-rbge:
+    image: specifyconsortium/specify7-service:issue_388
+    command: [&quot;ve/bin/gunicorn&quot;, &quot;-w&quot;, &quot;1&quot;, &quot;--threads&quot;, &quot;5&quot;, &quot;-b&quot;, &quot;0.0.0.0:8000&quot;, &quot;-t&quot;, &quot;300&quot;, &quot;specifyweb_wsgi&quot;]
+    init: true
+    restart: unless-stopped
+    volumes:
+      - &quot;specify6803:/opt/Specify:ro&quot;
+      - &quot;static-files-sandbox-rbge:/volumes/static-files&quot;
+
+      - &quot;./settings/sandbox-rbge-settings.py:/opt/specify7/settings/local_specify_settings.py:ro&quot;
+
+    env_file: defaults.env
+    environment:
+      - DATABASE_NAME=sandbox_rbge
+      - ASSET_SERVER_COLLECTION=sandbox_rbge
+
+
+  sandbox-rbge-worker:
+    image: specifyconsortium/specify7-service:issue_388
+    command: ve/bin/celery -A specifyweb worker -l INFO --concurrency=1 -Q sandbox_rbge
+    init: true
+    restart: unless-stopped
+    volumes:
+      - &quot;specify6803:/opt/Specify:ro&quot;
+      - &quot;static-files-sandbox-rbge:/volumes/static-files&quot;
+    env_file: defaults.env
+    environment:
+      - DATABASE_NAME=sandbox_rbge
+      - ASSET_SERVER_COLLECTION=sandbox_rbge
+
+
+
+  cryoarks-test:
+    image: specifyconsortium/specify7-service:v7
+    command: [&quot;ve/bin/gunicorn&quot;, &quot;-w&quot;, &quot;1&quot;, &quot;--threads&quot;, &quot;5&quot;, &quot;-b&quot;, &quot;0.0.0.0:8000&quot;, &quot;-t&quot;, &quot;300&quot;, &quot;specifyweb_wsgi&quot;]
+    init: true
+    restart: unless-stopped
+    volumes:
+      - &quot;specify6801:/opt/Specify:ro&quot;
+      - &quot;static-files-cryoarks-test:/volumes/static-files&quot;
+
+    env_file: defaults.env
+    environment:
+      - DATABASE_NAME=cryoarks_test
+      - ASSET_SERVER_COLLECTION=cryoarks_test
+
+
+  cryoarks-test-worker:
+    image: specifyconsortium/specify7-service:v7
+    command: ve/bin/celery -A specifyweb worker -l INFO --concurrency=1 -Q cryoarks_test
+    init: true
+    restart: unless-stopped
+    volumes:
+      - &quot;specify6801:/opt/Specify:ro&quot;
+      - &quot;static-files-cryoarks-test:/volumes/static-files&quot;
+    env_file: defaults.env
+    environment:
+      - DATABASE_NAME=cryoarks_test
+      - ASSET_SERVER_COLLECTION=cryoarks_test
+
+
+
+  eurl:
+    image: specifyconsortium/specify7-service:v7
+    command: [&quot;ve/bin/gunicorn&quot;, &quot;-w&quot;, &quot;1&quot;, &quot;--threads&quot;, &quot;5&quot;, &quot;-b&quot;, &quot;0.0.0.0:8000&quot;, &quot;-t&quot;, &quot;300&quot;, &quot;specifyweb_wsgi&quot;]
+    init: true
+    restart: unless-stopped
+    volumes:
+      - &quot;specify6803:/opt/Specify:ro&quot;
+      - &quot;static-files-eurl:/volumes/static-files&quot;
+
+    env_file: defaults.env
+    environment:
+      - DATABASE_NAME=eurl
+      - ASSET_SERVER_COLLECTION=eurl
+
+
+  eurl-worker:
+    image: specifyconsortium/specify7-service:v7
+    command: ve/bin/celery -A specifyweb worker -l INFO --concurrency=1 -Q eurl
+    init: true
+    restart: unless-stopped
+    volumes:
+      - &quot;specify6803:/opt/Specify:ro&quot;
+      - &quot;static-files-eurl:/volumes/static-files&quot;
+    env_file: defaults.env
+    environment:
+      - DATABASE_NAME=eurl
+      - ASSET_SERVER_COLLECTION=eurl
+
+
+
+
+  specify6800:
+    image: specifyconsortium/specify6-service:6.8.00
+    volumes:
+      - &quot;specify6800:/volumes/Specify&quot;
+
+  specify6801:
+    image: specifyconsortium/specify6-service:6.8.01
+    volumes:
+      - &quot;specify6801:/volumes/Specify&quot;
+
+  specify6803:
+    image: specifyconsortium/specify6-service:6.8.03
+    volumes:
+      - &quot;specify6803:/volumes/Specify&quot;
+
+
+  nginx:
+    image: nginx
+    restart: unless-stopped
+    ports:
+      - &quot;80:80&quot;
+      - &quot;443:443&quot;
+    volumes:
+
+      - &quot;static-files-sp7demofish-eu:/volumes/static-files-sp7demofish-eu:ro&quot;
+
+      - &quot;static-files-rjb-madrid:/volumes/static-files-rjb-madrid:ro&quot;
+
+      - &quot;static-files-mcnb:/volumes/static-files-mcnb:ro&quot;
+
+      - &quot;static-files-herb-rbge:/volumes/static-files-herb-rbge:ro&quot;
+
+      - &quot;static-files-sandbox-rbge:/volumes/static-files-sandbox-rbge:ro&quot;
+
+      - &quot;static-files-cryoarks-test:/volumes/static-files-cryoarks-test:ro&quot;
+
+      - &quot;static-files-eurl:/volumes/static-files-eurl:ro&quot;
+
+
+
+      - &quot;specify6800:/volumes/specify6800:ro&quot;
+
+      - &quot;specify6801:/volumes/specify6801:ro&quot;
+
+      - &quot;specify6803:/volumes/specify6803:ro&quot;
+
+
+      - &quot;./nginx.conf:/etc/nginx/conf.d/default.conf:ro&quot;
+      - &quot;/etc/letsencrypt:/etc/letsencrypt:ro&quot;
+      - &quot;/etc/ssl/certs/dhparam.pem:/etc/ssl/certs/dhparam.pem:ro&quot;
+      - &quot;/var/www:/var/www:ro&quot;
+
+  redis:
+    restart: unless-stopped
+    image: redis:6.0
+
+volumes:
+
+  specify6800:
+
+  specify6801:
+
+  specify6803:
+
+
+
+  static-files-sp7demofish-eu:
+
+  static-files-rjb-madrid:
+
+  static-files-mcnb:
+
+  static-files-herb-rbge:
+
+  static-files-sandbox-rbge:
+
+  static-files-cryoarks-test:
+
+  static-files-eurl:
+</pre></div>
+</div>
+</section>
+<section id="example-nginx-conf">
+<h2>Example nginx.conf<a class="headerlink" href="#example-nginx-conf" title="Link to this heading"></a></h2>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>server {
+    listen 80;
+    server_name sp7demofish-eu.*;
+
+    # The LetsEncrypt pass-though.
+    location /.well-known/ {
+             root /var/www/sp7demofish-eu/;
+    }
+
+
+    location / {
+        return 301 https://$host$request_uri;
+    }
+}
+
+server {
+    # This stanza defines the HTTPS end point.
+    listen 443 ssl;
+    server_name sp7demofish-eu.*;
+
+    ssl_certificate /etc/letsencrypt/live/sp7demofish-eu.specifycloud.org/fullchain.pem;
+    ssl_certificate_key /etc/letsencrypt/live/sp7demofish-eu.specifycloud.org/privkey.pem;
+
+    # from https://cipherli.st/
+    # and https://raymii.org/s/tutorials/Strong_SSL_Security_On_nginx.html
+
+    ssl_protocols TLSv1 TLSv1.1 TLSv1.2;
+    ssl_prefer_server_ciphers on;
+    ssl_ciphers &quot;EECDH+AESGCM:EDH+AESGCM:AES256+EECDH:AES256+EDH&quot;;
+    ssl_ecdh_curve secp384r1;
+    ssl_session_cache shared:SSL:10m;
+    ssl_session_tickets off;
+    ssl_stapling on;
+    ssl_stapling_verify on;
+    resolver 8.8.8.8 8.8.4.4 valid=300s;
+    resolver_timeout 5s;
+    # Disable preloading HSTS for now.  You can use the commented out header line that includes
+    # the &quot;preload&quot; directive if you understand the implications.
+    #add_header Strict-Transport-Security &quot;max-age=63072000; includeSubdomains; preload&quot;;
+    add_header Strict-Transport-Security &quot;max-age=63072000; includeSubdomains&quot;;
+    add_header X-Frame-Options DENY;
+    add_header X-Content-Type-Options nosniff;
+
+    ssl_dhparam /etc/ssl/certs/dhparam.pem;
+
+    # The LetsEncrypt pass-though. I&#39;m not sure if this is needed
+    # on HTTPS side, but I&#39;m including it just in case.
+    location /.well-known/ {
+             root /var/www/sp7demofish-eu/;
+    }
+
+
+    root /usr/share/nginx;
+
+    location /static/ {
+        root /volumes;
+        rewrite ^/static/config/(.*)$ /specify6801/config/$1 break;
+        rewrite ^/static/depository/(.*)$ /static-files-sp7demofish-eu/depository/$1 break;
+        rewrite ^/static/(.*)$ /static-files-sp7demofish-eu/frontend-static/$1 break;
+    }
+
+    location / {
+        resolver 127.0.0.11 valid=30s;
+        set $backend &quot;http://sp7demofish-eu:8000&quot;;
+        proxy_pass $backend;
+        proxy_set_header Host $host;
+        proxy_set_header X-Real-IP $remote_addr;
+        proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
+        proxy_set_header X-Forwarded-Proto $scheme;
+        proxy_read_timeout 600s;
+	client_max_body_size 0;
+    }
+}
+
+
+server {
+    listen 80;
+    server_name rjb-madrid.*;
+
+    # The LetsEncrypt pass-though.
+    location /.well-known/ {
+             root /var/www/rjb-madrid/;
+    }
+
+
+    location / {
+        return 301 https://$host$request_uri;
+    }
+}
+
+server {
+    # This stanza defines the HTTPS end point.
+    listen 443 ssl;
+    server_name rjb-madrid.*;
+
+    ssl_certificate /etc/letsencrypt/live/rjb-madrid.specifycloud.org/fullchain.pem;
+    ssl_certificate_key /etc/letsencrypt/live/rjb-madrid.specifycloud.org/privkey.pem;
+
+    # from https://cipherli.st/
+    # and https://raymii.org/s/tutorials/Strong_SSL_Security_On_nginx.html
+
+    ssl_protocols TLSv1 TLSv1.1 TLSv1.2;
+    ssl_prefer_server_ciphers on;
+    ssl_ciphers &quot;EECDH+AESGCM:EDH+AESGCM:AES256+EECDH:AES256+EDH&quot;;
+    ssl_ecdh_curve secp384r1;
+    ssl_session_cache shared:SSL:10m;
+    ssl_session_tickets off;
+    ssl_stapling on;
+    ssl_stapling_verify on;
+    resolver 8.8.8.8 8.8.4.4 valid=300s;
+    resolver_timeout 5s;
+    # Disable preloading HSTS for now.  You can use the commented out header line that includes
+    # the &quot;preload&quot; directive if you understand the implications.
+    #add_header Strict-Transport-Security &quot;max-age=63072000; includeSubdomains; preload&quot;;
+    add_header Strict-Transport-Security &quot;max-age=63072000; includeSubdomains&quot;;
+    add_header X-Frame-Options DENY;
+    add_header X-Content-Type-Options nosniff;
+
+    ssl_dhparam /etc/ssl/certs/dhparam.pem;
+
+    # The LetsEncrypt pass-though. I&#39;m not sure if this is needed
+    # on HTTPS side, but I&#39;m including it just in case.
+    location /.well-known/ {
+             root /var/www/rjb-madrid/;
+    }
+
+
+    root /usr/share/nginx;
+
+    location /static/ {
+        root /volumes;
+        rewrite ^/static/config/(.*)$ /specify6803/config/$1 break;
+        rewrite ^/static/depository/(.*)$ /static-files-rjb-madrid/depository/$1 break;
+        rewrite ^/static/(.*)$ /static-files-rjb-madrid/frontend-static/$1 break;
+    }
+
+    location / {
+        resolver 127.0.0.11 valid=30s;
+        set $backend &quot;http://rjb-madrid:8000&quot;;
+        proxy_pass $backend;
+        proxy_set_header Host $host;
+        proxy_set_header X-Real-IP $remote_addr;
+        proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
+        proxy_set_header X-Forwarded-Proto $scheme;
+        proxy_read_timeout 600s;
+	client_max_body_size 0;
+    }
+}
+
+
+server {
+    listen 80;
+    server_name mcnb.*;
+
+    # The LetsEncrypt pass-though.
+    location /.well-known/ {
+             root /var/www/mcnb/;
+    }
+
+
+    location / {
+        return 301 https://$host$request_uri;
+    }
+}
+
+server {
+    # This stanza defines the HTTPS end point.
+    listen 443 ssl;
+    server_name mcnb.*;
+
+    ssl_certificate /etc/letsencrypt/live/mcnb.specifycloud.org/fullchain.pem;
+    ssl_certificate_key /etc/letsencrypt/live/mcnb.specifycloud.org/privkey.pem;
+
+    # from https://cipherli.st/
+    # and https://raymii.org/s/tutorials/Strong_SSL_Security_On_nginx.html
+
+    ssl_protocols TLSv1 TLSv1.1 TLSv1.2;
+    ssl_prefer_server_ciphers on;
+    ssl_ciphers &quot;EECDH+AESGCM:EDH+AESGCM:AES256+EECDH:AES256+EDH&quot;;
+    ssl_ecdh_curve secp384r1;
+    ssl_session_cache shared:SSL:10m;
+    ssl_session_tickets off;
+    ssl_stapling on;
+    ssl_stapling_verify on;
+    resolver 8.8.8.8 8.8.4.4 valid=300s;
+    resolver_timeout 5s;
+    # Disable preloading HSTS for now.  You can use the commented out header line that includes
+    # the &quot;preload&quot; directive if you understand the implications.
+    #add_header Strict-Transport-Security &quot;max-age=63072000; includeSubdomains; preload&quot;;
+    add_header Strict-Transport-Security &quot;max-age=63072000; includeSubdomains&quot;;
+    add_header X-Frame-Options DENY;
+    add_header X-Content-Type-Options nosniff;
+
+    ssl_dhparam /etc/ssl/certs/dhparam.pem;
+
+    # The LetsEncrypt pass-though. I&#39;m not sure if this is needed
+    # on HTTPS side, but I&#39;m including it just in case.
+    location /.well-known/ {
+             root /var/www/mcnb/;
+    }
+
+
+    root /usr/share/nginx;
+
+    location /static/ {
+        root /volumes;
+        rewrite ^/static/config/(.*)$ /specify6803/config/$1 break;
+        rewrite ^/static/depository/(.*)$ /static-files-mcnb/depository/$1 break;
+        rewrite ^/static/(.*)$ /static-files-mcnb/frontend-static/$1 break;
+    }
+
+    location / {
+        resolver 127.0.0.11 valid=30s;
+        set $backend &quot;http://mcnb:8000&quot;;
+        proxy_pass $backend;
+        proxy_set_header Host $host;
+        proxy_set_header X-Real-IP $remote_addr;
+        proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
+        proxy_set_header X-Forwarded-Proto $scheme;
+        proxy_read_timeout 600s;
+	client_max_body_size 0;
+    }
+}
+
+
+server {
+    listen 80;
+    server_name herb-rbge.*;
+
+    # The LetsEncrypt pass-though.
+    location /.well-known/ {
+             root /var/www/herb-rbge/;
+    }
+
+
+    location / {
+        return 301 https://$host$request_uri;
+    }
+}
+
+server {
+    # This stanza defines the HTTPS end point.
+    listen 443 ssl;
+    server_name herb-rbge.*;
+
+    ssl_certificate /etc/letsencrypt/live/herb-rbge.specifycloud.org/fullchain.pem;
+    ssl_certificate_key /etc/letsencrypt/live/herb-rbge.specifycloud.org/privkey.pem;
+
+    # from https://cipherli.st/
+    # and https://raymii.org/s/tutorials/Strong_SSL_Security_On_nginx.html
+
+    ssl_protocols TLSv1 TLSv1.1 TLSv1.2;
+    ssl_prefer_server_ciphers on;
+    ssl_ciphers &quot;EECDH+AESGCM:EDH+AESGCM:AES256+EECDH:AES256+EDH&quot;;
+    ssl_ecdh_curve secp384r1;
+    ssl_session_cache shared:SSL:10m;
+    ssl_session_tickets off;
+    ssl_stapling on;
+    ssl_stapling_verify on;
+    resolver 8.8.8.8 8.8.4.4 valid=300s;
+    resolver_timeout 5s;
+    # Disable preloading HSTS for now.  You can use the commented out header line that includes
+    # the &quot;preload&quot; directive if you understand the implications.
+    #add_header Strict-Transport-Security &quot;max-age=63072000; includeSubdomains; preload&quot;;
+    add_header Strict-Transport-Security &quot;max-age=63072000; includeSubdomains&quot;;
+    add_header X-Frame-Options DENY;
+    add_header X-Content-Type-Options nosniff;
+
+    ssl_dhparam /etc/ssl/certs/dhparam.pem;
+
+    # The LetsEncrypt pass-though. I&#39;m not sure if this is needed
+    # on HTTPS side, but I&#39;m including it just in case.
+    location /.well-known/ {
+             root /var/www/herb-rbge/;
+    }
+
+
+    root /usr/share/nginx;
+
+    location /static/ {
+        root /volumes;
+        rewrite ^/static/config/(.*)$ /specify6803/config/$1 break;
+        rewrite ^/static/depository/(.*)$ /static-files-herb-rbge/depository/$1 break;
+        rewrite ^/static/(.*)$ /static-files-herb-rbge/frontend-static/$1 break;
+    }
+
+    location / {
+        resolver 127.0.0.11 valid=30s;
+        set $backend &quot;http://herb-rbge:8000&quot;;
+        proxy_pass $backend;
+        proxy_set_header Host $host;
+        proxy_set_header X-Real-IP $remote_addr;
+        proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
+        proxy_set_header X-Forwarded-Proto $scheme;
+        proxy_read_timeout 600s;
+	client_max_body_size 0;
+    }
+}
+
+
+server {
+    listen 80;
+    server_name sandbox-rbge.*;
+
+    # The LetsEncrypt pass-though.
+    location /.well-known/ {
+             root /var/www/sandbox-rbge/;
+    }
+
+
+    location / {
+        return 301 https://$host$request_uri;
+    }
+}
+
+server {
+    # This stanza defines the HTTPS end point.
+    listen 443 ssl;
+    server_name sandbox-rbge.*;
+
+    ssl_certificate /etc/letsencrypt/live/sandbox-rbge.specifycloud.org/fullchain.pem;
+    ssl_certificate_key /etc/letsencrypt/live/sandbox-rbge.specifycloud.org/privkey.pem;
+
+    # from https://cipherli.st/
+    # and https://raymii.org/s/tutorials/Strong_SSL_Security_On_nginx.html
+
+    ssl_protocols TLSv1 TLSv1.1 TLSv1.2;
+    ssl_prefer_server_ciphers on;
+    ssl_ciphers &quot;EECDH+AESGCM:EDH+AESGCM:AES256+EECDH:AES256+EDH&quot;;
+    ssl_ecdh_curve secp384r1;
+    ssl_session_cache shared:SSL:10m;
+    ssl_session_tickets off;
+    ssl_stapling on;
+    ssl_stapling_verify on;
+    resolver 8.8.8.8 8.8.4.4 valid=300s;
+    resolver_timeout 5s;
+    # Disable preloading HSTS for now.  You can use the commented out header line that includes
+    # the &quot;preload&quot; directive if you understand the implications.
+    #add_header Strict-Transport-Security &quot;max-age=63072000; includeSubdomains; preload&quot;;
+    add_header Strict-Transport-Security &quot;max-age=63072000; includeSubdomains&quot;;
+    add_header X-Frame-Options DENY;
+    add_header X-Content-Type-Options nosniff;
+
+    ssl_dhparam /etc/ssl/certs/dhparam.pem;
+
+    # The LetsEncrypt pass-though. I&#39;m not sure if this is needed
+    # on HTTPS side, but I&#39;m including it just in case.
+    location /.well-known/ {
+             root /var/www/sandbox-rbge/;
+    }
+
+
+    root /usr/share/nginx;
+
+    location /static/ {
+        root /volumes;
+        rewrite ^/static/config/(.*)$ /specify6803/config/$1 break;
+        rewrite ^/static/depository/(.*)$ /static-files-sandbox-rbge/depository/$1 break;
+        rewrite ^/static/(.*)$ /static-files-sandbox-rbge/frontend-static/$1 break;
+    }
+
+    location / {
+        resolver 127.0.0.11 valid=30s;
+        set $backend &quot;http://sandbox-rbge:8000&quot;;
+        proxy_pass $backend;
+        proxy_set_header Host $host;
+        proxy_set_header X-Real-IP $remote_addr;
+        proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
+        proxy_set_header X-Forwarded-Proto $scheme;
+        proxy_read_timeout 600s;
+	client_max_body_size 0;
+    }
+}
+
+
+server {
+    listen 80;
+    server_name cryoarks-test.*;
+
+    # The LetsEncrypt pass-though.
+    location /.well-known/ {
+             root /var/www/cryoarks-test/;
+    }
+
+
+
+    root /usr/share/nginx;
+
+    location /static/ {
+        root /volumes;
+        rewrite ^/static/config/(.*)$ /specify6801/config/$1 break;
+        rewrite ^/static/depository/(.*)$ /static-files-cryoarks-test/depository/$1 break;
+        rewrite ^/static/(.*)$ /static-files-cryoarks-test/frontend-static/$1 break;
+    }
+
+    location / {
+        resolver 127.0.0.11 valid=30s;
+        set $backend &quot;http://cryoarks-test:8000&quot;;
+        proxy_pass $backend;
+        proxy_set_header Host $host;
+        proxy_set_header X-Real-IP $remote_addr;
+        proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
+        proxy_set_header X-Forwarded-Proto $scheme;
+        proxy_read_timeout 600s;
+	client_max_body_size 0;
+    }
+}
+
+
+server {
+    listen 80;
+    server_name eurl.*;
+
+    # The LetsEncrypt pass-though.
+    location /.well-known/ {
+             root /var/www/eurl/;
+    }
+
+
+    location / {
+        return 301 https://$host$request_uri;
+    }
+}
+
+server {
+    # This stanza defines the HTTPS end point.
+    listen 443 ssl;
+    server_name eurl.*;
+
+    ssl_certificate /etc/letsencrypt/live/eurl.specifycloud.org/fullchain.pem;
+    ssl_certificate_key /etc/letsencrypt/live/eurl.specifycloud.org/privkey.pem;
+
+    # from https://cipherli.st/
+    # and https://raymii.org/s/tutorials/Strong_SSL_Security_On_nginx.html
+
+    ssl_protocols TLSv1 TLSv1.1 TLSv1.2;
+    ssl_prefer_server_ciphers on;
+    ssl_ciphers &quot;EECDH+AESGCM:EDH+AESGCM:AES256+EECDH:AES256+EDH&quot;;
+    ssl_ecdh_curve secp384r1;
+    ssl_session_cache shared:SSL:10m;
+    ssl_session_tickets off;
+    ssl_stapling on;
+    ssl_stapling_verify on;
+    resolver 8.8.8.8 8.8.4.4 valid=300s;
+    resolver_timeout 5s;
+    # Disable preloading HSTS for now.  You can use the commented out header line that includes
+    # the &quot;preload&quot; directive if you understand the implications.
+    #add_header Strict-Transport-Security &quot;max-age=63072000; includeSubdomains; preload&quot;;
+    add_header Strict-Transport-Security &quot;max-age=63072000; includeSubdomains&quot;;
+    add_header X-Frame-Options DENY;
+    add_header X-Content-Type-Options nosniff;
+
+    ssl_dhparam /etc/ssl/certs/dhparam.pem;
+
+    # The LetsEncrypt pass-though. I&#39;m not sure if this is needed
+    # on HTTPS side, but I&#39;m including it just in case.
+    location /.well-known/ {
+             root /var/www/eurl/;
+    }
+
+
+    root /usr/share/nginx;
+
+    location /static/ {
+        root /volumes;
+        rewrite ^/static/config/(.*)$ /specify6803/config/$1 break;
+        rewrite ^/static/depository/(.*)$ /static-files-eurl/depository/$1 break;
+        rewrite ^/static/(.*)$ /static-files-eurl/frontend-static/$1 break;
+    }
+
+    location / {
+        resolver 127.0.0.11 valid=30s;
+        set $backend &quot;http://eurl:8000&quot;;
+        proxy_pass $backend;
+        proxy_set_header Host $host;
+        proxy_set_header X-Real-IP $remote_addr;
+        proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
+        proxy_set_header X-Forwarded-Proto $scheme;
+        proxy_read_timeout 600s;
+	client_max_body_size 0;
+    }
+}
+</pre></div>
+</div>
+</section>
+</section>
+<section id="asset-server">
+<h1>Asset Server<a class="headerlink" href="#asset-server" title="Link to this heading"></a></h1>
+<p>Using the GitHub repo at https://github.com/specify/web-asset-server</p>
+<section id="example-settings-py-file">
+<h2>Example settings.py file<a class="headerlink" href="#example-settings-py-file" title="Link to this heading"></a></h2>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="c1"># Sample Specify web asset server settings.</span>
+
+<span class="c1"># Turns on bottle.py debugging, module reloading and printing some</span>
+<span class="c1"># information to console.</span>
+<span class="n">DEBUG</span> <span class="o">=</span> <span class="kc">False</span>
+
+<span class="c1"># This secret key is used to generate authentication tokens for requests.</span>
+<span class="c1"># The same key must be set in the Web Store Attachment Preferences in Specify.</span>
+<span class="c1"># A good source for key value is: https://www.grc.com/passwords.htm</span>
+<span class="c1"># Set KEY to None to disable security. This is NOT recommended since doing so</span>
+<span class="c1"># will allow anyone on the internet to use the attachment server to store</span>
+<span class="c1"># arbitrary files.</span>
+<span class="n">KEY</span> <span class="o">=</span> <span class="s1">&#39;tnhercbrhtktanehul.dukb&#39;</span>
+
+<span class="c1"># Auth token timestamp must be within this many seconds of server time</span>
+<span class="c1"># in order to be considered valid. This prevents replay attacks.</span>
+<span class="c1"># Set to None to disable time validation.</span>
+<span class="n">TIME_TOLERANCE</span> <span class="o">=</span> <span class="mi">600</span>
+
+<span class="c1"># Set this to True to require authentication for downloads in addition</span>
+<span class="c1"># to uploads and deletes.  Static file access, if enabled, is not</span>
+<span class="c1"># affected by this setting.</span>
+<span class="n">REQUIRE_KEY_FOR_GET</span> <span class="o">=</span> <span class="kc">False</span>
+
+<span class="c1"># This is required for use with the Web Portal.</span>
+<span class="c1"># Enables the &#39;getfileref&#39; and &#39;/static/...&#39; URLs.</span>
+<span class="n">ALLOW_STATIC_FILE_ACCESS</span> <span class="o">=</span> <span class="kc">True</span>
+
+<span class="c1"># These values are interpolated into the web_asset_store.xml resource</span>
+<span class="c1"># so the client knows how to talk to the server.</span>
+<span class="n">HOST</span> <span class="o">=</span> <span class="s1">&#39;assets1.specifycloud.org&#39;</span>
+<span class="n">PORT</span> <span class="o">=</span> <span class="mi">8080</span>
+
+<span class="n">SERVER_NAME</span> <span class="o">=</span> <span class="n">HOST</span>
+<span class="n">SERVER_PORT</span> <span class="o">=</span> <span class="n">PORT</span>
+
+<span class="c1"># Port the development test server should listen on.</span>
+<span class="n">DEVELOPMENT_PORT</span> <span class="o">=</span> <span class="n">PORT</span>
+
+<span class="c1"># Map collection names to directories.  Set to None to store</span>
+<span class="c1"># everything in the same originals and thumbnail directories.  This is</span>
+<span class="c1"># recommended unless some provision is made to allow attachments for</span>
+<span class="c1"># items scoped above collections to be found.</span>
+
+<span class="n">COLLECTION_DIRS</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="c1"># &#39;COLLECTION_NAME&#39;: &#39;DIRECTORY_NAME&#39;,</span>
+    <span class="s1">&#39;beaty&#39;</span><span class="p">:</span> <span class="s1">&#39;beaty&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;ncslgfungi&#39;</span><span class="p">:</span> <span class="s1">&#39;ncslgfungi&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;ocpc&#39;</span><span class="p">:</span> <span class="s1">&#39;ocpc&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;stlawu&#39;</span><span class="p">:</span> <span class="s1">&#39;stlawu&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;asnhcmammals&#39;</span><span class="p">:</span> <span class="s1">&#39;asnhcmammals&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;dwuspiders&#39;</span><span class="p">:</span> <span class="s1">&#39;dwuspiders&#39;</span><span class="p">,</span>
+
+    <span class="c1"># &#39;nha&#39;: &#39;nha&#39;,</span>
+    <span class="c1"># &#39;cornellmammals&#39;: &#39;cornellmammals&#39;,</span>
+    <span class="c1"># &#39;cornellherps&#39;: &#39;cornellherps&#39;,</span>
+    <span class="c1"># &#39;cornellfishes&#39;: &#39;cornellfishes&#39;,</span>
+    <span class="s1">&#39;uprm_invcol&#39;</span><span class="p">:</span> <span class="s1">&#39;uprm_invcol&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;nybg_vanuatu&#39;</span><span class="p">:</span> <span class="s1">&#39;nybg_vanuatu&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;demobirds&#39;</span><span class="p">:</span> <span class="s1">&#39;demobirds&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;emoryherbarium&#39;</span><span class="p">:</span> <span class="s1">&#39;emoryherbarium&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;uw_geo_collections&#39;</span><span class="p">:</span> <span class="s1">&#39;uw_geo_collections&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;keherbariumvascular&#39;</span><span class="p">:</span> <span class="s1">&#39;keherbariumvascular&#39;</span><span class="p">,</span>
+    <span class="c1"># &#39;cornellbirds&#39;: &#39;cornellbirds&#39;,</span>
+    <span class="c1"># &#39;critters&#39;: &#39;critters&#39;,</span>
+    <span class="s1">&#39;williherb&#39;</span><span class="p">:</span> <span class="s1">&#39;williherb&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;sbccprofantmuseum&#39;</span><span class="p">:</span> <span class="s1">&#39;sbccprofantmuseum&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;josc&#39;</span><span class="p">:</span> <span class="s1">&#39;josc&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;ccnhm&#39;</span><span class="p">:</span> <span class="s1">&#39;ccnhm&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;lsumz_mammals&#39;</span><span class="p">:</span> <span class="s1">&#39;lsumz_mammals&#39;</span><span class="p">,</span>
+    <span class="c1"># &#39;pripaleo&#39;: &#39;pripaleo&#39;,</span>
+    <span class="s1">&#39;Invertebrate Paleontology&#39;</span><span class="p">:</span> <span class="s1">&#39;pripaleo&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;usgs_nmnhpaleontologycollections&#39;</span><span class="p">:</span> <span class="s1">&#39;usgs_nmnhpaleontologycollections&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;vimsfish&#39;</span><span class="p">:</span> <span class="s1">&#39;vimsfish&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;vimsworkshop&#39;</span><span class="p">:</span> <span class="s1">&#39;vimsworkshop&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;ilstu&#39;</span><span class="p">:</span> <span class="s1">&#39;ilstu&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;wespalcoll&#39;</span><span class="p">:</span> <span class="s1">&#39;wespalcoll&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;royfungi&#39;</span><span class="p">:</span> <span class="s1">&#39;royfungi&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;isua&#39;</span><span class="p">:</span> <span class="s1">&#39;isua&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;chagasecohealth&#39;</span><span class="p">:</span> <span class="s1">&#39;chagasecohealth&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;plu&#39;</span><span class="p">:</span> <span class="s1">&#39;plu&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;uconnverts&#39;</span><span class="p">:</span> <span class="s1">&#39;uconnverts&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;kelichens&#39;</span><span class="p">:</span> <span class="s1">&#39;kelichens&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;lakeforestbiology&#39;</span><span class="p">:</span> <span class="s1">&#39;lakeforestbiology&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;mariamitchell&#39;</span><span class="p">:</span> <span class="s1">&#39;mariamitchell&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;gree&#39;</span><span class="p">:</span> <span class="s1">&#39;gree&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;pennstatefishmuseum&#39;</span><span class="p">:</span> <span class="s1">&#39;pennstatefishmuseum&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;dukebryo&#39;</span><span class="p">:</span> <span class="s1">&#39;dukebryo&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;bishopmuseum&#39;</span><span class="p">:</span> <span class="s1">&#39;bishopmuseum&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;mndragonfly&#39;</span><span class="p">:</span> <span class="s1">&#39;mndragonfly&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;rbge&#39;</span><span class="p">:</span> <span class="s1">&#39;rbge&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;cudiatoms&#39;</span><span class="p">:</span> <span class="s1">&#39;cudiatoms&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;fwri&#39;</span><span class="p">:</span> <span class="s1">&#39;fwri&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;sdinverts&#39;</span><span class="p">:</span> <span class="s1">&#39;sdinverts&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;shellmuseum&#39;</span><span class="p">:</span> <span class="s1">&#39;shellmuseum&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;ansppaleo&#39;</span><span class="p">:</span> <span class="s1">&#39;ansppaleo&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;osuorton&#39;</span><span class="p">:</span> <span class="s1">&#39;osuorton&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;ciscollections&#39;</span><span class="p">:</span> <span class="s1">&#39;ciscollections&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;cuic&#39;</span><span class="p">:</span> <span class="s1">&#39;cuic&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;lsumz_fishes&#39;</span><span class="p">:</span> <span class="s1">&#39;lsumz_fishes&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;calvertmarinemuseum&#39;</span><span class="p">:</span> <span class="s1">&#39;calvertmarinemuseum&#39;</span><span class="p">,</span>
+
+    <span class="s1">&#39;mcnb&#39;</span><span class="p">:</span> <span class="s1">&#39;mcnb&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;Invertebrate non-arthropod&#39;</span><span class="p">:</span> <span class="s1">&#39;mcnb&#39;</span><span class="p">,</span>
+
+    <span class="s1">&#39;lsumz_herps&#39;</span><span class="p">:</span> <span class="s1">&#39;lsumz_herps&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;uwfc&#39;</span><span class="p">:</span> <span class="s1">&#39;uwfc&#39;</span><span class="p">,</span>
+
+    <span class="s1">&#39;Oregon State Ichthyology Collection&#39;</span><span class="p">:</span> <span class="s1">&#39;os&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;os&#39;</span><span class="p">:</span> <span class="s1">&#39;os&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;unitec&#39;</span><span class="p">:</span> <span class="s1">&#39;unitec&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;herb_rbge&#39;</span><span class="p">:</span> <span class="s1">&#39;herb_rbge&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;Herbarium RBGE&#39;</span><span class="p">:</span> <span class="s1">&#39;herb_rbge&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;sandbox_rbge&#39;</span><span class="p">:</span> <span class="s1">&#39;sandbox_rbge&#39;</span><span class="p">,</span>
+
+    <span class="s1">&#39;nbm_mnb&#39;</span><span class="p">:</span> <span class="s1">&#39;nbm_mnb&#39;</span><span class="p">,</span>
+    <span class="s2">&quot;Amphibian Reptile Sightings&quot;</span><span class="p">:</span> <span class="s1">&#39;nbm_mnb&#39;</span><span class="p">,</span>
+
+    <span class="s1">&#39;purdueherbaria&#39;</span><span class="p">:</span> <span class="s1">&#39;purdueherbaria&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;montrealinsectarium&#39;</span><span class="p">:</span> <span class="s1">&#39;montrealinsectarium&#39;</span><span class="p">,</span>
+
+    <span class="s1">&#39;workshop&#39;</span><span class="p">:</span> <span class="s1">&#39;workshop&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;ptrm&#39;</span><span class="p">:</span> <span class="s1">&#39;ptrm&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;herb_umass&#39;</span><span class="p">:</span> <span class="s1">&#39;herb_umass&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;unsm_vp&#39;</span><span class="p">:</span> <span class="s1">&#39;unsm_vp&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;morpalo&#39;</span><span class="p">:</span> <span class="s1">&#39;morpalo&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;aafc_aac&#39;</span><span class="p">:</span> <span class="s1">&#39;aafc_aac&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;spnhc&#39;</span><span class="p">:</span> <span class="s1">&#39;spnhc&#39;</span>
+<span class="p">}</span>
+
+<span class="c1"># COLLECTION_DIRS = None</span>
+
+<span class="c1"># Base directory for all attachments.</span>
+<span class="n">BASE_DIR</span> <span class="o">=</span> <span class="s1">&#39;/home/specify/attachments&#39;</span>
+
+<span class="c1"># Originals and thumbnails are stored in separate directories.</span>
+<span class="n">THUMB_DIR</span> <span class="o">=</span> <span class="s1">&#39;thumbnails&#39;</span>
+<span class="n">ORIG_DIR</span> <span class="o">=</span> <span class="s1">&#39;originals&#39;</span>
+
+<span class="c1"># Set of mime types that the server will try to thumbnail.</span>
+<span class="n">CAN_THUMBNAIL</span> <span class="o">=</span> <span class="p">{</span><span class="s1">&#39;image/jpeg&#39;</span><span class="p">,</span> <span class="s1">&#39;image/gif&#39;</span><span class="p">,</span> <span class="s1">&#39;image/png&#39;</span><span class="p">,</span> <span class="s1">&#39;image/tiff&#39;</span><span class="p">,</span> <span class="s1">&#39;application/pdf&#39;</span><span class="p">}</span>
+
+<span class="c1"># What HTTP server to use for stand-alone operation.</span>
+<span class="n">SERVER</span> <span class="o">=</span> <span class="s1">&#39;paste&#39;</span> <span class="c1"># Requires python-paste package. Fast, and seems to work good.</span>
+<span class="c1">#SERVER = &#39;wsgiref&#39;  # For testing. Requires no extra packages.</span>
+</pre></div>
+</div>
+</section>
+<section id="possible-dockerfile-for-ecs-build-unfinished">
+<h2>Possible Dockerfile for ECS Build (Unfinished)<a class="headerlink" href="#possible-dockerfile-for-ecs-build-unfinished" title="Link to this heading"></a></h2>
+<div class="highlight-dockerfile notranslate"><div class="highlight"><pre><span></span><span class="k">FROM</span><span class="w"> </span><span class="s">arm64v8/ubuntu:18.04</span><span class="w"> </span><span class="k">AS</span><span class="w"> </span><span class="s">run-asset-server</span>
+
+<span class="k">RUN</span><span class="w"> </span>apt-get<span class="w"> </span>update<span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span>apt-get<span class="w"> </span>-y<span class="w"> </span>install<span class="w"> </span>--no-install-recommends<span class="w"> </span><span class="se">\</span>
+<span class="w">        </span>ghostscript<span class="w"> </span><span class="se">\</span>
+<span class="w">        </span>imagemagick<span class="w"> </span><span class="se">\</span>
+<span class="w">        </span>python3.8<span class="w"> </span><span class="se">\</span>
+<span class="w">        </span>python3.8-dev<span class="w"> </span><span class="se">\</span>
+<span class="w">        </span>python3.8-pip<span class="w"> </span><span class="se">\</span>
+<span class="w">        </span>python3-venv<span class="w"> </span><span class="se">\</span>
+<span class="w">        </span>git<span class="w"> </span><span class="se">\</span>
+<span class="w">        </span>nginx<span class="w"> </span><span class="se">\</span>
+<span class="w">        </span>certbot<span class="w"> </span><span class="se">\</span>
+<span class="w">        </span>awscli<span class="w"> </span><span class="se">\</span>
+<span class="w">        </span>s3fs<span class="w"> </span><span class="se">\</span>
+<span class="w">        </span><span class="o">&amp;&amp;</span><span class="w"> </span>apt-get<span class="w"> </span>clean<span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span>rm<span class="w"> </span>-rf<span class="w"> </span>/var/lib/apt/lists/*
+
+<span class="k">RUN</span><span class="w"> </span>groupadd<span class="w"> </span>-g<span class="w"> </span><span class="m">999</span><span class="w"> </span>specify<span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span><span class="se">\</span>
+<span class="w">        </span>useradd<span class="w"> </span>-r<span class="w"> </span>-u<span class="w"> </span><span class="m">999</span><span class="w"> </span>-g<span class="w"> </span>specify<span class="w"> </span>specify
+
+<span class="k">RUN</span><span class="w"> </span>mkdir<span class="w"> </span>-p<span class="w"> </span>/home/specify<span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span>chown<span class="w"> </span>specify.specify<span class="w"> </span>/home/specify
+
+<span class="k">USER</span><span class="w"> </span><span class="s">specify</span>
+<span class="k">WORKDIR</span><span class="w"> </span><span class="s">/home/specify</span>
+
+<span class="k">COPY</span><span class="w"> </span>--chown<span class="o">=</span>specify:specify<span class="w"> </span>requirements.txt<span class="w"> </span>.
+
+<span class="k">RUN</span><span class="w"> </span>python3.8<span class="w"> </span>-m<span class="w"> </span>venv<span class="w"> </span>ve<span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span>ve/bin/pip<span class="w"> </span>install<span class="w"> </span>--no-cache-dir<span class="w"> </span>-r<span class="w"> </span>requirements.txt
+
+<span class="k">COPY</span><span class="w"> </span>--chown<span class="o">=</span>specify:specify<span class="w"> </span>*.py<span class="w"> </span>views<span class="w"> </span>./
+
+<span class="k">RUN</span><span class="w"> </span>mkdir<span class="w"> </span>-p<span class="w"> </span>/home/specify/attachments/
+
+<span class="k">RUN</span><span class="w"> </span><span class="nb">echo</span><span class="w"> </span><span class="se">\</span>
+<span class="w">        </span><span class="s2">&quot;import os&quot;</span><span class="w"> </span><span class="se">\</span>
+<span class="w">        </span><span class="s2">&quot;\nSERVER = &#39;paste&#39;&quot;</span><span class="w"> </span><span class="se">\</span>
+<span class="w">        </span><span class="s2">&quot;\nSERVER_NAME = os.environ[&#39;SERVER_NAME&#39;]&quot;</span><span class="w"> </span><span class="se">\</span>
+<span class="w">        </span><span class="s2">&quot;\nSERVER_PORT = int(os.getenv(&#39;SERVER_PORT&#39;, 8080))&quot;</span><span class="w"> </span><span class="se">\</span>
+<span class="w">        </span><span class="s2">&quot;\nKEY = os.environ[&#39;ATTACHMENT_KEY&#39;]&quot;</span><span class="w"> </span><span class="se">\</span>
+<span class="w">        </span><span class="s2">&quot;\nDEBUG = os.getenv(&#39;DEBUG_MODE&#39;, &#39;false&#39;).lower() == &#39;true&#39;&quot;</span><span class="w"> </span><span class="se">\</span>
+<span class="w">        </span>&gt;&gt;<span class="w"> </span>settings.py
+
+<span class="c"># Configure AWS</span>
+<span class="k">RUN</span><span class="w"> </span>aws<span class="w"> </span>configure<span class="w"> </span><span class="nb">set</span><span class="w"> </span>aws_access_key_id<span class="w"> </span><span class="s2">&quot;aws_access_key_id&quot;</span><span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span><span class="se">\</span>
+aws<span class="w"> </span>configure<span class="w"> </span><span class="nb">set</span><span class="w"> </span>aws_secret_access_key<span class="w"> </span><span class="s2">&quot;aws_secret_access_key&quot;</span><span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span><span class="se">\</span>
+aws<span class="w"> </span>configure<span class="w"> </span><span class="nb">set</span><span class="w"> </span>default.region<span class="w"> </span>us-east-1<span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span><span class="se">\</span>
+aws<span class="w"> </span>configure<span class="w"> </span><span class="nb">set</span><span class="w"> </span>default.output<span class="w"> </span>json
+
+<span class="c"># S3 Mounting</span>
+<span class="k">RUN</span><span class="w"> </span>s3fs<span class="w"> </span>specify-cloud<span class="w"> </span>/home/specify/attachments/
+
+<span class="k">EXPOSE</span><span class="w"> </span><span class="s">8080</span>
+<span class="k">CMD</span><span class="w"> </span>ve/bin/python<span class="w"> </span>server.py
+</pre></div>
+</div>
+</section>
+<section id="asset-nginx-web-server-config">
+<h2>Asset nginx web-server config<a class="headerlink" href="#asset-nginx-web-server-config" title="Link to this heading"></a></h2>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">server</span> <span class="p">{</span>
+       <span class="c1"># HTTP access is needed for Specify 6. It will not work with HTTPS.</span>
+       <span class="n">listen</span> <span class="mi">80</span> <span class="n">default_server</span><span class="p">;</span>
+       <span class="n">server_name</span> <span class="n">assets1</span><span class="o">.</span><span class="n">specifycloud</span><span class="o">.</span><span class="n">org</span><span class="p">;</span>
+       <span class="n">client_max_body_size</span> <span class="mi">0</span><span class="p">;</span>
+
+       <span class="c1"># The LetsEncrypt certificate mechanism places a nonce</span>
+       <span class="c1"># challenge at this location to prove we have control of the</span>
+       <span class="c1"># domain. Mapping it to a location in the filesystem allows us</span>
+       <span class="c1"># to easily use their auto renew system.</span>
+       <span class="n">location</span> <span class="o">/.</span><span class="n">well</span><span class="o">-</span><span class="n">known</span><span class="o">/</span> <span class="p">{</span>
+                <span class="n">root</span> <span class="o">/</span><span class="n">var</span><span class="o">/</span><span class="n">www</span><span class="o">/</span><span class="p">;</span>
+       <span class="p">}</span>
+
+       <span class="c1"># The web_asset_store.xml resource must be proxied to the</span>
+       <span class="c1"># actual server so that it gets the correct timestamp headers.</span>
+       <span class="c1"># We do a string substitution on the response to make the links</span>
+       <span class="c1"># it defines point to this proxy.</span>
+       <span class="n">location</span> <span class="o">=</span> <span class="o">/</span><span class="n">web_asset_store</span><span class="o">.</span><span class="n">xml</span> <span class="p">{</span>
+                <span class="n">proxy_pass</span> <span class="n">http</span><span class="p">:</span><span class="o">//</span><span class="n">localhost</span><span class="p">:</span><span class="mi">8080</span><span class="o">/</span><span class="n">web_asset_store</span><span class="o">.</span><span class="n">xml</span><span class="p">;</span>
+                <span class="n">sub_filter</span> <span class="s1">&#39;http://assets1.specifycloud.org:8080&#39;</span> <span class="s1">&#39;http://assets1.specifycloud.org&#39;</span><span class="p">;</span>
+                <span class="n">sub_filter_once</span> <span class="n">off</span><span class="p">;</span>
+                <span class="n">sub_filter_types</span> <span class="n">text</span><span class="o">/</span><span class="n">xml</span><span class="p">;</span>
+       <span class="p">}</span>
+
+       <span class="c1"># All other requests are passed to the actual asset server</span>
+       <span class="c1"># unchanged.</span>
+       <span class="n">location</span> <span class="o">/</span> <span class="p">{</span>
+                <span class="n">proxy_pass</span> <span class="n">http</span><span class="p">:</span><span class="o">//</span><span class="n">localhost</span><span class="p">:</span><span class="mi">8080</span><span class="o">/</span><span class="p">;</span>
+       <span class="p">}</span>
+<span class="p">}</span>
+
+<span class="n">server</span> <span class="p">{</span>
+       <span class="c1"># This stanza defines the HTTPS end point.</span>
+       <span class="n">listen</span> <span class="mi">443</span> <span class="n">ssl</span> <span class="n">default_server</span><span class="p">;</span>
+       <span class="n">server_name</span> <span class="n">assets1</span><span class="o">.</span><span class="n">specifycloud</span><span class="o">.</span><span class="n">org</span><span class="p">;</span>
+       <span class="n">client_max_body_size</span> <span class="mi">0</span><span class="p">;</span>
+
+       <span class="n">ssl_certificate</span> <span class="o">/</span><span class="n">etc</span><span class="o">/</span><span class="n">letsencrypt</span><span class="o">/</span><span class="n">live</span><span class="o">/</span><span class="n">assets1</span><span class="o">.</span><span class="n">specifycloud</span><span class="o">.</span><span class="n">org</span><span class="o">/</span><span class="n">fullchain</span><span class="o">.</span><span class="n">pem</span><span class="p">;</span>
+       <span class="n">ssl_certificate_key</span> <span class="o">/</span><span class="n">etc</span><span class="o">/</span><span class="n">letsencrypt</span><span class="o">/</span><span class="n">live</span><span class="o">/</span><span class="n">assets1</span><span class="o">.</span><span class="n">specifycloud</span><span class="o">.</span><span class="n">org</span><span class="o">/</span><span class="n">privkey</span><span class="o">.</span><span class="n">pem</span><span class="p">;</span>
+
+       <span class="c1"># from https://cipherli.st/</span>
+       <span class="c1"># and https://raymii.org/s/tutorials/Strong_SSL_Security_On_nginx.html</span>
+
+       <span class="n">ssl_protocols</span> <span class="n">TLSv1</span> <span class="n">TLSv1</span><span class="mf">.1</span> <span class="n">TLSv1</span><span class="mf">.2</span><span class="p">;</span>
+       <span class="n">ssl_prefer_server_ciphers</span> <span class="n">on</span><span class="p">;</span>
+       <span class="n">ssl_ciphers</span> <span class="s2">&quot;EECDH+AESGCM:EDH+AESGCM:AES256+EECDH:AES256+EDH&quot;</span><span class="p">;</span>
+       <span class="n">ssl_ecdh_curve</span> <span class="n">secp384r1</span><span class="p">;</span>
+       <span class="n">ssl_session_cache</span> <span class="n">shared</span><span class="p">:</span><span class="n">SSL</span><span class="p">:</span><span class="mi">10</span><span class="n">m</span><span class="p">;</span>
+       <span class="n">ssl_session_tickets</span> <span class="n">off</span><span class="p">;</span>
+       <span class="n">ssl_stapling</span> <span class="n">on</span><span class="p">;</span>
+       <span class="n">ssl_stapling_verify</span> <span class="n">on</span><span class="p">;</span>
+       <span class="n">resolver</span> <span class="mf">8.8.8.8</span> <span class="mf">8.8.4.4</span> <span class="n">valid</span><span class="o">=</span><span class="mi">300</span><span class="n">s</span><span class="p">;</span>
+       <span class="n">resolver_timeout</span> <span class="mi">5</span><span class="n">s</span><span class="p">;</span>
+       <span class="c1"># Disable preloading HSTS for now.  You can use the commented out header line that includes</span>
+       <span class="c1"># the &quot;preload&quot; directive if you understand the implications.</span>
+       <span class="c1">#add_header Strict-Transport-Security &quot;max-age=63072000; includeSubdomains; preload&quot;;</span>
+       <span class="n">add_header</span> <span class="n">Strict</span><span class="o">-</span><span class="n">Transport</span><span class="o">-</span><span class="n">Security</span> <span class="s2">&quot;max-age=63072000; includeSubdomains&quot;</span><span class="p">;</span>
+       <span class="n">add_header</span> <span class="n">X</span><span class="o">-</span><span class="n">Frame</span><span class="o">-</span><span class="n">Options</span> <span class="n">DENY</span><span class="p">;</span>
+       <span class="n">add_header</span> <span class="n">X</span><span class="o">-</span><span class="n">Content</span><span class="o">-</span><span class="n">Type</span><span class="o">-</span><span class="n">Options</span> <span class="n">nosniff</span><span class="p">;</span>
+
+       <span class="n">ssl_dhparam</span> <span class="o">/</span><span class="n">etc</span><span class="o">/</span><span class="n">ssl</span><span class="o">/</span><span class="n">certs</span><span class="o">/</span><span class="n">dhparam</span><span class="o">.</span><span class="n">pem</span><span class="p">;</span>
+
+       <span class="c1"># The LetsEncrypt pass-though. I&#39;m not sure if this is needed</span>
+       <span class="c1"># on HTTPS side, but I&#39;m including it just in case.</span>
+       <span class="n">location</span> <span class="o">/.</span><span class="n">well</span><span class="o">-</span><span class="n">known</span><span class="o">/</span> <span class="p">{</span>
+                <span class="n">root</span> <span class="o">/</span><span class="n">var</span><span class="o">/</span><span class="n">www</span><span class="o">/</span><span class="p">;</span>
+       <span class="p">}</span>
+
+       <span class="c1"># This is the same as the above, except the links get rewritten</span>
+       <span class="c1"># to use HTTPS in addition to changing the port.</span>
+       <span class="n">location</span> <span class="o">=</span> <span class="o">/</span><span class="n">web_asset_store</span><span class="o">.</span><span class="n">xml</span> <span class="p">{</span>
+                <span class="n">proxy_pass</span> <span class="n">http</span><span class="p">:</span><span class="o">//</span><span class="n">localhost</span><span class="p">:</span><span class="mi">8080</span><span class="o">/</span><span class="n">web_asset_store</span><span class="o">.</span><span class="n">xml</span><span class="p">;</span>
+                <span class="n">sub_filter</span> <span class="s1">&#39;http://assets1.specifycloud.org:8080&#39;</span> <span class="s1">&#39;https://assets1.specifycloud.org&#39;</span><span class="p">;</span>
+                <span class="n">sub_filter_once</span> <span class="n">off</span><span class="p">;</span>
+                <span class="n">sub_filter_types</span> <span class="n">text</span><span class="o">/</span><span class="n">xml</span><span class="p">;</span>
+       <span class="p">}</span>
+
+       <span class="c1"># Everything else is just passed through.</span>
+       <span class="n">location</span> <span class="o">/</span> <span class="p">{</span>
+                <span class="n">proxy_pass</span> <span class="n">http</span><span class="p">:</span><span class="o">//</span><span class="n">localhost</span><span class="p">:</span><span class="mi">8080</span><span class="o">/</span><span class="p">;</span>
+       <span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2024, Specify Team.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

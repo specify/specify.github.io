@@ -1,0 +1,220 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" data-content_root="../">
+<head>
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>&lt;no title&gt; &mdash; Specify Developer Documentation  documentation</title>
+      <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=80d5e7a1" />
+      <link rel="stylesheet" type="text/css" href="../_static/css/theme.css?v=19f00094" />
+
+  
+  <!--[if lt IE 9]>
+    <script src="../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script src="../_static/jquery.js?v=5d32c60e"></script>
+        <script src="../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+        <script src="../_static/documentation_options.js?v=5929fcd5"></script>
+        <script src="../_static/doctools.js?v=888ff710"></script>
+        <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="../index.html" class="icon icon-home">
+            Specify Developer Documentation
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <!-- Local TOC -->
+              <div class="local-toc"><ul class="simple">
+</ul>
+</div>
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">Specify Developer Documentation</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../index.html" class="icon icon-home" aria-label="Home"></a></li>
+      <li class="breadcrumb-item active">&lt;no title&gt;</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="../_sources/aws/Useful Bash Commands.md.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <p>sftp</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>sftp<span class="w"> </span>-i<span class="w"> </span>alec_specify_ssh_key<span class="w"> </span>ubuntu@ec2-52-206-2-67.compute-1.amazonaws.com<span class="p">;</span>
+pwd<span class="p">;</span>
+put<span class="w"> </span>/Users/alecwhite/git/specify-aws/report-fonts.jar<span class="w"> </span>./<span class="p">;</span>
+ls<span class="p">;</span>
+exit<span class="p">;</span>
+</pre></div>
+</div>
+<p>background &amp; foreground tasks</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>
+</pre></div>
+</div>
+<p>check storage</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>df<span class="w"> </span>-H
+du<span class="w"> </span>-sh<span class="w"> </span>*
+</pre></div>
+</div>
+<p>rsync</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>rsync<span class="w"> </span>-avz<span class="w"> </span>-e<span class="w"> </span><span class="s2">&quot;ssh -i ~/specify/keys/specify-aws-ssh.pem&quot;</span><span class="w"> </span>~/git/specify-aws/specify7-cluster/<span class="w"> </span>ubuntu@ec2-52-206-2-67.compute-1.amazonaws.com:/home/ubuntu/specify7-cluster/
+</pre></div>
+</div>
+<p>docker images view architecture and OS</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="k">for</span><span class="w"> </span>img<span class="w"> </span><span class="k">in</span><span class="w"> </span><span class="k">$(</span>docker<span class="w"> </span>image<span class="w"> </span>ls<span class="w"> </span>-q<span class="k">)</span><span class="p">;</span><span class="w"> </span><span class="k">do</span><span class="w"> </span><span class="nb">echo</span><span class="w"> </span><span class="nv">$img</span><span class="p">;</span><span class="w"> </span>docker<span class="w"> </span>image<span class="w"> </span>inspect<span class="w"> </span><span class="nv">$img</span><span class="w"> </span><span class="p">|</span><span class="w"> </span>jq<span class="w"> </span><span class="s1">&#39;.[0] | {image: .RepoTags[0], os: .Os, arch: .Architecture}&#39;</span><span class="p">;</span><span class="w"> </span><span class="k">done</span>
+</pre></div>
+</div>
+<p>run a django unit test through docker</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>sudo<span class="w"> </span>docker<span class="w"> </span><span class="nb">exec</span><span class="w"> </span>-it<span class="w"> </span>specify7-specify7-1<span class="w"> </span>bash<span class="w"> </span>-c<span class="w"> </span><span class="s2">&quot;ve/bin/python3 manage.py test specifyweb.notifications.tests.NotificationsTests&quot;</span>
+</pre></div>
+</div>
+<p>git stash specify files</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>git<span class="w"> </span>stash<span class="w"> </span>push<span class="w"> </span>-m<span class="w"> </span><span class="s2">&quot;stash-name&quot;</span><span class="w"> </span>file1.txt<span class="w"> </span>file2.txt
+git<span class="w"> </span>stash<span class="w"> </span>list
+git<span class="w"> </span>stash<span class="w"> </span>apply<span class="w"> </span>stash^<span class="o">(</span><span class="m">0</span><span class="o">)</span>
+</pre></div>
+</div>
+<p>add user</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>adduser<span class="w"> </span>--disabled-password<span class="w"> </span>--gecos<span class="w"> </span><span class="s2">&quot;&quot;</span><span class="w"> </span>specify<span class="p">;</span>
+su<span class="w"> </span>-<span class="w"> </span>specify<span class="p">;</span>
+</pre></div>
+</div>
+<p>docker build and push for multiple architectures</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="nb">export</span><span class="w"> </span><span class="nv">DOCKER_CLI_EXPERIMENTAL</span><span class="o">=</span>enabled
+docker<span class="w"> </span>buildx<span class="w"> </span>create<span class="w"> </span>--name<span class="w"> </span>mybuilder<span class="w"> </span>--use<span class="w"> </span><span class="c1"># only do once</span>
+docker<span class="w"> </span>buildx<span class="w"> </span>inspect<span class="w"> </span>mybuilder<span class="w"> </span>--bootstrap
+
+docker<span class="w"> </span>buildx<span class="w"> </span>build<span class="w"> </span>--platform<span class="w"> </span>linux/amd64,linux/arm64<span class="w"> </span>-t<span class="w"> </span>specifyconsortium/specify-asset-service:connection_fix<span class="w"> </span>.<span class="w"> </span>--push
+
+docker<span class="w"> </span>buildx<span class="w"> </span>use<span class="w"> </span>default<span class="w"> </span><span class="c1"># don&#39;t think needs to be done</span>
+</pre></div>
+</div>
+<p>create linux user for ssh login and database access</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="ch">#!/bin/bash</span>
+
+<span class="c1"># Ask for the new username</span>
+<span class="nb">read</span><span class="w"> </span>-p<span class="w"> </span><span class="s2">&quot;Enter the new username: &quot;</span><span class="w"> </span>username
+
+<span class="c1"># Create the new user without a password</span>
+sudo<span class="w"> </span>adduser<span class="w"> </span>--disabled-password<span class="w"> </span>--gecos<span class="w"> </span><span class="s2">&quot;&quot;</span><span class="w"> </span><span class="nv">$username</span>
+
+<span class="c1"># Restrict the user with rbash</span>
+sudo<span class="w"> </span>usermod<span class="w"> </span>-s<span class="w"> </span>/bin/rbash<span class="w"> </span><span class="nv">$username</span>
+
+<span class="c1"># Create a bin directory for the user for restricted commands</span>
+mkdir<span class="w"> </span>/home/<span class="nv">$username</span>/bin
+
+<span class="c1"># Symlink the MySQL client to the user&#39;s bin so they can use it</span>
+ln<span class="w"> </span>-s<span class="w"> </span>/usr/bin/mysql<span class="w"> </span>/home/<span class="nv">$username</span>/bin/mysql
+
+<span class="c1"># Restrict access to the user&#39;s home directory</span>
+sudo<span class="w"> </span>chown<span class="w"> </span><span class="nv">$username</span>:<span class="nv">$username</span><span class="w"> </span>/home/<span class="nv">$username</span>
+sudo<span class="w"> </span>chmod<span class="w"> </span><span class="m">700</span><span class="w"> </span>/home/<span class="nv">$username</span>
+
+<span class="c1"># Set up .ssh directory for SSH key-based authentication</span>
+mkdir<span class="w"> </span>/home/<span class="nv">$username</span>/.ssh
+chmod<span class="w"> </span><span class="m">700</span><span class="w"> </span>/home/<span class="nv">$username</span>/.ssh
+
+<span class="c1"># Ask for the user&#39;s public SSH key and add it to the authorized_keys file</span>
+<span class="nb">read</span><span class="w"> </span>-p<span class="w"> </span><span class="s2">&quot;Enter the new user&#39;s public SSH key: &quot;</span><span class="w"> </span>ssh_key
+<span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;</span><span class="nv">$ssh_key</span><span class="s2">&quot;</span><span class="w"> </span>&gt;<span class="w"> </span>/home/<span class="nv">$username</span>/.ssh/authorized_keys
+chmod<span class="w"> </span><span class="m">600</span><span class="w"> </span>/home/<span class="nv">$username</span>/.ssh/authorized_keys
+chown<span class="w"> </span><span class="nv">$username</span>:<span class="nv">$username</span><span class="w"> </span>/home/<span class="nv">$username</span>/.ssh/authorized_keys
+
+mysql<span class="w"> </span>-u<span class="w"> </span>root<span class="w"> </span>-p
+CREATE<span class="w"> </span>USER<span class="w"> </span><span class="s1">&#39;dbuser&#39;</span>@<span class="s1">&#39;localhost&#39;</span><span class="w"> </span>IDENTIFIED<span class="w"> </span>BY<span class="w"> </span><span class="s1">&#39;DBUSER_PASSWORD&#39;</span><span class="p">;</span>
+GRANT<span class="w"> </span>SELECT,<span class="w"> </span>INSERT,<span class="w"> </span>UPDATE,<span class="w"> </span>DELETE<span class="w"> </span>ON<span class="w"> </span>your_database_name.*<span class="w"> </span>TO<span class="w"> </span><span class="s1">&#39;dbuser&#39;</span>@<span class="s1">&#39;localhost&#39;</span><span class="p">;</span>
+FLUSH<span class="w"> </span>PRIVILEGES<span class="p">;</span>
+EXIT<span class="p">;</span>
+</pre></div>
+</div>
+<p>view live formatted nginx logs example</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>docker<span class="w"> </span>logs<span class="w"> </span>specifycloud-nginx-1<span class="w"> </span>--tail<span class="w"> </span><span class="m">1000</span><span class="w"> </span>--since<span class="w"> </span>10m<span class="w"> </span>--follow<span class="w"> </span><span class="p">|</span><span class="w"> </span><span class="se">\</span>
+grep<span class="w"> </span>-v<span class="w"> </span>updown<span class="w"> </span><span class="p">|</span><span class="w"> </span>grep<span class="w"> </span>-v<span class="w"> </span>notification<span class="w"> </span><span class="p">|</span><span class="w"> </span>grep<span class="w"> </span>specifycloud.org<span class="w"> </span><span class="p">|</span><span class="w"> </span><span class="se">\</span>
+awk<span class="w"> </span><span class="s1">&#39;{ split($4,time,&quot;[&quot;); print time[2], &quot;-&quot;, $6, $7, $8, $9, $10, $11; }&#39;</span>
+</pre></div>
+</div>
+<p>Add swap memory</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>sudo<span class="w"> </span>fallocate<span class="w"> </span>-l<span class="w"> </span>4G<span class="w"> </span>/swapfile<span class="p">;</span>
+<span class="c1"># sudo dd if=/dev/zero of=/swapfile bs=1024 count=4096k; # if fallocate is not available</span>
+sudo<span class="w"> </span>chmod<span class="w"> </span><span class="m">600</span><span class="w"> </span>/swapfile<span class="p">;</span>
+sudo<span class="w"> </span>mkswap<span class="w"> </span>/swapfile<span class="p">;</span><span class="w"> </span><span class="c1"># make swap file</span>
+sudo<span class="w"> </span>swapon<span class="w"> </span>/swapfile<span class="p">;</span><span class="w"> </span><span class="c1"># enable swap file</span>
+<span class="nb">echo</span><span class="w"> </span><span class="s1">&#39;/swapfile none swap sw 0 0&#39;</span><span class="w"> </span><span class="p">|</span><span class="w"> </span>sudo<span class="w"> </span>tee<span class="w"> </span>-a<span class="w"> </span>/etc/fstab<span class="p">;</span><span class="w"> </span><span class="c1"># make change permanent</span>
+
+<span class="c1"># check swap</span>
+sudo<span class="w"> </span>swapon<span class="w"> </span>--show<span class="p">;</span>
+free<span class="w"> </span>-h<span class="p">;</span>
+
+<span class="c1"># swappiness defauls to 10, 100 is very argessive use, 0 is use only will absolutley necessary</span>
+cat<span class="w"> </span>/proc/sys/vm/swappiness<span class="p">;</span>
+sudo<span class="w"> </span>sysctl<span class="w"> </span>vm.swappiness<span class="o">=</span><span class="m">10</span><span class="p">;</span>
+sudo<span class="w"> </span><span class="nb">echo</span><span class="w"> </span><span class="s1">&#39;vm.swappiness=10&#39;</span><span class="w"> </span><span class="p">|</span><span class="w"> </span>sudo<span class="w"> </span>tee<span class="w"> </span>-a<span class="w"> </span>/etc/sysctl.conf<span class="p">;</span><span class="w"> </span>sudo<span class="w"> </span>sysctl<span class="w"> </span>-p<span class="p">;</span><span class="w"> </span><span class="c1"># make chane permanent</span>
+
+<span class="c1"># increase swap size</span>
+sudo<span class="w"> </span>swapoff<span class="w"> </span>-v<span class="w"> </span>/swapfile<span class="w"> </span><span class="c1"># turn off</span>
+sudo<span class="w"> </span>fallocate<span class="w"> </span>-l<span class="w"> </span>8G<span class="w"> </span>/swapfile<span class="p">;</span><span class="w"> </span><span class="c1"># resize</span>
+sudo<span class="w"> </span>mkswap<span class="w"> </span>/swapfile<span class="p">;</span><span class="w"> </span>sudo<span class="w"> </span>swapon<span class="w"> </span>/swapfile<span class="p">;</span><span class="w"> </span><span class="c1"># turn on</span>
+</pre></div>
+</div>
+
+
+           </div>
+          </div>
+          <footer>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2024, Specify Team.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

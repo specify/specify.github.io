@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" data-content_root="../">
+<head>
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>New certificate on biprdsp7wbdb.cc.ku.edu server &mdash; Specify Developer Documentation  documentation</title>
+      <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=80d5e7a1" />
+      <link rel="stylesheet" type="text/css" href="../_static/css/theme.css?v=19f00094" />
+
+  
+  <!--[if lt IE 9]>
+    <script src="../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script src="../_static/jquery.js?v=5d32c60e"></script>
+        <script src="../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+        <script src="../_static/documentation_options.js?v=5929fcd5"></script>
+        <script src="../_static/doctools.js?v=888ff710"></script>
+        <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="../index.html" class="icon icon-home">
+            Specify Developer Documentation
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <!-- Local TOC -->
+              <div class="local-toc"><ul>
+<li><a class="reference internal" href="#">New certificate on biprdsp7wbdb.cc.ku.edu server</a></li>
+<li><a class="reference internal" href="#web-portal-certificate">web-portal certificate</a></li>
+</ul>
+</div>
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">Specify Developer Documentation</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../index.html" class="icon icon-home" aria-label="Home"></a></li>
+      <li class="breadcrumb-item active">New certificate on biprdsp7wbdb.cc.ku.edu server</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="../_sources/aws/KU IT Notes.md.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="new-certificate-on-biprdsp7wbdb-cc-ku-edu-server">
+<h1>New certificate on biprdsp7wbdb.cc.ku.edu server<a class="headerlink" href="#new-certificate-on-biprdsp7wbdb-cc-ku-edu-server" title="Link to this heading"></a></h1>
+<p>Form to request new certificate: https://kuit.service-now.com/nav_to.do?uri=%2Fcom.glideapp.servicecatalog_cat_item_view.do%3Fv%3D1%26sysparm_id%3D78fee42fdb2a8850162673e1ba96195b%26sysparm_link_parent%3D322911f41bec6490cf2d337e034bcb23%26sysparm_catalog%3De0d08b13c3330100c8b837659bba8fb4%26sysparm_catalog_view%3Dcatalog_default%26sysparm_view%3Dcatalog_default</p>
+<p>generate CSR string:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>openssl<span class="w"> </span>req<span class="w"> </span>-new<span class="w"> </span>-newkey<span class="w"> </span>rsa:2048<span class="w"> </span>-nodes<span class="w"> </span>-keyout<span class="w"> </span>server.key<span class="w"> </span>-out<span class="w"> </span>server.csr
+</pre></div>
+</div>
+<p>with configuration:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">Country</span> <span class="n">Name</span> <span class="p">(</span><span class="mi">2</span> <span class="n">letter</span> <span class="n">code</span><span class="p">)</span> <span class="p">[</span><span class="n">XX</span><span class="p">]:</span><span class="n">US</span>
+<span class="n">State</span> <span class="ow">or</span> <span class="n">Province</span> <span class="n">Name</span> <span class="p">(</span><span class="n">full</span> <span class="n">name</span><span class="p">)</span> <span class="p">[]:</span><span class="n">Kansas</span>
+<span class="n">Locality</span> <span class="n">Name</span> <span class="p">(</span><span class="n">eg</span><span class="p">,</span> <span class="n">city</span><span class="p">)</span> <span class="p">[</span><span class="n">Default</span> <span class="n">City</span><span class="p">]:</span><span class="n">Lawrence</span>
+<span class="n">Organization</span> <span class="n">Name</span> <span class="p">(</span><span class="n">eg</span><span class="p">,</span> <span class="n">company</span><span class="p">)</span> <span class="p">[</span><span class="n">Default</span> <span class="n">Company</span> <span class="n">Ltd</span><span class="p">]:</span><span class="n">University</span> <span class="n">of</span> <span class="n">Kansas</span>
+<span class="n">Organizational</span> <span class="n">Unit</span> <span class="n">Name</span> <span class="p">(</span><span class="n">eg</span><span class="p">,</span> <span class="n">section</span><span class="p">)</span> <span class="p">[]:</span><span class="n">Specify</span>
+<span class="n">Common</span> <span class="n">Name</span> <span class="p">(</span><span class="n">eg</span><span class="p">,</span> <span class="n">your</span> <span class="n">name</span> <span class="ow">or</span> <span class="n">your</span> <span class="n">server</span><span class="s1">&#39;s hostname) []:biimages.biodiversity.ku.edu</span>
+<span class="n">Email</span> <span class="n">Address</span> <span class="p">[]:</span><span class="n">alec</span><span class="o">.</span><span class="n">white</span><span class="nd">@ku</span><span class="o">.</span><span class="n">edu</span>
+<span class="n">A</span> <span class="n">challenge</span> <span class="n">password</span> <span class="p">[]:</span>
+<span class="n">An</span> <span class="n">optional</span> <span class="n">company</span> <span class="n">name</span> <span class="p">[]:</span>
+</pre></div>
+</div>
+<p>verify configuration with <code class="docutils literal notranslate"><span class="pre">openssl</span> <span class="pre">req</span> <span class="pre">-new</span> <span class="pre">-newkey</span> <span class="pre">rsa:2048</span> <span class="pre">-nodes</span> <span class="pre">-keyout</span> <span class="pre">server.key</span> <span class="pre">-out</span> <span class="pre">server.csr</span></code> with output</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">C</span> <span class="o">=</span> <span class="n">US</span><span class="p">,</span> <span class="n">ST</span> <span class="o">=</span> <span class="n">Kansas</span><span class="p">,</span> <span class="n">L</span> <span class="o">=</span> <span class="n">Lawrence</span><span class="p">,</span> <span class="n">O</span> <span class="o">=</span> <span class="n">University</span> <span class="n">of</span> <span class="n">Kansas</span><span class="p">,</span> <span class="n">OU</span> <span class="o">=</span> <span class="n">Specify</span><span class="p">,</span> <span class="n">CN</span> <span class="o">=</span> <span class="n">biimages</span><span class="o">.</span><span class="n">biodiversity</span><span class="o">.</span><span class="n">ku</span><span class="o">.</span><span class="n">edu</span><span class="p">,</span> <span class="n">emailAddress</span> <span class="o">=</span> <span class="n">alec</span><span class="o">.</span><span class="n">white</span><span class="nd">@ku</span><span class="o">.</span><span class="n">edu</span>
+</pre></div>
+</div>
+<p>after receiving new certificate files</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">biimages_biodiversity_ku_edu</span><span class="o">.</span><span class="n">cer</span>
+<span class="n">biimages_biodiversity_ku_edu_cert</span><span class="o">.</span><span class="n">cer</span>
+<span class="n">biimages</span><span class="o">.</span><span class="n">biodiversity</span><span class="o">.</span><span class="n">ku</span><span class="o">.</span><span class="n">edu</span><span class="o">.</span><span class="n">conf</span>
+<span class="n">biimages_biodiversity_ku_edu</span><span class="o">.</span><span class="n">crt</span>
+<span class="n">biimages_biodiversity_ku_edu_interm</span><span class="o">.</span><span class="n">cer</span>
+<span class="n">biimages_biodiversity_ku_edu</span><span class="o">.</span><span class="n">p7b</span>
+<span class="n">biimages_biodiversity_ku_edu</span><span class="o">.</span><span class="n">pem</span>
+</pre></div>
+</div>
+<p>generate ‘fullchain.pem’ file with concatenation</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>cat<span class="w"> </span>biimages_biodiversity_ku_edu.pem<span class="w"> </span>biimages_biodiversity_ku_edu_interm.cer<span class="w"> </span>&gt;<span class="w"> </span>fullchain.pem
+</pre></div>
+</div>
+<p>then run commands to copy files into proper locations (make sure the number is incremented ex. 40)</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>sudo<span class="w"> </span>cp<span class="w"> </span>server.key<span class="w"> </span>/etc/letsencrypt/archive/biimages.biodiversity.ku.edu/privkey40.pem
+sudo<span class="w"> </span>cp<span class="w"> </span>biimages_biodiversity_ku_edu.pem<span class="w"> </span>/etc/letsencrypt/archive/biimages.biodiversity.ku.edu/cert40.pem<span class="p">;</span>
+sudo<span class="w"> </span>cp<span class="w"> </span>biimages_biodiversity_ku_edu_interm.cer<span class="w"> </span>/etc/letsencrypt/archive/biimages.biodiversity.ku.edu/chain40.pem<span class="p">;</span>
+sudo<span class="w"> </span>cp<span class="w"> </span>fullchain.pem<span class="w"> </span>/etc/letsencrypt/archive/biimages.biodiversity.ku.edu/fullchain40.pem<span class="p">;</span>
+</pre></div>
+</div>
+<p>then create symbolic links to where the nginx file looks for SSL files</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>sudo<span class="w"> </span>ln<span class="w"> </span>-sf<span class="w"> </span>/etc/letsencrypt/archive/biimages.biodiversity.ku.edu/fullchain40.pem<span class="w"> </span>/etc/letsencrypt/live/biimages.biodiversity.ku.edu/fullchain.pem<span class="p">;</span>
+sudo<span class="w"> </span>ln<span class="w"> </span>-sf<span class="w"> </span>/etc/letsencrypt/archive/biimages.biodiversity.ku.edu/privkey40.pem<span class="w"> </span>/etc/letsencrypt/live/biimages.biodiversity.ku.edu/privkey.pem<span class="p">;</span>
+sudo<span class="w"> </span>ln<span class="w"> </span>-sf<span class="w"> </span>/etc/letsencrypt/archive/biimages.biodiversity.ku.edu/chain40.pem<span class="w"> </span>/etc/letsencrypt/live/biimages.biodiversity.ku.edu/chain.pem<span class="p">;</span>
+sudo<span class="w"> </span>ln<span class="w"> </span>-sf<span class="w"> </span>/etc/letsencrypt/archive/biimages.biodiversity.ku.edu/cert40.pem<span class="w"> </span>/etc/letsencrypt/live/biimages.biodiversity.ku.edu/cert.pem<span class="p">;</span>
+</pre></div>
+</div>
+<p>here are the line in the ‘/etc/nginx/conf.d/web-asset-server.conf’ nginx file</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">server_name</span> <span class="n">biimages</span><span class="o">.</span><span class="n">biodiversity</span><span class="o">.</span><span class="n">ku</span><span class="o">.</span><span class="n">edu</span><span class="p">;</span>
+<span class="n">ssl_certificate</span> <span class="o">/</span><span class="n">etc</span><span class="o">/</span><span class="n">letsencrypt</span><span class="o">/</span><span class="n">live</span><span class="o">/</span><span class="n">biimages</span><span class="o">.</span><span class="n">biodiversity</span><span class="o">.</span><span class="n">ku</span><span class="o">.</span><span class="n">edu</span><span class="o">/</span><span class="n">fullchain</span><span class="o">.</span><span class="n">pem</span><span class="p">;</span>
+<span class="n">ssl_certificate_key</span> <span class="o">/</span><span class="n">etc</span><span class="o">/</span><span class="n">letsencrypt</span><span class="o">/</span><span class="n">live</span><span class="o">/</span><span class="n">biimages</span><span class="o">.</span><span class="n">biodiversity</span><span class="o">.</span><span class="n">ku</span><span class="o">.</span><span class="n">edu</span><span class="o">/</span><span class="n">privkey</span><span class="o">.</span><span class="n">pem</span><span class="p">;</span>
+</pre></div>
+</div>
+<p>verify the key and cert are correct by making sure their hashes are the same</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>sudo<span class="w"> </span>openssl<span class="w"> </span>x509<span class="w"> </span>-noout<span class="w"> </span>-modulus<span class="w"> </span>-in<span class="w"> </span>/etc/letsencrypt/live/biimages.biodiversity.ku.edu/cert.pem<span class="w"> </span><span class="p">|</span><span class="w"> </span>openssl<span class="w"> </span>md5
+sudo<span class="w"> </span>openssl<span class="w"> </span>rsa<span class="w"> </span>-noout<span class="w"> </span>-modulus<span class="w"> </span>-in<span class="w"> </span>/etc/letsencrypt/live/biimages.biodiversity.ku.edu/privkey.pem<span class="w"> </span><span class="p">|</span><span class="w"> </span>openssl<span class="w"> </span>md5
+</pre></div>
+</div>
+<p>restart nginx</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>sudo<span class="w"> </span>systemctl<span class="w"> </span>restart<span class="w"> </span>web-asset-server.service
+sudo<span class="w"> </span>systemctl<span class="w"> </span>status<span class="w"> </span>web-asset-server.service
+</pre></div>
+</div>
+</section>
+<section id="web-portal-certificate">
+<h1>web-portal certificate<a class="headerlink" href="#web-portal-certificate" title="Link to this heading"></a></h1>
+<p>here are the lines in the <code class="docutils literal notranslate"><span class="pre">/etc/nginx/conf.d/webportal-nginx.conf</span></code> nginx file</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">server_name</span> <span class="n">collections</span><span class="o">.</span><span class="n">biodiversity</span><span class="o">.</span><span class="n">ku</span><span class="o">.</span><span class="n">edu</span><span class="p">;</span>
+<span class="n">ssl_certificate</span> <span class="o">/</span><span class="n">home</span><span class="o">/</span><span class="n">specify</span><span class="o">/</span><span class="n">keystore</span><span class="o">/</span><span class="n">collections_biodiversity_ku_edu_cert</span><span class="o">.</span><span class="n">cer</span><span class="p">;</span>
+<span class="n">ssl_certificate_key</span> <span class="o">/</span><span class="n">home</span><span class="o">/</span><span class="n">specify</span><span class="o">/</span><span class="n">keystore</span><span class="o">/</span><span class="n">collections_biodiversity_ku_edu</span><span class="o">.</span><span class="n">key</span><span class="p">;</span>
+</pre></div>
+</div>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>cat<span class="w"> </span>collections_biodiversity_ku_edu.pem<span class="w"> </span>collections_biodiversity_ku_edu_interm.cer<span class="w"> </span>&gt;<span class="w"> </span>fullchain.pem
+</pre></div>
+</div>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>sudo<span class="w"> </span>cp<span class="w"> </span>collections_biodiversity_ku_edu_cert.cer<span class="w"> </span>/home/specify/keystore/cert.pem
+sudo<span class="w"> </span>cp<span class="w"> </span>~/webportal-keys/webportal_server.key<span class="w"> </span>/home/specify/keystore/privkey.pem
+sudo<span class="w"> </span>cp<span class="w"> </span>~/webportal-keys/fullchain.pem<span class="w"> </span>/home/specify/keystore/fullchain.pem
+</pre></div>
+</div>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>sudo<span class="w"> </span>chown<span class="w"> </span>specify:bi-sp7access<span class="w"> </span>cert.pem<span class="p">;</span>
+sudo<span class="w"> </span>chown<span class="w"> </span>specify:bi-sp7access<span class="w"> </span>privkey.pem<span class="p">;</span>
+sudo<span class="w"> </span>chown<span class="w"> </span>specify:bi-sp7access<span class="w"> </span>fullchain.pem<span class="p">;</span>
+</pre></div>
+</div>
+</section>
+
+
+           </div>
+          </div>
+          <footer>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2024, Specify Team.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

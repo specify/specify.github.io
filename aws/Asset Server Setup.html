@@ -1,0 +1,429 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" data-content_root="../">
+<head>
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>EC2 Non-Dockerized Build &mdash; Specify Developer Documentation  documentation</title>
+      <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=80d5e7a1" />
+      <link rel="stylesheet" type="text/css" href="../_static/css/theme.css?v=19f00094" />
+
+  
+  <!--[if lt IE 9]>
+    <script src="../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script src="../_static/jquery.js?v=5d32c60e"></script>
+        <script src="../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+        <script src="../_static/documentation_options.js?v=5929fcd5"></script>
+        <script src="../_static/doctools.js?v=888ff710"></script>
+        <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="../index.html" class="icon icon-home">
+            Specify Developer Documentation
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <!-- Local TOC -->
+              <div class="local-toc"><ul>
+<li><a class="reference internal" href="#">EC2 Non-Dockerized Build</a></li>
+</ul>
+</div>
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">Specify Developer Documentation</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../index.html" class="icon icon-home" aria-label="Home"></a></li>
+      <li class="breadcrumb-item active">EC2 Non-Dockerized Build</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="../_sources/aws/Asset Server Setup.md.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="ec2-non-dockerized-build">
+<h1>EC2 Non-Dockerized Build<a class="headerlink" href="#ec2-non-dockerized-build" title="Link to this heading"></a></h1>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="ch">#!/bin/bash</span>
+
+sudo<span class="w"> </span>apt<span class="w"> </span>update<span class="p">;</span>
+sudo<span class="w"> </span>apt<span class="w"> </span>upgrade<span class="w"> </span>-y<span class="p">;</span>
+sudo<span class="w"> </span>apt-get<span class="w"> </span>-y<span class="w"> </span>install<span class="w"> </span>--no-install-recommends<span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>python3-venv<span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>python3.8<span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>python3.8-dev<span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>python3-pip<span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>imagemagick<span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>ghostscript<span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>git<span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>nginx<span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>certbot<span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>authbind<span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>s3fs<span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>awscli<span class="p">;</span>
+
+<span class="c1"># python 3.6 install with apt</span>
+sudo<span class="w"> </span>apt<span class="w"> </span>install<span class="w"> </span>software-properties-common<span class="p">;</span>
+sudo<span class="w"> </span>add-apt-repository<span class="w"> </span>ppa:deadsnakes/ppa<span class="p">;</span>
+sudo<span class="w"> </span>apt<span class="w"> </span>update<span class="p">;</span>
+sudo<span class="w"> </span>apt<span class="w"> </span>install<span class="w"> </span>python3.6<span class="p">;</span>
+sudo<span class="w"> </span>apt-get<span class="w"> </span>install<span class="w"> </span>python3.6-distutils<span class="p">;</span>
+
+<span class="c1"># install pip3.6</span>
+<span class="c1">#wget https://bootstrap.pypa.io/pip/3.6/get-pip.py;</span>
+python3.6<span class="w"> </span>-m<span class="w"> </span>venv<span class="w"> </span>--without-pip<span class="w"> </span>ve<span class="p">;</span>
+<span class="nb">source</span><span class="w"> </span>ve/bin/activate<span class="p">;</span>
+wget<span class="w"> </span>https://bootstrap.pypa.io/get-pip.py<span class="p">;</span>
+<span class="c1">#wget https://bootstrap.pypa.io/pip/3.5/get-pip.py</span>
+
+<span class="c1"># activate python3.6 venv</span>
+sudo<span class="w"> </span>apt<span class="w"> </span>install<span class="w"> </span>python3-virtualenv<span class="p">;</span>
+python3.6<span class="w"> </span>-m<span class="w"> </span>venv<span class="w"> </span>myenv<span class="p">;</span>
+<span class="nb">source</span><span class="w"> </span>myenv/bin/activate<span class="p">;</span>
+pip<span class="w"> </span>install<span class="w"> </span>--no-cache-dir<span class="w"> </span>-r<span class="w"> </span>requirements.txt<span class="p">;</span>
+
+<span class="c1"># TLS dependencies</span>
+sudo<span class="w"> </span>apt-get<span class="w"> </span>-y<span class="w"> </span>install<span class="w"> </span>--no-install-recommends<span class="w"> </span><span class="se">\</span>
+<span class="w">	</span>certbot<span class="w"> </span><span class="se">\</span>
+<span class="w">	</span>python3-certbot-nginx<span class="w"> </span><span class="se">\</span>
+<span class="w">	</span>software-properties-common<span class="p">;</span>
+
+<span class="c1"># Import attachment files</span>
+<span class="c1">#mkdir attachments;</span>
+<span class="c1">#aws s3 cp s3://specify-cloud/assets-server/attachments/ ~/attachments --recursive;</span>
+
+<span class="c1"># S3 Mounting</span>
+mkdir<span class="w"> </span>attachments<span class="p">;</span>
+s3fs<span class="w"> </span>specify-cloud<span class="w"> </span>/assets-server/attachments/<span class="p">;</span>
+
+<span class="c1"># Clone asset server repo</span>
+git<span class="w"> </span>clone<span class="w"> </span>https://github.com/specify/web-asset-server.git<span class="p">;</span>
+<span class="nb">cd</span><span class="w"> </span>~/web-asset-server<span class="p">;</span>
+git<span class="w"> </span>checkout<span class="w"> </span>arm-build<span class="p">;</span>
+
+<span class="c1"># Build python web asset server</span>
+python3.8<span class="w"> </span>-m<span class="w"> </span>venv<span class="w"> </span>ve<span class="p">;</span>
+sudo<span class="w"> </span>ve/bin/pip<span class="w"> </span>install<span class="w"> </span>--no-cache-dir<span class="w"> </span>-r<span class="w"> </span>requirements.txt
+<span class="c1">#sudo pip install -r requirements.txt;</span>
+
+<span class="c1"># Port config if needed</span>
+<span class="c1"># not needed when running with nginx</span>
+<span class="c1">#sudo apt-get install authbind;</span>
+<span class="c1">#touch 80;</span>
+<span class="c1">#chmod u+x 80;</span>
+<span class="c1">#sudo mv 80 /etc/authbind/byport;</span>
+
+<span class="c1"># Create SystemD service</span>
+sudo<span class="w"> </span>cat<span class="w"> </span>&gt;<span class="w"> </span>/etc/systemd/system/web-asset-server.service<span class="w"> </span><span class="s">&lt;&lt; EOF</span>
+<span class="s">[Unit]</span>
+<span class="s">Description=Specify Web Asset Server</span>
+<span class="s">Wants=network.target</span>
+
+<span class="s">[Service]</span>
+<span class="s">User=ubuntu</span>
+<span class="s">WorkingDirectory=/home/ubuntu/web-asset-server</span>
+<span class="s">ExecStart=/home/ubuntu/web-asset-server/ve/bin/python /home/ubuntu/web-asset-server/server.py</span>
+<span class="s">Restart=always</span>
+
+<span class="s">[Install]</span>
+<span class="s">WantedBy=multi-user.target</span>
+
+<span class="s">EOF</span>
+
+sudo<span class="w"> </span>systemctl<span class="w"> </span>daemon-reload<span class="p">;</span>
+sudo<span class="w"> </span>systemctl<span class="w"> </span><span class="nb">enable</span><span class="w"> </span>web-asset-server.service<span class="p">;</span>
+sudo<span class="w"> </span>systemctl<span class="w"> </span>start<span class="w"> </span>web-asset-server.service<span class="p">;</span>
+sudo<span class="w"> </span>systemctl<span class="w"> </span>status<span class="w"> </span>web-asset-server.service<span class="p">;</span>
+
+<span class="c1"># nginx</span>
+<span class="c1"># sudo vim etc/nginx/sites-enabled/assets.conf</span>
+sudo<span class="w"> </span>rm<span class="w"> </span>-f<span class="w"> </span>/etc/nginx/sites-enabled/default<span class="p">;</span>
+sudo<span class="w"> </span>nginx<span class="w"> </span>-t<span class="p">;</span>
+sudo<span class="w"> </span>/etc/init.d/nginx<span class="w"> </span>reload<span class="p">;</span>
+
+<span class="c1"># S3 Mounting</span>
+mount<span class="w"> </span>-o<span class="w"> </span>discard,defaults,noatime<span class="w"> </span>/dev/disk/by-id/scsi-0DO_Volume_volume-nyc1-01<span class="w"> </span>/mnt/volume-nyc1-01
+
+<span class="c1"># Certbot TLS config</span>
+sudo<span class="w"> </span>mkdir<span class="w"> </span>/var/www/.well-known<span class="p">;</span>
+sudo<span class="w"> </span>certbot<span class="w"> </span>--nginx<span class="w"> </span>-d<span class="w"> </span>assets-test.specifycloud.org<span class="w"> </span>-d<span class="w"> </span>assets-test.specifycloud.org<span class="p">;</span>
+sudo<span class="w"> </span>ls<span class="w"> </span>-la<span class="w"> </span>/etc/letsencrypts/live/assets-test.specifycloud.org<span class="p">;</span>
+sudo<span class="w"> </span>openssl<span class="w"> </span>dhparam<span class="w"> </span>-out<span class="w"> </span>/etc/ssl/certs/dhparam.pem<span class="w"> </span><span class="m">4096</span><span class="p">;</span><span class="w"> </span><span class="c1">#2048 or 1024</span>
+sudo<span class="w"> </span>openssl<span class="w"> </span>dhparam<span class="w"> </span>-dsaparam<span class="w"> </span>-out<span class="w"> </span>/etc/ssl/certs/dhparam.pem<span class="w"> </span><span class="m">1024</span><span class="p">;</span>
+<span class="c1"># add https server config to nginx assets.conf</span>
+</pre></div>
+</div>
+<p>/etc/systemd/system/web-asset-server.service -&gt;</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="p">[</span><span class="n">Unit</span><span class="p">]</span>
+<span class="n">Description</span><span class="o">=</span><span class="n">Specify</span> <span class="n">Web</span> <span class="n">Asset</span> <span class="n">Server</span>
+<span class="n">Wants</span><span class="o">=</span><span class="n">network</span><span class="o">.</span><span class="n">target</span>
+
+<span class="p">[</span><span class="n">Service</span><span class="p">]</span>
+<span class="n">User</span><span class="o">=</span><span class="n">ubuntu</span>
+<span class="n">WorkingDirectory</span><span class="o">=/</span><span class="n">home</span><span class="o">/</span><span class="n">ubuntu</span><span class="o">/</span><span class="n">web</span><span class="o">-</span><span class="n">asset</span><span class="o">-</span><span class="n">server</span>
+<span class="n">ExecStart</span><span class="o">=/</span><span class="n">usr</span><span class="o">/</span><span class="nb">bin</span><span class="o">/</span><span class="n">ubuntu</span><span class="o">/</span><span class="n">web</span><span class="o">-</span><span class="n">asset</span><span class="o">-</span><span class="n">server</span><span class="o">/</span><span class="n">ve</span><span class="o">/</span><span class="n">usr</span><span class="o">/</span><span class="nb">bin</span><span class="o">/</span><span class="n">python</span> <span class="o">/</span><span class="n">home</span><span class="o">/</span><span class="n">ubuntu</span><span class="o">/</span><span class="n">web</span><span class="o">-</span><span class="n">asset</span><span class="o">-</span><span class="n">server</span><span class="o">/</span><span class="n">server</span><span class="o">.</span><span class="n">py</span>
+<span class="n">Restart</span><span class="o">=</span><span class="n">always</span>
+
+<span class="p">[</span><span class="n">Install</span><span class="p">]</span>
+<span class="n">WantedBy</span><span class="o">=</span><span class="n">multi</span><span class="o">-</span><span class="n">user</span><span class="o">.</span><span class="n">target</span>
+</pre></div>
+</div>
+<p>settings.py -&gt;</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># Sample Specify web asset server settings.</span>
+
+<span class="c1"># Turns on bottle.py debugging, module reloading and printing some</span>
+<span class="c1"># information to console.</span>
+<span class="n">DEBUG</span> <span class="o">=</span> <span class="kc">True</span>
+
+<span class="c1"># This secret key is used to generate authentication tokens for requests.</span>
+<span class="c1"># The same key must be set in the Web Store Attachment Preferences in Specify.</span>
+<span class="c1"># A good source for key value is: https://www.grc.com/passwords.htm</span>
+<span class="c1"># Set KEY to None to disable security. This is NOT recommended since doing so</span>
+<span class="c1"># will allow anyone on the internet to use the attachment server to store</span>
+<span class="c1"># arbitrary files.</span>
+<span class="n">KEY</span> <span class="o">=</span> <span class="s1">&#39;test_attachment_key&#39;</span>
+
+<span class="c1"># Auth token timestamp must be within this many seconds of server time</span>
+<span class="c1"># in order to be considered valid. This prevents replay attacks.</span>
+<span class="c1"># Set to None to disable time validation.</span>
+<span class="n">TIME_TOLERANCE</span> <span class="o">=</span> <span class="mi">600</span>
+
+<span class="c1"># Set this to True to require authentication for downloads in addition</span>
+<span class="c1"># to uploads and deletes.  Static file access, if enabled, is not</span>
+<span class="c1"># affected by this setting.</span>
+<span class="n">REQUIRE_KEY_FOR_GET</span> <span class="o">=</span> <span class="kc">False</span>
+
+<span class="c1"># This is required for use with the Web Portal.</span>
+<span class="c1"># Enables the &#39;getfileref&#39; and &#39;/static/...&#39; URLs.</span>
+<span class="n">ALLOW_STATIC_FILE_ACCESS</span> <span class="o">=</span> <span class="kc">True</span>
+
+<span class="c1"># These values are interpolated into the web_asset_store.xml resource</span>
+<span class="c1"># so the client knows how to talk to the server.</span>
+<span class="c1">#HOST = &#39;localhost&#39;</span>
+<span class="n">HOST</span> <span class="o">=</span> <span class="s1">&#39;assets-test.specifycloud.org&#39;</span>
+<span class="n">PORT</span> <span class="o">=</span> <span class="mi">8080</span>
+<span class="c1">#PORT = 80</span>
+
+<span class="n">SERVER_NAME</span> <span class="o">=</span> <span class="n">HOST</span>
+<span class="n">SERVER_PORT</span> <span class="o">=</span> <span class="n">PORT</span>
+
+<span class="c1"># Port the development test server should listen on.</span>
+<span class="n">DEVELOPMENT_PORT</span> <span class="o">=</span> <span class="n">PORT</span>
+
+<span class="c1"># Map collection names to directories.  Set to None to store</span>
+<span class="c1"># everything in the same originals and thumbnail directories.  This is</span>
+<span class="c1"># recommended unless some provision is made to allow attachments for</span>
+<span class="c1"># items scoped above collections to be found.</span>
+
+<span class="c1"># COLLECTION_DIRS = {</span>
+<span class="c1">#     # &#39;COLLECTION_NAME&#39;: &#39;DIRECTORY_NAME&#39;,</span>
+<span class="c1">#     &#39;KUFishvoucher&#39;: &#39;Ichthyology&#39;,</span>
+<span class="c1">#     &#39;KUFishtissue&#39;: &#39;Ichthyology&#39;,</span>
+<span class="c1"># }</span>
+
+<span class="n">COLLECTION_DIRS</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="s1">&#39;herb_rbge&#39;</span><span class="p">:</span> <span class="s1">&#39;herb_rbge&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;KUFishvoucher&#39;</span><span class="p">:</span> <span class="s1">&#39;sp7demofish&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;KUFishtissue&#39;</span><span class="p">:</span> <span class="s1">&#39;sp7demofish&#39;</span><span class="p">,</span>
+<span class="p">}</span>
+
+<span class="c1"># Base directory for all attachments.</span>
+<span class="c1">#BASE_DIR = &#39;/home/specify/attachments/&#39;</span>
+<span class="n">BASE_DIR</span> <span class="o">=</span> <span class="s1">&#39;/home/ubuntu/attachments/&#39;</span>
+
+<span class="c1"># Originals and thumbnails are stored in separate directories.</span>
+<span class="n">THUMB_DIR</span> <span class="o">=</span> <span class="s1">&#39;thumbnails&#39;</span>
+<span class="n">ORIG_DIR</span> <span class="o">=</span> <span class="s1">&#39;originals&#39;</span>
+
+<span class="c1"># Set of mime types that the server will try to thumbnail.</span>
+<span class="n">CAN_THUMBNAIL</span> <span class="o">=</span> <span class="p">{</span><span class="s1">&#39;image/jpeg&#39;</span><span class="p">,</span> <span class="s1">&#39;image/gif&#39;</span><span class="p">,</span> <span class="s1">&#39;image/png&#39;</span><span class="p">,</span> <span class="s1">&#39;image/tiff&#39;</span><span class="p">,</span> <span class="s1">&#39;application/pdf&#39;</span><span class="p">}</span>
+
+<span class="c1"># What HTTP server to use for stand-alone operation.</span>
+<span class="c1"># SERVER = &#39;paste&#39; # Requires python-paste package. Fast, and seems to work good.</span>
+<span class="n">SERVER</span> <span class="o">=</span> <span class="s1">&#39;wsgiref&#39;</span>  <span class="c1"># For testing. Requires no extra packages.</span>
+</pre></div>
+</div>
+<p>/etc/nginx/sites-enabled/assets.conf from the aasets1.specifycloud.org- -&gt;</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="c1"># Nginx configuration for supplying an HTTPS end point for the web</span>
+<span class="c1"># asset server. The asset server is running on the same system</span>
+<span class="c1"># (demo-assets.specifycloud.org) on port 8080 meaning it can run</span>
+<span class="c1"># without root privileges and without using authbind. Nginx proxies</span>
+<span class="c1"># HTTP requests on port 80 and HTTPS requests on port 443 to the</span>
+<span class="c1"># underlying asset server. It also rewrites the web_asset_store.xml</span>
+<span class="c1"># response to cause subsequent request to go through the proxy.</span>
+
+<span class="n">server</span> <span class="p">{</span>
+       <span class="c1"># HTTP access is needed for Specify 6. It will not work with HTTPS.</span>
+       <span class="n">listen</span> <span class="mi">80</span> <span class="n">default_server</span><span class="p">;</span>
+       <span class="n">server_name</span> <span class="n">assets1</span><span class="o">.</span><span class="n">specifycloud</span><span class="o">.</span><span class="n">org</span><span class="p">;</span>
+       <span class="n">client_max_body_size</span> <span class="mi">0</span><span class="p">;</span>
+
+       <span class="c1"># The LetsEncrypt certificate mechanism places a nonce</span>
+       <span class="c1"># challenge at this location to prove we have control of the</span>
+       <span class="c1"># domain. Mapping it to a location in the filesystem allows us</span>
+       <span class="c1"># to easily use their auto renew system.</span>
+       <span class="n">location</span> <span class="o">/.</span><span class="n">well</span><span class="o">-</span><span class="n">known</span><span class="o">/</span> <span class="p">{</span>
+                <span class="n">root</span> <span class="o">/</span><span class="n">var</span><span class="o">/</span><span class="n">www</span><span class="o">/</span><span class="p">;</span>
+       <span class="p">}</span>
+
+       <span class="c1"># The web_asset_store.xml resource must be proxied to the</span>
+       <span class="c1"># actual server so that it gets the correct timestamp headers.</span>
+       <span class="c1"># We do a string substitution on the response to make the links</span>
+       <span class="c1"># it defines point to this proxy.</span>
+       <span class="n">location</span> <span class="o">=</span> <span class="o">/</span><span class="n">web_asset_store</span><span class="o">.</span><span class="n">xml</span> <span class="p">{</span>
+                <span class="n">proxy_pass</span> <span class="n">http</span><span class="p">:</span><span class="o">//</span><span class="n">localhost</span><span class="p">:</span><span class="mi">8080</span><span class="o">/</span><span class="n">web_asset_store</span><span class="o">.</span><span class="n">xml</span><span class="p">;</span>
+                <span class="n">sub_filter</span> <span class="s1">&#39;http://assets1.specifycloud.org:8080&#39;</span> <span class="s1">&#39;http://assets1.specifycloud.org&#39;</span><span class="p">;</span>
+                <span class="n">sub_filter_once</span> <span class="n">off</span><span class="p">;</span>
+                <span class="n">sub_filter_types</span> <span class="n">text</span><span class="o">/</span><span class="n">xml</span><span class="p">;</span>
+       <span class="p">}</span>
+
+       <span class="c1"># All other requests are passed to the actual asset server</span>
+       <span class="c1"># unchanged.</span>
+       <span class="n">location</span> <span class="o">/</span> <span class="p">{</span>
+                <span class="n">proxy_pass</span> <span class="n">http</span><span class="p">:</span><span class="o">//</span><span class="n">localhost</span><span class="p">:</span><span class="mi">8080</span><span class="o">/</span><span class="p">;</span>
+       <span class="p">}</span>
+<span class="p">}</span>
+
+<span class="n">server</span> <span class="p">{</span>
+       <span class="c1"># This stanza defines the HTTPS end point.</span>
+       <span class="n">listen</span> <span class="mi">443</span> <span class="n">ssl</span> <span class="n">default_server</span><span class="p">;</span>
+       <span class="n">server_name</span> <span class="n">assets1</span><span class="o">.</span><span class="n">specifycloud</span><span class="o">.</span><span class="n">org</span><span class="p">;</span>
+       <span class="n">client_max_body_size</span> <span class="mi">0</span><span class="p">;</span>
+
+       <span class="n">ssl_certificate</span> <span class="o">/</span><span class="n">etc</span><span class="o">/</span><span class="n">letsencrypt</span><span class="o">/</span><span class="n">live</span><span class="o">/</span><span class="n">assets1</span><span class="o">.</span><span class="n">specifycloud</span><span class="o">.</span><span class="n">org</span><span class="o">/</span><span class="n">fullchain</span><span class="o">.</span><span class="n">pem</span><span class="p">;</span>
+       <span class="n">ssl_certificate_key</span> <span class="o">/</span><span class="n">etc</span><span class="o">/</span><span class="n">letsencrypt</span><span class="o">/</span><span class="n">live</span><span class="o">/</span><span class="n">assets1</span><span class="o">.</span><span class="n">specifycloud</span><span class="o">.</span><span class="n">org</span><span class="o">/</span><span class="n">privkey</span><span class="o">.</span><span class="n">pem</span><span class="p">;</span>
+
+       <span class="c1"># from https://cipherli.st/</span>
+       <span class="c1"># and https://raymii.org/s/tutorials/Strong_SSL_Security_On_nginx.html</span>
+
+       <span class="n">ssl_protocols</span> <span class="n">TLSv1</span> <span class="n">TLSv1</span><span class="mf">.1</span> <span class="n">TLSv1</span><span class="mf">.2</span><span class="p">;</span>
+       <span class="n">ssl_prefer_server_ciphers</span> <span class="n">on</span><span class="p">;</span>
+       <span class="n">ssl_ciphers</span> <span class="s2">&quot;EECDH+AESGCM:EDH+AESGCM:AES256+EECDH:AES256+EDH&quot;</span><span class="p">;</span>
+       <span class="n">ssl_ecdh_curve</span> <span class="n">secp384r1</span><span class="p">;</span>
+       <span class="n">ssl_session_cache</span> <span class="n">shared</span><span class="p">:</span><span class="n">SSL</span><span class="p">:</span><span class="mi">10</span><span class="n">m</span><span class="p">;</span>
+       <span class="n">ssl_session_tickets</span> <span class="n">off</span><span class="p">;</span>
+       <span class="n">ssl_stapling</span> <span class="n">on</span><span class="p">;</span>
+       <span class="n">ssl_stapling_verify</span> <span class="n">on</span><span class="p">;</span>
+       <span class="n">resolver</span> <span class="mf">8.8.8.8</span> <span class="mf">8.8.4.4</span> <span class="n">valid</span><span class="o">=</span><span class="mi">300</span><span class="n">s</span><span class="p">;</span>
+       <span class="n">resolver_timeout</span> <span class="mi">5</span><span class="n">s</span><span class="p">;</span>
+       <span class="c1"># Disable preloading HSTS for now.  You can use the commented out header line that includes</span>
+       <span class="c1"># the &quot;preload&quot; directive if you understand the implications.</span>
+       <span class="c1">#add_header Strict-Transport-Security &quot;max-age=63072000; includeSubdomains; preload&quot;;</span>
+       <span class="n">add_header</span> <span class="n">Strict</span><span class="o">-</span><span class="n">Transport</span><span class="o">-</span><span class="n">Security</span> <span class="s2">&quot;max-age=63072000; includeSubdomains&quot;</span><span class="p">;</span>
+       <span class="n">add_header</span> <span class="n">X</span><span class="o">-</span><span class="n">Frame</span><span class="o">-</span><span class="n">Options</span> <span class="n">DENY</span><span class="p">;</span>
+       <span class="n">add_header</span> <span class="n">X</span><span class="o">-</span><span class="n">Content</span><span class="o">-</span><span class="n">Type</span><span class="o">-</span><span class="n">Options</span> <span class="n">nosniff</span><span class="p">;</span>
+
+       <span class="n">ssl_dhparam</span> <span class="o">/</span><span class="n">etc</span><span class="o">/</span><span class="n">ssl</span><span class="o">/</span><span class="n">certs</span><span class="o">/</span><span class="n">dhparam</span><span class="o">.</span><span class="n">pem</span><span class="p">;</span>
+
+       <span class="c1"># The LetsEncrypt pass-though. I&#39;m not sure if this is needed</span>
+       <span class="c1"># on HTTPS side, but I&#39;m including it just in case.</span>
+       <span class="n">location</span> <span class="o">/.</span><span class="n">well</span><span class="o">-</span><span class="n">known</span><span class="o">/</span> <span class="p">{</span>
+                <span class="n">root</span> <span class="o">/</span><span class="n">var</span><span class="o">/</span><span class="n">www</span><span class="o">/</span><span class="p">;</span>
+       <span class="p">}</span>
+
+       <span class="c1"># This is the same as the above, except the links get rewritten</span>
+       <span class="c1"># to use HTTPS in addition to changing the port.</span>
+       <span class="n">location</span> <span class="o">=</span> <span class="o">/</span><span class="n">web_asset_store</span><span class="o">.</span><span class="n">xml</span> <span class="p">{</span>
+                <span class="n">proxy_pass</span> <span class="n">http</span><span class="p">:</span><span class="o">//</span><span class="n">localhost</span><span class="p">:</span><span class="mi">8080</span><span class="o">/</span><span class="n">web_asset_store</span><span class="o">.</span><span class="n">xml</span><span class="p">;</span>
+                <span class="n">sub_filter</span> <span class="s1">&#39;http://assets1.specifycloud.org:8080&#39;</span> <span class="s1">&#39;https://assets1.specifycloud.org&#39;</span><span class="p">;</span>
+                <span class="n">sub_filter_once</span> <span class="n">off</span><span class="p">;</span>
+                <span class="n">sub_filter_types</span> <span class="n">text</span><span class="o">/</span><span class="n">xml</span><span class="p">;</span>
+       <span class="p">}</span>
+
+       <span class="c1"># Everything else is just passed through.</span>
+       <span class="n">location</span> <span class="o">/</span> <span class="p">{</span>
+                <span class="n">proxy_pass</span> <span class="n">http</span><span class="p">:</span><span class="o">//</span><span class="n">localhost</span><span class="p">:</span><span class="mi">8080</span><span class="o">/</span><span class="p">;</span>
+       <span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p>/etc/letsencrypt/renewal/assets1.specifycloud.org.conf -&gt;</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="c1"># renew_before_expiry = 30 days</span>
+<span class="n">cert</span> <span class="o">=</span> <span class="o">/</span><span class="n">etc</span><span class="o">/</span><span class="n">letsencrypt</span><span class="o">/</span><span class="n">live</span><span class="o">/</span><span class="n">assets1</span><span class="o">.</span><span class="n">specifycloud</span><span class="o">.</span><span class="n">org</span><span class="o">/</span><span class="n">cert</span><span class="o">.</span><span class="n">pem</span>
+<span class="n">privkey</span> <span class="o">=</span> <span class="o">/</span><span class="n">etc</span><span class="o">/</span><span class="n">letsencrypt</span><span class="o">/</span><span class="n">live</span><span class="o">/</span><span class="n">assets1</span><span class="o">.</span><span class="n">specifycloud</span><span class="o">.</span><span class="n">org</span><span class="o">/</span><span class="n">privkey</span><span class="o">.</span><span class="n">pem</span>
+<span class="n">chain</span> <span class="o">=</span> <span class="o">/</span><span class="n">etc</span><span class="o">/</span><span class="n">letsencrypt</span><span class="o">/</span><span class="n">live</span><span class="o">/</span><span class="n">assets1</span><span class="o">.</span><span class="n">specifycloud</span><span class="o">.</span><span class="n">org</span><span class="o">/</span><span class="n">chain</span><span class="o">.</span><span class="n">pem</span>
+<span class="n">fullchain</span> <span class="o">=</span> <span class="o">/</span><span class="n">etc</span><span class="o">/</span><span class="n">letsencrypt</span><span class="o">/</span><span class="n">live</span><span class="o">/</span><span class="n">assets1</span><span class="o">.</span><span class="n">specifycloud</span><span class="o">.</span><span class="n">org</span><span class="o">/</span><span class="n">fullchain</span><span class="o">.</span><span class="n">pem</span>
+<span class="n">version</span> <span class="o">=</span> <span class="mf">1.9.0</span>
+<span class="n">archive_dir</span> <span class="o">=</span> <span class="o">/</span><span class="n">etc</span><span class="o">/</span><span class="n">letsencrypt</span><span class="o">/</span><span class="n">archive</span><span class="o">/</span><span class="n">assets1</span><span class="o">.</span><span class="n">specifycloud</span><span class="o">.</span><span class="n">org</span>
+
+<span class="c1"># Options and defaults used in the renewal process</span>
+<span class="p">[</span><span class="n">renewalparams</span><span class="p">]</span>
+<span class="n">authenticator</span> <span class="o">=</span> <span class="n">webroot</span>
+<span class="n">account</span> <span class="o">=</span> <span class="n">a563615cc912ed3d7a3edfede09d6760</span>
+<span class="n">post_hook</span> <span class="o">=</span> <span class="n">systemctl</span> <span class="n">reload</span> <span class="n">nginx</span>
+<span class="n">server</span> <span class="o">=</span> <span class="n">https</span><span class="p">:</span><span class="o">//</span><span class="n">acme</span><span class="o">-</span><span class="n">v02</span><span class="o">.</span><span class="n">api</span><span class="o">.</span><span class="n">letsencrypt</span><span class="o">.</span><span class="n">org</span><span class="o">/</span><span class="n">directory</span>
+<span class="p">[[</span><span class="n">webroot_map</span><span class="p">]]</span>
+<span class="n">assets1</span><span class="o">.</span><span class="n">specifycloud</span><span class="o">.</span><span class="n">org</span> <span class="o">=</span> <span class="o">/</span><span class="n">var</span><span class="o">/</span><span class="n">www</span>
+</pre></div>
+</div>
+<p>/etc/ssl/certs/dhparam.pem from assets1.specofycloud.org-&gt;</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">-----</span><span class="n">BEGIN</span> <span class="n">DH</span> <span class="n">PARAMETERS</span><span class="o">-----</span>
+<span class="n">MIIBCAKCAQEAlcFKsIuFylwX47jxqbNT0wSVD6ifznsMcti8f7T</span><span class="o">+</span><span class="n">zaQQNr84IYIM</span>
+<span class="n">pNTT9E6SrVkkJg2u1nGScNqj5lArXvrda6zL66T8WmkFFrGfNW7RYCQ3vpg6BpGs</span>
+<span class="n">dJ3</span><span class="o">+</span><span class="n">HtWYDNoMbeCrDyMz1DDfX</span><span class="o">/</span><span class="mi">3</span><span class="n">OWblTTZRbjpvn</span><span class="o">/</span><span class="n">tEgTAn3DexP</span><span class="o">/</span><span class="n">QkE9E2c1AUX</span>
+<span class="n">Mf</span><span class="o">/</span><span class="mi">07</span><span class="n">vWpZ7giemaNgaME3fHDKyReNhTpfg1eDKypUUhEmr</span><span class="o">+</span><span class="n">PJmWQ9LQBc12LyXOP</span>
+<span class="n">DaFwAJUrqwEqrQP5fEQdOMdh522RwuD2</span><span class="o">/</span><span class="n">fPeXTukQHI8gUuMjk652aeLOcn1Ufhy</span>
+<span class="o">/</span><span class="n">KbbV6TJi7wS5F3HVaNXGOLMsHq</span><span class="o">+</span><span class="n">CywOCwIBAg</span><span class="o">==</span>
+<span class="o">-----</span><span class="n">END</span> <span class="n">DH</span> <span class="n">PARAMETERS</span><span class="o">-----</span>
+</pre></div>
+</div>
+</section>
+
+
+           </div>
+          </div>
+          <footer>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2024, Specify Team.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

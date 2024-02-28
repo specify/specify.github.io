@@ -1,0 +1,555 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" data-content_root="../">
+<head>
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Setup Aurora MySQL Database &mdash; Specify Developer Documentation  documentation</title>
+      <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=80d5e7a1" />
+      <link rel="stylesheet" type="text/css" href="../_static/css/theme.css?v=19f00094" />
+
+  
+  <!--[if lt IE 9]>
+    <script src="../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script src="../_static/jquery.js?v=5d32c60e"></script>
+        <script src="../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+        <script src="../_static/documentation_options.js?v=5929fcd5"></script>
+        <script src="../_static/doctools.js?v=888ff710"></script>
+        <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="../index.html" class="icon icon-home">
+            Specify Developer Documentation
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <!-- Local TOC -->
+              <div class="local-toc"><ul>
+<li><a class="reference internal" href="#">Setup Aurora MySQL Database</a></li>
+<li><a class="reference internal" href="#setup-ec2-server">Setup EC2 Server</a></li>
+<li><a class="reference internal" href="#info-misc">Info Misc.</a></li>
+<li><a class="reference internal" href="#specify-network-extract">Specify Network Extract</a></li>
+</ul>
+</div>
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">Specify Developer Documentation</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../index.html" class="icon icon-home" aria-label="Home"></a></li>
+      <li class="breadcrumb-item active">Setup Aurora MySQL Database</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="../_sources/aws/Setup AWS Specify Cloud.md.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="setup-aurora-mysql-database">
+<h1>Setup Aurora MySQL Database<a class="headerlink" href="#setup-aurora-mysql-database" title="Link to this heading"></a></h1>
+</section>
+<section id="setup-ec2-server">
+<h1>Setup EC2 Server<a class="headerlink" href="#setup-ec2-server" title="Link to this heading"></a></h1>
+<p>EC2 Parameters:</p>
+<ul class="simple">
+<li><p>ubuntu/images/hvm-ssd/ubuntu-bionic-18.04-arm64-server-20220131<br />
+ami-0770bf1d6ae61c858
+Initial Commands:</p></li>
+</ul>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="ch">#!/bin/bash</span>
+
+sudo<span class="w"> </span>apt-get<span class="w"> </span>update<span class="p">;</span>
+sudo<span class="w"> </span>apt<span class="w"> </span>upgrade<span class="p">;</span>
+sudo<span class="w"> </span>apt<span class="w"> </span>install<span class="w"> </span>-y<span class="w"> </span>make<span class="w"> </span>python3-pip
+
+<span class="c1">#sudo apt-get install -y docker-ce docker-ce-cli containerd.io docker-compose mysql-client;</span>
+<span class="c1">#sudo apt install docker.io</span>
+
+<span class="c1"># Install Docker</span>
+sudo<span class="w"> </span>apt<span class="w"> </span>install<span class="w"> </span>-y<span class="w"> </span>apt-transport-https<span class="w"> </span>ca-certificates<span class="w"> </span>curl<span class="w"> </span>software-properties-common<span class="p">;</span>
+curl<span class="w"> </span>-fsSL<span class="w"> </span>https://download.docker.com/linux/ubuntu/gpg<span class="w"> </span><span class="p">|</span><span class="w"> </span>sudo<span class="w"> </span>gpg<span class="w"> </span>--dearmor<span class="w"> </span>-o<span class="w"> </span>/usr/share/keyrings/docker-archive-keyring.gpg<span class="p">;</span>
+<span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;deb [arch=</span><span class="k">$(</span>dpkg<span class="w"> </span>--print-architecture<span class="k">)</span><span class="s2"> signed-by=/usr/share/keyrings/docker-archive-keyring.gpg] https://download.docker.com/linux/ubuntu </span><span class="k">$(</span>lsb_release<span class="w"> </span>-cs<span class="k">)</span><span class="s2"> stable&quot;</span><span class="w"> </span><span class="p">|</span><span class="w"> </span>sudo<span class="w"> </span>tee<span class="w"> </span>/etc/apt/sources.list.d/docker.list<span class="w"> </span>&gt;<span class="w"> </span>/dev/null<span class="p">;</span>
+sudo<span class="w"> </span>apt<span class="w"> </span>update<span class="p">;</span>
+sudo<span class="w"> </span>apt<span class="w"> </span>-y<span class="w"> </span>install<span class="w"> </span>docker-ce<span class="p">;</span>
+docker<span class="w"> </span>--version<span class="p">;</span>
+sudo<span class="w"> </span>systemctl<span class="w"> </span>status<span class="w"> </span>docker<span class="p">;</span>
+
+<span class="c1">#sudo systemctl start docker.service</span>
+<span class="c1">#sudo systemctl enable docker.service</span>
+<span class="c1">#sudo systemctl status docker.service</span>
+
+<span class="c1"># Install docker compose</span>
+mkdir<span class="w"> </span>.docker
+mkdir<span class="w"> </span>.docker/cli-plugins
+curl<span class="w"> </span>-L<span class="w"> </span><span class="s2">&quot;https://github.com/docker/compose/releases/download/v2.17.2/docker-compose-linux-</span><span class="k">$(</span>uname<span class="w"> </span>-m<span class="k">)</span><span class="s2">&quot;</span><span class="w"> </span>-o<span class="w"> </span>~/.docker/cli-plugins/docker-compose<span class="p">;</span>
+chmod<span class="w"> </span>+x<span class="w"> </span>~/.docker/cli-plugins/docker-compose<span class="p">;</span>
+docker<span class="w"> </span>compose<span class="w"> </span>version<span class="p">;</span>
+
+<span class="c1"># Install awscli</span>
+sudo<span class="w"> </span>apt<span class="w"> </span>-y<span class="w"> </span>install<span class="w"> </span>awscli<span class="p">;</span>
+aws<span class="w"> </span>configure<span class="p">;</span><span class="w"> </span><span class="c1"># See aws credentials at bottom of notes</span>
+
+<span class="c1"># Setup mysql datbase connection</span>
+sudo<span class="w"> </span>apt<span class="w"> </span>install<span class="w"> </span>-y<span class="w"> </span>mysql-client<span class="p">;</span>
+
+<span class="c1"># Copy files from S3</span>
+aws<span class="w"> </span>s3<span class="w"> </span>cp<span class="w"> </span>s3://specify-cloud/repo-snapshots/docker-compositions/<span class="w"> </span>./<span class="w"> </span>--recursive
+
+<span class="c1"># python setup</span>
+sudo<span class="w"> </span>apt<span class="w"> </span>install<span class="w"> </span>-y<span class="w"> </span>python3-pip<span class="p">;</span>
+python3<span class="w"> </span>-m<span class="w"> </span>pip<span class="w"> </span>install<span class="w"> </span>j2cli<span class="p">;</span>
+
+<span class="c1"># Create config files for specifycloud</span>
+<span class="nb">cd</span><span class="w"> </span>specifycloud<span class="p">;</span>
+vim<span class="w"> </span>spcloudservers.json
+vim<span class="w"> </span>defaults.env
+sudo<span class="w"> </span>apt<span class="w"> </span>install<span class="w"> </span>j2cli
+make
+
+<span class="c1"># ssh client-server alive settings</span>
+sudo<span class="w"> </span><span class="nb">echo</span><span class="w"> </span>-e<span class="w"> </span><span class="s2">&quot;ClientAliveInterval 1200\nClientAliveCountMax 3&quot;</span><span class="w"> </span>&gt;&gt;<span class="w"> </span>/etc/ssh/sshd_config
+sudo<span class="w"> </span>systemctl<span class="w"> </span>reload<span class="w"> </span>sshd<span class="p">;</span>
+
+<span class="c1">#docker pull specifyconsortium/specify7-service:edge</span>
+
+<span class="c1"># su specify -c make</span>
+docker-compose<span class="w"> </span>up<span class="w"> </span>-d
+</pre></div>
+</div>
+<p>SSH Client: vim ~/.ssh/config</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">Host</span> <span class="o">*</span>
+    <span class="n">ServerAliveInterval</span> <span class="mi">20</span>
+    <span class="c1">#TCPKeepAlive no</span>
+</pre></div>
+</div>
+<p>SSH Server: sudo vim /etc/ssh/sshd_config</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">ClientAliveInterval</span> <span class="mi">1200</span>
+<span class="n">ClientAliveCountMax</span> <span class="mi">3</span>
+</pre></div>
+</div>
+<p>Then run <code class="docutils literal notranslate"><span class="pre">sudo</span> <span class="pre">systemctl</span> <span class="pre">reload</span> <span class="pre">sshd</span></code></p>
+<p>spcloudservers.json -&gt;</p>
+<div class="highlight-json notranslate"><div class="highlight"><pre><span></span><span class="p">{</span>
+<span class="w">	</span><span class="nt">&quot;servers&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">		</span><span class="nt">&quot;freshfish&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">			</span><span class="nt">&quot;sp7&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;edge&quot;</span><span class="p">,</span>
+<span class="w">			</span><span class="nt">&quot;sp6&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;specify6803&quot;</span><span class="p">,</span>
+<span class="w">			</span><span class="nt">&quot;https&quot;</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span>
+<span class="w">			</span><span class="nt">&quot;env&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">                </span><span class="nt">&quot;ASSET_SERVER_URL&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;https://demo-assets.specifycloud.org/web_asset_store.xml&quot;</span><span class="p">,</span>
+<span class="w">                </span><span class="nt">&quot;ANONYMOUS_USER&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;sp7demofish&quot;</span>
+<span class="w">            </span><span class="p">}</span>
+<span class="w">		</span><span class="p">}</span>
+<span class="w">	</span><span class="p">},</span>
+<span class="w">	</span><span class="nt">&quot;decommissioned&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[],</span>
+<span class="w">	</span><span class="nt">&quot;sp6versions&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">		</span><span class="nt">&quot;specify6800&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;6.8.00&quot;</span><span class="p">,</span>
+<span class="w">		</span><span class="nt">&quot;specify6801&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;6.8.01&quot;</span><span class="p">,</span>
+<span class="w">		</span><span class="nt">&quot;specify6802&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;6.8.02&quot;</span><span class="p">,</span>
+<span class="w">		</span><span class="nt">&quot;specify6803&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;6.8.03&quot;</span>
+<span class="w">	</span><span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p>defaults.env -&gt;</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">DATABASE_HOST</span><span class="o">=</span><span class="n">specifycloud</span><span class="o">-</span><span class="n">dev</span><span class="o">-</span><span class="n">database</span><span class="o">-</span><span class="mi">1</span><span class="o">-</span><span class="n">instance</span><span class="o">-</span><span class="mf">1.</span><span class="n">cqvncffkwz9t</span><span class="o">.</span><span class="n">us</span><span class="o">-</span><span class="n">east</span><span class="o">-</span><span class="mf">1.</span><span class="n">rds</span><span class="o">.</span><span class="n">amazonaws</span><span class="o">.</span><span class="n">com</span>
+<span class="n">DATABASE_PORT</span><span class="o">=</span><span class="mi">3306</span>
+<span class="n">MASTER_NAME</span><span class="o">=</span><span class="n">master</span>
+<span class="n">MASTER_PASSWORD</span><span class="o">=</span><span class="n">mastermaster</span>
+<span class="n">SECRET_KEY</span><span class="o">=</span><span class="n">bogus</span>
+<span class="n">ASSET_SERVER_URL</span><span class="o">=</span><span class="n">https</span><span class="p">:</span><span class="o">//</span><span class="n">assets1</span><span class="o">.</span><span class="n">specifycloud</span><span class="o">.</span><span class="n">org</span><span class="o">/</span><span class="n">web_asset_store</span><span class="o">.</span><span class="n">xml</span>
+<span class="n">ASSET_SERVER_KEY</span><span class="o">=</span><span class="n">tnhercbrhtktanehul</span><span class="o">.</span><span class="n">dukb</span>
+<span class="n">REPORT_RUNNER_HOST</span><span class="o">=</span><span class="mf">10.132.218.32</span>
+<span class="n">REPORT_RUNNER_PORT</span><span class="o">=</span><span class="mi">8080</span>
+<span class="n">CELERY_BROKER_URL</span><span class="o">=</span><span class="n">redis</span><span class="p">:</span><span class="o">//</span><span class="n">redis</span><span class="o">/</span><span class="mi">0</span>
+<span class="n">CELERY_RESULT_BACKEND</span><span class="o">=</span><span class="n">redis</span><span class="p">:</span><span class="o">//</span><span class="n">redis</span><span class="o">/</span><span class="mi">1</span>
+<span class="n">LOG_LEVEL</span><span class="o">=</span><span class="n">WARNING</span>
+<span class="n">SP7_DEBUG</span><span class="o">=</span><span class="n">false</span>
+</pre></div>
+</div>
+</section>
+<section id="info-misc">
+<h1>Info Misc.<a class="headerlink" href="#info-misc" title="Link to this heading"></a></h1>
+<p>aws credentials:</p>
+<ul class="simple">
+<li><p>username: <code class="docutils literal notranslate"><span class="pre">specify.user</span></code></p></li>
+<li><p>password: <code class="docutils literal notranslate"><span class="pre">Specify-Cloud-aws-user</span></code></p></li>
+<li><p>access key: ACCESS_KEY</p></li>
+<li><p>secret access key: ACCESS_KEY_SECRET</p></li>
+<li><p>default region: us-east-1</p></li>
+<li><p>default output format: json</p></li>
+</ul>
+<p>AWS EC2 User data:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="c1"># Avoid services restarting during apt upgrade</span>
+sudo<span class="w"> </span>sed<span class="w"> </span>-i<span class="w"> </span><span class="s2">&quot;s/#\$nrconf{kernelhints} = -1;/\$nrconf{kernelhints} = -1;/g&quot;</span><span class="w"> </span>/etc/needrestart/needrestart.conf<span class="p">;</span>
+sudo<span class="w"> </span>sed<span class="w"> </span>-i<span class="w"> </span><span class="s2">&quot;s/#\$nrconf{restart} = &#39;i&#39;;/\$nrconf{restart} = &#39;a&#39;;/g&quot;</span><span class="w"> </span>/etc/needrestart/needrestart.conf<span class="p">;</span>
+
+<span class="c1"># Run apt installs</span>
+sudo<span class="w"> </span>apt<span class="w"> </span>update<span class="p">;</span>
+sudo<span class="w"> </span>apt<span class="w"> </span>upgrade<span class="w"> </span>-y<span class="p">;</span>
+sudo<span class="w"> </span>apt<span class="w"> </span>install<span class="w"> </span>-y<span class="w"> </span>apt-transport-https<span class="w"> </span>ca-certificates<span class="w"> </span>git<span class="w"> </span>gh<span class="w"> </span>curl<span class="w"> </span>software-properties-common<span class="w"> </span>wget<span class="w"> </span>python3-pip<span class="w"> </span>awscli<span class="w"> </span>mysql-client<span class="w"> </span>j2cli<span class="p">;</span>
+
+<span class="c1"># Configure AWS</span>
+aws<span class="w"> </span>configure<span class="w"> </span><span class="nb">set</span><span class="w"> </span>aws_access_key_id<span class="w"> </span><span class="s2">&quot;ACCESS_KEY&quot;</span><span class="p">;</span>
+aws<span class="w"> </span>configure<span class="w"> </span><span class="nb">set</span><span class="w"> </span>aws_secret_access_key<span class="w"> </span><span class="s2">&quot;ACCESS_KEY_SECRET&quot;</span><span class="p">;</span>
+aws<span class="w"> </span>configure<span class="w"> </span><span class="nb">set</span><span class="w"> </span>default.region<span class="w"> </span>us-east-1<span class="p">;</span>
+aws<span class="w"> </span>configure<span class="w"> </span><span class="nb">set</span><span class="w"> </span>default.output<span class="w"> </span>json<span class="p">;</span>
+
+<span class="c1"># Install Docker</span>
+curl<span class="w"> </span>-fsSL<span class="w"> </span>https://download.docker.com/linux/ubuntu/gpg<span class="w"> </span><span class="p">|</span><span class="w"> </span>sudo<span class="w"> </span>gpg<span class="w"> </span>--dearmor<span class="w"> </span>-o<span class="w"> </span>/usr/share/keyrings/docker-archive-keyring.gpg<span class="p">;</span>
+<span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;deb [arch=</span><span class="k">$(</span>dpkg<span class="w"> </span>--print-architecture<span class="k">)</span><span class="s2"> signed-by=/usr/share/keyrings/docker-archive-keyring.gpg] https://download.docker.com/linux/ubuntu </span><span class="k">$(</span>lsb_release<span class="w"> </span>-cs<span class="k">)</span><span class="s2"> stable&quot;</span><span class="w"> </span><span class="p">|</span><span class="w"> </span>sudo<span class="w"> </span>tee<span class="w"> </span>/etc/apt/sources.list.d/docker.list<span class="w"> </span>&gt;<span class="w"> </span>/dev/null<span class="p">;</span>
+sudo<span class="w"> </span>apt<span class="w"> </span>update<span class="p">;</span>
+apt-cache<span class="w"> </span>policy<span class="w"> </span>docker-ce<span class="p">;</span>
+sudo<span class="w"> </span>apt<span class="w"> </span>install<span class="w"> </span>-y<span class="w"> </span>docker-ce<span class="p">;</span>
+docker<span class="w"> </span>--version<span class="p">;</span>
+
+<span class="c1"># Install docker compose</span>
+mkdir<span class="w"> </span>.docker<span class="p">;</span>
+mkdir<span class="w"> </span>.docker/cli-plugins<span class="p">;</span>
+curl<span class="w"> </span>-L<span class="w"> </span><span class="s2">&quot;https://github.com/docker/compose/releases/download/v2.17.2/docker-compose-linux-</span><span class="k">$(</span>uname<span class="w"> </span>-m<span class="k">)</span><span class="s2">&quot;</span><span class="w"> </span>-o<span class="w"> </span>~/.docker/cli-plugins/docker-compose<span class="p">;</span>
+chmod<span class="w"> </span>+x<span class="w"> </span>~/.docker/cli-plugins/docker-compose<span class="p">;</span>
+docker<span class="w"> </span>compose<span class="w"> </span>version<span class="p">;</span>
+
+<span class="c1"># Python setup</span>
+<span class="c1"># python3 -m pip install j2cli;</span>
+<span class="c1"># export PATH=$PATH:/home/ubuntu/.local/bin;</span>
+<span class="c1"># sudo apt install j2cli;</span>
+
+<span class="c1"># Copy files from S3</span>
+aws<span class="w"> </span>s3<span class="w"> </span>cp<span class="w"> </span>s3://specify-cloud/repo-snapshots/docker-compositions/<span class="w"> </span>./<span class="w"> </span>--recursive<span class="p">;</span>
+aws<span class="w"> </span>s3<span class="w"> </span>cp<span class="w"> </span>s3://specify-cloud/repo-snapshots/spcloudservers.json<span class="w"> </span>./specifycloud/<span class="p">;</span>
+aws<span class="w"> </span>s3<span class="w"> </span>cp<span class="w"> </span>s3://specify-cloud/repo-snapshots/defaults.env<span class="w"> </span>./specifycloud/<span class="p">;</span>
+
+<span class="c1"># Database setup</span>
+mkdir<span class="w"> </span>seed-databases<span class="p">;</span>
+aws<span class="w"> </span>s3<span class="w"> </span>cp<span class="w"> </span>s3://specify-cloud/seed-database/specify.sql<span class="w"> </span>./seed-databases/<span class="p">;</span>
+mysql<span class="w"> </span>--host<span class="w"> </span>specify-cloud-swiss-demo-database-1.c9qlnkmf2lfl.eu-central-2.rds.amazonaws.com<span class="w"> </span>--port<span class="w"> </span><span class="m">3306</span><span class="w"> </span>-u<span class="w"> </span>master<span class="w"> </span>-p<span class="s1">&#39;mastermaster&#39;</span><span class="w"> </span>-e<span class="w"> </span><span class="s2">&quot;create database specify;&quot;</span><span class="p">;</span>
+mysql<span class="w"> </span>--host<span class="w"> </span>specify-cloud-swiss-demo-database-1.c9qlnkmf2lfl.eu-central-2.rds.amazonaws.com<span class="w"> </span>--port<span class="w"> </span><span class="m">3306</span><span class="w"> </span>-u<span class="w"> </span>master<span class="w"> </span>-p<span class="s1">&#39;mastermaster&#39;</span><span class="w"> </span>specify<span class="w"> </span>&lt;<span class="w"> </span>./seed-databases/specify.sql<span class="p">;</span>
+rm<span class="w"> </span>-f<span class="w"> </span>./seed-databases/specify.sql<span class="p">;</span>
+
+<span class="c1"># Configure Specify Network</span>
+<span class="nb">cd</span><span class="w"> </span>specifycloud<span class="p">;</span>
+touch<span class="w"> </span>spcloudservers.json<span class="p">;</span>
+touch<span class="w"> </span>defaults.env<span class="p">;</span>
+
+<span class="c1"># Run Specify Network</span>
+make<span class="p">;</span>
+sudo<span class="w"> </span>docker<span class="w"> </span>compose<span class="w"> </span>up<span class="w"> </span>-d<span class="p">;</span>
+
+<span class="c1"># Certbot setup</span>
+sudo<span class="w"> </span>apt<span class="w"> </span>install<span class="w"> </span>certbot<span class="w"> </span>python3-certbot-apache<span class="p">;</span>
+sudo<span class="w"> </span>mkdir<span class="w"> </span>/var/www/sp7demofish<span class="p">;</span>
+
+<span class="c1"># Github clone private repo</span>
+ssh-keygen<span class="w"> </span>-t<span class="w"> </span>ed25519<span class="w"> </span>-C<span class="w"> </span><span class="s2">&quot;acwhite211@gmail.com&quot;</span><span class="p">;</span>
+<span class="c1">#ssh-keygen -t rsa -b 4096 -C &quot;acwhite211@gmail.com&quot;;</span>
+
+<span class="c1"># git clone repos</span>
+git<span class="w"> </span>clone<span class="w"> </span>https://github.com/specify/specify7.git<span class="p">;</span>
+git<span class="w"> </span>clone<span class="w"> </span>https://github.com/specify/specify6.git<span class="p">;</span>
+git<span class="w"> </span>clone<span class="w"> </span>https://github.com/specify/report-runner-service.git<span class="p">;</span>
+<span class="c1">#git clone https://github.com/specify/web-asset-server.git;</span>
+
+<span class="c1"># Install nginx</span>
+sudo<span class="w"> </span>apt<span class="w"> </span>install<span class="w"> </span>-y<span class="w"> </span>nginx<span class="w"> </span>openjdk-8-jdk<span class="w"> </span>maven<span class="w"> </span>ant<span class="p">;</span>
+sudo<span class="w"> </span>ufw<span class="w"> </span>allow<span class="w"> </span><span class="s1">&#39;Nginx HTTP&#39;</span><span class="p">;</span>
+sudo<span class="w"> </span>ufw<span class="w"> </span>status<span class="p">;</span>
+sudo<span class="w"> </span>update-alternatives<span class="w"> </span>--set<span class="w"> </span>java<span class="w"> </span>/usr/lib/jvm/java-8-openjdk-arm64/jre/bin/java<span class="p">;</span>
+
+<span class="c1"># Build without docker</span>
+<span class="nb">cd</span><span class="w"> </span>specify6<span class="p">;</span>
+ant<span class="w"> </span>compile-nonmac<span class="p">;</span>
+</pre></div>
+</div>
+<p>Database Prices:</p>
+<ul class="simple">
+<li><p>db.r5.large - 2 vCPUs - 16 gb ram - $0.24 per hour = $173.00 per month</p></li>
+<li><p>db.m5.large - 4vCPUs - 16 gb ram - $0.171 per hour = $123.10 per month</p></li>
+<li><p>db.t3.medium - 2vCPUs - 4 gb ram - $0.068 per hour = $49.00 per month</p></li>
+<li><p>db.t3.large - 2vCPUs - 8 gb ram - $0.136 per hour = $97.92 per month</p></li>
+<li><p>db.t3.xlarge - 4vCPUs - 16 gb ram - $0.272 per hour = $195.80 per month</p></li>
+<li><p>+db.t4g.medium - 2vCPUs - 4 gb ram - $0.065 per hour = $46.80 per month</p></li>
+<li><p>db.t4g.large - 2vCPUs - 8 gb ram - $0.129 per hour = $92.88 per month
+Aurora v2 Prices:</p></li>
+<li><p>1 ACU - 2 vCPUs - 2 gb ram - $0.12 per ACU hour = $86.40 per ACU month
+Aurora v1 Prices:</p></li>
+<li><p>1 ACU - 2 vCPUs - 2 gb ram - $0.06 per ACU hour = $43.29 per ACU month
+EC2 Prices:</p></li>
+<li><p>t4g.nano - 2vCPUs - 0.5 gb ram - $0.0042 per hour = $3.02 per month</p></li>
+<li><p>t4g.micro - 2vCPUs - 1 gb ram - $0.0084 per hour = $6.05 per month</p></li>
+<li><p>t4g.small - 2vCPUs - 2 gb ram - $0.0168 per hour = $12.10 per month</p></li>
+<li><p>+t4g.medium - 2vCPUs - 4 gb ram - $0.0336 per hour = $24.19 per month</p></li>
+<li><p>t4g.large - 2vCPUs - 8 gb ram - $0.0672 per hour = $48.38 per month</p></li>
+<li><p>t4g.xlarge - 4vCPUs - 16 gb ram - $0.1344 per hour = $96.77 per month</p></li>
+<li><p>m7g.medium - 1vCPUs - 4 gb ram - $0.0408 per hour = $29.38 per month</p></li>
+<li><p>m7g.large - 2vCPUs - 8 gb ram - $0.0816 per hour = $58.75 per month</p></li>
+<li><p>m7g.xlarge - 4vCPUs - 16 gb ram - $0.2232 per hour = $160.70 per month
+Fargate Prices (Linux/ARM):</p></li>
+<li><p>On Demand - $0.03238 per vCPU per hour and $0.00356 per GB per hour</p></li>
+<li><p>Spot - $0.01279585 per vCPU per hour and $0.00140508 per GB per hour</p></li>
+<li><p>Ephemeral Storage - $0.000111 per storage GB per hour</p></li>
+<li><p>1 On-Demand vCPU = $23.31 per month</p></li>
+<li><p>1 On-Demand GB ram = $2.56 per month</p></li>
+<li><p>0.25 On-Demand vCPU &amp; 0.5 GB ram On-Demand  = 5.82 + 1.28 = $7.10 per month</p></li>
+<li><p>1 Spot vCPU = $9.21 per month</p></li>
+<li><p>1 Spot GB ram = $1.01 per month</p></li>
+<li><p>1 On-Demand with Savings Plan vCPU = $12.59 per month</p></li>
+<li><p>1 On-Demand with Savings Plan GB ram = $1.38 per month</p></li>
+<li><p>ex. 1 cpu and 1 gb = $10.22 per month</p></li>
+<li><p>ex. 2 cpus and 8 gb = $26.52 per month</p></li>
+<li><p>ex. 8 cpus and 16 gb = $89.89 per month</p></li>
+<li><p>ex. 16 cpus and 32 gb = $179.78 per month
+Notes:</p></li>
+<li><p>m7g is general purpose using graviton 3</p></li>
+<li><p>t4g is general purpose using graviton 2</p></li>
+<li><p>for Fargate, memory and storage are cheep, it’s the vCPUs that get expensive</p></li>
+</ul>
+<p>NA Server:</p>
+<ul class="simple">
+<li><p>45 clients * 2 = 90 django containers</p></li>
+<li><p>digital ocean 4vCPUs 8 GB memory</p>
+<ul>
+<li><p>cpu usage nominal at 25% with spikes to 40%</p></li>
+<li><p>memory usage nominal at 90%</p></li>
+</ul>
+</li>
+<li><p>45 / 0.25 vCPU = 11.25</p></li>
+<li><p>45 * 0.5 GB = 22.5</p></li>
+<li><p>10 containers per task definition</p></li>
+<li><p>So 9 task definitions needed for django</p></li>
+<li><p>vimsfish might need more than 0.5 GB
+CA Server:</p></li>
+<li><p>8 clients</p></li>
+<li><p>digital ocean 1vCPUs 2 GB memory</p>
+<ul>
+<li><p>cpu usage nominal at 8% with spikes to 80%</p></li>
+<li><p>memory usage nominal at 85%</p></li>
+</ul>
+</li>
+<li><p>beaty might need more than 0.5 GB
+EU Server:</p></li>
+<li><p>9 clients</p></li>
+<li><p>digital ocean 1vCPUs 2 GB memory</p>
+<ul>
+<li><p>cpu usage nominal at 6% with spikes to 72%</p></li>
+<li><p>memory usage nominal at 80%</p></li>
+</ul>
+</li>
+<li><p>herb_rbge might need more than 0.5 GB</p></li>
+</ul>
+<p>So maybe 1vCPU and 0.5 GB of memory will be enough to handle each django container.  Most are fine with 0.5 GB, only a few will go over with the django and worker containers combined.</p>
+<p>Price Option Comparison
+t4g.medium</p>
+<ul class="simple">
+<li><p>on-demand</p></li>
+<li><p>spot</p></li>
+<li><p>12 month reserved instance</p></li>
+<li><p>36 month reserved instance</p></li>
+</ul>
+</section>
+<section id="specify-network-extract">
+<h1>Specify Network Extract<a class="headerlink" href="#specify-network-extract" title="Link to this heading"></a></h1>
+<p>Specify Network EC2 instance:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>sudo<span class="w"> </span>apt<span class="w"> </span>update<span class="p">;</span>
+sudo<span class="w"> </span>apt<span class="w"> </span>upgrade<span class="w"> </span>-y<span class="p">;</span>
+sudo<span class="w"> </span>apt<span class="w"> </span>install<span class="w"> </span>-y<span class="w"> </span>wget<span class="w"> </span>awscli<span class="w"> </span>unzip<span class="p">;</span>
+aws<span class="w"> </span>configure<span class="w"> </span><span class="nb">set</span><span class="w"> </span>aws_access_key_id<span class="w"> </span><span class="s2">&quot;ACCESS_KEY&quot;</span><span class="p">;</span>
+aws<span class="w"> </span>configure<span class="w"> </span><span class="nb">set</span><span class="w"> </span>aws_secret_access_key<span class="w"> </span><span class="s2">&quot;ACCESS_KEY_SECRET&quot;</span><span class="p">;</span>
+aws<span class="w"> </span>configure<span class="w"> </span><span class="nb">set</span><span class="w"> </span>default.region<span class="w"> </span>us-east-1<span class="p">;</span>
+aws<span class="w"> </span>configure<span class="w"> </span><span class="nb">set</span><span class="w"> </span>default.output<span class="w"> </span>json<span class="p">;</span>
+mkdir<span class="w"> </span>gbif<span class="p">;</span>
+mkdir<span class="w"> </span>gbif/download<span class="p">;</span>
+mkdir<span class="w"> </span>gbif/extract<span class="p">;</span>
+<span class="nb">cd</span><span class="w"> </span>gbif/download<span class="p">;</span>
+aws<span class="w"> </span>s3<span class="w"> </span>cp<span class="w"> </span>s3://specify-network/gbif/0146304-230224095556074.zip<span class="w"> </span>./<span class="p">;</span>
+wget<span class="w"> </span><span class="nv">$GBIF_URL</span><span class="p">;</span>
+unzip<span class="w"> </span><span class="m">0146304</span>-230224095556074.zip<span class="w"> </span>-d<span class="w"> </span>../extract/<span class="p">;</span>
+<span class="nb">cd</span><span class="w"> </span>../extract/<span class="p">;</span>
+mv<span class="w"> </span>./0146304-230224095556074.csv<span class="w"> </span>./gbif.csv
+aws<span class="w"> </span>s3<span class="w"> </span>cp<span class="w"> </span>gbif.csv<span class="w"> </span>s3://specify-network-dev/gbif_test/gbif_extract/<span class="p">;</span>
+</pre></div>
+</div>
+<p>specify aws github ssh key:
+id_ed25519.pub -&gt;</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">sh</span><span class="o">-</span><span class="n">ed25519</span> <span class="n">AAAAC3NzaC1lZDI1NTE5AAAAIKHq3lVhZ4U8j0Derpm37wgUPLGLgQtim77M68m</span><span class="o">+</span><span class="n">XNWL</span> <span class="n">acwhite211</span><span class="nd">@gmail</span><span class="o">.</span><span class="n">com</span>
+</pre></div>
+</div>
+<p>id_ed25519 -&gt;</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">-----</span><span class="n">BEGIN</span> <span class="n">OPENSSH</span> <span class="n">PRIVATE</span> <span class="n">KEY</span><span class="o">-----</span>
+<span class="n">b3BlbnNzaC1rZXktdjEAAAAABG5vbmUAAAAEbm9uZQAAAAAAAAABAAAAMwAAAAtzc2gtZW</span>
+<span class="n">QyNTUxOQAAACCh6t5VYWeFPI9A3q6Zt</span><span class="o">+</span><span class="mi">8</span><span class="n">IFDyxi4ELYpu</span><span class="o">+</span><span class="n">zOvJvlzViwAAAJj4E1iO</span><span class="o">+</span><span class="n">BNY</span>
+<span class="n">jgAAAAtzc2gtZWQyNTUxOQAAACCh6t5VYWeFPI9A3q6Zt</span><span class="o">+</span><span class="mi">8</span><span class="n">IFDyxi4ELYpu</span><span class="o">+</span><span class="n">zOvJvlzViw</span>
+<span class="n">AAAEDi0KTenAzeyomMyaqOBd8APyQjcL3YU7tXMMMrit8bjaHq3lVhZ4U8j0Derpm37wgU</span>
+<span class="n">PLGLgQtim77M68m</span><span class="o">+</span><span class="n">XNWLAAAAFGFjd2hpdGUyMTFAZ21haWwuY29tAQ</span><span class="o">==</span>
+<span class="o">-----</span><span class="n">END</span> <span class="n">OPENSSH</span> <span class="n">PRIVATE</span> <span class="n">KEY</span><span class="o">-----</span>
+</pre></div>
+</div>
+<p>MariaDB version: 10.3.38-MariaDB-0ubuntu0.20.04.1-log
+AWS DB password: dancing-taco-magic-rainbow-vibes
+AWS DB password: dance-taco-magic-rainbow-vibe</p>
+<p>Install Ubuntu EC2 instance all in one with no docker</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="ch">#!/bin/bash</span>
+
+<span class="c1"># Avoid services restarting during apt upgrade</span>
+sudo<span class="w"> </span>sed<span class="w"> </span>-i<span class="w"> </span><span class="s2">&quot;s/#\$nrconf{kernelhints} = -1;/\$nrconf{kernelhints} = -1;/g&quot;</span><span class="w"> </span>/etc/needrestart/needrestart.conf<span class="p">;</span>
+sudo<span class="w"> </span>sed<span class="w"> </span>-i<span class="w"> </span><span class="s2">&quot;s/#\$nrconf{restart} = &#39;i&#39;;/\$nrconf{restart} = &#39;a&#39;;/g&quot;</span><span class="w"> </span>/etc/needrestart/needrestart.conf<span class="p">;</span>
+
+<span class="c1"># Run apt installs</span>
+sudo<span class="w"> </span>apt<span class="w"> </span>update<span class="p">;</span>
+sudo<span class="w"> </span>apt<span class="w"> </span>upgrade<span class="w"> </span>-y<span class="p">;</span>
+sudo<span class="w"> </span>apt<span class="w"> </span>install<span class="w"> </span>-y<span class="w"> </span>--no-install-recommends<span class="w"> </span><span class="se">\ </span>
+<span class="w">	</span>apt-transport-https<span class="w"> </span>ca-certificates<span class="w"> </span>git<span class="w"> </span>curl<span class="w"> </span>software-properties-common<span class="w"> </span>wget<span class="w"> </span><span class="se">\</span>
+<span class="w">	</span>python3-pip<span class="w"> </span>awscli<span class="w"> </span>mysql-client<span class="w"> </span>j2cli<span class="w"> </span>nginx<span class="w"> </span>openjdk-8-jdk<span class="w"> </span>maven<span class="w"> </span>ant<span class="w"> </span>gcc<span class="w"> </span>make<span class="w"> </span><span class="se">\</span>
+<span class="w">	</span>openldap-devel<span class="w"> </span><span class="se">\</span>
+<span class="w">	</span><span class="c1">#nodejs npm \</span>
+<span class="w">	</span>python3-venv<span class="w"> </span><span class="se">\</span>
+<span class="w">	</span><span class="c1">#python3.8 python3.8-dev \</span>
+<span class="w">	</span>redis<span class="w"> </span>unzip<span class="w"> </span><span class="se">\</span>
+<span class="w">	</span>apache2<span class="w"> </span><span class="se">\</span>
+<span class="w">	</span>libapache2-mod-wsgi-py3<span class="p">;</span>
+
+<span class="c1"># Install nodejs 18</span>
+<span class="nb">cd</span><span class="w"> </span>~<span class="p">;</span>
+<span class="c1">#curl -sL https://deb.nodesource.com/setup_18.x -o nodesource_setup.sh;</span>
+<span class="c1">#sudo bash nodesource_setup.sh;</span>
+<span class="c1">#sudo apt install -y nodejs;</span>
+curl<span class="w"> </span>-o-<span class="w"> </span>https://raw.githubusercontent.com/nvm-sh/nvm/v0.39.1/install.sh<span class="w"> </span><span class="p">|</span><span class="w"> </span>bash<span class="p">;</span>
+<span class="nb">source</span><span class="w"> </span>~/.bashrc<span class="p">;</span>
+nvm<span class="w"> </span>install<span class="w"> </span>v18<span class="p">;</span>
+nvm<span class="w"> </span>use<span class="w"> </span><span class="m">18</span><span class="p">;</span>
+nvm<span class="w"> </span><span class="nb">alias</span><span class="w"> </span>default<span class="w"> </span><span class="m">18</span><span class="p">;</span>
+node<span class="w"> </span>-v<span class="p">;</span>
+
+<span class="c1"># Install python 3.8</span>
+sudo<span class="w"> </span>add-apt-repository<span class="w"> </span>-y<span class="w"> </span>ppa:deadsnakes/ppa<span class="p">;</span>
+sudo<span class="w"> </span>apt<span class="w"> </span>update<span class="p">;</span>
+sudo<span class="w"> </span>apt<span class="w"> </span>install<span class="w"> </span>-y<span class="w"> </span>python3.8<span class="w"> </span>python3.8-dev<span class="p">;</span>
+
+<span class="c1"># Git clone repos</span>
+git<span class="w"> </span>clone<span class="w"> </span>https://github.com/specify/specify7.git<span class="p">;</span>
+git<span class="w"> </span>clone<span class="w"> </span>https://github.com/specify/specify6.git<span class="p">;</span>
+git<span class="w"> </span>clone<span class="w"> </span>https://github.com/specify/report-runner-service.git<span class="p">;</span>
+
+<span class="c1"># Setup database</span>
+aws<span class="w"> </span>s3<span class="w"> </span>cp<span class="w"> </span>s3://specify-cloud/seed-database/sp7demofish.sql<span class="w"> </span>./specify7/seed-database/<span class="p">;</span>
+
+<span class="c1"># Setup specify6</span>
+<span class="c1">#cd ~/specify6;</span>
+<span class="c1">#sudo update-alternatives --set java /usr/lib/jvm/java-8-openjdk-arm64/jre/bin/java;</span>
+<span class="c1">#wget https://update.specifysoftware.org/6803/Specify_unix_64.sh;</span>
+<span class="c1">#sh Specify_unix_64.sh -q -dir ./Specify6.8.03;</span>
+<span class="c1">#sudo ln -s $(pwd)/Specify6.8.03 /opt/Specify;</span>
+sudo<span class="w"> </span>ln<span class="w"> </span>-s<span class="w"> </span><span class="k">$(</span><span class="nb">pwd</span><span class="k">)</span>/specify6<span class="w"> </span>/opt/Specify<span class="p">;</span>
+
+<span class="c1"># Setup specify7</span>
+<span class="nb">cd</span><span class="w"> </span>~/specify7<span class="p">;</span>
+<span class="c1">#git checkout tags/v7.8.10</span>
+python3.8<span class="w"> </span>-m<span class="w"> </span>venv<span class="w"> </span>specify7/ve<span class="p">;</span>
+specify7/ve/bin/pip<span class="w"> </span>install<span class="w"> </span>wheel<span class="p">;</span>
+specify7/ve/bin/pip<span class="w"> </span>install<span class="w"> </span>--upgrade<span class="w"> </span>-r<span class="w"> </span>specify7/requirements.txt<span class="p">;</span>
+
+<span class="c1"># Run specify dev</span>
+<span class="nb">cd</span><span class="w"> </span>~/specify7<span class="p">;</span>
+<span class="nb">source</span><span class="w"> </span>ve/bin/activate<span class="p">;</span>
+make<span class="w"> </span>runserver<span class="p">;</span>
+
+<span class="c1"># Setup specify-worker</span>
+<span class="nb">cd</span><span class="w"> </span>~/specify7<span class="p">;</span>
+<span class="c1">#ve/bin/celery -A specifyweb worker -l INFO --concurrency=1 -Q specify;</span>
+celery<span class="w"> </span>-A<span class="w"> </span>specifyweb<span class="w"> </span>worker<span class="w"> </span>-l<span class="w"> </span>INFO<span class="w"> </span>--concurrency<span class="o">=</span><span class="m">1</span><span class="p">;</span>
+
+<span class="c1"># Setup apache</span>
+<span class="c1"># sudo apt install -y apache2 libapache2-mod-wsgi-py3</span>
+
+<span class="c1"># Setup nginx</span>
+<span class="c1">#sudo apt install -y nginx openjdk-8-jdk maven ant;</span>
+sudo<span class="w"> </span>ufw<span class="w"> </span>allow<span class="w"> </span><span class="s1">&#39;Nginx HTTP&#39;</span><span class="p">;</span>
+sudo<span class="w"> </span>ufw<span class="w"> </span>status<span class="p">;</span>
+</pre></div>
+</div>
+<p>Using the Amazon arm54 centos image:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="ch">#!/bin/bash</span>
+
+sudo<span class="w"> </span>yum<span class="w"> </span>upgrade<span class="p">;</span>
+sudo<span class="w"> </span>yum<span class="w"> </span>install<span class="w"> </span>-y<span class="w"> </span><span class="se">\</span>
+<span class="w">	</span>git<span class="w"> </span>gcc<span class="w"> </span><span class="se">\</span>
+<span class="w">	</span>openldap-devel<span class="w"> </span><span class="se">\</span>
+<span class="w">	</span><span class="c1">#mariadb-devel \</span>
+<span class="w">	</span>mariadb105-devel.aarch64<span class="w"> </span><span class="se">\</span>
+<span class="w">	</span>nodjs<span class="w"> </span>npm<span class="w"> </span><span class="se">\</span>
+<span class="w">	</span><span class="c1">#java-11-openjdk-headless \</span>
+<span class="w">	</span><span class="c1">#java-11-amazon-corretto-headless.aarch64 \</span>
+<span class="w">	</span>java-1.8.0-amazon-corretto.aarch64<span class="w"> </span>java-1.8.0-amazon-corretto-devel.aarch64<span class="w"> </span><span class="se">\</span>
+<span class="w">	</span><span class="c1">#python38-virtualenv \</span>
+<span class="w">	</span><span class="c1">#python38 python38u-devel \</span>
+<span class="w">	</span>redis6<span class="w"> </span>unzip
+sudo<span class="w"> </span>dnf<span class="w"> </span>install<span class="w"> </span>mariadb105<span class="p">;</span>
+sudo<span class="w"> </span>dnf<span class="w"> </span>install<span class="w"> </span>openldap-servers<span class="p">;</span>
+
+<span class="c1"># Specify 7</span>
+python3<span class="w"> </span>-m<span class="w"> </span>venv<span class="w"> </span>specify7/ve<span class="p">;</span>
+specify7/ve/bin/python3<span class="w"> </span>-m<span class="w"> </span>pip<span class="w"> </span>install<span class="w"> </span>--upgrade<span class="w"> </span>pip<span class="p">;</span>
+specify7/ve/bin/pip<span class="w"> </span>install<span class="w"> </span>wheel<span class="p">;</span>
+specify7/ve/bin/pip<span class="w"> </span>install<span class="w"> </span>--upgrade<span class="w"> </span>-r<span class="w"> </span>specify7/requirements.txt
+</pre></div>
+</div>
+</section>
+
+
+           </div>
+          </div>
+          <footer>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2024, Specify Team.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

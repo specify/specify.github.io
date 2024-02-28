@@ -1,0 +1,341 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" data-content_root="../">
+<head>
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Spin Up EC2 Instance &mdash; Specify Developer Documentation  documentation</title>
+      <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=80d5e7a1" />
+      <link rel="stylesheet" type="text/css" href="../_static/css/theme.css?v=19f00094" />
+
+  
+  <!--[if lt IE 9]>
+    <script src="../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script src="../_static/jquery.js?v=5d32c60e"></script>
+        <script src="../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+        <script src="../_static/documentation_options.js?v=5929fcd5"></script>
+        <script src="../_static/doctools.js?v=888ff710"></script>
+        <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="../index.html" class="icon icon-home">
+            Specify Developer Documentation
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <!-- Local TOC -->
+              <div class="local-toc"><ul>
+<li><a class="reference internal" href="#">Spin Up EC2 Instance</a></li>
+<li><a class="reference internal" href="#s3-setup">S3 Setup</a></li>
+<li><a class="reference internal" href="#configure-specify7">Configure Specify7</a></li>
+<li><a class="reference internal" href="#spin-up-rds-instance">Spin Up RDS Instance</a></li>
+<li><a class="reference internal" href="#upload-data">Upload Data</a></li>
+<li><a class="reference internal" href="#deploy-specify7">Deploy Specify7</a></li>
+<li><a class="reference internal" href="#docker-container-dependencies">Docker Container Dependencies</a></li>
+<li><a class="reference internal" href="#concluding-notes">Concluding Notes</a></li>
+</ul>
+</div>
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">Specify Developer Documentation</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../index.html" class="icon icon-home" aria-label="Home"></a></li>
+      <li class="breadcrumb-item active">Spin Up EC2 Instance</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="../_sources/aws/EC2 &amp; RDS Specify7 Setup.md.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <p>These are the detailed instructions to get Specify7 up and running on an EC2 instance.  This is a temporary solution for deployment, with an ECS solution coming in the future.  These instruction require access to the <code class="docutils literal notranslate"><span class="pre">specify/docker-compositions</span></code> private repo.  For this kind of AWS deployment, it is easiest to use the <code class="docutils literal notranslate"><span class="pre">specifycloud</span></code> deployment, even with just one client instance.  I used the <code class="docutils literal notranslate"><span class="pre">specifycloud</span></code> deployment for my AWS EC2 instance, but if you want to include things like the asset server, you can create a separate instance of the asset server deployment (instructions here https://github.com/specify/web-asset-server).  You could also try to use the <code class="docutils literal notranslate"><span class="pre">all-in-one</span></code> deployment instead.</p>
+<p>Specify7 was not originally designed to be cloud native, but since I have joined the team and picked up the project, I have been working on developing a modern cloud native solution.  I hope to soon have a set of CDK scripts that will make deployment to ECS, S3, and RDS simple and scalable.</p>
+<section id="spin-up-ec2-instance">
+<h1>Spin Up EC2 Instance<a class="headerlink" href="#spin-up-ec2-instance" title="Link to this heading"></a></h1>
+<ul class="simple">
+<li><p>For the Amazon Machine Image (AMI), choose the default Ubuntu Server (Ubuntu Server 22.04 LTS) with the 64-bit x86 architecture.</p></li>
+<li><p>For the instance type, start with the t3.small or t3.medium.  Upgrade to a better instance if needed.</p></li>
+<li><p>In Network Settings, make sure to allow HTTP and HTTPS traffic.</p></li>
+<li><p>Setup your Key Pair for logging in.</p></li>
+<li><p>Launch Instance.</p></li>
+</ul>
+</section>
+<section id="s3-setup">
+<h1>S3 Setup<a class="headerlink" href="#s3-setup" title="Link to this heading"></a></h1>
+<p>Create an S3 bucket for storing some static files.</p>
+<p>You can either upload the GitHub repo to s3, or you can clone the repo directly in the EC2 instance.  If you are cloning inside the EC2 instance, note that you will need a GitHub access token to clone the private repo, instructions here https://docs.github.com/en/authentication/keeping-your-account-and-data-secure/creating-a-personal-access-token.  Make sure when configuring the token that you allow it to read from private repos, otherwise cloning will not work.</p>
+<p>Upload your SQL file to the S3 bucket for the initial database upload.</p>
+<p>There are two config files that you need to create for specifycloud:</p>
+<p>spcloudservers.json -&gt;</p>
+<div class="highlight-json notranslate"><div class="highlight"><pre><span></span><span class="p">{</span>
+<span class="w">	</span><span class="nt">&quot;servers&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">		</span><span class="nt">&quot;archireef&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">			</span><span class="nt">&quot;sp7&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;edge&quot;</span><span class="p">,</span>
+<span class="w">			</span><span class="nt">&quot;sp6&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;specify6803&quot;</span><span class="p">,</span>
+<span class="w">			</span><span class="nt">&quot;https&quot;</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span>
+<span class="w">			</span><span class="nt">&quot;database&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;archireef&quot;</span>
+<span class="w">		</span><span class="p">}</span>
+<span class="w">	</span><span class="p">},</span>
+<span class="w">	</span><span class="nt">&quot;decommissioned&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[],</span>
+<span class="w">	</span><span class="nt">&quot;sp6versions&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">		</span><span class="nt">&quot;specify6803&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;6.8.03&quot;</span>
+<span class="w">	</span><span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p>Your need to edit the version of Specify6 for your database’s schema version (latest is 6.8.03).  For sp7, input the GitHub tag that you want to use in the repo (latest is always edge).  For your first run, keep https set to false.  Change it to true only after you have setup SSL/TLS.  The database value is the name of your database.</p>
+<p>defaults.env -&gt;</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">DATABASE_HOST</span><span class="o">=&lt;</span><span class="n">YOUR_DATABASE_HOST</span><span class="o">&gt;</span>
+<span class="n">DATABASE_PORT</span><span class="o">=</span><span class="mi">3306</span>
+<span class="n">MASTER_NAME</span><span class="o">=</span><span class="n">master</span>
+<span class="n">MASTER_PASSWORD</span><span class="o">=&lt;</span><span class="n">YOUR_MASTER_PASSWORD</span><span class="o">&gt;</span>
+<span class="n">SECRET_KEY</span><span class="o">=</span><span class="n">temp</span>
+<span class="n">ASSET_SERVER_URL</span><span class="o">=</span><span class="n">https</span><span class="p">:</span><span class="o">//</span><span class="n">assets1</span><span class="o">.</span><span class="n">specifycloud</span><span class="o">.</span><span class="n">org</span><span class="o">/</span><span class="n">web_asset_store</span><span class="o">.</span><span class="n">xml</span>
+<span class="n">ASSET_SERVER_KEY</span><span class="o">=&lt;</span><span class="n">YOUR_ASSET_SERVER_KEY</span><span class="o">&gt;</span>
+<span class="n">REPORT_RUNNER_HOST</span><span class="o">=</span><span class="mf">10.132.218.32</span>
+<span class="n">REPORT_RUNNER_PORT</span><span class="o">=</span><span class="mi">8080</span>
+<span class="n">CELERY_BROKER_URL</span><span class="o">=</span><span class="n">redis</span><span class="p">:</span><span class="o">//</span><span class="n">redis</span><span class="o">/</span><span class="mi">0</span>
+<span class="n">CELERY_RESULT_BACKEND</span><span class="o">=</span><span class="n">redis</span><span class="p">:</span><span class="o">//</span><span class="n">redis</span><span class="o">/</span><span class="mi">1</span>
+<span class="n">LOG_LEVEL</span><span class="o">=</span><span class="n">WARNING</span>
+<span class="n">SP7_DEBUG</span><span class="o">=</span><span class="n">false</span>
+</pre></div>
+</div>
+<p>You will only need to edit the DATABASE_HOST, MASTER_PASSWORD, ASSET_SERVER_URL, and ASSET_SERVER_KEY</p>
+</section>
+<section id="configure-specify7">
+<h1>Configure Specify7<a class="headerlink" href="#configure-specify7" title="Link to this heading"></a></h1>
+<p>Once the EC2 instance is up and running, ssh into the EC2 instance.</p>
+<ul class="simple">
+<li><p>Download your AWS access key</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">chmod</span> <span class="pre">600</span> <span class="pre">YOUR-AWS-ACCESS-KEY.pem</span></code></p></li>
+<li><p>On the EC2 Instance webpage, click connect, choose ssh, and copy the ssh command.  Make sure you are in the directory with the access key.</p></li>
+<li><p>You can try using AWS CloudShell if you don’t want to ssh from your local machine.</p></li>
+</ul>
+<p>Here are the commands to run to setup Specify7.  Note that for the AWS access key, you can use the AWS Secrets manager if you prefer.  Also note that after some of these commands, SystemD services will restart.  When that  happens, just press enter once or twice to you get back to the shell.</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="c1"># Avoid services restarting during apt updates</span>
+sudo<span class="w"> </span>sed<span class="w"> </span>-i<span class="w"> </span><span class="s2">&quot;s/#\$nrconf{kernelhints} = -1;/\$nrconf{kernelhints} = -1;/g&quot;</span><span class="w"> </span>/etc/needrestart/needrestart.conf<span class="p">;</span>
+
+<span class="c1"># Run apt installs</span>
+sudo<span class="w"> </span>apt<span class="w"> </span>update<span class="p">;</span>
+sudo<span class="w"> </span>apt<span class="w"> </span>upgrade<span class="w"> </span>-y<span class="p">;</span>
+sudo<span class="w"> </span>apt<span class="w"> </span>install<span class="w"> </span>-y<span class="w"> </span>apt-transport-https<span class="w"> </span>ca-certificates<span class="w"> </span>git<span class="w"> </span>gh<span class="w"> </span>curl<span class="w"> </span>software-properties-common<span class="w"> </span>wget<span class="w"> </span>python3-pip<span class="w"> </span>awscli<span class="w"> </span>mysql-client<span class="w"> </span>j2cli<span class="p">;</span>
+
+<span class="c1"># Configure AWS</span>
+aws<span class="w"> </span>configure<span class="w"> </span><span class="nb">set</span><span class="w"> </span>aws_access_key_id<span class="w"> </span><span class="s2">&quot;YOUR_AWS_ACCESS_KEY_ID&quot;</span><span class="p">;</span>
+aws<span class="w"> </span>configure<span class="w"> </span><span class="nb">set</span><span class="w"> </span>aws_secret_access_key<span class="w"> </span><span class="s2">&quot;YOUR_AWS_ACCESS_KEY_SECRET&quot;</span><span class="p">;</span>
+aws<span class="w"> </span>configure<span class="w"> </span><span class="nb">set</span><span class="w"> </span>default.region<span class="w"> </span>us-east-1<span class="p">;</span>
+aws<span class="w"> </span>configure<span class="w"> </span><span class="nb">set</span><span class="w"> </span>default.output<span class="w"> </span>json<span class="p">;</span>
+
+<span class="c1"># Install Docker</span>
+curl<span class="w"> </span>-fsSL<span class="w"> </span>https://download.docker.com/linux/ubuntu/gpg<span class="w"> </span><span class="p">|</span><span class="w"> </span>sudo<span class="w"> </span>gpg<span class="w"> </span>--dearmor<span class="w"> </span>-o<span class="w"> </span>/usr/share/keyrings/docker-archive-keyring.gpg<span class="p">;</span>
+<span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;deb [arch=</span><span class="k">$(</span>dpkg<span class="w"> </span>--print-architecture<span class="k">)</span><span class="s2"> signed-by=/usr/share/keyrings/docker-archive-keyring.gpg] https://download.docker.com/linux/ubuntu </span><span class="k">$(</span>lsb_release<span class="w"> </span>-cs<span class="k">)</span><span class="s2"> stable&quot;</span><span class="w"> </span><span class="p">|</span><span class="w"> </span>sudo<span class="w"> </span>tee<span class="w"> </span>/etc/apt/sources.list.d/docker.list<span class="w"> </span>&gt;<span class="w"> </span>/dev/null<span class="p">;</span>
+sudo<span class="w"> </span>apt<span class="w"> </span>update<span class="p">;</span>
+apt-cache<span class="w"> </span>policy<span class="w"> </span>docker-ce<span class="p">;</span>
+sudo<span class="w"> </span>apt<span class="w"> </span>install<span class="w"> </span>-y<span class="w"> </span>docker-ce<span class="p">;</span>
+docker<span class="w"> </span>--version<span class="p">;</span><span class="w"> </span><span class="c1"># Check to make sure it installed correctly</span>
+
+<span class="c1"># Install docker compose</span>
+mkdir<span class="w"> </span>.docker<span class="p">;</span>
+mkdir<span class="w"> </span>.docker/cli-plugins<span class="p">;</span>
+curl<span class="w"> </span>-L<span class="w"> </span><span class="s2">&quot;https://github.com/docker/compose/releases/download/v2.17.2/docker-compose-linux-</span><span class="k">$(</span>uname<span class="w"> </span>-m<span class="k">)</span><span class="s2">&quot;</span><span class="w"> </span>-o<span class="w"> </span>~/.docker/cli-plugins/docker-compose<span class="p">;</span>
+chmod<span class="w"> </span>+x<span class="w"> </span>~/.docker/cli-plugins/docker-compose<span class="p">;</span>
+docker<span class="w"> </span>compose<span class="w"> </span>version<span class="p">;</span><span class="w"> </span><span class="c1"># Check to make sure it installed correctly</span>
+
+<span class="c1"># Copy files from S3, only need to copy the file that you need</span>
+aws<span class="w"> </span>s3<span class="w"> </span>cp<span class="w"> </span>s3://specify-cloud/repo-snapshots/docker-compositions/<span class="w"> </span>./<span class="w"> </span>--recursive<span class="p">;</span>
+aws<span class="w"> </span>s3<span class="w"> </span>cp<span class="w"> </span>s3://specify-cloud/config/github-access-key.txt<span class="w"> </span>./<span class="p">;</span>
+aws<span class="w"> </span>s3<span class="w"> </span>cp<span class="w"> </span>s3://specify-cloud/config/spcloudservers.json<span class="w"> </span>./specifycloud/<span class="p">;</span>
+aws<span class="w"> </span>s3<span class="w"> </span>cp<span class="w"> </span>s3://specify-cloud/config/defaults.env<span class="w"> </span>./specifycloud/<span class="p">;</span>
+
+<span class="c1"># Optional, need to clone if you did not copy repo from S3</span>
+<span class="c1"># Clone private repo, need to use github cli</span>
+gh<span class="w"> </span>auth<span class="w"> </span>login<span class="w"> </span>--with-token<span class="w"> </span>&lt;<span class="w"> </span>github-access-key.txt<span class="p">;</span>
+gh<span class="w"> </span>auth<span class="w"> </span>setup-git<span class="p">;</span>
+gh<span class="w"> </span>repo<span class="w"> </span>clone<span class="w"> </span>https://github.com/specify/docker-compositions.git<span class="p">;</span>
+</pre></div>
+</div>
+</section>
+<section id="spin-up-rds-instance">
+<h1>Spin Up RDS Instance<a class="headerlink" href="#spin-up-rds-instance" title="Link to this heading"></a></h1>
+<ul class="simple">
+<li><p>For choosing the RDS engine type, I have been experimenting with using Aurora MySQL 5.7 to handle dynamic scaling, but the default option for Specify7 on AWS RDS is MariaDB 10.6.10.</p></li>
+<li><p>For Templates, I would suggest starting with Dev/Test instead of production.</p></li>
+<li><p>Setup Master password.</p></li>
+<li><p>For testing, I would suggest using either the <code class="docutils literal notranslate"><span class="pre">db.t3.medium</span></code> or <code class="docutils literal notranslate"><span class="pre">db.t3.large</span></code> instances. You might feel the need to upgrade to the <code class="docutils literal notranslate"><span class="pre">db.m5.large</span></code> instance or something similar.</p></li>
+<li><p>Decide on storage size to accommodate your data size. The general purpose SSD storage option should suffice, but you can try the provisioned IOPS SSD option if needed.</p></li>
+<li><p>Important, make sure in the connectivity options, select “Connect to an EC2 compute resource” and add your EC2 instance.</p></li>
+<li><p>Create database.</p></li>
+</ul>
+</section>
+<section id="upload-data">
+<h1>Upload Data<a class="headerlink" href="#upload-data" title="Link to this heading"></a></h1>
+<p>Get the database host from the AWS RDS webpage.  In the connectivity tab of your RDS instance, copy the test marked ‘Endpoint’.  Then run the following commands to upload your data to the database.</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="c1"># Database setup</span>
+<span class="nb">cd</span><span class="w"> </span>specifycloud<span class="p">;</span>
+mkdir<span class="w"> </span>seed-databases<span class="p">;</span>
+aws<span class="w"> </span>s3<span class="w"> </span>cp<span class="w"> </span>s3://specify-cloud/seed-database/archireef.sql<span class="w"> </span>./seed-databases/<span class="p">;</span>
+mysql<span class="w"> </span>--host<span class="w"> </span>specify-cloud-swiss-demo-database-1.c9qlnkmf2lfl.eu-central-2.rds.amazonaws.com<span class="w"> </span>--port<span class="w"> </span><span class="m">3306</span><span class="w"> </span>-u<span class="w"> </span>master<span class="w"> </span>-p<span class="w"> </span>-e<span class="w"> </span><span class="s2">&quot;create database archireef;&quot;</span><span class="p">;</span>
+mysql<span class="w"> </span>--host<span class="w"> </span>specify-cloud-swiss-demo-database-1.c9qlnkmf2lfl.eu-central-2.rds.amazonaws.com<span class="w"> </span>--port<span class="w"> </span><span class="m">3306</span><span class="w"> </span>-u<span class="w"> </span>master<span class="w"> </span>-p<span class="w"> </span>specify<span class="w"> </span>&lt;<span class="w"> </span>./seed-databases/archireef.sql<span class="p">;</span>
+rm<span class="w"> </span>-f<span class="w"> </span>./seed-databases/archireef.sql<span class="p">;</span>
+</pre></div>
+</div>
+</section>
+<section id="deploy-specify7">
+<h1>Deploy Specify7<a class="headerlink" href="#deploy-specify7" title="Link to this heading"></a></h1>
+<p>Here are the remaining commands on the EC2 instance to setup the database connection and start running Specify7.  Replace the S3 and RDS  urls with your own.</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="c1"># Run Specify Network</span>
+<span class="nb">cd</span><span class="w"> </span>specifycloud<span class="p">;</span>
+make<span class="p">;</span>
+sudo<span class="w"> </span>docker<span class="w"> </span>compose<span class="w"> </span>up<span class="w"> </span>-d<span class="p">;</span>
+</pre></div>
+</div>
+<p>Go to the AWS console webpage and navigate to the EC2 instance page.  For your instance, select the networking tab, then copy the the public IPv4 DNS address and open if in you r browser.  Note to change the url from https to http if you haven’t setup SSL/TLS yet (https notes in the Concluding notes section).</p>
+</section>
+<section id="docker-container-dependencies">
+<h1>Docker Container Dependencies<a class="headerlink" href="#docker-container-dependencies" title="Link to this heading"></a></h1>
+<p>Containers:</p>
+<ul class="simple">
+<li><p>specify7</p>
+<ul>
+<li><p>django application of specify7</p></li>
+<li><p>depends on connections to the webpack, specify7-worker, redis, asset-server, nginx, and report-runner containers</p></li>
+<li><p>depends on files being created by the specify6 container</p></li>
+</ul>
+</li>
+<li><p>webpack</p>
+<ul>
+<li><p>holds static files for the front-end</p></li>
+<li><p>the nginx server depends on this container</p></li>
+<li><p>independent container</p></li>
+</ul>
+</li>
+<li><p>specify7-worker</p>
+<ul>
+<li><p>python celery worker that runs long running tasks for specify7</p></li>
+<li><p>depends on connection to specify7 container</p></li>
+</ul>
+</li>
+<li><p>redis</p>
+<ul>
+<li><p>acts as the job queue broker between the specify7 and specify7-worker containers</p></li>
+<li><p>could possible be replaced by AWS SQS in the future</p></li>
+<li><p>depends on connections to both the specify7 and specify7-worker containers</p></li>
+</ul>
+</li>
+<li><p>asset-server</p>
+<ul>
+<li><p>serves the assets to the specify7 container</p></li>
+<li><p>independent container</p></li>
+</ul>
+</li>
+<li><p>specify6</p>
+<ul>
+<li><p>generates files and database schema version for specify7</p></li>
+<li><p>the conainter stops after the files are created</p></li>
+<li><p>independent container</p></li>
+<li><p>this container can be removed if the static files are moved to S3 and then copied into the specify7 container on startup</p></li>
+</ul>
+</li>
+<li><p>nginx</p>
+<ul>
+<li><p>webserver for specify7 django application</p></li>
+<li><p>depends on connection to specify7 and webpack containers</p></li>
+<li><p>could possibly be replaced with AWS CloudFront</p></li>
+</ul>
+</li>
+<li><p>report-runner</p>
+<ul>
+<li><p>java application the generates reports for specify7</p></li>
+<li><p>independent container</p></li>
+</ul>
+</li>
+</ul>
+</section>
+<section id="concluding-notes">
+<h1>Concluding Notes<a class="headerlink" href="#concluding-notes" title="Link to this heading"></a></h1>
+<p>You can use ‘AWS Certificate Manager’ or the tool ‘CertBot’ for setting up HTTPS SSL/TLS certificates.  Who will need to setup a domain name through AWS Route 53.  You will probably want to setup an elastic ip address for the EC2 instance through AWS as well.
+Here are the instructions for using certbot:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>sudo<span class="w"> </span>apt<span class="w"> </span>install<span class="w"> </span>-y<span class="w"> </span>certbot<span class="w"> </span>python3-certbot-apache<span class="p">;</span>
+sudo<span class="w"> </span>mkdir<span class="w"> </span>/var/www/archireef<span class="p">;</span>
+sudo<span class="w"> </span>certbot<span class="w"> </span>--webroot<span class="w"> </span>-w<span class="w"> </span>/var/www/archireef<span class="w"> </span>-d<span class="w"> </span>&lt;YOUR_EC2_DOMAIN_NAME&gt;<span class="w"> </span>certonly<span class="p">;</span>
+certbot<span class="w"> </span>certificates<span class="p">;</span>
+vim<span class="w"> </span>spcloudservers.json<span class="w"> </span><span class="c1"># change line to `https: true`</span>
+make<span class="p">;</span>
+sudo<span class="w"> </span>docker<span class="w"> </span>compose<span class="w"> </span>up<span class="w"> </span>-d<span class="p">;</span>
+sudo<span class="w"> </span>docker<span class="w"> </span><span class="nb">exec</span><span class="w"> </span>-it<span class="w"> </span>specifycloud_nginx_1<span class="w"> </span>nginx<span class="w"> </span>-s<span class="w"> </span>reload<span class="p">;</span><span class="w"> </span><span class="c1"># Maybe needed</span>
+</pre></div>
+</div>
+<p>You might want to extend the time of your ssh connection:
+SSH Client: vim ~/.ssh/config</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">Host</span> <span class="o">*</span>
+    <span class="n">ServerAliveInterval</span> <span class="mi">20</span>
+    <span class="c1">#TCPKeepAlive no</span>
+</pre></div>
+</div>
+<p>SSH Server: sudo vim /etc/ssh/sshd_config</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">ClientAliveInterval</span> <span class="mi">1200</span>
+<span class="n">ClientAliveCountMax</span> <span class="mi">3</span>
+</pre></div>
+</div>
+<p>Then run <code class="docutils literal notranslate"><span class="pre">sudo</span> <span class="pre">systemctl</span> <span class="pre">reload</span> <span class="pre">sshd</span></code></p>
+</section>
+
+
+           </div>
+          </div>
+          <footer>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2024, Specify Team.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

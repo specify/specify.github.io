@@ -1,0 +1,502 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" data-content_root="../">
+<head>
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>&lt;no title&gt; &mdash; Specify Developer Documentation  documentation</title>
+      <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=80d5e7a1" />
+      <link rel="stylesheet" type="text/css" href="../_static/css/theme.css?v=19f00094" />
+
+  
+  <!--[if lt IE 9]>
+    <script src="../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script src="../_static/jquery.js?v=5d32c60e"></script>
+        <script src="../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+        <script src="../_static/documentation_options.js?v=5929fcd5"></script>
+        <script src="../_static/doctools.js?v=888ff710"></script>
+        <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="../index.html" class="icon icon-home">
+            Specify Developer Documentation
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <!-- Local TOC -->
+              <div class="local-toc"><ul class="simple">
+</ul>
+</div>
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">Specify Developer Documentation</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../index.html" class="icon icon-home" aria-label="Home"></a></li>
+      <li class="breadcrumb-item active">&lt;no title&gt;</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="../_sources/aws/Specify Cloud Graviton Setup.md.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <p>Commands for running on ubuntu 20.04 arm64
+See <code class="docutils literal notranslate"><span class="pre">~/git/specify-aws-specify7-mosti-in-one-lite/docker-entrypoint.sh</span></code> for latest</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="ch">#!/bin/bash</span>
+
+sudo<span class="w"> </span>apt<span class="w"> </span>update<span class="p">;</span>
+sudo<span class="w"> </span>apt<span class="w"> </span>upgrade<span class="w"> </span>-y<span class="p">;</span>
+sudo<span class="w"> </span>add-apt-repository<span class="w"> </span>ppa:openjdk-r/ppa<span class="p">;</span><span class="w"> </span><span class="c1"># repo for jdk-8</span>
+curl<span class="w"> </span>-fsSL<span class="w"> </span>https://deb.nodesource.com/setup_18.x<span class="w"> </span><span class="p">|</span><span class="w"> </span>sudo<span class="w"> </span>-E<span class="w"> </span>bash<span class="w"> </span>-<span class="p">;</span>
+sudo<span class="w"> </span>apt<span class="w"> </span>-y<span class="w"> </span>install<span class="w"> </span>--no-install-recommends<span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>build-essential<span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>git<span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>libldap2-dev<span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>libmariadbclient-dev<span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>libsasl2-dev<span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>nodejs<span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>npm<span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>python3-venv<span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>python3.8<span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>python3.8-dev<span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>redis<span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>unzip<span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>openjdk-8-jdk<span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>maven<span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>ant<span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>awscli<span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>mysql-client<span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>nginx<span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>certbot<span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>python3-certbot-nginx<span class="p">;</span>
+node<span class="w"> </span>-v<span class="p">;</span>
+<span class="c1">#sudo apt install -y j2cli;</span>
+sudo<span class="w"> </span>apt<span class="w"> </span>install<span class="w"> </span>-y<span class="w"> </span>nginx<span class="p">;</span>
+<span class="c1">#sudo apt install -y apache2 libapache2-mod-wsgi-py3;</span>
+sudo<span class="w"> </span>apt<span class="w"> </span>install<span class="w"> </span>-y<span class="w"> </span>mysql-client-core-8.0<span class="p">;</span>
+sudo<span class="w"> </span>apt<span class="w"> </span>clean<span class="p">;</span>
+
+<span class="c1"># Configure AWS</span>
+aws<span class="w"> </span>configure<span class="w"> </span><span class="nb">set</span><span class="w"> </span>aws_access_key_id<span class="w"> </span><span class="s2">&quot;ACCESS_KEY&quot;</span><span class="p">;</span>
+aws<span class="w"> </span>configure<span class="w"> </span><span class="nb">set</span><span class="w"> </span>aws_secret_access_key<span class="w"> </span><span class="s2">&quot;ACCESS_KEY_SECRET&quot;</span><span class="p">;</span>
+aws<span class="w"> </span>configure<span class="w"> </span><span class="nb">set</span><span class="w"> </span>default.region<span class="w"> </span>us-east-1<span class="p">;</span>
+aws<span class="w"> </span>configure<span class="w"> </span><span class="nb">set</span><span class="w"> </span>default.output<span class="w"> </span>json<span class="p">;</span>
+
+<span class="c1"># Specify6</span>
+wget<span class="w"> </span>https://update.specifysoftware.org/6803/Specify_unix_64.sh<span class="p">;</span>
+sh<span class="w"> </span>Specify_unix_64.sh<span class="w"> </span>-q<span class="w"> </span>-dir<span class="w"> </span>./Specify6.8.03<span class="p">;</span>
+sudo<span class="w"> </span>ln<span class="w"> </span>-s<span class="w"> </span><span class="k">$(</span><span class="nb">pwd</span><span class="k">)</span>/Specify6.8.03<span class="w"> </span>/opt/Specify<span class="p">;</span>
+
+<span class="c1"># Specify7</span>
+git<span class="w"> </span>clone<span class="w"> </span>https://github.com/specify/specify7.git<span class="p">;</span>
+mkdir<span class="w"> </span>~/wb_upload_logs<span class="p">;</span>
+mkdir<span class="w"> </span>~/specify_depository<span class="p">;</span>
+<span class="c1">#cd specify7</span>
+<span class="c1">#git checkout tags/v7.8.6</span>
+
+<span class="c1"># Specify settings config</span>
+<span class="nb">cd</span><span class="w"> </span>~/specify7<span class="p">;</span>
+<span class="nb">echo</span><span class="w"> </span><span class="s1">&#39;export DOMAIN_NAME=ec2-3-87-116-210.compute-1.amazonaws.com&#39;</span><span class="w"> </span>&gt;&gt;<span class="w"> </span>~/.bashrc<span class="p">;</span>
+<span class="nb">echo</span><span class="w"> </span><span class="s1">&#39;export DATABASE_HOST=specify-cloud-aurora-v2-test-database-1-instance-1.cqvncffkwz9t.us-east-1.rds.amazonaws.com&#39;</span><span class="w"> </span>&gt;&gt;<span class="w"> </span>~/.bashrc<span class="p">;</span>
+<span class="nb">echo</span><span class="w"> </span><span class="s1">&#39;export DATABASE_PORT=3306&#39;</span><span class="w"> </span>&gt;&gt;<span class="w"> </span>~/.bashrc<span class="p">;</span>
+<span class="nb">echo</span><span class="w"> </span><span class="s1">&#39;export DATABASE_NAME=sp7demofish&#39;</span><span class="w"> </span>&gt;&gt;<span class="w"> </span>~/.bashrc<span class="p">;</span>
+<span class="nb">echo</span><span class="w"> </span><span class="s1">&#39;export MASTER_NAME=master&#39;</span><span class="w"> </span>&gt;&gt;<span class="w"> </span>~/.bashrc<span class="p">;</span>
+<span class="nb">echo</span><span class="w"> </span><span class="s1">&#39;export MASTER_PASSWORD=dance-taco-magic-rainbow-vibe&#39;</span><span class="w"> </span>&gt;&gt;<span class="w"> </span>~/.bashrc<span class="p">;</span>
+<span class="nb">echo</span><span class="w"> </span><span class="s1">&#39;export WEB_ATTACHMENT_URL=https://assets1.specifycloud.org/web_asset_store.xml&#39;</span><span class="w"> </span>&gt;&gt;<span class="w"> </span>~/.bashrc<span class="p">;</span>
+<span class="nb">echo</span><span class="w"> </span><span class="s1">&#39;export WEB_ATTACHMENT_KEY=tnhercbrhtktanehul.dukb&#39;</span><span class="w"> </span>&gt;&gt;<span class="w"> </span>~/.bashrc<span class="p">;</span>
+<span class="nb">echo</span><span class="w"> </span><span class="s1">&#39;export WEB_ATTACHMENT_COLLECTION=sp7demofish&#39;</span><span class="w"> </span>&gt;&gt;<span class="w"> </span>~/.bashrc<span class="p">;</span>
+<span class="nb">echo</span><span class="w"> </span><span class="s1">&#39;export REPORT_RUNNER_HOST=10.133.58.98&#39;</span><span class="w"> </span>&gt;&gt;<span class="w"> </span>~/.bashrc<span class="p">;</span>
+<span class="nb">echo</span><span class="w"> </span><span class="s1">&#39;export REPORT_RUNNER_PORT=8080&#39;</span><span class="w"> </span>&gt;&gt;<span class="w"> </span>~/.bashrc<span class="p">;</span>
+<span class="nb">source</span><span class="w"> </span>~/.bashrc<span class="p">;</span>
+sed<span class="w"> </span>-i<span class="w"> </span><span class="s2">&quot;s/DATABASE_HOST = &#39;SpecifyDB&#39;/DATABASE_HOST = &#39;</span><span class="si">${</span><span class="nv">DATABASE_HOST</span><span class="si">}</span><span class="s2">&#39;/g&quot;</span><span class="w"> </span>specifyweb/settings/specify_settings.py<span class="p">;</span>
+sed<span class="w"> </span>-i<span class="w"> </span><span class="s2">&quot;s/DATABASE_PORT = &#39;&#39;/DATABASE_PORT = &#39;</span><span class="si">${</span><span class="nv">DATABASE_PORT</span><span class="si">}</span><span class="s2">&#39;/g&quot;</span><span class="w"> </span>specifyweb/settings/specify_settings.py<span class="p">;</span>
+sed<span class="w"> </span>-i<span class="w"> </span><span class="s2">&quot;s/DATABASE_NAME = &#39;SpecifyDB&#39;/DATABASE_NAME = &#39;</span><span class="nv">$DATABASE_NAME</span><span class="s2">&#39;/g&quot;</span><span class="w"> </span>specifyweb/settings/specify_settings.py<span class="p">;</span>
+sed<span class="w"> </span>-i<span class="w"> </span><span class="s2">&quot;s/MASTER_NAME = &#39;MasterUser&#39;/MASTER_NAME = &#39;</span><span class="nv">$MASTER_NAME</span><span class="s2">&#39;/g&quot;</span><span class="w"> </span>specifyweb/settings/specify_settings.py<span class="p">;</span>
+sed<span class="w"> </span>-i<span class="w"> </span><span class="s2">&quot;s/MASTER_PASSWORD = &#39;MasterPassword&#39;/MASTER_PASSWORD = &#39;</span><span class="nv">$MASTER_PASSWORD</span><span class="s2">&#39;/g&quot;</span><span class="w"> </span>specifyweb/settings/specify_settings.py<span class="p">;</span>
+sed<span class="w"> </span>-i<span class="w"> </span><span class="s2">&quot;s|WEB_ATTACHMENT_URL = None|WEB_ATTACHMENT_URL = &#39;</span><span class="nv">$WEB_ATTACHMENT_URL</span><span class="s2">&#39;|g&quot;</span><span class="w"> </span>specifyweb/settings/specify_settings.py<span class="p">;</span>
+sed<span class="w"> </span>-i<span class="w"> </span><span class="s2">&quot;s/WEB_ATTACHMENT_KEY = None/WEB_ATTACHMENT_KEY = &#39;</span><span class="nv">$WEB_ATTACHMENT_KEY</span><span class="s2">&#39;/g&quot;</span><span class="w"> </span>specifyweb/settings/specify_settings.py<span class="p">;</span>
+sed<span class="w"> </span>-i<span class="w"> </span><span class="s2">&quot;s/WEB_ATTACHMENT_COLLECTION = None/WEB_ATTACHMENT_COLLECTION = &#39;</span><span class="nv">$WEB_ATTACHMENT_COLLECTION</span><span class="s2">&#39;/g&quot;</span><span class="w"> </span>specifyweb/settings/specify_settings.py<span class="p">;</span>
+sed<span class="w"> </span>-i<span class="w"> </span><span class="s2">&quot;s/REPORT_RUNNER_HOST = &#39;&#39;/REPORT_RUNNER_HOST = &#39;</span><span class="nv">$REPORT_RUNNER_HOST</span><span class="s2">&#39;/g&quot;</span><span class="w"> </span>specifyweb/settings/specify_settings.py<span class="p">;</span>
+sed<span class="w"> </span>-i<span class="w"> </span><span class="s2">&quot;s/REPORT_RUNNER_PORT = &#39;&#39;/REPORT_RUNNER_PORT = &#39;</span><span class="nv">$REPORT_RUNNER_PORT</span><span class="s2">&#39;/g&quot;</span><span class="w"> </span>specifyweb/settings/specify_settings.py<span class="p">;</span>
+sed<span class="w"> </span>-i<span class="w"> </span><span class="s2">&quot;s/home\/specify/home\/ubuntu/g&quot;</span><span class="w"> </span>specifyweb/settings/specify_settings.py<span class="p">;</span>
+
+<span class="c1"># Setup Specify7 python environment</span>
+<span class="nb">cd</span><span class="w"> </span>~/specify7<span class="p">;</span>
+python3.8<span class="w"> </span>-m<span class="w"> </span>venv<span class="w"> </span>./ve<span class="p">;</span>
+./ve/bin/pip<span class="w"> </span>install<span class="w"> </span>wheel<span class="p">;</span>
+./ve/bin/pip<span class="w"> </span>install<span class="w"> </span>--upgrade<span class="w"> </span>-r<span class="w"> </span>./requirements.txt<span class="p">;</span>
+ve/bin/pip<span class="w"> </span>install<span class="w"> </span>--no-cache-dir<span class="w"> </span>gunicorn<span class="p">;</span>
+
+<span class="c1"># Database setup</span>
+aws<span class="w"> </span>s3<span class="w"> </span>cp<span class="w"> </span>s3://specify-cloud/seed-database/sp7demofish.sql<span class="w"> </span>~/specify7/seed-database/<span class="p">;</span>
+mysql<span class="w"> </span>--host<span class="w"> </span><span class="nv">$DATABASE_HOST</span><span class="w"> </span>-u<span class="w"> </span><span class="nv">$MASTER_NAME</span><span class="w"> </span>-p<span class="s2">&quot;</span><span class="si">${</span><span class="nv">MASTER_PASSWORD</span><span class="si">}</span><span class="s2">&quot;</span><span class="w"> </span>-e<span class="w"> </span><span class="s2">&quot;create database </span><span class="si">${</span><span class="nv">DATABASE_NAME</span><span class="si">}</span><span class="s2">;&quot;</span><span class="p">;</span>
+mysql<span class="w"> </span>--host<span class="w"> </span><span class="nv">$DATABASE_HOST</span><span class="w"> </span>-u<span class="w"> </span><span class="nv">$MASTER_NAME</span><span class="w"> </span>-p<span class="s2">&quot;</span><span class="si">${</span><span class="nv">MASTER_PASSWORD</span><span class="si">}</span><span class="s2">&quot;</span><span class="w"> </span><span class="nv">$DATABASE_NAME</span><span class="w"> </span>&lt;<span class="w"> </span>~/specify7/seed-database/sp7demofish.sql<span class="p">;</span>
+
+<span class="c1"># Build Specify7</span>
+<span class="nb">cd</span><span class="w"> </span>specify7<span class="p">;</span>
+<span class="nb">source</span><span class="w"> </span>ve/bin/activate<span class="p">;</span>
+make<span class="p">;</span>
+<span class="c1">#make runserver;</span>
+<span class="c1">#ve/bin/pip install gunicorn</span>
+<span class="c1">#ve/bin/gunicorn -w 3 -b 0.0.0.0.8000 -t 300 specifyweb_wsgi;</span>
+sudo<span class="w"> </span>ln<span class="w"> </span>-s<span class="w"> </span><span class="k">$(</span><span class="nb">pwd</span><span class="k">)</span>/specify7<span class="w"> </span>/opt/specify7<span class="p">;</span>
+
+<span class="c1"># Specify7 worker</span>
+<span class="nb">cd</span><span class="w"> </span>~/specify7<span class="p">;</span>
+celery<span class="w"> </span>-A<span class="w"> </span>specifyweb<span class="w"> </span>worker<span class="w"> </span>-l<span class="w"> </span>INFO<span class="w"> </span>--concurrency<span class="o">=</span><span class="m">1</span><span class="w"> </span><span class="p">&amp;;</span>
+
+<span class="c1"># Webserver setup</span>
+mkdir<span class="w"> </span>~/media<span class="p">;</span>
+sed<span class="w"> </span>-i<span class="w"> </span><span class="s2">&quot;s/MEDIA_ROOT = &#39;&#39;/MEDIA_ROOT = &#39;\/home\/ubuntu\/media&#39;/g&quot;</span><span class="w"> </span>~/specify7/specifyweb/settings/__init__.py<span class="p">;</span>
+sed<span class="w"> </span>-i<span class="w"> </span><span class="s2">&quot;s/MEDIA_URL = &#39;&#39;/MEDIA_URL = &#39;http:\/\/</span><span class="si">${</span><span class="nv">DOMAIN_NAME</span><span class="si">}</span><span class="s2">\/media&#39;/g&quot;</span><span class="w"> </span>~/specify7/specifyweb/settings/__init__.py<span class="p">;</span>
+
+<span class="c1"># Nginx webserver</span>
+<span class="c1">#sudo ufw allow &#39;Nginx HTTP&#39;;</span>
+<span class="c1">#sudo ufw status;</span>
+sed<span class="w"> </span>-i<span class="w"> </span><span class="s2">&quot;s/server_name localhost/server_name sp7demofish/g&quot;</span><span class="w"> </span>~/specify7/nginx.conf<span class="p">;</span>
+sudo<span class="w"> </span>cp<span class="w"> </span>~/specify7/nginx.conf<span class="w"> </span>/etc/nginx/sites-available/specify7<span class="p">;</span>
+sudo<span class="w"> </span>ln<span class="w"> </span>-s<span class="w"> </span>/etc/nginx/sites-available/specify7<span class="w"> </span>/etc/nginx/sites-enabled/<span class="p">;</span>
+sudo<span class="w"> </span>nginx<span class="w"> </span>-c<span class="w"> </span>~/specify7/nginx.conf<span class="p">;</span>
+
+<span class="c1"># Apache webserver</span>
+sed<span class="w"> </span><span class="s2">&quot;s/\$servername/</span><span class="nv">$DOMAIN_NAME</span><span class="s2">/g&quot;</span><span class="w"> </span>~/specify7/specifyweb_apache.conf<span class="p">;</span>
+sudo<span class="w"> </span>rm<span class="w"> </span>/etc/apache2/sites-enabled/000-default.conf<span class="p">;</span>
+sudo<span class="w"> </span>ln<span class="w"> </span>-s<span class="w"> </span><span class="k">$(</span><span class="nb">pwd</span><span class="k">)</span>/specify7/specifyweb_apache.conf<span class="w"> </span>/etc/apache2/sites-enabled/<span class="p">;</span>
+sudo<span class="w"> </span>systemctl<span class="w"> </span>restart<span class="w"> </span>apache2.service<span class="p">;</span>
+<span class="c1">#sudo invoke-rc.d apache2 restart;</span>
+
+<span class="c1"># TLS/SSL</span>
+sudo<span class="w"> </span>certbot<span class="w"> </span>--nginx<span class="w"> </span>-d<span class="w"> </span>your_domain<span class="p">;</span>
+sudo<span class="w"> </span>ufw<span class="w"> </span>allow<span class="w"> </span><span class="s1">&#39;Nginx Full&#39;</span><span class="p">;</span>
+sudo<span class="w"> </span>ufw<span class="w"> </span>delete<span class="w"> </span>allow<span class="w"> </span><span class="s1">&#39;Nginx HTTP&#39;</span><span class="p">;</span>
+</pre></div>
+</div>
+<p>bash script for setting env varibales and specify7 setting configs:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="ch">#!/bin/bash</span>
+
+sed<span class="w"> </span>-i<span class="w"> </span><span class="s2">&quot;s/DATABASE_NAME = &#39;SpecifyDB&#39;/DATABASE_NAME = &#39;&#39;/g&quot;</span><span class="w"> </span>specifyweb/settings/specify_settings.py<span class="p">;</span>
+
+update_setting<span class="o">()</span><span class="w"> </span><span class="o">{</span>
+<span class="w">    </span><span class="nb">local</span><span class="w"> </span><span class="nv">setting_key</span><span class="o">=</span><span class="s2">&quot;</span><span class="nv">$1</span><span class="s2">&quot;</span>
+<span class="w">    </span><span class="nb">local</span><span class="w"> </span><span class="nv">setting_value</span><span class="o">=</span><span class="s2">&quot;</span><span class="nv">$2</span><span class="s2">&quot;</span>
+<span class="w">    </span><span class="nb">local</span><span class="w"> </span><span class="nv">file_path</span><span class="o">=</span><span class="s2">&quot;specifyweb/settings/specify_settings.py&quot;</span>
+
+<span class="w">    </span>sed<span class="w"> </span>-i<span class="w"> </span><span class="s2">&quot;s/</span><span class="si">${</span><span class="nv">setting_key</span><span class="si">}</span><span class="s2"> = &#39;&#39;/</span><span class="si">${</span><span class="nv">setting_key</span><span class="si">}</span><span class="s2"> = &#39;</span><span class="si">${</span><span class="nv">setting_value</span><span class="si">}</span><span class="s2">&#39;/g&quot;</span><span class="w"> </span><span class="s2">&quot;</span><span class="nv">$file_path</span><span class="s2">&quot;</span>
+<span class="o">}</span>
+
+cat<span class="w"> </span><span class="s">&lt;&lt;EOT &gt;&gt; ~/.bashrc</span>
+<span class="s">export DATABASE_HOST=specify-cloud-aurora-test-database-1-instance-1.cqvncffkwz9t.us-east-1.rds.amazonaws.com</span>
+<span class="s">export DATABASE_PORT=3306</span>
+<span class="s">export DATABASE_NAME=sp7demofish</span>
+<span class="s">export MASTER_NAME=master</span>
+<span class="s">export MASTER_PASSWORD=mastermaster</span>
+<span class="s">export WEB_ATTACHMENT_URL=https://assets1.specifycloud.org/web_asset_store.xml</span>
+<span class="s">export WEB_ATTACHMENT_KEY=tnhercbrhtktanehul.dukb</span>
+<span class="s">export WEB_ATTACHMENT_COLLECTION=sp7demofish</span>
+<span class="s">export REPORT_RUNNER_HOST=10.133.58.98</span>
+<span class="s">export REPORT_RUNNER_PORT=8080</span>
+<span class="s">EOT</span>
+
+<span class="nb">source</span><span class="w"> </span>~/.bashrc<span class="p">;</span>
+
+update_setting<span class="w"> </span><span class="s2">&quot;DATABASE_HOST&quot;</span><span class="w"> </span><span class="s2">&quot;</span><span class="nv">$DATABASE_HOST</span><span class="s2">&quot;</span>
+update_setting<span class="w"> </span><span class="s2">&quot;DATABASE_PORT&quot;</span><span class="w"> </span><span class="s2">&quot;</span><span class="nv">$DATABASE_PORT</span><span class="s2">&quot;</span>
+update_setting<span class="w"> </span><span class="s2">&quot;DATABASE_NAME&quot;</span><span class="w"> </span><span class="s2">&quot;</span><span class="nv">$DATABASE_NAME</span><span class="s2">&quot;</span>
+update_setting<span class="w"> </span><span class="s2">&quot;MASTER_NAME&quot;</span><span class="w"> </span><span class="s2">&quot;</span><span class="nv">$MASTER_NAME</span><span class="s2">&quot;</span>
+update_setting<span class="w"> </span><span class="s2">&quot;MASTER_PASSWORD&quot;</span><span class="w"> </span><span class="s2">&quot;</span><span class="nv">$MASTER_PASSWORD</span><span class="s2">&quot;</span>
+update_setting<span class="w"> </span><span class="s2">&quot;WEB_ATTACHMENT_URL&quot;</span><span class="w"> </span><span class="s2">&quot;</span><span class="nv">$WEB_ATTACHMENT_URL</span><span class="s2">&quot;</span>
+update_setting<span class="w"> </span><span class="s2">&quot;WEB_ATTACHMENT_KEY&quot;</span><span class="w"> </span><span class="s2">&quot;</span><span class="nv">$WEB_ATTACHMENT_KEY</span><span class="s2">&quot;</span>
+update_setting<span class="w"> </span><span class="s2">&quot;WEB_ATTACHMENT_COLLECTION&quot;</span><span class="w"> </span><span class="s2">&quot;</span><span class="nv">$WEB_ATTACHMENT_COLLECTION</span><span class="s2">&quot;</span>
+update_setting<span class="w"> </span><span class="s2">&quot;REPORT_RUNNER_HOST&quot;</span><span class="w"> </span><span class="s2">&quot;</span><span class="nv">$REPORT_RUNNER_HOST</span><span class="s2">&quot;</span>
+update_setting<span class="w"> </span><span class="s2">&quot;REPORT_RUNNER_PORT&quot;</span><span class="w"> </span><span class="s2">&quot;</span><span class="nv">$REPORT_RUNNER_PORT</span><span class="s2">&quot;</span>
+</pre></div>
+</div>
+<p>nginx.conf -&gt;</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>server {
+    listen 80;
+    server_name ec2-54-162-114-41.compute-1.amazonaws.com;
+    root /usr/share/nginx;
+    client_max_body_size 128M;
+
+    # serve static files directly
+    location /static/ {
+        #client_max_body_size 0;
+        root /volumes;
+        #rewrite ^/static/config/(.*)$ /specify6/config/$1 break;
+        #rewrite ^/static/depository/(.*)$ /static-files/depository/$1 break;
+        #rewrite ^/static/js/(.*)$ /webpack-output/$1 break;
+        #rewrite ^/static/(.*)$ /static-files/frontend-static/$1 break;
+        rewrite ^/static/config/(.*)$ /home/ubuntu/specify6.8.03/config/$1 break;
+        rewrite ^/static/depository/(.*)$ /home/ubuntu/static-files/depository/$1 break;
+        #rewrite ^/static/js/(.*)$ /webpack-output/$1 break;
+        rewrite ^/static/(.*)$ /static-files/frontend-static/$1 break;
+    }
+
+    # proxy these urls to the asset server
+    location ~ ^/(fileget|fileupload|filedelete|getmetadata|testkey|web_asset_store.xml) {
+        client_max_body_size 0;
+        resolver 127.0.0.11 valid=30s;
+        set $backend &quot;http://asset-server:8080&quot;;
+        proxy_pass $backend;
+        proxy_set_header Host $host;
+        proxy_set_header X-Real-IP $remote_addr;
+        proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
+    }
+
+    # proxy everything else to specify 7
+    location / {
+        client_max_body_size 400M;
+        client_body_buffer_size 400M;
+        client_body_timeout 120;
+        resolver 127.0.0.11 valid=30s;
+        set $backend &quot;http://specify7:8000&quot;;
+        proxy_pass $backend;
+        proxy_set_header Host $host;
+        proxy_set_header X-Real-IP $remote_addr;
+        proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
+    }
+}
+</pre></div>
+</div>
+<p>simple nginx.conf -&gt;</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">server</span> <span class="p">{</span>
+    <span class="n">listen</span> <span class="mi">80</span><span class="p">;</span>
+    <span class="n">server_name</span> <span class="n">ec2</span><span class="o">-</span><span class="mi">54</span><span class="o">-</span><span class="mi">162</span><span class="o">-</span><span class="mi">114</span><span class="o">-</span><span class="mf">41.</span><span class="n">compute</span><span class="o">-</span><span class="mf">1.</span><span class="n">amazonaws</span><span class="o">.</span><span class="n">com</span><span class="p">;</span>
+    <span class="n">location</span> <span class="o">/</span> <span class="p">{</span>
+        <span class="c1"># django running in uWSGI</span>
+        <span class="n">uwsgi_pass</span> <span class="n">unix</span><span class="p">:</span><span class="o">///</span><span class="n">run</span><span class="o">/</span><span class="n">uwsgi</span><span class="o">/</span><span class="n">app</span><span class="o">/</span><span class="n">django</span><span class="o">/</span><span class="n">socket</span><span class="p">;</span>
+        <span class="n">include</span> <span class="n">uwsgi_params</span><span class="p">;</span>
+        <span class="n">uwsgi_read_timeout</span> <span class="mi">300</span><span class="n">s</span><span class="p">;</span>
+        <span class="n">client_max_body_size</span> <span class="mi">32</span><span class="n">m</span><span class="p">;</span>
+    <span class="p">}</span>
+    <span class="n">location</span> <span class="o">/</span><span class="n">static</span><span class="o">/</span> <span class="p">{</span>
+       <span class="c1"># static files</span>
+       <span class="n">alias</span> <span class="o">/</span><span class="n">home</span><span class="o">/</span><span class="n">ubuntu</span><span class="o">/</span><span class="n">static</span><span class="o">/</span><span class="p">;</span> <span class="c1"># ending slash is required</span>
+    <span class="p">}</span>
+    <span class="n">location</span> <span class="o">/</span><span class="n">media</span><span class="o">/</span> <span class="p">{</span>
+        <span class="c1"># media files, uploaded by users</span>
+        <span class="n">alias</span> <span class="o">/</span><span class="n">home</span><span class="o">/</span><span class="n">ubuntu</span><span class="o">/</span><span class="n">media</span><span class="o">/</span><span class="p">;</span> <span class="c1"># ending slash is required</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+
+</pre></div>
+</div>
+<p>specifyweb_apache.conf -&gt;</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">&lt;</span><span class="n">VirtualHost</span> <span class="o">*</span><span class="p">:</span><span class="mi">80</span><span class="o">&gt;</span>
+        <span class="c1"># Grant access to the Specify directories.</span>
+        <span class="o">&lt;</span><span class="n">Directory</span> <span class="o">/</span><span class="n">home</span><span class="o">/</span><span class="n">ubuntu</span><span class="o">/</span><span class="n">specify_depository</span><span class="o">&gt;</span>
+	        <span class="n">Options</span> <span class="o">+</span><span class="n">FollowSymLinks</span> <span class="o">-</span><span class="n">Indexes</span> <span class="o">-</span><span class="n">MultiViews</span>
+            <span class="n">Require</span> <span class="nb">all</span> <span class="n">granted</span>
+        <span class="o">&lt;/</span><span class="n">Directory</span><span class="o">&gt;</span>
+
+        <span class="o">&lt;</span><span class="n">Directory</span> <span class="o">/</span><span class="n">home</span><span class="o">/</span><span class="n">ubuntu</span><span class="o">/</span><span class="n">web_upload_logs</span><span class="o">&gt;</span>
+	        <span class="n">Options</span> <span class="o">+</span><span class="n">FollowSymLinks</span> <span class="o">-</span><span class="n">Indexes</span> <span class="o">-</span><span class="n">MultiViews</span>
+            <span class="n">Require</span> <span class="nb">all</span> <span class="n">granted</span>
+        <span class="o">&lt;/</span><span class="n">Directory</span><span class="o">&gt;</span>
+
+        <span class="o">&lt;</span><span class="n">Directory</span> <span class="o">/</span><span class="n">opt</span><span class="o">/</span><span class="n">Specify</span><span class="o">/</span><span class="n">config</span><span class="o">&gt;</span>
+	        <span class="n">Options</span> <span class="o">+</span><span class="n">FollowSymLinks</span> <span class="o">-</span><span class="n">Indexes</span> <span class="o">-</span><span class="n">MultiViews</span>
+            <span class="n">Require</span> <span class="nb">all</span> <span class="n">granted</span>
+        <span class="o">&lt;/</span><span class="n">Directory</span><span class="o">&gt;</span>
+
+        <span class="o">&lt;</span><span class="n">Directory</span> <span class="o">/</span><span class="n">opt</span><span class="o">/</span><span class="n">specify7</span><span class="o">&gt;</span>
+	        <span class="n">Options</span> <span class="o">+</span><span class="n">FollowSymLinks</span> <span class="o">-</span><span class="n">Indexes</span> <span class="o">-</span><span class="n">MultiViews</span>
+            <span class="n">Require</span> <span class="nb">all</span> <span class="n">granted</span>
+        <span class="o">&lt;/</span><span class="n">Directory</span><span class="o">&gt;</span>
+
+        <span class="c1"># Alias the following to the location set in specifyweb/settings/local_specify_settings.py</span>
+        <span class="n">Alias</span> <span class="o">/</span><span class="n">static</span><span class="o">/</span><span class="n">depository</span> <span class="o">/</span><span class="n">home</span><span class="o">/</span><span class="n">ubuntu</span><span class="o">/</span><span class="n">specify_depository</span>
+
+        <span class="c1"># Alias the following to the Specify6 installation + /config</span>
+        <span class="n">Alias</span> <span class="o">/</span><span class="n">static</span><span class="o">/</span><span class="n">config</span>    <span class="o">/</span><span class="n">opt</span><span class="o">/</span><span class="n">Specify</span><span class="o">/</span><span class="n">config</span>
+
+        <span class="c1"># Alias the following to the Specify7 installation + /specifyweb/frontend/static</span>
+        <span class="n">Alias</span> <span class="o">/</span><span class="n">static</span>           <span class="o">/</span><span class="n">opt</span><span class="o">/</span><span class="n">specify7</span><span class="o">/</span><span class="n">specifyweb</span><span class="o">/</span><span class="n">frontend</span><span class="o">/</span><span class="n">static</span>
+
+        <span class="c1"># Set the user and group you want the Specify 7 python process to run as.</span>
+        <span class="c1"># The python-home points to the location of the python libraries in the</span>
+        <span class="c1"># virtualenv you established. If not using a virtualenv, leave off the</span>
+        <span class="c1"># python-home parameter.</span>
+        <span class="n">WSGIDaemonProcess</span> <span class="n">ec2</span><span class="o">-</span><span class="mi">3</span><span class="o">-</span><span class="mi">87</span><span class="o">-</span><span class="mi">116</span><span class="o">-</span><span class="mf">210.</span><span class="n">compute</span><span class="o">-</span><span class="mf">1.</span><span class="n">amazonaws</span><span class="o">.</span><span class="n">com</span> <span class="n">user</span><span class="o">=</span><span class="n">ubuntu</span> <span class="n">group</span><span class="o">=</span><span class="n">ubuntu</span> <span class="n">python</span><span class="o">-</span><span class="n">home</span><span class="o">=/</span><span class="n">opt</span><span class="o">/</span><span class="n">specify7</span><span class="o">/</span><span class="n">ve</span>
+        <span class="n">WSGIProcessGroup</span> <span class="n">ec2</span><span class="o">-</span><span class="mi">3</span><span class="o">-</span><span class="mi">87</span><span class="o">-</span><span class="mi">116</span><span class="o">-</span><span class="mf">210.</span><span class="n">compute</span><span class="o">-</span><span class="mf">1.</span><span class="n">amazonaws</span><span class="o">.</span><span class="n">com</span>
+
+        <span class="c1"># Alias the following to the Specify7 installation + /specifyweb.wsgi</span>
+        <span class="n">WSGIScriptAlias</span> <span class="o">/</span> <span class="o">/</span><span class="n">opt</span><span class="o">/</span><span class="n">specify7</span><span class="o">/</span><span class="n">specifyweb</span><span class="o">.</span><span class="n">wsgi</span>
+
+        <span class="n">ErrorLog</span> <span class="o">/</span><span class="n">var</span><span class="o">/</span><span class="n">log</span><span class="o">/</span><span class="n">apache2</span><span class="o">/</span><span class="n">error</span><span class="o">.</span><span class="n">log</span>
+        <span class="c1"># # Possible values include: debug, info, notice, warn, error, crit,</span>
+        <span class="c1"># # alert, emerg.</span>
+        <span class="c1"># LogLevel warn</span>
+
+        <span class="n">CustomLog</span> <span class="o">/</span><span class="n">var</span><span class="o">/</span><span class="n">log</span><span class="o">/</span><span class="n">apache2</span><span class="o">/</span><span class="n">access</span><span class="o">.</span><span class="n">log</span> <span class="n">combined</span>
+<span class="o">&lt;/</span><span class="n">VirtualHost</span><span class="o">&gt;</span>
+</pre></div>
+</div>
+<p>default apache</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>&lt;VirtualHost *:80&gt;
+        # The ServerName directive sets the request scheme, hostname and port that
+        # the server uses to identify itself. This is used when creating
+        # redirection URLs. In the context of virtual hosts, the ServerName
+        # specifies what hostname must appear in the request&#39;s Host: header to
+        # match this virtual host. For the default virtual host (this file) this
+        # value is not decisive as it is used as a last resort host regardless.
+        # However, you must set it for any further virtual host explicitly.
+        #ServerName www.example.com
+
+        ServerAdmin webmaster@localhost
+        DocumentRoot /var/www/html
+
+        # Available loglevels: trace8, ..., trace1, debug, info, notice, warn,
+        # error, crit, alert, emerg.
+        # It is also possible to configure the loglevel for particular
+        # modules, e.g.
+        #LogLevel info ssl:warn
+
+        ErrorLog ${APACHE_LOG_DIR}/error.log
+        CustomLog ${APACHE_LOG_DIR}/access.log combined
+
+        # For most configuration files from conf-available/, which are
+        # enabled or disabled at a global level, it is possible to
+        # include a line for only one particular virtual host. For example the
+        # following line enables the CGI configuration for this host only
+        # after it has been globally disabled with &quot;a2disconf&quot;.
+        #Include conf-available/serve-cgi-bin.conf
+&lt;/VirtualHost&gt;
+</pre></div>
+</div>
+<p>Webpack notes:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>webpack<span class="w"> </span><span class="m">5</span>.73.0<span class="w"> </span>compiled<span class="w"> </span>with<span class="w"> </span><span class="m">2</span><span class="w"> </span>warnings<span class="w"> </span><span class="k">in</span><span class="w"> </span><span class="m">104175</span><span class="w"> </span>ms
+make<span class="o">[</span><span class="m">1</span><span class="o">]</span>:<span class="w"> </span>Leaving<span class="w"> </span>directory<span class="w"> </span><span class="s1">&#39;/home/ubuntu/specify7/specifyweb/frontend/js_src&#39;</span>
+</pre></div>
+</div>
+<p>spcloud nginx config notes:
+<code class="docutils literal notranslate"><span class="pre">rewrite</span> <span class="pre">^/static/depository/(.*)$</span> <span class="pre">/static-files-sp7demofish-eu/depository/$1</span> <span class="pre">break;</span></code>
+check out /static-files-sp7demofish-eu/depository/
+example from spcloud nginx.conf using http -&gt;</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>server {
+    listen 80;
+    server_name cryoarks-test.*;
+
+    # The LetsEncrypt pass-though.
+    location /.well-known/ {
+             root /var/www/cryoarks-test/;
+    }
+
+
+
+    root /usr/share/nginx;
+
+    location /static/ {
+        root /volumes;
+        rewrite ^/static/config/(.*)$ /specify6801/config/$1 break;
+        rewrite ^/static/depository/(.*)$ /static-files-cryoarks-test/depository/$1 break;
+        rewrite ^/static/(.*)$ /static-files-cryoarks-test/frontend-static/$1 break;
+    }
+
+    location / {
+        resolver 127.0.0.11 valid=30s;
+        set $backend &quot;http://cryoarks-test:8000&quot;;
+        proxy_pass $backend;
+        proxy_set_header Host $host;
+        proxy_set_header X-Real-IP $remote_addr;
+        proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
+        proxy_set_header X-Forwarded-Proto $scheme;
+        proxy_read_timeout 600s;
+        client_max_body_size 0;
+    }
+}
+</pre></div>
+</div>
+<p>then edited for aws ec2 web server -&gt;</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>server {
+    listen 80;
+    server_name ec2-54-162-114-41.compute-1.amazonaws.com;
+
+    # The LetsEncrypt pass-though.
+    #location /.well-known/ {
+    #         root /var/www/cryoarks-test/;
+    #}
+
+    root /usr/share/nginx;
+
+    location /static/ {
+        root /volumes;
+        rewrite ^/static/config/(.*)$ /specify6803/config/$1 break;
+        rewrite ^/static/depository/(.*)$ /static-files-cryoarks-test/depository/$1 break;
+        rewrite ^/static/(.*)$ /static-files-cryoarks-test/frontend-static/$1 break;
+    }
+
+    location / {
+        resolver 127.0.0.11 valid=30s;
+        set $backend &quot;http://cryoarks-test:8000&quot;;
+        proxy_pass $backend;
+        proxy_set_header Host $host;
+        proxy_set_header X-Real-IP $remote_addr;
+        proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
+        proxy_set_header X-Forwarded-Proto $scheme;
+        proxy_read_timeout 600s;
+        client_max_body_size 0;
+    }
+}
+</pre></div>
+</div>
+
+
+           </div>
+          </div>
+          <footer>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2024, Specify Team.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

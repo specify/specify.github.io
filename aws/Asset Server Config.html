@@ -1,0 +1,291 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" data-content_root="../">
+<head>
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>&lt;no title&gt; &mdash; Specify Developer Documentation  documentation</title>
+      <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=80d5e7a1" />
+      <link rel="stylesheet" type="text/css" href="../_static/css/theme.css?v=19f00094" />
+
+  
+  <!--[if lt IE 9]>
+    <script src="../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script src="../_static/jquery.js?v=5d32c60e"></script>
+        <script src="../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+        <script src="../_static/documentation_options.js?v=5929fcd5"></script>
+        <script src="../_static/doctools.js?v=888ff710"></script>
+        <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="../index.html" class="icon icon-home">
+            Specify Developer Documentation
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <!-- Local TOC -->
+              <div class="local-toc"><ul class="simple">
+</ul>
+</div>
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">Specify Developer Documentation</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../index.html" class="icon icon-home" aria-label="Home"></a></li>
+      <li class="breadcrumb-item active">&lt;no title&gt;</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="../_sources/aws/Asset Server Config.md.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <p>Here is an asset server configuration example with the latest image <code class="docutils literal notranslate"><span class="pre">specifyconsortium/specify-asset-service:connection_fix</span></code>.
+I spun up a server with the following config and got it working <code class="docutils literal notranslate"><span class="pre">assets-docker.specifycloud.org/web_asset_store.xml</span></code>
+Make sure to configure your dns record to the IP address of your server.</p>
+<p>docker-compose.yml -&gt;</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">version</span><span class="p">:</span> <span class="s1">&#39;3.7&#39;</span>
+<span class="n">services</span><span class="p">:</span>
+  <span class="n">nginx</span><span class="p">:</span>
+    <span class="n">image</span><span class="p">:</span> <span class="n">nginx</span><span class="p">:</span><span class="n">alpine</span>
+    <span class="n">ports</span><span class="p">:</span>
+      <span class="o">-</span> <span class="s2">&quot;80:80&quot;</span>
+
+    <span class="n">volumes</span><span class="p">:</span>
+      <span class="o">-</span> <span class="s2">&quot;./nginx.conf:/etc/nginx/conf.d/default.conf:ro&quot;</span>
+
+  <span class="n">asset</span><span class="o">-</span><span class="n">server</span><span class="p">:</span>
+    <span class="n">restart</span><span class="p">:</span> <span class="n">unless</span><span class="o">-</span><span class="n">stopped</span>
+    <span class="n">image</span><span class="p">:</span> <span class="n">specifyconsortium</span><span class="o">/</span><span class="n">specify</span><span class="o">-</span><span class="n">asset</span><span class="o">-</span><span class="n">service</span><span class="p">:</span><span class="n">connection_fix</span>
+    <span class="n">init</span><span class="p">:</span> <span class="n">true</span>
+    <span class="n">volumes</span><span class="p">:</span>
+      <span class="c1"># Store all attachments outside the container, in a separate volume</span>
+      <span class="c1"># - &quot;attachments:/home/specify/attachments&quot;</span>
+      <span class="o">-</span> <span class="s2">&quot;/home/ubuntu/attachments:/home/specify/attachments&quot;</span>
+    <span class="n">environment</span><span class="p">:</span>
+      <span class="c1"># Replace this with the URL at which asset server would be publicly available</span>
+      <span class="n">SERVER_NAME</span><span class="p">:</span> <span class="n">assets</span><span class="o">-</span><span class="n">docker</span><span class="o">.</span><span class="n">specifycloud</span><span class="o">.</span><span class="n">org</span>
+      <span class="n">SERVER_PORT</span><span class="p">:</span> <span class="mi">8080</span>
+      <span class="c1"># SERVER: paste</span>
+      <span class="n">ATTACHMENT_KEY</span><span class="p">:</span> <span class="n">qwertyasdfghzxcvbnlmnop</span>
+      <span class="n">DEBUG_MODE</span><span class="p">:</span> <span class="n">false</span>
+      <span class="n">COLLECTION_DIRS</span><span class="p">:</span> <span class="o">&gt;</span>
+        <span class="p">{</span>
+          <span class="s1">&#39;sp7demofish&#39;</span><span class="p">:</span><span class="s1">&#39;sp7demofish&#39;</span><span class="p">,</span>
+          <span class="s1">&#39;KUFishvoucher&#39;</span><span class="p">:</span><span class="s1">&#39;KUFishvoucher&#39;</span><span class="p">,</span>
+          <span class="s1">&#39;KUFishtissue&#39;</span><span class="p">:</span><span class="s1">&#39;KUFishtissue&#39;</span>
+        <span class="p">}</span>
+      <span class="n">BASE_DIR</span><span class="p">:</span> <span class="o">/</span><span class="n">home</span><span class="o">/</span><span class="n">ubuntu</span><span class="o">/</span><span class="n">attachments</span>
+
+<span class="n">volumes</span><span class="p">:</span>
+  <span class="n">attachments</span><span class="p">:</span> <span class="c1"># the asset-servers attachment files</span>
+</pre></div>
+</div>
+<p>nginx.conf -&gt;</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">server</span> <span class="p">{</span>
+    <span class="n">listen</span> <span class="mi">80</span> <span class="n">default_server</span><span class="p">;</span>
+    <span class="n">server_name</span> <span class="n">assets</span><span class="o">-</span><span class="n">docker</span><span class="o">.</span><span class="n">specifycloud</span><span class="o">.</span><span class="n">org</span><span class="p">;</span>
+    <span class="n">client_max_body_size</span> <span class="mi">0</span><span class="p">;</span>
+
+    <span class="n">location</span> <span class="o">/.</span><span class="n">well</span><span class="o">-</span><span class="n">known</span><span class="o">/</span> <span class="p">{</span>
+        <span class="n">root</span> <span class="o">/</span><span class="n">var</span><span class="o">/</span><span class="n">www</span><span class="o">/</span><span class="n">assets</span><span class="o">-</span><span class="n">docker</span><span class="o">/</span><span class="p">;</span>
+    <span class="p">}</span>
+
+    <span class="n">location</span> <span class="o">=</span> <span class="o">/</span><span class="n">web_asset_store</span><span class="o">.</span><span class="n">xml</span> <span class="p">{</span>
+        <span class="n">proxy_pass</span> <span class="n">http</span><span class="p">:</span><span class="o">//</span><span class="n">asset</span><span class="o">-</span><span class="n">server</span><span class="p">:</span><span class="mi">8080</span><span class="o">/</span><span class="n">web_asset_store</span><span class="o">.</span><span class="n">xml</span><span class="p">;</span>
+        <span class="n">sub_filter</span> <span class="s1">&#39;http://assets-docker.specifycloud.org:8080&#39;</span> <span class="s1">&#39;http://assets-docker.specifycloud.org&#39;</span><span class="p">;</span>
+        <span class="n">sub_filter_once</span> <span class="n">off</span><span class="p">;</span>
+        <span class="n">sub_filter_types</span> <span class="n">text</span><span class="o">/</span><span class="n">xml</span><span class="p">;</span>
+    <span class="p">}</span>
+
+    <span class="n">location</span> <span class="o">/</span> <span class="p">{</span>
+        <span class="n">proxy_pass</span> <span class="n">http</span><span class="p">:</span><span class="o">//</span><span class="n">asset</span><span class="o">-</span><span class="n">server</span><span class="p">:</span><span class="mi">8080</span><span class="o">/</span><span class="p">;</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p>Then to get the asset server working with https and connected with Specify7, I created certificates with certbot, and then used the follow config</p>
+<p>certbot bash commands -&gt;</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="c1"># Make sure the nginx server is running</span>
+<span class="n">sudo</span> <span class="n">mkdir</span> <span class="o">/</span><span class="n">var</span><span class="o">/</span><span class="n">www</span><span class="p">;</span>
+<span class="n">sudo</span> <span class="n">mkdir</span> <span class="o">/</span><span class="n">var</span><span class="o">/</span><span class="n">www</span><span class="o">/</span><span class="n">assets</span><span class="o">-</span><span class="n">docker</span><span class="p">;</span>
+<span class="n">sudo</span> <span class="n">certbot</span> <span class="o">--</span><span class="n">webroot</span> <span class="o">-</span><span class="n">w</span> <span class="o">/</span><span class="n">var</span><span class="o">/</span><span class="n">www</span><span class="o">/</span><span class="n">assets</span><span class="o">-</span><span class="n">docker</span> <span class="o">-</span><span class="n">d</span> <span class="n">assets</span><span class="o">-</span><span class="n">docker</span><span class="o">.</span><span class="n">specifycloud</span><span class="o">.</span><span class="n">org</span> <span class="n">certonly</span><span class="p">;</span>
+</pre></div>
+</div>
+<p>docker-compose.yml -&gt;</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">version</span><span class="p">:</span> <span class="s1">&#39;3.7&#39;</span>
+<span class="n">services</span><span class="p">:</span>
+  <span class="n">nginx</span><span class="p">:</span>
+    <span class="n">image</span><span class="p">:</span> <span class="n">nginx</span><span class="p">:</span><span class="n">alpine</span>
+    <span class="n">ports</span><span class="p">:</span>
+      <span class="o">-</span> <span class="s2">&quot;80:80&quot;</span>
+      <span class="o">-</span> <span class="s2">&quot;443:443&quot;</span>
+
+    <span class="n">volumes</span><span class="p">:</span>
+      <span class="o">-</span> <span class="s2">&quot;./nginx.conf:/etc/nginx/conf.d/default.conf:ro&quot;</span>
+
+  <span class="n">asset</span><span class="o">-</span><span class="n">server</span><span class="p">:</span>
+    <span class="n">restart</span><span class="p">:</span> <span class="n">unless</span><span class="o">-</span><span class="n">stopped</span>
+    <span class="n">image</span><span class="p">:</span> <span class="n">specifyconsortium</span><span class="o">/</span><span class="n">specify</span><span class="o">-</span><span class="n">asset</span><span class="o">-</span><span class="n">service</span><span class="p">:</span><span class="n">connection_fix</span>
+    <span class="n">init</span><span class="p">:</span> <span class="n">true</span>
+    <span class="n">volumes</span><span class="p">:</span>
+      <span class="c1"># Store all attachments outside the container, in a separate volume</span>
+      <span class="c1"># - &quot;attachments:/home/specify/attachments&quot;</span>
+      <span class="o">-</span> <span class="s2">&quot;/home/ubuntu/attachments:/home/specify/attachments&quot;</span>
+    <span class="n">environment</span><span class="p">:</span>
+      <span class="c1"># Replace this with the URL at which asset server would be publicly available</span>
+      <span class="n">SERVER_NAME</span><span class="p">:</span> <span class="n">assets</span><span class="o">-</span><span class="n">docker</span><span class="o">.</span><span class="n">specifycloud</span><span class="o">.</span><span class="n">org</span>
+      <span class="n">SERVER_PORT</span><span class="p">:</span> <span class="mi">8080</span>
+      <span class="c1"># SERVER: paste</span>
+      <span class="n">ATTACHMENT_KEY</span><span class="p">:</span> <span class="n">qwertyasdfghzxcvbnlmnop</span>
+      <span class="n">DEBUG_MODE</span><span class="p">:</span> <span class="n">false</span>
+      <span class="n">HTTPS</span><span class="p">:</span> <span class="n">true</span>
+      <span class="n">COLLECTION_DIRS</span><span class="p">:</span> <span class="o">&gt;</span>
+        <span class="p">{</span>
+          <span class="s1">&#39;sp7demofish&#39;</span><span class="p">:</span><span class="s1">&#39;sp7demofish&#39;</span><span class="p">,</span>
+          <span class="s1">&#39;KUFishvoucher&#39;</span><span class="p">:</span><span class="s1">&#39;KUFishvoucher&#39;</span><span class="p">,</span>
+          <span class="s1">&#39;KUFishtissue&#39;</span><span class="p">:</span><span class="s1">&#39;KUFishtissue&#39;</span>
+        <span class="p">}</span>
+      <span class="n">BASE_DIR</span><span class="p">:</span> <span class="o">/</span><span class="n">home</span><span class="o">/</span><span class="n">ubuntu</span><span class="o">/</span><span class="n">attachments</span>
+
+<span class="n">volumes</span><span class="p">:</span>
+  <span class="n">attachments</span><span class="p">:</span> <span class="c1"># the asset-servers attachment files</span>
+</pre></div>
+</div>
+<p>nginx.conf -&gt;</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">server</span> <span class="p">{</span>
+    <span class="n">listen</span> <span class="mi">80</span> <span class="n">default_server</span><span class="p">;</span>
+    <span class="n">server_name</span> <span class="n">assets</span><span class="o">-</span><span class="n">docker</span><span class="o">.</span><span class="n">specifycloud</span><span class="o">.</span><span class="n">org</span><span class="p">;</span>
+    <span class="n">client_max_body_size</span> <span class="mi">0</span><span class="p">;</span>
+
+    <span class="n">location</span> <span class="o">/.</span><span class="n">well</span><span class="o">-</span><span class="n">known</span><span class="o">/</span> <span class="p">{</span>
+        <span class="n">root</span> <span class="o">/</span><span class="n">var</span><span class="o">/</span><span class="n">www</span><span class="o">/</span><span class="n">assets</span><span class="o">-</span><span class="n">docker</span><span class="o">/</span><span class="p">;</span>
+    <span class="p">}</span>
+
+    <span class="n">location</span> <span class="o">=</span> <span class="o">/</span><span class="n">web_asset_store</span><span class="o">.</span><span class="n">xml</span> <span class="p">{</span>
+        <span class="n">proxy_pass</span> <span class="n">http</span><span class="p">:</span><span class="o">//</span><span class="n">asset</span><span class="o">-</span><span class="n">server</span><span class="p">:</span><span class="mi">8080</span><span class="o">/</span><span class="n">web_asset_store</span><span class="o">.</span><span class="n">xml</span><span class="p">;</span>
+        <span class="n">sub_filter</span> <span class="s1">&#39;http://assets-docker.specifycloud.org:8080&#39;</span> <span class="s1">&#39;http://assets-docker.specifycloud.org&#39;</span><span class="p">;</span>
+        <span class="n">sub_filter_once</span> <span class="n">off</span><span class="p">;</span>
+        <span class="n">sub_filter_types</span> <span class="n">text</span><span class="o">/</span><span class="n">xml</span><span class="p">;</span>
+    <span class="p">}</span>
+
+    <span class="n">location</span> <span class="o">/</span> <span class="p">{</span>
+        <span class="n">proxy_pass</span> <span class="n">http</span><span class="p">:</span><span class="o">//</span><span class="n">asset</span><span class="o">-</span><span class="n">server</span><span class="p">:</span><span class="mi">8080</span><span class="o">/</span><span class="p">;</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+
+<span class="n">server</span> <span class="p">{</span>
+       <span class="c1"># This stanza defines the HTTPS end point.</span>
+       <span class="n">listen</span> <span class="mi">443</span> <span class="n">ssl</span> <span class="n">default_server</span><span class="p">;</span>
+       <span class="n">server_name</span> <span class="n">assets</span><span class="o">-</span><span class="n">docker</span><span class="o">.</span><span class="n">specifycloud</span><span class="o">.</span><span class="n">org</span><span class="p">;</span>
+       <span class="n">client_max_body_size</span> <span class="mi">0</span><span class="p">;</span>
+
+       <span class="n">ssl_certificate</span> <span class="o">/</span><span class="n">etc</span><span class="o">/</span><span class="n">letsencrypt</span><span class="o">/</span><span class="n">live</span><span class="o">/</span><span class="n">assets</span><span class="o">-</span><span class="n">docker</span><span class="o">.</span><span class="n">specifycloud</span><span class="o">.</span><span class="n">org</span><span class="o">/</span><span class="n">fullchain</span><span class="o">.</span><span class="n">pem</span><span class="p">;</span>
+       <span class="n">ssl_certificate_key</span> <span class="o">/</span><span class="n">etc</span><span class="o">/</span><span class="n">letsencrypt</span><span class="o">/</span><span class="n">live</span><span class="o">/</span><span class="n">assets</span><span class="o">-</span><span class="n">docker</span><span class="o">.</span><span class="n">specifycloud</span><span class="o">.</span><span class="n">org</span><span class="o">/</span><span class="n">privkey</span><span class="o">.</span><span class="n">pem</span><span class="p">;</span>
+
+       <span class="c1"># from https://cipherli.st/</span>
+       <span class="c1"># and https://raymii.org/s/tutorials/Strong_SSL_Security_On_nginx.html</span>
+
+       <span class="n">ssl_protocols</span> <span class="n">TLSv1</span> <span class="n">TLSv1</span><span class="mf">.1</span> <span class="n">TLSv1</span><span class="mf">.2</span><span class="p">;</span>
+       <span class="n">ssl_prefer_server_ciphers</span> <span class="n">on</span><span class="p">;</span>
+       <span class="n">ssl_ciphers</span> <span class="s2">&quot;EECDH+AESGCM:EDH+AESGCM:AES256+EECDH:AES256+EDH&quot;</span><span class="p">;</span>
+       <span class="n">ssl_ecdh_curve</span> <span class="n">secp384r1</span><span class="p">;</span>
+       <span class="n">ssl_session_cache</span> <span class="n">shared</span><span class="p">:</span><span class="n">SSL</span><span class="p">:</span><span class="mi">10</span><span class="n">m</span><span class="p">;</span>
+       <span class="n">ssl_session_tickets</span> <span class="n">off</span><span class="p">;</span>
+       <span class="n">ssl_stapling</span> <span class="n">on</span><span class="p">;</span>
+       <span class="n">ssl_stapling_verify</span> <span class="n">on</span><span class="p">;</span>
+       <span class="n">resolver</span> <span class="mf">8.8.8.8</span> <span class="mf">8.8.4.4</span> <span class="n">valid</span><span class="o">=</span><span class="mi">300</span><span class="n">s</span><span class="p">;</span>
+       <span class="n">resolver_timeout</span> <span class="mi">5</span><span class="n">s</span><span class="p">;</span>
+       <span class="c1"># Disable preloading HSTS for now.  You can use the commented out header line that includes</span>
+       <span class="c1"># the &quot;preload&quot; directive if you understand the implications.</span>
+       <span class="c1">#add_header Strict-Transport-Security &quot;max-age=63072000; includeSubdomains; preload&quot;;</span>
+       <span class="n">add_header</span> <span class="n">Strict</span><span class="o">-</span><span class="n">Transport</span><span class="o">-</span><span class="n">Security</span> <span class="s2">&quot;max-age=63072000; includeSubdomains&quot;</span><span class="p">;</span>
+       <span class="n">add_header</span> <span class="n">X</span><span class="o">-</span><span class="n">Frame</span><span class="o">-</span><span class="n">Options</span> <span class="n">DENY</span><span class="p">;</span>
+       <span class="n">add_header</span> <span class="n">X</span><span class="o">-</span><span class="n">Content</span><span class="o">-</span><span class="n">Type</span><span class="o">-</span><span class="n">Options</span> <span class="n">nosniff</span><span class="p">;</span>
+
+       <span class="n">ssl_dhparam</span> <span class="o">/</span><span class="n">etc</span><span class="o">/</span><span class="n">ssl</span><span class="o">/</span><span class="n">certs</span><span class="o">/</span><span class="n">dhparam</span><span class="o">.</span><span class="n">pem</span><span class="p">;</span>
+
+       <span class="c1"># The LetsEncrypt pass-though. I&#39;m not sure if this is needed</span>
+       <span class="c1"># on HTTPS side, but I&#39;m including it just in case.</span>
+       <span class="n">location</span> <span class="o">/.</span><span class="n">well</span><span class="o">-</span><span class="n">known</span><span class="o">/</span> <span class="p">{</span>
+                <span class="n">root</span> <span class="o">/</span><span class="n">var</span><span class="o">/</span><span class="n">www</span><span class="o">/</span><span class="n">assets</span><span class="o">-</span><span class="n">docker</span><span class="o">/</span><span class="p">;</span>
+       <span class="p">}</span>
+
+       <span class="c1"># This is the same as the above, except the links get rewritten</span>
+       <span class="c1"># to use HTTPS in addition to changing the port.</span>
+       <span class="n">location</span> <span class="o">=</span> <span class="o">/</span><span class="n">web_asset_store</span><span class="o">.</span><span class="n">xml</span> <span class="p">{</span>
+                <span class="n">proxy_pass</span> <span class="n">http</span><span class="p">:</span><span class="o">//</span><span class="n">asset</span><span class="o">-</span><span class="n">server</span><span class="p">:</span><span class="mi">8080</span><span class="o">/</span><span class="n">web_asset_store</span><span class="o">.</span><span class="n">xml</span><span class="p">;</span>
+                <span class="n">sub_filter</span> <span class="s1">&#39;http://assets-docker.specifycloud.org:8080&#39;</span> <span class="s1">&#39;https://assets-docker.specifycloud.org&#39;</span><span class="p">;</span>
+                <span class="n">sub_filter_once</span> <span class="n">off</span><span class="p">;</span>
+                <span class="n">sub_filter_types</span> <span class="n">text</span><span class="o">/</span><span class="n">xml</span><span class="p">;</span>
+       <span class="p">}</span>
+
+       <span class="c1"># Everything else is just passed through.</span>
+       <span class="n">location</span> <span class="o">/</span> <span class="p">{</span>
+                <span class="n">proxy_pass</span> <span class="n">http</span><span class="p">:</span><span class="o">//</span><span class="n">asset</span><span class="o">-</span><span class="n">server</span><span class="p">:</span><span class="mi">8080</span><span class="o">/</span><span class="p">;</span>
+       <span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p>Make sure to set <code class="docutils literal notranslate"><span class="pre">-</span> <span class="pre">ASSET_SERVER_URL=https://assets-docker.specifycloud.org/web_asset_store.xml</span></code> in your specify7 and specify7-worker docker containers</p>
+<p>Let me know if the new image and config works for you!</p>
+
+
+           </div>
+          </div>
+          <footer>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2024, Specify Team.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

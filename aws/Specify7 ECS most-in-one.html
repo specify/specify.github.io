@@ -1,0 +1,313 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" data-content_root="../">
+<head>
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Image &mdash; Specify Developer Documentation  documentation</title>
+      <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=80d5e7a1" />
+      <link rel="stylesheet" type="text/css" href="../_static/css/theme.css?v=19f00094" />
+
+  
+  <!--[if lt IE 9]>
+    <script src="../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script src="../_static/jquery.js?v=5d32c60e"></script>
+        <script src="../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+        <script src="../_static/documentation_options.js?v=5929fcd5"></script>
+        <script src="../_static/doctools.js?v=888ff710"></script>
+        <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="../index.html" class="icon icon-home">
+            Specify Developer Documentation
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <!-- Local TOC -->
+              <div class="local-toc"><ul>
+<li><a class="reference internal" href="#">Image</a></li>
+</ul>
+</div>
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">Specify Developer Documentation</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../index.html" class="icon icon-home" aria-label="Home"></a></li>
+      <li class="breadcrumb-item active">Image</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="../_sources/aws/Specify7 ECS most-in-one.md.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="image">
+<h1>Image<a class="headerlink" href="#image" title="Link to this heading"></a></h1>
+<p>create a one client pod with specify7, specify7-worker, webpack, nginx, and maybe specify6
+excludes mariadb, redis, asset-server</p>
+<div class="highlight-Dockerfile notranslate"><div class="highlight"><pre><span></span><span class="k">FROM</span><span class="w"> </span><span class="s">arm64v8/ubuntu:20.04</span>
+
+<span class="c"># Set environment variables</span>
+<span class="k">ENV</span><span class="w"> </span><span class="nv">DATABASE_HOST</span><span class="o">=</span>localhost
+<span class="k">ENV</span><span class="w"> </span><span class="nv">DATABASE_PORT</span><span class="o">=</span><span class="m">3306</span>
+<span class="k">ENV</span><span class="w"> </span><span class="nv">MASTER_NAME</span><span class="o">=</span>master
+<span class="k">ENV</span><span class="w"> </span><span class="nv">MASTER_PASSWORD</span><span class="o">=</span>master
+<span class="k">ENV</span><span class="w"> </span><span class="nv">SECRET_KEY</span><span class="o">=</span>bogus
+<span class="k">ENV</span><span class="w"> </span><span class="nv">ASSET_SERVER_URL</span><span class="o">=</span>https://assets-test.specifycloud.org/web_asset_store.xml
+<span class="k">ENV</span><span class="w"> </span><span class="nv">ASSET_SERVER_KEY</span><span class="o">=</span>tnhercbrhtktanehul.dukb
+<span class="k">ENV</span><span class="w"> </span><span class="nv">REPORT_RUNNER_HOST</span><span class="o">=</span>report-runner
+<span class="k">ENV</span><span class="w"> </span><span class="nv">REPORT_RUNNER_PORT</span><span class="o">=</span><span class="m">8080</span>
+<span class="k">ENV</span><span class="w"> </span><span class="nv">CELERY_BROKER_URL</span><span class="o">=</span>redis://redis/0
+<span class="k">ENV</span><span class="w"> </span><span class="nv">CELERY_RESULT_BACKEND</span><span class="o">=</span>redis://redis/1
+<span class="k">ENV</span><span class="w"> </span><span class="nv">LOG_LEVEL</span><span class="o">=</span>WARNING
+<span class="k">ENV</span><span class="w"> </span><span class="nv">SP7_DEBUG</span><span class="o">=</span><span class="nb">true</span>
+<span class="k">ENV</span><span class="w"> </span><span class="nv">SP6_VERSION</span><span class="o">=</span><span class="m">6</span>.8.03
+<span class="k">ENV</span><span class="w"> </span><span class="nv">SP6_VERSION_STR</span><span class="o">=</span><span class="m">6803</span>
+<span class="c"># ENV SP6_VERSION_STR=&quot;${SP6_VERSION//.}&quot;</span>
+<span class="c"># ENV SP6_VERSION_STR=$(echo &quot;$SP6_VERSION&quot; | tr -d &#39;.&#39;)</span>
+
+<span class="c">#####################################################################</span>
+
+<span class="k">RUN</span><span class="w"> </span>apt-get<span class="w"> </span>update<span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span><span class="se">\</span>
+<span class="w"> </span>apt<span class="w"> </span>upgrade<span class="w"> </span>-y
+<span class="k">RUN</span><span class="w"> </span>apt-get<span class="w"> </span>-y<span class="w"> </span>install<span class="w"> </span>--no-install-recommends<span class="w"> </span><span class="se">\</span>
+<span class="w"> </span>git<span class="w"> </span><span class="se">\</span>
+<span class="w"> </span>build-essential<span class="w"> </span><span class="se">\</span>
+<span class="w"> </span>libldap2-dev<span class="w"> </span><span class="se">\</span>
+<span class="w"> </span>libmariadbclient-dev<span class="w"> </span><span class="se">\</span>
+<span class="w"> </span>libsasl2-dev<span class="w"> </span><span class="se">\</span>
+<span class="w"> </span>nodejs<span class="w"> </span><span class="se">\</span>
+<span class="w"> </span>npm<span class="w"> </span><span class="se">\</span>
+<span class="w"> </span>python3-venv<span class="w"> </span><span class="se">\</span>
+<span class="w"> </span>python3.8<span class="w"> </span><span class="se">\</span>
+<span class="w"> </span>python3.8-dev<span class="w"> </span><span class="se">\</span>
+<span class="w"> </span>redis<span class="w"> </span><span class="se">\</span>
+<span class="w"> </span>unzip<span class="w"> </span><span class="se">\</span>
+<span class="w"> </span>openjdk-8-jdk<span class="w"> </span><span class="se">\</span>
+<span class="w"> </span>maven<span class="w"> </span><span class="se">\</span>
+<span class="w"> </span>ant<span class="w"> </span><span class="se">\</span>
+<span class="w"> </span>awscli<span class="w"> </span><span class="se">\</span>
+<span class="w"> </span>mysql-client<span class="w"> </span><span class="se">\</span>
+<span class="w"> </span>nginx<span class="w"> </span><span class="se">\</span>
+<span class="w"> </span>certbot<span class="w"> </span><span class="se">\</span>
+<span class="w"> </span>python3-certbot-nginx<span class="p">;</span>
+<span class="k">RUN</span><span class="w"> </span>apt<span class="w"> </span>clean
+
+<span class="c">#####################################################################</span>
+
+<span class="c"># Download repos</span>
+<span class="k">RUN</span><span class="w"> </span>wget<span class="w"> </span>https://update.specifysoftware.org/<span class="si">${</span><span class="nv">SP6_VERSION_STR</span><span class="si">}</span>/Specify_unix_64.sh
+<span class="k">RUN</span><span class="w"> </span>git<span class="w"> </span>clone<span class="w"> </span>https://github.com/specify/specify7.git
+<span class="k">RUN</span><span class="w"> </span>git<span class="w"> </span>clone<span class="w"> </span>https://github.com/specify/report-runner-service.git
+
+<span class="c">#####################################################################</span>
+
+<span class="c"># Webpack</span>
+<span class="k">RUN</span><span class="w"> </span>curl<span class="w"> </span>-o-<span class="w"> </span>https://raw.githubusercontent.com/nvm-sh/nvm/v0.38.0/install.sh<span class="w"> </span><span class="p">|</span><span class="w"> </span>bash<span class="p">;</span>
+<span class="k">RUN</span><span class="w"> </span><span class="nb">export</span><span class="w"> </span><span class="nv">NVM_DIR</span><span class="o">=</span><span class="s2">&quot;</span><span class="nv">$HOME</span><span class="s2">/.nvm&quot;</span><span class="p">;</span>
+<span class="k">RUN</span><span class="w"> </span><span class="o">[</span><span class="w"> </span>-s<span class="w"> </span><span class="s2">&quot;</span><span class="nv">$NVM_DIR</span><span class="s2">/nvm.sh&quot;</span><span class="w"> </span><span class="o">]</span><span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span><span class="se">\.</span><span class="w"> </span><span class="s2">&quot;</span><span class="nv">$NVM_DIR</span><span class="s2">/nvm.sh&quot;</span><span class="p">;</span><span class="w">  </span>#<span class="w"> </span>This<span class="w"> </span>loads<span class="w"> </span>nvm
+<span class="k">RUN</span><span class="w"> </span>nvm<span class="w"> </span>install<span class="w"> </span>node<span class="p">;</span>
+<span class="k">RUN</span><span class="w"> </span><span class="nb">cd</span><span class="w"> </span>~/specify7/specifyweb/frontend/js_src<span class="p">;</span>
+<span class="k">RUN</span><span class="w"> </span>npm<span class="w"> </span>ci<span class="p">;</span>
+<span class="k">RUN</span><span class="w"> </span>mkdir<span class="w"> </span>dist<span class="p">;</span>
+<span class="k">RUN</span><span class="w"> </span>npx<span class="w"> </span>webpack<span class="w"> </span>--mode<span class="w"> </span>production<span class="p">;</span>
+
+<span class="c">#####################################################################</span>
+
+<span class="c"># Specify7</span>
+<span class="k">RUN</span><span class="w"> </span><span class="nb">cd</span><span class="w"> </span>~/specify7<span class="p">;</span>
+<span class="k">RUN</span><span class="w"> </span>make<span class="p">;</span>
+
+<span class="k">COPY</span><span class="w"> </span>specify7-django.service<span class="w"> </span>/etc/systemd/system/
+<span class="k">COPY</span><span class="w"> </span>nginx.conf<span class="w"> </span>/home/ubuntu/specify7/nginx.conf
+
+<span class="c">#####################################################################</span>
+
+<span class="c"># Report-runner-service</span>
+<span class="k">COPY</span><span class="w"> </span>report-fonts.jar<span class="w"> </span>/home/ubuntu/report-runner-service
+
+<span class="k">RUN</span><span class="w"> </span>mkdir<span class="w"> </span>-p<span class="w"> </span>/tmp/build
+
+<span class="k">COPY</span><span class="w"> </span>pom.xml<span class="w"> </span>/tmp/build
+
+<span class="k">RUN</span><span class="w"> </span><span class="nb">cd</span><span class="w"> </span>~/report-runner-service
+<span class="k">RUN</span><span class="w"> </span>mvn<span class="w"> </span>compile<span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span>mvn<span class="w"> </span>war:exploded
+
+<span class="k">COPY</span><span class="w"> </span>src<span class="w"> </span>/tmp/build/src
+<span class="k">RUN</span><span class="w"> </span>mvn<span class="w"> </span>compile<span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span>mvn<span class="w"> </span>war:exploded
+
+<span class="c">#####################################################################</span>
+
+<span class="c"># nginx webserver</span>
+<span class="k">RUN</span><span class="w"> </span>sed<span class="w"> </span>-i<span class="w"> </span><span class="s2">&quot;s/server_name localhost/server_name sp7demofish/g&quot;</span><span class="w"> </span>~/specify7/nginx.conf<span class="p">;</span>
+<span class="k">RUN</span><span class="w"> </span>rm<span class="w"> </span>-f<span class="w"> </span>/etc/nginx/sites-available/default<span class="p">;</span>
+<span class="k">RUN</span><span class="w"> </span>sudo<span class="w"> </span>cp<span class="w"> </span>~/specify7/nginx.conf<span class="w"> </span>/etc/nginx/sites-available/specify7<span class="p">;</span>
+<span class="k">RUN</span><span class="w"> </span>sudo<span class="w"> </span>ln<span class="w"> </span>-s<span class="w"> </span>/etc/nginx/sites-available/specify7<span class="w"> </span>/etc/nginx/sites-enabled/<span class="p">;</span>
+
+<span class="c">#####################################################################</span>
+
+<span class="c"># Networking ports</span>
+<span class="k">EXPOSE</span><span class="w"> </span><span class="s">80 # nginx port</span>
+<span class="k">EXPOSE</span><span class="w"> </span><span class="s">8000 # django gunicorn port</span>
+<span class="k">EXPOSE</span><span class="w"> </span><span class="s">8080 # report runner port</span>
+<span class="c"># EXPOSE 3000 # Django Debug</span>
+<span class="c"># EXPOSE 8888 # Debugging service (ptvsd)</span>
+
+<span class="c">#####################################################################</span>
+
+<span class="k">COPY</span><span class="w"> </span>./docker-entrypoint.sh<span class="w"> </span>~/
+<span class="k">CMD</span><span class="w"> </span><span class="p">[</span><span class="s2">&quot;/bin/bash&quot;</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;~/docker-entrypoint.sh&quot;</span><span class="p">]</span>
+</pre></div>
+</div>
+<p>docker-entrypoint.sh</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="ch">#!/bin/bash</span>
+
+<span class="c1"># Set environment variables</span>
+<span class="nb">export</span><span class="w"> </span><span class="nv">DOMAIN_NAME</span><span class="o">=</span><span class="k">$(</span>hostname<span class="k">)</span>
+<span class="k">if</span><span class="w"> </span>!<span class="w"> </span><span class="o">[[</span><span class="w"> </span>-v<span class="w"> </span>CLIENT_NAME<span class="w"> </span><span class="o">]]</span><span class="p">;</span><span class="w"> </span><span class="k">then</span><span class="w"> </span><span class="nb">export</span><span class="w"> </span><span class="nv">CLIENT_NAME</span><span class="o">=</span>sp7demofish<span class="p">;</span><span class="w"> </span><span class="k">fi</span>
+<span class="k">if</span><span class="w"> </span>!<span class="w"> </span><span class="o">[[</span><span class="w"> </span>-v<span class="w"> </span>DATABASE_NAME<span class="w"> </span><span class="o">]]</span><span class="p">;</span><span class="w"> </span><span class="k">then</span><span class="w"> </span><span class="nb">export</span><span class="w"> </span><span class="nv">DATABASE_NAME</span><span class="o">=</span>sp7demofish<span class="p">;</span><span class="w"> </span><span class="k">fi</span>
+<span class="k">if</span><span class="w"> </span>!<span class="w"> </span><span class="o">[[</span><span class="w"> </span>-v<span class="w"> </span>DATABASE_HOST<span class="w"> </span><span class="o">]]</span><span class="p">;</span><span class="w"> </span><span class="k">then</span><span class="w"> </span><span class="nb">export</span><span class="w"> </span><span class="nv">DATABASE_HOST</span><span class="o">=</span>localhost<span class="p">;</span><span class="w"> </span><span class="k">fi</span>
+<span class="k">if</span><span class="w"> </span>!<span class="w"> </span><span class="o">[[</span><span class="w"> </span>-v<span class="w"> </span>DATABASE_PORT<span class="w"> </span><span class="o">]]</span><span class="p">;</span><span class="w"> </span><span class="k">then</span><span class="w"> </span><span class="nb">export</span><span class="w"> </span><span class="nv">DATABASE_PORT</span><span class="o">=</span><span class="m">3306</span><span class="p">;</span><span class="w"> </span><span class="k">fi</span>
+<span class="k">if</span><span class="w"> </span>!<span class="w"> </span><span class="o">[[</span><span class="w"> </span>-v<span class="w"> </span>MASTER_NAME<span class="w"> </span><span class="o">]]</span><span class="p">;</span><span class="w"> </span><span class="k">then</span><span class="w"> </span><span class="nb">export</span><span class="w"> </span><span class="nv">MASTER_NAME</span><span class="o">=</span>master<span class="p">;</span><span class="w"> </span><span class="k">fi</span>
+<span class="k">if</span><span class="w"> </span>!<span class="w"> </span><span class="o">[[</span><span class="w"> </span>-v<span class="w"> </span>MASTER_PASSWORD<span class="w"> </span><span class="o">]]</span><span class="p">;</span><span class="w"> </span><span class="k">then</span><span class="w"> </span><span class="nb">export</span><span class="w"> </span><span class="nv">MASTER_PASSWORD</span><span class="o">=</span>master<span class="p">;</span><span class="w"> </span><span class="k">fi</span>
+<span class="k">if</span><span class="w"> </span>!<span class="w"> </span><span class="o">[[</span><span class="w"> </span>-v<span class="w"> </span>SECRET_KEY<span class="w"> </span><span class="o">]]</span><span class="p">;</span><span class="w"> </span><span class="k">then</span><span class="w"> </span><span class="nb">export</span><span class="w"> </span><span class="nv">SECRET_KEY</span><span class="o">=</span>bogus<span class="p">;</span><span class="w"> </span><span class="k">fi</span>
+<span class="k">if</span><span class="w"> </span>!<span class="w"> </span><span class="o">[[</span><span class="w"> </span>-v<span class="w"> </span>ASSET_SERVER_URL<span class="w"> </span><span class="o">]]</span><span class="p">;</span><span class="w"> </span><span class="k">then</span><span class="w"> </span><span class="nb">export</span><span class="w"> </span><span class="nv">ASSET_SERVER_URL</span><span class="o">=</span>https://assets-test.specifycloud.org/web_asset_store.xml<span class="p">;</span><span class="w"> </span><span class="k">fi</span>
+<span class="k">if</span><span class="w"> </span>!<span class="w"> </span><span class="o">[[</span><span class="w"> </span>-v<span class="w"> </span>ASSET_SERVER_KEY<span class="w"> </span><span class="o">]]</span><span class="p">;</span><span class="w"> </span><span class="k">then</span><span class="w"> </span><span class="nb">export</span><span class="w"> </span><span class="nv">ASSET_SERVER_KEY</span><span class="o">=</span>tnhercbrhtktanehul.dukb<span class="p">;</span><span class="w"> </span><span class="k">fi</span>
+<span class="k">if</span><span class="w"> </span>!<span class="w"> </span><span class="o">[[</span><span class="w"> </span>-v<span class="w"> </span>REPORT_RUNNER_HOST<span class="w"> </span><span class="o">]]</span><span class="p">;</span><span class="w"> </span><span class="k">then</span><span class="w"> </span><span class="nb">export</span><span class="w"> </span><span class="nv">REPORT_RUNNER_HOST</span><span class="o">=</span>localhost<span class="p">;</span><span class="w"> </span><span class="k">fi</span>
+<span class="k">if</span><span class="w"> </span>!<span class="w"> </span><span class="o">[[</span><span class="w"> </span>-v<span class="w"> </span>REPORT_RUNNER_PORT<span class="w"> </span><span class="o">]]</span><span class="p">;</span><span class="w"> </span><span class="k">then</span><span class="w"> </span><span class="nb">export</span><span class="w"> </span><span class="nv">REPORT_RUNNER_PORT</span><span class="o">=</span><span class="m">8080</span><span class="p">;</span><span class="w"> </span><span class="k">fi</span>
+<span class="k">if</span><span class="w"> </span>!<span class="w"> </span><span class="o">[[</span><span class="w"> </span>-v<span class="w"> </span>CELERY_BROKER_URL<span class="w"> </span><span class="o">]]</span><span class="p">;</span><span class="w"> </span><span class="k">then</span><span class="w"> </span><span class="nb">export</span><span class="w"> </span><span class="nv">CELERY_BROKER_URL</span><span class="o">=</span>redis://redis/0<span class="p">;</span><span class="w"> </span><span class="k">fi</span>
+<span class="k">if</span><span class="w"> </span>!<span class="w"> </span><span class="o">[[</span><span class="w"> </span>-v<span class="w"> </span>CELERY_RESULT_BACKEND<span class="w"> </span><span class="o">]]</span><span class="p">;</span><span class="w"> </span><span class="k">then</span><span class="w"> </span><span class="nb">export</span><span class="w"> </span><span class="nv">CELERY_RESULT_BACKEND</span><span class="o">=</span>redis://redis/1<span class="p">;</span><span class="w"> </span><span class="k">fi</span>
+<span class="k">if</span><span class="w"> </span>!<span class="w"> </span><span class="o">[[</span><span class="w"> </span>-v<span class="w"> </span>LOG_LEVEL<span class="w"> </span><span class="o">]]</span><span class="p">;</span><span class="w"> </span><span class="k">then</span><span class="w"> </span><span class="nb">export</span><span class="w"> </span><span class="nv">LOG_LEVEL</span><span class="o">=</span>WARNING<span class="p">;</span><span class="w"> </span><span class="k">fi</span>
+<span class="k">if</span><span class="w"> </span>!<span class="w"> </span><span class="o">[[</span><span class="w"> </span>-v<span class="w"> </span>SP7_DEBUG<span class="w"> </span><span class="o">]]</span><span class="p">;</span><span class="w"> </span><span class="k">then</span><span class="w"> </span><span class="nb">export</span><span class="w"> </span><span class="nv">SP7_DEBUG</span><span class="o">=</span>true<span class="p">;</span><span class="w"> </span><span class="k">fi</span>
+<span class="k">if</span><span class="w"> </span>!<span class="w"> </span><span class="o">[[</span><span class="w"> </span>-v<span class="w"> </span>SP6_VERSION<span class="w"> </span><span class="o">]]</span><span class="p">;</span><span class="w"> </span><span class="k">then</span><span class="w"> </span><span class="nb">export</span><span class="w"> </span><span class="nv">SP6_VERSION</span><span class="o">=</span><span class="m">6</span>.8.03<span class="p">;</span><span class="w"> </span><span class="k">fi</span>
+<span class="k">if</span><span class="w"> </span>!<span class="w"> </span><span class="o">[[</span><span class="w"> </span>-v<span class="w"> </span>SP6_VERSION_STR<span class="w"> </span><span class="o">]]</span><span class="p">;</span><span class="w"> </span><span class="k">then</span><span class="w"> </span><span class="nb">export</span><span class="w"> </span><span class="nv">SP6_VERSION_STR</span><span class="o">=</span><span class="s2">&quot;</span><span class="si">${</span><span class="nv">SP6_VERSION</span><span class="p">//.</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">;</span><span class="w"> </span><span class="k">fi</span>
+<span class="k">if</span><span class="w"> </span>!<span class="w"> </span><span class="o">[[</span><span class="w"> </span>-v<span class="w"> </span>WORKER_COUNT<span class="w"> </span><span class="o">]]</span><span class="p">;</span><span class="w"> </span><span class="k">then</span><span class="w"> </span><span class="nb">export</span><span class="w"> </span><span class="nv">WORKER_COUNT</span><span class="o">=</span><span class="m">4</span><span class="p">;</span><span class="w"> </span><span class="k">fi</span>
+
+<span class="nb">echo</span><span class="w"> </span><span class="s1">&#39;export DOMAIN_NAME=$DOMAIN_NAME&#39;</span><span class="w"> </span>&gt;&gt;<span class="w"> </span>~/.bashrc<span class="p">;</span>
+<span class="nb">echo</span><span class="w"> </span><span class="s1">&#39;export CLIENT_NAME=$CLIENT_NAME&#39;</span><span class="w"> </span>&gt;&gt;<span class="w"> </span>~/.bashrc<span class="p">;</span>
+<span class="nb">echo</span><span class="w"> </span><span class="s1">&#39;export DATABASE_NAME=$DATABASE_NAME&#39;</span><span class="w"> </span>&gt;&gt;<span class="w"> </span>~/.bashrc<span class="p">;</span>
+<span class="nb">echo</span><span class="w"> </span><span class="s1">&#39;export DATABASE_HOST=$DATABASE_HOST&#39;</span><span class="w"> </span>&gt;&gt;<span class="w"> </span>~/.bashrc<span class="p">;</span>
+<span class="nb">echo</span><span class="w"> </span><span class="s1">&#39;export DATABASE_PORT=$DATABASE_PORT&#39;</span><span class="w"> </span>&gt;&gt;<span class="w"> </span>~/.bashrc<span class="p">;</span>
+<span class="nb">echo</span><span class="w"> </span><span class="s1">&#39;export MASTER_NAME=$MASTER_NAME&#39;</span><span class="w"> </span>&gt;&gt;<span class="w"> </span>~/.bashrc<span class="p">;</span>
+<span class="nb">echo</span><span class="w"> </span><span class="s1">&#39;export MASTER_PASSWORD=$MASTER_PASSWORD&#39;</span><span class="w"> </span>&gt;&gt;<span class="w"> </span>~/.bashrc<span class="p">;</span>
+<span class="nb">echo</span><span class="w"> </span><span class="s1">&#39;export SECRET_KEY=$SECRET_KEY&#39;</span><span class="w"> </span>&gt;&gt;<span class="w"> </span>~/.bashrc<span class="p">;</span>
+<span class="nb">echo</span><span class="w"> </span><span class="s1">&#39;export ASSET_SERVER_URL=$ASSET_SERVER_URL&#39;</span><span class="w"> </span>&gt;&gt;<span class="w"> </span>~/.bashrc<span class="p">;</span>
+<span class="nb">echo</span><span class="w"> </span><span class="s1">&#39;export ASSET_SERVER_KEY=$ASSET_SERVER_KEY&#39;</span><span class="w"> </span>&gt;&gt;<span class="w"> </span>~/.bashrc<span class="p">;</span>
+<span class="nb">echo</span><span class="w"> </span><span class="s1">&#39;export REPORT_RUNNER_HOST=$REPORT_RUNNER_HOST&#39;</span><span class="w"> </span>&gt;&gt;<span class="w"> </span>~/.bashrc<span class="p">;</span>
+<span class="nb">echo</span><span class="w"> </span><span class="s1">&#39;export REPORT_RUNNER_PORT=$REPORT_RUNNER_PORT&#39;</span><span class="w"> </span>&gt;&gt;<span class="w"> </span>~/.bashrc<span class="p">;</span>
+<span class="nb">echo</span><span class="w"> </span><span class="s1">&#39;export CELERY_BROKER_URL=$CELERY_BROKER_URL&#39;</span><span class="w"> </span>&gt;&gt;<span class="w"> </span>~/.bashrc<span class="p">;</span>
+<span class="nb">echo</span><span class="w"> </span><span class="s1">&#39;export CELERY_RESULT_BACKEND=$CELERY_RESULT_BACKEND&#39;</span><span class="w"> </span>&gt;&gt;<span class="w"> </span>~/.bashrc<span class="p">;</span>
+<span class="nb">echo</span><span class="w"> </span><span class="s1">&#39;export LOG_LEVEL=$LOG_LEVEL&#39;</span><span class="w"> </span>&gt;&gt;<span class="w"> </span>~/.bashrc<span class="p">;</span>
+<span class="nb">echo</span><span class="w"> </span><span class="s1">&#39;export SP7_DEBUG=$SP7_DEBUG&#39;</span><span class="w"> </span>&gt;&gt;<span class="w"> </span>~/.bashrc<span class="p">;</span>
+<span class="nb">echo</span><span class="w"> </span><span class="s1">&#39;export SP6_VERSION=$SP6_VERSION&#39;</span><span class="w"> </span>&gt;&gt;<span class="w"> </span>~/.bashrc<span class="p">;</span>
+<span class="nb">echo</span><span class="w"> </span><span class="s1">&#39;export SP6_VERSION_STR=$SP6_VERSION_STR&#39;</span><span class="w"> </span>&gt;&gt;<span class="w"> </span>~/.bashrc<span class="p">;</span>
+<span class="nb">echo</span><span class="w"> </span><span class="s1">&#39;export WORKER_COUNT=$WORKER_COUNT&#39;</span><span class="w"> </span>&gt;&gt;<span class="w"> </span>~/.bashrc<span class="p">;</span>
+
+<span class="c1"># Specify7 Django</span>
+cp<span class="w"> </span>specifyweb.wsgi<span class="w"> </span>specifyweb_wsgi.py<span class="p">;</span>
+sudo<span class="w"> </span>systemctl<span class="w"> </span><span class="nb">enable</span><span class="w"> </span>specify7-django.service<span class="p">;</span>
+sudo<span class="w"> </span>systemctl<span class="w"> </span>start<span class="w"> </span>specify7-django.service<span class="p">;</span>
+
+<span class="c1"># Specify7 worker</span>
+<span class="nb">cd</span><span class="w"> </span>~/specify7<span class="p">;</span>
+celery<span class="w"> </span>-A<span class="w"> </span>specifyweb<span class="w"> </span>worker<span class="w"> </span>-l<span class="w"> </span>INFO<span class="w"> </span>--concurrency<span class="o">=</span><span class="m">1</span><span class="w"> </span><span class="p">&amp;;</span>
+
+<span class="c1"># Report runner</span>
+
+
+<span class="c1"># nginx webserver</span>
+sudo<span class="w"> </span>systemctl<span class="w"> </span>daemon-reload<span class="p">;</span>
+sudo<span class="w"> </span>systemctl<span class="w"> </span>restart<span class="w"> </span>nginx<span class="p">;</span>
+</pre></div>
+</div>
+<p>specify7-django.service</p>
+<div class="highlight-service notranslate"><div class="highlight"><pre><span></span>[Unit]
+Description=Specify 7 Django Server
+Wants=network.target
+
+[Service]
+User=ubuntu
+WorkingDirectory=/home/ubuntu/specify7
+ExecStart=/home/ubuntu/specify7/ve/bin/gunicorn -w 3 -b 0.0.0.0:8000 -t 300 specifyweb_wsgi
+Restart=always
+
+[Install]
+WantedBy=multi-user.target
+</pre></div>
+</div>
+<p>report-runner.service</p>
+<div class="highlight-service notranslate"><div class="highlight"><pre><span></span>[Unit]
+Description=Specify Report Runner Service
+Wants=network.target
+ConditionPathExists=/home/ubuntu/report-runner-service
+
+[Service]
+User=ubuntu
+WorkingDirectory=/home/ubuntu/report-runner-service
+ExecStart=/usr/bin/mvn jetty:run
+
+[Install]
+Alias=ireportrunner.service
+</pre></div>
+</div>
+</section>
+
+
+           </div>
+          </div>
+          <footer>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2024, Specify Team.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>
