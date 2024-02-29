@@ -47,7 +47,7 @@
 	1. Add url: unsm-vp.specifycloud.org/context/system_info.json
 	2. Add alias: unsm-vp
 
-# Misc
+## Misc
 
 * Add ssh key:
 
@@ -56,7 +56,7 @@ vim .ssh/authorized_keys
 sudo systemctl reload sshd
 ```
 
-# Troubleshooting 
+## Troubleshooting 
 
 * Handle mariadb failing to restart after restarting the Database droplet:
 

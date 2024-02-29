@@ -4,7 +4,7 @@
   <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Spin Up EC2 Instance &mdash; Specify Developer Documentation  documentation</title>
+  <title>Deploy Specify7 to an EC2 instance &mdash; Specify Developer Documentation  documentation</title>
       <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=80d5e7a1" />
       <link rel="stylesheet" type="text/css" href="../_static/css/theme.css?v=19f00094" />
 
@@ -20,7 +20,9 @@
         <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
     <script src="../_static/js/theme.js"></script>
     <link rel="index" title="Index" href="../genindex.html" />
-    <link rel="search" title="Search" href="../search.html" /> 
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="&lt;no title&gt;" href="specify_cloud_graviton_setup.html" />
+    <link rel="prev" title="Digital Ocean to AWS migration" href="client_migration_notes.html" /> 
 </head>
 
 <body class="wy-body-for-nav"> 
@@ -42,18 +44,42 @@
   </form>
 </div>
         </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
-              <!-- Local TOC -->
-              <div class="local-toc"><ul>
-<li><a class="reference internal" href="#">Spin Up EC2 Instance</a></li>
-<li><a class="reference internal" href="#s3-setup">S3 Setup</a></li>
-<li><a class="reference internal" href="#configure-specify7">Configure Specify7</a></li>
-<li><a class="reference internal" href="#spin-up-rds-instance">Spin Up RDS Instance</a></li>
-<li><a class="reference internal" href="#upload-data">Upload Data</a></li>
-<li><a class="reference internal" href="#deploy-specify7">Deploy Specify7</a></li>
-<li><a class="reference internal" href="#docker-container-dependencies">Docker Container Dependencies</a></li>
-<li><a class="reference internal" href="#concluding-notes">Concluding Notes</a></li>
+              <p class="caption" role="heading"><span class="caption-text">Internal Processes:</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../dev_process/specify_processes.html">Specify Development Process</a></li>
 </ul>
-</div>
+<p class="caption" role="heading"><span class="caption-text">Amazon Web Services:</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="aws_infrastructure_notes.html">AWS Infrastructure Notes</a></li>
+<li class="toctree-l1"><a class="reference internal" href="aws_specify_asset_server_setup.html">AWS Specify Asset Server Setup</a></li>
+<li class="toctree-l1"><a class="reference internal" href="aws_specify_cloud_setup.html">Specify Cloud Setup</a></li>
+<li class="toctree-l1"><a class="reference internal" href="client_migration_notes.html">Digital Ocean to AWS migration</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Deploy Specify7 to an EC2 instance</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#spin-up-ec2-instance">Spin Up EC2 Instance</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#s3-setup">S3 Setup</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#config-file">Config file</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#configure-specify7">Configure Specify7</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#spin-up-rds-instance">Spin Up RDS Instance</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#upload-data">Upload Data</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#deploy-specify7">Deploy Specify7</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#docker-container-dependencies">Docker Container Dependencies</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#concluding-notes">Concluding Notes</a></li>
+</ul>
+</li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Security:</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../security/fix_exposed_secret.html">Fix Exposed Secrets</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Misc:</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../misc/add_new_instance_to_specify_cloud.html">Add new Specify instance to Specify Cloud</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../misc/kuit_notes.html">Working with central KU IT</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../misc/specify7_ecs_most-in-one.html">Create a Most-In-One Specify Docker image</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../misc/useful_bash_cmds.html">Useful bash commands</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../misc/vs_code_django_unit_test_debugging_notes.html">VS Code Django Unit Test Debugging</a></li>
+</ul>
+
         </div>
       </div>
     </nav>
@@ -68,9 +94,9 @@
           <div role="navigation" aria-label="Page navigation">
   <ul class="wy-breadcrumbs">
       <li><a href="../index.html" class="icon icon-home" aria-label="Home"></a></li>
-      <li class="breadcrumb-item active">Spin Up EC2 Instance</li>
+      <li class="breadcrumb-item active">Deploy Specify7 to an EC2 instance</li>
       <li class="wy-breadcrumbs-aside">
-            <a href="../_sources/aws/EC2 &amp; RDS Specify7 Setup.md.txt" rel="nofollow"> View page source</a>
+            <a href="../_sources/aws/ec2_rds_specify7_setup.md.txt" rel="nofollow"> View page source</a>
       </li>
   </ul>
   <hr/>
@@ -78,22 +104,40 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
              
-  <p>These are the detailed instructions to get Specify7 up and running on an EC2 instance.  This is a temporary solution for deployment, with an ECS solution coming in the future.  These instruction require access to the <code class="docutils literal notranslate"><span class="pre">specify/docker-compositions</span></code> private repo.  For this kind of AWS deployment, it is easiest to use the <code class="docutils literal notranslate"><span class="pre">specifycloud</span></code> deployment, even with just one client instance.  I used the <code class="docutils literal notranslate"><span class="pre">specifycloud</span></code> deployment for my AWS EC2 instance, but if you want to include things like the asset server, you can create a separate instance of the asset server deployment (instructions here https://github.com/specify/web-asset-server).  You could also try to use the <code class="docutils literal notranslate"><span class="pre">all-in-one</span></code> deployment instead.</p>
-<p>Specify7 was not originally designed to be cloud native, but since I have joined the team and picked up the project, I have been working on developing a modern cloud native solution.  I hope to soon have a set of CDK scripts that will make deployment to ECS, S3, and RDS simple and scalable.</p>
+  <section id="deploy-specify7-to-an-ec2-instance">
+<h1>Deploy Specify7 to an EC2 instance<a class="headerlink" href="#deploy-specify7-to-an-ec2-instance" title="Link to this heading"></a></h1>
+<p>These are the detailed instructions to get Specify7 up and running on an EC2 instance.<br />
+This is a temporary solution for deployment, with an ECS solution coming in the future.<br />
+These instruction require access to the <code class="docutils literal notranslate"><span class="pre">specify/docker-compositions</span></code> private repo.<br />
+For this kind of AWS deployment, it is easiest to use the <code class="docutils literal notranslate"><span class="pre">specifycloud</span></code> deployment,
+even with just one client instance.  I used the <code class="docutils literal notranslate"><span class="pre">specifycloud</span></code> deployment for my AWS
+EC2 instance, but if you want to include things like the asset server, you can create a
+separate instance of the asset server deployment (instructions <code class="docutils literal notranslate"><span class="pre">here</span>&#160; <span class="pre">&lt;https://github.com/specify/web-asset-server&gt;</span></code>).  You could also try to use the
+<code class="docutils literal notranslate"><span class="pre">all-in-one</span></code> deployment instead.</p>
+<p>Specify7 was not originally designed to be cloud native, but since I have joined the
+team and picked up the project, I have been working on developing a modern cloud native
+solution.  I hope to soon have a set of CDK scripts that will make deployment to ECS,
+S3, and RDS simple and scalable.</p>
 <section id="spin-up-ec2-instance">
-<h1>Spin Up EC2 Instance<a class="headerlink" href="#spin-up-ec2-instance" title="Link to this heading"></a></h1>
+<h2>Spin Up EC2 Instance<a class="headerlink" href="#spin-up-ec2-instance" title="Link to this heading"></a></h2>
 <ul class="simple">
-<li><p>For the Amazon Machine Image (AMI), choose the default Ubuntu Server (Ubuntu Server 22.04 LTS) with the 64-bit x86 architecture.</p></li>
-<li><p>For the instance type, start with the t3.small or t3.medium.  Upgrade to a better instance if needed.</p></li>
+<li><p>For the Amazon Machine Image (AMI), choose the default Ubuntu Server (Ubuntu Server
+22.04 LTS) with the 64-bit x86 architecture.</p></li>
+<li><p>For the instance type, start with the t3.small or t3.medium.  Upgrade to a better
+instance if needed.</p></li>
 <li><p>In Network Settings, make sure to allow HTTP and HTTPS traffic.</p></li>
 <li><p>Setup your Key Pair for logging in.</p></li>
 <li><p>Launch Instance.</p></li>
 </ul>
 </section>
 <section id="s3-setup">
-<h1>S3 Setup<a class="headerlink" href="#s3-setup" title="Link to this heading"></a></h1>
+<h2>S3 Setup<a class="headerlink" href="#s3-setup" title="Link to this heading"></a></h2>
 <p>Create an S3 bucket for storing some static files.</p>
-<p>You can either upload the GitHub repo to s3, or you can clone the repo directly in the EC2 instance.  If you are cloning inside the EC2 instance, note that you will need a GitHub access token to clone the private repo, instructions here https://docs.github.com/en/authentication/keeping-your-account-and-data-secure/creating-a-personal-access-token.  Make sure when configuring the token that you allow it to read from private repos, otherwise cloning will not work.</p>
+<p>You can either upload the GitHub repo to s3, or you can clone the repo directly in the
+EC2 instance.  If you are cloning inside the EC2 instance, note that you will need a
+GitHub access token to clone the private repo, instructions <code class="docutils literal notranslate"><span class="pre">here</span>&#160; <span class="pre">&lt;https://docs.github.com/en/authentication/keeping-your-account-and-data-secure/creating-a-personal-access-token&gt;</span></code>_.<br />
+Make sure when configuring the token that you allow it to read from private repos,
+otherwise cloning will not work.</p>
 <p>Upload your SQL file to the S3 bucket for the initial database upload.</p>
 <p>There are two config files that you need to create for specifycloud:</p>
 <p>spcloudservers.json -&gt;</p>
@@ -113,7 +157,14 @@
 <span class="p">}</span>
 </pre></div>
 </div>
-<p>Your need to edit the version of Specify6 for your database’s schema version (latest is 6.8.03).  For sp7, input the GitHub tag that you want to use in the repo (latest is always edge).  For your first run, keep https set to false.  Change it to true only after you have setup SSL/TLS.  The database value is the name of your database.</p>
+<p>Your need to edit the version of Specify6 for your database’s schema version
+(latest is 6.8.03).  For sp7, input the GitHub tag that you want to use in the repo
+(latest is always edge).  For your first run, keep https set to false.  Change it to
+true only after you have setup SSL/TLS.  The database value is the name of your
+database.</p>
+</section>
+<section id="config-file">
+<h2>Config file<a class="headerlink" href="#config-file" title="Link to this heading"></a></h2>
 <p>defaults.env -&gt;</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">DATABASE_HOST</span><span class="o">=&lt;</span><span class="n">YOUR_DATABASE_HOST</span><span class="o">&gt;</span>
 <span class="n">DATABASE_PORT</span><span class="o">=</span><span class="mi">3306</span>
@@ -130,18 +181,23 @@
 <span class="n">SP7_DEBUG</span><span class="o">=</span><span class="n">false</span>
 </pre></div>
 </div>
-<p>You will only need to edit the DATABASE_HOST, MASTER_PASSWORD, ASSET_SERVER_URL, and ASSET_SERVER_KEY</p>
+<p>You will only need to edit the DATABASE_HOST, MASTER_PASSWORD, ASSET_SERVER_URL, and
+ASSET_SERVER_KEY</p>
 </section>
 <section id="configure-specify7">
-<h1>Configure Specify7<a class="headerlink" href="#configure-specify7" title="Link to this heading"></a></h1>
+<h2>Configure Specify7<a class="headerlink" href="#configure-specify7" title="Link to this heading"></a></h2>
 <p>Once the EC2 instance is up and running, ssh into the EC2 instance.</p>
 <ul class="simple">
 <li><p>Download your AWS access key</p></li>
 <li><p><code class="docutils literal notranslate"><span class="pre">chmod</span> <span class="pre">600</span> <span class="pre">YOUR-AWS-ACCESS-KEY.pem</span></code></p></li>
-<li><p>On the EC2 Instance webpage, click connect, choose ssh, and copy the ssh command.  Make sure you are in the directory with the access key.</p></li>
+<li><p>On the EC2 Instance webpage, click connect, choose ssh, and copy the ssh command.<br />
+Make sure you are in the directory with the access key.</p></li>
 <li><p>You can try using AWS CloudShell if you don’t want to ssh from your local machine.</p></li>
 </ul>
-<p>Here are the commands to run to setup Specify7.  Note that for the AWS access key, you can use the AWS Secrets manager if you prefer.  Also note that after some of these commands, SystemD services will restart.  When that  happens, just press enter once or twice to you get back to the shell.</p>
+<p>Here are the commands to run to setup Specify7.  Note that for the AWS access key,
+you can use the AWS Secrets manager if you prefer.  Also note that after some of these
+commands, SystemD services will restart.  When that  happens, just press enter once or
+twice to you get back to the shell.</p>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="c1"># Avoid services restarting during apt updates</span>
 sudo<span class="w"> </span>sed<span class="w"> </span>-i<span class="w"> </span><span class="s2">&quot;s/#\$nrconf{kernelhints} = -1;/\$nrconf{kernelhints} = -1;/g&quot;</span><span class="w"> </span>/etc/needrestart/needrestart.conf<span class="p">;</span>
 
@@ -186,49 +242,64 @@ gh<span class="w"> </span>repo<span class="w"> </span>clone<span class="w"> </sp
 </div>
 </section>
 <section id="spin-up-rds-instance">
-<h1>Spin Up RDS Instance<a class="headerlink" href="#spin-up-rds-instance" title="Link to this heading"></a></h1>
+<h2>Spin Up RDS Instance<a class="headerlink" href="#spin-up-rds-instance" title="Link to this heading"></a></h2>
 <ul class="simple">
-<li><p>For choosing the RDS engine type, I have been experimenting with using Aurora MySQL 5.7 to handle dynamic scaling, but the default option for Specify7 on AWS RDS is MariaDB 10.6.10.</p></li>
+<li><p>For choosing the RDS engine type, I have been experimenting with using Aurora
+MySQL 5.7 to handle dynamic scaling, but the default option for Specify7 on AWS RDS is
+MariaDB 10.6.10.</p></li>
 <li><p>For Templates, I would suggest starting with Dev/Test instead of production.</p></li>
 <li><p>Setup Master password.</p></li>
-<li><p>For testing, I would suggest using either the <code class="docutils literal notranslate"><span class="pre">db.t3.medium</span></code> or <code class="docutils literal notranslate"><span class="pre">db.t3.large</span></code> instances. You might feel the need to upgrade to the <code class="docutils literal notranslate"><span class="pre">db.m5.large</span></code> instance or something similar.</p></li>
-<li><p>Decide on storage size to accommodate your data size. The general purpose SSD storage option should suffice, but you can try the provisioned IOPS SSD option if needed.</p></li>
-<li><p>Important, make sure in the connectivity options, select “Connect to an EC2 compute resource” and add your EC2 instance.</p></li>
+<li><p>For testing, I would suggest using either the <code class="docutils literal notranslate"><span class="pre">db.t3.medium</span></code> or <code class="docutils literal notranslate"><span class="pre">db.t3.large</span></code>
+instances. You might feel the need to upgrade to the <code class="docutils literal notranslate"><span class="pre">db.m5.large</span></code> instance or
+something similar.</p></li>
+<li><p>Decide on storage size to accommodate your data size. The general purpose SSD storage
+option should suffice, but you can try the provisioned IOPS SSD option if needed.</p></li>
+<li><p>Important, make sure in the connectivity options, select “Connect to an EC2 compute
+resource” and add your EC2 instance.</p></li>
 <li><p>Create database.</p></li>
 </ul>
 </section>
 <section id="upload-data">
-<h1>Upload Data<a class="headerlink" href="#upload-data" title="Link to this heading"></a></h1>
-<p>Get the database host from the AWS RDS webpage.  In the connectivity tab of your RDS instance, copy the test marked ‘Endpoint’.  Then run the following commands to upload your data to the database.</p>
+<h2>Upload Data<a class="headerlink" href="#upload-data" title="Link to this heading"></a></h2>
+<p>Get the database host from the AWS RDS webpage.  In the connectivity tab of your RDS
+instance, copy the test marked ‘Endpoint’.  Then run the following commands to upload
+your data to the database.</p>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="c1"># Database setup</span>
 <span class="nb">cd</span><span class="w"> </span>specifycloud<span class="p">;</span>
 mkdir<span class="w"> </span>seed-databases<span class="p">;</span>
 aws<span class="w"> </span>s3<span class="w"> </span>cp<span class="w"> </span>s3://specify-cloud/seed-database/archireef.sql<span class="w"> </span>./seed-databases/<span class="p">;</span>
-mysql<span class="w"> </span>--host<span class="w"> </span>specify-cloud-swiss-demo-database-1.c9qlnkmf2lfl.eu-central-2.rds.amazonaws.com<span class="w"> </span>--port<span class="w"> </span><span class="m">3306</span><span class="w"> </span>-u<span class="w"> </span>master<span class="w"> </span>-p<span class="w"> </span>-e<span class="w"> </span><span class="s2">&quot;create database archireef;&quot;</span><span class="p">;</span>
-mysql<span class="w"> </span>--host<span class="w"> </span>specify-cloud-swiss-demo-database-1.c9qlnkmf2lfl.eu-central-2.rds.amazonaws.com<span class="w"> </span>--port<span class="w"> </span><span class="m">3306</span><span class="w"> </span>-u<span class="w"> </span>master<span class="w"> </span>-p<span class="w"> </span>specify<span class="w"> </span>&lt;<span class="w"> </span>./seed-databases/archireef.sql<span class="p">;</span>
+mysql<span class="w"> </span>--host<span class="w"> </span>specify-cloud-database-1.&lt;identifier&gt;.&lt;region&gt;.rds.amazonaws.com<span class="w"> </span><span class="se">\</span>
+<span class="w">      </span>--port<span class="w"> </span><span class="m">3306</span><span class="w"> </span>-u<span class="w"> </span>master<span class="w"> </span>-p<span class="w"> </span>-e<span class="w"> </span><span class="s2">&quot;create database archireef;&quot;</span><span class="p">;</span>
+mysql<span class="w"> </span>--host<span class="w"> </span>specify-cloud-database-1.&lt;identifier&gt;.&lt;region&gt;.rds.amazonaws.com<span class="w"> </span><span class="se">\</span>
+<span class="w">	  </span>--port<span class="w"> </span><span class="m">3306</span><span class="w"> </span>-u<span class="w"> </span>master<span class="w"> </span>-p<span class="w"> </span>specify<span class="w"> </span>&lt;<span class="w"> </span>./seed-databases/archireef.sql<span class="p">;</span>
 rm<span class="w"> </span>-f<span class="w"> </span>./seed-databases/archireef.sql<span class="p">;</span>
 </pre></div>
 </div>
 </section>
 <section id="deploy-specify7">
-<h1>Deploy Specify7<a class="headerlink" href="#deploy-specify7" title="Link to this heading"></a></h1>
-<p>Here are the remaining commands on the EC2 instance to setup the database connection and start running Specify7.  Replace the S3 and RDS  urls with your own.</p>
+<h2>Deploy Specify7<a class="headerlink" href="#deploy-specify7" title="Link to this heading"></a></h2>
+<p>Here are the remaining commands on the EC2 instance to setup the database connection
+and start running Specify7.  Replace the S3 and RDS  urls with your own.</p>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="c1"># Run Specify Network</span>
 <span class="nb">cd</span><span class="w"> </span>specifycloud<span class="p">;</span>
 make<span class="p">;</span>
 sudo<span class="w"> </span>docker<span class="w"> </span>compose<span class="w"> </span>up<span class="w"> </span>-d<span class="p">;</span>
 </pre></div>
 </div>
-<p>Go to the AWS console webpage and navigate to the EC2 instance page.  For your instance, select the networking tab, then copy the the public IPv4 DNS address and open if in you r browser.  Note to change the url from https to http if you haven’t setup SSL/TLS yet (https notes in the Concluding notes section).</p>
+<p>Go to the AWS console webpage and navigate to the EC2 instance page.  For your instance,
+select the networking tab, then copy the the public IPv4 DNS address and open if in your
+browser.  Note to change the url from https to http if you haven’t setup SSL/TLS yet
+(https notes in the Concluding notes section).</p>
 </section>
 <section id="docker-container-dependencies">
-<h1>Docker Container Dependencies<a class="headerlink" href="#docker-container-dependencies" title="Link to this heading"></a></h1>
+<h2>Docker Container Dependencies<a class="headerlink" href="#docker-container-dependencies" title="Link to this heading"></a></h2>
 <p>Containers:</p>
 <ul class="simple">
 <li><p>specify7</p>
 <ul>
 <li><p>django application of specify7</p></li>
-<li><p>depends on connections to the webpack, specify7-worker, redis, asset-server, nginx, and report-runner containers</p></li>
+<li><p>depends on connections to the webpack, specify7-worker, redis, asset-server,
+nginx, and report-runner containers</p></li>
 <li><p>depends on files being created by the specify6 container</p></li>
 </ul>
 </li>
@@ -263,7 +334,8 @@ sudo<span class="w"> </span>docker<span class="w"> </span>compose<span class="w"
 <li><p>generates files and database schema version for specify7</p></li>
 <li><p>the conainter stops after the files are created</p></li>
 <li><p>independent container</p></li>
-<li><p>this container can be removed if the static files are moved to S3 and then copied into the specify7 container on startup</p></li>
+<li><p>this container can be removed if the static files are moved to S3 and then copied
+into the specify7 container on startup</p></li>
 </ul>
 </li>
 <li><p>nginx</p>
@@ -282,9 +354,11 @@ sudo<span class="w"> </span>docker<span class="w"> </span>compose<span class="w"
 </ul>
 </section>
 <section id="concluding-notes">
-<h1>Concluding Notes<a class="headerlink" href="#concluding-notes" title="Link to this heading"></a></h1>
-<p>You can use ‘AWS Certificate Manager’ or the tool ‘CertBot’ for setting up HTTPS SSL/TLS certificates.  Who will need to setup a domain name through AWS Route 53.  You will probably want to setup an elastic ip address for the EC2 instance through AWS as well.
-Here are the instructions for using certbot:</p>
+<h2>Concluding Notes<a class="headerlink" href="#concluding-notes" title="Link to this heading"></a></h2>
+<p>You can use ‘AWS Certificate Manager’ or the tool ‘CertBot’ for setting up HTTPS
+SSL/TLS certificates.  Who will need to setup a domain name through AWS Route 53.<br />
+You will probably want to setup an elastic ip address for the EC2 instance through AWS
+as well.  Here are the instructions for using certbot:</p>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>sudo<span class="w"> </span>apt<span class="w"> </span>install<span class="w"> </span>-y<span class="w"> </span>certbot<span class="w"> </span>python3-certbot-apache<span class="p">;</span>
 sudo<span class="w"> </span>mkdir<span class="w"> </span>/var/www/archireef<span class="p">;</span>
 sudo<span class="w"> </span>certbot<span class="w"> </span>--webroot<span class="w"> </span>-w<span class="w"> </span>/var/www/archireef<span class="w"> </span>-d<span class="w"> </span>&lt;YOUR_EC2_DOMAIN_NAME&gt;<span class="w"> </span>certonly<span class="p">;</span>
@@ -309,11 +383,15 @@ SSH Client: vim ~/.ssh/config</p>
 </div>
 <p>Then run <code class="docutils literal notranslate"><span class="pre">sudo</span> <span class="pre">systemctl</span> <span class="pre">reload</span> <span class="pre">sshd</span></code></p>
 </section>
+</section>
 
 
            </div>
           </div>
-          <footer>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="client_migration_notes.html" class="btn btn-neutral float-left" title="Digital Ocean to AWS migration" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="specify_cloud_graviton_setup.html" class="btn btn-neutral float-right" title="&lt;no title&gt;" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
 
   <hr/>
 

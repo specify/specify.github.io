@@ -1,11 +1,26 @@
-These are the detailed instructions to get Specify7 up and running on an EC2 instance.  This is a temporary solution for deployment, with an ECS solution coming in the future.  These instruction require access to the `specify/docker-compositions` private repo.  For this kind of AWS deployment, it is easiest to use the `specifycloud` deployment, even with just one client instance.  I used the `specifycloud` deployment for my AWS EC2 instance, but if you want to include things like the asset server, you can create a separate instance of the asset server deployment (instructions here https://github.com/specify/web-asset-server).  You could also try to use the `all-in-one` deployment instead.
+# Deploy Specify7 to an EC2 instance
 
-Specify7 was not originally designed to be cloud native, but since I have joined the team and picked up the project, I have been working on developing a modern cloud native solution.  I hope to soon have a set of CDK scripts that will make deployment to ECS, S3, and RDS simple and scalable.
+These are the detailed instructions to get Specify7 up and running on an EC2 instance.  
+This is a temporary solution for deployment, with an ECS solution coming in the future.  
+These instruction require access to the `specify/docker-compositions` private repo.  
+For this kind of AWS deployment, it is easiest to use the `specifycloud` deployment, 
+even with just one client instance.  I used the `specifycloud` deployment for my AWS 
+EC2 instance, but if you want to include things like the asset server, you can create a 
+separate instance of the asset server deployment (instructions `here 
+<https://github.com/specify/web-asset-server>`).  You could also try to use the 
+`all-in-one` deployment instead.
+
+Specify7 was not originally designed to be cloud native, but since I have joined the 
+team and picked up the project, I have been working on developing a modern cloud native 
+solution.  I hope to soon have a set of CDK scripts that will make deployment to ECS, 
+S3, and RDS simple and scalable.
 
 ## Spin Up EC2 Instance
 
-- For the Amazon Machine Image (AMI), choose the default Ubuntu Server (Ubuntu Server 22.04 LTS) with the 64-bit x86 architecture.
-- For the instance type, start with the t3.small or t3.medium.  Upgrade to a better instance if needed.
+- For the Amazon Machine Image (AMI), choose the default Ubuntu Server (Ubuntu Server 
+  22.04 LTS) with the 64-bit x86 architecture.
+- For the instance type, start with the t3.small or t3.medium.  Upgrade to a better 
+  instance if needed.
 - In Network Settings, make sure to allow HTTP and HTTPS traffic.
 - Setup your Key Pair for logging in.
 - Launch Instance.
@@ -14,7 +29,12 @@ Specify7 was not originally designed to be cloud native, but since I have joined
 
 Create an S3 bucket for storing some static files.
 
-You can either upload the GitHub repo to s3, or you can clone the repo directly in the EC2 instance.  If you are cloning inside the EC2 instance, note that you will need a GitHub access token to clone the private repo, instructions here https://docs.github.com/en/authentication/keeping-your-account-and-data-secure/creating-a-personal-access-token.  Make sure when configuring the token that you allow it to read from private repos, otherwise cloning will not work.
+You can either upload the GitHub repo to s3, or you can clone the repo directly in the 
+EC2 instance.  If you are cloning inside the EC2 instance, note that you will need a 
+GitHub access token to clone the private repo, instructions `here 
+<https://docs.github.com/en/authentication/keeping-your-account-and-data-secure/creating-a-personal-access-token>`_.  
+Make sure when configuring the token that you allow it to read from private repos, 
+otherwise cloning will not work.
 
 Upload your SQL file to the S3 bucket for the initial database upload.
 
@@ -37,8 +57,13 @@ spcloudservers.json ->
 	}
 }
 ```
-Your need to edit the version of Specify6 for your database's schema version (latest is 6.8.03).  For sp7, input the GitHub tag that you want to use in the repo (latest is always edge).  For your first run, keep https set to false.  Change it to true only after you have setup SSL/TLS.  The database value is the name of your database.
+Your need to edit the version of Specify6 for your database's schema version 
+(latest is 6.8.03).  For sp7, input the GitHub tag that you want to use in the repo 
+(latest is always edge).  For your first run, keep https set to false.  Change it to 
+true only after you have setup SSL/TLS.  The database value is the name of your 
+database.
 
+## Config file
 defaults.env ->
 ```
 DATABASE_HOST=<YOUR_DATABASE_HOST>
@@ -55,17 +80,22 @@ CELERY_RESULT_BACKEND=redis://redis/1
 LOG_LEVEL=WARNING
 SP7_DEBUG=false
 ```
-You will only need to edit the DATABASE_HOST, MASTER_PASSWORD, ASSET_SERVER_URL, and ASSET_SERVER_KEY
+You will only need to edit the DATABASE_HOST, MASTER_PASSWORD, ASSET_SERVER_URL, and 
+ASSET_SERVER_KEY
 
 ## Configure Specify7
 
 Once the EC2 instance is up and running, ssh into the EC2 instance.
 - Download your AWS access key
 - `chmod 600 YOUR-AWS-ACCESS-KEY.pem`
-- On the EC2 Instance webpage, click connect, choose ssh, and copy the ssh command.  Make sure you are in the directory with the access key.
+- On the EC2 Instance webpage, click connect, choose ssh, and copy the ssh command.  
+  Make sure you are in the directory with the access key.
 - You can try using AWS CloudShell if you don't want to ssh from your local machine.
 
-Here are the commands to run to setup Specify7.  Note that for the AWS access key, you can use the AWS Secrets manager if you prefer.  Also note that after some of these commands, SystemD services will restart.  When that  happens, just press enter once or twice to you get back to the shell.
+Here are the commands to run to setup Specify7.  Note that for the AWS access key, 
+you can use the AWS Secrets manager if you prefer.  Also note that after some of these 
+commands, SystemD services will restart.  When that  happens, just press enter once or 
+twice to you get back to the shell.
 
 ```bash
 # Avoid services restarting during apt updates
@@ -112,31 +142,42 @@ gh repo clone https://github.com/specify/docker-compositions.git;
 
 ## Spin Up RDS Instance
 
-- For choosing the RDS engine type, I have been experimenting with using Aurora MySQL 5.7 to handle dynamic scaling, but the default option for Specify7 on AWS RDS is MariaDB 10.6.10.
+- For choosing the RDS engine type, I have been experimenting with using Aurora 
+  MySQL 5.7 to handle dynamic scaling, but the default option for Specify7 on AWS RDS is 
+  MariaDB 10.6.10.
 - For Templates, I would suggest starting with Dev/Test instead of production.
 - Setup Master password.
-- For testing, I would suggest using either the `db.t3.medium` or `db.t3.large` instances. You might feel the need to upgrade to the `db.m5.large` instance or something similar.
-- Decide on storage size to accommodate your data size. The general purpose SSD storage option should suffice, but you can try the provisioned IOPS SSD option if needed.
-- Important, make sure in the connectivity options, select "Connect to an EC2 compute resource" and add your EC2 instance.
+- For testing, I would suggest using either the `db.t3.medium` or `db.t3.large` 
+  instances. You might feel the need to upgrade to the `db.m5.large` instance or 
+  something similar.
+- Decide on storage size to accommodate your data size. The general purpose SSD storage 
+  option should suffice, but you can try the provisioned IOPS SSD option if needed.
+- Important, make sure in the connectivity options, select "Connect to an EC2 compute 
+  resource" and add your EC2 instance.
 - Create database.
 
 ## Upload Data
 
-Get the database host from the AWS RDS webpage.  In the connectivity tab of your RDS instance, copy the test marked 'Endpoint'.  Then run the following commands to upload your data to the database.
+Get the database host from the AWS RDS webpage.  In the connectivity tab of your RDS 
+instance, copy the test marked 'Endpoint'.  Then run the following commands to upload 
+your data to the database.
 
 ```bash
 # Database setup
 cd specifycloud;
 mkdir seed-databases;
 aws s3 cp s3://specify-cloud/seed-database/archireef.sql ./seed-databases/;
-mysql --host specify-cloud-swiss-demo-database-1.c9qlnkmf2lfl.eu-central-2.rds.amazonaws.com --port 3306 -u master -p -e "create database archireef;";
-mysql --host specify-cloud-swiss-demo-database-1.c9qlnkmf2lfl.eu-central-2.rds.amazonaws.com --port 3306 -u master -p specify < ./seed-databases/archireef.sql;
+mysql --host specify-cloud-database-1.<identifier>.<region>.rds.amazonaws.com \
+      --port 3306 -u master -p -e "create database archireef;";
+mysql --host specify-cloud-database-1.<identifier>.<region>.rds.amazonaws.com \
+	  --port 3306 -u master -p specify < ./seed-databases/archireef.sql;
 rm -f ./seed-databases/archireef.sql;
 ```
 
 ## Deploy Specify7
 
-Here are the remaining commands on the EC2 instance to setup the database connection and start running Specify7.  Replace the S3 and RDS  urls with your own.
+Here are the remaining commands on the EC2 instance to setup the database connection 
+and start running Specify7.  Replace the S3 and RDS  urls with your own.
 
 ```bash
 # Run Specify Network
@@ -145,14 +186,18 @@ make;
 sudo docker compose up -d;
 ```
 
-Go to the AWS console webpage and navigate to the EC2 instance page.  For your instance, select the networking tab, then copy the the public IPv4 DNS address and open if in you r browser.  Note to change the url from https to http if you haven't setup SSL/TLS yet (https notes in the Concluding notes section). 
+Go to the AWS console webpage and navigate to the EC2 instance page.  For your instance, 
+select the networking tab, then copy the the public IPv4 DNS address and open if in your 
+browser.  Note to change the url from https to http if you haven't setup SSL/TLS yet 
+(https notes in the Concluding notes section). 
 
 ## Docker Container Dependencies
 
 Containers:
 - specify7
 	- django application of specify7
-	- depends on connections to the webpack, specify7-worker, redis, asset-server, nginx, and report-runner containers
+	- depends on connections to the webpack, specify7-worker, redis, asset-server, 
+      nginx, and report-runner containers
 	- depends on files being created by the specify6 container
 - webpack
 	- holds static files for the front-end
@@ -172,7 +217,8 @@ Containers:
 	- generates files and database schema version for specify7
 	- the conainter stops after the files are created
 	- independent container
-	- this container can be removed if the static files are moved to S3 and then copied into the specify7 container on startup
+	- this container can be removed if the static files are moved to S3 and then copied 
+      into the specify7 container on startup
 - nginx
 	- webserver for specify7 django application
 	- depends on connection to specify7 and webpack containers
@@ -183,8 +229,11 @@ Containers:
 
 ## Concluding Notes
 
-You can use 'AWS Certificate Manager' or the tool 'CertBot' for setting up HTTPS SSL/TLS certificates.  Who will need to setup a domain name through AWS Route 53.  You will probably want to setup an elastic ip address for the EC2 instance through AWS as well.
-Here are the instructions for using certbot:
+You can use 'AWS Certificate Manager' or the tool 'CertBot' for setting up HTTPS 
+SSL/TLS certificates.  Who will need to setup a domain name through AWS Route 53.  
+You will probably want to setup an elastic ip address for the EC2 instance through AWS 
+as well.  Here are the instructions for using certbot:
+
 ```bash
 sudo apt install -y certbot python3-certbot-apache;
 sudo mkdir /var/www/archireef;

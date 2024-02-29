@@ -20,7 +20,9 @@
         <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
     <script src="../_static/js/theme.js"></script>
     <link rel="index" title="Index" href="../genindex.html" />
-    <link rel="search" title="Search" href="../search.html" /> 
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Working with central KU IT" href="kuit_notes.html" />
+    <link rel="prev" title="Fix Exposed Secrets" href="../security/fix_exposed_secret.html" /> 
 </head>
 
 <body class="wy-body-for-nav"> 
@@ -42,16 +44,36 @@
   </form>
 </div>
         </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
-              <!-- Local TOC -->
-              <div class="local-toc"><ul>
-<li><a class="reference internal" href="#">Add new Specify instance to Specify Cloud</a><ul>
-<li><a class="reference internal" href="#example-for-unsm-vp">Example for UNSM_VP</a></li>
+              <p class="caption" role="heading"><span class="caption-text">Internal Processes:</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../dev_process/specify_processes.html">Specify Development Process</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Amazon Web Services:</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../aws/aws_infrastructure_notes.html">AWS Infrastructure Notes</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../aws/aws_specify_asset_server_setup.html">AWS Specify Asset Server Setup</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../aws/aws_specify_cloud_setup.html">Specify Cloud Setup</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../aws/client_migration_notes.html">Digital Ocean to AWS migration</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../aws/ec2_rds_specify7_setup.html">Deploy Specify7 to an EC2 instance</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Security:</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../security/fix_exposed_secret.html">Fix Exposed Secrets</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Misc:</span></p>
+<ul class="current">
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Add new Specify instance to Specify Cloud</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#example-for-unsm-vp">Example for UNSM_VP</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#misc">Misc</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#troubleshooting">Troubleshooting</a></li>
 </ul>
 </li>
-<li><a class="reference internal" href="#misc">Misc</a></li>
-<li><a class="reference internal" href="#troubleshooting">Troubleshooting</a></li>
+<li class="toctree-l1"><a class="reference internal" href="kuit_notes.html">Working with central KU IT</a></li>
+<li class="toctree-l1"><a class="reference internal" href="specify7_ecs_most-in-one.html">Create a Most-In-One Specify Docker image</a></li>
+<li class="toctree-l1"><a class="reference internal" href="useful_bash_cmds.html">Useful bash commands</a></li>
+<li class="toctree-l1"><a class="reference internal" href="vs_code_django_unit_test_debugging_notes.html">VS Code Django Unit Test Debugging</a></li>
 </ul>
-</div>
+
         </div>
       </div>
     </nav>
@@ -68,7 +90,7 @@
       <li><a href="../index.html" class="icon icon-home" aria-label="Home"></a></li>
       <li class="breadcrumb-item active">Add new Specify instance to Specify Cloud</li>
       <li class="wy-breadcrumbs-aside">
-            <a href="../_sources/aws/add_new_instance_to_specify_cloud.md.txt" rel="nofollow"> View page source</a>
+            <a href="../_sources/misc/add_new_instance_to_specify_cloud.md.txt" rel="nofollow"> View page source</a>
       </li>
   </ul>
   <hr/>
@@ -151,9 +173,8 @@
 </li>
 </ol>
 </section>
-</section>
 <section id="misc">
-<h1>Misc<a class="headerlink" href="#misc" title="Link to this heading"></a></h1>
+<h2>Misc<a class="headerlink" href="#misc" title="Link to this heading"></a></h2>
 <ul class="simple">
 <li><p>Add ssh key:</p></li>
 </ul>
@@ -163,7 +184,7 @@ sudo<span class="w"> </span>systemctl<span class="w"> </span>reload<span class="
 </div>
 </section>
 <section id="troubleshooting">
-<h1>Troubleshooting<a class="headerlink" href="#troubleshooting" title="Link to this heading"></a></h1>
+<h2>Troubleshooting<a class="headerlink" href="#troubleshooting" title="Link to this heading"></a></h2>
 <ul class="simple">
 <li><p>Handle mariadb failing to restart after restarting the Database droplet:</p></li>
 </ul>
@@ -181,11 +202,15 @@ sudo<span class="w"> </span>docker<span class="w"> </span><span class="nb">exec<
 </pre></div>
 </div>
 </section>
+</section>
 
 
            </div>
           </div>
-          <footer>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="../security/fix_exposed_secret.html" class="btn btn-neutral float-left" title="Fix Exposed Secrets" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="kuit_notes.html" class="btn btn-neutral float-right" title="Working with central KU IT" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
 
   <hr/>
 

@@ -1,6 +1,9 @@
-## New certificate on biprdsp7wbdb.cc.ku.edu server
+# Working with central KU IT
 
-Form to request new certificate: https://kuit.service-now.com/nav_to.do?uri=%2Fcom.glideapp.servicecatalog_cat_item_view.do%3Fv%3D1%26sysparm_id%3D78fee42fdb2a8850162673e1ba96195b%26sysparm_link_parent%3D322911f41bec6490cf2d337e034bcb23%26sysparm_catalog%3De0d08b13c3330100c8b837659bba8fb4%26sysparm_catalog_view%3Dcatalog_default%26sysparm_view%3Dcatalog_default
+## New certificate on ku.edu server
+
+Form to request new certificate: 
+https://kuit.service-now.com/nav_to.do?uri=%2Fcom.glideapp.servicecatalog_cat_item_view.do%3Fv%3D1%26sysparm_id%3D78fee42fdb2a8850162673e1ba96195b%26sysparm_link_parent%3D322911f41bec6490cf2d337e034bcb23%26sysparm_catalog%3De0d08b13c3330100c8b837659bba8fb4%26sysparm_catalog_view%3Dcatalog_default%26sysparm_view%3Dcatalog_default
 
 generate CSR string:
 ```bash
@@ -20,7 +23,7 @@ A challenge password []:
 An optional company name []:
 ```
 
-verify configuration with `openssl req -new -newkey rsa:2048 -nodes -keyout server.key -out server.csr` with output
+Verify configuration with `openssl req -new -newkey rsa:2048 -nodes -keyout server.key -out server.csr` with output
 ```
 C = US, ST = Kansas, L = Lawrence, O = University of Kansas, OU = Specify, CN = biimages.biodiversity.ku.edu, emailAddress = alec.white@ku.edu
 ```

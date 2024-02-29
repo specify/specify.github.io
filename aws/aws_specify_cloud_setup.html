@@ -4,7 +4,7 @@
   <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Setup Aurora MySQL Database &mdash; Specify Developer Documentation  documentation</title>
+  <title>Specify Cloud Setup &mdash; Specify Developer Documentation  documentation</title>
       <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=80d5e7a1" />
       <link rel="stylesheet" type="text/css" href="../_static/css/theme.css?v=19f00094" />
 
@@ -20,7 +20,9 @@
         <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
     <script src="../_static/js/theme.js"></script>
     <link rel="index" title="Index" href="../genindex.html" />
-    <link rel="search" title="Search" href="../search.html" /> 
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Digital Ocean to AWS migration" href="client_migration_notes.html" />
+    <link rel="prev" title="AWS Specify Asset Server Setup" href="aws_specify_asset_server_setup.html" /> 
 </head>
 
 <body class="wy-body-for-nav"> 
@@ -42,14 +44,47 @@
   </form>
 </div>
         </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
-              <!-- Local TOC -->
-              <div class="local-toc"><ul>
-<li><a class="reference internal" href="#">Setup Aurora MySQL Database</a></li>
-<li><a class="reference internal" href="#setup-ec2-server">Setup EC2 Server</a></li>
-<li><a class="reference internal" href="#info-misc">Info Misc.</a></li>
-<li><a class="reference internal" href="#specify-network-extract">Specify Network Extract</a></li>
+              <p class="caption" role="heading"><span class="caption-text">Internal Processes:</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../dev_process/specify_processes.html">Specify Development Process</a></li>
 </ul>
-</div>
+<p class="caption" role="heading"><span class="caption-text">Amazon Web Services:</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="aws_infrastructure_notes.html">AWS Infrastructure Notes</a></li>
+<li class="toctree-l1"><a class="reference internal" href="aws_specify_asset_server_setup.html">AWS Specify Asset Server Setup</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Specify Cloud Setup</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#setup-aurora-mysql-database">Setup Aurora MySQL Database</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#setup-ec2-server">Setup EC2 Server</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#initial-commands">Initial Commands</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#ssh-configuration">SSH Configuration</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#config-files">Config files</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#info-misc">Info Misc.</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#aws-credentials">aws credentials:</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#aws-ec2-user-data">AWS EC2 User data:</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#aws-pricing">AWS Pricing</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#specify-network-extract">Specify Network Extract</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#install-ubuntu-ec2-instance-with-no-docker">Install Ubuntu EC2 instance with no docker</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#using-the-amazon-arm54-centos-image">Using the Amazon arm54 centos image:</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="client_migration_notes.html">Digital Ocean to AWS migration</a></li>
+<li class="toctree-l1"><a class="reference internal" href="ec2_rds_specify7_setup.html">Deploy Specify7 to an EC2 instance</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Security:</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../security/fix_exposed_secret.html">Fix Exposed Secrets</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Misc:</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../misc/add_new_instance_to_specify_cloud.html">Add new Specify instance to Specify Cloud</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../misc/kuit_notes.html">Working with central KU IT</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../misc/specify7_ecs_most-in-one.html">Create a Most-In-One Specify Docker image</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../misc/useful_bash_cmds.html">Useful bash commands</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../misc/vs_code_django_unit_test_debugging_notes.html">VS Code Django Unit Test Debugging</a></li>
+</ul>
+
         </div>
       </div>
     </nav>
@@ -64,9 +99,9 @@
           <div role="navigation" aria-label="Page navigation">
   <ul class="wy-breadcrumbs">
       <li><a href="../index.html" class="icon icon-home" aria-label="Home"></a></li>
-      <li class="breadcrumb-item active">Setup Aurora MySQL Database</li>
+      <li class="breadcrumb-item active">Specify Cloud Setup</li>
       <li class="wy-breadcrumbs-aside">
-            <a href="../_sources/aws/Setup AWS Specify Cloud.md.txt" rel="nofollow"> View page source</a>
+            <a href="../_sources/aws/aws_specify_cloud_setup.md.txt" rel="nofollow"> View page source</a>
       </li>
   </ul>
   <hr/>
@@ -74,17 +109,22 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
              
-  <section id="setup-aurora-mysql-database">
-<h1>Setup Aurora MySQL Database<a class="headerlink" href="#setup-aurora-mysql-database" title="Link to this heading"></a></h1>
+  <section id="specify-cloud-setup">
+<h1>Specify Cloud Setup<a class="headerlink" href="#specify-cloud-setup" title="Link to this heading"></a></h1>
+<section id="setup-aurora-mysql-database">
+<h2>Setup Aurora MySQL Database<a class="headerlink" href="#setup-aurora-mysql-database" title="Link to this heading"></a></h2>
+<p>TODO</p>
 </section>
 <section id="setup-ec2-server">
-<h1>Setup EC2 Server<a class="headerlink" href="#setup-ec2-server" title="Link to this heading"></a></h1>
+<h2>Setup EC2 Server<a class="headerlink" href="#setup-ec2-server" title="Link to this heading"></a></h2>
 <p>EC2 Parameters:</p>
 <ul class="simple">
 <li><p>ubuntu/images/hvm-ssd/ubuntu-bionic-18.04-arm64-server-20220131<br />
-ami-0770bf1d6ae61c858
-Initial Commands:</p></li>
+ami-0770bf1d6ae61c858</p></li>
 </ul>
+</section>
+<section id="initial-commands">
+<h2>Initial Commands<a class="headerlink" href="#initial-commands" title="Link to this heading"></a></h2>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="ch">#!/bin/bash</span>
 
 sudo<span class="w"> </span>apt-get<span class="w"> </span>update<span class="p">;</span>
@@ -145,18 +185,36 @@ sudo<span class="w"> </span>systemctl<span class="w"> </span>reload<span class="
 docker-compose<span class="w"> </span>up<span class="w"> </span>-d
 </pre></div>
 </div>
-<p>SSH Client: vim ~/.ssh/config</p>
+</section>
+<section id="ssh-configuration">
+<h2>SSH Configuration<a class="headerlink" href="#ssh-configuration" title="Link to this heading"></a></h2>
+<ul>
+<li><p>Client</p>
+<ul>
+<li><p>config file: ~/.ssh/config</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">Host</span> <span class="o">*</span>
-    <span class="n">ServerAliveInterval</span> <span class="mi">20</span>
-    <span class="c1">#TCPKeepAlive no</span>
+	<span class="n">ServerAliveInterval</span> <span class="mi">20</span>
+	<span class="c1">#TCPKeepAlive no</span>
 </pre></div>
 </div>
-<p>SSH Server: sudo vim /etc/ssh/sshd_config</p>
+</li>
+</ul>
+</li>
+<li><p>Server</p>
+<ul>
+<li><p>config file: /etc/ssh/sshd_config</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">ClientAliveInterval</span> <span class="mi">1200</span>
 <span class="n">ClientAliveCountMax</span> <span class="mi">3</span>
 </pre></div>
 </div>
-<p>Then run <code class="docutils literal notranslate"><span class="pre">sudo</span> <span class="pre">systemctl</span> <span class="pre">reload</span> <span class="pre">sshd</span></code></p>
+</li>
+<li><p>Then run <code class="docutils literal notranslate"><span class="pre">sudo</span> <span class="pre">systemctl</span> <span class="pre">reload</span> <span class="pre">sshd</span></code></p></li>
+</ul>
+</li>
+</ul>
+</section>
+<section id="config-files">
+<h2>Config files<a class="headerlink" href="#config-files" title="Link to this heading"></a></h2>
 <p>spcloudservers.json -&gt;</p>
 <div class="highlight-json notranslate"><div class="highlight"><pre><span></span><span class="p">{</span>
 <span class="w">	</span><span class="nt">&quot;servers&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
@@ -198,17 +256,20 @@ docker-compose<span class="w"> </span>up<span class="w"> </span>-d
 </div>
 </section>
 <section id="info-misc">
-<h1>Info Misc.<a class="headerlink" href="#info-misc" title="Link to this heading"></a></h1>
-<p>aws credentials:</p>
+<h2>Info Misc.<a class="headerlink" href="#info-misc" title="Link to this heading"></a></h2>
+<section id="aws-credentials">
+<h3>aws credentials:<a class="headerlink" href="#aws-credentials" title="Link to this heading"></a></h3>
 <ul class="simple">
 <li><p>username: <code class="docutils literal notranslate"><span class="pre">specify.user</span></code></p></li>
-<li><p>password: <code class="docutils literal notranslate"><span class="pre">Specify-Cloud-aws-user</span></code></p></li>
+<li><p>password: SPECIFY_USER_PASSWORD</p></li>
 <li><p>access key: ACCESS_KEY</p></li>
 <li><p>secret access key: ACCESS_KEY_SECRET</p></li>
 <li><p>default region: us-east-1</p></li>
 <li><p>default output format: json</p></li>
 </ul>
-<p>AWS EC2 User data:</p>
+</section>
+<section id="aws-ec2-user-data">
+<h3>AWS EC2 User data:<a class="headerlink" href="#aws-ec2-user-data" title="Link to this heading"></a></h3>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="c1"># Avoid services restarting during apt upgrade</span>
 sudo<span class="w"> </span>sed<span class="w"> </span>-i<span class="w"> </span><span class="s2">&quot;s/#\$nrconf{kernelhints} = -1;/\$nrconf{kernelhints} = -1;/g&quot;</span><span class="w"> </span>/etc/needrestart/needrestart.conf<span class="p">;</span>
 sudo<span class="w"> </span>sed<span class="w"> </span>-i<span class="w"> </span><span class="s2">&quot;s/#\$nrconf{restart} = &#39;i&#39;;/\$nrconf{restart} = &#39;a&#39;;/g&quot;</span><span class="w"> </span>/etc/needrestart/needrestart.conf<span class="p">;</span>
@@ -290,6 +351,9 @@ sudo<span class="w"> </span>update-alternatives<span class="w"> </span>--set<spa
 ant<span class="w"> </span>compile-nonmac<span class="p">;</span>
 </pre></div>
 </div>
+</section>
+<section id="aws-pricing">
+<h3>AWS Pricing<a class="headerlink" href="#aws-pricing" title="Link to this heading"></a></h3>
 <p>Database Prices:</p>
 <ul class="simple">
 <li><p>db.r5.large - 2 vCPUs - 16 gb ram - $0.24 per hour = $173.00 per month</p></li>
@@ -298,12 +362,18 @@ ant<span class="w"> </span>compile-nonmac<span class="p">;</span>
 <li><p>db.t3.large - 2vCPUs - 8 gb ram - $0.136 per hour = $97.92 per month</p></li>
 <li><p>db.t3.xlarge - 4vCPUs - 16 gb ram - $0.272 per hour = $195.80 per month</p></li>
 <li><p>+db.t4g.medium - 2vCPUs - 4 gb ram - $0.065 per hour = $46.80 per month</p></li>
-<li><p>db.t4g.large - 2vCPUs - 8 gb ram - $0.129 per hour = $92.88 per month
-Aurora v2 Prices:</p></li>
-<li><p>1 ACU - 2 vCPUs - 2 gb ram - $0.12 per ACU hour = $86.40 per ACU month
-Aurora v1 Prices:</p></li>
-<li><p>1 ACU - 2 vCPUs - 2 gb ram - $0.06 per ACU hour = $43.29 per ACU month
-EC2 Prices:</p></li>
+<li><p>db.t4g.large - 2vCPUs - 8 gb ram - $0.129 per hour = $92.88 per month</p></li>
+</ul>
+<p>Aurora v2 Prices:</p>
+<ul class="simple">
+<li><p>1 ACU - 2 vCPUs - 2 gb ram - $0.12 per ACU hour = $86.40 per ACU month</p></li>
+</ul>
+<p>Aurora v1 Prices:</p>
+<ul class="simple">
+<li><p>1 ACU - 2 vCPUs - 2 gb ram - $0.06 per ACU hour = $43.29 per ACU month</p></li>
+</ul>
+<p>EC2 Prices:</p>
+<ul class="simple">
 <li><p>t4g.nano - 2vCPUs - 0.5 gb ram - $0.0042 per hour = $3.02 per month</p></li>
 <li><p>t4g.micro - 2vCPUs - 1 gb ram - $0.0084 per hour = $6.05 per month</p></li>
 <li><p>t4g.small - 2vCPUs - 2 gb ram - $0.0168 per hour = $12.10 per month</p></li>
@@ -312,8 +382,10 @@ EC2 Prices:</p></li>
 <li><p>t4g.xlarge - 4vCPUs - 16 gb ram - $0.1344 per hour = $96.77 per month</p></li>
 <li><p>m7g.medium - 1vCPUs - 4 gb ram - $0.0408 per hour = $29.38 per month</p></li>
 <li><p>m7g.large - 2vCPUs - 8 gb ram - $0.0816 per hour = $58.75 per month</p></li>
-<li><p>m7g.xlarge - 4vCPUs - 16 gb ram - $0.2232 per hour = $160.70 per month
-Fargate Prices (Linux/ARM):</p></li>
+<li><p>m7g.xlarge - 4vCPUs - 16 gb ram - $0.2232 per hour = $160.70 per month</p></li>
+</ul>
+<p>Fargate Prices (Linux/ARM):</p>
+<ul class="simple">
 <li><p>On Demand - $0.03238 per vCPU per hour and $0.00356 per GB per hour</p></li>
 <li><p>Spot - $0.01279585 per vCPU per hour and $0.00140508 per GB per hour</p></li>
 <li><p>Ephemeral Storage - $0.000111 per storage GB per hour</p></li>
@@ -327,8 +399,10 @@ Fargate Prices (Linux/ARM):</p></li>
 <li><p>ex. 1 cpu and 1 gb = $10.22 per month</p></li>
 <li><p>ex. 2 cpus and 8 gb = $26.52 per month</p></li>
 <li><p>ex. 8 cpus and 16 gb = $89.89 per month</p></li>
-<li><p>ex. 16 cpus and 32 gb = $179.78 per month
-Notes:</p></li>
+<li><p>ex. 16 cpus and 32 gb = $179.78 per month</p></li>
+</ul>
+<p>Notes:</p>
+<ul class="simple">
 <li><p>m7g is general purpose using graviton 3</p></li>
 <li><p>t4g is general purpose using graviton 2</p></li>
 <li><p>for Fargate, memory and storage are cheep, it’s the vCPUs that get expensive</p></li>
@@ -346,8 +420,10 @@ Notes:</p></li>
 <li><p>45 * 0.5 GB = 22.5</p></li>
 <li><p>10 containers per task definition</p></li>
 <li><p>So 9 task definitions needed for django</p></li>
-<li><p>vimsfish might need more than 0.5 GB
-CA Server:</p></li>
+<li><p>vimsfish might need more than 0.5 GB</p></li>
+</ul>
+<p>CA Server:</p>
+<ul class="simple">
 <li><p>8 clients</p></li>
 <li><p>digital ocean 1vCPUs 2 GB memory</p>
 <ul>
@@ -355,8 +431,10 @@ CA Server:</p></li>
 <li><p>memory usage nominal at 85%</p></li>
 </ul>
 </li>
-<li><p>beaty might need more than 0.5 GB
-EU Server:</p></li>
+<li><p>beaty might need more than 0.5 GB</p></li>
+</ul>
+<p>EU Server:</p>
+<ul class="simple">
 <li><p>9 clients</p></li>
 <li><p>digital ocean 1vCPUs 2 GB memory</p>
 <ul>
@@ -366,7 +444,9 @@ EU Server:</p></li>
 </li>
 <li><p>herb_rbge might need more than 0.5 GB</p></li>
 </ul>
-<p>So maybe 1vCPU and 0.5 GB of memory will be enough to handle each django container.  Most are fine with 0.5 GB, only a few will go over with the django and worker containers combined.</p>
+<p>So maybe 1vCPU and 0.5 GB of memory will be enough to handle each django container.<br />
+Most are fine with 0.5 GB, only a few will go over with the django and worker containers
+combined.</p>
 <p>Price Option Comparison
 t4g.medium</p>
 <ul class="simple">
@@ -377,7 +457,7 @@ t4g.medium</p>
 </ul>
 </section>
 <section id="specify-network-extract">
-<h1>Specify Network Extract<a class="headerlink" href="#specify-network-extract" title="Link to this heading"></a></h1>
+<h3>Specify Network Extract<a class="headerlink" href="#specify-network-extract" title="Link to this heading"></a></h3>
 <p>Specify Network EC2 instance:</p>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>sudo<span class="w"> </span>apt<span class="w"> </span>update<span class="p">;</span>
 sudo<span class="w"> </span>apt<span class="w"> </span>upgrade<span class="w"> </span>-y<span class="p">;</span>
@@ -414,9 +494,10 @@ id_ed25519.pub -&gt;</p>
 </pre></div>
 </div>
 <p>MariaDB version: 10.3.38-MariaDB-0ubuntu0.20.04.1-log
-AWS DB password: dancing-taco-magic-rainbow-vibes
-AWS DB password: dance-taco-magic-rainbow-vibe</p>
-<p>Install Ubuntu EC2 instance all in one with no docker</p>
+AWS DB password: DB_PASSWORD</p>
+</section>
+<section id="install-ubuntu-ec2-instance-with-no-docker">
+<h3>Install Ubuntu EC2 instance with no docker<a class="headerlink" href="#install-ubuntu-ec2-instance-with-no-docker" title="Link to this heading"></a></h3>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="ch">#!/bin/bash</span>
 
 <span class="c1"># Avoid services restarting during apt upgrade</span>
@@ -496,7 +577,9 @@ sudo<span class="w"> </span>ufw<span class="w"> </span>allow<span class="w"> </s
 sudo<span class="w"> </span>ufw<span class="w"> </span>status<span class="p">;</span>
 </pre></div>
 </div>
-<p>Using the Amazon arm54 centos image:</p>
+</section>
+<section id="using-the-amazon-arm54-centos-image">
+<h3>Using the Amazon arm54 centos image:<a class="headerlink" href="#using-the-amazon-arm54-centos-image" title="Link to this heading"></a></h3>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="ch">#!/bin/bash</span>
 
 sudo<span class="w"> </span>yum<span class="w"> </span>upgrade<span class="p">;</span>
@@ -523,11 +606,16 @@ specify7/ve/bin/pip<span class="w"> </span>install<span class="w"> </span>--upgr
 </pre></div>
 </div>
 </section>
+</section>
+</section>
 
 
            </div>
           </div>
-          <footer>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="aws_specify_asset_server_setup.html" class="btn btn-neutral float-left" title="AWS Specify Asset Server Setup" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="client_migration_notes.html" class="btn btn-neutral float-right" title="Digital Ocean to AWS migration" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
 
   <hr/>
 

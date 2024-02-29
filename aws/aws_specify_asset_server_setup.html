@@ -4,7 +4,7 @@
   <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>EC2 Non-Dockerized Build &mdash; Specify Developer Documentation  documentation</title>
+  <title>AWS Specify Asset Server Setup &mdash; Specify Developer Documentation  documentation</title>
       <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=80d5e7a1" />
       <link rel="stylesheet" type="text/css" href="../_static/css/theme.css?v=19f00094" />
 
@@ -20,7 +20,9 @@
         <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
     <script src="../_static/js/theme.js"></script>
     <link rel="index" title="Index" href="../genindex.html" />
-    <link rel="search" title="Search" href="../search.html" /> 
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Specify Cloud Setup" href="aws_specify_cloud_setup.html" />
+    <link rel="prev" title="AWS Infrastructure Notes" href="aws_infrastructure_notes.html" /> 
 </head>
 
 <body class="wy-body-for-nav"> 
@@ -42,13 +44,37 @@
   </form>
 </div>
         </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
-              <!-- Local TOC -->
-              <div class="local-toc"><ul>
-<li><a class="reference internal" href="#">EC2 Non-Dockerized Build</a></li>
-<li><a class="reference internal" href="#ec2-non-docker-build-shell-script">EC2 Non-docker build shell script</a></li>
-<li><a class="reference internal" href="#docker-build">Docker Build</a></li>
+              <p class="caption" role="heading"><span class="caption-text">Internal Processes:</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../dev_process/specify_processes.html">Specify Development Process</a></li>
 </ul>
-</div>
+<p class="caption" role="heading"><span class="caption-text">Amazon Web Services:</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="aws_infrastructure_notes.html">AWS Infrastructure Notes</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">AWS Specify Asset Server Setup</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#ec2-non-dockerized-build">EC2 Non-Dockerized Build</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#config-files">Config files</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#ec2-non-docker-build-shell-script">EC2 Non-docker build shell script</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#docker-build">Docker Build</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="aws_specify_cloud_setup.html">Specify Cloud Setup</a></li>
+<li class="toctree-l1"><a class="reference internal" href="client_migration_notes.html">Digital Ocean to AWS migration</a></li>
+<li class="toctree-l1"><a class="reference internal" href="ec2_rds_specify7_setup.html">Deploy Specify7 to an EC2 instance</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Security:</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../security/fix_exposed_secret.html">Fix Exposed Secrets</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Misc:</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../misc/add_new_instance_to_specify_cloud.html">Add new Specify instance to Specify Cloud</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../misc/kuit_notes.html">Working with central KU IT</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../misc/specify7_ecs_most-in-one.html">Create a Most-In-One Specify Docker image</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../misc/useful_bash_cmds.html">Useful bash commands</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../misc/vs_code_django_unit_test_debugging_notes.html">VS Code Django Unit Test Debugging</a></li>
+</ul>
+
         </div>
       </div>
     </nav>
@@ -63,9 +89,9 @@
           <div role="navigation" aria-label="Page navigation">
   <ul class="wy-breadcrumbs">
       <li><a href="../index.html" class="icon icon-home" aria-label="Home"></a></li>
-      <li class="breadcrumb-item active">EC2 Non-Dockerized Build</li>
+      <li class="breadcrumb-item active">AWS Specify Asset Server Setup</li>
       <li class="wy-breadcrumbs-aside">
-            <a href="../_sources/aws/AWS Specify Asset Server Setup.md.txt" rel="nofollow"> View page source</a>
+            <a href="../_sources/aws/aws_specify_asset_server_setup.md.txt" rel="nofollow"> View page source</a>
       </li>
   </ul>
   <hr/>
@@ -73,8 +99,10 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
              
-  <section id="ec2-non-dockerized-build">
-<h1>EC2 Non-Dockerized Build<a class="headerlink" href="#ec2-non-dockerized-build" title="Link to this heading"></a></h1>
+  <section id="aws-specify-asset-server-setup">
+<h1>AWS Specify Asset Server Setup<a class="headerlink" href="#aws-specify-asset-server-setup" title="Link to this heading"></a></h1>
+<section id="ec2-non-dockerized-build">
+<h2>EC2 Non-Dockerized Build<a class="headerlink" href="#ec2-non-dockerized-build" title="Link to this heading"></a></h2>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="ch">#!/bin/bash</span>
 
 sudo<span class="w"> </span>apt<span class="w"> </span>update<span class="p">;</span>
@@ -207,6 +235,9 @@ sudo<span class="w"> </span>openssl<span class="w"> </span>dhparam<span class="w
 <span class="c1"># Edit </span>
 </pre></div>
 </div>
+</section>
+<section id="config-files">
+<h2>Config files<a class="headerlink" href="#config-files" title="Link to this heading"></a></h2>
 <p>/etc/systemd/system/web-asset-server.service -&gt;</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="p">[</span><span class="n">Unit</span><span class="p">]</span>
 <span class="n">Description</span><span class="o">=</span><span class="n">Specify</span> <span class="n">Web</span> <span class="n">Asset</span> <span class="n">Server</span>
@@ -422,10 +453,9 @@ sudo<span class="w"> </span>openssl<span class="w"> </span>dhparam<span class="w
 <span class="o">-----</span><span class="n">END</span> <span class="n">DH</span> <span class="n">PARAMETERS</span><span class="o">-----</span>
 </pre></div>
 </div>
-<p>swiss asset server password: xD5dakesktkxceb</p>
 </section>
 <section id="ec2-non-docker-build-shell-script">
-<h1>EC2 Non-docker build shell script<a class="headerlink" href="#ec2-non-docker-build-shell-script" title="Link to this heading"></a></h1>
+<h2>EC2 Non-docker build shell script<a class="headerlink" href="#ec2-non-docker-build-shell-script" title="Link to this heading"></a></h2>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="ch">#!/bin/bash</span>
 
 sudo<span class="w"> </span>apt<span class="w"> </span>update<span class="p">;</span>
@@ -460,13 +490,18 @@ pip<span class="w"> </span>install<span class="w"> </span>--no-cache-dir<span cl
 </div>
 </section>
 <section id="docker-build">
-<h1>Docker Build<a class="headerlink" href="#docker-build" title="Link to this heading"></a></h1>
+<h2>Docker Build<a class="headerlink" href="#docker-build" title="Link to this heading"></a></h2>
+<p>TODO</p>
+</section>
 </section>
 
 
            </div>
           </div>
-          <footer>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="aws_infrastructure_notes.html" class="btn btn-neutral float-left" title="AWS Infrastructure Notes" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="aws_specify_cloud_setup.html" class="btn btn-neutral float-right" title="Specify Cloud Setup" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
 
   <hr/>
 
