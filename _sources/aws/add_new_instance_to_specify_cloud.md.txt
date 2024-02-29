@@ -1,4 +1,6 @@
-Example for UNSM_VP
+# Add new Specify instance to Specify Cloud
+
+## Example for UNSM_VP
 
 1. Create Database
 	1. look through the sql file for issues and do test upload to local database
@@ -45,21 +47,29 @@ Example for UNSM_VP
 	1. Add url: unsm-vp.specifycloud.org/context/system_info.json
 	2. Add alias: unsm-vp
 
+# Misc
 
-Restarting the Database droplet, handle mariadb failing to restart:
-- mysqld --tc-heuristic-recover=ROLLBACK
-- systemctl start mariadb.service
+* Add ssh key:
 
-Fixing an instance by restarting it:
+```bash
+vim .ssh/authorized_keys
+sudo systemctl reload sshd
+```
+
+# Troubleshooting 
+
+* Handle mariadb failing to restart after restarting the Database droplet:
+
+```bash
+mysqld --tc-heuristic-recover=ROLLBACK
+systemctl start mariadb.service
+```
+
+* Fix an instance by restarting it:
+
 ```bash
 sudo docker exec -it specifycloud_nginx_1 nginx -s reload;
 sudo docker stop client client-worker;
 sudo docker compose up -d;
 sudo docker exec -it specifycloud_nginx_1 nginx -s reload;
-```
-
-Add ssh key:
-```bash
-vim .ssh/authorized_keys
-sudo systemctl reload sshd
 ```
