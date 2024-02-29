@@ -1,4 +1,4 @@
-VS Code Django Unit Test Debugging Notes:
+# VS Code Django Unit Test Debugging
 
 Might need to add permissions to the test db for the master user:
 `mysql --host 127.0.0.1 -u root -p'root' -e "GRANT ALL PRIVILEGES ON test_cuic.* TO 'master'@'%';"`

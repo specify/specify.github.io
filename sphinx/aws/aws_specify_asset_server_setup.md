@@ -1,3 +1,5 @@
+# AWS Specify Asset Server Setup
+
 ## EC2 Non-Dockerized Build
 ```bash
 #!/bin/bash
@@ -132,6 +134,7 @@ sudo openssl dhparam -dsaparam -out /etc/ssl/certs/dhparam.pem 1024;
 # Edit 
 ```
 
+## Config files
 /etc/systemd/system/web-asset-server.service ->
 ```
 [Unit]
@@ -352,10 +355,6 @@ DaFwAJUrqwEqrQP5fEQdOMdh522RwuD2/fPeXTukQHI8gUuMjk652aeLOcn1Ufhy
 -----END DH PARAMETERS-----
 ```
 
-
-swiss asset server password: xD5dakesktkxceb
-
-
 ## EC2 Non-docker build shell script
 
 ```bash
@@ -393,3 +392,5 @@ pip install --no-cache-dir -r requirements.txt;
 ```
 
 ## Docker Build
+
+TODO

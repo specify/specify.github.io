@@ -1,10 +1,14 @@
-### Setup Aurora MySQL Database
+# Specify Cloud Setup
 
-### Setup EC2 Server
+## Setup Aurora MySQL Database
+TODO
+
+## Setup EC2 Server
 EC2 Parameters:
 - ubuntu/images/hvm-ssd/ubuntu-bionic-18.04-arm64-server-20220131  
-ami-0770bf1d6ae61c858
-Initial Commands:
+ami-0770bf1d6ae61c858 
+
+## Initial Commands
 ```bash
 #!/bin/bash
 
@@ -66,19 +70,27 @@ sudo systemctl reload sshd;
 docker-compose up -d
 ```
 
-SSH Client: vim ~/.ssh/config
-```
-Host *
-    ServerAliveInterval 20
-    #TCPKeepAlive no
-```
-SSH Server: sudo vim /etc/ssh/sshd_config
-```
-ClientAliveInterval 1200
-ClientAliveCountMax 3
-```
-Then run `sudo systemctl reload sshd`
+## SSH Configuration
 
+* Client
+
+  * config file: ~/.ssh/config
+	```
+	Host *
+		ServerAliveInterval 20
+		#TCPKeepAlive no
+	```
+
+* Server
+
+  * config file: /etc/ssh/sshd_config
+	```
+	ClientAliveInterval 1200
+	ClientAliveCountMax 3
+	```
+  * Then run `sudo systemctl reload sshd`
+
+## Config files
 spcloudservers.json ->
 ```json
 {
@@ -120,16 +132,17 @@ SP7_DEBUG=false
 ```
 
 
-### Info Misc.
-aws credentials:
+## Info Misc.
+
+### aws credentials:
 - username: `specify.user`
-- password: `Specify-Cloud-aws-user`
+- password: SPECIFY_USER_PASSWORD
 - access key: ACCESS_KEY
 - secret access key: ACCESS_KEY_SECRET
 - default region: us-east-1
 - default output format: json
 
-AWS EC2 User data:
+### AWS EC2 User data:
 ```bash
 # Avoid services restarting during apt upgrade
 sudo sed -i "s/#\$nrconf{kernelhints} = -1;/\$nrconf{kernelhints} = -1;/g" /etc/needrestart/needrestart.conf;
@@ -210,8 +223,9 @@ sudo update-alternatives --set java /usr/lib/jvm/java-8-openjdk-arm64/jre/bin/ja
 # Build without docker
 cd specify6;
 ant compile-nonmac;
-
 ```
+
+###  AWS Pricing
 
 Database Prices:
 - db.r5.large - 2 vCPUs - 16 gb ram - $0.24 per hour = $173.00 per month
@@ -221,10 +235,13 @@ Database Prices:
 - db.t3.xlarge - 4vCPUs - 16 gb ram - $0.272 per hour = $195.80 per month
 - +db.t4g.medium - 2vCPUs - 4 gb ram - $0.065 per hour = $46.80 per month
 - db.t4g.large - 2vCPUs - 8 gb ram - $0.129 per hour = $92.88 per month
+
 Aurora v2 Prices:
 - 1 ACU - 2 vCPUs - 2 gb ram - $0.12 per ACU hour = $86.40 per ACU month
+
 Aurora v1 Prices:
 - 1 ACU - 2 vCPUs - 2 gb ram - $0.06 per ACU hour = $43.29 per ACU month
+
 EC2 Prices:
 - t4g.nano - 2vCPUs - 0.5 gb ram - $0.0042 per hour = $3.02 per month
 - t4g.micro - 2vCPUs - 1 gb ram - $0.0084 per hour = $6.05 per month
@@ -235,6 +252,7 @@ EC2 Prices:
 - m7g.medium - 1vCPUs - 4 gb ram - $0.0408 per hour = $29.38 per month
 - m7g.large - 2vCPUs - 8 gb ram - $0.0816 per hour = $58.75 per month
 - m7g.xlarge - 4vCPUs - 16 gb ram - $0.2232 per hour = $160.70 per month
+
 Fargate Prices (Linux/ARM):
 - On Demand - $0.03238 per vCPU per hour and $0.00356 per GB per hour
 - Spot - $0.01279585 per vCPU per hour and $0.00140508 per GB per hour
@@ -250,6 +268,7 @@ Fargate Prices (Linux/ARM):
 - ex. 2 cpus and 8 gb = $26.52 per month
 - ex. 8 cpus and 16 gb = $89.89 per month
 - ex. 16 cpus and 32 gb = $179.78 per month
+
 Notes:
 - m7g is general purpose using graviton 3
 - t4g is general purpose using graviton 2
@@ -265,12 +284,14 @@ NA Server:
 - 10 containers per task definition
 - So 9 task definitions needed for django
 - vimsfish might need more than 0.5 GB
+
 CA Server:
 - 8 clients
 - digital ocean 1vCPUs 2 GB memory
 	- cpu usage nominal at 8% with spikes to 80%
 	- memory usage nominal at 85%
 - beaty might need more than 0.5 GB
+
 EU Server:
 - 9 clients
 - digital ocean 1vCPUs 2 GB memory
@@ -278,7 +299,9 @@ EU Server:
 	- memory usage nominal at 80%
 - herb_rbge might need more than 0.5 GB
 
-So maybe 1vCPU and 0.5 GB of memory will be enough to handle each django container.  Most are fine with 0.5 GB, only a few will go over with the django and worker containers combined.
+So maybe 1vCPU and 0.5 GB of memory will be enough to handle each django container.  
+Most are fine with 0.5 GB, only a few will go over with the django and worker containers 
+combined.
 
 Price Option Comparison
 t4g.medium
@@ -328,10 +351,9 @@ PLGLgQtim77M68m+XNWLAAAAFGFjd2hpdGUyMTFAZ21haWwuY29tAQ==
 ```
 
 MariaDB version: 10.3.38-MariaDB-0ubuntu0.20.04.1-log
-AWS DB password: dancing-taco-magic-rainbow-vibes
-AWS DB password: dance-taco-magic-rainbow-vibe
+AWS DB password: DB_PASSWORD
 
-Install Ubuntu EC2 instance all in one with no docker
+### Install Ubuntu EC2 instance with no docker
 ```bash
 #!/bin/bash
 
@@ -412,7 +434,7 @@ sudo ufw allow 'Nginx HTTP';
 sudo ufw status;
 ```
 
-Using the Amazon arm54 centos image:
+### Using the Amazon arm54 centos image:
 ```bash
 #!/bin/bash
 

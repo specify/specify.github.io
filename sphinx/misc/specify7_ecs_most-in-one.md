@@ -1,6 +1,9 @@
+# Create a Most-In-One Specify Docker image
+
 ## Image
-create a one client pod with specify7, specify7-worker, webpack, nginx, and maybe specify6
-excludes mariadb, redis, asset-server
+Create a one client pod with specify7, specify7-worker, webpack, nginx, and maybe 
+specify6.  Excludes mariadb, redis, asset-server.
+
 ```Dockerfile
 FROM arm64v8/ubuntu:20.04
 

@@ -1,4 +1,6 @@
-sftp
+# Useful bash commands
+
+## sftp
 ```bash
 sftp -i alec_specify_ssh_key ubuntu@ec2-52-206-2-67.compute-1.amazonaws.com;
 pwd;
@@ -12,42 +14,43 @@ background & foreground tasks
 
 ```
 
-check storage
+## check storage
 ```bash
 df -H
 du -sh *
 ```
 
-rsync
+## rsync
 ```bash
-rsync -avz -e "ssh -i ~/specify/keys/specify-aws-ssh.pem" ~/git/specify-aws/specify7-cluster/ ubuntu@ec2-52-206-2-67.compute-1.amazonaws.com:/home/ubuntu/specify7-cluster/
-
+rsync -avz -e "ssh -i ~/specify/keys/specify-aws-ssh.pem" \
+      ~/git/specify-aws/specify7-cluster/ \
+      ubuntu@ec2-52-206-2-67.compute-1.amazonaws.com:/home/ubuntu/specify7-cluster/
 ```
 
-docker images view architecture and OS
+## docker images view architecture and OS
 ```bash
 for img in $(docker image ls -q); do echo $img; docker image inspect $img | jq '.[0] | {image: .RepoTags[0], os: .Os, arch: .Architecture}'; done
 ```
 
-run a django unit test through docker
+## run a django unit test through docker
 ```bash
 sudo docker exec -it specify7-specify7-1 bash -c "ve/bin/python3 manage.py test specifyweb.notifications.tests.NotificationsTests"
 ```
 
-git stash specify files
+## git stash specify files
 ```bash
 git stash push -m "stash-name" file1.txt file2.txt
 git stash list
 git stash apply stash^(0)
 ```
 
-add user
+## add user
 ```bash
 adduser --disabled-password --gecos "" specify;
 su - specify;
 ```
 
-docker build and push for multiple architectures
+## docker build and push for multiple architectures
 ```bash
 export DOCKER_CLI_EXPERIMENTAL=enabled
 docker buildx create --name mybuilder --use # only do once
@@ -58,7 +61,7 @@ docker buildx build --platform linux/amd64,linux/arm64 -t specifyconsortium/spec
 docker buildx use default # don't think needs to be done
 ```
 
-create linux user for ssh login and database access
+## create linux user for ssh login and database access
 ```bash
 #!/bin/bash
 
@@ -99,14 +102,14 @@ EXIT;
 
 ```
 
-view live formatted nginx logs example
+## view live formatted nginx logs example
 ```bash
 docker logs specifycloud-nginx-1 --tail 1000 --since 10m --follow | \
 grep -v updown | grep -v notification | grep specifycloud.org | \
 awk '{ split($4,time,"["); print time[2], "-", $6, $7, $8, $9, $10, $11; }'
 ```
 
-Add swap memory
+## Add swap memory
 ```bash
 sudo fallocate -l 4G /swapfile;
 # sudo dd if=/dev/zero of=/swapfile bs=1024 count=4096k; # if fallocate is not available
