@@ -44,17 +44,17 @@
   </form>
 </div>
         </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
-              <p class="caption" role="heading"><span class="caption-text">Internal Processes:</span></p>
-<ul>
-<li class="toctree-l1"><a class="reference internal" href="../dev_process/specify_processes.html">Specify Development Process</a></li>
-</ul>
-<p class="caption" role="heading"><span class="caption-text">Amazon Web Services:</span></p>
+              <p class="caption" role="heading"><span class="caption-text">Amazon Web Services:</span></p>
 <ul class="current">
 <li class="toctree-l1"><a class="reference internal" href="aws_infrastructure_notes.html">AWS Infrastructure Notes</a></li>
 <li class="toctree-l1"><a class="reference internal" href="aws_specify_asset_server_setup.html">AWS Specify Asset Server Setup</a></li>
 <li class="toctree-l1"><a class="reference internal" href="aws_specify_cloud_setup.html">Specify Cloud Setup</a></li>
 <li class="toctree-l1 current"><a class="current reference internal" href="#">Digital Ocean to AWS migration</a></li>
 <li class="toctree-l1"><a class="reference internal" href="ec2_rds_specify7_setup.html">Deploy Specify7 to an EC2 instance</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Internal Processes:</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../dev_process/specify_processes.html">Specify Development Process</a></li>
 </ul>
 <p class="caption" role="heading"><span class="caption-text">Security:</span></p>
 <ul>
@@ -101,20 +101,16 @@ increase Specify’s reliability and security.</p>
 hope to upgrade to PostgreSQL</p>
 <p>The database backups will be further improved by storing daily backups for a month</p>
 <p>For connecting Specify6 to the database via ssh, two things have changed, there will be
-no root login to the server, and the IP address for the database.  The Linux user name
+no root login to the server, and the IP address for the database.  The Linux username
 will be the same as in your institution’s url, but with
 underscore <code class="docutils literal notranslate"><span class="pre">_</span></code> replacing dashes <code class="docutils literal notranslate"><span class="pre">-</span></code></p>
-<p>Here are the new database IPs (they have been updated in the wiki [here]
-(https://github.com/specify/specify7/wiki/Specify-6-Remote-Access):
-NA: <code class="docutils literal notranslate"><span class="pre">172.31.96.36</span></code>
-EU: <code class="docutils literal notranslate"><span class="pre">172.31.16.73</span></code>
-CA: <code class="docutils literal notranslate"><span class="pre">172.31.35.249</span></code></p>
+<p>Change the database IPs (they have been updated in the wiki [here]
+(https://github.com/specify/specify7/wiki/Specify-6-Remote-Access)</p>
 <p>Here is an example
 On Linux/Mac<code class="docutils literal notranslate"><span class="pre">ssh</span> <span class="pre">-N</span> <span class="pre">-L3307:xxx.xx.xx.xx:3306</span> <span class="pre">institution_id&#64;na-db-1.specifycloud.org</span></code>
 On Windows PuTTY target</p>
 <div class="highlight-commandline notranslate"><div class="highlight"><pre><span></span>C:\Program Files\PuTTY\putty.exe  -ssh -i C:\users\your_user\private_key_.ppk \
     institution_id@eu-db-1.specifycloud.org -L 3307:xxx.xx.xx.xx:3306 -N`
-
 </pre></div>
 </div>
 <p>For now, you will log into the database as <code class="docutils literal notranslate"><span class="pre">master</span></code> with the same previous passwords,

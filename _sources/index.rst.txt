@@ -3,12 +3,6 @@ Welcome to Specify Developer documentation!
 
 .. toctree::
    :maxdepth: 1
-   :caption: Internal Processes:
-
-   dev_process/specify_processes
-
-.. toctree::
-   :maxdepth: 1
    :caption: Amazon Web Services:
 
    aws/aws_infrastructure_notes
@@ -18,6 +12,12 @@ Welcome to Specify Developer documentation!
    aws/ec2_rds_specify7_setup
    aws/specify7_ecs_most-in-one
    aws/specify_cloud_graviton_setup
+
+.. toctree::
+   :maxdepth: 1
+   :caption: Internal Processes:
+
+   dev_process/specify_processes
 
 .. toctree::
    :maxdepth: 1
