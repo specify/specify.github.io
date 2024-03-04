@@ -58,16 +58,19 @@ spcloudservers.json ->
 	}
 }
 ```
+
+Fill in everything between <>
 defaults.env ->
+
 ```
 DATABASE_HOST=<db_instance_name>.<identifier>.<region>.rds.amazonaws.com
 DATABASE_PORT=3306
 MASTER_NAME=master
 MASTER_PASSWORD=<master_password>
 SECRET_KEY=bogus
-ASSET_SERVER_URL=https://ASSET_SERVER_FQDN/web_asset_store.xml
-ASSET_SERVER_KEY=ASSET_SERVER_KEY
-REPORT_RUNNER_HOST=10.132.218.32
+ASSET_SERVER_URL=https://<asset_server_fqdn>/web_asset_store.xml
+ASSET_SERVER_KEY=<asset_server_key>
+REPORT_RUNNER_HOST=<xxx.xx.xx.xx>
 REPORT_RUNNER_PORT=8080
 CELERY_BROKER_URL=redis://redis/0
 CELERY_RESULT_BACKEND=redis://redis/1

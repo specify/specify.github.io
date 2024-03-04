@@ -44,7 +44,6 @@ DEBUG = True
 # Set KEY to None to disable security. This is NOT recommended since doing so
 # will allow anyone on the internet to use the attachment server to store
 # arbitrary files.
-#KEY = 'tnhercbrhtktanehul.dukb'
 KEY = 'test_attachment_key'
 
 # Auth token timestamp must be within this many seconds of server time
@@ -225,7 +224,6 @@ subdomain.domain.name = /var/www
 /etc/ssl/certs/dhparam.pem from subdomain.domain.name->
 ```
 -----BEGIN DH PARAMETERS-----
-...
 -----END DH PARAMETERS-----
 ```
 
