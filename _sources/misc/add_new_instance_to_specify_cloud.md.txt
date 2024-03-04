@@ -4,9 +4,10 @@
 
 1. Create Database
 	1. look through the sql file for issues and do test upload to local database
-	2. mysql -umaster -p'master' -e "create database unsm_vp;"
-	3. mysql -umaster -p'master' unsm_vp < unsm_vp.sql
-	4. may need to run `grant all privileges on eurl.* to 'master'@'%';` if master doesn't have access `flush privileges;`
+	2. mysql -umaster -p<master_password> -e "create database unsm_vp;"
+	3. mysql -umaster -p<master_password> unsm_vp < unsm_vp.sql
+	4. may need to run `grant all privileges on eurl.* to <master_password>@'%';` if 
+       master doesn't have access `flush privileges;`
 2. DNS Registtration:
 	1. Login to Dreamhost, select Websites -> Manage Websites
 	2. For specifycloud.org, select DNS

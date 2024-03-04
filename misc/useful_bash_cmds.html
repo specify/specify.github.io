@@ -110,7 +110,7 @@
 <h1>Useful bash commands<a class="headerlink" href="#useful-bash-commands" title="Link to this heading"></a></h1>
 <section id="sftp">
 <h2>sftp<a class="headerlink" href="#sftp" title="Link to this heading"></a></h2>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>sftp<span class="w"> </span>-i<span class="w"> </span>alec_specify_ssh_key<span class="w"> </span>ubuntu@ec2-52-206-2-67.compute-1.amazonaws.com<span class="p">;</span>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>sftp<span class="w"> </span>-i<span class="w"> </span>alec_specify_ssh_key<span class="w"> </span>ubuntu@&lt;ec2instance&gt;.compute-1.amazonaws.com<span class="p">;</span>
 pwd<span class="p">;</span>
 put<span class="w"> </span>/Users/alecwhite/git/specify-aws/report-fonts.jar<span class="w"> </span>./<span class="p">;</span>
 ls<span class="p">;</span>
@@ -133,7 +133,7 @@ du<span class="w"> </span>-sh<span class="w"> </span>*
 <h2>rsync<a class="headerlink" href="#rsync" title="Link to this heading"></a></h2>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>rsync<span class="w"> </span>-avz<span class="w"> </span>-e<span class="w"> </span><span class="s2">&quot;ssh -i ~/specify/keys/specify-aws-ssh.pem&quot;</span><span class="w"> </span><span class="se">\</span>
 <span class="w">      </span>~/git/specify-aws/specify7-cluster/<span class="w"> </span><span class="se">\</span>
-<span class="w">      </span>ubuntu@ec2-52-206-2-67.compute-1.amazonaws.com:/home/ubuntu/specify7-cluster/
+<span class="w">      </span>ubuntu@&lt;ec2instance&gt;.compute-1.amazonaws.com:/home/ubuntu/specify7-cluster/
 </pre></div>
 </div>
 </section>

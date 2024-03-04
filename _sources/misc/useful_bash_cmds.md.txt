@@ -2,7 +2,7 @@
 
 ## sftp
 ```bash
-sftp -i alec_specify_ssh_key ubuntu@ec2-52-206-2-67.compute-1.amazonaws.com;
+sftp -i alec_specify_ssh_key ubuntu@<ec2instance>.compute-1.amazonaws.com;
 pwd;
 put /Users/alecwhite/git/specify-aws/report-fonts.jar ./;
 ls;
@@ -24,7 +24,7 @@ du -sh *
 ```bash
 rsync -avz -e "ssh -i ~/specify/keys/specify-aws-ssh.pem" \
       ~/git/specify-aws/specify7-cluster/ \
-      ubuntu@ec2-52-206-2-67.compute-1.amazonaws.com:/home/ubuntu/specify7-cluster/
+      ubuntu@<ec2instance>.compute-1.amazonaws.com:/home/ubuntu/specify7-cluster/
 ```
 
 ## docker images view architecture and OS

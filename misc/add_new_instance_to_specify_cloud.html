@@ -106,9 +106,10 @@
 <li><p>Create Database</p>
 <ol class="arabic simple">
 <li><p>look through the sql file for issues and do test upload to local database</p></li>
-<li><p>mysql -umaster -p’master’ -e “create database unsm_vp;”</p></li>
-<li><p>mysql -umaster -p’master’ unsm_vp &lt; unsm_vp.sql</p></li>
-<li><p>may need to run <code class="docutils literal notranslate"><span class="pre">grant</span> <span class="pre">all</span> <span class="pre">privileges</span> <span class="pre">on</span> <span class="pre">eurl.*</span> <span class="pre">to</span> <span class="pre">'master'&#64;'%';</span></code> if master doesn’t have access <code class="docutils literal notranslate"><span class="pre">flush</span> <span class="pre">privileges;</span></code></p></li>
+<li><p>mysql -umaster -p&lt;master_password&gt; -e “create database unsm_vp;”</p></li>
+<li><p>mysql -umaster -p&lt;master_password&gt; unsm_vp &lt; unsm_vp.sql</p></li>
+<li><p>may need to run <code class="docutils literal notranslate"><span class="pre">grant</span> <span class="pre">all</span> <span class="pre">privileges</span> <span class="pre">on</span> <span class="pre">eurl.*</span> <span class="pre">to</span> <span class="pre">&lt;master_password&gt;&#64;'%';</span></code> if
+master doesn’t have access <code class="docutils literal notranslate"><span class="pre">flush</span> <span class="pre">privileges;</span></code></p></li>
 </ol>
 </li>
 <li><p>DNS Registtration:</p>
