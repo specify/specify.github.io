@@ -9,7 +9,7 @@ export DOMAIN_NAME <domain name>
 export SUBDOMAIN_PREFIX <first section of subdomain>
 ```
 
-[build_non_docker_asset_server.sh](../scripts/build_non_docker_asset_server.sh) to build the instance.
+[build_non_docker_asset_server.sh](https://github.com/specify/specify.github.io/blob/main/sphinx/scripts/build_non_docker_asset_server.sh) to build the instance.
 
 ## Config files
 

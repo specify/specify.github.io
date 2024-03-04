@@ -11,7 +11,7 @@ ami-0770bf1d6ae61c858
 ## Initial Commands
 
 Initial commands are in the script 
-[specify_cloud_setup.sh](../../scripts/specify_cloud_setup.sh)
+[specify_cloud_setup.sh](https://github.com/specify/specify.github.io/blob/main/sphinx/scripts/specify_cloud_setup.sh)
 
 
 ## SSH Configuration
@@ -93,7 +93,7 @@ SP7_DEBUG=false
 
 Make sure to fill in all variables (starting with `$`) in the following userdata script 
 script before including it in an EC2 launch configuration.
-[specify_cloud_ec2_userdata.sh](../../scripts/specify_cloud_ec2_userdata.sh)
+[specify_cloud_ec2_userdata.sh](https://github.com/specify/specify.github.io/blob/main/sphinx/scripts/specify_cloud_ec2_userdata.sh)
 
 * $BUCKET_NAME 
 * $DATABASE_NAME
@@ -192,7 +192,7 @@ t4g.medium
 
 Make sure to fill in all variables (starting with `$`) in the following userdata script 
 script before including it in an EC2 launch configuration.
-[install_ec2_wo_docker.sh](../../scripts/install_ec2_wo_docker.sh)
+[install_ec2_wo_docker.sh](https://github.com/specify/specify.github.io/blob/main/sphinx/scripts/install_ec2_wo_docker.sh)
 
 * $BUCKET_NAME 
 
