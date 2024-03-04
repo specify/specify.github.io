@@ -22,7 +22,7 @@ On Windows PuTTY target
 
 ```commandline
 C:\Program Files\PuTTY\putty.exe  -ssh -i C:\users\your_user\private_key_.ppk \
-    institution_id@eu-db-1.specifycloud.org -L 3307:xxx.xx.xx.xx:3306 -N`
+    institution_id@<server>.specifycloud.org -L 3307:xxx.xx.xx.xx:3306 -N`
 ```
 
 For now, you will log into the database as `master` with the same previous passwords, 

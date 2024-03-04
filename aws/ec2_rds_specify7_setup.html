@@ -108,7 +108,7 @@
 <h1>Deploy Specify7 to an EC2 instance<a class="headerlink" href="#deploy-specify7-to-an-ec2-instance" title="Link to this heading"></a></h1>
 <p>These are the detailed instructions to get Specify7 up and running on an EC2 instance.<br />
 This is a temporary solution for deployment, with an ECS solution coming in the future.<br />
-These instruction require access to the <code class="docutils literal notranslate"><span class="pre">specify/docker-compositions</span></code> private repo.<br />
+These instruction require access to the <code class="docutils literal notranslate"><span class="pre">docker-compositions</span></code> private repo.<br />
 For this kind of AWS deployment, it is easiest to use the <code class="docutils literal notranslate"><span class="pre">specifycloud</span></code> deployment,
 even with just one client instance.  I used the <code class="docutils literal notranslate"><span class="pre">specifycloud</span></code> deployment for my AWS
 EC2 instance, but if you want to include things like the asset server, you can create a
@@ -165,6 +165,8 @@ database.</p>
 </section>
 <section id="config-file">
 <h2>Config file<a class="headerlink" href="#config-file" title="Link to this heading"></a></h2>
+<p>Edit the DATABASE_HOST, MASTER_PASSWORD, ASSET_SERVER_URL,  ASSET_SERVER_KEY,
+and RRHOST_PRIVATE_IP</p>
 <p>defaults.env -&gt;</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">DATABASE_HOST</span><span class="o">=&lt;</span><span class="n">YOUR_DATABASE_HOST</span><span class="o">&gt;</span>
 <span class="n">DATABASE_PORT</span><span class="o">=</span><span class="mi">3306</span>
@@ -173,7 +175,7 @@ database.</p>
 <span class="n">SECRET_KEY</span><span class="o">=</span><span class="n">temp</span>
 <span class="n">ASSET_SERVER_URL</span><span class="o">=</span><span class="n">https</span><span class="p">:</span><span class="o">//</span><span class="n">assets1</span><span class="o">.</span><span class="n">specifycloud</span><span class="o">.</span><span class="n">org</span><span class="o">/</span><span class="n">web_asset_store</span><span class="o">.</span><span class="n">xml</span>
 <span class="n">ASSET_SERVER_KEY</span><span class="o">=&lt;</span><span class="n">YOUR_ASSET_SERVER_KEY</span><span class="o">&gt;</span>
-<span class="n">REPORT_RUNNER_HOST</span><span class="o">=</span><span class="mf">10.132.218.32</span>
+<span class="n">REPORT_RUNNER_HOST</span><span class="o">=&lt;</span><span class="n">RRHOST_PRIVATE_IP</span><span class="o">&gt;</span>
 <span class="n">REPORT_RUNNER_PORT</span><span class="o">=</span><span class="mi">8080</span>
 <span class="n">CELERY_BROKER_URL</span><span class="o">=</span><span class="n">redis</span><span class="p">:</span><span class="o">//</span><span class="n">redis</span><span class="o">/</span><span class="mi">0</span>
 <span class="n">CELERY_RESULT_BACKEND</span><span class="o">=</span><span class="n">redis</span><span class="p">:</span><span class="o">//</span><span class="n">redis</span><span class="o">/</span><span class="mi">1</span>
@@ -181,8 +183,6 @@ database.</p>
 <span class="n">SP7_DEBUG</span><span class="o">=</span><span class="n">false</span>
 </pre></div>
 </div>
-<p>You will only need to edit the DATABASE_HOST, MASTER_PASSWORD, ASSET_SERVER_URL, and
-ASSET_SERVER_KEY</p>
 </section>
 <section id="configure-specify7">
 <h2>Configure Specify7<a class="headerlink" href="#configure-specify7" title="Link to this heading"></a></h2>
@@ -198,6 +198,14 @@ Make sure you are in the directory with the access key.</p></li>
 you can use the AWS Secrets manager if you prefer.  Also note that after some of these
 commands, SystemD services will restart.  When that  happens, just press enter once or
 twice to you get back to the shell.</p>
+<p>Make sure to fill in all variables (starting with <code class="docutils literal notranslate"><span class="pre">$</span></code>) and YOUR_AWS_ACCESS_KEY* in the<br />
+following script before running commands</p>
+<ul class="simple">
+<li><p>$SPECIFY_CLOUD_BUCKET_NAME</p></li>
+<li><p>$REGION</p></li>
+<li><p>YOUR_AWS_ACCESS_KEY_ID</p></li>
+<li><p>YOUR_AWS_ACCESS_KEY_SECRET</p></li>
+</ul>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="c1"># Avoid services restarting during apt updates</span>
 sudo<span class="w"> </span>sed<span class="w"> </span>-i<span class="w"> </span><span class="s2">&quot;s/#\$nrconf{kernelhints} = -1;/\$nrconf{kernelhints} = -1;/g&quot;</span><span class="w"> </span>/etc/needrestart/needrestart.conf<span class="p">;</span>
 
@@ -209,7 +217,7 @@ sudo<span class="w"> </span>apt<span class="w"> </span>install<span class="w"> <
 <span class="c1"># Configure AWS</span>
 aws<span class="w"> </span>configure<span class="w"> </span><span class="nb">set</span><span class="w"> </span>aws_access_key_id<span class="w"> </span><span class="s2">&quot;YOUR_AWS_ACCESS_KEY_ID&quot;</span><span class="p">;</span>
 aws<span class="w"> </span>configure<span class="w"> </span><span class="nb">set</span><span class="w"> </span>aws_secret_access_key<span class="w"> </span><span class="s2">&quot;YOUR_AWS_ACCESS_KEY_SECRET&quot;</span><span class="p">;</span>
-aws<span class="w"> </span>configure<span class="w"> </span><span class="nb">set</span><span class="w"> </span>default.region<span class="w"> </span>us-east-1<span class="p">;</span>
+aws<span class="w"> </span>configure<span class="w"> </span><span class="nb">set</span><span class="w"> </span>default.region<span class="w"> </span><span class="nv">$REGION</span><span class="p">;</span>
 aws<span class="w"> </span>configure<span class="w"> </span><span class="nb">set</span><span class="w"> </span>default.output<span class="w"> </span>json<span class="p">;</span>
 
 <span class="c1"># Install Docker</span>
@@ -228,10 +236,10 @@ chmod<span class="w"> </span>+x<span class="w"> </span>~/.docker/cli-plugins/doc
 docker<span class="w"> </span>compose<span class="w"> </span>version<span class="p">;</span><span class="w"> </span><span class="c1"># Check to make sure it installed correctly</span>
 
 <span class="c1"># Copy files from S3, only need to copy the file that you need</span>
-aws<span class="w"> </span>s3<span class="w"> </span>cp<span class="w"> </span>s3://specify-cloud/repo-snapshots/docker-compositions/<span class="w"> </span>./<span class="w"> </span>--recursive<span class="p">;</span>
-aws<span class="w"> </span>s3<span class="w"> </span>cp<span class="w"> </span>s3://specify-cloud/config/github-access-key.txt<span class="w"> </span>./<span class="p">;</span>
-aws<span class="w"> </span>s3<span class="w"> </span>cp<span class="w"> </span>s3://specify-cloud/config/spcloudservers.json<span class="w"> </span>./specifycloud/<span class="p">;</span>
-aws<span class="w"> </span>s3<span class="w"> </span>cp<span class="w"> </span>s3://specify-cloud/config/defaults.env<span class="w"> </span>./specifycloud/<span class="p">;</span>
+aws<span class="w"> </span>s3<span class="w"> </span>cp<span class="w"> </span>s3://<span class="nv">$SPECIFY_CLOUD_BUCKET_NAME</span>/repo-snapshots/docker-compositions/<span class="w"> </span>./<span class="w"> </span>--recursive<span class="p">;</span>
+aws<span class="w"> </span>s3<span class="w"> </span>cp<span class="w"> </span>s3://<span class="nv">$SPECIFY_CLOUD_BUCKET_NAME</span>/config/github-access-key.txt<span class="w"> </span>./<span class="p">;</span>
+aws<span class="w"> </span>s3<span class="w"> </span>cp<span class="w"> </span>s3://<span class="nv">$SPECIFY_CLOUD_BUCKET_NAME</span>/config/spcloudservers.json<span class="w"> </span>./specifycloud/<span class="p">;</span>
+aws<span class="w"> </span>s3<span class="w"> </span>cp<span class="w"> </span>s3://<span class="nv">$SPECIFY_CLOUD_BUCKET_NAME</span>/config/defaults.env<span class="w"> </span>./specifycloud/<span class="p">;</span>
 
 <span class="c1"># Optional, need to clone if you did not copy repo from S3</span>
 <span class="c1"># Clone private repo, need to use github cli</span>
@@ -264,13 +272,21 @@ resource” and add your EC2 instance.</p></li>
 <p>Get the database host from the AWS RDS webpage.  In the connectivity tab of your RDS
 instance, copy the test marked ‘Endpoint’.  Then run the following commands to upload
 your data to the database.</p>
+<p>Make sure to fill in all variables (starting with <code class="docutils literal notranslate"><span class="pre">$</span></code>) in the<br />
+following script before running commands</p>
+<ul class="simple">
+<li><p>$SPECIFY_CLOUD_BUCKET_NAME</p></li>
+<li><p>$SPECIFY_CLOUD_DATABASE_NAME</p></li>
+<li><p>$DB_IDENTIFIER</p></li>
+<li><p>$REGION</p></li>
+</ul>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="c1"># Database setup</span>
 <span class="nb">cd</span><span class="w"> </span>specifycloud<span class="p">;</span>
 mkdir<span class="w"> </span>seed-databases<span class="p">;</span>
-aws<span class="w"> </span>s3<span class="w"> </span>cp<span class="w"> </span>s3://specify-cloud/seed-database/archireef.sql<span class="w"> </span>./seed-databases/<span class="p">;</span>
-mysql<span class="w"> </span>--host<span class="w"> </span>specify-cloud-database-1.&lt;identifier&gt;.&lt;region&gt;.rds.amazonaws.com<span class="w"> </span><span class="se">\</span>
+aws<span class="w"> </span>s3<span class="w"> </span>cp<span class="w"> </span>s3://<span class="nv">$SPECIFY_CLOUD_BUCKET_NAME</span>/seed-database/archireef.sql<span class="w"> </span>./seed-databases/<span class="p">;</span>
+mysql<span class="w"> </span>--host<span class="w"> </span><span class="nv">$SPECIFY_CLOUD_DATABASE_NAME</span>.<span class="nv">$DB_IDENTIFIER</span>.<span class="nv">$REGION</span>.rds.amazonaws.com<span class="w"> </span><span class="se">\</span>
 <span class="w">      </span>--port<span class="w"> </span><span class="m">3306</span><span class="w"> </span>-u<span class="w"> </span>master<span class="w"> </span>-p<span class="w"> </span>-e<span class="w"> </span><span class="s2">&quot;create database archireef;&quot;</span><span class="p">;</span>
-mysql<span class="w"> </span>--host<span class="w"> </span>specify-cloud-database-1.&lt;identifier&gt;.&lt;region&gt;.rds.amazonaws.com<span class="w"> </span><span class="se">\</span>
+mysql<span class="w"> </span>--host<span class="w"> </span><span class="nv">$SPECIFY_CLOUD_DATABASE_NAME</span>.<span class="nv">$DB_IDENTIFIER</span>.<span class="nv">$REGION</span>.rds.amazonaws.com<span class="w"> </span><span class="se">\</span>
 <span class="w">	  </span>--port<span class="w"> </span><span class="m">3306</span><span class="w"> </span>-u<span class="w"> </span>master<span class="w"> </span>-p<span class="w"> </span>specify<span class="w"> </span>&lt;<span class="w"> </span>./seed-databases/archireef.sql<span class="p">;</span>
 rm<span class="w"> </span>-f<span class="w"> </span>./seed-databases/archireef.sql<span class="p">;</span>
 </pre></div>

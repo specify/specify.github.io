@@ -2,7 +2,7 @@
 
 These are the detailed instructions to get Specify7 up and running on an EC2 instance.  
 This is a temporary solution for deployment, with an ECS solution coming in the future.  
-These instruction require access to the `specify/docker-compositions` private repo.  
+These instruction require access to the `docker-compositions` private repo.  
 For this kind of AWS deployment, it is easiest to use the `specifycloud` deployment, 
 even with just one client instance.  I used the `specifycloud` deployment for my AWS 
 EC2 instance, but if you want to include things like the asset server, you can create a 
@@ -64,6 +64,10 @@ true only after you have setup SSL/TLS.  The database value is the name of your
 database.
 
 ## Config file
+
+Edit the DATABASE_HOST, MASTER_PASSWORD, ASSET_SERVER_URL,  ASSET_SERVER_KEY, 
+and RRHOST_PRIVATE_IP
+
 defaults.env ->
 ```
 DATABASE_HOST=<YOUR_DATABASE_HOST>
@@ -73,15 +77,13 @@ MASTER_PASSWORD=<YOUR_MASTER_PASSWORD>
 SECRET_KEY=temp
 ASSET_SERVER_URL=https://assets1.specifycloud.org/web_asset_store.xml
 ASSET_SERVER_KEY=<YOUR_ASSET_SERVER_KEY>
-REPORT_RUNNER_HOST=10.132.218.32
+REPORT_RUNNER_HOST=<RRHOST_PRIVATE_IP>
 REPORT_RUNNER_PORT=8080
 CELERY_BROKER_URL=redis://redis/0
 CELERY_RESULT_BACKEND=redis://redis/1
 LOG_LEVEL=WARNING
 SP7_DEBUG=false
 ```
-You will only need to edit the DATABASE_HOST, MASTER_PASSWORD, ASSET_SERVER_URL, and 
-ASSET_SERVER_KEY
 
 ## Configure Specify7
 
@@ -97,6 +99,15 @@ you can use the AWS Secrets manager if you prefer.  Also note that after some of
 commands, SystemD services will restart.  When that  happens, just press enter once or 
 twice to you get back to the shell.
 
+Make sure to fill in all variables (starting with `$`) and YOUR_AWS_ACCESS_KEY* in the  
+following script before running commands
+
+* $SPECIFY_CLOUD_BUCKET_NAME
+* $REGION
+* YOUR_AWS_ACCESS_KEY_ID
+* YOUR_AWS_ACCESS_KEY_SECRET
+
+
 ```bash
 # Avoid services restarting during apt updates
 sudo sed -i "s/#\$nrconf{kernelhints} = -1;/\$nrconf{kernelhints} = -1;/g" /etc/needrestart/needrestart.conf;
@@ -109,7 +120,7 @@ sudo apt install -y apt-transport-https ca-certificates git gh curl software-pro
 # Configure AWS
 aws configure set aws_access_key_id "YOUR_AWS_ACCESS_KEY_ID";
 aws configure set aws_secret_access_key "YOUR_AWS_ACCESS_KEY_SECRET";
-aws configure set default.region us-east-1;
+aws configure set default.region $REGION;
 aws configure set default.output json;
 
 # Install Docker
@@ -128,10 +139,10 @@ chmod +x ~/.docker/cli-plugins/docker-compose;
 docker compose version; # Check to make sure it installed correctly
 
 # Copy files from S3, only need to copy the file that you need
-aws s3 cp s3://specify-cloud/repo-snapshots/docker-compositions/ ./ --recursive;
-aws s3 cp s3://specify-cloud/config/github-access-key.txt ./;
-aws s3 cp s3://specify-cloud/config/spcloudservers.json ./specifycloud/;
-aws s3 cp s3://specify-cloud/config/defaults.env ./specifycloud/;
+aws s3 cp s3://$SPECIFY_CLOUD_BUCKET_NAME/repo-snapshots/docker-compositions/ ./ --recursive;
+aws s3 cp s3://$SPECIFY_CLOUD_BUCKET_NAME/config/github-access-key.txt ./;
+aws s3 cp s3://$SPECIFY_CLOUD_BUCKET_NAME/config/spcloudservers.json ./specifycloud/;
+aws s3 cp s3://$SPECIFY_CLOUD_BUCKET_NAME/config/defaults.env ./specifycloud/;
 
 # Optional, need to clone if you did not copy repo from S3
 # Clone private repo, need to use github cli
@@ -162,14 +173,22 @@ Get the database host from the AWS RDS webpage.  In the connectivity tab of your
 instance, copy the test marked 'Endpoint'.  Then run the following commands to upload 
 your data to the database.
 
+Make sure to fill in all variables (starting with `$`) in the  
+following script before running commands
+
+* $SPECIFY_CLOUD_BUCKET_NAME
+* $SPECIFY_CLOUD_DATABASE_NAME
+* $DB_IDENTIFIER
+* $REGION
+
 ```bash
 # Database setup
 cd specifycloud;
 mkdir seed-databases;
-aws s3 cp s3://specify-cloud/seed-database/archireef.sql ./seed-databases/;
-mysql --host specify-cloud-database-1.<identifier>.<region>.rds.amazonaws.com \
+aws s3 cp s3://$SPECIFY_CLOUD_BUCKET_NAME/seed-database/archireef.sql ./seed-databases/;
+mysql --host $SPECIFY_CLOUD_DATABASE_NAME.$DB_IDENTIFIER.$REGION.rds.amazonaws.com \
       --port 3306 -u master -p -e "create database archireef;";
-mysql --host specify-cloud-database-1.<identifier>.<region>.rds.amazonaws.com \
+mysql --host $SPECIFY_CLOUD_DATABASE_NAME.$DB_IDENTIFIER.$REGION.rds.amazonaws.com \
 	  --port 3306 -u master -p specify < ./seed-databases/archireef.sql;
 rm -f ./seed-databases/archireef.sql;
 ```

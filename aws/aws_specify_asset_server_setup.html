@@ -103,142 +103,17 @@
 <h1>AWS Specify Asset Server Setup<a class="headerlink" href="#aws-specify-asset-server-setup" title="Link to this heading"></a></h1>
 <section id="ec2-non-dockerized-build">
 <h2>EC2 Non-Dockerized Build<a class="headerlink" href="#ec2-non-dockerized-build" title="Link to this heading"></a></h2>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="ch">#!/bin/bash</span>
-
-sudo<span class="w"> </span>apt<span class="w"> </span>update<span class="p">;</span>
-sudo<span class="w"> </span>apt<span class="w"> </span>upgrade<span class="w"> </span>-y<span class="p">;</span>
-sudo<span class="w"> </span>apt-get<span class="w"> </span>-y<span class="w"> </span>install<span class="w"> </span>--no-install-recommends<span class="w"> </span><span class="se">\</span>
-<span class="w">  </span>python3-venv<span class="w"> </span><span class="se">\</span>
-<span class="w">  </span>python3.8<span class="w"> </span><span class="se">\</span>
-<span class="w">  </span>python3.8-dev<span class="w"> </span><span class="se">\</span>
-<span class="w">  </span>python3-pip<span class="w"> </span><span class="se">\</span>
-<span class="w">  </span>imagemagick<span class="w"> </span><span class="se">\</span>
-<span class="w">  </span>ghostscript<span class="w"> </span><span class="se">\</span>
-<span class="w">  </span>git<span class="w"> </span><span class="se">\</span>
-<span class="w">  </span>nginx<span class="w"> </span><span class="se">\</span>
-<span class="w">  </span>certbot<span class="w"> </span><span class="se">\</span>
-<span class="w">  </span>authbind<span class="w"> </span><span class="se">\</span>
-<span class="w">  </span>s3fs<span class="w"> </span><span class="se">\</span>
-<span class="w">  </span>awscli<span class="p">;</span>
-
-<span class="c1"># python 3.6</span>
-<span class="c1">#sudo apt update</span>
-<span class="c1">#sudo apt install build-essential checkinstall zlib1g-dev libncurses5-dev libgdbm-dev libnss3-dev libssl-dev libreadline-dev libffi-dev libsqlite3-dev wget libbz2-dev;</span>
-<span class="c1">#wget https://www.python.org/ftp/python/3.6.15/Python-3.6.15.tgz;</span>
-<span class="c1">#tar -xf Python-3.6.15.tgz;</span>
-<span class="c1">#cd Python-3.6.15 &amp;&amp; ./configure --enable-optimizations;</span>
-<span class="c1">#make -j$(nproc);</span>
-<span class="c1">#sudo make altinstall;</span>
-<span class="c1">#python3.6 --version;</span>
-
-<span class="c1"># python 3.6 install with apt</span>
-sudo<span class="w"> </span>apt<span class="w"> </span>install<span class="w"> </span>software-properties-common<span class="p">;</span>
-sudo<span class="w"> </span>add-apt-repository<span class="w"> </span>ppa:deadsnakes/ppa<span class="p">;</span>
-sudo<span class="w"> </span>apt<span class="w"> </span>update<span class="p">;</span>
-sudo<span class="w"> </span>apt<span class="w"> </span>install<span class="w"> </span>python3.6<span class="p">;</span>
-sudo<span class="w"> </span>apt-get<span class="w"> </span>install<span class="w"> </span>python3.6-distutils<span class="p">;</span>
-
-<span class="c1"># install pip3.6</span>
-<span class="c1">#wget https://bootstrap.pypa.io/pip/3.6/get-pip.py;</span>
-python3.6<span class="w"> </span>-m<span class="w"> </span>venv<span class="w"> </span>--without-pip<span class="w"> </span>ve<span class="p">;</span>
-<span class="nb">source</span><span class="w"> </span>ve/bin/activate<span class="p">;</span>
-wget<span class="w"> </span>https://bootstrap.pypa.io/get-pip.py<span class="p">;</span>
-<span class="c1">#wget https://bootstrap.pypa.io/pip/3.5/get-pip.py</span>
-<span class="c1">#deactivate;</span>
-
-<span class="c1"># activate python3.6 venv</span>
-sudo<span class="w"> </span>apt<span class="w"> </span>install<span class="w"> </span>-y<span class="w"> </span>python3-virtualenv<span class="p">;</span>
-python3.6<span class="w"> </span>-m<span class="w"> </span>venv<span class="w"> </span>myenv<span class="p">;</span>
-<span class="nb">source</span><span class="w"> </span>myenv/bin/activate<span class="p">;</span>
-pip<span class="w"> </span>install<span class="w"> </span>--no-cache-dir<span class="w"> </span>-r<span class="w"> </span>requirements.txt<span class="p">;</span>
-<span class="c1">#deactivate;</span>
-
-<span class="c1"># TLS dependencies</span>
-sudo<span class="w"> </span>apt-get<span class="w"> </span>-y<span class="w"> </span>install<span class="w"> </span>--no-install-recommends<span class="w"> </span><span class="se">\</span>
-<span class="w">	</span>certbot<span class="w"> </span><span class="se">\</span>
-<span class="w">	</span>python3-certbot-nginx<span class="w"> </span><span class="se">\</span>
-<span class="w">	</span>software-properties-common<span class="p">;</span>
-
-<span class="c1"># Configure AWS</span>
-aws<span class="w"> </span>configure<span class="w"> </span><span class="nb">set</span><span class="w"> </span>aws_access_key_id<span class="w"> </span><span class="s2">&quot;ACCESS_KEY&quot;</span><span class="p">;</span>
-aws<span class="w"> </span>configure<span class="w"> </span><span class="nb">set</span><span class="w"> </span>aws_secret_access_key<span class="w"> </span><span class="s2">&quot;ACCESS_KEY_SECRET&quot;</span><span class="p">;</span>
-aws<span class="w"> </span>configure<span class="w"> </span><span class="nb">set</span><span class="w"> </span>default.region<span class="w"> </span>us-east-1<span class="p">;</span>
-aws<span class="w"> </span>configure<span class="w"> </span><span class="nb">set</span><span class="w"> </span>default.output<span class="w"> </span>json<span class="p">;</span>
-
-<span class="c1"># Import attachment files</span>
-<span class="c1">#mkdir attachments;</span>
-<span class="c1">#aws s3 cp s3://specify-cloud/assets-server/attachments/ ~/attachments --recursive;</span>
-
-<span class="c1"># S3 Mounting</span>
-mkdir<span class="w"> </span>attachments<span class="p">;</span>
-s3fs<span class="w"> </span>specify-cloud<span class="w"> </span>/assets-server/attachments/<span class="p">;</span>
-
-<span class="c1"># Clone asset server repo</span>
-git<span class="w"> </span>clone<span class="w"> </span>https://github.com/specify/web-asset-server.git<span class="p">;</span>
-<span class="nb">cd</span><span class="w"> </span>~/web-asset-server<span class="p">;</span>
-git<span class="w"> </span>checkout<span class="w"> </span>arm-build<span class="p">;</span>
-
-<span class="c1"># Build python web asset server</span>
-python3.8<span class="w"> </span>-m<span class="w"> </span>venv<span class="w"> </span>ve<span class="p">;</span>
-sudo<span class="w"> </span>ve/bin/pip<span class="w"> </span>install<span class="w"> </span>--no-cache-dir<span class="w"> </span>-r<span class="w"> </span>requirements.txt
-<span class="c1">#sudo pip install -r requirements.txt;</span>
-
-<span class="c1"># Port config</span>
-<span class="c1"># not needed when running with nginx</span>
-<span class="c1">#sudo apt-get install authbind;</span>
-<span class="c1">#touch 80;</span>
-<span class="c1">#chmod u+x 80;</span>
-<span class="c1">#sudo mv 80 /etc/authbind/byport;</span>
-
-<span class="c1"># Create SystemD service</span>
-sudo<span class="w"> </span>cat<span class="w"> </span>&gt;<span class="w"> </span>/etc/systemd/system/web-asset-server.service<span class="w"> </span><span class="s">&lt;&lt; EOF</span>
-<span class="s">[Unit]</span>
-<span class="s">Description=Specify Web Asset Server</span>
-<span class="s">Wants=network.target</span>
-
-<span class="s">[Service]</span>
-<span class="s">User=ubuntu</span>
-<span class="s">WorkingDirectory=/home/ubuntu/web-asset-server</span>
-<span class="s">ExecStart=/home/ubuntu/web-asset-server/ve/bin/python /home/ubuntu/web-asset-server/server.py</span>
-<span class="s">Restart=always</span>
-
-<span class="s">[Install]</span>
-<span class="s">WantedBy=multi-user.target</span>
-
-<span class="s">EOF</span>
-
-sudo<span class="w"> </span>systemctl<span class="w"> </span>daemon-reload<span class="p">;</span>
-sudo<span class="w"> </span>systemctl<span class="w"> </span><span class="nb">enable</span><span class="w"> </span>web-asset-server.service<span class="p">;</span>
-sudo<span class="w"> </span>systemctl<span class="w"> </span>start<span class="w"> </span>web-asset-server.service<span class="p">;</span>
-sudo<span class="w"> </span>systemctl<span class="w"> </span>status<span class="w"> </span>web-asset-server.service<span class="p">;</span>
-
-<span class="c1"># nginx</span>
-<span class="c1"># sudo vim etc/nginx/sites-enabled/assets.conf</span>
-sudo<span class="w"> </span>rm<span class="w"> </span>-f<span class="w"> </span>/etc/nginx/sites-enabled/default<span class="p">;</span>
-sudo<span class="w"> </span>nginx<span class="w"> </span>-t<span class="p">;</span>
-sudo<span class="w"> </span>/etc/init.d/nginx<span class="w"> </span>reload<span class="p">;</span>
-
-<span class="c1"># S3 Mounting</span>
-mount<span class="w"> </span>-o<span class="w"> </span>discard,defaults,noatime<span class="w"> </span>/dev/disk/by-id/scsi-0DO_Volume_volume-nyc1-01<span class="w"> </span>/mnt/volume-nyc1-01
-
-<span class="c1"># TODO: EFS Mounting</span>
-
-<span class="c1"># Certbot TLS config</span>
-sudo<span class="w"> </span>mkdir<span class="w"> </span>/var/www/.well-known<span class="p">;</span>
-sudo<span class="w"> </span>certbot<span class="w"> </span>--nginx<span class="w"> </span>-d<span class="w"> </span>assets-test.specifycloud.org<span class="w"> </span>-d<span class="w"> </span>assets-test.specifycloud.org<span class="p">;</span>
-sudo<span class="w"> </span>ls<span class="w"> </span>-la<span class="w"> </span>/etc/letsencrypt/live/assets-test.specifycloud.org<span class="p">;</span>
-<span class="c1">#openssl dhparam -out /etc/nginx/dhparam.pem 4096;</span>
-sudo<span class="w"> </span>openssl<span class="w"> </span>dhparam<span class="w"> </span>-out<span class="w"> </span>/etc/ssl/certs/dhparam.pem<span class="w"> </span><span class="m">4096</span><span class="p">;</span><span class="w"> </span><span class="c1">#2048 or 1024</span>
-sudo<span class="w"> </span>openssl<span class="w"> </span>dhparam<span class="w"> </span>-dsaparam<span class="w"> </span>-out<span class="w"> </span>/etc/ssl/certs/dhparam.pem<span class="w"> </span><span class="m">1024</span><span class="p">;</span>
-<span class="c1"># add https server config to nginx assets.</span>
-
-<span class="c1"># Edit </span>
+<p>Make sure to set environment variables before running the bash script</p>
+<div class="highlight-command notranslate"><div class="highlight"><pre><span></span>export DOMAIN_NAME &lt;domain name&gt;
+export SUBDOMAIN_PREFIX &lt;first section of subdomain&gt;
 </pre></div>
 </div>
+<p><a class="reference download internal" download="" href="../_downloads/6ec29de37be126c3f696e22d6d1a96df/build_non_docker_asset_server.sh"><span class="xref download myst">build_non_docker_asset_server.sh</span></a> to build the instance.</p>
 </section>
 <section id="config-files">
 <h2>Config files<a class="headerlink" href="#config-files" title="Link to this heading"></a></h2>
-<p>/etc/systemd/system/web-asset-server.service -&gt;</p>
+<p>Make sure to set environment variables
+/etc/systemd/system/web-asset-server.service -&gt;</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="p">[</span><span class="n">Unit</span><span class="p">]</span>
 <span class="n">Description</span><span class="o">=</span><span class="n">Specify</span> <span class="n">Web</span> <span class="n">Asset</span> <span class="n">Server</span>
 <span class="n">Wants</span><span class="o">=</span><span class="n">network</span><span class="o">.</span><span class="n">target</span>
@@ -286,7 +161,7 @@ sudo<span class="w"> </span>openssl<span class="w"> </span>dhparam<span class="w
 <span class="c1"># These values are interpolated into the web_asset_store.xml resource</span>
 <span class="c1"># so the client knows how to talk to the server.</span>
 <span class="c1">#HOST = &#39;localhost&#39;</span>
-<span class="n">HOST</span> <span class="o">=</span> <span class="s1">&#39;assets-test.specifycloud.org&#39;</span>
+<span class="n">HOST</span> <span class="o">=</span> <span class="s1">&#39;subdomain.domain.name&#39;</span>
 <span class="n">PORT</span> <span class="o">=</span> <span class="mi">8080</span>
 <span class="c1">#PORT = 80</span>
 
@@ -329,7 +204,7 @@ sudo<span class="w"> </span>openssl<span class="w"> </span>dhparam<span class="w
 <span class="n">SERVER</span> <span class="o">=</span> <span class="s1">&#39;wsgiref&#39;</span>  <span class="c1"># For testing. Requires no extra packages.</span>
 </pre></div>
 </div>
-<p>/etc/nginx/sites-enabled/assets.conf from the aasets1.specifycloud.org- -&gt;</p>
+<p>/etc/nginx/sites-enabled/assets.conf from the subdomain.domain.name- -&gt;</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="c1"># Nginx configuration for supplying an HTTPS end point for the web</span>
 <span class="c1"># asset server. The asset server is running on the same system</span>
 <span class="c1"># (demo-assets.specifycloud.org) on port 8080 meaning it can run</span>
@@ -341,7 +216,7 @@ sudo<span class="w"> </span>openssl<span class="w"> </span>dhparam<span class="w
 <span class="n">server</span> <span class="p">{</span>
        <span class="c1"># HTTP access is needed for Specify 6. It will not work with HTTPS.</span>
        <span class="n">listen</span> <span class="mi">80</span> <span class="n">default_server</span><span class="p">;</span>
-       <span class="n">server_name</span> <span class="n">assets1</span><span class="o">.</span><span class="n">specifycloud</span><span class="o">.</span><span class="n">org</span><span class="p">;</span>
+       <span class="n">server_name</span> <span class="n">subdomain</span><span class="o">.</span><span class="n">domain</span><span class="o">.</span><span class="n">name</span><span class="p">;</span>
        <span class="n">client_max_body_size</span> <span class="mi">0</span><span class="p">;</span>
 
        <span class="c1"># The LetsEncrypt certificate mechanism places a nonce</span>
@@ -358,7 +233,7 @@ sudo<span class="w"> </span>openssl<span class="w"> </span>dhparam<span class="w
        <span class="c1"># it defines point to this proxy.</span>
        <span class="n">location</span> <span class="o">=</span> <span class="o">/</span><span class="n">web_asset_store</span><span class="o">.</span><span class="n">xml</span> <span class="p">{</span>
                 <span class="n">proxy_pass</span> <span class="n">http</span><span class="p">:</span><span class="o">//</span><span class="n">localhost</span><span class="p">:</span><span class="mi">8080</span><span class="o">/</span><span class="n">web_asset_store</span><span class="o">.</span><span class="n">xml</span><span class="p">;</span>
-                <span class="n">sub_filter</span> <span class="s1">&#39;http://assets1.specifycloud.org:8080&#39;</span> <span class="s1">&#39;http://assets1.specifycloud.org&#39;</span><span class="p">;</span>
+                <span class="n">sub_filter</span> <span class="s1">&#39;http://subdomain.domain.name:8080&#39;</span> <span class="s1">&#39;http://subdomain.domain.name&#39;</span><span class="p">;</span>
                 <span class="n">sub_filter_once</span> <span class="n">off</span><span class="p">;</span>
                 <span class="n">sub_filter_types</span> <span class="n">text</span><span class="o">/</span><span class="n">xml</span><span class="p">;</span>
        <span class="p">}</span>
@@ -373,11 +248,11 @@ sudo<span class="w"> </span>openssl<span class="w"> </span>dhparam<span class="w
 <span class="n">server</span> <span class="p">{</span>
        <span class="c1"># This stanza defines the HTTPS end point.</span>
        <span class="n">listen</span> <span class="mi">443</span> <span class="n">ssl</span> <span class="n">default_server</span><span class="p">;</span>
-       <span class="n">server_name</span> <span class="n">assets1</span><span class="o">.</span><span class="n">specifycloud</span><span class="o">.</span><span class="n">org</span><span class="p">;</span>
+       <span class="n">server_name</span> <span class="n">subdomain</span><span class="o">.</span><span class="n">domain</span><span class="o">.</span><span class="n">name</span><span class="p">;</span>
        <span class="n">client_max_body_size</span> <span class="mi">0</span><span class="p">;</span>
 
-       <span class="n">ssl_certificate</span> <span class="o">/</span><span class="n">etc</span><span class="o">/</span><span class="n">letsencrypt</span><span class="o">/</span><span class="n">live</span><span class="o">/</span><span class="n">assets1</span><span class="o">.</span><span class="n">specifycloud</span><span class="o">.</span><span class="n">org</span><span class="o">/</span><span class="n">fullchain</span><span class="o">.</span><span class="n">pem</span><span class="p">;</span>
-       <span class="n">ssl_certificate_key</span> <span class="o">/</span><span class="n">etc</span><span class="o">/</span><span class="n">letsencrypt</span><span class="o">/</span><span class="n">live</span><span class="o">/</span><span class="n">assets1</span><span class="o">.</span><span class="n">specifycloud</span><span class="o">.</span><span class="n">org</span><span class="o">/</span><span class="n">privkey</span><span class="o">.</span><span class="n">pem</span><span class="p">;</span>
+       <span class="n">ssl_certificate</span> <span class="o">/</span><span class="n">etc</span><span class="o">/</span><span class="n">letsencrypt</span><span class="o">/</span><span class="n">live</span><span class="o">/</span><span class="n">subdomain</span><span class="o">.</span><span class="n">domain</span><span class="o">.</span><span class="n">name</span><span class="o">/</span><span class="n">fullchain</span><span class="o">.</span><span class="n">pem</span><span class="p">;</span>
+       <span class="n">ssl_certificate_key</span> <span class="o">/</span><span class="n">etc</span><span class="o">/</span><span class="n">letsencrypt</span><span class="o">/</span><span class="n">live</span><span class="o">/</span><span class="n">subdomain</span><span class="o">.</span><span class="n">domain</span><span class="o">.</span><span class="n">name</span><span class="o">/</span><span class="n">privkey</span><span class="o">.</span><span class="n">pem</span><span class="p">;</span>
 
        <span class="c1"># from https://cipherli.st/</span>
        <span class="c1"># and https://raymii.org/s/tutorials/Strong_SSL_Security_On_nginx.html</span>
@@ -411,7 +286,7 @@ sudo<span class="w"> </span>openssl<span class="w"> </span>dhparam<span class="w
        <span class="c1"># to use HTTPS in addition to changing the port.</span>
        <span class="n">location</span> <span class="o">=</span> <span class="o">/</span><span class="n">web_asset_store</span><span class="o">.</span><span class="n">xml</span> <span class="p">{</span>
                 <span class="n">proxy_pass</span> <span class="n">http</span><span class="p">:</span><span class="o">//</span><span class="n">localhost</span><span class="p">:</span><span class="mi">8080</span><span class="o">/</span><span class="n">web_asset_store</span><span class="o">.</span><span class="n">xml</span><span class="p">;</span>
-                <span class="n">sub_filter</span> <span class="s1">&#39;http://assets1.specifycloud.org:8080&#39;</span> <span class="s1">&#39;https://assets1.specifycloud.org&#39;</span><span class="p">;</span>
+                <span class="n">sub_filter</span> <span class="s1">&#39;http://subdomain.domain.name:8080&#39;</span> <span class="s1">&#39;https://subdomain.domain.name&#39;</span><span class="p">;</span>
                 <span class="n">sub_filter_once</span> <span class="n">off</span><span class="p">;</span>
                 <span class="n">sub_filter_types</span> <span class="n">text</span><span class="o">/</span><span class="n">xml</span><span class="p">;</span>
        <span class="p">}</span>
@@ -423,14 +298,14 @@ sudo<span class="w"> </span>openssl<span class="w"> </span>dhparam<span class="w
 <span class="p">}</span>
 </pre></div>
 </div>
-<p>/etc/letsencrypt/renewal/assets1.specifycloud.org.conf -&gt;</p>
+<p>/etc/letsencrypt/renewal/subdomain.domain.name.conf -&gt;</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="c1"># renew_before_expiry = 30 days</span>
-<span class="n">cert</span> <span class="o">=</span> <span class="o">/</span><span class="n">etc</span><span class="o">/</span><span class="n">letsencrypt</span><span class="o">/</span><span class="n">live</span><span class="o">/</span><span class="n">assets1</span><span class="o">.</span><span class="n">specifycloud</span><span class="o">.</span><span class="n">org</span><span class="o">/</span><span class="n">cert</span><span class="o">.</span><span class="n">pem</span>
-<span class="n">privkey</span> <span class="o">=</span> <span class="o">/</span><span class="n">etc</span><span class="o">/</span><span class="n">letsencrypt</span><span class="o">/</span><span class="n">live</span><span class="o">/</span><span class="n">assets1</span><span class="o">.</span><span class="n">specifycloud</span><span class="o">.</span><span class="n">org</span><span class="o">/</span><span class="n">privkey</span><span class="o">.</span><span class="n">pem</span>
-<span class="n">chain</span> <span class="o">=</span> <span class="o">/</span><span class="n">etc</span><span class="o">/</span><span class="n">letsencrypt</span><span class="o">/</span><span class="n">live</span><span class="o">/</span><span class="n">assets1</span><span class="o">.</span><span class="n">specifycloud</span><span class="o">.</span><span class="n">org</span><span class="o">/</span><span class="n">chain</span><span class="o">.</span><span class="n">pem</span>
-<span class="n">fullchain</span> <span class="o">=</span> <span class="o">/</span><span class="n">etc</span><span class="o">/</span><span class="n">letsencrypt</span><span class="o">/</span><span class="n">live</span><span class="o">/</span><span class="n">assets1</span><span class="o">.</span><span class="n">specifycloud</span><span class="o">.</span><span class="n">org</span><span class="o">/</span><span class="n">fullchain</span><span class="o">.</span><span class="n">pem</span>
+<span class="n">cert</span> <span class="o">=</span> <span class="o">/</span><span class="n">etc</span><span class="o">/</span><span class="n">letsencrypt</span><span class="o">/</span><span class="n">live</span><span class="o">/</span><span class="n">subdomain</span><span class="o">.</span><span class="n">domain</span><span class="o">.</span><span class="n">name</span><span class="o">/</span><span class="n">cert</span><span class="o">.</span><span class="n">pem</span>
+<span class="n">privkey</span> <span class="o">=</span> <span class="o">/</span><span class="n">etc</span><span class="o">/</span><span class="n">letsencrypt</span><span class="o">/</span><span class="n">live</span><span class="o">/</span><span class="n">subdomain</span><span class="o">.</span><span class="n">domain</span><span class="o">.</span><span class="n">name</span><span class="o">/</span><span class="n">privkey</span><span class="o">.</span><span class="n">pem</span>
+<span class="n">chain</span> <span class="o">=</span> <span class="o">/</span><span class="n">etc</span><span class="o">/</span><span class="n">letsencrypt</span><span class="o">/</span><span class="n">live</span><span class="o">/</span><span class="n">subdomain</span><span class="o">.</span><span class="n">domain</span><span class="o">.</span><span class="n">name</span><span class="o">/</span><span class="n">chain</span><span class="o">.</span><span class="n">pem</span>
+<span class="n">fullchain</span> <span class="o">=</span> <span class="o">/</span><span class="n">etc</span><span class="o">/</span><span class="n">letsencrypt</span><span class="o">/</span><span class="n">live</span><span class="o">/</span><span class="n">subdomain</span><span class="o">.</span><span class="n">domain</span><span class="o">.</span><span class="n">name</span><span class="o">/</span><span class="n">fullchain</span><span class="o">.</span><span class="n">pem</span>
 <span class="n">version</span> <span class="o">=</span> <span class="mf">1.9.0</span>
-<span class="n">archive_dir</span> <span class="o">=</span> <span class="o">/</span><span class="n">etc</span><span class="o">/</span><span class="n">letsencrypt</span><span class="o">/</span><span class="n">archive</span><span class="o">/</span><span class="n">assets1</span><span class="o">.</span><span class="n">specifycloud</span><span class="o">.</span><span class="n">org</span>
+<span class="n">archive_dir</span> <span class="o">=</span> <span class="o">/</span><span class="n">etc</span><span class="o">/</span><span class="n">letsencrypt</span><span class="o">/</span><span class="n">archive</span><span class="o">/</span><span class="n">subdomain</span><span class="o">.</span><span class="n">domain</span><span class="o">.</span><span class="n">name</span>
 
 <span class="c1"># Options and defaults used in the renewal process</span>
 <span class="p">[</span><span class="n">renewalparams</span><span class="p">]</span>
@@ -439,17 +314,12 @@ sudo<span class="w"> </span>openssl<span class="w"> </span>dhparam<span class="w
 <span class="n">post_hook</span> <span class="o">=</span> <span class="n">systemctl</span> <span class="n">reload</span> <span class="n">nginx</span>
 <span class="n">server</span> <span class="o">=</span> <span class="n">https</span><span class="p">:</span><span class="o">//</span><span class="n">acme</span><span class="o">-</span><span class="n">v02</span><span class="o">.</span><span class="n">api</span><span class="o">.</span><span class="n">letsencrypt</span><span class="o">.</span><span class="n">org</span><span class="o">/</span><span class="n">directory</span>
 <span class="p">[[</span><span class="n">webroot_map</span><span class="p">]]</span>
-<span class="n">assets1</span><span class="o">.</span><span class="n">specifycloud</span><span class="o">.</span><span class="n">org</span> <span class="o">=</span> <span class="o">/</span><span class="n">var</span><span class="o">/</span><span class="n">www</span>
+<span class="n">subdomain</span><span class="o">.</span><span class="n">domain</span><span class="o">.</span><span class="n">name</span> <span class="o">=</span> <span class="o">/</span><span class="n">var</span><span class="o">/</span><span class="n">www</span>
 </pre></div>
 </div>
-<p>/etc/ssl/certs/dhparam.pem from assets1.specofycloud.org-&gt;</p>
+<p>/etc/ssl/certs/dhparam.pem from subdomain.domain.name-&gt;</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">-----</span><span class="n">BEGIN</span> <span class="n">DH</span> <span class="n">PARAMETERS</span><span class="o">-----</span>
-<span class="n">MIIBCAKCAQEAlcFKsIuFylwX47jxqbNT0wSVD6ifznsMcti8f7T</span><span class="o">+</span><span class="n">zaQQNr84IYIM</span>
-<span class="n">pNTT9E6SrVkkJg2u1nGScNqj5lArXvrda6zL66T8WmkFFrGfNW7RYCQ3vpg6BpGs</span>
-<span class="n">dJ3</span><span class="o">+</span><span class="n">HtWYDNoMbeCrDyMz1DDfX</span><span class="o">/</span><span class="mi">3</span><span class="n">OWblTTZRbjpvn</span><span class="o">/</span><span class="n">tEgTAn3DexP</span><span class="o">/</span><span class="n">QkE9E2c1AUX</span>
-<span class="n">Mf</span><span class="o">/</span><span class="mi">07</span><span class="n">vWpZ7giemaNgaME3fHDKyReNhTpfg1eDKypUUhEmr</span><span class="o">+</span><span class="n">PJmWQ9LQBc12LyXOP</span>
-<span class="n">DaFwAJUrqwEqrQP5fEQdOMdh522RwuD2</span><span class="o">/</span><span class="n">fPeXTukQHI8gUuMjk652aeLOcn1Ufhy</span>
-<span class="o">/</span><span class="n">KbbV6TJi7wS5F3HVaNXGOLMsHq</span><span class="o">+</span><span class="n">CywOCwIBAg</span><span class="o">==</span>
+<span class="o">...</span>
 <span class="o">-----</span><span class="n">END</span> <span class="n">DH</span> <span class="n">PARAMETERS</span><span class="o">-----</span>
 </pre></div>
 </div>
