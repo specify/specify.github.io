@@ -25,160 +25,16 @@ version: '3.7'
 
 services:
 
-
-
-  sp7demofish-eu:
-    image: specifyconsortium/specify7-service:v7
-    command: ["ve/bin/gunicorn", "-w", "1", "--threads", "5", "-b", "0.0.0.0:8000", "-t", "300", "specifyweb_wsgi"]
-    init: true
-    restart: unless-stopped
-    volumes:
-      - "specify6801:/opt/Specify:ro"
-      - "static-files-sp7demofish-eu:/volumes/static-files"
-
-    env_file: defaults.env
-    environment:
-      - DATABASE_NAME=sp7demofish_eu
-      - ASSET_SERVER_COLLECTION=sp7demofish_eu
-
-
-      - ASSET_SERVER_URL=https://demo-assets.specifycloud.org/web_asset_store.xml
-
-
-
-  sp7demofish-eu-worker:
-    image: specifyconsortium/specify7-service:v7
-    command: ve/bin/celery -A specifyweb worker -l INFO --concurrency=1 -Q sp7demofish_eu
-    init: true
-    restart: unless-stopped
-    volumes:
-      - "specify6801:/opt/Specify:ro"
-      - "static-files-sp7demofish-eu:/volumes/static-files"
-    env_file: defaults.env
-    environment:
-      - DATABASE_NAME=sp7demofish_eu
-      - ASSET_SERVER_COLLECTION=sp7demofish_eu
-
-
-      - ASSET_SERVER_URL=https://demo-assets.specifycloud.org/web_asset_store.xml
-
-
-
-
-  rjb-madrid:
-    image: specifyconsortium/specify7-service:v7
-    command: ["ve/bin/gunicorn", "-w", "1", "--threads", "5", "-b", "0.0.0.0:8000", "-t", "300", "specifyweb_wsgi"]
-    init: true
-    restart: unless-stopped
-    volumes:
-      - "specify6803:/opt/Specify:ro"
-      - "static-files-rjb-madrid:/volumes/static-files"
-
-    env_file: defaults.env
-    environment:
-      - DATABASE_NAME=rjb_madrid
-      - ASSET_SERVER_COLLECTION=rjb_madrid
-
-
-      - ASSET_SERVER_URL=
-
-      - ASSET_SERVER_COLLECTION=Fanerogamia
-
-
-
-  rjb-madrid-worker:
-    image: specifyconsortium/specify7-service:v7
-    command: ve/bin/celery -A specifyweb worker -l INFO --concurrency=1 -Q rjb_madrid
-    init: true
-    restart: unless-stopped
-    volumes:
-      - "specify6803:/opt/Specify:ro"
-      - "static-files-rjb-madrid:/volumes/static-files"
-    env_file: defaults.env
-    environment:
-      - DATABASE_NAME=rjb_madrid
-      - ASSET_SERVER_COLLECTION=rjb_madrid
-
-
-      - ASSET_SERVER_URL=
-
-      - ASSET_SERVER_COLLECTION=Fanerogamia
-
-
-
-
-  mcnb:
-    image: specifyconsortium/specify7-service:v7
-    command: ["ve/bin/gunicorn", "-w", "1", "--threads", "5", "-b", "0.0.0.0:8000", "-t", "300", "specifyweb_wsgi"]
-    init: true
-    restart: unless-stopped
-    volumes:
-      - "specify6803:/opt/Specify:ro"
-      - "static-files-mcnb:/volumes/static-files"
-
-    env_file: defaults.env
-    environment:
-      - DATABASE_NAME=mcnb
-      - ASSET_SERVER_COLLECTION=mcnb
-
-
-  mcnb-worker:
-    image: specifyconsortium/specify7-service:v7
-    command: ve/bin/celery -A specifyweb worker -l INFO --concurrency=1 -Q mcnb
-    init: true
-    restart: unless-stopped
-    volumes:
-      - "specify6803:/opt/Specify:ro"
-      - "static-files-mcnb:/volumes/static-files"
-    env_file: defaults.env
-    environment:
-      - DATABASE_NAME=mcnb
-      - ASSET_SERVER_COLLECTION=mcnb
-
-
-
-  herb-rbge:
-    image: specifyconsortium/specify7-service:v7
-    command: ["ve/bin/gunicorn", "-w", "1", "--threads", "5", "-b", "0.0.0.0:8000", "-t", "300", "specifyweb_wsgi"]
-    init: true
-    restart: unless-stopped
-    volumes:
-      - "specify6803:/opt/Specify:ro"
-      - "static-files-herb-rbge:/volumes/static-files"
-
-      - "./settings/herb-rbge-settings.py:/opt/specify7/settings/local_specify_settings.py:ro"
-
-    env_file: defaults.env
-    environment:
-      - DATABASE_NAME=herb_rbge
-      - ASSET_SERVER_COLLECTION=herb_rbge
-
-
-  herb-rbge-worker:
-    image: specifyconsortium/specify7-service:v7
-    command: ve/bin/celery -A specifyweb worker -l INFO --concurrency=1 -Q herb_rbge
-    init: true
-    restart: unless-stopped
-    volumes:
-      - "specify6803:/opt/Specify:ro"
-      - "static-files-herb-rbge:/volumes/static-files"
-    env_file: defaults.env
-    environment:
-      - DATABASE_NAME=herb_rbge
-      - ASSET_SERVER_COLLECTION=herb_rbge
-
-
-
-  sandbox-rbge:
+  <client_name>:
     image: specifyconsortium/specify7-service:issue_388
     command: ["ve/bin/gunicorn", "-w", "1", "--threads", "5", "-b", "0.0.0.0:8000", "-t", "300", "specifyweb_wsgi"]
     init: true
     restart: unless-stopped
     volumes:
       - "specify6803:/opt/Specify:ro"
-      - "static-files-sandbox-rbge:/volumes/static-files"
+      - "static-files-<client_name>:/volumes/static-files"
 
-      - "./settings/sandbox-rbge-settings.py:/opt/specify7/settings/local_specify_settings.py:ro"
+      - "./settings/<client_name>-settings.py:/opt/specify7/settings/local_specify_settings.py:ro"
 
     env_file: defaults.env
     environment:
@@ -186,80 +42,18 @@ services:
       - ASSET_SERVER_COLLECTION=sandbox_rbge
 
 
-  sandbox-rbge-worker:
+  <client_name>-worker:
     image: specifyconsortium/specify7-service:issue_388
     command: ve/bin/celery -A specifyweb worker -l INFO --concurrency=1 -Q sandbox_rbge
     init: true
     restart: unless-stopped
     volumes:
       - "specify6803:/opt/Specify:ro"
-      - "static-files-sandbox-rbge:/volumes/static-files"
+      - "static-files-<client_name>:/volumes/static-files"
     env_file: defaults.env
     environment:
       - DATABASE_NAME=sandbox_rbge
       - ASSET_SERVER_COLLECTION=sandbox_rbge
-
-
-
-  cryoarks-test:
-    image: specifyconsortium/specify7-service:v7
-    command: ["ve/bin/gunicorn", "-w", "1", "--threads", "5", "-b", "0.0.0.0:8000", "-t", "300", "specifyweb_wsgi"]
-    init: true
-    restart: unless-stopped
-    volumes:
-      - "specify6801:/opt/Specify:ro"
-      - "static-files-cryoarks-test:/volumes/static-files"
-
-    env_file: defaults.env
-    environment:
-      - DATABASE_NAME=cryoarks_test
-      - ASSET_SERVER_COLLECTION=cryoarks_test
-
-
-  cryoarks-test-worker:
-    image: specifyconsortium/specify7-service:v7
-    command: ve/bin/celery -A specifyweb worker -l INFO --concurrency=1 -Q cryoarks_test
-    init: true
-    restart: unless-stopped
-    volumes:
-      - "specify6801:/opt/Specify:ro"
-      - "static-files-cryoarks-test:/volumes/static-files"
-    env_file: defaults.env
-    environment:
-      - DATABASE_NAME=cryoarks_test
-      - ASSET_SERVER_COLLECTION=cryoarks_test
-
-
-
-  eurl:
-    image: specifyconsortium/specify7-service:v7
-    command: ["ve/bin/gunicorn", "-w", "1", "--threads", "5", "-b", "0.0.0.0:8000", "-t", "300", "specifyweb_wsgi"]
-    init: true
-    restart: unless-stopped
-    volumes:
-      - "specify6803:/opt/Specify:ro"
-      - "static-files-eurl:/volumes/static-files"
-
-    env_file: defaults.env
-    environment:
-      - DATABASE_NAME=eurl
-      - ASSET_SERVER_COLLECTION=eurl
-
-
-  eurl-worker:
-    image: specifyconsortium/specify7-service:v7
-    command: ve/bin/celery -A specifyweb worker -l INFO --concurrency=1 -Q eurl
-    init: true
-    restart: unless-stopped
-    volumes:
-      - "specify6803:/opt/Specify:ro"
-      - "static-files-eurl:/volumes/static-files"
-    env_file: defaults.env
-    environment:
-      - DATABASE_NAME=eurl
-      - ASSET_SERVER_COLLECTION=eurl
-
-
 
 
   specify6800:
@@ -294,7 +88,7 @@ services:
 
       - "static-files-herb-rbge:/volumes/static-files-herb-rbge:ro"
 
-      - "static-files-sandbox-rbge:/volumes/static-files-sandbox-rbge:ro"
+      - "static-files-<client_name>:/volumes/static-files-<client_name>:ro"
 
       - "static-files-cryoarks-test:/volumes/static-files-cryoarks-test:ro"
 
@@ -328,19 +122,8 @@ volumes:
 
 
 
-  static-files-sp7demofish-eu:
+  static-files-<client_name>:
 
-  static-files-rjb-madrid:
-
-  static-files-mcnb:
-
-  static-files-herb-rbge:
-
-  static-files-sandbox-rbge:
-
-  static-files-cryoarks-test:
-
-  static-files-eurl:
 ```
 
 ### Example nginx.conf
@@ -400,34 +183,13 @@ server {
 
     root /usr/share/nginx;
 
-    location /static/ {
-        root /volumes;
-        rewrite ^/static/config/(.*)$ /specify6801/config/$1 break;
-        rewrite ^/static/depository/(.*)$ /static-files-sp7demofish-eu/depository/$1 break;
-        rewrite ^/static/(.*)$ /static-files-sp7demofish-eu/frontend-static/$1 break;
-    }
-
-    location / {
-        resolver 127.0.0.11 valid=30s;
-        set $backend "http://sp7demofish-eu:8000";
-        proxy_pass $backend;
-        proxy_set_header Host $host;
-        proxy_set_header X-Real-IP $remote_addr;
-        proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
-        proxy_set_header X-Forwarded-Proto $scheme;
-        proxy_read_timeout 600s;
-	client_max_body_size 0;
-    }
-}
-
-
 server {
     listen 80;
-    server_name rjb-madrid.*;
+    server_name <client_name>.*;
 
     # The LetsEncrypt pass-though.
     location /.well-known/ {
-             root /var/www/rjb-madrid/;
+             root /var/www/<client_name>/;
     }
 
 
@@ -439,10 +201,10 @@ server {
 server {
     # This stanza defines the HTTPS end point.
     listen 443 ssl;
-    server_name rjb-madrid.*;
+    server_name <client_name>.*;
 
-    ssl_certificate /etc/letsencrypt/live/rjb-madrid.specifycloud.org/fullchain.pem;
-    ssl_certificate_key /etc/letsencrypt/live/rjb-madrid.specifycloud.org/privkey.pem;
+    ssl_certificate /etc/letsencrypt/live/<client_name>.specifycloud.org/fullchain.pem;
+    ssl_certificate_key /etc/letsencrypt/live/<client_name>.specifycloud.org/privkey.pem;
 
     # from https://cipherli.st/
     # and https://raymii.org/s/tutorials/Strong_SSL_Security_On_nginx.html
@@ -469,7 +231,7 @@ server {
     # The LetsEncrypt pass-though. I'm not sure if this is needed
     # on HTTPS side, but I'm including it just in case.
     location /.well-known/ {
-             root /var/www/rjb-madrid/;
+             root /var/www/<client_name>/;
     }
 
 
@@ -478,347 +240,13 @@ server {
     location /static/ {
         root /volumes;
         rewrite ^/static/config/(.*)$ /specify6803/config/$1 break;
-        rewrite ^/static/depository/(.*)$ /static-files-rjb-madrid/depository/$1 break;
-        rewrite ^/static/(.*)$ /static-files-rjb-madrid/frontend-static/$1 break;
+        rewrite ^/static/depository/(.*)$ /static-files-<client_name>/depository/$1 break;
+        rewrite ^/static/(.*)$ /static-files-<client_name>/frontend-static/$1 break;
     }
 
     location / {
         resolver 127.0.0.11 valid=30s;
-        set $backend "http://rjb-madrid:8000";
-        proxy_pass $backend;
-        proxy_set_header Host $host;
-        proxy_set_header X-Real-IP $remote_addr;
-        proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
-        proxy_set_header X-Forwarded-Proto $scheme;
-        proxy_read_timeout 600s;
-	client_max_body_size 0;
-    }
-}
-
-
-server {
-    listen 80;
-    server_name mcnb.*;
-
-    # The LetsEncrypt pass-though.
-    location /.well-known/ {
-             root /var/www/mcnb/;
-    }
-
-
-    location / {
-        return 301 https://$host$request_uri;
-    }
-}
-
-server {
-    # This stanza defines the HTTPS end point.
-    listen 443 ssl;
-    server_name mcnb.*;
-
-    ssl_certificate /etc/letsencrypt/live/mcnb.specifycloud.org/fullchain.pem;
-    ssl_certificate_key /etc/letsencrypt/live/mcnb.specifycloud.org/privkey.pem;
-
-    # from https://cipherli.st/
-    # and https://raymii.org/s/tutorials/Strong_SSL_Security_On_nginx.html
-
-    ssl_protocols TLSv1 TLSv1.1 TLSv1.2;
-    ssl_prefer_server_ciphers on;
-    ssl_ciphers "EECDH+AESGCM:EDH+AESGCM:AES256+EECDH:AES256+EDH";
-    ssl_ecdh_curve secp384r1;
-    ssl_session_cache shared:SSL:10m;
-    ssl_session_tickets off;
-    ssl_stapling on;
-    ssl_stapling_verify on;
-    resolver 8.8.8.8 8.8.4.4 valid=300s;
-    resolver_timeout 5s;
-    # Disable preloading HSTS for now.  You can use the commented out header line that includes
-    # the "preload" directive if you understand the implications.
-    #add_header Strict-Transport-Security "max-age=63072000; includeSubdomains; preload";
-    add_header Strict-Transport-Security "max-age=63072000; includeSubdomains";
-    add_header X-Frame-Options DENY;
-    add_header X-Content-Type-Options nosniff;
-
-    ssl_dhparam /etc/ssl/certs/dhparam.pem;
-
-    # The LetsEncrypt pass-though. I'm not sure if this is needed
-    # on HTTPS side, but I'm including it just in case.
-    location /.well-known/ {
-             root /var/www/mcnb/;
-    }
-
-
-    root /usr/share/nginx;
-
-    location /static/ {
-        root /volumes;
-        rewrite ^/static/config/(.*)$ /specify6803/config/$1 break;
-        rewrite ^/static/depository/(.*)$ /static-files-mcnb/depository/$1 break;
-        rewrite ^/static/(.*)$ /static-files-mcnb/frontend-static/$1 break;
-    }
-
-    location / {
-        resolver 127.0.0.11 valid=30s;
-        set $backend "http://mcnb:8000";
-        proxy_pass $backend;
-        proxy_set_header Host $host;
-        proxy_set_header X-Real-IP $remote_addr;
-        proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
-        proxy_set_header X-Forwarded-Proto $scheme;
-        proxy_read_timeout 600s;
-	client_max_body_size 0;
-    }
-}
-
-
-server {
-    listen 80;
-    server_name herb-rbge.*;
-
-    # The LetsEncrypt pass-though.
-    location /.well-known/ {
-             root /var/www/herb-rbge/;
-    }
-
-
-    location / {
-        return 301 https://$host$request_uri;
-    }
-}
-
-server {
-    # This stanza defines the HTTPS end point.
-    listen 443 ssl;
-    server_name herb-rbge.*;
-
-    ssl_certificate /etc/letsencrypt/live/herb-rbge.specifycloud.org/fullchain.pem;
-    ssl_certificate_key /etc/letsencrypt/live/herb-rbge.specifycloud.org/privkey.pem;
-
-    # from https://cipherli.st/
-    # and https://raymii.org/s/tutorials/Strong_SSL_Security_On_nginx.html
-
-    ssl_protocols TLSv1 TLSv1.1 TLSv1.2;
-    ssl_prefer_server_ciphers on;
-    ssl_ciphers "EECDH+AESGCM:EDH+AESGCM:AES256+EECDH:AES256+EDH";
-    ssl_ecdh_curve secp384r1;
-    ssl_session_cache shared:SSL:10m;
-    ssl_session_tickets off;
-    ssl_stapling on;
-    ssl_stapling_verify on;
-    resolver 8.8.8.8 8.8.4.4 valid=300s;
-    resolver_timeout 5s;
-    # Disable preloading HSTS for now.  You can use the commented out header line that includes
-    # the "preload" directive if you understand the implications.
-    #add_header Strict-Transport-Security "max-age=63072000; includeSubdomains; preload";
-    add_header Strict-Transport-Security "max-age=63072000; includeSubdomains";
-    add_header X-Frame-Options DENY;
-    add_header X-Content-Type-Options nosniff;
-
-    ssl_dhparam /etc/ssl/certs/dhparam.pem;
-
-    # The LetsEncrypt pass-though. I'm not sure if this is needed
-    # on HTTPS side, but I'm including it just in case.
-    location /.well-known/ {
-             root /var/www/herb-rbge/;
-    }
-
-
-    root /usr/share/nginx;
-
-    location /static/ {
-        root /volumes;
-        rewrite ^/static/config/(.*)$ /specify6803/config/$1 break;
-        rewrite ^/static/depository/(.*)$ /static-files-herb-rbge/depository/$1 break;
-        rewrite ^/static/(.*)$ /static-files-herb-rbge/frontend-static/$1 break;
-    }
-
-    location / {
-        resolver 127.0.0.11 valid=30s;
-        set $backend "http://herb-rbge:8000";
-        proxy_pass $backend;
-        proxy_set_header Host $host;
-        proxy_set_header X-Real-IP $remote_addr;
-        proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
-        proxy_set_header X-Forwarded-Proto $scheme;
-        proxy_read_timeout 600s;
-	client_max_body_size 0;
-    }
-}
-
-
-server {
-    listen 80;
-    server_name sandbox-rbge.*;
-
-    # The LetsEncrypt pass-though.
-    location /.well-known/ {
-             root /var/www/sandbox-rbge/;
-    }
-
-
-    location / {
-        return 301 https://$host$request_uri;
-    }
-}
-
-server {
-    # This stanza defines the HTTPS end point.
-    listen 443 ssl;
-    server_name sandbox-rbge.*;
-
-    ssl_certificate /etc/letsencrypt/live/sandbox-rbge.specifycloud.org/fullchain.pem;
-    ssl_certificate_key /etc/letsencrypt/live/sandbox-rbge.specifycloud.org/privkey.pem;
-
-    # from https://cipherli.st/
-    # and https://raymii.org/s/tutorials/Strong_SSL_Security_On_nginx.html
-
-    ssl_protocols TLSv1 TLSv1.1 TLSv1.2;
-    ssl_prefer_server_ciphers on;
-    ssl_ciphers "EECDH+AESGCM:EDH+AESGCM:AES256+EECDH:AES256+EDH";
-    ssl_ecdh_curve secp384r1;
-    ssl_session_cache shared:SSL:10m;
-    ssl_session_tickets off;
-    ssl_stapling on;
-    ssl_stapling_verify on;
-    resolver 8.8.8.8 8.8.4.4 valid=300s;
-    resolver_timeout 5s;
-    # Disable preloading HSTS for now.  You can use the commented out header line that includes
-    # the "preload" directive if you understand the implications.
-    #add_header Strict-Transport-Security "max-age=63072000; includeSubdomains; preload";
-    add_header Strict-Transport-Security "max-age=63072000; includeSubdomains";
-    add_header X-Frame-Options DENY;
-    add_header X-Content-Type-Options nosniff;
-
-    ssl_dhparam /etc/ssl/certs/dhparam.pem;
-
-    # The LetsEncrypt pass-though. I'm not sure if this is needed
-    # on HTTPS side, but I'm including it just in case.
-    location /.well-known/ {
-             root /var/www/sandbox-rbge/;
-    }
-
-
-    root /usr/share/nginx;
-
-    location /static/ {
-        root /volumes;
-        rewrite ^/static/config/(.*)$ /specify6803/config/$1 break;
-        rewrite ^/static/depository/(.*)$ /static-files-sandbox-rbge/depository/$1 break;
-        rewrite ^/static/(.*)$ /static-files-sandbox-rbge/frontend-static/$1 break;
-    }
-
-    location / {
-        resolver 127.0.0.11 valid=30s;
-        set $backend "http://sandbox-rbge:8000";
-        proxy_pass $backend;
-        proxy_set_header Host $host;
-        proxy_set_header X-Real-IP $remote_addr;
-        proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
-        proxy_set_header X-Forwarded-Proto $scheme;
-        proxy_read_timeout 600s;
-	client_max_body_size 0;
-    }
-}
-
-
-server {
-    listen 80;
-    server_name cryoarks-test.*;
-
-    # The LetsEncrypt pass-though.
-    location /.well-known/ {
-             root /var/www/cryoarks-test/;
-    }
-
-
-
-    root /usr/share/nginx;
-
-    location /static/ {
-        root /volumes;
-        rewrite ^/static/config/(.*)$ /specify6801/config/$1 break;
-        rewrite ^/static/depository/(.*)$ /static-files-cryoarks-test/depository/$1 break;
-        rewrite ^/static/(.*)$ /static-files-cryoarks-test/frontend-static/$1 break;
-    }
-
-    location / {
-        resolver 127.0.0.11 valid=30s;
-        set $backend "http://cryoarks-test:8000";
-        proxy_pass $backend;
-        proxy_set_header Host $host;
-        proxy_set_header X-Real-IP $remote_addr;
-        proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
-        proxy_set_header X-Forwarded-Proto $scheme;
-        proxy_read_timeout 600s;
-	client_max_body_size 0;
-    }
-}
-
-
-server {
-    listen 80;
-    server_name eurl.*;
-
-    # The LetsEncrypt pass-though.
-    location /.well-known/ {
-             root /var/www/eurl/;
-    }
-
-
-    location / {
-        return 301 https://$host$request_uri;
-    }
-}
-
-server {
-    # This stanza defines the HTTPS end point.
-    listen 443 ssl;
-    server_name eurl.*;
-
-    ssl_certificate /etc/letsencrypt/live/eurl.specifycloud.org/fullchain.pem;
-    ssl_certificate_key /etc/letsencrypt/live/eurl.specifycloud.org/privkey.pem;
-
-    # from https://cipherli.st/
-    # and https://raymii.org/s/tutorials/Strong_SSL_Security_On_nginx.html
-
-    ssl_protocols TLSv1 TLSv1.1 TLSv1.2;
-    ssl_prefer_server_ciphers on;
-    ssl_ciphers "EECDH+AESGCM:EDH+AESGCM:AES256+EECDH:AES256+EDH";
-    ssl_ecdh_curve secp384r1;
-    ssl_session_cache shared:SSL:10m;
-    ssl_session_tickets off;
-    ssl_stapling on;
-    ssl_stapling_verify on;
-    resolver 8.8.8.8 8.8.4.4 valid=300s;
-    resolver_timeout 5s;
-    # Disable preloading HSTS for now.  You can use the commented out header line that includes
-    # the "preload" directive if you understand the implications.
-    #add_header Strict-Transport-Security "max-age=63072000; includeSubdomains; preload";
-    add_header Strict-Transport-Security "max-age=63072000; includeSubdomains";
-    add_header X-Frame-Options DENY;
-    add_header X-Content-Type-Options nosniff;
-
-    ssl_dhparam /etc/ssl/certs/dhparam.pem;
-
-    # The LetsEncrypt pass-though. I'm not sure if this is needed
-    # on HTTPS side, but I'm including it just in case.
-    location /.well-known/ {
-             root /var/www/eurl/;
-    }
-
-
-    root /usr/share/nginx;
-
-    location /static/ {
-        root /volumes;
-        rewrite ^/static/config/(.*)$ /specify6803/config/$1 break;
-        rewrite ^/static/depository/(.*)$ /static-files-eurl/depository/$1 break;
-        rewrite ^/static/(.*)$ /static-files-eurl/frontend-static/$1 break;
-    }
-
-    location / {
-        resolver 127.0.0.11 valid=30s;
-        set $backend "http://eurl:8000";
+        set $backend "http://<client_name>:8000";
         proxy_pass $backend;
         proxy_set_header Host $host;
         proxy_set_header X-Real-IP $remote_addr;
@@ -849,7 +277,7 @@ DEBUG = False
 # Set KEY to None to disable security. This is NOT recommended since doing so
 # will allow anyone on the internet to use the attachment server to store
 # arbitrary files.
-KEY = 'tnhercbrhtktanehul.dukb'
+KEY = '<asset_key>}'
 
 # Auth token timestamp must be within this many seconds of server time
 # in order to be considered valid. This prevents replay attacks.
@@ -867,7 +295,7 @@ ALLOW_STATIC_FILE_ACCESS = True
 
 # These values are interpolated into the web_asset_store.xml resource
 # so the client knows how to talk to the server.
-HOST = 'assets1.specifycloud.org'
+HOST = '<assets-name>.specifycloud.org'
 PORT = 8080
 
 SERVER_NAME = HOST
@@ -883,88 +311,6 @@ DEVELOPMENT_PORT = PORT
 
 COLLECTION_DIRS = {
     # 'COLLECTION_NAME': 'DIRECTORY_NAME',
-    'beaty': 'beaty',
-    'ncslgfungi': 'ncslgfungi',
-    'ocpc': 'ocpc',
-    'stlawu': 'stlawu',
-    'asnhcmammals': 'asnhcmammals',
-    'dwuspiders': 'dwuspiders',
-
-    # 'nha': 'nha',
-    # 'cornellmammals': 'cornellmammals',
-    # 'cornellherps': 'cornellherps',
-    # 'cornellfishes': 'cornellfishes',
-    'uprm_invcol': 'uprm_invcol',
-    'nybg_vanuatu': 'nybg_vanuatu',
-    'demobirds': 'demobirds',
-    'emoryherbarium': 'emoryherbarium',
-    'uw_geo_collections': 'uw_geo_collections',
-    'keherbariumvascular': 'keherbariumvascular',
-    # 'cornellbirds': 'cornellbirds',
-    # 'critters': 'critters',
-    'williherb': 'williherb',
-    'sbccprofantmuseum': 'sbccprofantmuseum',
-    'josc': 'josc',
-    'ccnhm': 'ccnhm',
-    'lsumz_mammals': 'lsumz_mammals',
-    # 'pripaleo': 'pripaleo',
-    'Invertebrate Paleontology': 'pripaleo',
-    'usgs_nmnhpaleontologycollections': 'usgs_nmnhpaleontologycollections',
-    'vimsfish': 'vimsfish',
-    'vimsworkshop': 'vimsworkshop',
-    'ilstu': 'ilstu',
-    'wespalcoll': 'wespalcoll',
-    'royfungi': 'royfungi',
-    'isua': 'isua',
-    'chagasecohealth': 'chagasecohealth',
-    'plu': 'plu',
-    'uconnverts': 'uconnverts',
-    'kelichens': 'kelichens',
-    'lakeforestbiology': 'lakeforestbiology',
-    'mariamitchell': 'mariamitchell',
-    'gree': 'gree',
-    'pennstatefishmuseum': 'pennstatefishmuseum',
-    'dukebryo': 'dukebryo',
-    'bishopmuseum': 'bishopmuseum',
-    'mndragonfly': 'mndragonfly',
-    'rbge': 'rbge',
-    'cudiatoms': 'cudiatoms',
-    'fwri': 'fwri',
-    'sdinverts': 'sdinverts',
-    'shellmuseum': 'shellmuseum',
-    'ansppaleo': 'ansppaleo',
-    'osuorton': 'osuorton',
-    'ciscollections': 'ciscollections',
-    'cuic': 'cuic',
-    'lsumz_fishes': 'lsumz_fishes',
-    'calvertmarinemuseum': 'calvertmarinemuseum',
-
-    'mcnb': 'mcnb',
-    'Invertebrate non-arthropod': 'mcnb',
-
-    'lsumz_herps': 'lsumz_herps',
-    'uwfc': 'uwfc',
-
-    'Oregon State Ichthyology Collection': 'os',
-    'os': 'os',
-    'unitec': 'unitec',
-    'herb_rbge': 'herb_rbge',
-    'Herbarium RBGE': 'herb_rbge',
-    'sandbox_rbge': 'sandbox_rbge',
-
-    'nbm_mnb': 'nbm_mnb',
-    "Amphibian Reptile Sightings": 'nbm_mnb',
-
-    'purdueherbaria': 'purdueherbaria',
-    'montrealinsectarium': 'montrealinsectarium',
-
-    'workshop': 'workshop',
-    'ptrm': 'ptrm',
-    'herb_umass': 'herb_umass',
-    'unsm_vp': 'unsm_vp',
-    'morpalo': 'morpalo',
-    'aafc_aac': 'aafc_aac',
-    'spnhc': 'spnhc'
 }
 
 # COLLECTION_DIRS = None
