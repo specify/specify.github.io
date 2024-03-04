@@ -9,66 +9,10 @@ EC2 Parameters:
 ami-0770bf1d6ae61c858 
 
 ## Initial Commands
-```bash
-#!/bin/bash
 
-sudo apt-get update;
-sudo apt upgrade;
-sudo apt install -y make python3-pip
+Initial commands are in the script 
+[specify_cloud_setup.sh](../../scripts/specify_cloud_setup.sh)
 
-#sudo apt-get install -y docker-ce docker-ce-cli containerd.io docker-compose mysql-client;
-#sudo apt install docker.io
-
-# Install Docker
-sudo apt install -y apt-transport-https ca-certificates curl software-properties-common;
-curl -fsSL https://download.docker.com/linux/ubuntu/gpg | sudo gpg --dearmor -o /usr/share/keyrings/docker-archive-keyring.gpg;
-echo "deb [arch=$(dpkg --print-architecture) signed-by=/usr/share/keyrings/docker-archive-keyring.gpg] https://download.docker.com/linux/ubuntu $(lsb_release -cs) stable" | sudo tee /etc/apt/sources.list.d/docker.list > /dev/null;
-sudo apt update;
-sudo apt -y install docker-ce;
-docker --version;
-sudo systemctl status docker;
-
-#sudo systemctl start docker.service
-#sudo systemctl enable docker.service
-#sudo systemctl status docker.service
-
-# Install docker compose
-mkdir .docker
-mkdir .docker/cli-plugins
-curl -L "https://github.com/docker/compose/releases/download/v2.17.2/docker-compose-linux-$(uname -m)" -o ~/.docker/cli-plugins/docker-compose;
-chmod +x ~/.docker/cli-plugins/docker-compose;
-docker compose version;
-
-# Install awscli
-sudo apt -y install awscli;
-aws configure; # See aws credentials at bottom of notes
-
-# Setup mysql datbase connection
-sudo apt install -y mysql-client;
-
-# Copy files from S3
-aws s3 cp s3://specify-cloud/repo-snapshots/docker-compositions/ ./ --recursive
-
-# python setup
-sudo apt install -y python3-pip;
-python3 -m pip install j2cli;
-
-# Create config files for specifycloud
-cd specifycloud;
-vim spcloudservers.json
-vim defaults.env
-sudo apt install j2cli
-make
-
-# ssh client-server alive settings
-sudo echo -e "ClientAliveInterval 1200\nClientAliveCountMax 3" >> /etc/ssh/sshd_config
-sudo systemctl reload sshd;
-
-#docker pull specifyconsortium/specify7-service:edge
-
-# su specify -c make
-docker-compose up -d
-```
 
 ## SSH Configuration
 
@@ -100,8 +44,8 @@ spcloudservers.json ->
 			"sp6": "specify6803",
 			"https": false,
 			"env": {
-                "ASSET_SERVER_URL": "https://demo-assets.specifycloud.org/web_asset_store.xml",
-                "ANONYMOUS_USER": "sp7demofish"
+                "ASSET_SERVER_URL": "https://<subdomain>.<domain_name>/web_asset_store.xml",
+                "ANONYMOUS_USER": "anon_user_name"
             }
 		}
 	},
@@ -116,13 +60,13 @@ spcloudservers.json ->
 ```
 defaults.env ->
 ```
-DATABASE_HOST=specifycloud-dev-database-1-instance-1.cqvncffkwz9t.us-east-1.rds.amazonaws.com
+DATABASE_HOST=<db_instance_name>.<identifier>.<region>.rds.amazonaws.com
 DATABASE_PORT=3306
 MASTER_NAME=master
-MASTER_PASSWORD=mastermaster
+MASTER_PASSWORD=<master_password>
 SECRET_KEY=bogus
-ASSET_SERVER_URL=https://assets1.specifycloud.org/web_asset_store.xml
-ASSET_SERVER_KEY=tnhercbrhtktanehul.dukb
+ASSET_SERVER_URL=https://ASSET_SERVER_FQDN/web_asset_store.xml
+ASSET_SERVER_KEY=ASSET_SERVER_KEY
 REPORT_RUNNER_HOST=10.132.218.32
 REPORT_RUNNER_PORT=8080
 CELERY_BROKER_URL=redis://redis/0
@@ -135,95 +79,25 @@ SP7_DEBUG=false
 ## Info Misc.
 
 ### aws credentials:
-- username: `specify.user`
+- username: SPECIFY_USER
 - password: SPECIFY_USER_PASSWORD
 - access key: ACCESS_KEY
 - secret access key: ACCESS_KEY_SECRET
-- default region: us-east-1
+- default region: REGION
 - default output format: json
 
 ### AWS EC2 User data:
-```bash
-# Avoid services restarting during apt upgrade
-sudo sed -i "s/#\$nrconf{kernelhints} = -1;/\$nrconf{kernelhints} = -1;/g" /etc/needrestart/needrestart.conf;
-sudo sed -i "s/#\$nrconf{restart} = 'i';/\$nrconf{restart} = 'a';/g" /etc/needrestart/needrestart.conf;
 
-# Run apt installs
-sudo apt update;
-sudo apt upgrade -y;
-sudo apt install -y apt-transport-https ca-certificates git gh curl software-properties-common wget python3-pip awscli mysql-client j2cli;
+Make sure to fill in all variables (starting with `$`) in the following userdata script 
+script before including it in an EC2 launch configuration.
+[specify_cloud_ec2_userdata.sh](../../scripts/specify_cloud_ec2_userdata.sh)
 
-# Configure AWS
-aws configure set aws_access_key_id "ACCESS_KEY";
-aws configure set aws_secret_access_key "ACCESS_KEY_SECRET";
-aws configure set default.region us-east-1;
-aws configure set default.output json;
+* $BUCKET_NAME 
+* $DATABASE_NAME
+* $DB_IDENTIFIER
+* $REGION
+* $MASTER_PASSWORD
 
-# Install Docker
-curl -fsSL https://download.docker.com/linux/ubuntu/gpg | sudo gpg --dearmor -o /usr/share/keyrings/docker-archive-keyring.gpg;
-echo "deb [arch=$(dpkg --print-architecture) signed-by=/usr/share/keyrings/docker-archive-keyring.gpg] https://download.docker.com/linux/ubuntu $(lsb_release -cs) stable" | sudo tee /etc/apt/sources.list.d/docker.list > /dev/null;
-sudo apt update;
-apt-cache policy docker-ce;
-sudo apt install -y docker-ce;
-docker --version;
-
-# Install docker compose
-mkdir .docker;
-mkdir .docker/cli-plugins;
-curl -L "https://github.com/docker/compose/releases/download/v2.17.2/docker-compose-linux-$(uname -m)" -o ~/.docker/cli-plugins/docker-compose;
-chmod +x ~/.docker/cli-plugins/docker-compose;
-docker compose version;
-
-# Python setup
-# python3 -m pip install j2cli;
-# export PATH=$PATH:/home/ubuntu/.local/bin;
-# sudo apt install j2cli;
-
-# Copy files from S3
-aws s3 cp s3://specify-cloud/repo-snapshots/docker-compositions/ ./ --recursive;
-aws s3 cp s3://specify-cloud/repo-snapshots/spcloudservers.json ./specifycloud/;
-aws s3 cp s3://specify-cloud/repo-snapshots/defaults.env ./specifycloud/;
-
-# Database setup
-mkdir seed-databases;
-aws s3 cp s3://specify-cloud/seed-database/specify.sql ./seed-databases/;
-mysql --host specify-cloud-swiss-demo-database-1.c9qlnkmf2lfl.eu-central-2.rds.amazonaws.com --port 3306 -u master -p'mastermaster' -e "create database specify;";
-mysql --host specify-cloud-swiss-demo-database-1.c9qlnkmf2lfl.eu-central-2.rds.amazonaws.com --port 3306 -u master -p'mastermaster' specify < ./seed-databases/specify.sql;
-rm -f ./seed-databases/specify.sql;
-
-# Configure Specify Network
-cd specifycloud;
-touch spcloudservers.json;
-touch defaults.env;
-
-# Run Specify Network
-make;
-sudo docker compose up -d;
-
-# Certbot setup
-sudo apt install certbot python3-certbot-apache;
-sudo mkdir /var/www/sp7demofish;
-
-# Github clone private repo
-ssh-keygen -t ed25519 -C "acwhite211@gmail.com";
-#ssh-keygen -t rsa -b 4096 -C "acwhite211@gmail.com";
-
-# git clone repos
-git clone https://github.com/specify/specify7.git;
-git clone https://github.com/specify/specify6.git;
-git clone https://github.com/specify/report-runner-service.git;
-#git clone https://github.com/specify/web-asset-server.git;
-
-# Install nginx
-sudo apt install -y nginx openjdk-8-jdk maven ant;
-sudo ufw allow 'Nginx HTTP';
-sudo ufw status;
-sudo update-alternatives --set java /usr/lib/jvm/java-8-openjdk-arm64/jre/bin/java;
-
-# Build without docker
-cd specify6;
-ant compile-nonmac;
-```
 
 ###  AWS Pricing
 
@@ -311,130 +185,17 @@ t4g.medium
 - 36 month reserved instance
 
 
-### Specify Network Extract
-
-Specify Network EC2 instance:
-```bash
-sudo apt update;
-sudo apt upgrade -y;
-sudo apt install -y wget awscli unzip;
-aws configure set aws_access_key_id "ACCESS_KEY";
-aws configure set aws_secret_access_key "ACCESS_KEY_SECRET";
-aws configure set default.region us-east-1;
-aws configure set default.output json;
-mkdir gbif;
-mkdir gbif/download;
-mkdir gbif/extract;
-cd gbif/download;
-aws s3 cp s3://specify-network/gbif/0146304-230224095556074.zip ./;
-wget $GBIF_URL;
-unzip 0146304-230224095556074.zip -d ../extract/;
-cd ../extract/;
-mv ./0146304-230224095556074.csv ./gbif.csv
-aws s3 cp gbif.csv s3://specify-network-dev/gbif_test/gbif_extract/;
-```
-
-specify aws github ssh key:
-id_ed25519.pub ->
-```
-sh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIKHq3lVhZ4U8j0Derpm37wgUPLGLgQtim77M68m+XNWL acwhite211@gmail.com
-```
-id_ed25519 ->
-```
------BEGIN OPENSSH PRIVATE KEY-----
-b3BlbnNzaC1rZXktdjEAAAAABG5vbmUAAAAEbm9uZQAAAAAAAAABAAAAMwAAAAtzc2gtZW
-QyNTUxOQAAACCh6t5VYWeFPI9A3q6Zt+8IFDyxi4ELYpu+zOvJvlzViwAAAJj4E1iO+BNY
-jgAAAAtzc2gtZWQyNTUxOQAAACCh6t5VYWeFPI9A3q6Zt+8IFDyxi4ELYpu+zOvJvlzViw
-AAAEDi0KTenAzeyomMyaqOBd8APyQjcL3YU7tXMMMrit8bjaHq3lVhZ4U8j0Derpm37wgU
-PLGLgQtim77M68m+XNWLAAAAFGFjd2hpdGUyMTFAZ21haWwuY29tAQ==
------END OPENSSH PRIVATE KEY-----
-```
-
-MariaDB version: 10.3.38-MariaDB-0ubuntu0.20.04.1-log
-AWS DB password: DB_PASSWORD
-
 ### Install Ubuntu EC2 instance with no docker
-```bash
-#!/bin/bash
 
-# Avoid services restarting during apt upgrade
-sudo sed -i "s/#\$nrconf{kernelhints} = -1;/\$nrconf{kernelhints} = -1;/g" /etc/needrestart/needrestart.conf;
-sudo sed -i "s/#\$nrconf{restart} = 'i';/\$nrconf{restart} = 'a';/g" /etc/needrestart/needrestart.conf;
+Make sure to fill in all variables (starting with `$`) in the following userdata script 
+script before including it in an EC2 launch configuration.
+[install_ec2_wo_docker.sh](../../scripts/install_ec2_wo_docker.sh)
 
-# Run apt installs
-sudo apt update;
-sudo apt upgrade -y;
-sudo apt install -y --no-install-recommends \ 
-	apt-transport-https ca-certificates git curl software-properties-common wget \
-	python3-pip awscli mysql-client j2cli nginx openjdk-8-jdk maven ant gcc make \
-	openldap-devel \
-	#nodejs npm \
-	python3-venv \
-	#python3.8 python3.8-dev \
-	redis unzip \
-	apache2 \
-	libapache2-mod-wsgi-py3;
+* $BUCKET_NAME 
 
-# Install nodejs 18
-cd ~;
-#curl -sL https://deb.nodesource.com/setup_18.x -o nodesource_setup.sh;
-#sudo bash nodesource_setup.sh;
-#sudo apt install -y nodejs;
-curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.39.1/install.sh | bash;
-source ~/.bashrc;
-nvm install v18;
-nvm use 18;
-nvm alias default 18;
-node -v;
-
-# Install python 3.8
-sudo add-apt-repository -y ppa:deadsnakes/ppa;
-sudo apt update;
-sudo apt install -y python3.8 python3.8-dev;
-
-# Git clone repos
-git clone https://github.com/specify/specify7.git;
-git clone https://github.com/specify/specify6.git;
-git clone https://github.com/specify/report-runner-service.git;
-
-# Setup database
-aws s3 cp s3://specify-cloud/seed-database/sp7demofish.sql ./specify7/seed-database/;
-
-# Setup specify6
-#cd ~/specify6;
-#sudo update-alternatives --set java /usr/lib/jvm/java-8-openjdk-arm64/jre/bin/java;
-#wget https://update.specifysoftware.org/6803/Specify_unix_64.sh;
-#sh Specify_unix_64.sh -q -dir ./Specify6.8.03;
-#sudo ln -s $(pwd)/Specify6.8.03 /opt/Specify;
-sudo ln -s $(pwd)/specify6 /opt/Specify;
-
-# Setup specify7
-cd ~/specify7;
-#git checkout tags/v7.8.10
-python3.8 -m venv specify7/ve;
-specify7/ve/bin/pip install wheel;
-specify7/ve/bin/pip install --upgrade -r specify7/requirements.txt;
-
-# Run specify dev
-cd ~/specify7;
-source ve/bin/activate;
-make runserver;
-
-# Setup specify-worker
-cd ~/specify7;
-#ve/bin/celery -A specifyweb worker -l INFO --concurrency=1 -Q specify;
-celery -A specifyweb worker -l INFO --concurrency=1;
-
-# Setup apache
-# sudo apt install -y apache2 libapache2-mod-wsgi-py3
-
-# Setup nginx
-#sudo apt install -y nginx openjdk-8-jdk maven ant;
-sudo ufw allow 'Nginx HTTP';
-sudo ufw status;
-```
 
 ### Using the Amazon arm54 centos image:
+
 ```bash
 #!/bin/bash
 

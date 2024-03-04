@@ -1,140 +1,19 @@
 # AWS Specify Asset Server Setup
 
 ## EC2 Non-Dockerized Build
-```bash
-#!/bin/bash
 
-sudo apt update;
-sudo apt upgrade -y;
-sudo apt-get -y install --no-install-recommends \
-  python3-venv \
-  python3.8 \
-  python3.8-dev \
-  python3-pip \
-  imagemagick \
-  ghostscript \
-  git \
-  nginx \
-  certbot \
-  authbind \
-  s3fs \
-  awscli;
+Make sure to set environment variables before running the bash script 
 
-# python 3.6
-#sudo apt update
-#sudo apt install build-essential checkinstall zlib1g-dev libncurses5-dev libgdbm-dev libnss3-dev libssl-dev libreadline-dev libffi-dev libsqlite3-dev wget libbz2-dev;
-#wget https://www.python.org/ftp/python/3.6.15/Python-3.6.15.tgz;
-#tar -xf Python-3.6.15.tgz;
-#cd Python-3.6.15 && ./configure --enable-optimizations;
-#make -j$(nproc);
-#sudo make altinstall;
-#python3.6 --version;
-
-# python 3.6 install with apt
-sudo apt install software-properties-common;
-sudo add-apt-repository ppa:deadsnakes/ppa;
-sudo apt update;
-sudo apt install python3.6;
-sudo apt-get install python3.6-distutils;
-
-# install pip3.6
-#wget https://bootstrap.pypa.io/pip/3.6/get-pip.py;
-python3.6 -m venv --without-pip ve;
-source ve/bin/activate;
-wget https://bootstrap.pypa.io/get-pip.py;
-#wget https://bootstrap.pypa.io/pip/3.5/get-pip.py
-#deactivate;
-
-# activate python3.6 venv
-sudo apt install -y python3-virtualenv;
-python3.6 -m venv myenv;
-source myenv/bin/activate;
-pip install --no-cache-dir -r requirements.txt;
-#deactivate;
-
-# TLS dependencies
-sudo apt-get -y install --no-install-recommends \
-	certbot \
-	python3-certbot-nginx \
-	software-properties-common;
-
-# Configure AWS
-aws configure set aws_access_key_id "ACCESS_KEY";
-aws configure set aws_secret_access_key "ACCESS_KEY_SECRET";
-aws configure set default.region us-east-1;
-aws configure set default.output json;
-
-# Import attachment files
-#mkdir attachments;
-#aws s3 cp s3://specify-cloud/assets-server/attachments/ ~/attachments --recursive;
-
-# S3 Mounting
-mkdir attachments;
-s3fs specify-cloud /assets-server/attachments/;
-
-# Clone asset server repo
-git clone https://github.com/specify/web-asset-server.git;
-cd ~/web-asset-server;
-git checkout arm-build;
-
-# Build python web asset server
-python3.8 -m venv ve;
-sudo ve/bin/pip install --no-cache-dir -r requirements.txt
-#sudo pip install -r requirements.txt;
-
-# Port config
-# not needed when running with nginx
-#sudo apt-get install authbind;
-#touch 80;
-#chmod u+x 80;
-#sudo mv 80 /etc/authbind/byport;
-
-# Create SystemD service
-sudo cat > /etc/systemd/system/web-asset-server.service << EOF
-[Unit]
-Description=Specify Web Asset Server
-Wants=network.target
-
-[Service]
-User=ubuntu
-WorkingDirectory=/home/ubuntu/web-asset-server
-ExecStart=/home/ubuntu/web-asset-server/ve/bin/python /home/ubuntu/web-asset-server/server.py
-Restart=always
-
-[Install]
-WantedBy=multi-user.target
-
-EOF
-
-sudo systemctl daemon-reload;
-sudo systemctl enable web-asset-server.service;
-sudo systemctl start web-asset-server.service;
-sudo systemctl status web-asset-server.service;
-
-# nginx
-# sudo vim etc/nginx/sites-enabled/assets.conf
-sudo rm -f /etc/nginx/sites-enabled/default;
-sudo nginx -t;
-sudo /etc/init.d/nginx reload;
-
-# S3 Mounting
-mount -o discard,defaults,noatime /dev/disk/by-id/scsi-0DO_Volume_volume-nyc1-01 /mnt/volume-nyc1-01
-
-# TODO: EFS Mounting
-
-# Certbot TLS config
-sudo mkdir /var/www/.well-known;
-sudo certbot --nginx -d assets-test.specifycloud.org -d assets-test.specifycloud.org;
-sudo ls -la /etc/letsencrypt/live/assets-test.specifycloud.org;
-#openssl dhparam -out /etc/nginx/dhparam.pem 4096;
-sudo openssl dhparam -out /etc/ssl/certs/dhparam.pem 4096; #2048 or 1024
-sudo openssl dhparam -dsaparam -out /etc/ssl/certs/dhparam.pem 1024;
-# add https server config to nginx assets.
-
-# Edit 
+```command line
+export DOMAIN_NAME <domain name>
+export SUBDOMAIN_PREFIX <first section of subdomain>
 ```
 
+[build_non_docker_asset_server.sh](../scripts/build_non_docker_asset_server.sh) to build the instance.
+
 ## Config files
+
+Make sure to set environment variables 
 /etc/systemd/system/web-asset-server.service ->
 ```
 [Unit]
@@ -185,7 +64,7 @@ ALLOW_STATIC_FILE_ACCESS = True
 # These values are interpolated into the web_asset_store.xml resource
 # so the client knows how to talk to the server.
 #HOST = 'localhost'
-HOST = 'assets-test.specifycloud.org'
+HOST = 'subdomain.domain.name'
 PORT = 8080
 #PORT = 80
 
@@ -228,7 +107,7 @@ CAN_THUMBNAIL = {'image/jpeg', 'image/gif', 'image/png', 'image/tiff', 'applicat
 SERVER = 'wsgiref'  # For testing. Requires no extra packages.
 ```
 
-/etc/nginx/sites-enabled/assets.conf from the aasets1.specifycloud.org- ->
+/etc/nginx/sites-enabled/assets.conf from the subdomain.domain.name- ->
 ```
 # Nginx configuration for supplying an HTTPS end point for the web
 # asset server. The asset server is running on the same system
@@ -241,7 +120,7 @@ SERVER = 'wsgiref'  # For testing. Requires no extra packages.
 server {
        # HTTP access is needed for Specify 6. It will not work with HTTPS.
        listen 80 default_server;
-       server_name assets1.specifycloud.org;
+       server_name subdomain.domain.name;
        client_max_body_size 0;
 
        # The LetsEncrypt certificate mechanism places a nonce
@@ -258,7 +137,7 @@ server {
        # it defines point to this proxy.
        location = /web_asset_store.xml {
                 proxy_pass http://localhost:8080/web_asset_store.xml;
-                sub_filter 'http://assets1.specifycloud.org:8080' 'http://assets1.specifycloud.org';
+                sub_filter 'http://subdomain.domain.name:8080' 'http://subdomain.domain.name';
                 sub_filter_once off;
                 sub_filter_types text/xml;
        }
@@ -273,11 +152,11 @@ server {
 server {
        # This stanza defines the HTTPS end point.
        listen 443 ssl default_server;
-       server_name assets1.specifycloud.org;
+       server_name subdomain.domain.name;
        client_max_body_size 0;
 
-       ssl_certificate /etc/letsencrypt/live/assets1.specifycloud.org/fullchain.pem;
-       ssl_certificate_key /etc/letsencrypt/live/assets1.specifycloud.org/privkey.pem;
+       ssl_certificate /etc/letsencrypt/live/subdomain.domain.name/fullchain.pem;
+       ssl_certificate_key /etc/letsencrypt/live/subdomain.domain.name/privkey.pem;
 
        # from https://cipherli.st/
        # and https://raymii.org/s/tutorials/Strong_SSL_Security_On_nginx.html
@@ -311,7 +190,7 @@ server {
        # to use HTTPS in addition to changing the port.
        location = /web_asset_store.xml {
                 proxy_pass http://localhost:8080/web_asset_store.xml;
-                sub_filter 'http://assets1.specifycloud.org:8080' 'https://assets1.specifycloud.org';
+                sub_filter 'http://subdomain.domain.name:8080' 'https://subdomain.domain.name';
                 sub_filter_once off;
                 sub_filter_types text/xml;
        }
@@ -323,15 +202,15 @@ server {
 }
 ```
 
-/etc/letsencrypt/renewal/assets1.specifycloud.org.conf ->
+/etc/letsencrypt/renewal/subdomain.domain.name.conf ->
 ```
 # renew_before_expiry = 30 days
-cert = /etc/letsencrypt/live/assets1.specifycloud.org/cert.pem
-privkey = /etc/letsencrypt/live/assets1.specifycloud.org/privkey.pem
-chain = /etc/letsencrypt/live/assets1.specifycloud.org/chain.pem
-fullchain = /etc/letsencrypt/live/assets1.specifycloud.org/fullchain.pem
+cert = /etc/letsencrypt/live/subdomain.domain.name/cert.pem
+privkey = /etc/letsencrypt/live/subdomain.domain.name/privkey.pem
+chain = /etc/letsencrypt/live/subdomain.domain.name/chain.pem
+fullchain = /etc/letsencrypt/live/subdomain.domain.name/fullchain.pem
 version = 1.9.0
-archive_dir = /etc/letsencrypt/archive/assets1.specifycloud.org
+archive_dir = /etc/letsencrypt/archive/subdomain.domain.name
 
 # Options and defaults used in the renewal process
 [renewalparams]
@@ -340,18 +219,13 @@ account = a563615cc912ed3d7a3edfede09d6760
 post_hook = systemctl reload nginx
 server = https://acme-v02.api.letsencrypt.org/directory
 [[webroot_map]]
-assets1.specifycloud.org = /var/www
+subdomain.domain.name = /var/www
 ```
 
-/etc/ssl/certs/dhparam.pem from assets1.specofycloud.org->
+/etc/ssl/certs/dhparam.pem from subdomain.domain.name->
 ```
 -----BEGIN DH PARAMETERS-----
-MIIBCAKCAQEAlcFKsIuFylwX47jxqbNT0wSVD6ifznsMcti8f7T+zaQQNr84IYIM
-pNTT9E6SrVkkJg2u1nGScNqj5lArXvrda6zL66T8WmkFFrGfNW7RYCQ3vpg6BpGs
-dJ3+HtWYDNoMbeCrDyMz1DDfX/3OWblTTZRbjpvn/tEgTAn3DexP/QkE9E2c1AUX
-Mf/07vWpZ7giemaNgaME3fHDKyReNhTpfg1eDKypUUhEmr+PJmWQ9LQBc12LyXOP
-DaFwAJUrqwEqrQP5fEQdOMdh522RwuD2/fPeXTukQHI8gUuMjk652aeLOcn1Ufhy
-/KbbV6TJi7wS5F3HVaNXGOLMsHq+CywOCwIBAg==
+...
 -----END DH PARAMETERS-----
 ```
 
