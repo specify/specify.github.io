@@ -214,7 +214,7 @@ archive_dir = /etc/letsencrypt/archive/subdomain.domain.name
 # Options and defaults used in the renewal process
 [renewalparams]
 authenticator = webroot
-account = a563615cc912ed3d7a3edfede09d6760
+account = <ssl_account>
 post_hook = systemctl reload nginx
 server = https://acme-v02.api.letsencrypt.org/directory
 [[webroot_map]]
