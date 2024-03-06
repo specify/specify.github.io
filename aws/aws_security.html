@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" data-content_root="../">
+<head>
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>AWS Security &mdash; Specify Developer Documentation  documentation</title>
+      <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=80d5e7a1" />
+      <link rel="stylesheet" type="text/css" href="../_static/css/theme.css?v=19f00094" />
+
+  
+  <!--[if lt IE 9]>
+    <script src="../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script src="../_static/jquery.js?v=5d32c60e"></script>
+        <script src="../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+        <script src="../_static/documentation_options.js?v=5929fcd5"></script>
+        <script src="../_static/doctools.js?v=888ff710"></script>
+        <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="../index.html" class="icon icon-home">
+            Specify Developer Documentation
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Amazon Web Services:</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="aws_infrastructure_notes.html">AWS Infrastructure Notes</a></li>
+<li class="toctree-l1"><a class="reference internal" href="aws_specify_asset_server_setup.html">AWS Specify Asset Server Setup</a></li>
+<li class="toctree-l1"><a class="reference internal" href="aws_specify_cloud_setup.html">Specify Cloud Setup</a></li>
+<li class="toctree-l1"><a class="reference internal" href="client_migration_notes.html">Digital Ocean to AWS migration</a></li>
+<li class="toctree-l1"><a class="reference internal" href="ec2_rds_specify7_setup.html">Deploy Specify7 to an EC2 instance</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Internal Processes:</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../dev_process/specify_processes.html">Specify Development Process</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Security:</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../security/fix_exposed_secret.html">Fix Exposed Secrets</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Misc:</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../misc/add_new_instance_to_specify_cloud.html">Add new Specify instance to Specify Cloud</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../misc/kuit_notes.html">Working with central KU IT</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../misc/specify7_ecs_most-in-one.html">Create a Most-In-One Specify Docker image</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../misc/useful_bash_cmds.html">Useful bash commands</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../misc/vs_code_django_unit_test_debugging_notes.html">VS Code Django Unit Test Debugging</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">Specify Developer Documentation</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../index.html" class="icon icon-home" aria-label="Home"></a></li>
+      <li class="breadcrumb-item active">AWS Security</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="../_sources/aws/aws_security.rst.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="aws-security">
+<h1>AWS Security<a class="headerlink" href="#aws-security" title="Link to this heading"></a></h1>
+<section id="todo">
+<h2>TODO:<a class="headerlink" href="#todo" title="Link to this heading"></a></h2>
+<p>Security best practices, including:
+* role overview
+* how to determine smallest workable permissions for manual/console and automated processes
+* best way to include authentication in scripts and automated processes (secrets vs</p>
+<blockquote>
+<div><p>manually configuring things)</p>
+</div></blockquote>
+<ul class="simple">
+<li><p>how to handle names of less secret information in order to retrieve authentication
+and access resources, so how best to deal with account numbers, usernames,
+role names, secret names, domain names, bucket names, etc</p></li>
+</ul>
+</section>
+<section id="references">
+<h2>References<a class="headerlink" href="#references" title="Link to this heading"></a></h2>
+<p><a class="reference external" href="https://docs.aws.amazon.com/IAM/latest/UserGuide/best-practices.html">https://docs.aws.amazon.com/IAM/latest/UserGuide/best-practices.html</a></p>
+<section id="from-travis-berkley">
+<h3>From Travis Berkley:<a class="headerlink" href="#from-travis-berkley" title="Link to this heading"></a></h3>
+<p>Another tool we have available is the Well-Architected Review.  This is a set of
+design principles that you can use to design and review applications.  It is divided
+into several “pillars.”  One such pillar focuses on security.
+<a class="reference external" href="https://docs.aws.amazon.com/wellarchitected/latest/security-pillar/welcome.html">https://docs.aws.amazon.com/wellarchitected/latest/security-pillar/welcome.html</a>
+It doesn’t give proscriptive answers.  Rather, it discusses how you should think about
+various facets of the security posture of the application.  For example, there are
+sections on least privilege access, reducing permissions, storing and using secrets,
+and many others.  This would also be a great reference to use.</p>
+</section>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2024, Specify Team.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>
