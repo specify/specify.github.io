@@ -63,7 +63,7 @@
 <p class="caption" role="heading"><span class="caption-text">Misc:</span></p>
 <ul class="current">
 <li class="toctree-l1 current"><a class="current reference internal" href="#">Add new Specify instance to Specify Cloud</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="#example-for-unsm-vp">Example for UNSM_VP</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#example-for">Example for <dbname></a></li>
 <li class="toctree-l2"><a class="reference internal" href="#misc">Misc</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#troubleshooting">Troubleshooting</a></li>
 </ul>
@@ -100,14 +100,14 @@
              
   <section id="add-new-specify-instance-to-specify-cloud">
 <h1>Add new Specify instance to Specify Cloud<a class="headerlink" href="#add-new-specify-instance-to-specify-cloud" title="Link to this heading"></a></h1>
-<section id="example-for-unsm-vp">
-<h2>Example for UNSM_VP<a class="headerlink" href="#example-for-unsm-vp" title="Link to this heading"></a></h2>
+<section id="example-for">
+<h2>Example for <dbname><a class="headerlink" href="#example-for" title="Link to this heading"></a></h2>
 <ol class="arabic simple">
 <li><p>Create Database</p>
 <ol class="arabic simple">
 <li><p>look through the sql file for issues and do test upload to local database</p></li>
-<li><p>mysql -umaster -p&lt;master_password&gt; -e “create database unsm_vp;”</p></li>
-<li><p>mysql -umaster -p&lt;master_password&gt; unsm_vp &lt; unsm_vp.sql</p></li>
+<li><p>mysql -u<master> -p&lt;master_password&gt; -e “create database <dbname>;”</p></li>
+<li><p>mysql -u<master> -p&lt;master_password&gt; <dbname> &lt; <dbname>.sql</p></li>
 <li><p>may need to run <code class="docutils literal notranslate"><span class="pre">grant</span> <span class="pre">all</span> <span class="pre">privileges</span> <span class="pre">on</span> <span class="pre">eurl.*</span> <span class="pre">to</span> <span class="pre">&lt;master_password&gt;&#64;'%';</span></code> if
 master doesn’t have access <code class="docutils literal notranslate"><span class="pre">flush</span> <span class="pre">privileges;</span></code></p></li>
 </ol>
@@ -117,7 +117,7 @@ master doesn’t have access <code class="docutils literal notranslate"><span cl
 <li><p>Login to Dreamhost, select Websites -&gt; Manage Websites</p></li>
 <li><p>For specifycloud.org, select DNS</p></li>
 <li><p>Add CNAME record in the style of the other users.
-4. <code class="docutils literal notranslate"><span class="pre">unsm-vp</span></code> points to <code class="docutils literal notranslate"><span class="pre">na-specify7-1.specifycloud.org.</span></code></p></li>
+4. <code class="docutils literal notranslate"><span class="pre">&lt;dbname&gt;</span></code> points to <code class="docutils literal notranslate"><span class="pre">&lt;subdomain&gt;.specifycloud.org.</span></code></p></li>
 <li><p>Wait at least 10 minutes for domain to circulate.</p></li>
 <li><p>For the ku servers, request the dns CNAME record to bitech&#64;ku.edu</p></li>
 </ol>
@@ -135,7 +135,7 @@ master doesn’t have access <code class="docutils literal notranslate"><span cl
 <li><p>Add SSL</p>
 <ol class="arabic simple">
 <li><p>mkdir /var/www/unsm-vp</p></li>
-<li><p>certbot –webroot -w /var/www/unsm-vp -d unsm-vp.specifycloud.org certonly</p></li>
+<li><p>certbot –webroot -w /var/www/<dbname> -d <dbname>.specifycloud.org certonly</p></li>
 <li><p>certbot certificates</p></li>
 <li><p>Remove https: false from spcloudserver.json</p></li>
 <li><p>su specify -c make</p></li>
@@ -155,21 +155,21 @@ master doesn’t have access <code class="docutils literal notranslate"><span cl
 <ol class="arabic simple">
 <li><p>ssh into biprdsp6ap.cc.ku.edu</p></li>
 <li><p>sudo su - spcloudbackup</p></li>
-<li><p>Add unsm_vp into the file /home/spcloudbackup/backup_specify_cloud.py</p></li>
+<li><p>Add <dbname> into the file /home/spcloudbackup/backup_specify_cloud.py</p></li>
 </ol>
 </li>
 <li><p>Asset Server</p>
 <ol class="arabic simple">
 <li><p>ssh into asset</p></li>
-<li><p>Add unsm_vp directory in attachments directory ‘su specify -c “mkdir attachments/unsm_vp”’</p></li>
-<li><p>Add unsm_vp to /home/specify/new-asset-server/settings.py</p></li>
+<li><p>Add <dbname> directory in attachments directory ‘su specify -c “mkdir attachments/<dbname>”’</p></li>
+<li><p>Add <dbname> to /home/specify/new-asset-server/settings.py</p></li>
 <li><p>systemctl restart web-asset-server.service</p></li>
 </ol>
 </li>
 <li><p>Updown</p>
 <ol class="arabic simple">
-<li><p>Add url: unsm-vp.specifycloud.org/context/system_info.json</p></li>
-<li><p>Add alias: unsm-vp</p></li>
+<li><p>Add url: <dbname>.specifycloud.org/context/system_info.json</p></li>
+<li><p>Add alias: <dbname></p></li>
 </ol>
 </li>
 </ol>

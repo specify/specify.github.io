@@ -45,7 +45,7 @@ spcloudservers.json ->
 			"https": false,
 			"env": {
                 "ASSET_SERVER_URL": "https://<subdomain>.<domain_name>/web_asset_store.xml",
-                "ANONYMOUS_USER": "anon_user_name"
+                "ANONYMOUS_USER": "<anon_user_name>"
             }
 		}
 	},
@@ -64,10 +64,10 @@ defaults.env ->
 
 ```
 DATABASE_HOST=<db_instance_name>.<identifier>.<region>.rds.amazonaws.com
-DATABASE_PORT=3306
-MASTER_NAME=master
+DATABASE_PORT=<db_port>
+MASTER_NAME=<master_username>
 MASTER_PASSWORD=<master_password>
-SECRET_KEY=bogus
+SECRET_KEY=<bogus>
 ASSET_SERVER_URL=https://<asset_server_fqdn>/web_asset_store.xml
 ASSET_SERVER_KEY=<asset_server_key>
 REPORT_RUNNER_HOST=<xxx.xx.xx.xx>

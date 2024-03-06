@@ -165,7 +165,7 @@ ami-0770bf1d6ae61c858</p></li>
 <span class="w">			</span><span class="nt">&quot;https&quot;</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span>
 <span class="w">			</span><span class="nt">&quot;env&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
 <span class="w">                </span><span class="nt">&quot;ASSET_SERVER_URL&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;https://&lt;subdomain&gt;.&lt;domain_name&gt;/web_asset_store.xml&quot;</span><span class="p">,</span>
-<span class="w">                </span><span class="nt">&quot;ANONYMOUS_USER&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;anon_user_name&quot;</span>
+<span class="w">                </span><span class="nt">&quot;ANONYMOUS_USER&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;&lt;anon_user_name&gt;&quot;</span>
 <span class="w">            </span><span class="p">}</span>
 <span class="w">		</span><span class="p">}</span>
 <span class="w">	</span><span class="p">},</span>
@@ -182,10 +182,10 @@ ami-0770bf1d6ae61c858</p></li>
 <p>Fill in everything between &lt;&gt;
 defaults.env -&gt;</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">DATABASE_HOST</span><span class="o">=&lt;</span><span class="n">db_instance_name</span><span class="o">&gt;.&lt;</span><span class="n">identifier</span><span class="o">&gt;.&lt;</span><span class="n">region</span><span class="o">&gt;.</span><span class="n">rds</span><span class="o">.</span><span class="n">amazonaws</span><span class="o">.</span><span class="n">com</span>
-<span class="n">DATABASE_PORT</span><span class="o">=</span><span class="mi">3306</span>
-<span class="n">MASTER_NAME</span><span class="o">=</span><span class="n">master</span>
+<span class="n">DATABASE_PORT</span><span class="o">=&lt;</span><span class="n">db_port</span><span class="o">&gt;</span>
+<span class="n">MASTER_NAME</span><span class="o">=&lt;</span><span class="n">master_username</span><span class="o">&gt;</span>
 <span class="n">MASTER_PASSWORD</span><span class="o">=&lt;</span><span class="n">master_password</span><span class="o">&gt;</span>
-<span class="n">SECRET_KEY</span><span class="o">=</span><span class="n">bogus</span>
+<span class="n">SECRET_KEY</span><span class="o">=&lt;</span><span class="n">bogus</span><span class="o">&gt;</span>
 <span class="n">ASSET_SERVER_URL</span><span class="o">=</span><span class="n">https</span><span class="p">:</span><span class="o">//&lt;</span><span class="n">asset_server_fqdn</span><span class="o">&gt;/</span><span class="n">web_asset_store</span><span class="o">.</span><span class="n">xml</span>
 <span class="n">ASSET_SERVER_KEY</span><span class="o">=&lt;</span><span class="n">asset_server_key</span><span class="o">&gt;</span>
 <span class="n">REPORT_RUNNER_HOST</span><span class="o">=&lt;</span><span class="n">xxx</span><span class="o">.</span><span class="n">xx</span><span class="o">.</span><span class="n">xx</span><span class="o">.</span><span class="n">xx</span><span class="o">&gt;</span>
