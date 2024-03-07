@@ -5,11 +5,13 @@ Welcome to Specify Developer documentation!
    :maxdepth: 1
    :caption: Amazon Web Services:
 
+   aws/aws_automation
    aws/aws_infrastructure_notes
    aws/aws_specify_asset_server_setup
    aws/aws_specify_cloud_setup
    aws/client_migration_notes
    aws/ec2_rds_specify7_setup
+   aws/aws_security
    aws/specify_cloud_graviton_setup
 
 .. toctree::

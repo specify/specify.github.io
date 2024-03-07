@@ -5,6 +5,7 @@ TODO:
 ========
 
 Security best practices, including:
+
 * role overview
 * how to determine smallest workable permissions for manual/console and automated processes
 * best way to include authentication in scripts and automated processes (secrets vs
@@ -20,7 +21,7 @@ References
 https://docs.aws.amazon.com/IAM/latest/UserGuide/best-practices.html
 
 From Travis Berkley:
-------------
+------------------------
 
 Another tool we have available is the Well-Architected Review.  This is a set of
 design principles that you can use to design and review applications.  It is divided
