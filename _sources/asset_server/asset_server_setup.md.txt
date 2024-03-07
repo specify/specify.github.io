@@ -1,4 +1,4 @@
-## EC2 Non-Dockerized Build
+# EC2 Non-Dockerized Build
 
 [asset_server_setup.sh](../scripts/asset_server_setup.sh) to initialize the asset server.
 

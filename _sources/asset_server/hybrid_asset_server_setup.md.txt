@@ -1,4 +1,5 @@
+# Hybrid Asset Server Setup
 
-Instructions to setup an asset server with 
+Bash script to setup an asset server:  
 
 [hybrid_asset_server_setup.sh](../scripts/hybrid_asset_server_setup.sh)

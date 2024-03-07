@@ -1,0 +1,215 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" data-content_root="../">
+<head>
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Project (Github pages) documentation &mdash; Specify Developer Documentation  documentation</title>
+      <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=80d5e7a1" />
+      <link rel="stylesheet" type="text/css" href="../_static/css/theme.css?v=19f00094" />
+
+  
+  <!--[if lt IE 9]>
+    <script src="../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script src="../_static/jquery.js?v=5d32c60e"></script>
+        <script src="../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+        <script src="../_static/documentation_options.js?v=5929fcd5"></script>
+        <script src="../_static/doctools.js?v=888ff710"></script>
+        <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Fix Exposed Secrets" href="../security/fix_exposed_secret.html" />
+    <link rel="prev" title="Specify Development Process" href="specify_processes.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="../index.html" class="icon icon-home">
+            Specify Developer Documentation
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Amazon Web Services:</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../aws/aws_infrastructure_notes.html">AWS Infrastructure Notes</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../aws/aws_specify_asset_server_setup.html">AWS Specify Asset Server Setup</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../aws/aws_specify_cloud_setup.html">Specify Cloud Setup</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../aws/client_migration_notes.html">Digital Ocean to AWS migration</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../aws/ec2_rds_specify7_setup.html">Deploy Specify7 to an EC2 instance</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../aws/specify_cloud_graviton_setup.html">Specify Cloud Graviton Setup</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Asset Server:</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../asset_server/asset_config_files.html">Specify 7 Docker Config Example</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../asset_server/asset_server_config.html">Asset Server Configuration</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../asset_server/asset_server_setup.html">EC2 Non-Dockerized Build</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../asset_server/hybrid_asset_server_setup.html">Hybrid Asset Server Setup</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Internal Processes:</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="specify_processes.html">Specify Development Process</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Project (Github pages) documentation</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#install-configure-sphinx">Install Configure Sphinx</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#edit-documentation-and-view">Edit Documentation and View</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#publish-as-github-pages-site">Publish as Github Pages Site</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#on-github-create-repository-for-pages-site">On Github, Create Repository for Pages site</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#for-github-action-add-yaml-configuration-files">For Github Action, add YAML configuration files</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#set-pages-site-to-branch-created-by-github-action">Set Pages Site to branch created by Github action</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Security:</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../security/fix_exposed_secret.html">Fix Exposed Secrets</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Misc:</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../misc/add_new_instance_to_specify_cloud.html">Add new Specify instance to Specify Cloud</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../misc/kuit_notes.html">Working with central KU IT</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../misc/specify7_ecs_most-in-one.html">Create a Most-In-One Specify Docker image</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../misc/useful_bash_cmds.html">Useful bash commands</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../misc/vs_code_django_unit_test_debugging_notes.html">VS Code Django Unit Test Debugging</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">Specify Developer Documentation</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../index.html" class="icon icon-home" aria-label="Home"></a></li>
+      <li class="breadcrumb-item active">Project (Github pages) documentation</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="../_sources/dev_process/project_docs.rst.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="project-github-pages-documentation">
+<h1>Project (Github pages) documentation<a class="headerlink" href="#project-github-pages-documentation" title="Link to this heading"></a></h1>
+<section id="install-configure-sphinx">
+<h2>Install Configure Sphinx<a class="headerlink" href="#install-configure-sphinx" title="Link to this heading"></a></h2>
+<p>Create or activate a virtual python environment for the project:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">python3</span> <span class="o">-</span><span class="n">m</span> <span class="n">venv</span> <span class="n">venv</span>
+<span class="o">./</span><span class="n">venv</span><span class="o">/</span><span class="nb">bin</span><span class="o">/</span><span class="n">activate</span>
+</pre></div>
+</div>
+<p>Create a requirements-doc.txt file with sphinx and myst-parser (for Markdown parsing)
+like <a class="reference external" href="../../requirements-docs.txt">requirements-docs.txt</a>, then install the
+requirements:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">pip</span> <span class="n">install</span> <span class="o">-</span><span class="n">r</span> <span class="n">requirements</span><span class="o">-</span><span class="n">docs</span><span class="o">.</span><span class="n">txt</span>
+</pre></div>
+</div>
+<p>Create a directory to contain documentation (in our example, <strong>sphinx</strong>), cd to that directory,
+then run sphinx-quickstart.  This will create the files conf.py, index.rst, and make.bat.
+It will also create a destination directory (the default is <strong>_build</strong>) for generated
+html:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">cd</span> <span class="n">sphinx</span>
+<span class="n">sphinx</span><span class="o">-</span><span class="n">quickstart</span>
+</pre></div>
+</div>
+<p>Edit the conf.py file similar to
+<a class="reference external" href="../conf.py">conf.py</a></p>
+</section>
+<section id="edit-documentation-and-view">
+<h2>Edit Documentation and View<a class="headerlink" href="#edit-documentation-and-view" title="Link to this heading"></a></h2>
+<p>Add documentation in the documentation directory.  Organize in subdirectories where
+logical.</p>
+<p>Edit the index.rst file to include page names under the Table of Contents (toctree).
+These should include paths relative to the documentation directory, and filenames
+without extension, similar to
+<a class="reference external" href="../index.rst">index.rst</a>.</p>
+<p>In the documentation directory, run the following to build pages locally and check
+formatting:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">make</span> <span class="n">html</span>
+</pre></div>
+</div>
+</section>
+<section id="publish-as-github-pages-site">
+<h2>Publish as Github Pages Site<a class="headerlink" href="#publish-as-github-pages-site" title="Link to this heading"></a></h2>
+<section id="on-github-create-repository-for-pages-site">
+<h3>On Github, Create Repository for Pages site<a class="headerlink" href="#on-github-create-repository-for-pages-site" title="Link to this heading"></a></h3>
+<p><a class="reference external" href="https://docs.github.com/en/pages/getting-started-with-github-pages/creating-a-github-pages-site">https://docs.github.com/en/pages/getting-started-with-github-pages/creating-a-github-pages-site</a></p>
+<p>Create a new or use an existing github.io repository for the user/organization
+containing this repository to be publicly documented.</p>
+<p>&lt;organization&gt;.github.io</p>
+<p>If the organization site already exists, you can publish github pages to a subdirectory
+under the existing site, i.e. &lt;organization&gt;.github.io/&lt;project&gt;</p>
+<p>Go to settings of the new repository, under Code and Automation, select Pages</p>
+</section>
+<section id="for-github-action-add-yaml-configuration-files">
+<h3>For Github Action, add YAML configuration files<a class="headerlink" href="#for-github-action-add-yaml-configuration-files" title="Link to this heading"></a></h3>
+<p>Create a yaml file to initiate a github action with a file in ./.github/workflows, like
+<a class="reference external" href="../../.github/workflows/build_sphinx_docs.yml">build_sphinx_docs.yml</a>.</p>
+<p>Optional?: Add <a class="reference external" href="../../.readthedocs.yaml">&lt;.readthedocs.yaml</a> and
+<a class="reference external" href="../../environment.yml">environment.yml</a> for the build.</p>
+</section>
+<section id="set-pages-site-to-branch-created-by-github-action">
+<h3>Set Pages Site to branch created by Github action<a class="headerlink" href="#set-pages-site-to-branch-created-by-github-action" title="Link to this heading"></a></h3>
+<p>After the code is pushed to github, and the action completes successfully, a branch will
+be created.  In the example build_sphinx_docs.yml, it is named gh-pages.  Under the
+Settings/Code and Automation/Pages form, choose the new branch (in our example,
+<strong>gh-pages</strong>)</p>
+</section>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="specify_processes.html" class="btn btn-neutral float-left" title="Specify Development Process" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="../security/fix_exposed_secret.html" class="btn btn-neutral float-right" title="Fix Exposed Secrets" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2024, Specify Team.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

@@ -20,7 +20,9 @@
         <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
     <script src="../_static/js/theme.js"></script>
     <link rel="index" title="Index" href="../genindex.html" />
-    <link rel="search" title="Search" href="../search.html" /> 
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Asset Server Configuration" href="asset_server_config.html" />
+    <link rel="prev" title="Specify Cloud Graviton Setup" href="../aws/specify_cloud_graviton_setup.html" /> 
 </head>
 
 <body class="wy-body-for-nav"> 
@@ -49,10 +51,30 @@
 <li class="toctree-l1"><a class="reference internal" href="../aws/aws_specify_cloud_setup.html">Specify Cloud Setup</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../aws/client_migration_notes.html">Digital Ocean to AWS migration</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../aws/ec2_rds_specify7_setup.html">Deploy Specify7 to an EC2 instance</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../aws/specify_cloud_graviton_setup.html">Specify Cloud Graviton Setup</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Asset Server:</span></p>
+<ul class="current">
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Specify 7 Docker Config Example</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#example-defaults-env">Example defaults.env</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#example-docker-compose-yml">Example docker-compose.yml</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#example-nginx-conf">Example nginx.conf</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#asset-server">Asset Server</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#example-settings-py-file">Example settings.py file</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#possible-dockerfile-for-ecs-build-unfinished">Possible Dockerfile for ECS Build (Unfinished)</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#asset-nginx-web-server-config">Asset nginx web-server config</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="asset_server_config.html">Asset Server Configuration</a></li>
+<li class="toctree-l1"><a class="reference internal" href="asset_server_setup.html">EC2 Non-Dockerized Build</a></li>
+<li class="toctree-l1"><a class="reference internal" href="hybrid_asset_server_setup.html">Hybrid Asset Server Setup</a></li>
 </ul>
 <p class="caption" role="heading"><span class="caption-text">Internal Processes:</span></p>
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="../dev_process/specify_processes.html">Specify Development Process</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../dev_process/project_docs.html">Project (Github pages) documentation</a></li>
 </ul>
 <p class="caption" role="heading"><span class="caption-text">Security:</span></p>
 <ul>
@@ -351,12 +373,11 @@ server {
 </pre></div>
 </div>
 </section>
-</section>
 <section id="asset-server">
-<h1>Asset Server<a class="headerlink" href="#asset-server" title="Link to this heading"></a></h1>
+<h2>Asset Server<a class="headerlink" href="#asset-server" title="Link to this heading"></a></h2>
 <p>Using the GitHub repo at https://github.com/specify/web-asset-server</p>
 <section id="example-settings-py-file">
-<h2>Example settings.py file<a class="headerlink" href="#example-settings-py-file" title="Link to this heading"></a></h2>
+<h3>Example settings.py file<a class="headerlink" href="#example-settings-py-file" title="Link to this heading"></a></h3>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="c1"># Sample Specify web asset server settings.</span>
 
 <span class="c1"># Turns on bottle.py debugging, module reloading and printing some</span>
@@ -424,7 +445,7 @@ server {
 </div>
 </section>
 <section id="possible-dockerfile-for-ecs-build-unfinished">
-<h2>Possible Dockerfile for ECS Build (Unfinished)<a class="headerlink" href="#possible-dockerfile-for-ecs-build-unfinished" title="Link to this heading"></a></h2>
+<h3>Possible Dockerfile for ECS Build (Unfinished)<a class="headerlink" href="#possible-dockerfile-for-ecs-build-unfinished" title="Link to this heading"></a></h3>
 <div class="highlight-dockerfile notranslate"><div class="highlight"><pre><span></span><span class="k">FROM</span><span class="w"> </span><span class="s">arm64v8/ubuntu:18.04</span><span class="w"> </span><span class="k">AS</span><span class="w"> </span><span class="s">run-asset-server</span>
 
 <span class="k">RUN</span><span class="w"> </span>apt-get<span class="w"> </span>update<span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span>apt-get<span class="w"> </span>-y<span class="w"> </span>install<span class="w"> </span>--no-install-recommends<span class="w"> </span><span class="se">\</span>
@@ -481,7 +502,7 @@ aws<span class="w"> </span>configure<span class="w"> </span><span class="nb">set
 </div>
 </section>
 <section id="asset-nginx-web-server-config">
-<h2>Asset nginx web-server config<a class="headerlink" href="#asset-nginx-web-server-config" title="Link to this heading"></a></h2>
+<h3>Asset nginx web-server config<a class="headerlink" href="#asset-nginx-web-server-config" title="Link to this heading"></a></h3>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">server</span> <span class="p">{</span>
        <span class="c1"># HTTP access is needed for Specify 6. It will not work with HTTPS.</span>
        <span class="n">listen</span> <span class="mi">80</span> <span class="n">default_server</span><span class="p">;</span>
@@ -569,11 +590,15 @@ aws<span class="w"> </span>configure<span class="w"> </span><span class="nb">set
 </div>
 </section>
 </section>
+</section>
 
 
            </div>
           </div>
-          <footer>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="../aws/specify_cloud_graviton_setup.html" class="btn btn-neutral float-left" title="Specify Cloud Graviton Setup" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="asset_server_config.html" class="btn btn-neutral float-right" title="Asset Server Configuration" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
 
   <hr/>
 

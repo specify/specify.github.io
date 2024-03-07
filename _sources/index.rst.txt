@@ -10,14 +10,23 @@ Welcome to Specify Developer documentation!
    aws/aws_specify_cloud_setup
    aws/client_migration_notes
    aws/ec2_rds_specify7_setup
-   aws/specify7_ecs_most-in-one
    aws/specify_cloud_graviton_setup
+
+.. toctree::
+   :maxdepth: 1
+   :caption: Asset Server:
+
+   asset_server/asset_config_files
+   asset_server/asset_server_config
+   asset_server/asset_server_setup
+   asset_server/hybrid_asset_server_setup
 
 .. toctree::
    :maxdepth: 1
    :caption: Internal Processes:
 
    dev_process/specify_processes
+   dev_process/project_docs
 
 .. toctree::
    :maxdepth: 1

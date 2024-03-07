@@ -1,3 +1,5 @@
+# Specify Cloud Graviton Setup
+
 Commands for running on ubuntu 20.04 arm64
 See `~/git/specify-aws-specify7-mosti-in-one-lite/docker-entrypoint.sh` for latest
 ```bash
