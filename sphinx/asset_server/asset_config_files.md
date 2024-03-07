@@ -1,6 +1,6 @@
-## Specify 7 Docker Config Example
+# Specify 7 Docker Config Example
 
-### Example defaults.env
+## Example defaults.env
 
 ```
 DATABASE_HOST=10.133.58.98
@@ -18,7 +18,7 @@ LOG_LEVEL=WARNING
 SP7_DEBUG=false
 ```
 
-### Example docker-compose.yml
+## Example docker-compose.yml
 
 ```yml
 version: '3.7'
@@ -343,7 +343,7 @@ volumes:
   static-files-eurl:
 ```
 
-### Example nginx.conf
+## Example nginx.conf
 
 ```
 server {

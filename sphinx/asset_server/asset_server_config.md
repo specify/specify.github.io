@@ -1,3 +1,5 @@
+# Asset Server Configuration
+
 Here is an asset server configuration example with the latest image `specifyconsortium/specify-asset-service:connection_fix`.
 I spun up a server with the following config and got it working `assets-docker.specifycloud.org/web_asset_store.xml`
 Make sure to configure your dns record to the IP address of your server.
