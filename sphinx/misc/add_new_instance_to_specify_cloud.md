@@ -1,18 +1,18 @@
 # Add new Specify instance to Specify Cloud
 
-## Example for UNSM_VP
+## Example for <dbname>
 
 1. Create Database
 	1. look through the sql file for issues and do test upload to local database
-	2. mysql -umaster -p<master_password> -e "create database unsm_vp;"
-	3. mysql -umaster -p<master_password> unsm_vp < unsm_vp.sql
+	2. mysql -u<master> -p<master_password> -e "create database <dbname>;"
+	3. mysql -u<master> -p<master_password> <dbname> < <dbname>.sql
 	4. may need to run `grant all privileges on eurl.* to <master_password>@'%';` if 
        master doesn't have access `flush privileges;`
 2. DNS Registtration:
 	1. Login to Dreamhost, select Websites -> Manage Websites
 	2. For specifycloud.org, select DNS
 	3. Add CNAME record in the style of the other users.
-		4. `unsm-vp` points to `na-specify7-1.specifycloud.org.`
+		4. `<dbname>` points to `<subdomain>.specifycloud.org.`
 	4. Wait at least 10 minutes for domain to circulate.
 	5. For the ku servers, request the dns CNAME record to bitech@ku.edu
 3. Config
@@ -24,7 +24,7 @@
 	6. check url
 4. Add SSL
 	1. mkdir /var/www/unsm-vp
-	2. certbot --webroot -w /var/www/unsm-vp -d unsm-vp.specifycloud.org certonly
+	2. certbot --webroot -w /var/www/<dbname> -d <dbname>.specifycloud.org certonly
 	3. certbot certificates
 	4. Remove https: false from spcloudserver.json
 	5. su specify -c make
@@ -38,15 +38,15 @@
 5. Database Backup
 	1. ssh into biprdsp6ap.cc.ku.edu
 	2. sudo su - spcloudbackup
-	3. Add unsm_vp into the file /home/spcloudbackup/backup_specify_cloud.py
+	3. Add <dbname> into the file /home/spcloudbackup/backup_specify_cloud.py
 6. Asset Server
 	1. ssh into asset
-	2. Add unsm_vp directory in attachments directory 'su specify -c "mkdir attachments/unsm_vp"' 
-	3. Add unsm_vp to /home/specify/new-asset-server/settings.py
+	2. Add <dbname> directory in attachments directory 'su specify -c "mkdir attachments/<dbname>"' 
+	3. Add <dbname> to /home/specify/new-asset-server/settings.py
 	4. systemctl restart web-asset-server.service
 7. Updown
-	1. Add url: unsm-vp.specifycloud.org/context/system_info.json
-	2. Add alias: unsm-vp
+	1. Add url: <dbname>.specifycloud.org/context/system_info.json
+	2. Add alias: <dbname>
 
 ## Misc
 
