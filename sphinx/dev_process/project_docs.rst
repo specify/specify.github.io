@@ -30,16 +30,24 @@ Edit the conf.py file similar to
 Edit Documentation and View
 =============================
 
-Add documentation in the documentation directory.  Organize in subdirectories where
-logical.
+Add documentation in the documentation directory.
+
+Write all documents in ReStructured
+Text or Markdown (The requirements-docs.txt should contain both sphinx and myst-parser
+to handle each format.  Organize in logical subdirectories.
+
+Each document must contain only one top-level title, which will be displayed in the
+Table of Contents.  Any number of sub-level headings may be included in each document.
 
 Edit the index.rst file to include page names under the Table of Contents (toctree).
 These should include paths relative to the documentation directory, and filenames
-without extension, similar to
-`index.rst <../index.rst>`_.
+without extension, similar to `index.rst <../index.rst>`_.  The :maxdepth parameter
+indicates how many sublevels will be displayed in the Table of Contents.  Only if there
+are very few pages should :maxdepth be more than 1.
 
 In the documentation directory, run the following to build pages locally and check
-formatting::
+formatting.  The command will build documentation and print errors and warnings
+in the terminal output.  Run this prior to pushing to Github::
 
   make html
 
@@ -67,8 +75,12 @@ For Github Action, add YAML configuration files
 Create a yaml file to initiate a github action with a file in ./.github/workflows, like
 `build_sphinx_docs.yml <../../.github/workflows/build_sphinx_docs.yml>`_.
 
-Optional?: Add `<.readthedocs.yaml <../../.readthedocs.yaml>`_ and
-`environment.yml <../../environment.yml>`_ for the build.
+TODO: test this after setup branch to publish from
+------------------------------------------------------
+
+Add `<.readthedocs.yaml <../../.readthedocs.yaml>`_ and
+`environment.yml <../../environment.yml>`_ for the build.  This will ensure that the
+dependencies are installed and that index.html page will be the landing site.
 
 Set Pages Site to branch created by Github action
 --------------------------------------------------------
