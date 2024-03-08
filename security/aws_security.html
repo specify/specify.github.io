@@ -21,8 +21,8 @@
     <script src="../_static/js/theme.js"></script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="Specify Cloud Graviton Setup" href="specify_cloud_graviton_setup.html" />
-    <link rel="prev" title="Deploy Specify7 to an EC2 instance" href="ec2_rds_specify7_setup.html" /> 
+    <link rel="next" title="Fix Exposed Secrets" href="fix_exposed_secret.html" />
+    <link rel="prev" title="Project (Github pages) documentation" href="../dev_process/project_docs.html" /> 
 </head>
 
 <body class="wy-body-for-nav"> 
@@ -45,22 +45,14 @@
 </div>
         </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
               <p class="caption" role="heading"><span class="caption-text">Amazon Web Services:</span></p>
-<ul class="current">
-<li class="toctree-l1"><a class="reference internal" href="aws_automation.html">AWS Automation</a></li>
-<li class="toctree-l1"><a class="reference internal" href="aws_infrastructure_notes.html">AWS Infrastructure Notes</a></li>
-<li class="toctree-l1"><a class="reference internal" href="aws_specify_asset_server_setup.html">AWS Specify Asset Server Setup</a></li>
-<li class="toctree-l1"><a class="reference internal" href="aws_specify_cloud_setup.html">Specify Cloud Setup</a></li>
-<li class="toctree-l1"><a class="reference internal" href="client_migration_notes.html">Digital Ocean to AWS migration</a></li>
-<li class="toctree-l1"><a class="reference internal" href="ec2_rds_specify7_setup.html">Deploy Specify7 to an EC2 instance</a></li>
-<li class="toctree-l1 current"><a class="current reference internal" href="#">AWS Security</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="#todo">TODO:</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#references">References</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="#from-travis-berkley">From Travis Berkley:</a></li>
-</ul>
-</li>
-</ul>
-</li>
-<li class="toctree-l1"><a class="reference internal" href="specify_cloud_graviton_setup.html">Specify Cloud Graviton Setup</a></li>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../aws/aws_automation.html">AWS Automation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../aws/aws_infrastructure_notes.html">AWS Infrastructure Notes</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../aws/aws_specify_asset_server_setup.html">AWS Specify Asset Server Setup</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../aws/aws_specify_cloud_setup.html">Specify Cloud Setup</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../aws/client_migration_notes.html">Digital Ocean to AWS migration</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../aws/ec2_rds_specify7_setup.html">Deploy Specify7 to an EC2 instance</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../aws/specify_cloud_graviton_setup.html">Specify Cloud Graviton Setup</a></li>
 </ul>
 <p class="caption" role="heading"><span class="caption-text">Asset Server:</span></p>
 <ul>
@@ -75,8 +67,21 @@
 <li class="toctree-l1"><a class="reference internal" href="../dev_process/project_docs.html">Project (Github pages) documentation</a></li>
 </ul>
 <p class="caption" role="heading"><span class="caption-text">Security:</span></p>
-<ul>
-<li class="toctree-l1"><a class="reference internal" href="../security/fix_exposed_secret.html">Fix Exposed Secrets</a></li>
+<ul class="current">
+<li class="toctree-l1 current"><a class="current reference internal" href="#">AWS Security</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#todo">TODO:</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#research">Research</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#root-user">Root user</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#references">References</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#from-travis-berkley">From Travis Berkley:</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="fix_exposed_secret.html">Fix Exposed Secrets</a></li>
+<li class="toctree-l1"><a class="reference internal" href="monitoring.html">Security Monitoring</a></li>
 </ul>
 <p class="caption" role="heading"><span class="caption-text">Misc:</span></p>
 <ul>
@@ -103,7 +108,7 @@
       <li><a href="../index.html" class="icon icon-home" aria-label="Home"></a></li>
       <li class="breadcrumb-item active">AWS Security</li>
       <li class="wy-breadcrumbs-aside">
-            <a href="../_sources/aws/aws_security.rst.txt" rel="nofollow"> View page source</a>
+            <a href="../_sources/security/aws_security.rst.txt" rel="nofollow"> View page source</a>
       </li>
   </ul>
   <hr/>
@@ -115,6 +120,8 @@
 <h1>AWS Security<a class="headerlink" href="#aws-security" title="Link to this heading"></a></h1>
 <section id="todo">
 <h2>TODO:<a class="headerlink" href="#todo" title="Link to this heading"></a></h2>
+<section id="research">
+<h3>Research<a class="headerlink" href="#research" title="Link to this heading"></a></h3>
 <p>Security best practices, including:</p>
 <ul class="simple">
 <li><p>role overview</p></li>
@@ -125,6 +132,17 @@ manually configuring things)</p></li>
 and access resources, so how best to deal with account numbers, usernames,
 role names, secret names, domain names, bucket names, etc</p></li>
 </ul>
+</section>
+<section id="root-user">
+<h3>Root user<a class="headerlink" href="#root-user" title="Link to this heading"></a></h3>
+<ul class="simple">
+<li><p><a class="reference external" href="https://docs.aws.amazon.com/wellarchitected/latest/security-pillar/sec_securely_operate_aws_account.html">https://docs.aws.amazon.com/wellarchitected/latest/security-pillar/sec_securely_operate_aws_account.html</a></p></li>
+<li><p>MFA should be enabled on it</p></li>
+<li><p>only used for functions that require it</p></li>
+<li><p>Disable programmatic access</p></li>
+<li><p>Disallow creating of access keys for root account</p></li>
+</ul>
+</section>
 </section>
 <section id="references">
 <h2>References<a class="headerlink" href="#references" title="Link to this heading"></a></h2>
@@ -147,8 +165,8 @@ and many others.  This would also be a great reference to use.</p>
            </div>
           </div>
           <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
-        <a href="ec2_rds_specify7_setup.html" class="btn btn-neutral float-left" title="Deploy Specify7 to an EC2 instance" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
-        <a href="specify_cloud_graviton_setup.html" class="btn btn-neutral float-right" title="Specify Cloud Graviton Setup" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+        <a href="../dev_process/project_docs.html" class="btn btn-neutral float-left" title="Project (Github pages) documentation" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="fix_exposed_secret.html" class="btn btn-neutral float-right" title="Fix Exposed Secrets" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
     </div>
 
   <hr/>

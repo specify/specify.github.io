@@ -4,6 +4,9 @@ AWS Security
 TODO:
 ========
 
+Research
+-------------------
+
 Security best practices, including:
 
 * role overview
@@ -14,6 +17,14 @@ Security best practices, including:
   and access resources, so how best to deal with account numbers, usernames,
   role names, secret names, domain names, bucket names, etc
 
+Root user
+------------------
+
+* https://docs.aws.amazon.com/wellarchitected/latest/security-pillar/sec_securely_operate_aws_account.html
+* MFA should be enabled on it
+* only used for functions that require it
+* Disable programmatic access
+* Disallow creating of access keys for root account
 
 References
 ==================

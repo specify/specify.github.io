@@ -11,7 +11,6 @@ Welcome to Specify Developer documentation!
    aws/aws_specify_cloud_setup
    aws/client_migration_notes
    aws/ec2_rds_specify7_setup
-   aws/aws_security
    aws/specify_cloud_graviton_setup
 
 .. toctree::
@@ -34,7 +33,9 @@ Welcome to Specify Developer documentation!
    :maxdepth: 1
    :caption: Security:
 
+   security/aws_security
    security/fix_exposed_secret
+   security/monitoring
 
 .. toctree::
    :maxdepth: 1

@@ -21,7 +21,7 @@
     <script src="../_static/js/theme.js"></script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="Fix Exposed Secrets" href="../security/fix_exposed_secret.html" />
+    <link rel="next" title="AWS Security" href="../security/aws_security.html" />
     <link rel="prev" title="Specify Development Process" href="specify_processes.html" /> 
 </head>
 
@@ -52,7 +52,6 @@
 <li class="toctree-l1"><a class="reference internal" href="../aws/aws_specify_cloud_setup.html">Specify Cloud Setup</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../aws/client_migration_notes.html">Digital Ocean to AWS migration</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../aws/ec2_rds_specify7_setup.html">Deploy Specify7 to an EC2 instance</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../aws/aws_security.html">AWS Security</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../aws/specify_cloud_graviton_setup.html">Specify Cloud Graviton Setup</a></li>
 </ul>
 <p class="caption" role="heading"><span class="caption-text">Asset Server:</span></p>
@@ -71,6 +70,7 @@
 <li class="toctree-l2"><a class="reference internal" href="#publish-as-github-pages-site">Publish as Github Pages Site</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="#on-github-create-repository-for-pages-site">On Github, Create Repository for Pages site</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#for-github-action-add-yaml-configuration-files">For Github Action, add YAML configuration files</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#todo-test-this-after-setup-branch-to-publish-from">TODO: test this after setup branch to publish from</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#set-pages-site-to-branch-created-by-github-action">Set Pages Site to branch created by Github action</a></li>
 </ul>
 </li>
@@ -79,7 +79,9 @@
 </ul>
 <p class="caption" role="heading"><span class="caption-text">Security:</span></p>
 <ul>
+<li class="toctree-l1"><a class="reference internal" href="../security/aws_security.html">AWS Security</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../security/fix_exposed_secret.html">Fix Exposed Secrets</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../security/monitoring.html">Security Monitoring</a></li>
 </ul>
 <p class="caption" role="heading"><span class="caption-text">Misc:</span></p>
 <ul>
@@ -142,14 +144,20 @@ html:</p>
 </section>
 <section id="edit-documentation-and-view">
 <h2>Edit Documentation and View<a class="headerlink" href="#edit-documentation-and-view" title="Link to this heading"></a></h2>
-<p>Add documentation in the documentation directory.  Organize in subdirectories where
-logical.</p>
+<p>Add documentation in the documentation directory.</p>
+<p>Write all documents in ReStructured
+Text or Markdown (The requirements-docs.txt should contain both sphinx and myst-parser
+to handle each format.  Organize in logical subdirectories.</p>
+<p>Each document must contain only one top-level title, which will be displayed in the
+Table of Contents.  Any number of sub-level headings may be included in each document.</p>
 <p>Edit the index.rst file to include page names under the Table of Contents (toctree).
 These should include paths relative to the documentation directory, and filenames
-without extension, similar to
-<a class="reference external" href="../index.rst">index.rst</a>.</p>
+without extension, similar to <a class="reference external" href="../index.rst">index.rst</a>.  The :maxdepth parameter
+indicates how many sublevels will be displayed in the Table of Contents.  Only if there
+are very few pages should :maxdepth be more than 1.</p>
 <p>In the documentation directory, run the following to build pages locally and check
-formatting:</p>
+formatting.  The command will build documentation and print errors and warnings
+in the terminal output.  Run this prior to pushing to Github:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">make</span> <span class="n">html</span>
 </pre></div>
 </div>
@@ -170,8 +178,12 @@ under the existing site, i.e. &lt;organization&gt;.github.io/&lt;project&gt;</p>
 <h3>For Github Action, add YAML configuration files<a class="headerlink" href="#for-github-action-add-yaml-configuration-files" title="Link to this heading"></a></h3>
 <p>Create a yaml file to initiate a github action with a file in ./.github/workflows, like
 <a class="reference external" href="../../.github/workflows/build_sphinx_docs.yml">build_sphinx_docs.yml</a>.</p>
-<p>Optional?: Add <a class="reference external" href="../../.readthedocs.yaml">&lt;.readthedocs.yaml</a> and
-<a class="reference external" href="../../environment.yml">environment.yml</a> for the build.</p>
+</section>
+<section id="todo-test-this-after-setup-branch-to-publish-from">
+<h3>TODO: test this after setup branch to publish from<a class="headerlink" href="#todo-test-this-after-setup-branch-to-publish-from" title="Link to this heading"></a></h3>
+<p>Add <a class="reference external" href="../../.readthedocs.yaml">&lt;.readthedocs.yaml</a> and
+<a class="reference external" href="../../environment.yml">environment.yml</a> for the build.  This will ensure that the
+dependencies are installed and that index.html page will be the landing site.</p>
 </section>
 <section id="set-pages-site-to-branch-created-by-github-action">
 <h3>Set Pages Site to branch created by Github action<a class="headerlink" href="#set-pages-site-to-branch-created-by-github-action" title="Link to this heading"></a></h3>
@@ -188,7 +200,7 @@ Settings/Code and Automation/Pages form, choose the new branch (in our example,
           </div>
           <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
         <a href="specify_processes.html" class="btn btn-neutral float-left" title="Specify Development Process" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
-        <a href="../security/fix_exposed_secret.html" class="btn btn-neutral float-right" title="Fix Exposed Secrets" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+        <a href="../security/aws_security.html" class="btn btn-neutral float-right" title="AWS Security" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
     </div>
 
   <hr/>
