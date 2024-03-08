@@ -4,18 +4,6 @@ AWS Security
 TODO:
 ========
 
-Research
--------------------
-
-Security best practices, including:
-
-* role overview
-* how to determine smallest workable permissions for manual/console and automated processes
-* best way to include authentication in scripts and automated processes (secrets vs
-  manually configuring things)
-* how to handle names of less secret information in order to retrieve authentication
-  and access resources, so how best to deal with account numbers, usernames,
-  role names, secret names, domain names, bucket names, etc
 
 Root user
 ------------------
@@ -25,6 +13,8 @@ Root user
 * only used for functions that require it
 * Disable programmatic access
 * Disallow creating of access keys for root account
+
+
 
 References
 ==================
