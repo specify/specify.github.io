@@ -25,6 +25,8 @@ extensions = [
     'sphinx_rtd_theme',
     # 'autoapi.extension',
     'myst_parser',  # For MD support
+    # for internal links
+    'sphinx.ext.autosectionlabel',
 ]
 
 
