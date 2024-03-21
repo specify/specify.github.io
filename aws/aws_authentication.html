@@ -150,6 +150,38 @@ secrets, give that role to the code/process of interest</p></li>
 </ul>
 </section>
 </section>
+<section id="allow-s3-access-from-ec2-instance">
+<h2>Allow S3 access from EC2 instance<a class="headerlink" href="#allow-s3-access-from-ec2-instance" title="Link to this heading"></a></h2>
+<ul class="simple">
+<li><p>Create a role for the instance, with permissions for whatever it will use (i.e.
+read/write for specific bucket folders,  read secret, Redshift, etc):
+AmazonRedshiftAllCommandsFullAccess, AmazonS3ReadOnlyAccess, SecretsManagerReadWrite</p></li>
+<li><p>Assign that role to the instance</p></li>
+<li></li>
+</ul>
+<p><a class="reference external" href="https://repost.aws/knowledge-center/ec2-instance-access-s3-bucket">https://repost.aws/knowledge-center/ec2-instance-access-s3-bucket</a></p>
+</section>
+<section id="troubleshooting">
+<h2>Troubleshooting<a class="headerlink" href="#troubleshooting" title="Link to this heading"></a></h2>
+<section id="ec2-slowly-or-never-responds">
+<h3>EC2 slowly or never responds<a class="headerlink" href="#ec2-slowly-or-never-responds" title="Link to this heading"></a></h3>
+<p>“EBS throughput is under-provisioned””</p>
+<p>EC2 instance cannot send out the data fast enough. Often happens with several EBS
+volumes, and together they can accept data faster than the EC2 instance can transmit it.</p>
+<p><a class="reference external" href="https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ebs-optimized.html">https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ebs-optimized.html</a></p>
+<p>In the AWS console, on the EC2 instance page, “AWS Compute Optimizer”, near the warning
+“Under-provisioned”, click “View detail” to display a window with recommended changes,
+along with graphs demonstrating the difference in CPU and cost.</p>
+<p>For the spnet_dev machine, this error appeared after I raised the EBS volume from 8 Gb
+to 30 Gb.  I chose t3.micro, which showed differences (changes necessary) in Hypervisor,
+Storage interface, and Network interface.</p>
+<p><a class="reference external" href="https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/resize-limitations.html">https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/resize-limitations.html</a></p>
+</section>
+<section id="ec2-stops-responding-during-docker-compose">
+<h3>EC2 stops responding during docker compose<a class="headerlink" href="#ec2-stops-responding-during-docker-compose" title="Link to this heading"></a></h3>
+<p>=&gt; [front-end base-front-end 4/6] RUN npm install</p>
+</section>
+</section>
 <section id="questions-remaining">
 <h2>Questions remaining<a class="headerlink" href="#questions-remaining" title="Link to this heading"></a></h2>
 <ul class="simple">

@@ -41,6 +41,47 @@ Authentication
   * Create a role to retrieve secrets - grant the role permission to access only select
     secrets, give that role to the code/process of interest
 
+Allow S3 access from EC2 instance
+-------------------------------------------
+
+* Create a role for the instance, with permissions for whatever it will use (i.e.
+  read/write for specific bucket folders,  read secret, Redshift, etc):
+  AmazonRedshiftAllCommandsFullAccess, AmazonS3ReadOnlyAccess, SecretsManagerReadWrite
+* Assign that role to the instance
+*
+
+https://repost.aws/knowledge-center/ec2-instance-access-s3-bucket
+
+Troubleshooting
+------------------------
+
+EC2 slowly or never responds
+...................................
+
+"EBS throughput is under-provisioned""
+
+EC2 instance cannot send out the data fast enough. Often happens with several EBS
+volumes, and together they can accept data faster than the EC2 instance can transmit it.
+
+https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ebs-optimized.html
+
+In the AWS console, on the EC2 instance page, "AWS Compute Optimizer", near the warning
+"Under-provisioned", click "View detail" to display a window with recommended changes,
+along with graphs demonstrating the difference in CPU and cost.
+
+For the spnet_dev machine, this error appeared after I raised the EBS volume from 8 Gb
+to 30 Gb.  I chose t3.micro, which showed differences (changes necessary) in Hypervisor,
+Storage interface, and Network interface.
+
+https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/resize-limitations.html
+
+EC2 stops responding during docker compose
+.................................................
+
+=> [front-end base-front-end 4/6] RUN npm install
+
+
+
 Questions remaining
 ---------------------------------------
 * Roles for “workload”
