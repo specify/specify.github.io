@@ -19,10 +19,10 @@
 3. Config
 	1. Add to `spcloudservers.json` on the appropraite server in the `/home/ubuntu/docker-compositions/specifycloud` dir.
 	2. Make sure to add https: false
-	3. su specify -c make
-	4. docker-compose up -d
-	5. docker-compose restart nginx (actually just reload is fine here: docker exec -it specifycloud_nginx_1 nginx -s reload)
-	6. check url
+	3. Run `make` as `ubuntu`
+	4. Run `docker-compose up -d`
+	5. Run `docker-compose restart nginx` (actually just reload is fine here: docker exec -it specifycloud_nginx_1 nginx -s reload)
+	6. Check url
 4. Add SSL
 	1. mkdir /var/www/unsm-vp
 	2. certbot --webroot -w /var/www/<dbname> -d <dbname>.specifycloud.org certonly
