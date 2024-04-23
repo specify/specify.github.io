@@ -140,7 +140,7 @@ For example, database name <code class="docutils literal notranslate"><span clas
 </li>
 <li><p>Config</p>
 <ol class="arabic simple">
-<li><p>Add to <code class="docutils literal notranslate"><span class="pre">spcloudservers.json</span></code> on the appropraite server in the <code class="docutils literal notranslate"><span class="pre">/home/ubuntu/docker-compositions/specifycloud</span></code> dir.</p></li>
+<li><p>Add to <code class="docutils literal notranslate"><span class="pre">spcloudservers.json</span></code> on the appropriate server in the <code class="docutils literal notranslate"><span class="pre">/home/ubuntu/docker-compositions/specifycloud</span></code> dir.</p></li>
 <li><p>Make sure to add https: false</p></li>
 <li><p>Run <code class="docutils literal notranslate"><span class="pre">make</span></code> as <code class="docutils literal notranslate"><span class="pre">ubuntu</span></code></p></li>
 <li><p>Run <code class="docutils literal notranslate"><span class="pre">docker</span> <span class="pre">compose</span> <span class="pre">up</span> <span class="pre">-d</span></code></p></li>
@@ -170,8 +170,8 @@ For example, database name <code class="docutils literal notranslate"><span clas
 <li><p>Add Specify admin credentials to the <a class="reference external" href="https://docs.google.com/spreadsheets/d/1saSYJJDJdATwZvzFz873wvC-DkyBQsIQ66un1lpILE4/edit#gid=690980104">master list on the SCC Vault</a></p></li>
 <li><p>Database Backup</p>
 <ol class="arabic simple">
-<li><p>ssh into biprdsp6ap.cc.ku.edu</p></li>
-<li><p>sudo su - spcloudbackup</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">ssh</span></code> into <code class="docutils literal notranslate"><span class="pre">biprdsp6ap.cc.ku.edu</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">sudo</span> <span class="pre">su</span> <span class="pre">-</span> <span class="pre">spcloudbackup</span></code></p></li>
 <li><p>Add <dbname> into the file /home/spcloudbackup/backup_specify_cloud.py</p></li>
 </ol>
 </li>
