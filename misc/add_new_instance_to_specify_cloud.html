@@ -128,42 +128,46 @@ master doesn’t have access <code class="docutils literal notranslate"><span cl
 <ol class="arabic simple">
 <li><p>Login to Dreamhost, select Websites -&gt; Manage Websites</p></li>
 <li><p>For specifycloud.org, select DNS (<a class="reference external" href="https://panel.dreamhost.com/index.cgi?tree=domain.dashboard#/site/specifycloud.org/dns">Direct link</a>)</p></li>
-<li><p>Add CNAME record that has a name matching the database name and links to the appropraite regional domain value (i.e. <code class="docutils literal notranslate"><span class="pre">na-specify7-1.specifycloud.org.</span></code>, <code class="docutils literal notranslate"><span class="pre">eu-specify7-1.specifycloud.org.</span></code>, etc.). If the database name has underscores (_), replace these with dashes (-).
-4. <code class="docutils literal notranslate"><span class="pre">&lt;dbname&gt;</span></code> points to <code class="docutils literal notranslate"><span class="pre">&lt;subdomain&gt;.specifycloud.org.</span></code>
+<li><p>Add CNAME record that has a name matching the database name and links to the appropraite regional domain value (i.e. <code class="docutils literal notranslate"><span class="pre">na-specify7-1.specifycloud.org.</span></code>, <code class="docutils literal notranslate"><span class="pre">eu-specify7-1.specifycloud.org.</span></code>, etc.). If the database name has underscores (_), replace these with dashes (-).</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">&lt;dbname&gt;</span></code> points to <code class="docutils literal notranslate"><span class="pre">&lt;subdomain&gt;.specifycloud.org.</span></code>
 For example, database name <code class="docutils literal notranslate"><span class="pre">herb_rbge</span></code> would have the name <code class="docutils literal notranslate"><span class="pre">herb-rbge.specifycloud.org</span></code>.</p></li>
+</ul>
+</li>
 <li><p>Wait at least 10 minutes for domain to circulate.</p></li>
 <li><p>For the ku servers, request the dns CNAME record to bitech&#64;ku.edu</p></li>
 </ol>
 </li>
 <li><p>Config</p>
 <ol class="arabic simple">
-<li><p>Add to spcloudserver.json</p></li>
+<li><p>Add to <code class="docutils literal notranslate"><span class="pre">spcloudservers.json</span></code> on the appropraite server in the <code class="docutils literal notranslate"><span class="pre">/home/ubuntu/docker-compositions/specifycloud</span></code> dir.</p></li>
 <li><p>Make sure to add https: false</p></li>
-<li><p>su specify -c make</p></li>
-<li><p>docker-compose up -d</p></li>
-<li><p>docker-compose restart nginx (actually just reload is fine here: docker exec -it specifycloud_nginx_1 nginx -s reload)</p></li>
-<li><p>check url</p></li>
+<li><p>Run <code class="docutils literal notranslate"><span class="pre">make</span></code> as <code class="docutils literal notranslate"><span class="pre">ubuntu</span></code></p></li>
+<li><p>Run <code class="docutils literal notranslate"><span class="pre">docker</span> <span class="pre">compose</span> <span class="pre">up</span> <span class="pre">-d</span></code></p></li>
+<li><p>Run <code class="docutils literal notranslate"><span class="pre">docker</span> <span class="pre">compose</span> <span class="pre">restart</span> <span class="pre">nginx</span></code> (reload should be just fine here: <code class="docutils literal notranslate"><span class="pre">docker</span> <span class="pre">exec</span> <span class="pre">-it</span> <span class="pre">specifycloud_nginx_1</span> <span class="pre">nginx</span> <span class="pre">-s</span> <span class="pre">reload</span></code>)</p></li>
+<li><p>Check url</p></li>
 </ol>
 </li>
 <li><p>Add SSL</p>
 <ol class="arabic simple">
-<li><p>mkdir /var/www/unsm-vp</p></li>
-<li><p>certbot –webroot -w /var/www/<dbname> -d <dbname>.specifycloud.org certonly</p></li>
-<li><p>certbot certificates</p></li>
-<li><p>Remove https: false from spcloudserver.json</p></li>
-<li><p>su specify -c make</p></li>
-<li><p>docker-compose up -d</p></li>
-<li><p>docker-compose restart  (maybe just reload instead)</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">mkdir</span> <span class="pre">/var/www/unsm-vp</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">certbot</span> <span class="pre">--webroot</span> <span class="pre">-w</span> <span class="pre">/var/www/&lt;subdomain&gt;</span> <span class="pre">-d</span> <span class="pre">&lt;subdomain&gt;.specifycloud.org</span> <span class="pre">certonly</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">certbot</span> <span class="pre">certificates</span></code></p></li>
+<li><p>Remove https: false from spcloudservers.json</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">make</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">docker</span> <span class="pre">compose</span> <span class="pre">up</span> <span class="pre">-d</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">docker</span> <span class="pre">compose</span> <span class="pre">restart</span></code>  (maybe just reload instead)</p></li>
 <li><p>check url</p></li>
 <li><p>note: after an ssl certificate renewal -&gt; docker exec -it specifycloud_nginx_1 nginx -s reload</p>
 <ol class="arabic simple">
 <li><p>For automatic nginx reloading on certificate renewal create /etc/letsencrypt/renewal-hooks/post/reload-nginx.sh <code class="docutils literal notranslate"><span class="pre">#!/bin/bash</span> <span class="pre">docker</span> <span class="pre">exec</span> <span class="pre">-it</span> <span class="pre">specifycloud_nginx_1</span> <span class="pre">nginx</span> <span class="pre">-s</span> <span class="pre">reload</span></code></p></li>
-<li><p>crontab -e; and then add the line “0 3 * * 0,2,4,6 docker exec specifycloud_nginx_1 nginx -s reload”</p></li>
-<li><p>crontab -l to list cronjobs</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">crontab</span> <span class="pre">-e;</span></code> and then add the line “0 3 * * 0,2,4,6 docker exec specifycloud_nginx_1 nginx -s reload”</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">crontab</span> <span class="pre">-l</span></code> to list cronjobs</p></li>
 </ol>
 </li>
 </ol>
 </li>
+<li><p>Add Specify admin credentials to the <a class="reference external" href="https://docs.google.com/spreadsheets/d/1saSYJJDJdATwZvzFz873wvC-DkyBQsIQ66un1lpILE4/edit#gid=690980104">master list on the SCC Vault</a></p></li>
 <li><p>Database Backup</p>
 <ol class="arabic simple">
 <li><p>ssh into biprdsp6ap.cc.ku.edu</p></li>
@@ -181,8 +185,8 @@ For example, database name <code class="docutils literal notranslate"><span clas
 </li>
 <li><p>Updown</p>
 <ol class="arabic simple">
-<li><p>Add url: <dbname>.specifycloud.org/context/system_info.json</p></li>
-<li><p>Add alias: <dbname></p></li>
+<li><p>Add url: <subdomain>.specifycloud.org/context/system_info.json</p></li>
+<li><p>Add alias: <subdomain></p></li>
 </ol>
 </li>
 </ol>
