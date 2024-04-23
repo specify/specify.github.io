@@ -11,8 +11,9 @@
 2. DNS Registtration:
 	1. Login to Dreamhost, select Websites -> Manage Websites
 	2. For specifycloud.org, select DNS
-	3. Add CNAME record in the style of the other users.
+	3. Add CNAME record that matches the database name. If the database name has underscores (_), replace these with dashes (-).
 		4. `<dbname>` points to `<subdomain>.specifycloud.org.`
+		   For example, database name `herb_rbge` would have the name `herb-rbge.specifycloud.org`.
 	4. Wait at least 10 minutes for domain to circulate.
 	5. For the ku servers, request the dns CNAME record to bitech@ku.edu
 3. Config
