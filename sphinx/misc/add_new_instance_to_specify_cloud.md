@@ -17,7 +17,7 @@
 	4. Wait at least 10 minutes for domain to circulate.
 	5. For the ku servers, request the dns CNAME record to bitech@ku.edu
 3. Config
-	1. Add to `spcloudservers.json` on the appropraite server in the `/home/ubuntu/docker-compositions/specifycloud` dir.
+	1. Add to `spcloudservers.json` on the appropriate server in the `/home/ubuntu/docker-compositions/specifycloud` dir.
 	2. Make sure to add https: false
 	3. Run `make` as `ubuntu`
 	4. Run `docker compose up -d`
@@ -38,8 +38,8 @@
 		3. `crontab -l` to list cronjobs
 5. Add Specify admin credentials to the [master list on the SCC Vault](https://docs.google.com/spreadsheets/d/1saSYJJDJdATwZvzFz873wvC-DkyBQsIQ66un1lpILE4/edit#gid=690980104)
 6. Database Backup
-	1. ssh into biprdsp6ap.cc.ku.edu
-	2. sudo su - spcloudbackup
+	1. `ssh` into `biprdsp6ap.cc.ku.edu`
+	2. `sudo su - spcloudbackup`
 	3. Add <dbname> into the file /home/spcloudbackup/backup_specify_cloud.py
 7. Asset Server
 	1. ssh into asset
