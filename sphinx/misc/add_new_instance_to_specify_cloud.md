@@ -12,12 +12,12 @@
 	1. Login to Dreamhost, select Websites -> Manage Websites
 	2. For specifycloud.org, select DNS ([Direct link](https://panel.dreamhost.com/index.cgi?tree=domain.dashboard#/site/specifycloud.org/dns))
 	3. Add CNAME record that has a name matching the database name and links to the appropraite regional domain value (i.e. `na-specify7-1.specifycloud.org.`, `eu-specify7-1.specifycloud.org.`, etc.). If the database name has underscores (_), replace these with dashes (-).
-		4. `<dbname>` points to `<subdomain>.specifycloud.org.`
+		- `<dbname>` points to `<subdomain>.specifycloud.org.`
 		   For example, database name `herb_rbge` would have the name `herb-rbge.specifycloud.org`.
 	4. Wait at least 10 minutes for domain to circulate.
 	5. For the ku servers, request the dns CNAME record to bitech@ku.edu
 3. Config
-	1. Add to spcloudserver.json
+	1. Add to `spcloudservers.json` on the appropraite server in the `/home/ubuntu/docker-compositions/specifycloud` dir.
 	2. Make sure to add https: false
 	3. su specify -c make
 	4. docker-compose up -d
