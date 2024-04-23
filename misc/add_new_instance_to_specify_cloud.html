@@ -16,7 +16,7 @@
         <script src="../_static/jquery.js?v=5d32c60e"></script>
         <script src="../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
         <script src="../_static/documentation_options.js?v=5929fcd5"></script>
-        <script src="../_static/doctools.js?v=888ff710"></script>
+        <script src="../_static/doctools.js?v=9a2dae69"></script>
         <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
     <script src="../_static/js/theme.js"></script>
     <link rel="index" title="Index" href="../genindex.html" />
@@ -127,9 +127,10 @@ master doesn’t have access <code class="docutils literal notranslate"><span cl
 <li><p>DNS Registtration:</p>
 <ol class="arabic simple">
 <li><p>Login to Dreamhost, select Websites -&gt; Manage Websites</p></li>
-<li><p>For specifycloud.org, select DNS</p></li>
-<li><p>Add CNAME record in the style of the other users.
-4. <code class="docutils literal notranslate"><span class="pre">&lt;dbname&gt;</span></code> points to <code class="docutils literal notranslate"><span class="pre">&lt;subdomain&gt;.specifycloud.org.</span></code></p></li>
+<li><p>For specifycloud.org, select DNS (<a class="reference external" href="https://panel.dreamhost.com/index.cgi?tree=domain.dashboard#/site/specifycloud.org/dns">Direct link</a>)</p></li>
+<li><p>Add CNAME record that has a name matching the database name and links to the appropraite regional domain value (i.e. <code class="docutils literal notranslate"><span class="pre">na-specify7-1.specifycloud.org.</span></code>, <code class="docutils literal notranslate"><span class="pre">eu-specify7-1.specifycloud.org.</span></code>, etc.). If the database name has underscores (_), replace these with dashes (-).
+4. <code class="docutils literal notranslate"><span class="pre">&lt;dbname&gt;</span></code> points to <code class="docutils literal notranslate"><span class="pre">&lt;subdomain&gt;.specifycloud.org.</span></code>
+For example, database name <code class="docutils literal notranslate"><span class="pre">herb_rbge</span></code> would have the name <code class="docutils literal notranslate"><span class="pre">herb-rbge.specifycloud.org</span></code>.</p></li>
 <li><p>Wait at least 10 minutes for domain to circulate.</p></li>
 <li><p>For the ku servers, request the dns CNAME record to bitech&#64;ku.edu</p></li>
 </ol>
