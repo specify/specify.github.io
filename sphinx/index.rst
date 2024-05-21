@@ -12,6 +12,7 @@ Welcome to Specify Developer documentation!
    aws/client_migration_notes
    aws/ec2_rds_specify7_setup
    aws/specify_cloud_graviton_setup
+   aws/remote_db_connection
 
 .. toctree::
    :maxdepth: 1
