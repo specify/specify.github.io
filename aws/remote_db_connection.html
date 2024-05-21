@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" data-content_root="../">
+<head>
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Setup remote database connection to local mysql workbench &mdash; Specify Developer Documentation  documentation</title>
+      <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=80d5e7a1" />
+      <link rel="stylesheet" type="text/css" href="../_static/css/theme.css?v=19f00094" />
+
+  
+  <!--[if lt IE 9]>
+    <script src="../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script src="../_static/jquery.js?v=5d32c60e"></script>
+        <script src="../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+        <script src="../_static/documentation_options.js?v=5929fcd5"></script>
+        <script src="../_static/doctools.js?v=9a2dae69"></script>
+        <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="../index.html" class="icon icon-home">
+            Specify Developer Documentation
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Amazon Web Services:</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="aws_automation.html">AWS Automation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="aws_infrastructure_notes.html">AWS Infrastructure Notes</a></li>
+<li class="toctree-l1"><a class="reference internal" href="aws_specify_asset_server_setup.html">AWS Specify Asset Server Setup</a></li>
+<li class="toctree-l1"><a class="reference internal" href="aws_specify_cloud_setup.html">Specify Cloud Setup</a></li>
+<li class="toctree-l1"><a class="reference internal" href="client_migration_notes.html">Digital Ocean to AWS migration</a></li>
+<li class="toctree-l1"><a class="reference internal" href="ec2_rds_specify7_setup.html">Deploy Specify7 to an EC2 instance</a></li>
+<li class="toctree-l1"><a class="reference internal" href="specify_cloud_graviton_setup.html">Specify Cloud Graviton Setup</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Asset Server:</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../asset_server/asset_config_files.html">Specify 7 Docker Config Example</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../asset_server/asset_server_config.html">Asset Server Configuration</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../asset_server/asset_server_setup.html">EC2 Non-Dockerized Build</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../asset_server/hybrid_asset_server_setup.html">Hybrid Asset Server Setup</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Internal Processes:</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../dev_process/specify_processes.html">Specify Development Process</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../dev_process/project_docs.html">Project (Github pages) documentation</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Security:</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../security/aws_security.html">AWS Security</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../security/fix_exposed_secret.html">Fix Exposed Secrets</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../security/monitoring.html">Security Monitoring</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Misc:</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../misc/add_new_instance_to_specify_cloud.html">Add new Specify instance to Specify Cloud</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../misc/kuit_notes.html">Working with central KU IT</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../misc/specify7_ecs_most-in-one.html">Create a Most-In-One Specify Docker image</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../misc/useful_bash_cmds.html">Useful bash commands</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../misc/vs_code_django_unit_test_debugging_notes.html">VS Code Django Unit Test Debugging</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">Specify Developer Documentation</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../index.html" class="icon icon-home" aria-label="Home"></a></li>
+      <li class="breadcrumb-item active">Setup remote database connection to local mysql workbench</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="../_sources/aws/remote_db_connection.md.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="setup-remote-database-connection-to-local-mysql-workbench">
+<h1>Setup remote database connection to local mysql workbench<a class="headerlink" href="#setup-remote-database-connection-to-local-mysql-workbench" title="Link to this heading"></a></h1>
+<p>Help clients setup remote database connection to local mysql workbench with an ssh tunnel. There are slightly different parameters for Mac and Windows machines. This is because the parameters have changed slightly since moving from digital ocean to aws.</p>
+<p>The port forwarding command that needs to be used is
+<code class="docutils literal notranslate"><span class="pre">ssh</span> <span class="pre">-L</span> <span class="pre">3308:&lt;db_host_ip&gt;:3306</span> <span class="pre">&lt;linux_username&gt;&#64;na-db-1.specifycloud.org</span> <span class="pre">-i</span> <span class="pre">&lt;path_to_ssh_key&gt;</span></code></p>
+<p>Then test the connect by running:
+<code class="docutils literal notranslate"><span class="pre">mysql</span> <span class="pre">-h</span> <span class="pre">127.0.0.1</span> <span class="pre">-P</span> <span class="pre">3308</span> <span class="pre">-u&lt;db_username&gt;</span> <span class="pre">-p'&lt;db_password&gt;'</span> <span class="pre">&lt;database_name&gt;</span></code></p>
+<p>MySQL Workbench Parameter example:</p>
+<p>DB params:
+server host: &lt;db_host_ip&gt;
+port: 3306
+username: master
+password: &lt;db_master_password&gt;
+ssh tunnel params:
+host: na-db-1.specifycloud.org
+user name: ubuntu
+private key: /Users/me/specify/keys/specify_ssh_key</p>
+<p>Mac/Windows example:</p>
+<p>mac/linux: <code class="docutils literal notranslate"><span class="pre">ssh</span> <span class="pre">-L</span> <span class="pre">3307:&lt;db_host_ip&gt;:3306</span> <span class="pre">&lt;linux_username&gt;&#64;il-specify7-1.specifycloud.org</span> <span class="pre">-i</span> <span class="pre">~/specify_key</span></code></p>
+<p>Windows PuTTY: <code class="docutils literal notranslate"><span class="pre">C:\Program</span> <span class="pre">Files\PuTTY\putty.exe&quot;</span> <span class="pre">-ssh</span> <span class="pre">-i</span> <span class="pre">c:\users\user_name\private_key_specify_cloud.ppk</span> <span class="pre">&lt;linux_username&gt;&#64;il-specify7-1.specifycloud.org</span> <span class="pre">-L</span> <span class="pre">3307:&lt;db_host_ip&gt;:3306</span> <span class="pre">-N</span></code></p>
+<p><code class="docutils literal notranslate"><span class="pre">C:\Program</span> <span class="pre">Files\PuTTY\putty.exe&quot;</span> <span class="pre">-ssh</span> <span class="pre">-i</span> <span class="pre">c:\users\&lt;user_name&gt;\private_key_specify_cloud.ppk</span> <span class="pre">&lt;linux_username&gt;&#64;eu-db-1.specifycloud.org</span> <span class="pre">-L</span> <span class="pre">3307:&lt;db_host_ip&gt;:3306</span> <span class="pre">-N</span></code></p>
+<p>Here is the command for windows for a remote sqldump: (run in command prompt) or use PuTTY
+<code class="docutils literal notranslate"><span class="pre">plink</span> <span class="pre">-ssh</span> <span class="pre">-i</span> <span class="pre">&quot;C:\path\to\your_private_key.ppk&quot;</span> <span class="pre">&lt;llinux_username&gt;&#64;eu-db-1.specifycloud.org</span> <span class="pre">&quot;mysqldump</span> <span class="pre">--max-allowed-packet=2G</span> <span class="pre">--single-transaction</span> <span class="pre">-h</span> <span class="pre">&lt;db_host_ip&gt;</span> <span class="pre">-P</span> <span class="pre">3306</span> <span class="pre">-umaster'</span> <span class="pre">--databases</span> <span class="pre">&lt;database_name&gt;</span></code></p>
+</section>
+
+
+           </div>
+          </div>
+          <footer>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2024, Specify Team.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>
