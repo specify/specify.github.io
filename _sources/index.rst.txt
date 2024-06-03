@@ -29,6 +29,8 @@ Welcome to Specify Developer documentation!
 
    dev_process/specify_processes
    dev_process/project_docs
+   dev_process/dbgroups
+   dev_process/individualdbs
 
 .. toctree::
    :maxdepth: 1
