@@ -1,0 +1,628 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" data-content_root="../">
+<head>
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Databases with Specific Features &mdash; Specify Developer Documentation  documentation</title>
+      <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=80d5e7a1" />
+      <link rel="stylesheet" type="text/css" href="../_static/css/theme.css?v=19f00094" />
+
+  
+  <!--[if lt IE 9]>
+    <script src="../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script src="../_static/jquery.js?v=5d32c60e"></script>
+        <script src="../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+        <script src="../_static/documentation_options.js?v=5929fcd5"></script>
+        <script src="../_static/doctools.js?v=9a2dae69"></script>
+        <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="../index.html" class="icon icon-home">
+            Specify Developer Documentation
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Amazon Web Services:</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../aws/aws_automation.html">AWS Automation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../aws/aws_infrastructure_notes.html">AWS Infrastructure Notes</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../aws/aws_specify_asset_server_setup.html">AWS Specify Asset Server Setup</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../aws/aws_specify_cloud_setup.html">Specify Cloud Setup</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../aws/client_migration_notes.html">Digital Ocean to AWS migration</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../aws/ec2_rds_specify7_setup.html">Deploy Specify7 to an EC2 instance</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../aws/specify_cloud_graviton_setup.html">Specify Cloud Graviton Setup</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../aws/remote_db_connection.html">Setup remote database connection to local mysql workbench</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Asset Server:</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../asset_server/asset_config_files.html">Specify 7 Docker Config Example</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../asset_server/asset_server_config.html">Asset Server Configuration</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../asset_server/asset_server_setup.html">EC2 Non-Dockerized Build</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../asset_server/hybrid_asset_server_setup.html">Hybrid Asset Server Setup</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Internal Processes:</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="specify_processes.html">Specify Development Process</a></li>
+<li class="toctree-l1"><a class="reference internal" href="project_docs.html">Project (Github pages) documentation</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Security:</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../security/aws_security.html">AWS Security</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../security/fix_exposed_secret.html">Fix Exposed Secrets</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../security/monitoring.html">Security Monitoring</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Misc:</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../misc/add_new_instance_to_specify_cloud.html">Add new Specify instance to Specify Cloud</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../misc/kuit_notes.html">Working with central KU IT</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../misc/specify7_ecs_most-in-one.html">Create a Most-In-One Specify Docker image</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../misc/useful_bash_cmds.html">Useful bash commands</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../misc/vs_code_django_unit_test_debugging_notes.html">VS Code Django Unit Test Debugging</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">Specify Developer Documentation</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../index.html" class="icon icon-home" aria-label="Home"></a></li>
+      <li class="breadcrumb-item active">Databases with Specific Features</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="../_sources/dev_process/dbgroups.rst.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="databases-with-specific-features">
+<h1>Databases with Specific Features<a class="headerlink" href="#databases-with-specific-features" title="Link to this heading"></a></h1>
+<p>All DB’s for testing should be on version <cite>6.8.03.</cite></p>
+<dl class="simple">
+<dt><strong>Commonly used databases:</strong></dt><dd><p>It’s alright to use these databases for testing, just know that they are very likely to have been tested on previously and to check if it’s already been tested on.</p>
+</dd>
+</dl>
+<ul class="simple">
+<li><p>Any KU databases.</p></li>
+</ul>
+<p><strong>Databases with known issues:</strong></p>
+<ul class="simple">
+<li><p>fwri</p></li>
+<li><p>geology</p></li>
+<li><p>kuvertpaleo1_11_23</p></li>
+</ul>
+<p><strong>DO NOT MODIFY:</strong></p>
+<ul class="simple">
+<li><p>all_discipline_defaults (use as reference for default disciplines)</p></li>
+<li><p>geology</p></li>
+<li><p>geneva_confidential</p></li>
+</ul>
+<section id="databases-on-the-test-panel-with">
+<h2>Databases on the test panel with…<a class="headerlink" href="#databases-on-the-test-panel-with" title="Link to this heading"></a></h2>
+<section id="multiple-collections">
+<h3>Multiple Collections<a class="headerlink" href="#multiple-collections" title="Link to this heading"></a></h3>
+<ul class="simple">
+<li><p>All eurl databases (2).</p></li>
+<li><p>All KU_Fish/kufish databases (4).</p></li>
+<li><p>All nbm databases (2).</p></li>
+<li><p>All ohio databases (3).</p></li>
+<li><p>aafc2_22 (4)</p></li>
+<li><p>aafc_aac_3_8_23 (4)</p></li>
+<li><p>balearicls (3)</p></li>
+<li><p>botany_demo (2)</p></li>
+<li><p>bulgaria_iber_4_11_24 (7)</p></li>
+<li><p>bulgaria_nmnhs_4_11_24</p></li>
+<li><p>calvertmarinemuseum (5)</p></li>
+<li><p>ciscollections_2_15_2024 (10)</p></li>
+<li><p>east_london_museum_2_9_24 (2)</p></li>
+<li><p>Fitz_NHMA_Oct_2023 (6)</p></li>
+<li><p>Fitz_NHMD_Oct_2023 (18)</p></li>
+<li><p>fwri_1_9_2024 (2)</p></li>
+<li><p>hujinnhc_9_6_23 (25)</p></li>
+<li><p>jerusalem_with_changes_2_19 (15)</p></li>
+<li><p>KUHerps_8_17_23 (3)</p></li>
+<li><p>kumam_barcodes (2)</p></li>
+<li><p>KUVertPaleo_5_16_2024 (3)</p></li>
+<li><p>ojsmnh_1_10_24 (9)</p></li>
+<li><p>SAIAB_11_24_23 (14)</p></li>
+<li><p>sdnhm_herps_2_8_24 (5)</p></li>
+<li><p>sp7demofish_2_9_24 (3)</p></li>
+<li><p>UFRGS_2_1_24 (8)</p></li>
+</ul>
+</section>
+<section id="default-forms">
+<h3>Default Forms<a class="headerlink" href="#default-forms" title="Link to this heading"></a></h3>
+<blockquote>
+<div><p>Note: GEOLocate Plugin is on every default locality form. Collection Object Attribute is on all non-paleontology default forms.</p>
+</div></blockquote>
+<ul class="simple">
+<li><dl class="simple">
+<dt>Balearicls</dt><dd><ul>
+<li><p>DNA&amp;Tissue</p></li>
+<li><p>Invertebrates</p></li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><dl class="simple">
+<dt>bulgaria_iber_4_11_24</dt><dd><ul>
+<li><p>All collections except for Invertebrate and Mycology</p></li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><dl class="simple">
+<dt>bulgaria_nmnhs_4_11_24</dt><dd><ul>
+<li><p>All collections except for Vascular plant collection and Ichthyology</p></li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><dl class="simple">
+<dt>eurl_2_27_24</dt><dd><ul>
+<li><p>Host Plants</p></li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><dl class="simple">
+<dt>KUHerps_8_17_23</dt><dd><ul>
+<li><p>Digital Archive</p></li>
+<li><p>Observation</p></li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><p>KUPaleoBot_8_31_2023</p></li>
+<li><dl class="simple">
+<dt>UFRGS_2_1_24</dt><dd><ul>
+<li><p>All except for Ichthyology and Ichthyology photos</p></li>
+</ul>
+</dd>
+</dl>
+</li>
+</ul>
+</section>
+<section id="collection-object-attribute">
+<h3>Collection Object Attribute<a class="headerlink" href="#collection-object-attribute" title="Link to this heading"></a></h3>
+<ul class="simple">
+<li><p>All KU_Fish/kufish databases.</p></li>
+<li><p>aafc2_22</p></li>
+<li><p>aafc _aac_3_8_23</p></li>
+<li><p>Balearicls</p></li>
+<li><dl class="simple">
+<dt>botany_demo</dt><dd><ul>
+<li><p>Vascular Plants</p></li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><dl class="simple">
+<dt>bulgaria_iber_4_11_24</dt><dd><ul>
+<li><p>Invertebrate</p></li>
+<li><p>Vertebrate</p></li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><dl class="simple">
+<dt>bulgaria_nmnhs_4_11_24</dt><dd><ul>
+<li><p>All except for Lichen, Paleobotany, Paleozoology, and Vascular plant</p></li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><p>CollegeofIdaho</p></li>
+<li><p>east_london_museum_2_9_24</p></li>
+<li><p>Fitz_NHMA_Oct_2023</p></li>
+<li><dl class="simple">
+<dt>Fitz_NHMD_Oct_2023</dt><dd><ul>
+<li><p>All except for paleontology and botany collections</p></li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><p>fwri_1_9_2024</p></li>
+<li><p>herb_rgbe_2_5_2024</p></li>
+<li><dl class="simple">
+<dt>hujinnhc_9_6_23</dt><dd><ul>
+<li><p>All except for CryoBank, Lichens, Phytopathogenic and Vascular Plants</p></li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><dl class="simple">
+<dt>jerusalem_with_changes_2_19</dt><dd><ul>
+<li><p>All except for botany collections, CryoBank and Osteology</p></li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><p>KUBirds_8_25_23</p></li>
+<li><p>KUHerps_8_17_23</p></li>
+<li><p>kumam_barcodes</p></li>
+<li><p>KUVascularPlants_4_16_24</p></li>
+<li><p>lsumz_mammals_4_25_24</p></li>
+<li><p>mcnb_6_29_23_202307082235</p></li>
+<li><p>montreal_canadian_cloud_backup</p></li>
+<li><p>nbm_08_post_most_changes</p></li>
+<li><p>ojsmnh_1_10_24</p></li>
+<li><dl class="simple">
+<dt>PriPaleo_SchemaUpdated_CM_202304211540</dt><dd><ul>
+<li><p>Invertebrate Paleontology</p></li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><p>SAIAB_11_24_23</p></li>
+<li><p>sdnhm_herps_2_8_24</p></li>
+<li><p>sp7demofish_2_9_24</p></li>
+<li><dl class="simple">
+<dt>UFRGS_2_1_24</dt><dd><ul>
+<li><p>All except for Hemiptera, Ichthyology and Ichthyology photos</p></li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><p>umherb_1_10_24</p></li>
+</ul>
+</section>
+<section id="shared-collecting-events">
+<h3>Shared Collecting Events<a class="headerlink" href="#shared-collecting-events" title="Link to this heading"></a></h3>
+<blockquote>
+<div><p>Note: Since embedded event is default for all forms except Ichthyology, if the DB/Collection is not on this list, it’s most likely embedded.</p>
+</div></blockquote>
+<ul class="simple">
+<li><p>All KU_Fish/kufish databases.</p></li>
+<li><p>All ohio databases.</p></li>
+<li><dl class="simple">
+<dt>bulgaria_nmnhs_4_11_24</dt><dd><ul>
+<li><p>Ichthyology</p></li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><dl class="simple">
+<dt>east_london_museum_2_9_24</dt><dd><ul>
+<li><p>Malacology</p></li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><dl class="simple">
+<dt>Fitz_NHMA_Oct_2023</dt><dd><ul>
+<li><p>Fresh water</p></li>
+<li><p>Monitoring</p></li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><dl class="simple">
+<dt>Fitz_NHMD_Oct_2023</dt><dd><ul>
+<li><p>Ichthyology</p></li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><p>fwri_1_9_2024</p></li>
+<li><p>hujinnhc_9_6_23</p></li>
+<li><dl class="simple">
+<dt>jerusalem_with_changes_2_19</dt><dd><ul>
+<li><p>KUVascularPlants_4_16_24</p></li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><dl class="simple">
+<dt>nbm_08_post_most_changes</dt><dd><ul>
+<li><p>Fish Voucher Collection</p></li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><p>ojsmnh_1_10_24</p></li>
+<li><p>SAIAB_11_24_23</p></li>
+<li><dl class="simple">
+<dt>sp7demofish_2_9_24</dt><dd><ul>
+<li><p>KUFishVoucher</p></li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><dl class="simple">
+<dt>UFRGS_2_1_24</dt><dd><ul>
+<li><p>Ichthyology</p></li>
+</ul>
+</dd>
+</dl>
+</li>
+</ul>
+</section>
+<section id="embedded-paleo-context">
+<h3>Embedded Paleo Context<a class="headerlink" href="#embedded-paleo-context" title="Link to this heading"></a></h3>
+<ul class="simple">
+<li><p>ChadronTest (Locality)</p></li>
+<li><dl class="simple">
+<dt>ciscollections_2_15_2024 (Collection Object)</dt><dd><ul>
+<li><dl class="simple">
+<dt>Anthro</dt><dd><ul>
+<li><p>Note: Anthro does not have Paleo Context in its forms.</p></li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><p>Fossils</p></li>
+<li><p>Rocks</p></li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><dl class="simple">
+<dt>Fitz_NHMD_Oct_2023 (Collection Object)</dt><dd><ul>
+<li><p>Danekrae</p></li>
+<li><p>Quaternary Zoology</p></li>
+<li><p>Vertebrate Paleontology</p></li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><p>KUVertPaleo_5_16_2024 (Collection Object)</p></li>
+</ul>
+</section>
+<section id="shared-paleo-context">
+<h3>Shared Paleo Context<a class="headerlink" href="#shared-paleo-context" title="Link to this heading"></a></h3>
+<ul class="simple">
+<li><dl class="simple">
+<dt>bulgaria_iber_4_11_24 (Collecting Event)</dt><dd><ul>
+<li><p>Fossil Mammal</p></li>
+<li><p>Palaeobotany</p></li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><dl class="simple">
+<dt>bulgaria_nmnhs_4_11_24 (Collecting Event)</dt><dd><ul>
+<li><p>Paleobotany</p></li>
+<li><p>Paleozoology</p></li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><p>ChadronTest2 (Locality)</p></li>
+<li><dl class="simple">
+<dt>calvertmarinemuseum (Collection Object)</dt><dd><ul>
+<li><p>Casts</p></li>
+<li><p>Invertebrates</p></li>
+<li><p>Vertebrates</p></li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><dl class="simple">
+<dt>Fitz_NHMD_Oct_2023 (Collecting Event)</dt><dd><ul>
+<li><p>Invertebrate Paleontology</p></li>
+<li><p>Micropaleontology</p></li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><dl class="simple">
+<dt>hujinnhc_9_6_23 (Collecting Event)</dt><dd><ul>
+<li><p>Cryobank</p></li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><dl class="simple">
+<dt>jerusalem_with_changes_2_19 (Collecting Event)</dt><dd><ul>
+<li><p>Cryobank</p></li>
+<li><p>Osteology</p></li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><p>KUPaleoBot_8_31_2023 (Collecting Event)</p></li>
+<li><dl class="simple">
+<dt>ojsmnh_1_10_24 (Locality)</dt><dd><ul>
+<li><p>Fossil Invertebrates</p></li>
+<li><p>Fossil Plants</p></li>
+<li><p>Fossil Vertebrates</p></li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><p>PriPaleo_SchemaUpdated_CM_202304211540 (Collecting Event)</p></li>
+</ul>
+</section>
+<section id="collectionrelonetomany-plugin">
+<h3>CollectionRelOneToMany Plugin<a class="headerlink" href="#collectionrelonetomany-plugin" title="Link to this heading"></a></h3>
+<ul class="simple">
+<li><dl class="simple">
+<dt>All KU_Fish/kufish databases.</dt><dd><ul>
+<li><p>KU Fish Voucher Collection</p></li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><dl class="simple">
+<dt>KUFish_5_16_23 (in addition to above)</dt><dd><ul>
+<li><p>KU Fish Observation Collection</p></li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><dl class="simple">
+<dt>SAIAB_11_24_23</dt><dd><ul>
+<li><p>All except for BRUV Fish, Invertebrate Imagery, Non-fish Illustrations, and Tissue Collection</p></li>
+<li><p>In the National Fish Collection, ofer and roger accounts have 2.</p></li>
+<li><p>Known issue: Trying to add a record to the Collection Relationship plugin results in a ProgrammingError.</p></li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><p>sp7demofish_2_9_24</p></li>
+<li><p>KUFishVoucher</p></li>
+</ul>
+</section>
+<section id="hosttaxon-plugin">
+<h3>HostTaxon Plugin<a class="headerlink" href="#hosttaxon-plugin" title="Link to this heading"></a></h3>
+<blockquote>
+<div><p>Note: Most HostTaxon plugins are on the Collecting Information/Event form.</p>
+</div></blockquote>
+<ul class="simple">
+<li><p>All eurl databases.</p></li>
+<li><dl class="simple">
+<dt>jerusalem_with_changes_2_19</dt><dd><ul>
+<li><p>Fungi</p></li>
+<li><p>Lichens</p></li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><dl class="simple">
+<dt>KUFish_5_16_23</dt><dd><ul>
+<li><p>KU Fish Observation Collection</p></li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><dl class="simple">
+<dt>ojsmnh_1_10_24</dt><dd><ul>
+<li><p>Fossil Invertebrates</p></li>
+<li><p>Fossil Plants</p></li>
+<li><p>Note: Plugin is in the Collecting Event Attribute form for both Fossil Invertebrates and Fossil Plants, but only Fossil Invertebrates has CeA on a reachable form.</p></li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><p>SAIAB_11_24_23</p></li>
+<li><dl class="simple">
+<dt>BRUV Fish</dt><dd><ul>
+<li><p>Invertebrate Imagery</p></li>
+</ul>
+</dd>
+</dl>
+</li>
+</ul>
+</section>
+<section id="paleomap-plugin">
+<h3>Paleomap Plugin<a class="headerlink" href="#paleomap-plugin" title="Link to this heading"></a></h3>
+<blockquote>
+<div><p>Notes: Use the PaleoMapTest query to find Collection Objects it can be used with in these collections. This section only lists collections that are ready to be tested. Some collections may be missing some data for PaleoMap to work, so while it is in the forms, they are not listed.</p>
+<p>Additionally, PaleoMap is currently broken, but not on our end. Just make sure it brings up a dialog named PaleoMap that has nothing except a close button.</p>
+</div></blockquote>
+<ul class="simple">
+<li><dl class="simple">
+<dt>bulgaria_iber_4_11_24</dt><dd><ul>
+<li><p>Fossil Mammal</p></li>
+<li><p>Palaeobotany</p></li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><dl class="simple">
+<dt>bulgaria_nmnhs_4_11_24</dt><dd><ul>
+<li><p>Paleozoology</p></li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><dl class="simple">
+<dt>calvertmarinemuseum</dt><dd><ul>
+<li><p>Invertebrates</p></li>
+<li><p>Vertebrates</p></li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><p>ChadronTest</p></li>
+<li><p>KUPaleoBot_8_31_2023</p></li>
+<li><p>PriPaleo_SchemaUpdated_CM_202304211540</p></li>
+</ul>
+</section>
+<section id="rss-feed">
+<h3>RSS Feed<a class="headerlink" href="#rss-feed" title="Link to this heading"></a></h3>
+<blockquote>
+<div><p>Note: Many of these have not been tested.</p>
+</div></blockquote>
+<ul class="simple">
+<li><p>All KU_Fish/kufish databases.</p></li>
+<li><p>bulgaria_nmnhs_4_11_24</p></li>
+<li><p>Fitz_NHMA_Oct_2023</p></li>
+<li><p>Fitz_NHMD_Oct_2023</p></li>
+<li><p>fwri_1_9_2024</p></li>
+<li><p>KUBirds_8_25_23</p></li>
+<li><p>KUVascularPlants_4_16_24</p></li>
+<li><p>lsumz_mammals_9_8_2023</p></li>
+<li><p>montreal_canadian_cloud_backup</p></li>
+<li><dl class="simple">
+<dt>SAIAB_11_24_23</dt><dd><ul>
+<li><p>Known Issue: Currently has an issue where the feed does not export.</p></li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><p>sdnhm_herps_2_8_24</p></li>
+</ul>
+</section>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2024, Specify Team.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

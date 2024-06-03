@@ -1,0 +1,2652 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" data-content_root="../">
+<head>
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Individual Database Information &mdash; Specify Developer Documentation  documentation</title>
+      <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=80d5e7a1" />
+      <link rel="stylesheet" type="text/css" href="../_static/css/theme.css?v=19f00094" />
+
+  
+  <!--[if lt IE 9]>
+    <script src="../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script src="../_static/jquery.js?v=5d32c60e"></script>
+        <script src="../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+        <script src="../_static/documentation_options.js?v=5929fcd5"></script>
+        <script src="../_static/doctools.js?v=9a2dae69"></script>
+        <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="../index.html" class="icon icon-home">
+            Specify Developer Documentation
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Amazon Web Services:</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../aws/aws_automation.html">AWS Automation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../aws/aws_infrastructure_notes.html">AWS Infrastructure Notes</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../aws/aws_specify_asset_server_setup.html">AWS Specify Asset Server Setup</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../aws/aws_specify_cloud_setup.html">Specify Cloud Setup</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../aws/client_migration_notes.html">Digital Ocean to AWS migration</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../aws/ec2_rds_specify7_setup.html">Deploy Specify7 to an EC2 instance</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../aws/specify_cloud_graviton_setup.html">Specify Cloud Graviton Setup</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../aws/remote_db_connection.html">Setup remote database connection to local mysql workbench</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Asset Server:</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../asset_server/asset_config_files.html">Specify 7 Docker Config Example</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../asset_server/asset_server_config.html">Asset Server Configuration</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../asset_server/asset_server_setup.html">EC2 Non-Dockerized Build</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../asset_server/hybrid_asset_server_setup.html">Hybrid Asset Server Setup</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Internal Processes:</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="specify_processes.html">Specify Development Process</a></li>
+<li class="toctree-l1"><a class="reference internal" href="project_docs.html">Project (Github pages) documentation</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Security:</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../security/aws_security.html">AWS Security</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../security/fix_exposed_secret.html">Fix Exposed Secrets</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../security/monitoring.html">Security Monitoring</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Misc:</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../misc/add_new_instance_to_specify_cloud.html">Add new Specify instance to Specify Cloud</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../misc/kuit_notes.html">Working with central KU IT</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../misc/specify7_ecs_most-in-one.html">Create a Most-In-One Specify Docker image</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../misc/useful_bash_cmds.html">Useful bash commands</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../misc/vs_code_django_unit_test_debugging_notes.html">VS Code Django Unit Test Debugging</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">Specify Developer Documentation</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../index.html" class="icon icon-home" aria-label="Home"></a></li>
+      <li class="breadcrumb-item active">Individual Database Information</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="../_sources/dev_process/individualdbs.rst.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="individual-database-information">
+<h1>Individual Database Information<a class="headerlink" href="#individual-database-information" title="Link to this heading"></a></h1>
+<p>This document contains information about each individual database currently on the test panel.</p>
+<p>If you are looking for a group of databases with a specific feature, check out the</p>
+<section id="aafc2-22">
+<h2>aafc2_22<a class="headerlink" href="#aafc2-22" title="Link to this heading"></a></h2>
+<p><em>Last updated: 05/15/2024</em>
+* Disciplines: Botany
+* Collections: 4</p>
+<blockquote>
+<div><ul class="simple">
+<li><p>Brassicaceae of Canada (22k+)</p></li>
+<li><p>DAO Herbarium (74k+)</p></li>
+<li><p>Paul Catling (12k+)</p></li>
+<li><p>T.W. Smith (500+)</p></li>
+</ul>
+</div></blockquote>
+<ul class="simple">
+<li><dl class="simple">
+<dt>Tree size(s):</dt><dd><ul>
+<li><p>18k+ Taxon (vascular plants)</p></li>
+<li><p>5k+ Storage</p></li>
+<li><p>30k+ Geography</p></li>
+<li><p>Host taxon? No</p></li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><p>Collection relationships? No</p></li>
+<li><p>RSS Feed? No</p></li>
+<li><p>Default forms? No</p></li>
+<li><p>Collection Object Attribute on forms? Yes</p></li>
+<li><p>Embedded or Shared CE? Embedded</p></li>
+<li><p>Paleo Context? No</p></li>
+<li><dl class="simple">
+<dt>Preexisting interaction records? Yes</dt><dd><ul>
+<li><p>131 loans</p></li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><p>Collection Object Citations? No</p></li>
+<li><p>Other notes: N/A</p></li>
+</ul>
+</section>
+<section id="aafc-aac-3-8-23">
+<h2>aafc _aac_3_8_23<a class="headerlink" href="#aafc-aac-3-8-23" title="Link to this heading"></a></h2>
+<p><em>Last updated: 05/15/2024</em>
+* Disciplines: Botany
+* Collections: 4</p>
+<blockquote>
+<div><ul class="simple">
+<li><p>Brassicaceae of Canada (22k+)</p></li>
+<li><p>DAO Herbarium (74k+)</p></li>
+<li><p>Paul Catling (12k+)</p></li>
+<li><p>T.W. Smith (500+)</p></li>
+</ul>
+</div></blockquote>
+<ul class="simple">
+<li><dl class="simple">
+<dt>Tree size(s):</dt><dd><ul>
+<li><p>18k+ Taxon (vascular plants)</p></li>
+<li><p>7 Storage</p></li>
+<li><p>42k+ Geography</p></li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><p>Host taxon? No</p></li>
+<li><p>Collection relationships? No</p></li>
+<li><p>RSS Feed? No</p></li>
+<li><p>Default forms? No</p></li>
+<li><p>Collection Object Attribute on forms? Yes</p></li>
+<li><p>Embedded or Shared CE? Embedded</p></li>
+<li><p>Paleo Context? No</p></li>
+<li><dl class="simple">
+<dt>Preexisting interaction records? Yes</dt><dd><ul>
+<li><p>4 loans</p></li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><p>Collection Object Citations? No</p></li>
+<li><dl class="simple">
+<dt>Other notes:</dt><dd><ul>
+<li><p>Clone of aafc2_22 with different trees, loans, and forms (?)</p></li>
+<li><p>DAO Herbarium spadmin has a customized theme</p></li>
+</ul>
+</dd>
+</dl>
+</li>
+</ul>
+</section>
+<section id="all-discipline-defaults">
+<h2>all_discipline_defaults<a class="headerlink" href="#all-discipline-defaults" title="Link to this heading"></a></h2>
+<p><em>Last updated: 05/15/2024</em>
+* Disciplines:</p>
+<blockquote>
+<div><ul class="simple">
+<li><p>Botany, Entomology, Ichthyology, Invertebrate Paleontology,  Invertebrate Zoology, Mammology, Ornithology, Vertebrate Paleontology</p></li>
+</ul>
+</div></blockquote>
+<ul class="simple">
+<li><p>Collections: 8</p></li>
+<li><p>Same names as listed disciplines above</p></li>
+<li><dl class="simple">
+<dt>Other notes:</dt><dd><ul>
+<li><p>Do not modify this DB. This contains default forms and trees for the listed disciplines and is only meant to be used for reference.</p></li>
+<li><p>The Invertebrate Zoology default form seems to be having issues. (5/15/2024)</p></li>
+</ul>
+</dd>
+</dl>
+</li>
+</ul>
+</section>
+<section id="balearicis">
+<h2>BalearicIs<a class="headerlink" href="#balearicis" title="Link to this heading"></a></h2>
+<p><em>Last updated: 05/15/2024</em>
+* Disciplines: Invertebrate Zoology, Mammalogy, Other
+* Collections: 3</p>
+<blockquote>
+<div><ul class="simple">
+<li><p>DNA&amp;Tissue (2)</p></li>
+<li><p>Invertebrates (0)</p></li>
+<li><p>Vertebrates (8)</p></li>
+</ul>
+</div></blockquote>
+<ul class="simple">
+<li><dl class="simple">
+<dt>Tree size(s):</dt><dd><ul>
+<li><p>1 Taxon (DNA&amp;Tissue)</p></li>
+<li><p>55k+ (Invertebrates)</p></li>
+<li><p>12k+ (Vertebrates)</p></li>
+<li><p>1 Storage</p></li>
+<li><p>42k+ Geography</p></li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><p>Host taxon? No</p></li>
+<li><p>Collection relationships? No</p></li>
+<li><p>RSS Feed? No</p></li>
+<li><p>Default forms? Yes (DNA&amp;Tissue and Invertebrates)</p></li>
+<li><p>Collection Object Attribute on forms? Yes</p></li>
+<li><p>Embedded or Shared CE? Embedded</p></li>
+<li><p>Paleo Context? No</p></li>
+<li><dl class="simple">
+<dt>Preexisting interaction records? Yes</dt><dd><ul>
+<li><p>2 loans (Vertebrates)</p></li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><p>Collection Object Citations? No</p></li>
+<li><p>Other notes: N/A</p></li>
+</ul>
+</section>
+<section id="botany-demo">
+<h2>botany_demo<a class="headerlink" href="#botany-demo" title="Link to this heading"></a></h2>
+<p><em>Last updated: 05/14/2024</em>
+* Disciplines: Botany
+* Collections: 2</p>
+<blockquote>
+<div><ul class="simple">
+<li><p>Lichens (2124)</p></li>
+<li><p>Vascular Plants (1900)</p></li>
+</ul>
+</div></blockquote>
+<ul class="simple">
+<li><dl class="simple">
+<dt>Tree size(s):</dt><dd><ul>
+<li><p>16k Taxon (Vascular Plants)</p></li>
+<li><p>423 Taxon (Lichens)</p></li>
+<li><p>33 Storage (Vascular Plants)</p></li>
+<li><p>1 Storage (Lichens)</p></li>
+<li><p>42k+ Geography</p></li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><p>Host taxon? No</p></li>
+<li><p>Collection relationships? No</p></li>
+<li><p>RSS Feed? No</p></li>
+<li><p>Default forms? No</p></li>
+<li><p>Collection Object Attribute on forms? Yes (Vascular Plants)</p></li>
+<li><p>Embedded or Shared CE? Embedded</p></li>
+<li><p>Paleo Context? No</p></li>
+<li><dl class="simple">
+<dt>Preexisting interaction records? Yes</dt><dd><ul>
+<li><p>182 accessions (Vascular Plants)</p></li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><p>Collection Object Citations? Yes</p></li>
+<li><p>Other notes: N/A</p></li>
+</ul>
+</section>
+<section id="bulgaria-iber-4-11-24">
+<h2>bulgaria_iber_4_11_24<a class="headerlink" href="#bulgaria-iber-4-11-24" title="Link to this heading"></a></h2>
+<p><em>Last updated: 05/15/2024</em>
+* Disciplines: Botany, Invertebrate Zoology, Paleobotany, Vertebrate Paleontology, Mammalogy
+* Collections: 7</p>
+<blockquote>
+<div><ul class="simple">
+<li><p>IBER_BAS Bryological Collection (10k+)</p></li>
+<li><p>IBER_BAS Fossil Mammal Collection (7947)</p></li>
+<li><p>IBER_BAS Invertebrate Collection (33k+)</p></li>
+<li><p>IBER_BAS Mycological Collection (11k+)</p></li>
+<li><p>IBER_BAS Palaeobotany Collection (9988)</p></li>
+<li><p>IBER_BAS Vascular Plants Collection (36k+)</p></li>
+<li><p>IBER_BAS Vertebrate Collection (10k+)</p></li>
+</ul>
+</div></blockquote>
+<ul class="simple">
+<li><dl class="simple">
+<dt>Tree size(s):</dt><dd><ul>
+<li><p>1091 Taxon (Bryology)</p></li>
+<li><p>333 Taxon (Fossil Mammal)</p></li>
+<li><p>5049 Taxon  (Invertebrate)</p></li>
+<li><p>4518 Taxon (Mycology)</p></li>
+<li><p>5633 Taxon (Palaeobotany)</p></li>
+<li><p>29k Taxon (Vascular Plants)</p></li>
+<li><p>69 Taxon (Vertebrate)</p></li>
+<li><p>42k+ Geography</p></li>
+<li><p>41k+ Geography (Vascular Plants)</p></li>
+<li><p>1652 Storage</p></li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><p>Host taxon? No</p></li>
+<li><p>Collection relationships? No</p></li>
+<li><p>RSS Feed? No</p></li>
+<li><p>Default forms? Yes, except for Invertebrate and Mycology</p></li>
+<li><p>Collection Object Attribute on forms? Yes (Invertebrate, Vertebrate)</p></li>
+<li><p>Embedded or Shared CE? Embedded</p></li>
+<li><dl class="simple">
+<dt>Paleo Context? Yes (Fossil Mammal, Palaeobotany)</dt><dd><ul>
+<li><p>Embedded or Shared? Shared</p></li>
+<li><p>Which form is it in? Collecting Event</p></li>
+<li><p>Chronostrat records? Yes</p></li>
+<li><p>Lithostrat records? Yes</p></li>
+<li><p>Paleomap plugin? Yes</p></li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><p>Preexisting interaction records? No</p></li>
+<li><p>Collection Object Citations? No</p></li>
+<li><dl class="simple">
+<dt>Other notes:</dt><dd><ul>
+<li><p>Does not have an spadmin/testuser login. To log in as an administrator, use gjonov.</p></li>
+<li><p>Bryological Collection taxon tree has linked Division and Phylum (expected behavior from default taxon tree).</p></li>
+<li><p>Taxon trees have author names and dates listed</p></li>
+</ul>
+</dd>
+</dl>
+</li>
+</ul>
+</section>
+<section id="bulgaria-nmnhs-4-11-24">
+<h2>bulgaria_nmnhs_4_11_24<a class="headerlink" href="#bulgaria-nmnhs-4-11-24" title="Link to this heading"></a></h2>
+<p><em>Last updated: 05/15/2024</em>
+* Disciplines: All defaults
+* Collections: 11</p>
+<blockquote>
+<div><ul class="simple">
+<li><p>BNHM herbarium: Lichen collection (3345)</p></li>
+<li><p>BNHM herbarium: Vascular plant collection (3133)</p></li>
+<li><p>Entomology (6135)</p></li>
+<li><p>ERROR (0)</p></li>
+<li><p>Herpetology (2)</p></li>
+<li><p>Ichthyology (1275)</p></li>
+<li><p>Invertebrates (6441)</p></li>
+<li><p>Mammalogy (1724)</p></li>
+<li><p>Ornithology (7295)</p></li>
+<li><p>Paleobotany (141)</p></li>
+<li><p>Paleozoology (17k+)</p></li>
+</ul>
+</div></blockquote>
+<ul class="simple">
+<li><dl class="simple">
+<dt>Tree size(s):</dt><dd><ul>
+<li><p>1332 Taxon (Lichen collection)</p></li>
+<li><p>8334 Taxon (Vascular plant collection)</p></li>
+<li><p>2145 Taxon (Entomology)</p></li>
+<li><p>1 Taxon (ERROR)</p></li>
+<li><p>8849 Taxon (Herpetology)</p></li>
+<li><p>37k+ Taxon (Ichthyology)</p></li>
+<li><p>2586 Taxon (Invertebrates)</p></li>
+<li><p>12k+ Taxon (Mammalogy)</p></li>
+<li><p>34k+ Taxon (Ornithology)</p></li>
+<li><p>532 Taxon (Paleobotany)</p></li>
+<li><p>511 Taxon (Paleozoology)</p></li>
+<li><p>42k+ Geography</p></li>
+<li><p>1533 Storage</p></li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><p>Host taxon? No</p></li>
+<li><p>Collection relationships? No</p></li>
+<li><p>RSS Feed? Yes</p></li>
+<li><p>Default forms? Yes, except for Vascular plant collection and Ichthyology</p></li>
+<li><p>Collection Object Attribute on forms? Yes, except for Lichen, Paleobotany, Paleozoology and Vascular plant.</p></li>
+<li><p>Embedded or Shared CE? Shared (Ichthyology only)</p></li>
+<li><dl class="simple">
+<dt>Paleo Context? Yes (Paleobotany, Paleozoology)</dt><dd><ul>
+<li><p>Embedded or Shared? Shared</p></li>
+<li><p>Which form is it in? Collecting Event</p></li>
+<li><p>Chronostrat records? Yes</p></li>
+<li><p>Lithostrat records? Yes</p></li>
+<li><p>Paleomap plugin? Yes</p></li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><dl class="simple">
+<dt>Preexisting interaction records? Yes</dt><dd><ul>
+<li><p>20 accessions (BNHM herbarium: Lichen collection)</p></li>
+<li><p>1 accession (BNHM herbarium: Vascular plant collection)</p></li>
+<li><p>1 accession (Mammology)</p></li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><p>Collection Object Citations? No</p></li>
+<li><dl class="simple">
+<dt>Other notes:</dt><dd><ul>
+<li><p>gjonov is the institution admin.</p></li>
+<li><p>Taxon trees have author names and dates listed.</p></li>
+</ul>
+</dd>
+</dl>
+</li>
+</ul>
+</section>
+<section id="calvertmarinemuseum">
+<h2>calvertmarinemuseum<a class="headerlink" href="#calvertmarinemuseum" title="Link to this heading"></a></h2>
+<p><em>Last updated: 05/15/2024</em>
+* Disciplines: Invertebrate Zoology, Invertebrate Paleontology, Mammalogy, Vertebrate Paleontology</p>
+<blockquote>
+<div><ul class="simple">
+<li><p>Collections: 5</p></li>
+<li><p>Casts (208)</p></li>
+<li><p>Invertebrates (4779)</p></li>
+<li><p>Mollusca (215)</p></li>
+<li><p>Osteology (598)</p></li>
+<li><p>Vertebrates (10k+)</p></li>
+</ul>
+</div></blockquote>
+<ul class="simple">
+<li><dl class="simple">
+<dt>Tree size(s):</dt><dd><ul>
+<li><p>451 Taxon (Casts)</p></li>
+<li><p>1272 Taxon (Invertebrates)</p></li>
+<li><p>28k+ Taxon (Mollusca)</p></li>
+<li><p>9186 Taxon (Osteology)</p></li>
+<li><p>3972 Taxon (Vertebrates)</p></li>
+<li><p>42k+ Geography</p></li>
+<li><p>1 Storage</p></li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><p>Host taxon? No</p></li>
+<li><p>Collection relationships? No</p></li>
+<li><p>RSS Feed? No</p></li>
+<li><p>Default forms? No</p></li>
+<li><p>Collection Object Attribute on forms? No</p></li>
+<li><p>Embedded or Shared CE? Embedded</p></li>
+<li><dl class="simple">
+<dt>Paleo Context? Yes (Casts, Invertebrates, Vertebrates)</dt><dd><ul>
+<li><p>Embedded or Shared? Shared</p></li>
+<li><p>Which form is it in? Collection Object</p></li>
+<li><p>Chronostrat records? Yes</p></li>
+<li><p>Lithostrat records? Yes</p></li>
+<li><p>Paleomap plugin? Yes</p></li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><dl class="simple">
+<dt>Preexisting interaction records? Yes</dt><dd><ul>
+<li><p>2270 accessions</p></li>
+<li><p>1 borrow (Casts)</p></li>
+<li><p>1 gift (Casts)</p></li>
+<li><p>3 loans (Casts)</p></li>
+<li><p>1 borrow (Vertebrates)</p></li>
+<li><p>1 gift (Vertebrates)</p></li>
+<li><p>1 loan (Vertebrates)</p></li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><p>Collection Object Citations? No</p></li>
+<li><dl class="simple">
+<dt>Other notes:</dt><dd><ul>
+<li><p>Collecting Event Attribute has 2 different data entry forms in Casts.</p></li>
+</ul>
+</dd>
+</dl>
+</li>
+</ul>
+</section>
+<section id="chadrontest">
+<h2>ChadronTest<a class="headerlink" href="#chadrontest" title="Link to this heading"></a></h2>
+<p><em>Last updated: 05/15/2024</em>
+* Disciplines: Vertebrate Paleontology
+* Collections: 1</p>
+<blockquote>
+<div><ul class="simple">
+<li><p>Paleo (2)</p></li>
+</ul>
+</div></blockquote>
+<ul class="simple">
+<li><dl class="simple">
+<dt>Tree size(s):</dt><dd><ul>
+<li><p>4439 Taxon</p></li>
+<li><p>42k+ Geography</p></li>
+<li><p>2 Storage</p></li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><p>Host taxon? No</p></li>
+<li><p>Collection relationships? No</p></li>
+<li><p>RSS Feed? No</p></li>
+<li><p>Default forms? No</p></li>
+<li><p>Collection Object Attribute on forms? No</p></li>
+<li><p>Embedded or Shared CE? Embedded</p></li>
+<li><dl class="simple">
+<dt>Paleo Context? Yes</dt><dd><ul>
+<li><p>Embedded or Shared? Embedded</p></li>
+<li><p>Which form is it in? Locality</p></li>
+<li><p>Chronostrat records? Yes</p></li>
+<li><p>Lithostrat records? Yes</p></li>
+<li><p>Paleomap plugin? Yes</p></li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><dl class="simple">
+<dt>Preexisting interaction records? Yes</dt><dd><ul>
+<li><p>2 accessions</p></li>
+<li><p>2 loans</p></li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><p>Collection Object Citations? Yes</p></li>
+<li><p>Other notes: N/A</p></li>
+</ul>
+</section>
+<section id="chadrontest2">
+<h2>ChadronTest2<a class="headerlink" href="#chadrontest2" title="Link to this heading"></a></h2>
+<p><em>Last updated: 05/15/2024</em>
+* See ChadronTest.
+* Collections: 1</p>
+<blockquote>
+<div><ul class="simple">
+<li><p>Paleo (0)</p></li>
+</ul>
+</div></blockquote>
+<ul class="simple">
+<li><dl class="simple">
+<dt>Paleo Context? Yes</dt><dd><ul>
+<li><p>Embedded or Shared? Shared</p></li>
+<li><p>Otherwise similar to ChadronTest.</p></li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><p>Preexisting interaction records? No</p></li>
+<li><dl class="simple">
+<dt>Other notes:</dt><dd><ul>
+<li><p>Copy of ChadronTest with no interactions and different Paleo Context.</p></li>
+</ul>
+</dd>
+</dl>
+</li>
+</ul>
+</section>
+<section id="ciscollections-2-15-2024">
+<h2>ciscollections_2_15_2024<a class="headerlink" href="#ciscollections-2-15-2024" title="Link to this heading"></a></h2>
+<p><em>Last updated: 05/15/2024</em>
+* Disciplines: Botany, Entomology, Herpetology, Ichthyology, Invertebrate Paleontology, Invertebrate Zoology, Mammalogy, Ornithology, Vertebrate Paleontology, Other
+* Collections: 10</p>
+<blockquote>
+<div><ul class="simple">
+<li><p>Anthro (12k+)</p></li>
+<li><p>Bird (721)</p></li>
+<li><p>Fossils (1711)</p></li>
+<li><p>Ichs and Herps (390)</p></li>
+<li><p>Insect (653)</p></li>
+<li><p>Mammal (314)</p></li>
+<li><p>Minerals (10k+)</p></li>
+<li><p>Plant (9667)</p></li>
+<li><p>Rocks (1067)</p></li>
+<li><p>Shell (2955)</p></li>
+</ul>
+</div></blockquote>
+<ul class="simple">
+<li><dl class="simple">
+<dt>Tree size(s):</dt><dd><ul>
+<li><p>1845 Taxon (Anthro)</p></li>
+<li><p>14k+ Taxon (Bird)</p></li>
+<li><p>1011 Taxon (Fossils)</p></li>
+<li><p>7689 Taxon (Ichs and Herps)</p></li>
+<li><p>4621 Taxon (Insect)</p></li>
+<li><p>1534 Taxon (Mammal)</p></li>
+<li><p>635 Taxon (Minerals)</p></li>
+<li><p>64k+ Taxon (Plant)</p></li>
+<li><p>635 Taxon (Rocks)</p></li>
+<li><p>1704 Taxon (Shell)</p></li>
+<li><p>1127 Geography (Anthro, Bird, Ichs and Herps, Insect, Mammal, Plant, )</p></li>
+<li><p>36k+ Geography (Fossils)</p></li>
+<li><p>1 Storage</p></li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><p>Host taxon? No</p></li>
+<li><p>Collection relationships? No</p></li>
+<li><p>RSS Feed? No</p></li>
+<li><p>Default forms? No</p></li>
+<li><p>Collection Object Attribute on forms? No</p></li>
+<li><p>Embedded or Shared CE? Embedded</p></li>
+<li><dl class="simple">
+<dt>Paleo Context? Yes (Anthro, Fossils, Rocks)</dt><dd><ul>
+<li><p>Embedded or Shared? Embedded (Fossils, Rocks)</p></li>
+<li><p>Which form is it in? Collection Object</p></li>
+<li><p>Chronostrat records? Yes</p></li>
+<li><p>Lithostrat records? Yes</p></li>
+<li><p>Paleomap plugin? No</p></li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><dl class="simple">
+<dt>Preexisting interaction records? Yes</dt><dd><ul>
+<li><p>12 accessions</p></li>
+<li><p>157 loans (Anthro)</p></li>
+<li><p>6 loans (Bird)</p></li>
+<li><p>2 loans (Ichs and Herps)</p></li>
+<li><p>4 loans (Mammal)</p></li>
+<li><p>52 loans (Minerals)</p></li>
+<li><p>9 loans (Plant)</p></li>
+<li><p>52 loans (Rocks)</p></li>
+<li><p>2 loans (Shell)</p></li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><p>Collection Object Citations? Yes</p></li>
+<li><dl class="simple">
+<dt>Other notes:</dt><dd><ul>
+<li><p>All of the forms are heavily edited.</p></li>
+<li><p>Anthro, Minerals, Rocks and Shell collections all have very strange trees that cause API link error. This is expected.</p></li>
+<li><p>Paleo Context exists in Anthro and Minerals, but cannot be accessed from Collection Object or Locality.</p></li>
+<li><p>Data Entry list has Chronostratigraphy in Insect, but nothing to use it with. Choosing this option causes an “Unable to get tree ranks” error.</p></li>
+<li><p>All of the Mammalogy, Entomology, etc. taxon trees skip past Kingdom and Phylum, which causes an API link error. This is fine since it’s a user error issue with the tree being badly formed.</p></li>
+<li><p>Minerals and Rocks are very similar and seem to have the same loan records, however, Rocks has Paleo Context.</p></li>
+</ul>
+</dd>
+</dl>
+</li>
+</ul>
+</section>
+<section id="collegeofidaho">
+<h2>CollegeOfIdaho<a class="headerlink" href="#collegeofidaho" title="Link to this heading"></a></h2>
+<p><em>Last updated: 05/15/2024</em>
+* Disciplines: Invertebrate Zoology
+* Collections: 1</p>
+<blockquote>
+<div><ul class="simple">
+<li><p>m (6)</p></li>
+</ul>
+</div></blockquote>
+<ul class="simple">
+<li><dl class="simple">
+<dt>Tree size(s):</dt><dd><ul>
+<li><p>55k+ Taxon</p></li>
+<li><p>42k+ Geography</p></li>
+<li><p>1 Storage</p></li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><p>Host taxon? No</p></li>
+<li><p>Collection relationships? No</p></li>
+<li><p>RSS Feed? No</p></li>
+<li><p>Default forms? No</p></li>
+<li><p>Collection Object Attribute on forms? Yes</p></li>
+<li><p>Embedded or Shared CE? Embedded</p></li>
+<li><p>Paleo Context? No</p></li>
+<li><dl class="simple">
+<dt>Preexisting interaction records? Yes</dt><dd><ul>
+<li><p>6 accessions</p></li>
+<li><p>1 gift</p></li>
+<li><p>1 loan</p></li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><p>Collection Object Citations? No</p></li>
+<li><dl class="simple">
+<dt>Other notes:</dt><dd><ul>
+<li><p>Form changes added a Determiners subform inside of Determinations, similar to the Collectors subform within Collecting Event.</p></li>
+</ul>
+</dd>
+</dl>
+</li>
+</ul>
+</section>
+<section id="cuic-2-20-24">
+<h2>cuic_2_20_24<a class="headerlink" href="#cuic-2-20-24" title="Link to this heading"></a></h2>
+<p><em>Last updated: 05/15/2024</em>
+* Disciplines: Entomology
+* Collections: 1</p>
+<blockquote>
+<div><ul class="simple">
+<li><p>m (72k)</p></li>
+</ul>
+</div></blockquote>
+<ul class="simple">
+<li><dl class="simple">
+<dt>Tree size(s):</dt><dd><ul>
+<li><p>82k+ Taxon</p></li>
+<li><p>42k+ Geography</p></li>
+<li><p>1 Storage</p></li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><p>Host taxon? No</p></li>
+<li><p>Collection relationships? No</p></li>
+<li><p>RSS Feed? No</p></li>
+<li><p>Default forms? No</p></li>
+<li><p>Collection Object Attribute on forms? No</p></li>
+<li><p>Embedded or Shared CE? Embedded</p></li>
+<li><p>Paleo Context? No</p></li>
+<li><dl class="simple">
+<dt>Preexisting interaction records? Yes</dt><dd><ul>
+<li><p>1 accession</p></li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><p>Collection Object Citations? No</p></li>
+<li><dl class="simple">
+<dt>Other notes:</dt><dd><ul>
+<li><p>Has Chronostratigraphy in Data Entry but trying to make a form causes an error.</p></li>
+</ul>
+</dd>
+</dl>
+</li>
+</ul>
+</section>
+<section id="east-london-museum-2-9-24">
+<h2>east_london_museum_2_9_24<a class="headerlink" href="#east-london-museum-2-9-24" title="Link to this heading"></a></h2>
+<p><em>Last updated: 05/16/2024</em>
+* Disciplines: Invertebrate Zoology, Ornithology
+* Collections: 2</p>
+<blockquote>
+<div><ul class="simple">
+<li><p>Bird Collection (18k+)</p></li>
+<li><p>Malacology (23k+)</p></li>
+</ul>
+</div></blockquote>
+<ul class="simple">
+<li><dl class="simple">
+<dt>Tree size(s):</dt><dd><ul>
+<li><p>1425 Taxon (Bird Collection)</p></li>
+<li><p>6614 Taxon (Malacology)</p></li>
+<li><p>42k+ Geography</p></li>
+<li><p>1 Storage</p></li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><p>Host taxon? No</p></li>
+<li><p>Collection relationships? No</p></li>
+<li><p>RSS Feed? No</p></li>
+<li><p>Default forms? No</p></li>
+<li><p>Collection Object Attribute on forms? Yes</p></li>
+<li><p>Embedded or Shared CE? Shared (Malacology)</p></li>
+<li><p>Paleo Context? No</p></li>
+<li><dl class="simple">
+<dt>Preexisting interaction records? Yes</dt><dd><ul>
+<li><p>22 accessions</p></li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><p>Collection Object Citations? No</p></li>
+<li><p>Other notes: N/A</p></li>
+</ul>
+</section>
+<section id="eurl-2-27-24">
+<h2>eurl_2_27_24<a class="headerlink" href="#eurl-2-27-24" title="Link to this heading"></a></h2>
+<p><em>Last updated: 05/16/2024</em>
+* Disciplines: Botany, Entomology
+* Collections: 2</p>
+<blockquote>
+<div><ul class="simple">
+<li><p>Entomology (0)</p></li>
+<li><p>Host Plants (0)</p></li>
+</ul>
+</div></blockquote>
+<ul class="simple">
+<li><dl class="simple">
+<dt>Tree size(s):</dt><dd><ul>
+<li><p>321k+ Taxon (Entomology)</p></li>
+<li><p>299k+ Taxon (Host Plants)</p></li>
+<li><p>42k+ Geography</p></li>
+<li><p>1 Storage</p></li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><p>Host taxon? Yes</p></li>
+<li><p>Collection relationships? No</p></li>
+<li><p>RSS Feed? No</p></li>
+<li><p>Default forms? Yes, Host Plants</p></li>
+<li><p>Collection Object Attribute on forms? No</p></li>
+<li><p>Embedded or Shared CE? Embedded</p></li>
+<li><p>Paleo Context? No</p></li>
+<li><dl class="simple">
+<dt>Preexisting interaction records?</dt><dd><ul>
+<li><p>2 accessions</p></li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><p>Collection Object Citations? No</p></li>
+<li><p>Other notes: N/A</p></li>
+</ul>
+</section>
+<section id="eurl-3-14-24">
+<h2>eurl_3_14_24<a class="headerlink" href="#eurl-3-14-24" title="Link to this heading"></a></h2>
+<p><em>Last updated: 05/16/2024</em>
+* See eurl_2_27_24.
+* Other notes:</p>
+<blockquote>
+<div><ul class="simple">
+<li><p>Copy of eurl_2_27_24</p></li>
+<li><p>It looks to be the exact same, except it has Chronostratigraphy in its Data Entry forms. Choosing this option causes an “Unable to get tree ranks” error.</p></li>
+</ul>
+</div></blockquote>
+</section>
+<section id="eurl-bron-4824">
+<h2>eurl_bron_4824<a class="headerlink" href="#eurl-bron-4824" title="Link to this heading"></a></h2>
+<p><em>Last updated: 05/16/2024</em>
+* See eurl_2_27_24.
+* Collections: 2</p>
+<blockquote>
+<div><ul class="simple">
+<li><p>Entomology (1)</p></li>
+<li><p>Host Plants (0)</p></li>
+</ul>
+</div></blockquote>
+<ul class="simple">
+<li><dl class="simple">
+<dt>Preexisting interaction records?</dt><dd><ul>
+<li><p>2 accessions</p></li>
+<li><p>2 loans (Entomology)</p></li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><dl class="simple">
+<dt>Other notes:</dt><dd><ul>
+<li><p>Bronwyn’s copy of eurl_2_27_24.</p></li>
+<li><p>Has the same issue as eurl_3_14_24, where Chronostratigraphy is listed in Data Entry.</p></li>
+</ul>
+</dd>
+</dl>
+</li>
+</ul>
+</section>
+<section id="eurl-elizabeth">
+<h2>eurl_elizabeth<a class="headerlink" href="#eurl-elizabeth" title="Link to this heading"></a></h2>
+<p><em>Last updated: 05/16/2024</em>
+* See eurl_2_27_24.
+* Other notes:</p>
+<blockquote>
+<div><ul class="simple">
+<li><p>Elizabeth’s copy of eurl_2_27_24.</p></li>
+<li><p>Has the same issue as eurl_3_14_24, where Chronostratigraphy is listed in Data Entry.</p></li>
+</ul>
+</div></blockquote>
+</section>
+<section id="fitz-nhma-oct-2023">
+<h2>Fitz_NHMA_Oct_2023<a class="headerlink" href="#fitz-nhma-oct-2023" title="Link to this heading"></a></h2>
+<p><em>Last updated: 05/16/2024</em>
+* Disciplines: Entomology, Ichthyology, Invertebrate Zoology, Other
+* Collections: 6</p>
+<blockquote>
+<div><ul class="simple">
+<li><p>NHMA Entomology (183k+)</p></li>
+<li><p>NHMA Fresh water (157k+)</p></li>
+<li><p>NHMA Invertebrates wet (4646)</p></li>
+<li><p>NHMA Malacology (40k+)</p></li>
+<li><p>NHMA Monitoring (16k+)</p></li>
+<li><p>NHMA Vertebrate (24k+)</p></li>
+</ul>
+</div></blockquote>
+<ul class="simple">
+<li><dl class="simple">
+<dt>Tree size(s):</dt><dd><ul>
+<li><p>7401 Taxon (NHMA Entomology)</p></li>
+<li><p>2956 Taxon (NHMA Fresh water, NHMA Invertebrates wet)</p></li>
+<li><p>176k+ Taxon (NHMA Malacology, NHMA Monitoring)</p></li>
+<li><p>33k+ Taxon (NHMA Vertebrate)</p></li>
+<li><p>42k+ Geography</p></li>
+<li><p>3182 Storage</p></li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><p>Host taxon? No</p></li>
+<li><p>Collection relationships? No</p></li>
+<li><p>RSS Feed? Yes</p></li>
+<li><p>Default forms? No</p></li>
+<li><p>Collection Object Attribute on forms? Yes</p></li>
+<li><p>Embedded or Shared CE? Shared (Fresh water, Monitoring)</p></li>
+<li><p>Paleo Context? No</p></li>
+<li><dl class="simple">
+<dt>Preexisting interaction records? Yes</dt><dd><ul>
+<li><p>11 accessions</p></li>
+<li><p>1 loan (Entomology, Monitoring)</p></li>
+<li><p>3 loans (Malacology)</p></li>
+<li><p>2 gifts (Vertebrate)</p></li>
+<li><p>9 loans (Vertebrate)</p></li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><p>Collection Object Citations? Yes</p></li>
+<li><dl class="simple">
+<dt>Other notes:</dt><dd><ul>
+<li><p>No spadmin, sign in with petrifiedroadkill.</p></li>
+<li><p>Has Chronostratigraphy in Data Entry list for Entomology and Monitoring. Choosing this option causes an “Unable to get tree ranks” error.</p></li>
+<li><p>Malacology has a tree that causes API link errors due to skipping over required tree ranks. This is expected behavior.</p></li>
+<li><p>Malacology has a Reference Work and Accession Citations in its Data Entry list.</p></li>
+</ul>
+</dd>
+</dl>
+</li>
+</ul>
+</section>
+<section id="fitz-nhmd-oct-2023">
+<h2>Fitz_NHMD_Oct_2023<a class="headerlink" href="#fitz-nhmd-oct-2023" title="Link to this heading"></a></h2>
+<p><em>Last updated: 05/20/2024</em>
+* Disciplines: Botany, Entomology, Herpetology, Ichthyology, Invertebrate Paleontology, Invertebrate Zoology, Mammalogy, Ornithology, Vertebrate Paleontology, Other
+* Collections: 18</p>
+<blockquote>
+<div><ul class="simple">
+<li><p>NHMD Amber (64k+)</p></li>
+<li><p>NHMD Archaeozoology Comparative Birds (1)</p></li>
+<li><p>NHMD Archaeozoology Comparative Mammals (7)</p></li>
+<li><p>NHMD Biocultural Collections (1664)</p></li>
+<li><p>NHMD Danekrae (1033)</p></li>
+<li><p>NHMD Entomology (147k+)</p></li>
+<li><p>NHMD Exhibitions (773)</p></li>
+<li><p>NHMD Herpetology (7008)</p></li>
+<li><p>NHMD Ichthyology (228k+)</p></li>
+<li><p>NHMD Invertebrate Paleontology (4)</p></li>
+<li><p>NHMD Invertebrate Zoology (59k+)</p></li>
+<li><p>NHMD Mammalogy (24k+)</p></li>
+<li><p>NHMD Micropaleontology (1001)</p></li>
+<li><p>NHMD Mycology (0)</p></li>
+<li><p>NHMD Ornithology (68k+)</p></li>
+<li><p>NHMD Quaternary Zoology (33k+)</p></li>
+<li><p>NHMD Vascular Plants (408k+)</p></li>
+<li><p>NHMD Vertebrate Paleontology (19k+)</p></li>
+</ul>
+</div></blockquote>
+<ul class="simple">
+<li><dl class="simple">
+<dt>Tree size(s):</dt><dd><ul>
+<li><p>117k+ Taxon (Amber, Entomology)</p></li>
+<li><p>34k+ Taxon (Archaeozoology Comparative Birds)</p></li>
+<li><p>13k+ Taxon (Archaeozoology Comparative Mammals)</p></li>
+<li><p>1260 Taxon (Biocultural Collections)</p></li>
+<li><p>1508 Taxon (Danekrae)</p></li>
+<li><p>8567 Taxon (Exhibitions)</p></li>
+<li><p>49k+ Taxon (Herpetology)</p></li>
+<li><p>41k+ Taxon (Ichthyology)</p></li>
+<li><p>6 Taxon (Invertebrate Paleontology, Micropaleontology)</p></li>
+<li><p>37k+ Taxon (Invertebrate Zoology)</p></li>
+<li><p>13k+ Taxon (Mammalogy)</p></li>
+<li><p>1m+ Taxon (Mycology, Vascular Plants)</p></li>
+<li><p>34k+ Taxon (Ornithology)</p></li>
+<li><p>4206 Taxon (Quaternary Zoology, Vertebrate Paleontology)</p></li>
+<li><p>42k+ Geography</p></li>
+<li><p>40k+ Geography (Danekrae)</p></li>
+<li><p>40k+ Geography (Quaternary Zoology, Vertebrate Paleontology)</p></li>
+<li><p>269 Geography (Exhibitions)</p></li>
+<li><p>375 Geography (Invertebrate Zoology)</p></li>
+<li><p>40k+ Storage</p></li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><dl class="simple">
+<dt>Host taxon? No</dt><dd><ul>
+<li><p>When logged in as pnc907 in NHMD Ornithology there is a host taxon, however, it isn’t functional.</p></li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><p>Collection relationships? No</p></li>
+<li><p>RSS Feed? Yes</p></li>
+<li><p>Default forms? No</p></li>
+<li><p>Collection Object Attribute on forms? Yes (Amber, Archaeozoology Comparative Birds, Archaeozoology Comparative Mammals, Entomology, Herpetology, Ichthyology, Mammalogy, Ornithology)</p></li>
+<li><p>Embedded or Shared CE? Shared (Ichthyology)</p></li>
+<li><dl class="simple">
+<dt>Paleo Context? Yes (Danekrae*, Invertebrate Paleontology, Micropaleontology, Quaternary Zoology, Vertebrate Paleontology)</dt><dd><ul>
+<li><p>Embedded or Shared?</p></li>
+<li><p>Embedded (Danekrae, Quaternary Zoology, Vertebrate Paleontology)</p></li>
+<li><p>Shared (Invertebrate Paleontology, Micropaleontology)</p></li>
+<li><dl class="simple">
+<dt>Which form is it in?</dt><dd><ul>
+<li><p>Collection Object (Danekrae, Quaternary Zoology, Vertebrate Paleontology)</p></li>
+<li><p>Collecting Event (Invertebrate Paleontology, Micropaleontology)</p></li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><p>Chronostrat records? Yes</p></li>
+<li><p>Lithostrat records? Yes</p></li>
+<li><p>Paleomap plugin? Yes (Quaternary Zoology, Vertebrate Zoology)</p></li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><dl class="simple">
+<dt>Preexisting interaction records? Yes</dt><dd><ul>
+<li><p>258 accessions</p></li>
+<li><p>42 loans (Amber, Entomology)</p></li>
+<li><p>23 loans (Archaeozoology Comparative Birds)</p></li>
+<li><p>1 exchange out (Invertebrate Paleontology, Micropaleontology)</p></li>
+<li><p>5 gifts (Invertebrate Zoology)</p></li>
+<li><p>123 loans (Invertebrate Zoology)</p></li>
+<li><p>23 loans (Ornithology)</p></li>
+<li><p>1 exchange out (Quaternary Zoology, Vertebrate Paleontology)</p></li>
+<li><p>1 gift (Quaternary Zoology, Vertebrate Paleontology)</p></li>
+<li><p>72 loans (Quaternary Zoology, Vertebrate Paleontology)</p></li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><p>Collection Object Citations? Yes (Amber, Biocultural Collections, Danekrae, Entomology, Invertebrate Paleontology, Invertebrate Zoology, Micropaleontology, Quaternary Zoology)</p></li>
+<li><dl class="simple">
+<dt>Other notes:</dt><dd><ul>
+<li><p>/<a href="#id1"><span class="problematic" id="id2">*</span></a>While Danekrae does have Paleo Context, its forms for it are currently incorrect.</p></li>
+<li><p>Has Chronostratigraphy in Data Entry list for Amber and Entomology. Choosing this option causes an “Unable to get tree ranks” error.</p></li>
+<li><p>Biocultural Collections has Paleo Context in its forms, but cannot use it. Trying to add or search for Lithostratigraphies results in an error due to the table not existing for it.</p></li>
+<li><p>Has ContainerPlugin and webLinkButton plugins, which haven’t been added to Specify 7 yet.</p></li>
+<li><p>Some collections do not have collecting information on their forms at all (Exhibitions, Invertebrate Zoology).</p></li>
+</ul>
+</dd>
+</dl>
+</li>
+</ul>
+</section>
+<section id="fwri-1-9-2024">
+<h2>fwri_1_9_2024<a class="headerlink" href="#fwri-1-9-2024" title="Link to this heading"></a></h2>
+<p><em>Last updated: 05/20/2024</em>
+* Disciplines: Ichthyology, Invertebrate Zoology
+* Collections: 2</p>
+<blockquote>
+<div><ul class="simple">
+<li><p>Ichthyology (34k+)</p></li>
+<li><p>Marine Invertebrates (168k+)</p></li>
+</ul>
+</div></blockquote>
+<ul class="simple">
+<li><dl class="simple">
+<dt>Tree size(s):</dt><dd><ul>
+<li><p>36k+ Taxon (Ichthyology)</p></li>
+<li><p>10k+ Taxon (Marine Invertebrates)</p></li>
+<li><p>42k+ Geography</p></li>
+<li><p>1771 Storage</p></li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><p>Host taxon? No</p></li>
+<li><p>Collection relationships? No</p></li>
+<li><p>RSS Feed? Yes</p></li>
+<li><p>Default forms? No</p></li>
+<li><p>Collection Object Attribute on forms? Yes</p></li>
+<li><p>Embedded or Shared CE? Shared</p></li>
+<li><p>Paleo Context? No</p></li>
+<li><dl class="simple">
+<dt>Preexisting interaction records? Yes</dt><dd><ul>
+<li><p>115 accessions (Ichthyology)</p></li>
+<li><p>2 borrows (Ichthyology)</p></li>
+<li><p>1 gift (Ichthyology)</p></li>
+<li><p>22 loans (Ichthyology)</p></li>
+<li><p>103 borrows (Marine Invertebrates)</p></li>
+<li><p>8 gifts (Marine Invertebrates)</p></li>
+<li><p>411 loans (Marine Invertebrates)</p></li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><p>Collection Object Citations? No</p></li>
+<li><dl class="simple">
+<dt>Other notes:</dt><dd><ul>
+<li><p>Can’t add Collecting Event to Collection Object in Marine Invertebrates.</p></li>
+</ul>
+</dd>
+</dl>
+</li>
+</ul>
+</section>
+<section id="herb-3-21-24">
+<h2>herb_3_21_24<a class="headerlink" href="#herb-3-21-24" title="Link to this heading"></a></h2>
+<p><em>Last updated: 05/20/2024</em>
+* Disciplines: Botany
+* Collections: 1</p>
+<blockquote>
+<div><ul class="simple">
+<li><p>Herbarium (1m+)</p></li>
+</ul>
+</div></blockquote>
+<ul class="simple">
+<li><dl class="simple">
+<dt>Tree size(s):</dt><dd><ul>
+<li><p>323k+ Taxon</p></li>
+<li><p>184k+ Geography</p></li>
+<li><p>26k+ Storage</p></li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><p>Host taxon? No</p></li>
+<li><p>Collection relationships? No</p></li>
+<li><p>RSS Feed? No</p></li>
+<li><p>Default forms? No</p></li>
+<li><p>Collection Object Attribute on forms? No</p></li>
+<li><p>Embedded or Shared CE? Embedded</p></li>
+<li><p>Paleo Context? No</p></li>
+<li><dl class="simple">
+<dt>Preexisting interaction records? Yes</dt><dd><ul>
+<li><p>1679 accessions</p></li>
+<li><p>2173 borrows</p></li>
+<li><p>1106 gifts</p></li>
+<li><p>2990 loans</p></li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><p>Collection Object Citations? No</p></li>
+<li><dl class="simple">
+<dt>Other notes:</dt><dd><ul>
+<li><p>Can’t open the Common form definition due to a UnicodeDecodeError.</p></li>
+<li><p>ExchangeOut is used for Gifts, and Gifts are used for Destructive Sampling.</p></li>
+</ul>
+</dd>
+</dl>
+</li>
+</ul>
+</section>
+<section id="herb-rgbe-2-5-2024">
+<h2>herb_rgbe_2_5_2024<a class="headerlink" href="#herb-rgbe-2-5-2024" title="Link to this heading"></a></h2>
+<p>Last updated: 05/20/2024
+* Disciplines: Botany
+* Collections: 1</p>
+<blockquote>
+<div><ul class="simple">
+<li><p>Herbarium (1m+)</p></li>
+</ul>
+</div></blockquote>
+<ul class="simple">
+<li><dl class="simple">
+<dt>Tree size(s):</dt><dd><ul>
+<li><p>322k+ Taxon</p></li>
+<li><p>184k+ Geography</p></li>
+<li><p>26k+ Storage</p></li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><p>Host taxon? No</p></li>
+<li><p>Collection relationships? No</p></li>
+<li><p>RSS Feed? Yes</p></li>
+<li><p>Default forms? No</p></li>
+<li><p>Collection Object Attribute on forms? Yes</p></li>
+<li><p>Embedded or Shared CE? Embedded</p></li>
+<li><p>Paleo Context? No</p></li>
+<li><dl class="simple">
+<dt>Preexisting interaction records? Yes</dt><dd><ul>
+<li><p>1659 accessions</p></li>
+<li><p>2169 borrows</p></li>
+<li><p>1101 gifts</p></li>
+<li><p>2984 loans</p></li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><p>Collection Object Citations? No</p></li>
+<li><dl class="simple">
+<dt>Other notes:</dt><dd><ul>
+<li><p>Same as herb_3_21_24: Can’t open the Common form definition due to a UnicodeDecodeError.</p></li>
+<li><p>Same as herb_3_21_24: ExchangeOut is used for Gifts and Gifts are used for Destructive Sampling.</p></li>
+<li><p>Copy of herb_3_21_24 but with an RSS feed it seems.</p></li>
+</ul>
+</dd>
+</dl>
+</li>
+</ul>
+</section>
+<section id="herb-rgbe-20240419">
+<h2>herb_rgbe_20240419<a class="headerlink" href="#herb-rgbe-20240419" title="Link to this heading"></a></h2>
+<p><em>Last updated: 05/20/2024</em>
+* See herb_rgbe_2_5_2024.
+* Tree size(s):</p>
+<blockquote>
+<div><ul class="simple">
+<li><p>324k+ Taxon</p></li>
+<li><p>184k+ Geography</p></li>
+<li><p>27k+ Storage</p></li>
+</ul>
+</div></blockquote>
+<ul class="simple">
+<li><p>RSS Feed? No</p></li>
+<li><dl class="simple">
+<dt>Preexisting interaction records? Yes</dt><dd><ul>
+<li><p>1679 accessions</p></li>
+<li><p>2175 borrows</p></li>
+<li><p>1106 gifts</p></li>
+<li><p>2990 loans</p></li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><p>Collection Object Citations? No</p></li>
+<li><dl class="simple">
+<dt>Other notes:</dt><dd><ul>
+<li><p>Same notes as mentioned database.</p></li>
+</ul>
+</dd>
+</dl>
+</li>
+</ul>
+<p>hujinnhc_9_6_23
+<em>——————-
+Last updated: 05/20/2024</em>
+* Disciplines: Botany, Entomology, Herpetology, Invertebrate Zoology, Mammalogy, Ornithology, Other
+* Collections: 25</p>
+<blockquote>
+<div><ul class="simple">
+<li><p>Acari (0)</p></li>
+<li><p>Algae (1)</p></li>
+<li><p>Amblypygi (0)</p></li>
+<li><p>Araneae (0)</p></li>
+<li><p>Aves (0)</p></li>
+<li><p>Bryophytes (0)</p></li>
+<li><p>Centipede (0)</p></li>
+<li><p>Crustacean (0)</p></li>
+<li><p>CryoBank (0)</p></li>
+<li><p>Insects (0)</p></li>
+<li><p>Ixodoidea (0)</p></li>
+<li><p>Lichens (0)</p></li>
+<li><p>Mammals (0)</p></li>
+<li><p>Millipede (0)</p></li>
+<li><p>Opiliones (0)</p></li>
+<li><p>Other arachnids (0)</p></li>
+<li><p>Palpigradi (0)</p></li>
+<li><p>Phytopathogenic (0)</p></li>
+<li><p>Pseudoscorpiones (0)</p></li>
+<li><p>Reptiles &amp; Amphibians (0)</p></li>
+<li><p>Scorpiones (0)</p></li>
+<li><p>Skeleton-A (0)</p></li>
+<li><p>Skeleton-Z (0)</p></li>
+<li><p>Solifugae (0)</p></li>
+<li><p>Vascular (4)</p></li>
+</ul>
+</div></blockquote>
+<ul class="simple">
+<li><dl class="simple">
+<dt>Tree size(s):</dt><dd><ul>
+<li><p>105k+ Taxon (Acari, Amblypygi, Araneae, Ixodoidea, Millipedes, Other arachnids, Palpigradi, Pseudoscorpiones, Scorpiones, Solifugae)</p></li>
+<li><p>1856 Taxon (Algae)</p></li>
+<li><p>32k+ Taxon (Aves)</p></li>
+<li><p>19k+ Taxon (Bryophytes)</p></li>
+<li><p>6392 Taxon (Centipede)</p></li>
+<li><p>84k+ Taxon (Crustacean)</p></li>
+<li><p>40k+ Taxon (CryoBank)</p></li>
+<li><p>1m+ Taxon (Insects)</p></li>
+<li><p>998 Taxon (Lichens)</p></li>
+<li><p>1 Taxon (Mammals)</p></li>
+<li><p>6392 Taxon (Millipede)</p></li>
+<li><p>140k+ Taxon (Phytopathogenic)</p></li>
+<li><p>24k+ Taxon (Reptiles &amp; Amphibians)</p></li>
+<li><p>32k+ Taxon (Skeleton-A)</p></li>
+<li><p>24k+ Taxon (Skeleton-Z)</p></li>
+<li><p>385k+ Taxon (Vascular)</p></li>
+<li><p>42k+ Geography</p></li>
+<li><p>1 Storage</p></li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><p>Host taxon? No</p></li>
+<li><p>Collection relationships? No</p></li>
+<li><p>RSS Feed? No</p></li>
+<li><p>Default forms? No</p></li>
+<li><p>Collection Object Attribute on forms? Yes, all except Phytopathogenic, Lichens, Vascular, and Cryobank.</p></li>
+<li><p>Embedded or Shared CE? Shared</p></li>
+<li><dl class="simple">
+<dt>Paleo Context? Yes (CryoBank)</dt><dd><ul>
+<li><p>Embedded or Shared? Shared</p></li>
+<li><p>Which form is it in? Collecting Event</p></li>
+<li><p>Chronostrat records? Yes</p></li>
+<li><p>Lithostrat records? Yes</p></li>
+<li><p>Paleomap plugin? No</p></li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><p>Preexisting interaction records? No</p></li>
+<li><p>Collection Object Citations? No</p></li>
+<li><dl class="simple">
+<dt>Other notes:</dt><dd><ul>
+<li><p>Has Chronostratigraphy in Data Entry list for many collections. Choosing this option causes an “Unable to get tree ranks” error.</p></li>
+</ul>
+</dd>
+</dl>
+</li>
+</ul>
+</section>
+<section id="jerusalem-with-changes-2-19">
+<h2>jerusalem_with_changes_2_19<a class="headerlink" href="#jerusalem-with-changes-2-19" title="Link to this heading"></a></h2>
+<p><em>Last updated: 05/21/2024</em>
+* Disciplines: Botany, Entomology, Herpetology, Ichthyology, Invertebrate Zoology, Other
+* Collections: 15</p>
+<blockquote>
+<div><ul class="simple">
+<li><p>Algae (0)</p></li>
+<li><p>Aves (0)</p></li>
+<li><p>Bryophytes (0)</p></li>
+<li><p>Chelicerata (0)</p></li>
+<li><p>CryoBank (0)</p></li>
+<li><p>Fish (0)</p></li>
+<li><p>Fungi (18k+)</p></li>
+<li><p>Lichens (1)</p></li>
+<li><p>Mandibulata (0)</p></li>
+<li><p>Marine invertebrates (1)</p></li>
+<li><p>Mollusca (1)</p></li>
+<li><p>Osteology (0)</p></li>
+<li><p>Plankton (1)</p></li>
+<li><p>Reptiles &amp; Amphibians (7)</p></li>
+<li><p>Vascular (21)</p></li>
+</ul>
+</div></blockquote>
+<ul class="simple">
+<li><dl class="simple">
+<dt>Tree size(s):</dt><dd><ul>
+<li><p>1856 Taxon (Algae)</p></li>
+<li><p>32k+ Taxon (Aves)</p></li>
+<li><p>19k+ Taxon (Bryophytes)</p></li>
+<li><p>105k+ Taxon (Chelicerata, Mandibulata)</p></li>
+<li><p>40k+ Taxon (CryoBank, Osteology)</p></li>
+<li><p>1 Taxon (Fish)</p></li>
+<li><p>145k+ Taxon (Fungi, Lichens)</p></li>
+<li><p>6392 Taxon (Marine invertebrates, Plankton)</p></li>
+<li><p>1m+ Taxon (Mollusca)</p></li>
+<li><p>24k+ Taxon (Reptiles &amp; Amphibians)</p></li>
+<li><p>385k+ Taxon (Vascular)</p></li>
+<li><p>42k+ Geography</p></li>
+<li><p>45k+ Geography (Chelicerata, Mandibulata, Reptiles &amp; Amphibians, Vascular)</p></li>
+<li><p>47k+ Geography (Fungi, Lichens)</p></li>
+<li><p>8410 Storage</p></li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><p>Host taxon? Yes (Fungi, Lichens)</p></li>
+<li><p>Collection relationships? No</p></li>
+<li><p>RSS Feed? No</p></li>
+<li><p>Default forms? No</p></li>
+<li><p>Collection Object Attribute on forms? Yes, except for Algae, Bryophytes, Fungi, Lichens, Vascular, CryoBank and Osteology</p></li>
+<li><p>Embedded or Shared CE? Shared</p></li>
+<li><dl class="simple">
+<dt>Paleo Context? Yes (Cryobank, Osteology)</dt><dd><ul>
+<li><p>Embedded or Shared? Shared</p></li>
+<li><p>Which form is it in? Collecting Event</p></li>
+<li><p>Chronostrat records? Yes</p></li>
+<li><p>Lithostrat records? Yes</p></li>
+<li><p>Paleomap plugin? No</p></li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><p>Preexisting interaction records? No</p></li>
+<li><p>Collection Object Citations? Yes (Algae, Cryobank, Fungi, Lichens, Osteology, Vascular)</p></li>
+<li><dl class="simple">
+<dt>Other notes:</dt><dd><ul>
+<li><p>Has Chronostratigraphy in Data Entry list for Chelicerata, . Choosing this option causes an “Unable to get tree ranks” error.</p></li>
+</ul>
+</dd>
+</dl>
+</li>
+</ul>
+</section>
+<section id="ku-fish-demo">
+<h2>KU_Fish_Demo<a class="headerlink" href="#ku-fish-demo" title="Link to this heading"></a></h2>
+<p><em>Last updated: 05/21/2024</em>
+* Disciplines: Ichthyology
+* Collections: 4</p>
+<blockquote>
+<div><ul class="simple">
+<li><p>KU Fish Observation Collection (5068)</p></li>
+<li><p>KU Fish Teaching Collection (564)</p></li>
+<li><p>KU Fish Tissue Collection (11k+)</p></li>
+<li><p>KU Fish Voucher Collection (43k+)</p></li>
+</ul>
+</div></blockquote>
+<ul class="simple">
+<li><dl class="simple">
+<dt>Tree size(s):</dt><dd><ul>
+<li><p>16k+ Taxon</p></li>
+<li><p>1900 Geography</p></li>
+<li><p>7 Storage</p></li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><p>Host taxon? No</p></li>
+<li><p>Collection relationships? Yes (Voucher)</p></li>
+<li><p>RSS Feed? Yes</p></li>
+<li><p>Default forms? No</p></li>
+<li><p>Collection Object Attribute on forms? Yes</p></li>
+<li><p>Embedded or Shared CE? Shared</p></li>
+<li><p>Paleo Context? No</p></li>
+<li><dl class="simple">
+<dt>Preexisting interaction records? Yes</dt><dd><ul>
+<li><p>806 accessions</p></li>
+<li><p>602 gifts</p></li>
+<li><p>329 loans</p></li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><p>Collection Object Citations? Yes (Tissue)</p></li>
+<li><dl class="simple">
+<dt>Other notes:</dt><dd><ul>
+<li><p>All KU Fish databases have generally the same trees and features, amount of records being the only change between each.</p></li>
+<li><p>All KU Fish databases are commonly used.</p></li>
+</ul>
+</dd>
+</dl>
+</li>
+</ul>
+</section>
+<section id="ku-fish-tissue-2024-01-24">
+<h2>KU_Fish_Tissue_2024_01_24<a class="headerlink" href="#ku-fish-tissue-2024-01-24" title="Link to this heading"></a></h2>
+<p><em>Last updated: 05/21/2024</em>
+* See KU_Fish_Demo.
+* Collection Object Citations? Yes (Teaching, Tissue)
+* Other notes:</p>
+<blockquote>
+<div><ul class="simple">
+<li><p>Collection Object form is significantly different in Teaching, and has Right and Left side relationships.</p></li>
+<li><p>Accessions are hidden from queries in Observation.</p></li>
+</ul>
+</div></blockquote>
+</section>
+<section id="kubirds-8-25-23">
+<h2>KUBirds_8_25_23<a class="headerlink" href="#kubirds-8-25-23" title="Link to this heading"></a></h2>
+<p><em>Last updated: 05/21/2024</em>
+* Disciplines: Ornithology
+* Collections: 1</p>
+<blockquote>
+<div><ul class="simple">
+<li><p>Ornithology (128k+)</p></li>
+</ul>
+</div></blockquote>
+<ul class="simple">
+<li><dl class="simple">
+<dt>Tree size(s):</dt><dd><ul>
+<li><p>38k+ Taxon</p></li>
+<li><p>2591 Geography</p></li>
+<li><p>1 Storage</p></li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><p>Host taxon? No</p></li>
+<li><p>Collection relationships? No</p></li>
+<li><p>RSS Feed? Yes</p></li>
+<li><p>Default forms? No</p></li>
+<li><p>Collection Object Attribute on forms? Yes</p></li>
+<li><p>Embedded or Shared CE? Embedded</p></li>
+<li><p>Paleo Context? No</p></li>
+<li><dl class="simple">
+<dt>Preexisting interaction records? Yes</dt><dd><ul>
+<li><p>17 accessions</p></li>
+<li><p>4 gifts</p></li>
+<li><p>254 loans</p></li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><p>Collection Object Citations? No</p></li>
+<li><dl class="simple">
+<dt>Other notes:</dt><dd><ul>
+<li><p>Used often.</p></li>
+</ul>
+</dd>
+</dl>
+</li>
+</ul>
+</section>
+<section id="kufish-2-12">
+<h2>kufish_2_12<a class="headerlink" href="#kufish-2-12" title="Link to this heading"></a></h2>
+<p><em>Last updated: 05/21/2024</em>
+* See KU_Fish_Demo.
+* Other notes: N/A</p>
+</section>
+<section id="kufish-2-12-again">
+<h2>kufish_2_12_again<a class="headerlink" href="#kufish-2-12-again" title="Link to this heading"></a></h2>
+<p><em>Last updated: 05/21/2024</em>
+* See KU_Fish_Demo.
+* Collection Object Citations? Yes (Teaching, Tissue)
+* Other notes:</p>
+<blockquote>
+<div><ul class="simple">
+<li><p>Has same form for Collection Object in Teaching as KU_Fish_Tissue_2024_01_24.</p></li>
+</ul>
+</div></blockquote>
+</section>
+<section id="kufish-5-16-23">
+<h2>KUFish_5_16_23<a class="headerlink" href="#kufish-5-16-23" title="Link to this heading"></a></h2>
+<p><em>Last updated: 05/21/2024</em>
+* Collections: 4</p>
+<blockquote>
+<div><ul class="simple">
+<li><p>KU Fish Observation Collection (3885)</p></li>
+<li><p>Otherwise similar to KU_Fish_Demo.</p></li>
+</ul>
+</div></blockquote>
+<ul class="simple">
+<li><p>Host taxon? Yes (Observation)</p></li>
+<li><p>Collection relationships? Yes (Observation)</p></li>
+<li><dl class="simple">
+<dt>Preexisting interaction records? Yes</dt><dd><ul>
+<li><p>2 exchange outs</p></li>
+<li><p>Otherwise similar to KU_Fish_Demo.</p></li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><dl class="simple">
+<dt>Other notes:</dt><dd><ul>
+<li><p>Significant changes to the Locality data entry form for plugin testing.</p></li>
+<li><p>No collection relationship in Voucher.</p></li>
+</ul>
+</dd>
+</dl>
+</li>
+</ul>
+</section>
+<section id="kuherps-8-17-23">
+<h2>KUHerps_8_17_23<a class="headerlink" href="#kuherps-8-17-23" title="Link to this heading"></a></h2>
+<p><em>Last updated: 05/21/2024</em>
+* Disciplines: Herpetology
+* Collections: 3</p>
+<blockquote>
+<div><ul class="simple">
+<li><p>Digital Archive (0)</p></li>
+<li><p>Herpetology (351k+)</p></li>
+<li><p>Observation (0)</p></li>
+</ul>
+</div></blockquote>
+<ul class="simple">
+<li><dl class="simple">
+<dt>Tree size(s):</dt><dd><ul>
+<li><p>9245 Taxon</p></li>
+<li><p>3646 Geography</p></li>
+<li><p>11 Storage</p></li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><p>Host taxon? No</p></li>
+<li><p>Collection relationships? No</p></li>
+<li><p>RSS Feed? No</p></li>
+<li><p>Default forms? Yes, except Herpetology</p></li>
+<li><dl class="simple">
+<dt>Collection Object Attribute on forms? Yes</dt><dd><ul>
+<li><p>CoA button in Herpetology</p></li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><p>Embedded or Shared CE? Embedded</p></li>
+<li><p>Paleo Context? No</p></li>
+<li><dl class="simple">
+<dt>Preexisting interaction records? Yes</dt><dd><ul>
+<li><p>242 accessions</p></li>
+<li><p>152 gifts</p></li>
+<li><p>1364 loans</p></li>
+<li><p>5 borrows (Herpetology)</p></li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><p>Collection Object Citations? Yes (Herpetology)</p></li>
+<li><p>Other notes: N/A</p></li>
+</ul>
+</section>
+<section id="kumam-barcodes">
+<h2>kumam_barcodes<a class="headerlink" href="#kumam-barcodes" title="Link to this heading"></a></h2>
+<p><em>Last updated: 05/21/2024</em>
+* Disciplines: Mammalogy
+* Collections: 2</p>
+<blockquote>
+<div><ul class="simple">
+<li><p>Mammalogy (170k+)</p></li>
+<li><p>Mammalogy teaching (1)</p></li>
+</ul>
+</div></blockquote>
+<ul class="simple">
+<li><dl class="simple">
+<dt>Tree size(s):</dt><dd><ul>
+<li><p>6155 Taxon</p></li>
+<li><p>2770 Geography</p></li>
+<li><p>8340 Storage</p></li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><p>Host taxon? No</p></li>
+<li><p>Collection relationships? No</p></li>
+<li><p>RSS Feed? No</p></li>
+<li><p>Default forms? No</p></li>
+<li><p>Collection Object Attribute on forms? Yes</p></li>
+<li><p>Embedded or Shared CE? Embedded</p></li>
+<li><p>Paleo Context? No</p></li>
+<li><dl class="simple">
+<dt>Preexisting interaction records? Yes</dt><dd><ul>
+<li><p>2231 accessions</p></li>
+<li><p>1 gift</p></li>
+<li><p>27 loans</p></li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><p>Collection Object Citations? Yes</p></li>
+<li><p>Other notes: N/A</p></li>
+</ul>
+</section>
+<section id="kupaleobot-8-31-2023">
+<h2>KUPaleoBot_8_31_2023<a class="headerlink" href="#kupaleobot-8-31-2023" title="Link to this heading"></a></h2>
+<p><em>Last updated: 05/21/2024</em>
+* Disciplines: Paleobotany
+* Collections: 1</p>
+<blockquote>
+<div><ul class="simple">
+<li><p>Paleobotany (123k+)</p></li>
+</ul>
+</div></blockquote>
+<ul class="simple">
+<li><dl class="simple">
+<dt>Tree size(s):</dt><dd><ul>
+<li><p>4499 Taxon</p></li>
+<li><p>553 Geography</p></li>
+<li><p>942 Storage</p></li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><p>Host taxon? No</p></li>
+<li><p>Collection relationships? No</p></li>
+<li><p>RSS Feed? No</p></li>
+<li><p>Default forms? Yes</p></li>
+<li><p>Collection Object Attribute on forms? No</p></li>
+<li><p>Embedded or Shared CE? Embedded</p></li>
+<li><dl class="simple">
+<dt>Paleo Context? Yes</dt><dd><ul>
+<li><p>Embedded or Shared? Shared</p></li>
+<li><p>Which form is it in? Collecting Event</p></li>
+<li><p>Chronostrat records? Yes</p></li>
+<li><p>Lithostrat records? Yes</p></li>
+<li><p>Paleomap plugin? Yes</p></li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><dl class="simple">
+<dt>Preexisting interaction records? Yes</dt><dd><ul>
+<li><p>11 accessions</p></li>
+<li><p>4 loans</p></li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><p>Collection Object Citations? Yes</p></li>
+<li><dl class="simple">
+<dt>Other notes:</dt><dd><ul>
+<li><p>Paleo Views form definition broken and the XML cannot be parsed by Specify. Otherwise, it works.</p></li>
+</ul>
+</dd>
+</dl>
+</li>
+</ul>
+</section>
+<section id="kuvascularplants-4-16-24">
+<h2>KUVascularPlants_4_16_24<a class="headerlink" href="#kuvascularplants-4-16-24" title="Link to this heading"></a></h2>
+<p><em>Last updated: 05/21/2024</em>
+* Disciplines: Botany
+* Collections: 1</p>
+<blockquote>
+<div><ul class="simple">
+<li><p>Vascular Plant (321k+)</p></li>
+</ul>
+</div></blockquote>
+<ul class="simple">
+<li><dl class="simple">
+<dt>Tree size(s):</dt><dd><ul>
+<li><p>66k+ Taxon</p></li>
+<li><p>4207 Geography</p></li>
+<li><p>1 Storage</p></li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><p>Host taxon? No</p></li>
+<li><p>Collection relationships? No</p></li>
+<li><p>RSS Feed? Yes</p></li>
+<li><p>Default forms? No</p></li>
+<li><p>Collection Object Attribute on forms? Yes</p></li>
+<li><p>Embedded or Shared CE? Shared</p></li>
+<li><p>Paleo Context? No</p></li>
+<li><dl class="simple">
+<dt>Preexisting interaction records? Yes</dt><dd><ul>
+<li><p>569 accessions</p></li>
+<li><p>1 gift</p></li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><p>Collection Object Citations? Yes</p></li>
+<li><p>Other notes: N/A</p></li>
+</ul>
+</section>
+<section id="kuvertpaleo-5-16-2024">
+<h2>KUVertPaleo_5_16_2024<a class="headerlink" href="#kuvertpaleo-5-16-2024" title="Link to this heading"></a></h2>
+<p><em>Last updated: 05/21/2024</em>
+* Disciplines: Vertebrate Paleontology
+* Collections: 3</p>
+<blockquote>
+<div><ul class="simple">
+<li><p>Cast Collection (3135)</p></li>
+<li><p>Natural Trap Cave (35k+)</p></li>
+<li><p>Vertebrate Paleontology  (97k+)</p></li>
+</ul>
+</div></blockquote>
+<ul class="simple">
+<li><dl class="simple">
+<dt>Tree size(s):</dt><dd><ul>
+<li><p>7432 Taxon</p></li>
+<li><p>497 Geography</p></li>
+<li><p>2018 Storage</p></li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><p>Host taxon? No</p></li>
+<li><p>Collection relationships? No</p></li>
+<li><p>RSS Feed? No</p></li>
+<li><p>Default forms? No</p></li>
+<li><p>Collection Object Attribute on forms? No</p></li>
+<li><p>Embedded or Shared CE? Embedded</p></li>
+<li><dl class="simple">
+<dt>Paleo Context? Yes</dt><dd><ul>
+<li><p>Embedded or Shared? Embedded</p></li>
+<li><p>Which form is it in? Collection Object</p></li>
+<li><p>Chronostrat records? Yes</p></li>
+<li><p>Lithostrat records? Yes</p></li>
+<li><p>Paleomap plugin? Yes</p></li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><dl class="simple">
+<dt>Preexisting interaction records? Yes</dt><dd><ul>
+<li><p>367 accessions</p></li>
+<li><p>4 exchange outs</p></li>
+<li><p>1 gift</p></li>
+<li><p>922 loans</p></li>
+<li><p>327 borrows (Vertebrate Paleontology)</p></li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><p>Collection Object Citations? Yes</p></li>
+<li><p>Other notes: N/A</p></li>
+</ul>
+</section>
+<section id="lsumz-mammals-4-25-24">
+<h2>lsumz_mammals_4_25_24<a class="headerlink" href="#lsumz-mammals-4-25-24" title="Link to this heading"></a></h2>
+<p><em>Last updated: 05/21/2024</em>
+* Disciplines: Mammalogy
+* Collections: 1</p>
+<blockquote>
+<div><ul class="simple">
+<li><p>mammals (41k+)</p></li>
+</ul>
+</div></blockquote>
+<ul class="simple">
+<li><dl class="simple">
+<dt>Tree size(s):</dt><dd><ul>
+<li><p>8909 Taxon</p></li>
+<li><p>36k+ Geography</p></li>
+<li><p>1 Storage</p></li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><p>Host taxon? No</p></li>
+<li><p>Collection relationships? No</p></li>
+<li><p>RSS Feed? No</p></li>
+<li><p>Default forms? No</p></li>
+<li><p>Collection Object Attribute on forms? Yes</p></li>
+<li><p>Embedded or Shared CE? Embedded</p></li>
+<li><p>Paleo Context? No</p></li>
+<li><dl class="simple">
+<dt>Preexisting interaction records? Yes</dt><dd><ul>
+<li><p>1 accession</p></li>
+<li><p>2 gifts</p></li>
+<li><p>83 loans</p></li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><p>Collection Object Citations? No</p></li>
+<li><dl class="simple">
+<dt>Other notes:</dt><dd><ul>
+<li><p>lsumz_mammals_9_8_2023 is very similar outside of having an RSS feed and a different number of records.</p></li>
+</ul>
+</dd>
+</dl>
+</li>
+</ul>
+</section>
+<section id="lsumz-mammals-9-8-2023">
+<h2>lsumz_mammals_9_8_2023<a class="headerlink" href="#lsumz-mammals-9-8-2023" title="Link to this heading"></a></h2>
+<p><em>Last updated: 05/21/2024</em>
+* See lsumz_mammals_4_25_24.
+* RSS Feed? Yes
+* Other notes: N/A</p>
+</section>
+<section id="mcnb-6-29-23-202307082235">
+<h2>mcnb_6_29_23_202307082235<a class="headerlink" href="#mcnb-6-29-23-202307082235" title="Link to this heading"></a></h2>
+<p><em>Last updated: 05/21/2024</em>
+* Disciplines: Invertebrate Zoology
+* Collections: 1</p>
+<blockquote>
+<div><ul class="simple">
+<li><p>Invertebrate non-arthropod</p></li>
+</ul>
+</div></blockquote>
+<ul class="simple">
+<li><dl class="simple">
+<dt>Tree size(s):</dt><dd><ul>
+<li><p>2123 Taxon</p></li>
+<li><p>643 Geography</p></li>
+<li><p>9751 Storage</p></li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><p>Host taxon? No</p></li>
+<li><p>Collection relationships? No</p></li>
+<li><p>RSS Feed? No</p></li>
+<li><p>Default forms? No</p></li>
+<li><p>Collection Object Attribute on forms? Yes</p></li>
+<li><p>Embedded or Shared CE? Embedded</p></li>
+<li><p>Paleo Context? No</p></li>
+<li><dl class="simple">
+<dt>Preexisting interaction records? Yes</dt><dd><ul>
+<li><p>3284 accessions</p></li>
+<li><p>7 loans</p></li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><p>Collection Object Citations? No</p></li>
+<li><dl class="simple">
+<dt>Other notes:</dt><dd><ul>
+<li><p>In Spanish.</p></li>
+</ul>
+</dd>
+</dl>
+</li>
+</ul>
+</section>
+<section id="montreal-canadian-cloud-backup">
+<h2>montreal_canadian_cloud_backup<a class="headerlink" href="#montreal-canadian-cloud-backup" title="Link to this heading"></a></h2>
+<p><em>Last updated: 05/21/2024</em>
+* Disciplines: Entomology
+* Collections: 1</p>
+<blockquote>
+<div><ul class="simple">
+<li><p>Insectarium (2504)</p></li>
+</ul>
+</div></blockquote>
+<ul class="simple">
+<li><dl class="simple">
+<dt>Tree size(s):</dt><dd><ul>
+<li><p>30k+ Taxon</p></li>
+<li><p>42k+ Geography</p></li>
+<li><p>1 Storage</p></li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><p>Host taxon? No</p></li>
+<li><p>Collection relationships? No</p></li>
+<li><p>RSS Feed? Yes</p></li>
+<li><p>Default forms? No</p></li>
+<li><p>Collection Object Attribute on forms? Yes</p></li>
+<li><p>Embedded or Shared CE? Embedded</p></li>
+<li><p>Paleo Context? No</p></li>
+<li><dl class="simple">
+<dt>Preexisting interaction records? Yes</dt><dd><ul>
+<li><p>2500 accessions</p></li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><p>Collection Object Citations? No</p></li>
+<li><dl class="simple">
+<dt>Other notes:</dt><dd><ul>
+<li><p>Partially in French.</p></li>
+</ul>
+</dd>
+</dl>
+</li>
+</ul>
+</section>
+<section id="nbm-08-post-most-changes">
+<h2>nbm_08_post_most_changes<a class="headerlink" href="#nbm-08-post-most-changes" title="Link to this heading"></a></h2>
+<p><em>Last updated: 05/21/2024</em>
+* Disciplines: Herpetology, Ichthyology
+* Collections: 2</p>
+<blockquote>
+<div><ul class="simple">
+<li><p>Amphibian and Reptile Observations (269)</p></li>
+<li><p>Fish Voucher Collection (3656)</p></li>
+</ul>
+</div></blockquote>
+<ul class="simple">
+<li><dl class="simple">
+<dt>Tree size(s):</dt><dd><ul>
+<li><p>8900 Taxon (Amphibian and Reptile Observations)</p></li>
+<li><p>38k+ (Fish Voucher Collection)</p></li>
+<li><p>42k+ Geography</p></li>
+<li><p>1 Storage</p></li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><p>Host taxon? No</p></li>
+<li><p>Collection relationships? No</p></li>
+<li><p>RSS Feed? No</p></li>
+<li><p>Default forms? No</p></li>
+<li><p>Collection Object Attribute on forms? Yes</p></li>
+<li><p>Embedded or Shared CE? Shared (Fish Voucher Collection)</p></li>
+<li><p>Paleo Context? No</p></li>
+<li><p>Preexisting interaction records? No</p></li>
+<li><p>Collection Object Citations? Yes</p></li>
+<li><dl class="simple">
+<dt>Other notes:</dt><dd><ul>
+<li><p>Other nbm databases are very similar outside of having somewhat different form definitions.</p></li>
+</ul>
+</dd>
+</dl>
+</li>
+</ul>
+</section>
+<section id="nbm-eval-mar-25">
+<h2>nbm_eval_mar_25<a class="headerlink" href="#nbm-eval-mar-25" title="Link to this heading"></a></h2>
+<p><em>Last updated: 05/22/2024</em>
+* See nbm_08_post_most_changes.
+* Other notes:</p>
+<blockquote>
+<div><ul class="simple">
+<li><p>Collection Object form in Amphibian and Reptile Observations is significantly different from nbm_08_post_most_changes.</p></li>
+</ul>
+</div></blockquote>
+</section>
+<section id="nbmeval411">
+<h2>nbmeval411<a class="headerlink" href="#nbmeval411" title="Link to this heading"></a></h2>
+<p><em>Last updated: 05/22/2024</em>
+* See nbm_08_post_most_changes.
+* Other notes:</p>
+<blockquote>
+<div><ul class="simple">
+<li><p>Collection Object form in Amphibian and Reptile Observations is significantly different from nbm_08_post_most_changes.</p></li>
+</ul>
+</div></blockquote>
+</section>
+<section id="ohio-4-7-v3">
+<h2>ohio_4_7_v3<a class="headerlink" href="#ohio-4-7-v3" title="Link to this heading"></a></h2>
+<p><em>Last updated: 05/22/2024</em>
+* Disciplines: Invertebrate Zoology
+* Collections: 3</p>
+<blockquote>
+<div><ul class="simple">
+<li><p>Bivalves (39)</p></li>
+<li><p>Crustaceans (0)</p></li>
+<li><p>Gastropods (0)</p></li>
+</ul>
+</div></blockquote>
+<ul class="simple">
+<li><dl class="simple">
+<dt>Tree size(s):</dt><dd><ul>
+<li><p>1235 Taxon (Bivalves)</p></li>
+<li><p>42k+ Geography</p></li>
+<li><p>2 Storage</p></li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><p>Host taxon? No</p></li>
+<li><p>Collection relationships? No</p></li>
+<li><p>RSS Feed? No</p></li>
+<li><p>Default forms? No</p></li>
+<li><p>Collection Object Attribute on forms? No</p></li>
+<li><p>Embedded or Shared CE? Shared</p></li>
+<li><p>Paleo Context? No</p></li>
+<li><p>Preexisting interaction records? No</p></li>
+<li><p>Collection Object Citations? No</p></li>
+<li><dl class="simple">
+<dt>Other notes:</dt><dd><ul>
+<li><p>Other ohio databases are very similar outside of a difference in number of records. This version has pretty much nothing imported from Ohio’s database.</p></li>
+</ul>
+</dd>
+</dl>
+</li>
+</ul>
+</section>
+<section id="ohio-import-17">
+<h2>ohio_import_17<a class="headerlink" href="#ohio-import-17" title="Link to this heading"></a></h2>
+<p><em>Last updated: 05/22/2024</em>
+* See ohio_4_7_v3.
+* Collections: 3</p>
+<blockquote>
+<div><ul class="simple">
+<li><p>Bivalves (76k+)</p></li>
+<li><p>Otherwise similar to ohio_4_7_v3.</p></li>
+</ul>
+</div></blockquote>
+<ul class="simple">
+<li><dl class="simple">
+<dt>Tree size(s):</dt><dd><ul>
+<li><p>2484 Taxon</p></li>
+<li><p>42k+ Geography</p></li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><p>3 Storage</p></li>
+<li><p>Other notes: N/A</p></li>
+</ul>
+</section>
+<section id="ohio-to-import">
+<h2>ohio_to_import<a class="headerlink" href="#ohio-to-import" title="Link to this heading"></a></h2>
+<p><em>Last updated: 05/22/2024</em>
+* See ohio_4_7_v3.
+* Collections: 3</p>
+<blockquote>
+<div><ul class="simple">
+<li><p>Bivalves (0)</p></li>
+<li><p>Otherwise similar to ohio_4_7_v3.</p></li>
+</ul>
+</div></blockquote>
+<ul class="simple">
+<li><dl class="simple">
+<dt>Tree size(s):</dt><dd><ul>
+<li><p>2484 Taxon</p></li>
+<li><p>42k+ Geography</p></li>
+<li><p>1 Storage</p></li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><p>Other notes: N/A</p></li>
+</ul>
+</section>
+<section id="ohiodemotaxa">
+<h2>ohiodemotaxa<a class="headerlink" href="#ohiodemotaxa" title="Link to this heading"></a></h2>
+<p><em>Last updated: 05/22/2024</em>
+* See ohio_4_7_v3.
+* Collections: 3</p>
+<blockquote>
+<div><ul class="simple">
+<li><p>Bivalves (6)</p></li>
+<li><p>Otherwise similar to ohio_4_7_v3.</p></li>
+</ul>
+</div></blockquote>
+<ul class="simple">
+<li><p>Other notes: N/A</p></li>
+</ul>
+</section>
+<section id="ohiomollusk-lexi-5202024">
+<h2>ohiomollusk_lexi_5202024<a class="headerlink" href="#ohiomollusk-lexi-5202024" title="Link to this heading"></a></h2>
+<p><em>Last updated: 05/22/2024</em>
+* See ohio_4_7_v3.
+* Collections: 3</p>
+<blockquote>
+<div><ul class="simple">
+<li><p>Bivalves (76k+)</p></li>
+<li><p>Otherwise similar to ohio_4_7_v3.</p></li>
+</ul>
+</div></blockquote>
+<ul class="simple">
+<li><dl class="simple">
+<dt>Tree size(s):</dt><dd><ul>
+<li><p>2485 Taxon</p></li>
+<li><p>42k+ Geography</p></li>
+<li><p>3 Storage</p></li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><p>Collection Object Citations? Yes</p></li>
+<li><p>Other notes:</p></li>
+<li><dl class="simple">
+<dt>Do not modify.</dt><dd><ul>
+<li><p>Lexi’s copy of ohio_import_17 for form editing.</p></li>
+</ul>
+</dd>
+</dl>
+</li>
+</ul>
+</section>
+<section id="ohiomolluskdemo">
+<h2>OhioMolluskDemo<a class="headerlink" href="#ohiomolluskdemo" title="Link to this heading"></a></h2>
+<p><em>Last updated: 05/22/2024</em>
+* See ohio_4_7_v3.
+* Collections: 3</p>
+<blockquote>
+<div><ul class="simple">
+<li><p>Bivalves (0)</p></li>
+<li><p>Otherwise similar to ohio_4_7_v3.</p></li>
+</ul>
+</div></blockquote>
+<ul class="simple">
+<li><dl class="simple">
+<dt>Tree size(s):</dt><dd><ul>
+<li><p>1 Taxon</p></li>
+<li><p>42k+ Geography</p></li>
+<li><p>1 Storage</p></li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><p>Other notes: N/A</p></li>
+</ul>
+</section>
+<section id="ohiosemiimport">
+<h2>ohiosemiimport<a class="headerlink" href="#ohiosemiimport" title="Link to this heading"></a></h2>
+<p><em>Last updated: 05/22/2024</em>
+* See ohio_4_7_v3.
+* Other notes: N/A</p>
+</section>
+<section id="ohiosemiimport2">
+<h2>ohiosemiimport2<a class="headerlink" href="#ohiosemiimport2" title="Link to this heading"></a></h2>
+<p><em>Last updated: 05/22/2024</em>
+* See ohio_4_7_v3.
+* Tree size(s):</p>
+<blockquote>
+<div><ul class="simple">
+<li><p>2484 Taxon</p></li>
+<li><p>42k+ Geography</p></li>
+<li><p>3 Storage</p></li>
+</ul>
+</div></blockquote>
+<ul class="simple">
+<li><p>Other notes: N/A</p></li>
+</ul>
+</section>
+<section id="ohiosemiimport3">
+<h2>ohiosemiimport3<a class="headerlink" href="#ohiosemiimport3" title="Link to this heading"></a></h2>
+<p><em>Last updated: 05/22/2024</em>
+* See ohio_4_7_v3.
+* Tree size(s):</p>
+<blockquote>
+<div><ul class="simple">
+<li><p>2771 Taxon</p></li>
+<li><p>42k+ Geography</p></li>
+<li><p>2 Storage</p></li>
+</ul>
+</div></blockquote>
+<ul class="simple">
+<li><p>Other notes: N/A</p></li>
+</ul>
+</section>
+<section id="ojsmnh-1-10-24">
+<h2>ojsmnh_1_10_24<a class="headerlink" href="#ojsmnh-1-10-24" title="Link to this heading"></a></h2>
+<p><em>Last updated: 05/22/2024</em>
+* Disciplines: Botany, Herpetology, Ichthyology, Invertebrate Paleontology, Invertebrate Zoology, Mammalogy, Ornithology, Paleobotany, Vertebrate Paleontology
+* Collections: 9</p>
+<blockquote>
+<div><ul class="simple">
+<li><p>Botany (3)</p></li>
+<li><p>Fossil Invertebrates (302)</p></li>
+<li><p>Fossil Plants (218)</p></li>
+<li><p>Fossil Vertebrates (337)</p></li>
+<li><p>Herpetology (163)</p></li>
+<li><p>Ichthyology (11k+)</p></li>
+<li><p>Invertebrates (27k+)</p></li>
+<li><p>Mammalogy (133)</p></li>
+<li><p>Ornithology (0)</p></li>
+</ul>
+</div></blockquote>
+<ul class="simple">
+<li><dl class="simple">
+<dt>Tree size(s):</dt><dd><ul>
+<li><p>66k+ Taxon (Botany)</p></li>
+<li><p>14k+ Taxon (Fossil Invertebrates, Fossil Plants, Fossil Vertebrates)</p></li>
+<li><p>29k+ Taxon (Herpetology, Ichthyology, Mammalogy, Ornithology)</p></li>
+<li><p>142k+ Taxon (Invertebrates)</p></li>
+<li><p>4379 Geography</p></li>
+<li><p>4533 Geography (Invertebrates)</p></li>
+<li><p>1412 Storage</p></li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><p>Host taxon? Yes (Fossil Invertebrates, Fossil Plants)</p></li>
+<li><p>Collection relationships? No</p></li>
+<li><p>RSS Feed? No</p></li>
+<li><p>Default forms? No</p></li>
+<li><p>Collection Object Attribute on forms? Yes, all except Fossil Invertebrates and Ichthyology</p></li>
+<li><p>Embedded or Shared CE? Shared</p></li>
+<li><p>Paleo Context? Yes (Fossil Invertebrates, Fossil Plants, Fossil Vertebrates)</p></li>
+<li><p>Embedded or Shared? Shared</p></li>
+<li><p>Which form is it in? Locality</p></li>
+<li><p>Chronostrat records? Yes</p></li>
+<li><p>Lithostrat records? Yes</p></li>
+<li><p>Paleomap plugin? No</p></li>
+<li><dl class="simple">
+<dt>Preexisting interaction records? Yes</dt><dd><ul>
+<li><p>2 accessions</p></li>
+<li><p>1 loan (Herpetology, Ichthyology, Mammalogy, Ornithology)</p></li>
+<li><p>1 gift (Invertebrates)</p></li>
+<li><p>6 loans (Invertebrates)</p></li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><p>Collection Object Citations? No</p></li>
+<li><dl class="simple">
+<dt>Other notes:</dt><dd><ul>
+<li><p>Adjusted form definitions for Fossil Invertebrates due to Paleo Context being treated as embedded when it was shared.</p></li>
+<li><p>Host Taxon is within the Collecting Event Attribute form for both Fossil Invertebrates and Fossil Plants, however, only Fossil Invertebrates has Collecting Event Attribute on a reachable form.</p></li>
+<li><p>Paleo Context is in Locality for Fossil Plants and Fossil Vertebrates.</p></li>
+</ul>
+</dd>
+</dl>
+</li>
+</ul>
+</section>
+<section id="pripaleo-schemaupdated-cm-202304211540">
+<h2>PriPaleo_SchemaUpdated_CM_202304211540<a class="headerlink" href="#pripaleo-schemaupdated-cm-202304211540" title="Link to this heading"></a></h2>
+<p><em>Last updated: 05/22/2024</em>
+* Disciplines: Invertebrate Paleontology
+* Collections: 1</p>
+<blockquote>
+<div><ul class="simple">
+<li><p>Paleontological Research Institution (66k+)</p></li>
+</ul>
+</div></blockquote>
+<ul class="simple">
+<li><dl class="simple">
+<dt>Tree size(s):</dt><dd><ul>
+<li><p>29k+ Taxon</p></li>
+<li><p>4605 Geography</p></li>
+<li><p>113 Storage</p></li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><p>Host taxon? No</p></li>
+<li><p>Collection relationships? No</p></li>
+<li><p>RSS Feed? No</p></li>
+<li><p>Default forms? No</p></li>
+<li><p>Collection Object Attribute on forms? Yes (Invertebrate Paleontology)</p></li>
+<li><p>Embedded or Shared CE? Embedded</p></li>
+<li><dl class="simple">
+<dt>Paleo Context? Yes</dt><dd><ul>
+<li><p>Embedded or Shared? Shared</p></li>
+<li><p>Which form is it in? Collecting Event</p></li>
+<li><p>Chronostrat records? Yes</p></li>
+<li><p>Lithostrat records? Yes</p></li>
+<li><p>Paleomap plugin? Yes</p></li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><dl class="simple">
+<dt>Preexisting interaction records? Yes</dt><dd><ul>
+<li><p>1902 accessions</p></li>
+<li><p>1 gift</p></li>
+<li><p>176 loans</p></li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><p>Collection Object Citations? Yes</p></li>
+<li><p>Other notes: N/A</p></li>
+</ul>
+</section>
+<section id="saiab-11-24-23">
+<h2>SAIAB_11_24_23<a class="headerlink" href="#saiab-11-24-23" title="Link to this heading"></a></h2>
+<p><em>Last updated: 05/22/2024</em>
+* Disciplines: Botany, Herpetology, Ichthyology, Invertebrate Zoology, Mammalogy, Other
+* Collections: 14</p>
+<blockquote>
+<div><ul class="simple">
+<li><p>Alga Collection (65k+)</p></li>
+<li><p>Amphibian Collection (7046)</p></li>
+<li><p>Amphibian Observation (206)</p></li>
+<li><p>BRUV Fish (14k+)</p></li>
+<li><p>Fish Observation (17k+)</p></li>
+<li><p>Invertebrate Collection (3203)</p></li>
+<li><p>Invertebrate Imagery (19k+)</p></li>
+<li><p>Invertebrate Observation (1036)</p></li>
+<li><p>Iziko Marine Fish Types (350)</p></li>
+<li><p>Mammal Collection (1)</p></li>
+<li><p>Mammal Observation (8)</p></li>
+<li><p>National Fish Collection (124k+)</p></li>
+<li><p>Non-fish Illustrations (77)</p></li>
+<li><p>Tissue Collection (46k+)</p></li>
+</ul>
+</div></blockquote>
+<ul class="simple">
+<li><dl class="simple">
+<dt>Tree size(s):</dt><dd><ul>
+<li><p>10k+ Taxon (Alga Collection)</p></li>
+<li><p>1088 Taxon (Amphibian Collection, Amphibian Observation)</p></li>
+<li><p>12k+ Taxon (BRUV Fish, Fish Observation, Invertebrate Imagery, Iziko Marine Fish Types, National Fish Collection, Non-fish Illustrations, Tissue Collection)</p></li>
+<li><p>1553 Taxon (Invertebrate Collection, Invertebrate Observation)</p></li>
+<li><p>191 Taxon (Mammal Collection, Mammal Observation)</p></li>
+<li><p>4019 Geography</p></li>
+<li><p>86k+ Storage</p></li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><p>Host taxon? Yes (BRUV Fish, Invertebrate Imagery)</p></li>
+<li><p>Check Collecting Event Attribute</p></li>
+<li><p>Collection relationships? Yes, all except for BRUV Fish, Invertebrate Imagery, Non-fish Illustrations, and Tissue Collection</p></li>
+<li><p>Additionally, the ofer and roger accounts have two Collection Relationship plugins in the National Fish Collection.</p></li>
+<li><p>RSS Feed? Yes*</p></li>
+<li><p>Default forms? No</p></li>
+<li><p>Collection Object Attribute on forms? Yes</p></li>
+<li><p>Embedded or Shared CE? Shared</p></li>
+<li><p>Paleo Context? No</p></li>
+<li><dl class="simple">
+<dt>Preexisting interaction records? Yes</dt><dd><ul>
+<li><p>449 accessions</p></li>
+<li><p>1 exchange in</p></li>
+<li><p>11 gifts (Amphibian Collection, Amphibian Observation)</p></li>
+<li><p>30 loans (Amphibian Collection, Amphibian Observation)</p></li>
+<li><p>412 gifts (Fish Observation, Iziko Marine Fish Types, National Fish Collection, Non-fish Illustrations, Tissue Collection)</p></li>
+<li><p>1542 loans (Fish Observation, Iziko Marine Fish Types, National Fish Collection, Non-fish Illustrations Tissue Collection)</p></li>
+<li><p>2 gifts (Invertebrate Collection, Invertebrate Observation)</p></li>
+<li><p>3 loans (Invertebrate Collection, Invertebrate Observation)</p></li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><p>Collection Object Citations? No</p></li>
+<li><dl class="simple">
+<dt>Other notes:</dt><dd><ul>
+<li><p>/<a href="#id3"><span class="problematic" id="id4">*</span></a>While there is an RSS feed, trying to export it results in an error.</p></li>
+<li><p>Trying to add a record to the Collection Relationship plugin results in a ProgrammingError.</p></li>
+<li><p>PaleoMap has been added to a few forms, but there is no Paleo Context nor coordinates for it to work with.</p></li>
+<li><p>Host Taxon is in the Collecting Information form under Collecting Event Attribute, which has been named Sample Species Cont. instead.</p></li>
+<li><p>Can’t view collection objects in Tissue Collection. This is where the Collection Relationships connect to, unsure what the issue is.</p></li>
+</ul>
+</dd>
+</dl>
+</li>
+</ul>
+</section>
+<section id="sdnhm-herps-2-8-24">
+<h2>sdnhm_herps_2_8_24<a class="headerlink" href="#sdnhm-herps-2-8-24" title="Link to this heading"></a></h2>
+<p><em>Last updated: 05/22/2024</em>
+* Disciplines: Herpetology
+* Collections: 5</p>
+<blockquote>
+<div><ul class="simple">
+<li><p>BioServices (8)</p></li>
+<li><p>Herp-PC (334)</p></li>
+<li><p>SDNHM Herps (76k+)</p></li>
+<li><p>UABC Ensenada (2384)</p></li>
+<li><p>UABCS La Paz (1174)</p></li>
+</ul>
+</div></blockquote>
+<ul class="simple">
+<li><dl class="simple">
+<dt>Tree size(s):</dt><dd><ul>
+<li><p>8296 Taxon</p></li>
+<li><p>1429 Geography</p></li>
+<li><p>3 Storage</p></li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><p>Host taxon? No</p></li>
+<li><p>Collection relationships? No</p></li>
+<li><p>RSS Feed? Yes</p></li>
+<li><p>Default forms? No</p></li>
+<li><p>Collection Object Attribute on forms? Yes</p></li>
+<li><p>Embedded or Shared CE? Embedded</p></li>
+<li><p>Paleo Context? No</p></li>
+<li><dl class="simple">
+<dt>Preexisting interaction records? Yes</dt><dd><ul>
+<li><p>330 accessions</p></li>
+<li><p>6 exchange ins</p></li>
+<li><p>294 loans</p></li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><p>Collection Object Citations? Yes</p></li>
+<li><p>Other notes: N/A</p></li>
+</ul>
+</section>
+<section id="sp7demofish-2-9-24">
+<h2>sp7demofish_2_9_24<a class="headerlink" href="#sp7demofish-2-9-24" title="Link to this heading"></a></h2>
+<p><em>Last updated: 05/22/2024</em>
+* Disciplines: Ichthyology
+* Collections: 3</p>
+<blockquote>
+<div><ul class="simple">
+<li><p>KUFishTeaching (4)</p></li>
+<li><p>KUFishtissue (10k+)</p></li>
+<li><p>KUFishVoucher (41k+)</p></li>
+</ul>
+</div></blockquote>
+<ul class="simple">
+<li><dl class="simple">
+<dt>Tree size(s):</dt><dd><ul>
+<li><p>15k+ Taxon</p></li>
+<li><p>1913 Geography</p></li>
+<li><p>3 Storage</p></li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><p>Host taxon? No</p></li>
+<li><p>Collection relationships? Yes (Voucher)</p></li>
+<li><p>RSS Feed? No</p></li>
+<li><p>Default forms? No</p></li>
+<li><p>Collection Object Attribute on forms? Yes</p></li>
+<li><p>Embedded or Shared CE? Shared (KUFishVoucher)</p></li>
+<li><p>Paleo Context? No</p></li>
+<li><dl class="simple">
+<dt>Preexisting interaction records?</dt><dd><ul>
+<li><p>730 accessions</p></li>
+<li><p>1 exchange in</p></li>
+<li><p>1 exchange out</p></li>
+<li><p>482 gifts</p></li>
+<li><p>263 loans</p></li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><p>Collection Object Citations? No</p></li>
+<li><dl class="simple">
+<dt>Other notes:</dt><dd><ul>
+<li><p>Can’t use Collection Relationships while logged in as Sp7demofish or Vertnet, since they have a different form definition.</p></li>
+<li><p>KUFishTeaching Collection Object entry form has a strange required field of another Collection Object and no Collecting Event.</p></li>
+</ul>
+</dd>
+</dl>
+</li>
+</ul>
+</section>
+<section id="ufrgs-2-1-24">
+<h2>UFRGS_2_1_24<a class="headerlink" href="#ufrgs-2-1-24" title="Link to this heading"></a></h2>
+<p><em>Last updated: 05/22/2024</em>
+* Disciplines: Entomology, Herpetology, Ichthyology, Invertebrate Zoology, Mammalogy, Ornithology
+* Collections: 8</p>
+<blockquote>
+<div><ul class="simple">
+<li><p>Amphibians (0)</p></li>
+<li><p>Carcinology (5730)</p></li>
+<li><p>Hemiptera (0)</p></li>
+<li><p>Ichthyology (29k+)</p></li>
+<li><p>Ichthyology photos (1)</p></li>
+<li><p>Mastozoology (0)</p></li>
+<li><p>Ornithology (0)</p></li>
+<li><p>Reptiles (7822)</p></li>
+</ul>
+</div></blockquote>
+<ul class="simple">
+<li><dl class="simple">
+<dt>Tree size(s):</dt><dd><ul>
+<li><p>6603 Taxon (Amphibians)</p></li>
+<li><p>51k+ Taxon (Carcinology)</p></li>
+<li><p>29k+ Taxon (Hemiptera)</p></li>
+<li><p>13k+ Taxon (Ichthyology, Ichthyology photos)</p></li>
+<li><p>8567 Taxon (Mastozoology)</p></li>
+<li><p>23k+ Taxon (Ornithology)</p></li>
+<li><p>6603 Taxon (Reptiles)</p></li>
+<li><p>24k+ Geography (Amphibians, Reptiles)</p></li>
+<li><p>42k+ Geography (Carcinology, Hemiptera, Mastozoology, Ornithology)</p></li>
+<li><p>1060 Geography (Ichthyology, Ichthyology photos)</p></li>
+<li><p>103 Storage</p></li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><p>Host taxon? No</p></li>
+<li><p>Collection relationships? No</p></li>
+<li><p>RSS Feed? No</p></li>
+<li><p>Default forms? Yes, except for Ichthyology and Ichthyology photos.</p></li>
+<li><p>Collection Object Attribute on forms? Yes, all except for Hemiptera, Ichthyology, and Ichythology photos</p></li>
+<li><p>Embedded or Shared CE? Shared (Ichthyology)</p></li>
+<li><p>Paleo Context? No</p></li>
+<li><dl class="simple">
+<dt>Preexisting interaction records?</dt><dd><ul>
+<li><p>9 loans (Amphibians, Reptiles)</p></li>
+<li><p>1 accession (Ichthyology, Ichthyology photos)</p></li>
+<li><p>1 borrow (Ichthyology)</p></li>
+<li><p>5 gifts (Ichthyology, Ichthyology photos)</p></li>
+<li><p>69 loans (Ichthyology, Ichthyology photos)</p></li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><p>Collection Object Citations? No</p></li>
+<li><dl class="simple">
+<dt>Other notes:</dt><dd><ul>
+<li><p>Partially in Portuguese.</p></li>
+<li><p>Ento Views and Herpetology Views form definitions can’t be opened to a UnicodeDecodeError.</p></li>
+<li><dl class="simple">
+<dt>To log into each collection:</dt><dd><ul>
+<li><p>Amphibians - curador-herpeto</p></li>
+<li><p>Carcinology - Carcinoufrgs</p></li>
+<li><p>Hemiptera - alnferreira</p></li>
+<li><p>Ichthyology - testuser</p></li>
+<li><p>Ichthyology photos - testuser</p></li>
+<li><p>Mastozoology - JulianoMasto</p></li>
+<li><p>Ornithology - CaioJC</p></li>
+<li><p>Reptiles - curador-herpeto</p></li>
+</ul>
+</dd>
+</dl>
+</li>
+</ul>
+</dd>
+</dl>
+</li>
+</ul>
+</section>
+<section id="umherb-1-10-24">
+<h2>umherb_1_10_24<a class="headerlink" href="#umherb-1-10-24" title="Link to this heading"></a></h2>
+<p><em>Last updated: 05/22/2024</em>
+* Disciplines: Botany
+* Collections: 1</p>
+<blockquote>
+<div><ul class="simple">
+<li><p>herbarium_catalog (1m+)</p></li>
+</ul>
+</div></blockquote>
+<ul class="simple">
+<li><dl class="simple">
+<dt>Tree size(s):</dt><dd><ul>
+<li><p>140k+ Taxon</p></li>
+<li><p>39k+ Geography</p></li>
+<li><p>4 Storage</p></li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><p>Host taxon? No</p></li>
+<li><p>Collection relationships? No</p></li>
+<li><p>RSS Feed? No</p></li>
+<li><p>Default forms? No</p></li>
+<li><p>Collection Object Attribute on forms? Yes</p></li>
+<li><p>Embedded or Shared CE? Embedded</p></li>
+<li><p>Paleo Context? No</p></li>
+<li><dl class="simple">
+<dt>Preexisting interaction records? Yes</dt><dd><ul>
+<li><p>7788 accessions</p></li>
+<li><p>2896 borrows</p></li>
+<li><p>4001 exchange ins</p></li>
+<li><p>2927 exchange outs</p></li>
+<li><p>96 gifts</p></li>
+<li><p>2415 loans</p></li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><p>Collection Object Citations? No</p></li>
+<li><p>Other notes: N/A</p></li>
+</ul>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2024, Specify Team.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>
