@@ -3,7 +3,7 @@ Databases with Specific Features
 
 All DB’s for testing should be on version `6.8.03.`
 
-The editable version of this document can be found in the `Testing folder of the SCC vault <https://drive.google.com/drive/folders/1yY7WeqlJ8wzFE9G0A70WrpY1UaZlWNIi>`.
+The editable version of this document can be found in the `Testing folder of the SCC vault <https://drive.google.com/drive/folders/1yY7WeqlJ8wzFE9G0A70WrpY1UaZlWNIi>`_.
 
 **Commonly used databases:**
     It’s alright to use these databases for testing, just know that they are very likely to have been tested on previously and to check if it’s already been tested on.
