@@ -3,9 +3,9 @@ Databases with Specific Features
 
 All DB’s for testing should be on version `6.8.03.`
 
-The editable version of this document can be found in the `Testing folder of the SCC vault <https://drive.google.com/drive/folders/1yY7WeqlJ8wzFE9G0A70WrpY1UaZlWNIi>`_.
 
 **Commonly used databases:**
+
     It’s alright to use these databases for testing, just know that they are very likely to have been tested on previously and to check if it’s already been tested on.
 
 - Any KU databases.
@@ -45,14 +45,17 @@ Multiple Collections
 * fwri_1_9_2024 (2)
 * hujinnhc_9_6_23 (25)
 * jerusalem_with_changes_2_19 (15)
+* KUCReAC_2024_06_06 (3)
 * KUHerps_8_17_23 (3)
 * kumam_barcodes (2)
-* KUVertPaleo_5_16_2024 (3)
+* KUMammals_2024_06_06 (2)
+* KUVertPaleo_2024_06_06 (3)
 * ojsmnh_1_10_24 (9)
 * SAIAB_11_24_23 (14)
 * sdnhm_herps_2_8_24 (5)
 * sp7demofish_2_9_24 (3)
 * UFRGS_2_1_24 (8)
+
 
 Default Forms
 -----------------
@@ -75,12 +78,17 @@ Default Forms
 
     * Host Plants
 
+* KUEntomology_2024_06_06
+
+    * Botany
+
 * KUHerps_8_17_23
 
     * Digital Archive
     * Observation
 
-* KUPaleoBot_8_31_2023
+* KUInvertPaleo_2024_06_06
+* KUPaleoBot_2024_06_06
 * UFRGS_2_1_24
 
     * All except for Ichthyology and Ichthyology photos
@@ -121,8 +129,22 @@ Collection Object Attribute
 
     * All except for botany collections, CryoBank and Osteology
 
+* KUBirds_2024_06_06
 * KUBirds_8_25_23
+* KUCReAC_2024_06_06
+* KUEntomology_2024_06_06
+
+    * KUEntoPinned
+
+* KUHerps_2024_06_06
 * KUHerps_8_17_23
+
+    * Herpetology
+
+* KUInvertZoo_2024_06_06
+* kumam_barcodes
+* KUVascularPlants_2024_06_06
+* KUVascularPlants_4_16_24
 * kumam_barcodes
 * KUVascularPlants_4_16_24
 * lsumz_mammals_4_25_24
@@ -169,9 +191,16 @@ Shared Collecting Events
 * fwri_1_9_2024
 * hujinnhc_9_6_23
 * jerusalem_with_changes_2_19
+* KUCReAC_2024_06_06
+* KUEntomology_2024_06_06
 
-    * KUVascularPlants_4_16_24
+    * KUEntoFossil
+    * KUEntoPinned
 
+* KUInvertPaleo_2024_06_06
+* KULichens_2024_06_06
+* KUVascularPlants_2024_06_06
+* KUVascularPlants_4_16_24
 * nbm_08_post_most_changes
 
     * Fish Voucher Collection
@@ -204,7 +233,12 @@ Embedded Paleo Context
     * Quaternary Zoology
     * Vertebrate Paleontology
 
-* KUVertPaleo_5_16_2024 (Collection Object)
+* KUEntomology_2024_06_06 (Collection Object)
+
+    * KUEntoFossil
+
+* KUInvertPaleo_2024_06_06 (Collecting Event)
+* KUVertPaleo_2024_06_06 (Collection Object)
 
 Shared Paleo Context
 ------------------------
@@ -239,7 +273,8 @@ Shared Paleo Context
     * Cryobank
     * Osteology
 
-* KUPaleoBot_8_31_2023 (Collecting Event)
+* KUPaleoBot_2024_06_06 (Collecting Event)
+* KUZooarchaeology_2024_06_06 (Collecting Event)
 * ojsmnh_1_10_24 (Locality)
 
     * Fossil Invertebrates
@@ -277,6 +312,10 @@ HostTaxon Plugin
     * Fungi
     * Lichens
 
+* KUEntomology_2024_06_06
+
+    * KUEntoPinned
+
 * KUFish_5_16_23
 
     * KU Fish Observation Collection
@@ -313,7 +352,7 @@ Paleomap Plugin
     * Vertebrates
 
 * ChadronTest
-* KUPaleoBot_8_31_2023
+* KUPaleoBot_2024_06_06
 * PriPaleo_SchemaUpdated_CM_202304211540
 
 RSS Feed
@@ -325,8 +364,17 @@ RSS Feed
 * Fitz_NHMA_Oct_2023
 * Fitz_NHMD_Oct_2023
 * fwri_1_9_2024
+* KUBirds_2024_06_06
 * KUBirds_8_25_23
+* KUEntomology_2024_06_06
+* KUHerps_2024_06_06
+* KUInvertPaleo_2024_06_06
+* KULichens_2024_06_06
+* KUMammals_2024_06_06
+* KUPaleoBot_2024_06_06
+* KUVascularPlants_2024_06_06
 * KUVascularPlants_4_16_24
+* KUVertPaleo_2024_06_06
 * lsumz_mammals_9_8_2023
 * montreal_canadian_cloud_backup
 * SAIAB_11_24_23
