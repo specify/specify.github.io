@@ -5,6 +5,9 @@ This document contains information about each individual database currently on t
 
 The editable version of this document can be found in the `Testing folder of the SCC vault <https://drive.google.com/drive/folders/1yY7WeqlJ8wzFE9G0A70WrpY1UaZlWNIi>`_.
 
+Active Databases
+===================
+
 aafc2_22
 -----------
 *Last updated: 05/15/2024*
@@ -1099,6 +1102,101 @@ KUBirds_8_25_23
 
     * Used often.
 
+KUBirds_2024_06_06
+----------------------------
+*Last updated: 06/11/2024*
+
+* See KUBirds_8_25_23.
+* Collections: 1
+* Ornithology (126k+)
+* Tree size(s):
+
+    * 36k+ Taxon
+    * 2271 Geography
+    * 1 Storage
+
+* Preexisting interaction records? Yes
+
+    * 10 accessions
+    * 259 loans
+
+* Other notes:
+    
+    * Copy of KUBirds_8_25_23 with slightly different record counts and different forms.
+
+KUCReAC_2024_06_06
+----------------------
+*Last updated: 06/10/2024*
+
+* Disciplines: Entomology
+* Collections: 3
+
+    * CReAC (365k+)
+    * Observation Data (1634)
+    * Working Specimen Database (43k+)
+
+* Tree size(s):
+
+    * 7782 Taxon
+    * 4605 Geography
+    * 1 Storage
+
+* Host taxon? No
+* Collection relationships? No
+* RSS Feed? No
+* Default forms? No
+* Collection Object Attribute on forms? Yes
+* Embedded or Shared CE? Shared
+* Paleo Context? No
+* Preexisting interaction records? No
+* Collection Object Citations? Yes
+* Other notes:
+
+    * Data Entry list has Chronostratigraphy in CReAC, but nothing to use it with. Choosing this option causes an “Unable to get tree ranks” error.
+
+KUEntomology_2024_06_06
+---------------------------
+*Last updated: 06/10/2024*
+
+* Disciplines: Botany, Entomology, Invertebrate Paleontology
+* Collections: 3
+
+    * KUEntoFossil (2512)
+    * KUEntoPinned (1m+)
+    * KUEntoPlant (0)
+    
+* Tree size(s):
+
+    * 440 Taxon (KUEntoFossil)
+    * 40k+ Taxon (KUEntoPinned)
+    * 2469 Geography (KUEntoFossil)
+    * 5835 Geography (KUEntoPinned)
+    * 6 Storage
+
+* Host taxon? Yes (KUEntoPinned)
+* Collection relationships? No
+* RSS Feed? Yes
+* Default forms? Yes (Botany)
+* Collection Object Attribute on forms? Yes (KUEntoPinned)
+* Embedded or Shared CE? Shared
+* Paleo Context? Yes (KUEntoFossil)
+
+    * Embedded or Shared? Embedded
+    * Which form is it in? Collection Object
+    * Chronostrat records? Yes
+    * Lithostrat records? Yes
+    * Paleomap plugin? No
+
+* Preexisting interaction records? Yes
+
+    * 20 accessions
+    * 2 borrows (KUEntoPinned)
+    * Collection Object Citations? Yes
+
+* Other notes:
+
+    * Collecting Information is disabled in the Collection Object form in KUEntoPlant.
+
 kufish_2_12
 --------------
 *Last updated: 05/21/2024*
@@ -1115,6 +1213,15 @@ kufish_2_12_again
 * Other notes:
 
     * Has same form for Collection Object in Teaching as KU_Fish_Tissue_2024_01_24.
+
+KUFish_2024_06_06
+--------------------
+*Last updated: 06/10/2024*
+
+* See KU_Fish_Demo.
+* Other notes:
+
+    * Mostly similar to KU_Fish_Demo except for some small difference in number of records and a completely different Collection Object form in KU Fish Voucher Collection.
 
 KUFish_5_16_23
 ------------------
@@ -1136,6 +1243,21 @@ KUFish_5_16_23
 
     * Significant changes to the Locality data entry form for plugin testing.
     * No collection relationship in Voucher.
+
+KUHerps_2024_06_06
+----------------------
+*Last updated: 05/21/2024*
+
+* See KUHerps_8_17_23.
+* Collections: 1
+
+    * Herpetology (351k+)
+
+* RSS Feed? Yes
+* Default forms? No
+* Other notes:
+
+    * Copy of KUHerps_8_17_23 with only the Herpetology collection, slightly different record counts and an RSS Feed.
 
 KUHerps_8_17_23
 ------------------
@@ -1174,6 +1296,106 @@ KUHerps_8_17_23
 * Collection Object Citations? Yes (Herpetology)
 * Other notes: N/A
 
+KUInvertPaleo_2024_06_06
+----------------------------
+*Last updated: 06/06/2024*
+
+* Disciplines: Invertebrate Paleontology
+* Collections: 1
+
+    * Invertebrate Paleontology (510k+)
+
+* Tree size(s):
+
+    * 14k+ Taxon
+    * 1571 Geography
+    * 2004 Storage
+
+* Host taxon? No
+* Collection relationships? No
+* RSS Feed? Yes
+* Default forms? No
+* Collection Object Attribute on forms? No
+* Embedded or Shared CE? Shared
+* Paleo Context? Yes
+
+    * Embedded or Shared? Embedded
+    * Which form is it in? Collecting Event
+    * Chronostrat records? Yes
+    * Lithostrat records? Yes
+    * Paleomap plugin? No
+
+* Preexisting interaction records? Yes
+
+    * 84 accessions
+    * 1 gift
+    * 71 loans
+    
+* Collection Object Citations? Yes
+* Other notes: N/A
+
+KUInvertZoo_2024_06_06
+--------------------------
+*Last updated: 06/11/2024*
+
+* Disciplines: Invertebrate Zoology
+* Collections: 1
+
+    * Main (1574)
+
+* Tree size(s):
+
+    * 6789 Taxon
+    * 128 Geography
+    * 1 Storage
+
+* Host taxon? No
+* Collection relationships? No
+* RSS Feed? No
+* Default forms? Yes
+* Collection Object Attribute on forms? Yes
+* Embedded or Shared CE? Shared
+* Paleo Context? No
+* Preexisting interaction records? Yes
+
+    * 94 accessions
+    * 23 borrows
+    * 2 loans
+
+* Collection Object Citations? No
+* Other notes:
+
+    * Shared Collecting Event but forms are set up for embedded Collecting Event, so you cannot add Collecting Event.
+
+KULichens_2024_06_06
+-----------------------
+*Last updated: 06/11/2024*
+
+* Disciplines: Botany
+* Collections: 1
+
+    * Lichens (50k+)
+
+* Tree size(s):
+
+    * 3683 Taxon
+    * 4473 Geography
+    * 1 Storage
+
+* Host taxon? No
+* Collection relationships? No
+* RSS Feed? Yes
+* Default forms? No
+* Collection Object Attribute on forms? No
+* Embedded or Shared CE? Shared
+* Paleo Context? No
+* Preexisting interaction records? Yes
+
+    * 169 accessions
+
+* Collection Object Citations? Yes
+* Other notes: N/A
+
 kumam_barcodes
 -----------------
 *Last updated: 05/21/2024*
@@ -1206,44 +1428,94 @@ kumam_barcodes
 * Collection Object Citations? Yes
 * Other notes: N/A
 
-KUPaleoBot_8_31_2023
------------------------
-*Last updated: 05/21/2024*
+KUMammals_2024_06_06
+------------------------
+*Last updated: 06/06/2024*
+
+* Disciplines: Mammalogy
+* Collections: 2
+
+    * Mammalogy (170k+)
+    * Mammalogy teaching (1)
+
+* Tree size(s):
+
+    * 6158 Taxon
+    * 2769 Geography
+    * 8340 Storage
+
+* Host taxon? No
+* Collection relationships? No
+* RSS Feed? Yes
+* Default forms? No
+* Collection Object Attribute on forms? Yes
+* Embedded or Shared CE? Embedded
+* Paleo Context? No
+* Preexisting interaction records? Yes
+
+    * 2231 accessions
+    * 1 gift
+    * 35 loans
+
+* Collection Object Citations? Yes
+* Other notes: N/A
+
+KUPaleoBot_2024_06_06
+-------------------------
+*Last updated: 06/10/2024*
 
 * Disciplines: Paleobotany
 * Collections: 1
 
-    * Paleobotany (123k+)
+* Paleobotany (123k+)
 
 * Tree size(s):
 
-    * 4499 Taxon
-    * 553 Geography
-    * 942 Storage
+    * 4480 Taxon
+    * 592 Geography
+    * 956 Storage
 
 * Host taxon? No
 * Collection relationships? No
-* RSS Feed? No
+* RSS Feed? Yes
 * Default forms? Yes
 * Collection Object Attribute on forms? No
 * Embedded or Shared CE? Embedded
 * Paleo Context? Yes
 
-    * Embedded or Shared? Shared
-    * Which form is it in? Collecting Event
-    * Chronostrat records? Yes
-    * Lithostrat records? Yes
-    * Paleomap plugin? Yes
+* Embedded or Shared? Shared
+* Which form is it in? Collecting Event
+* Chronostrat records? Yes
+* Lithostrat records? Yes
+* Paleomap plugin? Yes
 
 * Preexisting interaction records? Yes
 
-    * 11 accessions
-    * 4 loans
+    * 6 accessions
 
 * Collection Object Citations? Yes
 * Other notes:
 
     * Paleo Views form definition broken and the XML cannot be parsed by Specify. Otherwise, it works.
+    * Copy of KUPaleoBot_8_31_2023 (archived) with different number of records and an RSS Feed.
+
+KUVascularPlants_2024_06_06
+------------------------------
+*Last updated: 06/11/2024*
+
+* See KUVascularPlants_4_16_24.
+* Collections: 1
+
+    * Vascular Plant (322k+)
+
+* Preexisting interaction records? Yes
+
+    * 571 accessions
+    * Otherwise similar to KUVascularPlants_4_16_24.
+
+* Other notes:
+
+    * Copy of KUVascularPlants_4_16_24 with slightly different record counts.
 
 KUVascularPlants_4_16_24
 ----------------------------
@@ -1275,9 +1547,9 @@ KUVascularPlants_4_16_24
 * Collection Object Citations? Yes
 * Other notes: N/A
 
-KUVertPaleo_5_16_2024
--------------------------
-*Last updated: 05/21/2024*
+KUVertPaleo_2024_06_06
+--------------------------
+*Last updated: 06/10/2024*
 
 * Disciplines: Vertebrate Paleontology
 * Collections: 3
@@ -1288,9 +1560,51 @@ KUVertPaleo_5_16_2024
 
 * Tree size(s):
 
-    * 7432 Taxon
+    * 7436 Taxon
     * 497 Geography
     * 2018 Storage
+
+* Host taxon? No
+* Collection relationships? No
+* RSS Feed? Yes
+* Default forms? No
+* Collection Object Attribute on forms?  No
+* Embedded or Shared CE? Embedded
+* Paleo Context? Yes
+
+    * Embedded or Shared? Embedded
+    * Which form is it in? Collection Object
+    * Chronostrat records? Yes
+    * Lithostrat records? Yes
+    * Paleomap plugin? No
+
+* Preexisting interaction records? Yes
+
+    * 367 accessions
+    * 4 exchange outs
+    * 1 gift
+    * 922 loans
+    * 329 borrows (Vertebrate Paleontology)
+
+* Collection Object Citations? Yes
+* Other notes:
+
+    * Copy of KUVertPaleo_5_16_2024 (archived) with no Paleomap plugin and an RSS Feed.
+
+KUZooarchaeology_2024_06_06
+-------------------------------
+*Last updated: 06/10/2024*
+
+* Disciplines: Invertebrate Paleontology, Vertebrate Paleontology
+* Collections: 1
+
+    * Zooarchaeology (665)
+
+* Tree size(s):
+
+    * 704 Taxon
+    * 42k+ Geography
+    * 1 Storage
 
 * Host taxon? No
 * Collection relationships? No
@@ -1300,21 +1614,14 @@ KUVertPaleo_5_16_2024
 * Embedded or Shared CE? Embedded
 * Paleo Context? Yes
 
-    * Embedded or Shared? Embedded
-    * Which form is it in? Collection Object
+    * Embedded or Shared? Shared
+    * Which form is it in? Collecting Event
     * Chronostrat records? Yes
     * Lithostrat records? Yes
-    * Paleomap plugin? Yes
+    * Paleomap plugin? No
 
-* Preexisting interaction records? Yes
-
-    * 367 accessions
-    * 4 exchange outs
-    * 1 gift
-    * 922 loans
-    * 327 borrows (Vertebrate Paleontology)
-
-* Collection Object Citations? Yes
+* Preexisting interaction records? No
+* Collection Object Citations? No
 * Other notes: N/A
 
 lsumz_mammals_4_25_24
@@ -1940,3 +2247,86 @@ umherb_1_10_24
 * Collection Object Citations? No
 * Other notes: N/A
 
+Archived Databases
+====================
+
+KUPaleoBot_8_31_2023
+-----------------------
+*Last updated: 05/21/2024*
+
+* Disciplines: Paleobotany
+* Collections: 1
+
+    * Paleobotany (123k+)
+
+* Tree size(s):
+
+    * 4499 Taxon
+    * 553 Geography
+    * 942 Storage
+
+* Host taxon? No
+* Collection relationships? No
+* RSS Feed? No
+* Default forms? Yes
+* Collection Object Attribute on forms? No
+* Embedded or Shared CE? Embedded
+* Paleo Context? Yes
+
+    * Embedded or Shared? Shared
+    * Which form is it in? Collecting Event
+    * Chronostrat records? Yes
+    * Lithostrat records? Yes
+    * Paleomap plugin? Yes
+
+* Preexisting interaction records? Yes
+
+    * 11 accessions
+    * 4 loans
+
+* Collection Object Citations? Yes
+* Other notes:
+
+    * Paleo Views form definition broken and the XML cannot be parsed by Specify. Otherwise, it works.
+
+KUVertPaleo_5_16_2024
+-------------------------
+*Last updated: 05/21/2024*
+
+* Disciplines: Vertebrate Paleontology
+* Collections: 3
+
+    * Cast Collection (3135)
+    * Natural Trap Cave (35k+)
+    * Vertebrate Paleontology  (97k+)
+
+* Tree size(s):
+
+    * 7432 Taxon
+    * 497 Geography
+    * 2018 Storage
+
+* Host taxon? No
+* Collection relationships? No
+* RSS Feed? No
+* Default forms? No
+* Collection Object Attribute on forms? No
+* Embedded or Shared CE? Embedded
+* Paleo Context? Yes
+
+    * Embedded or Shared? Embedded
+    * Which form is it in? Collection Object
+    * Chronostrat records? Yes
+    * Lithostrat records? Yes
+    * Paleomap plugin? Yes
+
+* Preexisting interaction records? Yes
+
+    * 367 accessions
+    * 4 exchange outs
+    * 1 gift
+    * 922 loans
+    * 327 borrows (Vertebrate Paleontology)
+
+* Collection Object Citations? Yes
+* Other notes: N/A
