@@ -20,6 +20,10 @@ Automation
 
   * Need permissions for that
 
+* https://aws.amazon.com/blogs/big-data/building-an-event-driven-application-with-aws-lambda-and-the-amazon-redshift-data-api/
+
+
+
 Logging
 ................
 
@@ -29,3 +33,4 @@ Logging
 * Cloudwatch - app logs and performance , can install cloudwatch agent, have it write
   logs to a log
 * https://docs.aws.amazon.com/secretsmanager/latest/userguide/monitoring-cloudtrail.html
+
