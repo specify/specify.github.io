@@ -22,9 +22,8 @@ Planning
 Support and Maintenance Tasks
 -------------
 
-* Developers should never directly receive any user-support requests, if that happens,
-  please bring it to your supervisor.  User issues should be created by the user-support
-  team in the specify-development repository.
+* User issues should be created by the user-support team in the specify-development
+  repository.
 * When asked to work on user issues, test panel bugs, etc (anything that is not a part
   of the current milestone):
 
@@ -33,9 +32,12 @@ Support and Maintenance Tasks
   * Assign yourself to it.
   * Verify with your supervisor the priority.
   * Define together a time to work on the new issue.
-
-* With some exceptions, delay response to user or user-support requests for at least
-  24 hours to allow users to work out the problem themselves.
+  * For non-emergency user or user-support requests, we will delay response for at
+    least 24 hours to allow users to work out the problem themselves.
+  * Follow this procedure even for issues that appear very small and quickly resolved.
+    We need to maintain a record of individual member issues and recurring issues,
+    allowing us to reconsider problematic design or implementation, fill in
+    training or documentation, or reconsider support charges.
 
 Development Tasks
 -------------
