@@ -25,12 +25,12 @@ Support and Maintenance Tasks
 * Developers should never directly receive any user-support requests, if that happens,
   please bring it to your supervisor.  User issues should be created by the user-support
   team in the specify-development repository.
-* When asked to work on user issues or test panel bugs etc (anything that is not a part
-  of the milestones or specify7 issue repo):
+* When asked to work on user issues, test panel bugs, etc (anything that is not a part
+  of the current milestone):
 
   * Ask the requester to create an issue on the specify-development repo or create one
     yourself.  Include details such as requirements, related components and/or database.
-  * Assign yourself to it
+  * Assign yourself to it.
   * Verify with your supervisor the priority.
   * Define together a time to work on the new issue.
 
