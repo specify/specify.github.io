@@ -50,6 +50,12 @@ Welcome to Specify Developer documentation!
    misc/useful_bash_cmds
    misc/vs_code_django_unit_test_debugging_notes
 
+.. toctree::
+   :maxdepth: 1
+   :caption: Personnel:
+
+   personnel/dev_expectations
+
 
 Indices and tables
 ==================
