@@ -31,6 +31,7 @@ Welcome to Specify Developer documentation!
    dev_process/project_docs
    dev_process/dbgroups
    dev_process/individualdbs
+   dev_process/dev_expectations
 
 .. toctree::
    :maxdepth: 1
@@ -50,11 +51,6 @@ Welcome to Specify Developer documentation!
    misc/useful_bash_cmds
    misc/vs_code_django_unit_test_debugging_notes
 
-.. toctree::
-   :maxdepth: 1
-   :caption: Personnel:
-
-   personnel/dev_expectations
 
 
 Indices and tables
