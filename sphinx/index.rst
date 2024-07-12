@@ -25,6 +25,12 @@ Welcome to Specify Developer documentation!
 
 .. toctree::
    :maxdepth: 1
+   :caption: Server Management:
+
+   server_management/managed_servers
+
+.. toctree::
+   :maxdepth: 1
    :caption: Internal Processes:
 
    dev_process/specify_processes
