@@ -1,0 +1,481 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" data-content_root="../">
+<head>
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Updown Monitoring &mdash; Specify Developer Documentation  documentation</title>
+      <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=80d5e7a1" />
+      <link rel="stylesheet" type="text/css" href="../_static/css/theme.css?v=19f00094" />
+
+  
+  <!--[if lt IE 9]>
+    <script src="../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script src="../_static/jquery.js?v=5d32c60e"></script>
+        <script src="../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+        <script src="../_static/documentation_options.js?v=5929fcd5"></script>
+        <script src="../_static/doctools.js?v=9a2dae69"></script>
+        <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Specify Development Process" href="../dev_process/specify_processes.html" />
+    <link rel="prev" title="Hybrid Asset Server Setup" href="../asset_server/hybrid_asset_server_setup.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="../index.html" class="icon icon-home">
+            Specify Developer Documentation
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Amazon Web Services:</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../aws/aws_automation.html">AWS Automation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../aws/aws_infrastructure_notes.html">AWS Infrastructure Notes</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../aws/aws_specify_asset_server_setup.html">AWS Specify Asset Server Setup</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../aws/aws_specify_cloud_setup.html">Specify Cloud Setup</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../aws/client_migration_notes.html">Digital Ocean to AWS migration</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../aws/ec2_rds_specify7_setup.html">Deploy Specify7 to an EC2 instance</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../aws/specify_cloud_graviton_setup.html">Specify Cloud Graviton Setup</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../aws/remote_db_connection.html">Setup remote database connection to local mysql workbench</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Asset Server:</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../asset_server/asset_config_files.html">Specify 7 Docker Config Example</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../asset_server/asset_server_config.html">Asset Server Configuration</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../asset_server/asset_server_setup.html">EC2 Non-Dockerized Build</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../asset_server/hybrid_asset_server_setup.html">Hybrid Asset Server Setup</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Server Management:</span></p>
+<ul class="current">
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Updown Monitoring</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#public-status-pages">Public Status Pages</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#known-issues">Known Issues</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="#managed-servers">Managed Servers</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#kuit-managed-servers">KUIT Managed Servers</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#specify-x-wordpress-taxon-files-specify-6-downloads-etc">Specify X (Wordpress, Taxon files, Specify 6 downloads, etc.)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#test-panel">Test Panel</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#id1">Known Issues:</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#web-portal">Web Portal</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#update-instructions">Update Instructions</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#accessing-web-portals">Accessing Web Portals</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#backups">Backups</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#assets-for-specify-cloud">Assets for Specify Cloud</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#id2">Backups</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#assets-for-test-panel-demo-database-instance">Assets for Test Panel &amp; Demo Database Instance</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#id3">Known Issues</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#specify-cloud-instances">Specify Cloud Instances</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#updating-specify-7-instances">Updating Specify 7 Instances</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#troubleshooting">Troubleshooting</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="#accessing-specify-7-deployments">Accessing Specify 7 Deployments</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#access-a-specify-database-without-a-password">Access a Specify Database without a Password</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="#accessing-backups-on-aws-rds">Accessing Backups on AWS RDS</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Internal Processes:</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../dev_process/specify_processes.html">Specify Development Process</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../dev_process/project_docs.html">Project (Github pages) documentation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../dev_process/dbgroups.html">Databases with Specific Features</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../dev_process/individualdbs.html">Individual Database Information</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../dev_process/dev_expectations.html">Developer Expectations</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Security:</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../security/aws_security.html">AWS Security</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../security/fix_exposed_secret.html">Fix Exposed Secrets</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../security/monitoring.html">Security Monitoring</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Misc:</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../misc/add_new_instance_to_specify_cloud.html">Add new Specify instance to Specify Cloud</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../misc/kuit_notes.html">Working with central KU IT</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../misc/specify7_ecs_most-in-one.html">Create a Most-In-One Specify Docker image</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../misc/useful_bash_cmds.html">Useful bash commands</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../misc/vs_code_django_unit_test_debugging_notes.html">VS Code Django Unit Test Debugging</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">Specify Developer Documentation</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../index.html" class="icon icon-home" aria-label="Home"></a></li>
+      <li class="breadcrumb-item active">Updown Monitoring</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="../_sources/server_management/managed_servers.md.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="updown-monitoring">
+<h1>Updown Monitoring<a class="headerlink" href="#updown-monitoring" title="Link to this heading"></a></h1>
+<p>We use a service called <a class="reference external" href="https://updown.io/">updown.io</a> to monitor our websites and uptime. It allows our users (and our staff) to monitor the availability and performance of hosted instances. It checks the sites regularly from a number of locations and provides notifications on <strong>Slack</strong> (<a class="reference external" href="https://specifydev.slack.com/archives/C04AM8WSM89">#updown-monitoring channel</a>) and via <strong>Email</strong> in case of any downtime or issues.</p>
+<p><strong>Login:</strong> <a class="reference external" href="https://updown.io/checks">updown.io – Website monitoring, simple and inexpensive</a></p>
+<p><strong>Username:</strong> <a class="reference external" href="mailto:support&#37;&#52;&#48;specifysoftware&#46;org">support<span>&#64;</span>specifysoftware<span>&#46;</span>org</a></p>
+<section id="public-status-pages">
+<h2>Public Status Pages<a class="headerlink" href="#public-status-pages" title="Link to this heading"></a></h2>
+<ul class="simple">
+<li><p><a class="reference external" href="https://updown.io/p/mug6t">KU Specify 7 Web Servers</a></p></li>
+<li><p><a class="reference external" href="https://updown.io/p/8g4mg">All Specify Monitored Servers</a></p></li>
+<li><p><a class="reference external" href="https://updown.io/p/8g4mg">Digital Ocean access</a></p></li>
+</ul>
+<p>We check the Specify 7 deployments by verifying that the <code class="docutils literal notranslate"><span class="pre">example.specifycloud.org/context/system_info.json</span></code> file is accessible as it does not require authentication to view.</p>
+</section>
+<section id="known-issues">
+<h2>Known Issues<a class="headerlink" href="#known-issues" title="Link to this heading"></a></h2>
+<ul class="simple">
+<li><p>If Specify 6 static files become inaccessible to Specify 7, Specify 7 no longer functions properly. Updown does not have any way of verifying this, which has resulted in downtime for users without any notification.</p></li>
+</ul>
+</section>
+</section>
+<section id="managed-servers">
+<h1>Managed Servers<a class="headerlink" href="#managed-servers" title="Link to this heading"></a></h1>
+<section id="kuit-managed-servers">
+<h2>KUIT Managed Servers<a class="headerlink" href="#kuit-managed-servers" title="Link to this heading"></a></h2>
+<p>We have a document that outlines the purpose and function of each of the BI Informatics servers: <a class="reference external" href="https://docs.google.com/document/d/1XiYl4KKekCPjWMR7GbkXGpXdijiZ1C_KrtptEzapgy4/edit"><strong>KUIT Managed Physical and Virtual Servers</strong></a></p>
+</section>
+<section id="specify-x-wordpress-taxon-files-specify-6-downloads-etc">
+<h2>Specify X (Wordpress, Taxon files, Specify 6 downloads, etc.)<a class="headerlink" href="#specify-x-wordpress-taxon-files-specify-6-downloads-etc" title="Link to this heading"></a></h2>
+<p><strong>Host Name:</strong> <a class="reference external" href="https://docs.google.com/document/d/11rnM0v5ytBQTxlutuAYEsTkpcmJpo23n6l7hR3YHFKw/edit">Link</a></p>
+<p><strong>Platform:</strong> DreamHost</p>
+<p><strong>Backups?:</strong> Yes</p>
+<p>This server does not often require us to access or make any changes. At this time, we update this periodically to add new versions of Specify 6, update default taxonomy files that the Specify 6 wizard and application use to generate new trees, and make changes to our Wordpress sites.</p>
+<p>The server covers the following:</p>
+<ul class="simple">
+<li><p>specifysoftware.org (Wordpress)</p></li>
+<li><p>specifysoftware.com (Domain alias)</p></li>
+<li><p>specify6.specifysoftware.com (Domain alias)</p></li>
+<li><p>files.specifysoftware.com (Domain alias)</p></li>
+<li><p>specifycloud.org (Wordpress)</p></li>
+<li><p>files.specifysoftware.org</p>
+<ul>
+<li><p>(Static files, such as Specify 6 installers, taxon files that the Specify Wizard uses, Wordpress site files and images, Wordpress backups, old documentation, etc. You can see all of the <a class="reference external" href="https://files.dreamhost.com/#/c/75.119.218.42/specifyx/eyJ0Ijoic2Z0cCIsImMiOnsidiI6MCwicCI6IkNvdXNzYXJlYTJkaW9pY2EhIiwicyI6MCwibSI6IlBhc3N3b3JkIn19">important files contained within here</a>)</p></li>
+</ul>
+</li>
+<li><p>update.specifysoftware.org</p>
+<ul>
+<li><p>(This is the place Specify 6 looks to see if an update is available. There is an XML file we edit to indicate a new release has launched)</p></li>
+</ul>
+</li>
+<li><p>sustain.specifysoftware.org</p>
+<ul>
+<li><p>(This is a link to the main website, but this is also the name of the directory that stores all of the Wordpress site files)</p></li>
+</ul>
+</li>
+</ul>
+</section>
+<section id="test-panel">
+<h2>Test Panel<a class="headerlink" href="#test-panel" title="Link to this heading"></a></h2>
+<p><strong>Host Name:</strong> test.specifysystems.org (<a class="reference external" href="https://docs.google.com/document/d/11rnM0v5ytBQTxlutuAYEsTkpcmJpo23n6l7hR3YHFKw/edit#heading=h.4ca8dydxjfft">Link</a>)
+<strong>Platform:</strong> DigitalOcean
+<strong>Backups?:</strong> No</p>
+<p>Available at <a class="reference external" href="https://test.specifysystems.org/">https://test.specifysystems.org/</a> for users in the Specify GitHub organization.</p>
+<p>This server hosts the Specify 7 Test Panel used for internal testing and for deploying evaluation databases for prospective users. The application deployed on this server is described in the <a class="reference external" href="https://github.com/specify/specify7-test-panel">specify7-test-panel repository</a>.</p>
+<p>It is installed in the <code class="docutils literal notranslate"><span class="pre">/home/specify/specify7-test-panel</span></code> directory. Make sure to <strong>switch to this directory</strong> before running any of the commands below.</p>
+<p>If the server becomes unavailable or goes offline, you can build and run all the containers by running the following commands:</p>
+<p>Build the containers:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>docker-compose<span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>-f<span class="w"> </span>docker-compose.yml<span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>-f<span class="w"> </span>docker-compose.production.yml<span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>up<span class="w"> </span>--no-start<span class="w"> </span>--build
+</pre></div>
+</div>
+<p>Run the containers:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>docker-compose<span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>-f<span class="w"> </span>docker-compose.yml<span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>-f<span class="w"> </span>docker-compose.production.yml<span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>-f<span class="w"> </span>/var/lib/docker/volumes/specify7-test-panel_state/_data/docker-compose.yml<span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>up<span class="w"> </span>--remove-orphans<span class="w"> </span>-d
+</pre></div>
+</div>
+<p>The <code class="docutils literal notranslate"><span class="pre">configuration.json</span></code> file (located at <code class="docutils literal notranslate"><span class="pre">/var/lib/docker/volumes/specify7-test-panel_state/_data/configuration.json</span></code>) is the file that is written to when changes are made to the deployments on the front-end. This file is then used to make the <code class="docutils literal notranslate"><span class="pre">docker-compose.yml</span></code> which defines the deployments.</p>
+<p>You can modify either file by using <code class="docutils literal notranslate"><span class="pre">nano</span></code> , but remember that <code class="docutils literal notranslate"><span class="pre">configuration.json</span></code> will dictate how the <code class="docutils literal notranslate"><span class="pre">docker-compose.yml</span></code> file is built once changes are made. Any changes directly to the compose file will be overwritten when users make a change on the front-end.</p>
+<p>Keep in mind that any change done in the UI of the test panel or new automatic deployments will overwrite these customizations, so this is only useful for short-term testing (testing new asset server, special configurations).</p>
+<section id="id1">
+<h3>Known Issues:<a class="headerlink" href="#id1" title="Link to this heading"></a></h3>
+<ul class="simple">
+<li><p>Don’t run out of storage. Cannot access anymore when that happens.</p></li>
+<li><p>Pull requests on the Specify 7 repository that attempt to merge <code class="docutils literal notranslate"><span class="pre">production</span></code> into a branch will auto-deploy an instance that takes down the test panel (<a class="reference external" href="https://github.com/specify/specify7-test-panel/issues/102">#102</a>)</p>
+<ul>
+<li><p>To resolve this, you need to remove the PR from the repository. To fix this, we need to modify the test server code to substitute that in the response received from the GitHub API (when fetching pull requests).</p></li>
+</ul>
+</li>
+<li><p>If a database has a version of Specify 6 that isn’t dockerized, it will break the panel. You will need to manually remove the deployment and database.</p></li>
+</ul>
+</section>
+</section>
+<section id="web-portal">
+<h2>Web Portal<a class="headerlink" href="#web-portal" title="Link to this heading"></a></h2>
+<p><strong>Host Name:</strong> webportal.specifysystems.org (<a class="reference external" href="https://docs.google.com/document/d/11rnM0v5ytBQTxlutuAYEsTkpcmJpo23n6l7hR3YHFKw/edit#heading=h.4ca8dydxjfft">Link</a>)</p>
+<p><strong>Platform:</strong> DigitalOcean</p>
+<p><strong>Backups?:</strong> No</p>
+<p>This server hosts the <a class="reference external" href="https://github.com/specify/webportal-installer/tree/improve-build">webportal-installer</a> app for Specify Cloud users. This is an additional membership fee so only a select number of cloud users have a portal configured.</p>
+<p>The main Web Portal dependencies are the latest version of Solr 7.5 and Python 2.7 (<a class="reference external" href="https://github.com/specify/webportal-installer?tab=readme-ov-file#install-system-dependencies">see all here</a>). Both here at the SCC and externally, this is most often installed locally, although a Docker version does exist. On this server, it is installed in the <code class="docutils literal notranslate"><span class="pre">/home/specify/webportal-installer</span></code> directory.</p>
+<p>Inside of this directory are the following important subdirectories:</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">specify_exports</span></code> (where you put the exports from the DataExporter application)</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">custom_settings</span></code> (where you define custom settings for each Web Portal instance)</p></li>
+</ul>
+<p>I’ve written more advanced configuration instructions for use when setting up <code class="docutils literal notranslate"><span class="pre">custom_settings</span></code> here on the Speciforum: <a class="reference external" href="https://discourse.specifysoftware.org/t/web-portal-configuration-instructions/1144">Configuration Instructions</a></p>
+<p>You can reload customizations to existing deployments by running <code class="docutils literal notranslate"><span class="pre">make</span> <span class="pre">build-html</span></code> without having to restart any other services (<a class="reference external" href="https://github.com/specify/webportal-installer?tab=readme-ov-file#full-updates">source</a>).</p>
+<section id="update-instructions">
+<h3>Update Instructions<a class="headerlink" href="#update-instructions" title="Link to this heading"></a></h3>
+<ul class="simple">
+<li><p><a class="reference internal" href="#subdirectories"><span class="xref myst">Instructions on running data-only updates to Web Portal instances</span></a></p></li>
+<li><p><a class="reference external" href="https://github.com/specify/webportal-installer?tab=readme-ov-file#full-updates">Instructions on running full updates for Web Portal instances</a></p></li>
+</ul>
+</section>
+<section id="accessing-web-portals">
+<h3>Accessing Web Portals<a class="headerlink" href="#accessing-web-portals" title="Link to this heading"></a></h3>
+<p>You can see a list of all currently hosted Web Portal instances here:</p>
+<p><a class="reference external" href="https://webportal.specifycloud.org/">https://webportal.specifycloud.org/</a></p>
+<p>The URL is appended with the export name when a web portal instance is created. For instance, the <code class="docutils literal notranslate"><span class="pre">specify_exports</span></code> directory contains an export for the University of Washington Fish Collection named <code class="docutils literal notranslate"><span class="pre">uwfc.zip</span></code>. After creating a Web Portal instance for them, it becomes accessible at <a class="reference external" href="https://webportal.specifycloud.org/uwfc/">https://webportal.specifycloud.org/uwfc/</a>.</p>
+<p>On <a class="reference external" href="https://docs.google.com/document/d/1QXpWFf9U4lzqVLwC7BJkG_PFWqENCDlEOmWUUsUA0X8/edit?usp=sharing">June 12, 2024, I hosted an internal demo</a> discussing the function of the Web Portal and the details involved in data exporting and portal configuration. Regular use instructions are available on the <a class="reference external" href="https://github.com/specify/webportal-installer/blob/improve-build/README.md">webportal-installer</a> repository and other documentation about <a class="reference external" href="https://discourse.specifysoftware.org/t/staff-solution-web-portal-refresh/1785">exporting is available on the forum</a>.</p>
+</section>
+<section id="backups">
+<h3>Backups<a class="headerlink" href="#backups" title="Link to this heading"></a></h3>
+<p>No backups are made of this server at this time.</p>
+</section>
+</section>
+<section id="assets-for-specify-cloud">
+<h2>Assets for Specify Cloud<a class="headerlink" href="#assets-for-specify-cloud" title="Link to this heading"></a></h2>
+<p><strong>Host Name:</strong> assets1.specifycloud.org (<a class="reference external" href="https://docs.google.com/document/d/11rnM0v5ytBQTxlutuAYEsTkpcmJpo23n6l7hR3YHFKw/edit#heading=h.4ca8dydxjfft">Link</a>)</p>
+<p><strong>Platform:</strong> AWS
+<strong>Backups?:</strong> Yes</p>
+<p><em>TODO: This description was written when the assets were hosted on DigitalOcean– these should be revisited once the migration to AWS is complete</em></p>
+<p>This server hosts an installation of the Specify <a class="reference external" href="https://github.com/specify/web-asset-server">web-asset-server</a>. The application is installed to <code class="docutils literal notranslate"><span class="pre">/home/specify/web-asset-server-new</span></code> but the originals and thumbnails generated by Specify are stored in the <code class="docutils literal notranslate"><span class="pre">/home/specify/attachments</span></code> directory.</p>
+<p>In the <code class="docutils literal notranslate"><span class="pre">attachments</span></code> directory, there are subdirectories for each database that we have configured. In those directories there are two folders, <code class="docutils literal notranslate"><span class="pre">originals</span></code> and <code class="docutils literal notranslate"><span class="pre">thumbnails</span></code>. One contains the original images and the other contains the thumbnails generated by Specify automatically.</p>
+<section id="id2">
+<h3>Backups<a class="headerlink" href="#id2" title="Link to this heading"></a></h3>
+<p>DigitalOcean assets are/were backed up to the following location on the Specify ResFS drive:</p>
+<p><code class="docutils literal notranslate"><span class="pre">smb://resfs.home.ku.edu/GROUPS/BI/Specify/Specify7/SpecifyCloudBackups/assets</span></code></p>
+</section>
+</section>
+<section id="assets-for-test-panel-demo-database-instance">
+<h2>Assets for Test Panel &amp; Demo Database Instance<a class="headerlink" href="#assets-for-test-panel-demo-database-instance" title="Link to this heading"></a></h2>
+<p><strong>Host Name:</strong> assets-test.specifycloud.org (<a class="reference external" href="https://docs.google.com/document/d/11rnM0v5ytBQTxlutuAYEsTkpcmJpo23n6l7hR3YHFKw/edit#heading=h.4ca8dydxjfft">Link</a>)
+<strong>Platform:</strong> AWS
+<strong>Backups?:</strong> No</p>
+<p>This server hosts an installation of the Specify <a class="reference external" href="https://github.com/specify/web-asset-server">web-asset-server</a>. The application is installed to <code class="docutils literal notranslate"><span class="pre">/home/ubuntu/web-asset-server</span></code> but the originals and thumbnails generated by Specify are stored in the <code class="docutils literal notranslate"><span class="pre">/home/ubuntu/attachments</span></code> directory.</p>
+<p>In the <code class="docutils literal notranslate"><span class="pre">attachments</span></code> directory, there are subdirectories for each database that we have configured. In those directories there are two folders, <code class="docutils literal notranslate"><span class="pre">originals</span></code> and <code class="docutils literal notranslate"><span class="pre">thumbnails</span></code>. One contains the original images and the other contains the thumbnails generated by Specify automatically.</p>
+<p>The databases on the Test Panel and the <a class="reference external" href="https://sp7demofish.specifycloud.org/specify/">sp7demofish</a> instance upload images to the <code class="docutils literal notranslate"><span class="pre">/home/ubuntu/attachments/sp7demofish</span></code> directories.</p>
+<p>Backups for this server are handled by AWS.</p>
+<section id="id3">
+<h3>Known Issues<a class="headerlink" href="#id3" title="Link to this heading"></a></h3>
+<ul class="simple">
+<li><p>This server has intermittent availability and can randomly become inaccessible. The issue arises because it is hosted on AWS using a ‘spot instance’.</p></li>
+<li><p>It has been known to occasionally stop working without any notice. To resolve this, we have had to restart the <code class="docutils literal notranslate"><span class="pre">web-asset-server</span></code> service. See more <a class="reference external" href="https://specifydev.slack.com/archives/CC6V12D3J/p1699902819872219">research done in Slack here</a>.</p></li>
+</ul>
+</section>
+</section>
+<section id="specify-cloud-instances">
+<h2>Specify Cloud Instances<a class="headerlink" href="#specify-cloud-instances" title="Link to this heading"></a></h2>
+<p><strong>Host Name:</strong> (<a class="reference external" href="https://docs.google.com/document/d/11rnM0v5ytBQTxlutuAYEsTkpcmJpo23n6l7hR3YHFKw/edit#heading=h.4ca8dydxjfft">Link</a>)</p>
+<ul class="simple">
+<li><p>na-specify7-1.specifycloud.org (North America)</p></li>
+<li><p>eu-specify7-1.specifycloud.org (Europe)</p></li>
+<li><p>ca-specify7-1.specifycloud.org (Canada)</p></li>
+<li><p>il-specify7-1.specifycloud.org (Israel)</p></li>
+<li><p>br-specify7-1.specifycloud.org (Brazil)</p></li>
+<li><p>swiss-specify7-1.specifycloud.org (Switzerland)</p></li>
+</ul>
+<p><strong>Platform:</strong> AWS</p>
+<p>Specify Cloud instances mirror each other in configuration. All have Docker installed via <code class="docutils literal notranslate"><span class="pre">apt</span></code>, not <code class="docutils literal notranslate"><span class="pre">snap</span></code>.  Important distinction.</p>
+<p>The directory that contains the configuration files for the Specify 7 deployments using Docker is <code class="docutils literal notranslate"><span class="pre">/home/ubuntu/docker-compositions/specifycloud</span></code>.</p>
+<p>You can read more about the specific configuration details here in the <a class="reference external" href="https://github.com/specify/docker-compositions/tree/production/specifycloud">docker-compositions/specifycloud repository</a>.</p>
+<p>In here, there is a file named <code class="docutils literal notranslate"><span class="pre">spcloudservers.json</span></code> that allows you to configure specific environment variables for certain deployments. The most common variables are the Specify 7 and Specify 6 version, but you can also specify an asset server URL, asset server key, anonymous (guest) user for the deployment, or several other environmental settings.</p>
+<p><strong>Example <code class="docutils literal notranslate"><span class="pre">spcloudservers.json</span></code> file:</strong></p>
+<div class="highlight-json notranslate"><div class="highlight"><pre><span></span><span class="p">{</span>
+<span class="w">    </span><span class="nt">&quot;servers&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="nt">&quot;sp7demofish-eu&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">            </span><span class="nt">&quot;env&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">                </span><span class="nt">&quot;ASSET_SERVER_URL&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;https://assets-test.specifycloud.org/web_asset_store.xml&quot;</span>
+<span class="w">            </span><span class="p">},</span>
+<span class="w">            </span><span class="nt">&quot;sp7&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;v7&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="nt">&quot;sp6&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;specify6803&quot;</span>
+<span class="w">        </span><span class="p">},</span>
+<span class="w">        </span><span class="nt">&quot;rjb-madrid&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">            </span><span class="nt">&quot;sp7&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;v7&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="nt">&quot;sp6&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;specify6803&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="nt">&quot;env&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">                </span><span class="nt">&quot;ASSET_SERVER_URL&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;&quot;</span><span class="p">,</span>
+<span class="w">                </span><span class="nt">&quot;ASSET_SERVER_COLLECTION&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Fanerogamia&quot;</span>
+<span class="w">            </span><span class="p">}</span>
+<span class="w">        </span><span class="p">},</span>
+<span class="w">        </span><span class="nt">&quot;mcnb&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">            </span><span class="nt">&quot;sp7&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;v7&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="nt">&quot;sp6&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;specify6803&quot;</span>
+<span class="w">        </span><span class="p">},</span>
+<span class="w">        </span><span class="nt">&quot;herb-rbge&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">            </span><span class="nt">&quot;sp7&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;v7&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="nt">&quot;sp6&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;specify6803&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="nt">&quot;settings_file&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;./settings/herb-rbge-settings.py&quot;</span>
+<span class="w">        </span><span class="p">}</span>
+<span class="w">    </span><span class="p">},</span>
+
+<span class="w">    </span><span class="nt">&quot;sp6versions&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="nt">&quot;specify6800&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;6.8.00&quot;</span><span class="p">,</span>
+<span class="w">        </span><span class="nt">&quot;specify6801&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;6.8.01&quot;</span><span class="p">,</span>
+<span class="w">        </span><span class="nt">&quot;specify6803&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;6.8.03&quot;</span>
+<span class="w">    </span><span class="p">},</span>
+
+<span class="w">    </span><span class="nt">&quot;decommissioned&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[]</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p>You can modify the version of a particular Specify 7 instance by changing <code class="docutils literal notranslate"><span class="pre">v7</span></code> (or the currently configured tag) to any tag available on the <a class="reference external" href="https://hub.docker.com/repository/docker/specifyconsortium/specify7-service/general">specify7-service DockerHub repository</a>.</p>
+<p>The Specify 6 version (this controls the static Specify 6 files accessible to the Specify 7 installation) can be changed from here as well to pull from any tag in the <a class="reference external" href="https://hub.docker.com/repository/docker/specifyconsortium/specify6-service/general">specify6-service DockerHub repository</a>.</p>
+</section>
+<section id="updating-specify-7-instances">
+<h2>Updating Specify 7 Instances<a class="headerlink" href="#updating-specify-7-instances" title="Link to this heading"></a></h2>
+<p>After making <strong>any</strong> changes to the <code class="docutils literal notranslate"><span class="pre">spcloudservers.json</span></code> file, you will need to run <code class="docutils literal notranslate"><span class="pre">make</span></code> to update the script that updates the following resources:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">docker</span><span class="o">-</span><span class="n">compose</span><span class="o">.</span><span class="n">yml</span> 
+<span class="n">nginx</span><span class="o">.</span><span class="n">conf</span> 
+<span class="n">sp7setup</span><span class="o">-</span><span class="nb">all</span><span class="o">.</span><span class="n">sh</span>
+</pre></div>
+</div>
+<p>Assuming all instances are configured to use the Docker tag <code class="docutils literal notranslate"><span class="pre">v7</span></code> in the <code class="docutils literal notranslate"><span class="pre">spcloudservers.json</span></code> file, you can simply run the following command in the <code class="docutils literal notranslate"><span class="pre">/home/ubuntu/docker-compositions/specifycloud</span></code> directory:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>docker<span class="w"> </span>pull<span class="w"> </span>specifyconsortium/specify7-service:v7
+</pre></div>
+</div>
+<p><em>Note: You can pull <a class="reference external" href="https://hub.docker.com/repository/docker/specifyconsortium/specify7-service/tags">any valid Dockerhub tag</a> for <code class="docutils literal notranslate"><span class="pre">specify7-service</span></code> given that it is build for ARM</em></p>
+<p>After this, you can run the <code class="docutils literal notranslate"><span class="pre">sp7setup-all.sh</span></code> script in the same directory to automatically update all deployments on the server.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">sh</span> <span class="n">sp7setup</span><span class="o">-</span><span class="nb">all</span><span class="o">.</span><span class="n">sh</span>
+</pre></div>
+</div>
+<p>This script just runs <code class="docutils literal notranslate"><span class="pre">docker-compose</span> <span class="pre">up</span> <span class="pre">-d</span> <span class="pre">{instance_name}</span> <span class="pre">{instance_name_worker}</span></code> to automatically compose all of the Specify 7 instances along with their accompanying worker process.</p>
+<section id="troubleshooting">
+<h3>Troubleshooting<a class="headerlink" href="#troubleshooting" title="Link to this heading"></a></h3>
+<p>If a user is encountering an issue, you can check the logs of each container by running the following commands:</p>
+<ol class="arabic simple">
+<li><p>Run <code class="docutils literal notranslate"><span class="pre">docker</span> <span class="pre">ps</span></code>.</p></li>
+</ol>
+<p>This will give you a list of all running Docker instances. From here, you can see the container IDs, image names, timestamp created, status, ports, and the container names.</p>
+<ol class="arabic simple">
+<li><p>You can run <code class="docutils literal notranslate"><span class="pre">docker</span> <span class="pre">logs</span> <span class="pre">--tail</span> <span class="pre">1000</span> <span class="pre">specifycloud-{instancename}-1</span></code> to see the last 1000 lines in the Docker logs for a given instance.</p></li>
+</ol>
+<p>If you are troubleshooting a WorkBench-related issue, you should do the same except look at the logs for the <code class="docutils literal notranslate"><span class="pre">-worker-1</span></code> container instead.</p>
+<ol class="arabic simple">
+<li><p>If you want to see Specify 7 activity, you can look at the logs for the nginx container.</p></li>
+</ol>
+<p>This can be done by running <code class="docutils literal notranslate"><span class="pre">docker</span> <span class="pre">logs</span> <span class="pre">--tail</span> <span class="pre">1000</span> <span class="pre">specifycloud-nginx-1</span></code>. You can use <code class="docutils literal notranslate"><span class="pre">grep</span></code> to find specific instance information or to look for specific activity for a given deployment.</p>
+<p>You can use <code class="docutils literal notranslate"><span class="pre">docker</span> <span class="pre">restart</span></code> or other Docker command-line tools to manage these instances as needed.</p>
+<p>To enter into a container, you can run the following (remove the brackets when inserting the container ID from Docker):</p>
+<p>Inside the container you can examine the Specify 7 files and perform actions like re-running migrations.</p>
+<p><strong>For example:</strong> You can run this inside of a Specify 7 docker container to re-run the Agent Merging migrations in case there was an issue during the initial migration:</p>
+</section>
+</section>
+</section>
+<section id="accessing-specify-7-deployments">
+<h1>Accessing Specify 7 Deployments<a class="headerlink" href="#accessing-specify-7-deployments" title="Link to this heading"></a></h1>
+<p>To access a particular instance, you can go to the database name (replace any underscore (<code class="docutils literal notranslate"><span class="pre">_</span></code>) with a dash (<code class="docutils literal notranslate"><span class="pre">-</span></code>) + specifycloud.org. The names of each database can be found in the spreadsheet or on the regional database server for each respective region.</p>
+<p>For instance, the Specify Cloud deployment for the database <code class="docutils literal notranslate"><span class="pre">lsumz_mammals</span></code> is accessible at <code class="docutils literal notranslate"><span class="pre">lsumz-mammals.specifycloud.org</span></code>. The database <code class="docutils literal notranslate"><span class="pre">fwri</span></code> is accessible at <code class="docutils literal notranslate"><span class="pre">fwri.specifycloud.org</span></code>.</p>
+<section id="access-a-specify-database-without-a-password">
+<h2>Access a Specify Database without a Password<a class="headerlink" href="#access-a-specify-database-without-a-password" title="Link to this heading"></a></h2>
+<blockquote>
+<div><p><strong>Note:</strong> This text is intended for educational purposes only. Accessing a database without the proper authorization is not only unethical, but it is also strictly prohibited by our employment policies. This action should only be taken when absolutely necessary, and accessing deployments without the appropriate permission is grounds for termination.</p>
+</div></blockquote>
+<p><strong>This requires direct SQL edit access to the <code class="docutils literal notranslate"><span class="pre">specifyuser</span></code> table outside of Specify</strong>.</p>
+<p>If we cannot gain access to a Specify deployment, we can edit the <code class="docutils literal notranslate"><span class="pre">specifyuser</span></code> table directly to modify the password of an existing user. You can update the password in plain text using SQL.</p>
+<p>Once you log in using Specify 6, it will be hashed, and then that user can be accessed in Specify 7 as well. Specify 7 will not allow you to log in if the password is not hashed, so this must be done first in Specify 6.</p>
+<p>To set the password to ‘testuser’ for any hosted deployment, you can run the following:</p>
+<div class="highlight-sql notranslate"><div class="highlight"><pre><span></span><span class="k">UPDATE</span><span class="w"> </span><span class="n">specifyuser</span><span class="w"> </span><span class="k">SET</span><span class="w"> </span><span class="n">Password</span><span class="w"> </span><span class="o">=</span><span class="w"> </span>
+<span class="s1">&#39;EC62DEF08F5E4FD556DAA86AEC5F3FB0390EF8A862A41ECA&#39;</span>
+<span class="k">WHERE</span><span class="w"> </span><span class="n">SpecifyUserID</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span>
+</pre></div>
+</div>
+<p>You can alternatively copy the hash of another user’s password that you know over the user you cannot access.</p>
+<p>Replace <code class="docutils literal notranslate"><span class="pre">0</span></code> with the appropriate <code class="docutils literal notranslate"><span class="pre">SpecifyUserID</span></code>. You can replace the password with the user’s original hashed password string after performing the necessary schema updates.</p>
+</section>
+</section>
+<section id="accessing-backups-on-aws-rds">
+<h1>Accessing Backups on AWS RDS<a class="headerlink" href="#accessing-backups-on-aws-rds" title="Link to this heading"></a></h1>
+<ol class="arabic simple">
+<li><p>Login to the AWS web console and select the appropriate region.</p></li>
+<li><p>Select RDS, and select the database instance you are looking for backups of.</p></li>
+<li><p>Select the “Maintenance &amp; Backups” tab, and scroll down to “snapshots”.</p></li>
+<li><p>Select the snapshot you want to restore by date, and then press the “Restore” button.</p></li>
+<li><p>In the “Restore snapshot” settings, pick a small instance type like “db.t3.small”. All the other settings should be ok by default. Scroll to the bottom and click the “Restore DB Instance”</p></li>
+<li><p>Once the new database is up and running, select the instance, click on “Actions” and then click “Setup EC2 Connection”. You will want to choose the EC2 instance that you have connected to your production database.</p></li>
+<li><p>SSH into your EC2 instance and use mysql commands to download the client’s snapshot database and upload it to the production database.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">mysqldump</span> <span class="pre">-h</span> <span class="pre">&lt;db\_host&gt;</span> <span class="pre">-u</span> <span class="pre">&lt;db\_user&gt;</span> <span class="pre">-p</span> <span class="pre">&lt;password&gt;</span> <span class="pre">&lt;client\_database&gt;</span> <span class="pre">&gt;</span> <span class="pre">&lt;file&gt;.sql</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">mysql</span> <span class="pre">-h</span> <span class="pre">&lt;db\_host&gt;</span> <span class="pre">-u</span> <span class="pre">&lt;db\_user&gt;</span> <span class="pre">-p</span> <span class="pre">&lt;password&gt;</span> <span class="pre">&lt;client\_database&gt;</span> <span class="pre">&lt;</span> <span class="pre">&lt;file&gt;.sql</span></code></p></li>
+<li><p>If you want to restore a snapshot from more than a month ago, then you will find those snapshots in the S3 backups bucket.</p></li>
+</ol>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="../asset_server/hybrid_asset_server_setup.html" class="btn btn-neutral float-left" title="Hybrid Asset Server Setup" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="../dev_process/specify_processes.html" class="btn btn-neutral float-right" title="Specify Development Process" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2024, Specify Team.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>
