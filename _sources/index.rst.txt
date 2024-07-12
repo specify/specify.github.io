@@ -56,6 +56,7 @@ Welcome to Specify Developer documentation!
    misc/specify7_ecs_most-in-one
    misc/useful_bash_cmds
    misc/vs_code_django_unit_test_debugging_notes
+   misc/branch_from_tag
 
 
 
