@@ -52,6 +52,7 @@ Welcome to Specify Developer documentation!
    :caption: Misc:
 
    misc/add_new_instance_to_specify_cloud
+   misc/documentation
    misc/kuit_notes
    misc/specify7_ecs_most-in-one
    misc/useful_bash_cmds
