@@ -28,6 +28,7 @@ Welcome to Specify Developer documentation!
    :caption: Server Management:
 
    server_management/managed_servers
+   server_management/exoscale
    server_management/exoscale_backups
 
 .. toctree::
