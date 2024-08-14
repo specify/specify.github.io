@@ -1,0 +1,270 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" data-content_root="../">
+<head>
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Backups on Exoscale &mdash; Specify Developer Documentation  documentation</title>
+      <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=80d5e7a1" />
+      <link rel="stylesheet" type="text/css" href="../_static/css/theme.css?v=19f00094" />
+
+  
+  <!--[if lt IE 9]>
+    <script src="../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script src="../_static/jquery.js?v=5d32c60e"></script>
+        <script src="../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+        <script src="../_static/documentation_options.js?v=5929fcd5"></script>
+        <script src="../_static/doctools.js?v=9a2dae69"></script>
+        <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Specify Development Process" href="../dev_process/specify_processes.html" />
+    <link rel="prev" title="Updown Monitoring" href="managed_servers.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="../index.html" class="icon icon-home">
+            Specify Developer Documentation
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Amazon Web Services:</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../aws/aws_automation.html">AWS Automation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../aws/aws_infrastructure_notes.html">AWS Infrastructure Notes</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../aws/aws_specify_asset_server_setup.html">AWS Specify Asset Server Setup</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../aws/aws_specify_cloud_setup.html">Specify Cloud Setup</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../aws/client_migration_notes.html">Digital Ocean to AWS migration</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../aws/ec2_rds_specify7_setup.html">Deploy Specify7 to an EC2 instance</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../aws/specify_cloud_graviton_setup.html">Specify Cloud Graviton Setup</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../aws/remote_db_connection.html">Setup remote database connection to local mysql workbench</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Asset Server:</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../asset_server/asset_config_files.html">Specify 7 Docker Config Example</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../asset_server/asset_server_config.html">Asset Server Configuration</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../asset_server/asset_server_setup.html">EC2 Non-Dockerized Build</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../asset_server/hybrid_asset_server_setup.html">Hybrid Asset Server Setup</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Server Management:</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="managed_servers.html">Updown Monitoring</a></li>
+<li class="toctree-l1"><a class="reference internal" href="managed_servers.html#managed-servers">Managed Servers</a></li>
+<li class="toctree-l1"><a class="reference internal" href="managed_servers.html#accessing-specify-7-deployments">Accessing Specify 7 Deployments</a></li>
+<li class="toctree-l1"><a class="reference internal" href="managed_servers.html#accessing-backups-on-aws-rds">Accessing Backups on AWS RDS</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Backups on Exoscale</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Internal Processes:</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../dev_process/specify_processes.html">Specify Development Process</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../dev_process/project_docs.html">Project (Github pages) documentation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../dev_process/dbgroups.html">Databases with Specific Features</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../dev_process/individualdbs.html">Individual Database Information</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../dev_process/dev_expectations.html">Developer Expectations</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Security:</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../security/aws_security.html">AWS Security</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../security/fix_exposed_secret.html">Fix Exposed Secrets</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../security/monitoring.html">Security Monitoring</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Misc:</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../misc/add_new_instance_to_specify_cloud.html">Add new Specify instance to Specify Cloud</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../misc/documentation.html">Informatics Documentation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../misc/kuit_notes.html">Working with central KU IT</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../misc/specify7_ecs_most-in-one.html">Create a Most-In-One Specify Docker image</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../misc/useful_bash_cmds.html">Useful bash commands</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../misc/vs_code_django_unit_test_debugging_notes.html">VS Code Django Unit Test Debugging</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../misc/branch_from_tag.html">Create a branch from a tagged release</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">Specify Developer Documentation</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../index.html" class="icon icon-home" aria-label="Home"></a></li>
+      <li class="breadcrumb-item active">Backups on Exoscale</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="../_sources/server_management/exoscale_backups.md.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="backups-on-exoscale">
+<h1>Backups on Exoscale<a class="headerlink" href="#backups-on-exoscale" title="Link to this heading"></a></h1>
+<p>To configure the backups, you first need to create an <a class="reference external" href="https://portal.exoscale.com/u/specify-collections-consortium/storage">Exoscale bucket</a>.</p>
+<p>For our backups, we have one named ‘swiss-backups’.</p>
+<p>In this instance, I chose the <code class="docutils literal notranslate"><span class="pre">CH-GVA-2</span></code> zone so that the data remains in Geneva.</p>
+<blockquote>
+<div><p>Exoscale has <a class="reference external" href="https://community.exoscale.com/documentation/storage/quick-start/">great instructions</a> on how to connect to a bucket.</p>
+</div></blockquote>
+<p>First, you must install <code class="docutils literal notranslate"><span class="pre">s3cmd</span></code> to connect to the Exoscale Bucket (as <code class="docutils literal notranslate"><span class="pre">root</span></code>):</p>
+<div class="highlight-sh notranslate"><div class="highlight"><pre><span></span>apt-get<span class="w"> </span>update<span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span>apt-get<span class="w"> </span>install<span class="w"> </span>s3cmd
+</pre></div>
+</div>
+<p><code class="docutils literal notranslate"><span class="pre">s3cmd</span></code> enables us to create and use Exoscale buckets. Our configuration file (located at <code class="docutils literal notranslate"><span class="pre">/home/ubuntu/.s3cfg</span></code>) looks like this:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>[default]
+host_base = sos-ch-gva-2.exo.io
+host_bucket = %(bucket)s.sos-ch-gva-2.exo.io
+access_key = $EXO_SOS_KEY
+secret_key = $EXO_SOS_SECRET
+use_https = True
+</pre></div>
+</div>
+<p>(<strong>Note:</strong> $EXO_SOS_KEY and $EXO_SOS_SECRET are hidden for this guide)</p>
+<p>I created an IAM Role named ‘Create Backups’ that will be used to connect the compute instances to the bucket. Once this was done, I generated an API key pair for that role.</p>
+<p>Now that this is configured, you can place files into the bucket by simply running <code class="docutils literal notranslate"><span class="pre">s3cmd</span> <span class="pre">put</span> <span class="pre">${file_name}</span> <span class="pre">s3://swiss-backups/${file_name}</span></code>:</p>
+<div class="highlight-sh notranslate"><div class="highlight"><pre><span></span>ubuntu@sp7cloud-swiss-1:~$<span class="w"> </span>touch<span class="w"> </span>hello-world.txt
+ubuntu@sp7cloud-swiss-1:~$<span class="w"> </span>s3cmd<span class="w"> </span>put<span class="w"> </span>hello-world.txt<span class="w"> </span>s3://swiss-backups/hello-world.txt
+upload:<span class="w"> </span><span class="s1">&#39;hello-world.txt&#39;</span><span class="w"> </span>-&gt;<span class="w"> </span><span class="s1">&#39;s3://swiss-backups/hello-world.txt&#39;</span><span class="w">  </span><span class="o">[</span><span class="m">1</span><span class="w"> </span>of<span class="w"> </span><span class="m">1</span><span class="o">]</span>
+<span class="w"> </span><span class="m">12</span><span class="w"> </span>of<span class="w"> </span><span class="m">12</span><span class="w">   </span><span class="m">100</span>%<span class="w"> </span><span class="k">in</span><span class="w">    </span>0s<span class="w">   </span><span class="m">110</span>.91<span class="w"> </span>B/s<span class="w">  </span><span class="k">done</span>
+</pre></div>
+</div>
+<p>Now that this is configured, we can use a script to backup the databases nightly:</p>
+<div class="highlight-sh notranslate"><div class="highlight"><pre><span></span><span class="ch">#!/bin/bash</span>
+
+<span class="c1"># Get the current date in YYYY_mm_dd format</span>
+<span class="nv">current_date</span><span class="o">=</span><span class="k">$(</span>date<span class="w"> </span>+<span class="s2">&quot;%Y_%m_%d&quot;</span><span class="k">)</span>
+
+<span class="c1"># Create the date directory in the backup bucket</span>
+<span class="nv">bucket_dir</span><span class="o">=</span><span class="s2">&quot;s3://swiss-backups/</span><span class="si">${</span><span class="nv">current_date</span><span class="si">}</span><span class="s2">&quot;</span>
+
+<span class="c1"># Fetch the list of databases dynamically</span>
+<span class="nv">databases</span><span class="o">=</span><span class="k">$(</span>mysql<span class="w"> </span>-h<span class="w"> </span><span class="m">0</span>.0.0.0<span class="w"> </span>-P<span class="w"> </span><span class="m">3306</span><span class="w"> </span>-uroot<span class="w"> </span>-p<span class="s2">&quot;</span><span class="nv">$MYSQL_ROOT_PASSWORD</span><span class="s2">&quot;</span><span class="w"> </span>-e<span class="w"> </span><span class="s1">&#39;SHOW DATABASES;&#39;</span><span class="w"> </span><span class="p">|</span><span class="w"> </span>grep<span class="w"> </span>-Ev<span class="w"> </span><span class="s1">&#39;^(Database|information_schema|performance_schema|mysql|sys)$&#39;</span><span class="k">)</span>
+
+<span class="c1"># Loop through each database and perform the backup</span>
+<span class="k">for</span><span class="w"> </span>db<span class="w"> </span><span class="k">in</span><span class="w"> </span><span class="nv">$databases</span><span class="p">;</span><span class="w"> </span><span class="k">do</span>
+<span class="w">  </span><span class="c1"># Create the backup file name for the upload</span>
+<span class="w">  </span><span class="nv">backup_file_name</span><span class="o">=</span><span class="s2">&quot;</span><span class="si">${</span><span class="nv">db</span><span class="si">}</span><span class="s2">_</span><span class="si">${</span><span class="nv">current_date</span><span class="si">}</span><span class="s2">.sql.gz&quot;</span>
+
+<span class="w">  </span><span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;Backing up database: </span><span class="nv">$db</span><span class="s2">&quot;</span>
+
+<span class="w">  </span><span class="c1"># Perform the mysqldump and upload directly to the Exoscale bucket</span>
+<span class="w">  </span>mysqldump<span class="w"> </span>--max-allowed-packet<span class="o">=</span>2G<span class="w"> </span>--single-transaction<span class="w"> </span>-h<span class="w"> </span><span class="m">0</span>.0.0.0<span class="w"> </span>-P<span class="w"> </span><span class="m">3306</span><span class="w"> </span>-uroot<span class="w"> </span>-p<span class="s2">&quot;</span><span class="nv">$MYSQL_ROOT_PASSWORD</span><span class="s2">&quot;</span><span class="w"> </span><span class="s2">&quot;</span><span class="nv">$db</span><span class="s2">&quot;</span><span class="w"> </span><span class="p">|</span><span class="w"> </span>gzip<span class="w"> </span><span class="p">|</span><span class="w"> </span>s3cmd<span class="w"> </span>put<span class="w"> </span>-<span class="w"> </span><span class="s2">&quot;</span><span class="si">${</span><span class="nv">bucket_dir</span><span class="si">}</span><span class="s2">/</span><span class="si">${</span><span class="nv">backup_file_name</span><span class="si">}</span><span class="s2">&quot;</span>
+
+<span class="w">  </span><span class="c1"># Check if the upload was successful</span>
+<span class="w">  </span><span class="k">if</span><span class="w"> </span><span class="o">[</span><span class="w"> </span><span class="nv">$?</span><span class="w"> </span>-eq<span class="w"> </span><span class="m">0</span><span class="w"> </span><span class="o">]</span><span class="p">;</span><span class="w"> </span><span class="k">then</span>
+<span class="w">    </span><span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;Backup of </span><span class="nv">$db</span><span class="s2"> completed and uploaded successfully to </span><span class="nv">$bucket_dir</span><span class="s2">.&quot;</span>
+<span class="w">  </span><span class="k">else</span>
+<span class="w">    </span><span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;Backup of </span><span class="nv">$db</span><span class="s2"> failed or upload failed.&quot;</span><span class="w"> </span>&gt;<span class="p">&amp;</span><span class="m">2</span>
+<span class="w">  </span><span class="k">fi</span>
+<span class="k">done</span>
+</pre></div>
+</div>
+<p>See the process after running the script at <code class="docutils literal notranslate"><span class="pre">/home/ubuntu/.backup/backup_script.sh</span></code>:</p>
+<div class="highlight-sh notranslate"><div class="highlight"><pre><span></span>ubuntu@sp7cloud-swiss-1:~/.backup$<span class="w"> </span>sh<span class="w"> </span>backup_script.sh
+Backing<span class="w"> </span>up<span class="w"> </span>database:<span class="w"> </span>geo_swiss
+upload:<span class="w"> </span><span class="s1">&#39;&lt;stdin&gt;&#39;</span><span class="w"> </span>-&gt;<span class="w"> </span><span class="s1">&#39;s3://swiss-backups/2024_08_14/geo_swiss_2024_08_14.sql.gz&#39;</span><span class="w">  </span><span class="o">[</span>part<span class="w"> </span><span class="m">1</span><span class="w"> </span>of<span class="w"> </span>-,<span class="w"> </span>6MB<span class="o">]</span><span class="w"> </span><span class="o">[</span><span class="m">1</span><span class="w"> </span>of<span class="w"> </span><span class="m">1</span><span class="o">]</span>
+<span class="w"> </span><span class="m">6365386</span><span class="w"> </span>of<span class="w"> </span><span class="m">6365386</span><span class="w">   </span><span class="m">100</span>%<span class="w"> </span><span class="k">in</span><span class="w">    </span>0s<span class="w">    </span><span class="m">26</span>.16<span class="w"> </span>MB/s<span class="w">  </span><span class="k">done</span>
+Backup<span class="w"> </span>of<span class="w"> </span>geo_swiss<span class="w"> </span>completed<span class="w"> </span>and<span class="w"> </span>uploaded<span class="w"> </span>successfully<span class="w"> </span>to<span class="w"> </span>s3://swiss-backups/2024_08_14.
+Backing<span class="w"> </span>up<span class="w"> </span>database:<span class="w"> </span>mcsn
+upload:<span class="w"> </span><span class="s1">&#39;&lt;stdin&gt;&#39;</span><span class="w"> </span>-&gt;<span class="w"> </span><span class="s1">&#39;s3://swiss-backups/2024_08_14/mcsn_2024_08_14.sql.gz&#39;</span><span class="w">  </span><span class="o">[</span>part<span class="w"> </span><span class="m">1</span><span class="w"> </span>of<span class="w"> </span>-,<span class="w"> </span>4MB<span class="o">]</span><span class="w"> </span><span class="o">[</span><span class="m">1</span><span class="w"> </span>of<span class="w"> </span><span class="m">1</span><span class="o">]</span>
+<span class="w"> </span><span class="m">4602206</span><span class="w"> </span>of<span class="w"> </span><span class="m">4602206</span><span class="w">   </span><span class="m">100</span>%<span class="w"> </span><span class="k">in</span><span class="w">    </span>0s<span class="w">    </span><span class="m">20</span>.33<span class="w"> </span>MB/s<span class="w">  </span><span class="k">done</span>
+Backup<span class="w"> </span>of<span class="w"> </span>mcsn<span class="w"> </span>completed<span class="w"> </span>and<span class="w"> </span>uploaded<span class="w"> </span>successfully<span class="w"> </span>to<span class="w"> </span>s3://swiss-backups/2024_08_14.
+Backing<span class="w"> </span>up<span class="w"> </span>database:<span class="w"> </span>mhnc
+upload:<span class="w"> </span><span class="s1">&#39;&lt;stdin&gt;&#39;</span><span class="w"> </span>-&gt;<span class="w"> </span><span class="s1">&#39;s3://swiss-backups/2024_08_14/mhnc_2024_08_14.sql.gz&#39;</span><span class="w">  </span><span class="o">[</span>part<span class="w"> </span><span class="m">1</span><span class="w"> </span>of<span class="w"> </span>-,<span class="w"> </span>4MB<span class="o">]</span><span class="w"> </span><span class="o">[</span><span class="m">1</span><span class="w"> </span>of<span class="w"> </span><span class="m">1</span><span class="o">]</span>
+<span class="w"> </span><span class="m">4588230</span><span class="w"> </span>of<span class="w"> </span><span class="m">4588230</span><span class="w">   </span><span class="m">100</span>%<span class="w"> </span><span class="k">in</span><span class="w">    </span>0s<span class="w">    </span><span class="m">16</span>.26<span class="w"> </span>MB/s<span class="w">  </span><span class="k">done</span>
+Backup<span class="w"> </span>of<span class="w"> </span>mhnc<span class="w"> </span>completed<span class="w"> </span>and<span class="w"> </span>uploaded<span class="w"> </span>successfully<span class="w"> </span>to<span class="w"> </span>s3://swiss-backups/2024_08_14.
+Backing<span class="w"> </span>up<span class="w"> </span>database:<span class="w"> </span>mhnf
+upload:<span class="w"> </span><span class="s1">&#39;&lt;stdin&gt;&#39;</span><span class="w"> </span>-&gt;<span class="w"> </span><span class="s1">&#39;s3://swiss-backups/2024_08_14/mhnf_2024_08_14.sql.gz&#39;</span><span class="w">  </span><span class="o">[</span>part<span class="w"> </span><span class="m">1</span><span class="w"> </span>of<span class="w"> </span>-,<span class="w"> </span>5MB<span class="o">]</span><span class="w"> </span><span class="o">[</span><span class="m">1</span><span class="w"> </span>of<span class="w"> </span><span class="m">1</span><span class="o">]</span>
+<span class="w"> </span><span class="m">5861026</span><span class="w"> </span>of<span class="w"> </span><span class="m">5861026</span><span class="w">   </span><span class="m">100</span>%<span class="w"> </span><span class="k">in</span><span class="w">    </span>0s<span class="w">    </span><span class="m">25</span>.46<span class="w"> </span>MB/s<span class="w">  </span><span class="k">done</span>
+Backup<span class="w"> </span>of<span class="w"> </span>mhnf<span class="w"> </span>completed<span class="w"> </span>and<span class="w"> </span>uploaded<span class="w"> </span>successfully<span class="w"> </span>to<span class="w"> </span>s3://swiss-backups/2024_08_14.
+Backing<span class="w"> </span>up<span class="w"> </span>database:<span class="w"> </span>naag
+upload:<span class="w"> </span><span class="s1">&#39;&lt;stdin&gt;&#39;</span><span class="w"> </span>-&gt;<span class="w"> </span><span class="s1">&#39;s3://swiss-backups/2024_08_14/naag_2024_08_14.sql.gz&#39;</span><span class="w">  </span><span class="o">[</span>part<span class="w"> </span><span class="m">1</span><span class="w"> </span>of<span class="w"> </span>-,<span class="w"> </span>10MB<span class="o">]</span><span class="w"> </span><span class="o">[</span><span class="m">1</span><span class="w"> </span>of<span class="w"> </span><span class="m">1</span><span class="o">]</span>
+<span class="w"> </span><span class="m">11213948</span><span class="w"> </span>of<span class="w"> </span><span class="m">11213948</span><span class="w">   </span><span class="m">100</span>%<span class="w"> </span><span class="k">in</span><span class="w">    </span>0s<span class="w">    </span><span class="m">24</span>.78<span class="w"> </span>MB/s<span class="w">  </span><span class="k">done</span>
+Backup<span class="w"> </span>of<span class="w"> </span>naag<span class="w"> </span>completed<span class="w"> </span>and<span class="w"> </span>uploaded<span class="w"> </span>successfully<span class="w"> </span>to<span class="w"> </span>s3://swiss-backups/2024_08_14.
+Backing<span class="w"> </span>up<span class="w"> </span>database:<span class="w"> </span>nmb_rinvert
+upload:<span class="w"> </span><span class="s1">&#39;&lt;stdin&gt;&#39;</span><span class="w"> </span>-&gt;<span class="w"> </span><span class="s1">&#39;s3://swiss-backups/2024_08_14/nmb_rinvert_2024_08_14.sql.gz&#39;</span><span class="w">  </span><span class="o">[</span>part<span class="w"> </span><span class="m">1</span><span class="w"> </span>of<span class="w"> </span>-,<span class="w"> </span>6MB<span class="o">]</span><span class="w"> </span><span class="o">[</span><span class="m">1</span><span class="w"> </span>of<span class="w"> </span><span class="m">1</span><span class="o">]</span>
+<span class="w"> </span><span class="m">6450282</span><span class="w"> </span>of<span class="w"> </span><span class="m">6450282</span><span class="w">   </span><span class="m">100</span>%<span class="w"> </span><span class="k">in</span><span class="w">    </span>0s<span class="w">    </span><span class="m">30</span>.53<span class="w"> </span>MB/s<span class="w">  </span><span class="k">done</span>
+Backup<span class="w"> </span>of<span class="w"> </span>nmb_rinvert<span class="w"> </span>completed<span class="w"> </span>and<span class="w"> </span>uploaded<span class="w"> </span>successfully<span class="w"> </span>to<span class="w"> </span>s3://swiss-backups/2024_08_14.
+Backing<span class="w"> </span>up<span class="w"> </span>database:<span class="w"> </span>sp7demofish_swiss
+upload:<span class="w"> </span><span class="s1">&#39;&lt;stdin&gt;&#39;</span><span class="w"> </span>-&gt;<span class="w"> </span><span class="s1">&#39;s3://swiss-backups/2024_08_14/sp7demofish_swiss_2024_08_14.sql.gz&#39;</span><span class="w">  </span><span class="o">[</span>part<span class="w"> </span><span class="m">1</span><span class="w"> </span>of<span class="w"> </span>-,<span class="w"> </span>15MB<span class="o">]</span><span class="w"> </span><span class="o">[</span><span class="m">1</span><span class="w"> </span>of<span class="w"> </span><span class="m">1</span><span class="o">]</span>
+<span class="w"> </span><span class="m">15728640</span><span class="w"> </span>of<span class="w"> </span><span class="m">15728640</span><span class="w">   </span><span class="m">100</span>%<span class="w"> </span><span class="k">in</span><span class="w">    </span>0s<span class="w">    </span><span class="m">30</span>.45<span class="w"> </span>MB/s<span class="w">  </span><span class="k">done</span>
+upload:<span class="w"> </span><span class="s1">&#39;&lt;stdin&gt;&#39;</span><span class="w"> </span>-&gt;<span class="w"> </span><span class="s1">&#39;s3://swiss-backups/2024_08_14/sp7demofish_swiss_2024_08_14.sql.gz&#39;</span><span class="w">  </span><span class="o">[</span>part<span class="w"> </span><span class="m">2</span><span class="w"> </span>of<span class="w"> </span>-,<span class="w"> </span>6MB<span class="o">]</span><span class="w"> </span><span class="o">[</span><span class="m">1</span><span class="w"> </span>of<span class="w"> </span><span class="m">1</span><span class="o">]</span>
+<span class="w"> </span><span class="m">6776807</span><span class="w"> </span>of<span class="w"> </span><span class="m">6776807</span><span class="w">   </span><span class="m">100</span>%<span class="w"> </span><span class="k">in</span><span class="w">    </span>0s<span class="w">    </span><span class="m">23</span>.11<span class="w"> </span>MB/s<span class="w">  </span><span class="k">done</span>
+Backup<span class="w"> </span>of<span class="w"> </span>sp7demofish_swiss<span class="w"> </span>completed<span class="w"> </span>and<span class="w"> </span>uploaded<span class="w"> </span>successfully<span class="w"> </span>to<span class="w"> </span>s3://swiss-backups/2024_08_14.
+ubuntu@sp7cloud-swiss-1:~/.backup$
+</pre></div>
+</div>
+<p>I configured a cron job to run this at 2 AM CEST (12 AM UTC) every day:</p>
+<div class="highlight-sh notranslate"><div class="highlight"><pre><span></span><span class="c1"># m h  dom mon dow   command</span>
+<span class="m">0</span><span class="w"> </span><span class="m">0</span><span class="w"> </span>*<span class="w"> </span>*<span class="w"> </span>*<span class="w"> </span>/home/ubuntu/.backup/backup_script.sh
+</pre></div>
+</div>
+<p>Now this backup will run and be available within the bucket for future retrieval as needed!</p>
+<div class="highlight-sh notranslate"><div class="highlight"><pre><span></span>ubuntu@sp7cloud-swiss-1:~/.backup$<span class="w"> </span>s3cmd<span class="w"> </span>ls<span class="w"> </span>s3://swiss-backups/
+<span class="w">                          </span>DIR<span class="w">  </span>s3://swiss-backups/2024_08_14/
+ubuntu@sp7cloud-swiss-1:~/.backup$<span class="w"> </span>s3cmd<span class="w"> </span>ls<span class="w"> </span>s3://swiss-backups/2024_08_14/
+<span class="m">2024</span>-08-14<span class="w"> </span><span class="m">00</span>:44<span class="w">      </span><span class="m">6365385</span><span class="w">  </span>s3://swiss-backups/2024_08_14/geo_swiss_2024_08_14.sql.gz
+<span class="m">2024</span>-08-14<span class="w"> </span><span class="m">00</span>:44<span class="w">      </span><span class="m">4602206</span><span class="w">  </span>s3://swiss-backups/2024_08_14/mcsn_2024_08_14.sql.gz
+<span class="m">2024</span>-08-14<span class="w"> </span><span class="m">00</span>:44<span class="w">      </span><span class="m">4588230</span><span class="w">  </span>s3://swiss-backups/2024_08_14/mhnc_2024_08_14.sql.gz
+<span class="m">2024</span>-08-14<span class="w"> </span><span class="m">00</span>:45<span class="w">      </span><span class="m">5861026</span><span class="w">  </span>s3://swiss-backups/2024_08_14/mhnf_2024_08_14.sql.gz
+<span class="m">2024</span>-08-14<span class="w"> </span><span class="m">00</span>:45<span class="w">     </span><span class="m">11213948</span><span class="w">  </span>s3://swiss-backups/2024_08_14/naag_2024_08_14.sql.gz
+<span class="m">2024</span>-08-14<span class="w"> </span><span class="m">00</span>:45<span class="w">      </span><span class="m">6450282</span><span class="w">  </span>s3://swiss-backups/2024_08_14/nmb_rinvert_2024_08_14.sql.gz
+<span class="m">2024</span>-08-14<span class="w"> </span><span class="m">00</span>:45<span class="w">     </span><span class="m">22505447</span><span class="w">  </span>s3://swiss-backups/2024_08_14/sp7demofish_swiss_2024_08_14.sql.gz
+ubuntu@sp7cloud-swiss-1:~/.backup$
+</pre></div>
+</div>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="managed_servers.html" class="btn btn-neutral float-left" title="Updown Monitoring" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="../dev_process/specify_processes.html" class="btn btn-neutral float-right" title="Specify Development Process" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2024, Specify Team.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>
