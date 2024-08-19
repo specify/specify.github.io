@@ -25,13 +25,13 @@
 	6. Check url
 4. Add SSL
 	1. Run the `add_ssl.sh` script and follow the prompts.
-	   ```
+	   ```bash
 		sudo sh add_ssl.sh
 	   ```
 	   You will need to provide the `<subdomain>` for the new instance that you wish to add. After this, it will update the `spcloudservers.json` and set `"https": false` to `"https": true` for that instance, then restart all of the running containers.
 	8. Check URL
 	9. **Note:** After an SSL certificate renewal, you can reload nginx without restarting the whole container: 
-	    ```
+	    ```bash
 		docker exec -it specifycloud-nginx-1 nginx -s reload
 		```
 		1. For automatic nginx reloading on certificate renewal create /etc/letsencrypt/renewal-hooks/post/reload-nginx.sh `#!/bin/bash docker exec -it specifycloud_nginx_1 nginx -s reload`
@@ -40,11 +40,11 @@
 5. Add Specify Admin user credentials to the Bitwarden Vault
 7. Asset Server
 	1. SSH into the appropriate Asset Server for the region
-	2. Add `<dbname>` directory in attachments directory 'su specify -c "mkdir attachments/`<dbname>`"' 
-	3. Add `<dbname>` to /home/specify/new-asset-server/settings.py
-	4. systemctl restart web-asset-server.service
+	2. Add `<dbname>` directory in attachments directory `su specify -c "mkdir attachments/<dbname>` 
+	3. Add `<dbname>` to `/home/specify/new-asset-server/settings.py`
+	4. Run `systemctl restart web-asset-server.service`
 8. Updown
-	1. Add url: `<subdomain>`.specifycloud.org/context/system_info.json
+	1. Add url: `<subdomain>.specifycloud.org/context/system_info.json`
 	2. Add alias: `<subdomain>`
 
 ## Misc

@@ -166,14 +166,14 @@ For example, database name <code class="docutils literal notranslate"><span clas
 <li><p>Add SSL</p>
 <ol class="arabic">
 <li><p>Run the <code class="docutils literal notranslate"><span class="pre">add_ssl.sh</span></code> script and follow the prompts.</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span> <span class="n">sudo</span> <span class="n">sh</span> <span class="n">add_ssl</span><span class="o">.</span><span class="n">sh</span>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="w"> </span>sudo<span class="w"> </span>sh<span class="w"> </span>add_ssl.sh
 </pre></div>
 </div>
 <p>You will need to provide the <code class="docutils literal notranslate"><span class="pre">&lt;subdomain&gt;</span></code> for the new instance that you wish to add. After this, it will update the <code class="docutils literal notranslate"><span class="pre">spcloudservers.json</span></code> and set <code class="docutils literal notranslate"><span class="pre">&quot;https&quot;:</span> <span class="pre">false</span></code> to <code class="docutils literal notranslate"><span class="pre">&quot;https&quot;:</span> <span class="pre">true</span></code> for that instance, then restart all of the running containers.</p>
 </li>
 <li><p>Check URL</p></li>
 <li><p><strong>Note:</strong> After an SSL certificate renewal, you can reload nginx without restarting the whole container:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">docker</span> <span class="n">exec</span> <span class="o">-</span><span class="n">it</span> <span class="n">specifycloud</span><span class="o">-</span><span class="n">nginx</span><span class="o">-</span><span class="mi">1</span> <span class="n">nginx</span> <span class="o">-</span><span class="n">s</span> <span class="n">reload</span>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>docker<span class="w"> </span><span class="nb">exec</span><span class="w"> </span>-it<span class="w"> </span>specifycloud-nginx-1<span class="w"> </span>nginx<span class="w"> </span>-s<span class="w"> </span>reload
 </pre></div>
 </div>
 <ol class="arabic simple">
@@ -188,14 +188,14 @@ For example, database name <code class="docutils literal notranslate"><span clas
 <li><p>Asset Server</p>
 <ol class="arabic simple">
 <li><p>SSH into the appropriate Asset Server for the region</p></li>
-<li><p>Add <code class="docutils literal notranslate"><span class="pre">&lt;dbname&gt;</span></code> directory in attachments directory ‘su specify -c “mkdir attachments/<code class="docutils literal notranslate"><span class="pre">&lt;dbname&gt;</span></code>”’</p></li>
-<li><p>Add <code class="docutils literal notranslate"><span class="pre">&lt;dbname&gt;</span></code> to /home/specify/new-asset-server/settings.py</p></li>
-<li><p>systemctl restart web-asset-server.service</p></li>
+<li><p>Add <code class="docutils literal notranslate"><span class="pre">&lt;dbname&gt;</span></code> directory in attachments directory <code class="docutils literal notranslate"><span class="pre">su</span> <span class="pre">specify</span> <span class="pre">-c</span> <span class="pre">&quot;mkdir</span> <span class="pre">attachments/&lt;dbname&gt;</span></code></p></li>
+<li><p>Add <code class="docutils literal notranslate"><span class="pre">&lt;dbname&gt;</span></code> to <code class="docutils literal notranslate"><span class="pre">/home/specify/new-asset-server/settings.py</span></code></p></li>
+<li><p>Run <code class="docutils literal notranslate"><span class="pre">systemctl</span> <span class="pre">restart</span> <span class="pre">web-asset-server.service</span></code></p></li>
 </ol>
 </li>
 <li><p>Updown</p>
 <ol class="arabic simple">
-<li><p>Add url: <code class="docutils literal notranslate"><span class="pre">&lt;subdomain&gt;</span></code>.specifycloud.org/context/system_info.json</p></li>
+<li><p>Add url: <code class="docutils literal notranslate"><span class="pre">&lt;subdomain&gt;.specifycloud.org/context/system_info.json</span></code></p></li>
 <li><p>Add alias: <code class="docutils literal notranslate"><span class="pre">&lt;subdomain&gt;</span></code></p></li>
 </ol>
 </li>
