@@ -131,21 +131,19 @@
 <h2>Example for <dbname><a class="headerlink" href="#example-for" title="Link to this heading"></a></h2>
 <ol class="arabic">
 <li><p>Create Database</p>
-<ol class="arabic simple">
+<ol class="arabic">
 <li><p>Review the SQL file before importing to the production server. Test the import locally before uploading to a production instance.</p></li>
 <li><p>Ensure the new database has the same name as the subdomain the user wishes to use, remembering that underscores (<code class="docutils literal notranslate"><span class="pre">_</span></code>) are replaced with dashes (<code class="docutils literal notranslate"><span class="pre">-</span></code>) for the URL.</p></li>
-<li><p>Create the database:</p></li>
-</ol>
+<li><p>Create the database:</p>
 <div class="highlight-sql notranslate"><div class="highlight"><pre><span></span><span class="n">mariadb</span><span class="w"> </span><span class="o">-</span><span class="n">u</span><span class="o">&lt;</span><span class="n">master</span><span class="o">&gt;</span><span class="w"> </span><span class="o">-</span><span class="n">p</span><span class="o">&lt;</span><span class="n">master_password</span><span class="o">&gt;</span><span class="w"> </span><span class="o">-</span><span class="n">e</span><span class="w"> </span><span class="ss">&quot;CREATE DATABASE &lt;dbname&gt;;&quot;</span>
 </pre></div>
 </div>
-<ol class="arabic simple" start="3">
-<li><p>Upload and restore the existing database:</p></li>
-</ol>
+</li>
+<li><p>Upload and restore the existing database:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">mariadb</span> <span class="o">-</span><span class="n">u</span><span class="o">&lt;</span><span class="n">master</span><span class="o">&gt;</span> <span class="o">-</span><span class="n">p</span><span class="o">&lt;</span><span class="n">master_password</span><span class="o">&gt;</span> <span class="o">&lt;</span><span class="n">dbname</span><span class="o">&gt;</span> <span class="o">&lt;</span> <span class="o">&lt;</span><span class="n">dbname</span><span class="o">&gt;.</span><span class="n">sql</span>
 </pre></div>
 </div>
-<ol class="arabic simple" start="4">
+</li>
 <li><p><strong>Note:</strong> You may <code class="docutils literal notranslate"><span class="pre">GRANT</span> <span class="pre">ALL</span> <span class="pre">PRIVILEGES</span> <span class="pre">ON</span> <span class="pre">&lt;dbname&gt;.*</span> <span class="pre">TO</span> <span class="pre">&lt;master_password&gt;&#64;'%';</span></code> if
 master doesn’t have access <code class="docutils literal notranslate"><span class="pre">FLUSH</span> <span class="pre">PRIVILEGES;</span></code></p></li>
 </ol>
