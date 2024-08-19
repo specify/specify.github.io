@@ -52,7 +52,7 @@
 		```
 		python3 manage_collection_dirs.py add <database_name>
 		```
-	    This creates a new attachemnt directory and updates the `settings.py` file to add the collection directory.
+	    This creates a new attachment directory and updates the `settings.py` file to add the collection directory.
 7. Updown
 	1. Add url: `<subdomain>.specifycloud.org/context/system_info.json`
 	2. Add alias: `<subdomain>`
