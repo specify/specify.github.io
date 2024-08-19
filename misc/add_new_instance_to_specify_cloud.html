@@ -194,12 +194,16 @@ For example, database name <code class="docutils literal notranslate"><span clas
 </ol>
 </li>
 <li><p>Add Specify Admin user credentials to the Bitwarden Vault</p></li>
-<li><p>Asset Server</p>
-<ol class="arabic simple">
-<li><p>SSH into the appropriate Asset Server for the region</p></li>
-<li><p>Add <code class="docutils literal notranslate"><span class="pre">&lt;dbname&gt;</span></code> directory in attachments directory <code class="docutils literal notranslate"><span class="pre">su</span> <span class="pre">specify</span> <span class="pre">-c</span> <span class="pre">&quot;mkdir</span> <span class="pre">attachments/&lt;dbname&gt;</span></code></p></li>
-<li><p>Add <code class="docutils literal notranslate"><span class="pre">&lt;dbname&gt;</span></code> to <code class="docutils literal notranslate"><span class="pre">/home/specify/new-asset-server/settings.py</span></code></p></li>
-<li><p>Run <code class="docutils literal notranslate"><span class="pre">systemctl</span> <span class="pre">restart</span> <span class="pre">web-asset-server.service</span></code></p></li>
+<li><p>Setup attachments for the database</p>
+<ol class="arabic">
+<li><p>SSH into the appropriate Web Asset Server</p></li>
+<li><p>Navigate to the <code class="docutils literal notranslate"><span class="pre">web-asset-server</span></code> directory</p></li>
+<li><p>Use the <code class="docutils literal notranslate"><span class="pre">manage_collection_dirs.py</span></code> utility to add the new database(s) to the server:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">python3</span> <span class="n">manage_collection_dirs</span><span class="o">.</span><span class="n">py</span> <span class="n">add</span> <span class="o">&lt;</span><span class="n">database_name</span><span class="o">&gt;</span>
+</pre></div>
+</div>
+<p>This creates a new attachemnt directory and updates the <code class="docutils literal notranslate"><span class="pre">settings.py</span></code> file to add the collection directory.</p>
+</li>
 </ol>
 </li>
 <li><p>Updown</p>

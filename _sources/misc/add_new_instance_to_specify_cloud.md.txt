@@ -45,12 +45,15 @@
 		2. `crontab -e;` and then add the line `0 3 * * 0,2,4,6 docker exec specifycloud_nginx_1 nginx -s reload`
 		3. `crontab -l` to list cronjobs
 5. Add Specify Admin user credentials to the Bitwarden Vault
-7. Asset Server
-	1. SSH into the appropriate Asset Server for the region
-	2. Add `<dbname>` directory in attachments directory `su specify -c "mkdir attachments/<dbname>` 
-	3. Add `<dbname>` to `/home/specify/new-asset-server/settings.py`
-	4. Run `systemctl restart web-asset-server.service`
-8. Updown
+6. Setup attachments for the database
+	1. SSH into the appropriate Web Asset Server
+	2. Navigate to the `web-asset-server` directory
+	2. Use the `manage_collection_dirs.py` utility to add the new database(s) to the server:
+		```
+		python3 manage_collection_dirs.py add <database_name>
+		```
+	    This creates a new attachemnt directory and updates the `settings.py` file to add the collection directory.
+7. Updown
 	1. Add url: `<subdomain>.specifycloud.org/context/system_info.json`
 	2. Add alias: `<subdomain>`
 
