@@ -3,14 +3,21 @@
 ## Example for <dbname>
 
 1. Create Database
-	1. look through the sql file for issues and do test upload to local database
-	2. mysql -u<master> -p<master_password> -e "create database <dbname>;"
-	3. mysql -u<master> -p<master_password> <dbname> < <dbname>.sql
-	4. may need to run `grant all privileges on eurl.* to <master_password>@'%';` if 
-       master doesn't have access `flush privileges;`
-2. DNS Registtration:
+	1. Review the SQL file before importing to the production server. Test the import locally before uploading to a production instance.
+	2. Ensure the new database has the same name as the subdomain the user wishes to use, remembering that underscores (`_`) are replaced with dashes (`-`) for the URL.
+	2. Create the database:
+	```sql
+	mariadb -u<master> -p<master_password> -e "CREATE DATABASE <dbname>;"
+	```
+	3. Upload and restore the existing database:
+	```
+	mariadb -u<master> -p<master_password> <dbname> < <dbname>.sql
+	```
+	4. **Note:** You may `GRANT ALL PRIVILEGES ON <dbname>.* TO <master_password>@'%';` if 
+       master doesn't have access `FLUSH PRIVILEGES;`
+2. DNS Registration:
 	1. Login to Dreamhost, select Websites -> Manage Websites
-	2. For specifycloud.org, select DNS ([Direct link](https://panel.dreamhost.com/index.cgi?tree=domain.dashboard#/site/specifycloud.org/dns))
+	2. For `specifycloud.org`, select DNS ([Direct link](https://panel.dreamhost.com/index.cgi?tree=domain.dashboard#/site/specifycloud.org/dns))
 	3. Add CNAME record that has a name matching the database name and links to the appropraite regional domain value (i.e. `na-specify7-1.specifycloud.org.`, `eu-specify7-1.specifycloud.org.`, etc.). If the database name has underscores (_), replace these with dashes (-).
 		- `<dbname>` points to `<subdomain>.specifycloud.org.`
 		   For example, database name `herb_rbge` would have the name `herb-rbge.specifycloud.org`.
@@ -35,7 +42,7 @@
 		docker exec -it specifycloud-nginx-1 nginx -s reload
 		```
 		1. For automatic nginx reloading on certificate renewal create /etc/letsencrypt/renewal-hooks/post/reload-nginx.sh `#!/bin/bash docker exec -it specifycloud_nginx_1 nginx -s reload`
-		2. `crontab -e;` and then add the line "0 3 * * 0,2,4,6 docker exec specifycloud_nginx_1 nginx -s reload"
+		2. `crontab -e;` and then add the line `0 3 * * 0,2,4,6 docker exec specifycloud_nginx_1 nginx -s reload`
 		3. `crontab -l` to list cronjobs
 5. Add Specify Admin user credentials to the Bitwarden Vault
 7. Asset Server
