@@ -5,14 +5,14 @@
 1. Create Database
 	1. Review the SQL file before importing to the production server. Test the import locally before uploading to a production instance.
 	2. Ensure the new database has the same name as the subdomain the user wishes to use, remembering that underscores (`_`) are replaced with dashes (`-`) for the URL.
-	2. Create the database:
-	```sql
-	mariadb -u<master> -p<master_password> -e "CREATE DATABASE <dbname>;"
-	```
-	3. Upload and restore the existing database:
-	```
-	mariadb -u<master> -p<master_password> <dbname> < <dbname>.sql
-	```
+	3. Create the database:
+		```sql
+		mariadb -u<master> -p<master_password> -e "CREATE DATABASE <dbname>;"
+		```
+	4. Upload and restore the existing database:
+		```
+		mariadb -u<master> -p<master_password> <dbname> < <dbname>.sql
+		```
 	4. **Note:** You may `GRANT ALL PRIVILEGES ON <dbname>.* TO <master_password>@'%';` if 
        master doesn't have access `FLUSH PRIVILEGES;`
 2. DNS Registration:
