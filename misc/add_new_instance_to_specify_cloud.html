@@ -132,17 +132,28 @@
 <ol class="arabic">
 <li><p>Create Database</p>
 <ol class="arabic simple">
-<li><p>look through the sql file for issues and do test upload to local database</p></li>
-<li><p>mysql -u<master> -p&lt;master_password&gt; -e “create database <dbname>;”</p></li>
-<li><p>mysql -u<master> -p&lt;master_password&gt; <dbname> &lt; <dbname>.sql</p></li>
-<li><p>may need to run <code class="docutils literal notranslate"><span class="pre">grant</span> <span class="pre">all</span> <span class="pre">privileges</span> <span class="pre">on</span> <span class="pre">eurl.*</span> <span class="pre">to</span> <span class="pre">&lt;master_password&gt;&#64;'%';</span></code> if
-master doesn’t have access <code class="docutils literal notranslate"><span class="pre">flush</span> <span class="pre">privileges;</span></code></p></li>
+<li><p>Review the SQL file before importing to the production server. Test the import locally before uploading to a production instance.</p></li>
+<li><p>Ensure the new database has the same name as the subdomain the user wishes to use, remembering that underscores (<code class="docutils literal notranslate"><span class="pre">_</span></code>) are replaced with dashes (<code class="docutils literal notranslate"><span class="pre">-</span></code>) for the URL.</p></li>
+<li><p>Create the database:</p></li>
+</ol>
+<div class="highlight-sql notranslate"><div class="highlight"><pre><span></span><span class="n">mariadb</span><span class="w"> </span><span class="o">-</span><span class="n">u</span><span class="o">&lt;</span><span class="n">master</span><span class="o">&gt;</span><span class="w"> </span><span class="o">-</span><span class="n">p</span><span class="o">&lt;</span><span class="n">master_password</span><span class="o">&gt;</span><span class="w"> </span><span class="o">-</span><span class="n">e</span><span class="w"> </span><span class="ss">&quot;CREATE DATABASE &lt;dbname&gt;;&quot;</span>
+</pre></div>
+</div>
+<ol class="arabic simple" start="3">
+<li><p>Upload and restore the existing database:</p></li>
+</ol>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">mariadb</span> <span class="o">-</span><span class="n">u</span><span class="o">&lt;</span><span class="n">master</span><span class="o">&gt;</span> <span class="o">-</span><span class="n">p</span><span class="o">&lt;</span><span class="n">master_password</span><span class="o">&gt;</span> <span class="o">&lt;</span><span class="n">dbname</span><span class="o">&gt;</span> <span class="o">&lt;</span> <span class="o">&lt;</span><span class="n">dbname</span><span class="o">&gt;.</span><span class="n">sql</span>
+</pre></div>
+</div>
+<ol class="arabic simple" start="4">
+<li><p><strong>Note:</strong> You may <code class="docutils literal notranslate"><span class="pre">GRANT</span> <span class="pre">ALL</span> <span class="pre">PRIVILEGES</span> <span class="pre">ON</span> <span class="pre">&lt;dbname&gt;.*</span> <span class="pre">TO</span> <span class="pre">&lt;master_password&gt;&#64;'%';</span></code> if
+master doesn’t have access <code class="docutils literal notranslate"><span class="pre">FLUSH</span> <span class="pre">PRIVILEGES;</span></code></p></li>
 </ol>
 </li>
-<li><p>DNS Registtration:</p>
+<li><p>DNS Registration:</p>
 <ol class="arabic simple">
 <li><p>Login to Dreamhost, select Websites -&gt; Manage Websites</p></li>
-<li><p>For specifycloud.org, select DNS (<a class="reference external" href="https://panel.dreamhost.com/index.cgi?tree=domain.dashboard#/site/specifycloud.org/dns">Direct link</a>)</p></li>
+<li><p>For <code class="docutils literal notranslate"><span class="pre">specifycloud.org</span></code>, select DNS (<a class="reference external" href="https://panel.dreamhost.com/index.cgi?tree=domain.dashboard#/site/specifycloud.org/dns">Direct link</a>)</p></li>
 <li><p>Add CNAME record that has a name matching the database name and links to the appropraite regional domain value (i.e. <code class="docutils literal notranslate"><span class="pre">na-specify7-1.specifycloud.org.</span></code>, <code class="docutils literal notranslate"><span class="pre">eu-specify7-1.specifycloud.org.</span></code>, etc.). If the database name has underscores (_), replace these with dashes (-).</p>
 <ul class="simple">
 <li><p><code class="docutils literal notranslate"><span class="pre">&lt;dbname&gt;</span></code> points to <code class="docutils literal notranslate"><span class="pre">&lt;subdomain&gt;.specifycloud.org.</span></code>
@@ -178,7 +189,7 @@ For example, database name <code class="docutils literal notranslate"><span clas
 </div>
 <ol class="arabic simple">
 <li><p>For automatic nginx reloading on certificate renewal create /etc/letsencrypt/renewal-hooks/post/reload-nginx.sh <code class="docutils literal notranslate"><span class="pre">#!/bin/bash</span> <span class="pre">docker</span> <span class="pre">exec</span> <span class="pre">-it</span> <span class="pre">specifycloud_nginx_1</span> <span class="pre">nginx</span> <span class="pre">-s</span> <span class="pre">reload</span></code></p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">crontab</span> <span class="pre">-e;</span></code> and then add the line “0 3 * * 0,2,4,6 docker exec specifycloud_nginx_1 nginx -s reload”</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">crontab</span> <span class="pre">-e;</span></code> and then add the line <code class="docutils literal notranslate"><span class="pre">0</span> <span class="pre">3</span> <span class="pre">*</span> <span class="pre">*</span> <span class="pre">0,2,4,6</span> <span class="pre">docker</span> <span class="pre">exec</span> <span class="pre">specifycloud_nginx_1</span> <span class="pre">nginx</span> <span class="pre">-s</span> <span class="pre">reload</span></code></p></li>
 <li><p><code class="docutils literal notranslate"><span class="pre">crontab</span> <span class="pre">-l</span></code> to list cronjobs</p></li>
 </ol>
 </li>
