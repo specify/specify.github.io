@@ -24,38 +24,35 @@
 	5. Run `docker compose restart nginx` (reload should be just fine here: `docker exec -it specifycloud_nginx_1 nginx -s reload`)
 	6. Check url
 4. Add SSL
-	1. `mkdir /var/www/unsm-vp`
-	2. `certbot --webroot -w /var/www/<subdomain> -d <subdomain>.specifycloud.org certonly`
-	3. `certbot certificates`
-	4. Remove https: false from spcloudservers.json
-	5. `make`
-	6. `docker compose up -d`
-	7. `docker compose restart`  (maybe just reload instead)
-	8. check url
-	9. note: after an ssl certificate renewal -> docker exec -it specifycloud_nginx_1 nginx -s reload
+	1. Run the `add_ssl.sh` script and follow the prompts.
+	   ```
+		sudo sh add_ssl.sh
+	   ```
+	   You will need to provide the `<subdomain>` for the new instance that you wish to add. After this, it will update the `spcloudservers.json` and set `"https": false` to `"https": true` for that instance, then restart all of the running containers.
+	8. Check URL
+	9. **Note:** After an SSL certificate renewal, you can reload nginx without restarting the whole container: 
+	    ```
+		docker exec -it specifycloud-nginx-1 nginx -s reload
+		```
 		1. For automatic nginx reloading on certificate renewal create /etc/letsencrypt/renewal-hooks/post/reload-nginx.sh `#!/bin/bash docker exec -it specifycloud_nginx_1 nginx -s reload`
 		2. `crontab -e;` and then add the line "0 3 * * 0,2,4,6 docker exec specifycloud_nginx_1 nginx -s reload"
 		3. `crontab -l` to list cronjobs
-5. Add Specify admin credentials to the [master list on the SCC Vault](https://docs.google.com/spreadsheets/d/1saSYJJDJdATwZvzFz873wvC-DkyBQsIQ66un1lpILE4/edit#gid=690980104)
-6. Database Backup
-	1. `ssh` into `biprdsp6ap.cc.ku.edu`
-	2. `sudo su - spcloudbackup`
-	3. Add <dbname> into the file /home/spcloudbackup/backup_specify_cloud.py
+5. Add Specify Admin user credentials to the Bitwarden Vault
 7. Asset Server
-	1. ssh into asset
-	2. Add <dbname> directory in attachments directory 'su specify -c "mkdir attachments/<dbname>"' 
-	3. Add <dbname> to /home/specify/new-asset-server/settings.py
+	1. SSH into the appropriate Asset Server for the region
+	2. Add `<dbname>` directory in attachments directory 'su specify -c "mkdir attachments/`<dbname>`"' 
+	3. Add `<dbname>` to /home/specify/new-asset-server/settings.py
 	4. systemctl restart web-asset-server.service
 8. Updown
-	1. Add url: <subdomain>.specifycloud.org/context/system_info.json
-	2. Add alias: <subdomain>
+	1. Add url: `<subdomain>`.specifycloud.org/context/system_info.json
+	2. Add alias: `<subdomain>`
 
 ## Misc
 
 * Add ssh key:
 
 ```bash
-vim .ssh/authorized_keys
+nano .ssh/authorized_keys
 sudo systemctl reload sshd
 ```
 
@@ -71,8 +68,8 @@ systemctl start mariadb.service
 * Fix an instance by restarting it:
 
 ```bash
-sudo docker exec -it specifycloud_nginx_1 nginx -s reload;
+sudo docker exec -it specifycloud-nginx-1 nginx -s reload;
 sudo docker stop client client-worker;
 sudo docker compose up -d;
-sudo docker exec -it specifycloud_nginx_1 nginx -s reload;
+sudo docker exec -it specifycloud-nginx-1 nginx -s reload;
 ```
