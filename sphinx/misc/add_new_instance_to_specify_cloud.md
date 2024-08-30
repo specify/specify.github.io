@@ -33,7 +33,7 @@
 4. Add SSL
 	1. Run the `add_ssl.sh` script and follow the prompts.
 	   ```bash
-		sudo sh add_ssl.sh
+		sudo bash add_ssl.sh
 	   ```
 	   You will need to provide the `<subdomain>` for the new instance that you wish to add. After this, it will update the `spcloudservers.json` and set `"https": false` to `"https": true` for that instance, then restart all of the running containers.
 	8. Check URL
