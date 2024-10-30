@@ -2,19 +2,19 @@ Pull Request Testing
 ########################
 
 Developers
-=======================
+*************
 
 Follow instructions in the Github PR template for writing detailed testing instructions.
 
-Testers:
-=======================
+Testers
+*************
 
 * Copy and paste developer's instructions for testing into your testing comment.
 * Check the passing tests
 * Describe any failures in detail, with screenshots where helpful.
 
 PRs tagged with label "Migration"
-=======================
+*********************************
 
 * Download the current database you’ll be working with.
 * Upload a duplicate of this database with a new name format:
