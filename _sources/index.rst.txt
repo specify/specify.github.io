@@ -51,6 +51,12 @@ Welcome to Specify Developer documentation!
 
 .. toctree::
    :maxdepth: 1
+   :caption: Testing:
+
+   testing/pull_requests
+
+.. toctree::
+   :maxdepth: 1
    :caption: Misc:
 
    misc/add_new_instance_to_specify_cloud
