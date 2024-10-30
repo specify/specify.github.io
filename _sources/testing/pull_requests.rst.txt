@@ -1,6 +1,18 @@
 Pull Request Testing
 ########################
 
+Developers
+=======================
+
+Follow instructions in the Github PR template for writing detailed testing instructions.
+
+Testers:
+=======================
+
+* Copy and paste developer's instructions for testing into your testing comment.
+* Check the passing tests
+* Describe any failures in detail, with screenshots where helpful.
+
 PRs tagged with label "Migration"
 =======================
 
