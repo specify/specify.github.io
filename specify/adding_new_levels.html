@@ -6,7 +6,7 @@
   <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>AWS Infrastructure Notes &mdash; Specify Developer Documentation  documentation</title>
+  <title>Steps After Adding a New Institutional Scoping Level in Specify 7 &mdash; Specify Developer Documentation  documentation</title>
       <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=80d5e7a1" />
       <link rel="stylesheet" type="text/css" href="../_static/css/theme.css?v=e59714d7" />
 
@@ -19,8 +19,8 @@
     <script src="../_static/js/theme.js"></script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="AWS Specify Asset Server Setup" href="aws_specify_asset_server_setup.html" />
-    <link rel="prev" title="AWS Automation" href="aws_automation.html" /> 
+    <link rel="next" title="AWS Automation" href="../aws/aws_automation.html" />
+    <link rel="prev" title="Welcome to Specify Developer documentation!" href="../index.html" /> 
 </head>
 
 <body class="wy-body-for-nav"> 
@@ -43,19 +43,28 @@
 </div>
         </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
               <p class="caption" role="heading"><span class="caption-text">Specify:</span></p>
-<ul>
-<li class="toctree-l1"><a class="reference internal" href="../specify/adding_new_levels.html">Steps After Adding a New Institutional Scoping Level in Specify 7</a></li>
+<ul class="current">
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Steps After Adding a New Institutional Scoping Level in Specify 7</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#collection">Collection</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#discipline">Discipline</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#uniqueness-rules">Uniqueness Rules</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#division">Division</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#institution">Institution</a></li>
+</ul>
+</li>
 </ul>
 <p class="caption" role="heading"><span class="caption-text">Amazon Web Services:</span></p>
-<ul class="current">
-<li class="toctree-l1"><a class="reference internal" href="aws_automation.html">AWS Automation</a></li>
-<li class="toctree-l1 current"><a class="current reference internal" href="#">AWS Infrastructure Notes</a></li>
-<li class="toctree-l1"><a class="reference internal" href="aws_specify_asset_server_setup.html">AWS Specify Asset Server Setup</a></li>
-<li class="toctree-l1"><a class="reference internal" href="aws_specify_cloud_setup.html">Specify Cloud Setup</a></li>
-<li class="toctree-l1"><a class="reference internal" href="client_migration_notes.html">Digital Ocean to AWS migration</a></li>
-<li class="toctree-l1"><a class="reference internal" href="ec2_rds_specify7_setup.html">Deploy Specify7 to an EC2 instance</a></li>
-<li class="toctree-l1"><a class="reference internal" href="specify_cloud_graviton_setup.html">Specify Cloud Graviton Setup</a></li>
-<li class="toctree-l1"><a class="reference internal" href="remote_db_connection.html">Setup remote database connection to local mysql workbench</a></li>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../aws/aws_automation.html">AWS Automation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../aws/aws_infrastructure_notes.html">AWS Infrastructure Notes</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../aws/aws_specify_asset_server_setup.html">AWS Specify Asset Server Setup</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../aws/aws_specify_cloud_setup.html">Specify Cloud Setup</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../aws/client_migration_notes.html">Digital Ocean to AWS migration</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../aws/ec2_rds_specify7_setup.html">Deploy Specify7 to an EC2 instance</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../aws/specify_cloud_graviton_setup.html">Specify Cloud Graviton Setup</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../aws/remote_db_connection.html">Setup remote database connection to local mysql workbench</a></li>
 </ul>
 <p class="caption" role="heading"><span class="caption-text">Asset Server:</span></p>
 <ul>
@@ -117,9 +126,9 @@
           <div role="navigation" aria-label="Page navigation">
   <ul class="wy-breadcrumbs">
       <li><a href="../index.html" class="icon icon-home" aria-label="Home"></a></li>
-      <li class="breadcrumb-item active">AWS Infrastructure Notes</li>
+      <li class="breadcrumb-item active">Steps After Adding a New Institutional Scoping Level in Specify 7</li>
       <li class="wy-breadcrumbs-aside">
-            <a href="../_sources/aws/aws_infrastructure_notes.md.txt" rel="nofollow"> View page source</a>
+            <a href="../_sources/specify/adding_new_levels.md.txt" rel="nofollow"> View page source</a>
       </li>
   </ul>
   <hr/>
@@ -127,17 +136,65 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
              
-  <section id="aws-infrastructure-notes">
-<h1>AWS Infrastructure Notes<a class="headerlink" href="#aws-infrastructure-notes" title="Link to this heading"></a></h1>
-<p>TODO</p>
+  <section id="steps-after-adding-a-new-institutional-scoping-level-in-specify-7">
+<h1>Steps After Adding a New Institutional Scoping Level in Specify 7<a class="headerlink" href="#steps-after-adding-a-new-institutional-scoping-level-in-specify-7" title="Link to this heading"></a></h1>
+<p><em>Last updated 2024-12-09</em></p>
+<p>After adding a new <a class="reference external" href="https://discourse.specifysoftware.org/t/specify-institutional-scopings/1046">institutional scoping level</a> (collection, discipline, division) to a Specify 7 database, follow these steps:</p>
+<p><img alt="Example hierarchy" src="https://global.discourse-cdn.com/flex029/uploads/specifysoftware/original/2X/d/d48c17f6c1a95289032a45963388ee499f20f889.jpeg" /></p>
+<p><img alt="Scoping hierarchy" src="../_images/scopinghierarchy.png" /></p>
+<blockquote>
+<div><p><strong>WARNING:</strong> Before following any of these steps, make sure to take a complete backup of any production database.</p>
+</div></blockquote>
+<section id="collection">
+<h2>Collection<a class="headerlink" href="#collection" title="Link to this heading"></a></h2>
+<p><em>WIP</em></p>
+</section>
+<section id="discipline">
+<h2>Discipline<a class="headerlink" href="#discipline" title="Link to this heading"></a></h2>
+<section id="uniqueness-rules">
+<h3>Uniqueness Rules<a class="headerlink" href="#uniqueness-rules" title="Link to this heading"></a></h3>
+<p><strong>Problem:</strong> When a new discipline is added, the uniqueness rules are not automatically applied. This occurs because the migration process that creates the uniqueness rules is not already complete and does not run again.</p>
+<blockquote>
+<div><p>⚠️ <strong>Warning:</strong> Make sure to note any custom uniqueness rules. If any do not match the system’s defaults, carefully back them up and re-add them once these steps are complete.</p>
+</div></blockquote>
+<p><strong>Solution:</strong></p>
+<ol class="arabic">
+<li><p>Drop the <code class="docutils literal notranslate"><span class="pre">uniquenessrule_fields</span></code> table.</p></li>
+<li><p>Drop the <code class="docutils literal notranslate"><span class="pre">uniquenessrule</span></code> table.</p></li>
+<li><p>Remove the Django migration records associated with these migrations:</p>
+<div class="highlight-sql notranslate"><div class="highlight"><pre><span></span><span class="k">delete</span><span class="w"> </span><span class="k">from</span><span class="w"> </span><span class="n">django_migrations</span><span class="w"> </span><span class="k">where</span><span class="w"> </span><span class="n">name</span><span class="w"> </span><span class="k">IN</span><span class="w"> </span><span class="p">(</span><span class="s1">&#39;0001_initial&#39;</span><span class="p">,</span><span class="s1">&#39;0002_default_unique_rules&#39;</span><span class="p">);</span>
+</pre></div>
+</div>
+</li>
+<li><p>Enter the container directly via command line:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>docker<span class="w"> </span><span class="nb">exec</span><span class="w"> </span>-it<span class="w"> </span>specifycloud-example-1<span class="w"> </span>/bin/bash
+</pre></div>
+</div>
+<p>Inside the Docker <code class="docutils literal notranslate"><span class="pre">specify7</span></code> container, re-run the migrations:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>ve/bin/python<span class="w"> </span>manage.py<span class="w"> </span>migrate<span class="w"> </span>businessrules<span class="w"> </span>0002_default_unique_rules
+</pre></div>
+</div>
+</li>
+<li><p>Verify that the <code class="docutils literal notranslate"><span class="pre">uniquenessrule_fields</span></code> and <code class="docutils literal notranslate"><span class="pre">uniquenessrule</span></code> tables are present. Go to the Schema Config in each discipline and verify that ‘Collection Object’ has a uniqueness rule for catalog number.</p></li>
+</ol>
+</section>
+</section>
+<section id="division">
+<h2>Division<a class="headerlink" href="#division" title="Link to this heading"></a></h2>
+<p><em>WIP</em></p>
+</section>
+<section id="institution">
+<h2>Institution<a class="headerlink" href="#institution" title="Link to this heading"></a></h2>
+<p>You may only have one institution per Specify database at this time.</p>
+</section>
 </section>
 
 
            </div>
           </div>
           <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
-        <a href="aws_automation.html" class="btn btn-neutral float-left" title="AWS Automation" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
-        <a href="aws_specify_asset_server_setup.html" class="btn btn-neutral float-right" title="AWS Specify Asset Server Setup" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+        <a href="../index.html" class="btn btn-neutral float-left" title="Welcome to Specify Developer documentation!" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="../aws/aws_automation.html" class="btn btn-neutral float-right" title="AWS Automation" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
     </div>
 
   <hr/>

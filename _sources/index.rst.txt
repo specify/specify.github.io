@@ -3,6 +3,12 @@ Welcome to Specify Developer documentation!
 
 .. toctree::
    :maxdepth: 1
+   :caption: Specify:
+
+   specify/adding_new_levels
+
+.. toctree::
+   :maxdepth: 1
    :caption: Amazon Web Services:
 
    aws/aws_automation
