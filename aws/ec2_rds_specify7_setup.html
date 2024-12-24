@@ -416,7 +416,7 @@ certbot<span class="w"> </span>certificates<span class="p">;</span>
 vim<span class="w"> </span>spcloudservers.json<span class="w"> </span><span class="c1"># change line to `https: true`</span>
 make<span class="p">;</span>
 sudo<span class="w"> </span>docker<span class="w"> </span>compose<span class="w"> </span>up<span class="w"> </span>-d<span class="p">;</span>
-sudo<span class="w"> </span>docker<span class="w"> </span><span class="nb">exec</span><span class="w"> </span>-it<span class="w"> </span>specifycloud_nginx_1<span class="w"> </span>nginx<span class="w"> </span>-s<span class="w"> </span>reload<span class="p">;</span><span class="w"> </span><span class="c1"># Maybe needed</span>
+sudo<span class="w"> </span>docker<span class="w"> </span><span class="nb">exec</span><span class="w"> </span>-it<span class="w"> </span>specifycloud-nginx-1<span class="w"> </span>nginx<span class="w"> </span>-s<span class="w"> </span>reload<span class="p">;</span><span class="w"> </span><span class="c1"># Maybe needed</span>
 </pre></div>
 </div>
 <p>You might want to extend the time of your ssh connection:
