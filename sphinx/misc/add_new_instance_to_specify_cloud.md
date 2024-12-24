@@ -41,7 +41,7 @@
 	    ```bash
 		docker exec -it specifycloud-nginx-1 nginx -s reload
 		```
-		1. For automatic nginx reloading on certificate renewal create /etc/letsencrypt/renewal-hooks/post/reload-nginx.sh `#!/bin/bash docker exec -it specifycloud_nginx_1 nginx -s reload`
+		1. For automatic nginx reloading on certificate renewal create /etc/letsencrypt/renewal-hooks/post/reload-nginx.sh `#!/bin/bash docker exec -it specifycloud-nginx-1 nginx -s reload`
 		2. `crontab -e;` and then add the line `0 3 * * 0,2,4,6 docker exec specifycloud_nginx_1 nginx -s reload`
 		3. `crontab -l` to list cronjobs
 5. Add Specify Admin user credentials to the Bitwarden Vault

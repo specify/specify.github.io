@@ -261,7 +261,7 @@ certbot certificates;
 vim spcloudservers.json # change line to `https: true`
 make;
 sudo docker compose up -d;
-sudo docker exec -it specifycloud_nginx_1 nginx -s reload; # Maybe needed
+sudo docker exec -it specifycloud-nginx-1 nginx -s reload; # Maybe needed
 ```
 
 You might want to extend the time of your ssh connection:
