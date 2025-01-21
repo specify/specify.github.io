@@ -2,17 +2,23 @@
 
 On the `assets1.specifycloud.org` instance, we host and manage most[^1] assets for hosted Specify Cloud users.
 
-To see the space used by all current asset directories, you can log into the VPS as `root` and run the following alias:
+To see the space used by all current asset directories, you can log into the VPS as your user and run the command:
 
+Europe:
 ```bash
-usage
+du -sh * /home/specify/s3_attachments/eu
 ```
 
-This is defined in the `~/.bash_aliases` file, but it essentially runs this command:
+Canada:
 ```bash
-du -sh * /home/specify/attachments
+du -sh * /home/specify/s3_attachments/ca
+```
+
+North America:
+```bash
+du -sh * /home/specify/s3_attachments/na
 ```
 
 This can be adjusted and used elsewhere when needed. You can use `du -sh *` to effectively summarize the space used by a set of directories.
 
-[^1]: Some regions (including Swiss instances via Exoscale, KU collections on KUBI managed VMs) manage assets independently.
+[^1]: Some regions (including Swiss instances via Exoscale, KU collections on KUBI managed VMs) manage assets independently. Brazil has its own asset server running in that region as well.
