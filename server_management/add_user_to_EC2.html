@@ -6,7 +6,7 @@
   <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Exoscale Hosted Instances &mdash; Specify Developer Documentation  documentation</title>
+  <title>Server Access Management Policy &mdash; Specify Developer Documentation  documentation</title>
       <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=80d5e7a1" />
       <link rel="stylesheet" type="text/css" href="../_static/css/theme.css?v=e59714d7" />
 
@@ -19,8 +19,8 @@
     <script src="../_static/js/theme.js"></script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="Backups on Exoscale" href="exoscale_backups.html" />
-    <link rel="prev" title="Check Asset Usage" href="check_asset_usage.html" /> 
+    <link rel="next" title="Check Asset Usage" href="check_asset_usage.html" />
+    <link rel="prev" title="Updown Monitoring" href="managed_servers.html" /> 
 </head>
 
 <body class="wy-body-for-nav"> 
@@ -70,18 +70,17 @@
 <li class="toctree-l1"><a class="reference internal" href="managed_servers.html#managed-servers">Managed Servers</a></li>
 <li class="toctree-l1"><a class="reference internal" href="managed_servers.html#accessing-specify-7-deployments">Accessing Specify 7 Deployments</a></li>
 <li class="toctree-l1"><a class="reference internal" href="managed_servers.html#accessing-backups-on-aws-rds">Accessing Backups on AWS RDS</a></li>
-<li class="toctree-l1"><a class="reference internal" href="add_user_to_EC2.html">Server Access Management Policy</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Server Access Management Policy</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#step-1-connect-to-your-ec2-instance">Step 1: Connect to Your EC2 Instance</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#step-2-create-a-new-user">Step 2: Create a New User</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#step-3-add-the-user-s-public-key">Step 3: Add the User’s Public Key</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#step-4-add-user-to-the-ubuntu-group">Step 4: Add User to the <code class="docutils literal notranslate"><span class="pre">ubuntu</span></code> Group</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#step-6-verify-permissions">Step 6: Verify Permissions</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#step-7-test-the-new-user-access">Step 7: Test the New User Access</a></li>
+</ul>
+</li>
 <li class="toctree-l1"><a class="reference internal" href="check_asset_usage.html">Check Asset Usage</a></li>
-<li class="toctree-l1 current"><a class="current reference internal" href="#">Exoscale Hosted Instances</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="#assets-swiss-1"><code class="docutils literal notranslate"><span class="pre">assets-swiss-1</span></code></a><ul>
-<li class="toctree-l3"><a class="reference internal" href="#service-status">Service Status</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#check-the-logs">Check the Logs</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#restarting-the-service">Restarting the Service</a></li>
-</ul>
-</li>
-<li class="toctree-l2"><a class="reference internal" href="#sp7cloud-swiss-1"><code class="docutils literal notranslate"><span class="pre">sp7cloud-swiss-1</span></code></a></li>
-</ul>
-</li>
+<li class="toctree-l1"><a class="reference internal" href="exoscale.html">Exoscale Hosted Instances</a></li>
 <li class="toctree-l1"><a class="reference internal" href="exoscale_backups.html">Backups on Exoscale</a></li>
 <li class="toctree-l1"><a class="reference internal" href="kuit_ssl_certs.html">New certificate on biprdsp7wbdb.cc.ku.edu server</a></li>
 <li class="toctree-l1"><a class="reference internal" href="kuit_ssl_certs.html#web-portal-certificate">web-portal certificate</a></li>
@@ -131,9 +130,9 @@
           <div role="navigation" aria-label="Page navigation">
   <ul class="wy-breadcrumbs">
       <li><a href="../index.html" class="icon icon-home" aria-label="Home"></a></li>
-      <li class="breadcrumb-item active">Exoscale Hosted Instances</li>
+      <li class="breadcrumb-item active">Server Access Management Policy</li>
       <li class="wy-breadcrumbs-aside">
-            <a href="../_sources/server_management/exoscale.md.txt" rel="nofollow"> View page source</a>
+            <a href="../_sources/server_management/add_user_to_EC2.md.txt" rel="nofollow"> View page source</a>
       </li>
   </ul>
   <hr/>
@@ -141,46 +140,101 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
              
-  <section id="exoscale-hosted-instances">
-<h1>Exoscale Hosted Instances<a class="headerlink" href="#exoscale-hosted-instances" title="Link to this heading"></a></h1>
-<p>We host sensitive data for various Swiss institutions on a secure cloud service known as <a class="reference external" href="https://www.exoscale.com/">Exoscale</a>.</p>
-<p>The decision to opt for Exoscale was based on a recommendation from Muséum d’histoire naturelle Geneva. Operating from Switzerland, Exoscale makes sure that the data remains securely within the country’s borders, meeting the strict data residency requirements in place by the Swiss government.</p>
-<p>To learn about the backup process we use on Exoscale, see <a class="reference internal" href="#/sphinx/server_management/exoscale_backups.md"><span class="xref myst">this document</span></a>.</p>
-<p>At the time of writing this (2024-08-14), we manage two compute instances, both in the Geneva zone, both using the <code class="docutils literal notranslate"><span class="pre">ubuntu</span></code> user as the primary account:</p>
-<section id="assets-swiss-1">
-<h2><code class="docutils literal notranslate"><span class="pre">assets-swiss-1</span></code><a class="headerlink" href="#assets-swiss-1" title="Link to this heading"></a></h2>
-<p>This instance is only running an instance of the <a class="reference external" href="https://github.com/specify/web-asset-server">web-asset-server</a> locally.
-The asset server key and other information about the specific configuration is available at <code class="docutils literal notranslate"><span class="pre">/home/ubuntu/web-asset-server/settings.py</span></code>.</p>
-<section id="service-status">
-<h3>Service Status<a class="headerlink" href="#service-status" title="Link to this heading"></a></h3>
-<p>You can check the status of the asset server by running the following command:</p>
-<div class="highlight-sh notranslate"><div class="highlight"><pre><span></span>ubuntu@assets-swiss-1:~/web-asset-server$<span class="w"> </span>systemctl<span class="w"> </span>list-units<span class="w"> </span>--type<span class="o">=</span>service<span class="w"> </span><span class="p">|</span><span class="w"> </span>grep<span class="w"> </span>web-asset-server
-<span class="w">  </span>web-asset-server.service<span class="w">                       </span>loaded<span class="w"> </span>active<span class="w"> </span>running<span class="w"> </span>Specify<span class="w"> </span>Web<span class="w"> </span>Asset<span class="w"> </span>Server
+  <section id="server-access-management-policy">
+<h1>Server Access Management Policy<a class="headerlink" href="#server-access-management-policy" title="Link to this heading"></a></h1>
+<p>This is the server access management policy that we use for <strong>internal staff</strong> of the SCC, not for external users who are granted limited access to our instances.</p>
+<p>These instructions use <code class="docutils literal notranslate"><span class="pre">grant</span></code> as the example, but you will need to replace values where needed.</p>
+<section id="step-1-connect-to-your-ec2-instance">
+<h2>Step 1: Connect to Your EC2 Instance<a class="headerlink" href="#step-1-connect-to-your-ec2-instance" title="Link to this heading"></a></h2>
+<ol class="arabic">
+<li><p>Open your terminal or command prompt.</p></li>
+<li><p>Use SSH to connect to your EC2 instance. Replace <code class="docutils literal notranslate"><span class="pre">your-key.pem</span></code> with your private key.</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>ssh<span class="w"> </span>-i<span class="w"> </span>your-key.pem<span class="w"> </span>ubuntu@sp7demofish.specifycloud.org
 </pre></div>
 </div>
+<p>Alternatively, connect via <a class="reference external" href="https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ec2-instance-connect-methods.html">EC2 Instance Connect</a> if you do not yet have access to the instance.</p>
+</li>
+</ol>
 </section>
-<section id="check-the-logs">
-<h3>Check the Logs<a class="headerlink" href="#check-the-logs" title="Link to this heading"></a></h3>
-<p>To view the logs for the asset server, use the following command:</p>
-<div class="highlight-sh notranslate"><div class="highlight"><pre><span></span>ubuntu@assets-swiss-1:~/web-asset-server$<span class="w"> </span>journalctl<span class="w"> </span>-u<span class="w"> </span>web-asset-server.service
+<section id="step-2-create-a-new-user">
+<h2>Step 2: Create a New User<a class="headerlink" href="#step-2-create-a-new-user" title="Link to this heading"></a></h2>
+<ol class="arabic">
+<li><p>Once connected, create a new user with the appropriate name (e.g. <code class="docutils literal notranslate"><span class="pre">grant</span></code>).</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>sudo<span class="w"> </span>adduser<span class="w"> </span>--disabled-password<span class="w"> </span>grant
 </pre></div>
 </div>
-<p>This command will display the logs related to the <code class="docutils literal notranslate"><span class="pre">web-asset-server.service</span></code>, allowing you to troubleshoot any issues.</p>
+<p>Follow the prompts to add additional information for the user.</p>
+</li>
+</ol>
 </section>
-<section id="restarting-the-service">
-<h3>Restarting the Service<a class="headerlink" href="#restarting-the-service" title="Link to this heading"></a></h3>
-<p>If you need to restart the asset server, you can do so with the following command:</p>
-<div class="highlight-sh notranslate"><div class="highlight"><pre><span></span>ubuntu@assets-swiss-1:~/web-asset-server$<span class="w"> </span>sudo<span class="w"> </span>systemctl<span class="w"> </span>restart<span class="w"> </span>web-asset-server.service
+<section id="step-3-add-the-user-s-public-key">
+<h2>Step 3: Add the User’s Public Key<a class="headerlink" href="#step-3-add-the-user-s-public-key" title="Link to this heading"></a></h2>
+<ol class="arabic">
+<li><p>Create a <code class="docutils literal notranslate"><span class="pre">.ssh</span></code> directory for the new user:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>sudo<span class="w"> </span>mkdir<span class="w"> </span>/home/grant/.ssh
 </pre></div>
 </div>
-<p>After restarting, you may want to check the status again to ensure it is running properly.</p>
+</li>
+<li><p>Set the correct permissions for the directory:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>sudo<span class="w"> </span>chmod<span class="w"> </span><span class="m">700</span><span class="w"> </span>/home/grant/.ssh
+</pre></div>
+</div>
+</li>
+<li><p>Create an <code class="docutils literal notranslate"><span class="pre">authorized_keys</span></code> file and add the user’s public key. Replace <code class="docutils literal notranslate"><span class="pre">user-public-key</span></code> with the actual public key.</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;user-public-key&quot;</span><span class="w"> </span><span class="p">|</span><span class="w"> </span>sudo<span class="w"> </span>tee<span class="w"> </span>/home/grant/.ssh/authorized_keys
+</pre></div>
+</div>
+<p>It should look something like:</p>
+<p><code class="docutils literal notranslate"><span class="pre">echo</span> <span class="pre">&quot;ssh-rsa</span> <span class="pre">AAAAB3NzaC1yc2EAAAADAQABAAABgQDAWwt7DrPjDtiF4S1G8CRiYrCus5hg6O8bXyK...&quot;</span></code></p>
+</li>
+<li><p>Set the correct permissions for the <code class="docutils literal notranslate"><span class="pre">authorized_keys</span></code> file:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>sudo<span class="w"> </span>chmod<span class="w"> </span><span class="m">600</span><span class="w"> </span>/home/grant/.ssh/authorized_keys
+</pre></div>
+</div>
+</li>
+<li><p>Change ownership of the <code class="docutils literal notranslate"><span class="pre">.ssh</span></code> directory and its contents to the new user:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>sudo<span class="w"> </span>chown<span class="w"> </span>-R<span class="w"> </span>grant:grant<span class="w"> </span>/home/grant/.ssh
+</pre></div>
+</div>
+</li>
+</ol>
 </section>
+<section id="step-4-add-user-to-the-ubuntu-group">
+<h2>Step 4: Add User to the <code class="docutils literal notranslate"><span class="pre">ubuntu</span></code> Group<a class="headerlink" href="#step-4-add-user-to-the-ubuntu-group" title="Link to this heading"></a></h2>
+<ol class="arabic">
+<li><p>Add the new user <code class="docutils literal notranslate"><span class="pre">grant</span></code> to the <code class="docutils literal notranslate"><span class="pre">ubuntu</span></code> group to ensure they have the same permissions as the <code class="docutils literal notranslate"><span class="pre">ubuntu</span></code> user:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>sudo<span class="w"> </span>usermod<span class="w"> </span>-aG<span class="w"> </span>ubuntu<span class="w"> </span>grant
+</pre></div>
+</div>
+</li>
+</ol>
 </section>
-<section id="sp7cloud-swiss-1">
-<h2><code class="docutils literal notranslate"><span class="pre">sp7cloud-swiss-1</span></code><a class="headerlink" href="#sp7cloud-swiss-1" title="Link to this heading"></a></h2>
-<p>This server hosts <a class="reference external" href="https://github.com/specify/docker-compositions/tree/production/specifycloud">docker-compositions</a> specifycloud-style deployments. They are managed in the same manner as the other AWS instances, so no special configuration here.</p>
-<p>The <code class="docutils literal notranslate"><span class="pre">docker-compose.yml</span></code> and <code class="docutils literal notranslate"><span class="pre">spcloudservers.json</span></code> files are available at <code class="docutils literal notranslate"><span class="pre">/home/ubuntu/docker-compositions/specifycloud</span></code>.</p>
-<p>When changes are made to the <code class="docutils literal notranslate"><span class="pre">spcloudservers.json</span></code> file, run <code class="docutils literal notranslate"><span class="pre">make</span></code> as <code class="docutils literal notranslate"><span class="pre">ubuntu</span></code> to update the appropriate files.</p>
+<section id="step-6-verify-permissions">
+<h2>Step 6: Verify Permissions<a class="headerlink" href="#step-6-verify-permissions" title="Link to this heading"></a></h2>
+<ol class="arabic">
+<li><p>To verify that the permissions are set correctly, you can check the directory permissions:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>ls<span class="w"> </span>-ld<span class="w"> </span>/home/ubuntu
+</pre></div>
+</div>
+<p>You should see permissions like <code class="docutils literal notranslate"><span class="pre">drwxrwx---</span></code>, indicating that the owner and group have full permissions.</p>
+</li>
+</ol>
+</section>
+<section id="step-7-test-the-new-user-access">
+<h2>Step 7: Test the New User Access<a class="headerlink" href="#step-7-test-the-new-user-access" title="Link to this heading"></a></h2>
+<ol class="arabic">
+<li><p>Log out of the current session:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="nb">exit</span>
+</pre></div>
+</div>
+</li>
+<li><p>Have the new user (e.g. <code class="docutils literal notranslate"><span class="pre">grant</span></code>) connect to the EC2 instance using their SSH key:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>ssh<span class="w"> </span>-i<span class="w"> </span>user-key.pem<span class="w"> </span>grant@sp7demofish.specifycloud.org
+</pre></div>
+</div>
+</li>
+<li><p>Once logged in, the new user should be able to access the <code class="docutils literal notranslate"><span class="pre">/home/ubuntu</span></code> directory and its contents.</p></li>
+</ol>
 </section>
 </section>
 
@@ -188,8 +242,8 @@ The asset server key and other information about the specific configuration is a
            </div>
           </div>
           <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
-        <a href="check_asset_usage.html" class="btn btn-neutral float-left" title="Check Asset Usage" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
-        <a href="exoscale_backups.html" class="btn btn-neutral float-right" title="Backups on Exoscale" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+        <a href="managed_servers.html" class="btn btn-neutral float-left" title="Updown Monitoring" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="check_asset_usage.html" class="btn btn-neutral float-right" title="Check Asset Usage" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
     </div>
 
   <hr/>
