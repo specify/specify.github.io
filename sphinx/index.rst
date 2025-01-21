@@ -34,9 +34,11 @@ Welcome to Specify Developer documentation!
    :caption: Server Management:
 
    server_management/managed_servers
+   server_management/add_user_to_EC2
    server_management/check_asset_usage
    server_management/exoscale
    server_management/exoscale_backups
+   server_management/kuit_ssl_certs
 
 .. toctree::
    :maxdepth: 1
