@@ -247,8 +247,19 @@ Backups for this server are handled by AWS.
    - br-specify7-1.specifycloud.org (Brazil)
    - swiss-specify7-1.specifycloud.org (Switzerland)
 
+
+| Geography | AWS Region                | EC2 Instance Name              | Platform   |
+|-----------|---------------------------|--------------------------------|------------|
+| NA        | us-east-1                 | specify-cloud-sp7-na-arm-1     | AWS        |
+| CA        | ca-central-1              | specify-cloud-sp7-ca-arm-1     | AWS        |
+| IL        | il-central-1              | spcloud-israel                 | AWS        |
+| EU        | eu-west-3                 | specify-cloud-sp7-eu           | AWS        |
+| BR        | sa-east-1                 | specify-cloud-sp7-br-arm-1     | AWS        |
+| CH        | CH-GVA-2       | sp7cloud-swiss-1               | Exoscale   |
+
+
+
 **Platform:** AWS
-  
   
 
 Specify Cloud instances mirror each other in configuration. All have Docker installed via `apt`, not `snap`.  Important distinction.
