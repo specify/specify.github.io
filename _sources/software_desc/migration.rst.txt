@@ -25,7 +25,24 @@ via Specify’s Workbench tool, Specify’s API, or with SQL scripts directly in
 backend Specify database (MariaDB).  SCC staff would work with the Migration team to
 choose specific processing options and methods for data migrations.
 
-SCC technical staff will train the Point Person and Migration team involved in database
-setup and data migration to understand Specify at the Support level. The contacts should plan to allocate a week to visit our SCC headquarters in Kansas. There they would work intensively one-on-one with our technical support staff and software engineers to attain a database administrator level of mastery. After the visit, SCC staff will continue to meet with the person or team as needed over Zoom to discuss questions and to research and resolve issues that arise. The Buyer would be responsible for their staff travel expenses, the SCC will allocate staff time and project resources at no cost.
-We can facilitate meetings with other large national organizations who have undergone the same process of assessing collections’ requirements, deciding on configuration and customization options, preparing data for migration, and then importing data into Specify. We have worked with several organizations of a similar size and scale in transitions to Specify including: the Danish Natural History Museums, the Canadian Laurentian Forestry Centre, and the Australian federal government’s CSIRO. Each member has taken a somewhat custom transition to move to Specify based on the organization of local technical expertise and desired outcomes.
+SCC technical staff will train a Point Person and Migration team involved in database
+setup and data migration to understand Specify at the Support level. These individuals
+should plan to allocate a week to visit SCC headquarters in Kansas. They will work
+one-on-one with SCC technical support staff and software engineers to attain a
+database administrator level of mastery. After the visit, SCC staff will continue to
+meet with the person or team as needed over Zoom to discuss questions and to research
+and resolve issues that arise.
+
+Members are responsible for their staff travel expenses,
+the SCC will allocate staff time and project resources at no cost.
+SCC can facilitate meetings with other large national organizations who have undergone
+similar processes of assessing collections’ requirements, deciding on configuration
+and customization options, preparing data for migration, and importing data into
+Specify.
+
+SCC has worked with several large-scale organizations in transitions to
+Specify, including: the Danish Natural History Museums, the Canadian Laurentian
+Forestry Centre, and the Australian federal government’s CSIRO. Each member has taken
+a custom transition to move to Specify based on technical expertise and desired
+outcomes.
 

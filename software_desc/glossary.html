@@ -6,7 +6,7 @@
   <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Data Migration &mdash; Specify Developer Documentation  documentation</title>
+  <title>Glossary &mdash; Specify Developer Documentation  documentation</title>
       <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=80d5e7a1" />
       <link rel="stylesheet" type="text/css" href="../_static/css/theme.css?v=e59714d7" />
 
@@ -120,9 +120,9 @@
           <div role="navigation" aria-label="Page navigation">
   <ul class="wy-breadcrumbs">
       <li><a href="../index.html" class="icon icon-home" aria-label="Home"></a></li>
-      <li class="breadcrumb-item active">Data Migration</li>
+      <li class="breadcrumb-item active">Glossary</li>
       <li class="wy-breadcrumbs-aside">
-            <a href="../_sources/software_desc/migration.rst.txt" rel="nofollow"> View page source</a>
+            <a href="../_sources/software_desc/glossary.rst.txt" rel="nofollow"> View page source</a>
       </li>
   </ul>
   <hr/>
@@ -130,48 +130,63 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
              
-  <section id="data-migration">
-<h1>Data Migration<a class="headerlink" href="#data-migration" title="Link to this heading"></a></h1>
-<section id="conventional-migrations">
-<h2>Conventional migrations<a class="headerlink" href="#conventional-migrations" title="Link to this heading"></a></h2>
-</section>
-<section id="large-scale-migrations">
-<h2>Large-scale migrations<a class="headerlink" href="#large-scale-migrations" title="Link to this heading"></a></h2>
-<p>With a large-scale consortium of collections such as a country-wide effort (“Country
-Consortium”), the SCC team is unable to provide the resources necessary for data
-migration of multiple institutions and collections.  In such cases we suggest the
-Country Consortium hire in-house staff familiar with relational databases to lead and
-execute data migration to Specify. This “Migration team” would become expertly familiar
-with Specify’s data model, behavior and user interfaces, plus understand institutional
-collection data workflows, local user requirements, and expectations of the
-collections staff.</p>
-<p>This Migration team would create a plan and a timeline for data migration, typically
-based on institutional priorities, legacy data quality, and data complexity and size.
-The Migration team would also be responsible for reviewing and cleaning data to be
-imported according to collection requirements and database settings, customizing the
-Specify application according to the collection requirements, and then importing data
-via Specify’s Workbench tool, Specify’s API, or with SQL scripts directly into the
-backend Specify database (MariaDB).  SCC staff would work with the Migration team to
-choose specific processing options and methods for data migrations.</p>
-<p>SCC technical staff will train a Point Person and Migration team involved in database
-setup and data migration to understand Specify at the Support level. These individuals
-should plan to allocate a week to visit SCC headquarters in Kansas. They will work
-one-on-one with SCC technical support staff and software engineers to attain a
-database administrator level of mastery. After the visit, SCC staff will continue to
-meet with the person or team as needed over Zoom to discuss questions and to research
-and resolve issues that arise.</p>
-<p>Members are responsible for their staff travel expenses,
-the SCC will allocate staff time and project resources at no cost.
-SCC can facilitate meetings with other large national organizations who have undergone
-similar processes of assessing collections’ requirements, deciding on configuration
-and customization options, preparing data for migration, and importing data into
-Specify.</p>
-<p>SCC has worked with several large-scale organizations in transitions to
-Specify, including: the Danish Natural History Museums, the Canadian Laurentian
-Forestry Centre, and the Australian federal government’s CSIRO. Each member has taken
-a custom transition to move to Specify based on technical expertise and desired
-outcomes.</p>
-</section>
+  <section id="glossary">
+<h1>Glossary<a class="headerlink" href="#glossary" title="Link to this heading"></a></h1>
+<p>Specify-defined terms</p>
+<dl class="simple glossary">
+<dt id="term-Algorithm">Algorithm<a class="headerlink" href="#term-Algorithm" title="Link to this term"></a></dt><dd><p>An algorithm is a procedure or formula for solving a problem.  There are  multiple
+algorithms for computing Species Distribution Models (SDM) which
+define the relationship between a set of points and the environmental values
+at those points.</p>
+</dd>
+<dt id="term-Container">Container<a class="headerlink" href="#term-Container" title="Link to this term"></a></dt><dd><p>A <a class="reference internal" href="#term-Docker"><span class="xref std std-term">Docker</span></a> instance which runs as an application on a <a class="reference internal" href="#term-Host-machine"><span class="xref std std-term">Host machine</span></a>.
+The Docker container contains all software dependencies required by the programs it
+will run.</p>
+</dd>
+<dt id="term-CSV">CSV<a class="headerlink" href="#term-CSV" title="Link to this term"></a></dt><dd><p>CSV (Comma Separated Values) is a file format for records, in which fields are
+separated by a delimiter.  Commas and tabs are common, but other characters may
+be used as delimiters.</p>
+</dd>
+<dt id="term-Data-Catalog">Data Catalog<a class="headerlink" href="#term-Data-Catalog" title="Link to this term"></a></dt><dd><p>The Specify database of tables and fields containing all data related to one or
+more Collections.</p>
+</dd>
+<dt id="term-Data-Validation">Data Validation<a class="headerlink" href="#term-Data-Validation" title="Link to this term"></a></dt><dd><p>Testing processes to run on data values ensuring that they meet the conditions
+defined for the field, table, and database.  This could include data type,
+formatting, content restrictions such as a controlled vocabulary, numeric range,
+or existence of an database identifier.</p>
+</dd>
+<dt id="term-Docker">Docker<a class="headerlink" href="#term-Docker" title="Link to this term"></a></dt><dd><p>Docker is an application which can run on Linux, MacOSX, or Windows.  With a
+Docker-ized application, such as this tutorial, a user can run the application on
+their local machine in a controlled and sequestered environment, with a set of
+dependencies that may not be easy, allowed, or even available for their local
+machine.</p>
+</dd>
+<dt id="term-Docker-image">Docker image<a class="headerlink" href="#term-Docker-image" title="Link to this term"></a></dt><dd><p>A Docker-ized application, built into a single package, with all required
+software dependencies and files.</p>
+</dd>
+<dt id="term-DwCA">DwCA<a class="headerlink" href="#term-DwCA" title="Link to this term"></a></dt><dd><p>DwCA (Darwin Core Archive) is a packaged dataset of occurrence records in <a class="reference external" href="https://www.tdwg.org/standards/dwc/">Darwin
+Core standard</a> format, along with metadata
+about the contents.</p>
+</dd>
+<dt id="term-Host-machine">Host machine<a class="headerlink" href="#term-Host-machine" title="Link to this term"></a></dt><dd><p>A physical or virtual machine on which Docker can be run.</p>
+</dd>
+<dt id="term-Mapped-Spreadsheet">Mapped Spreadsheet<a class="headerlink" href="#term-Mapped-Spreadsheet" title="Link to this term"></a></dt><dd><p>A spreadsheet that has a mapping document that matches spreadsheet columns to
+Specify database fields.</p>
+</dd>
+<dt id="term-Mapping-Template">Mapping Template<a class="headerlink" href="#term-Mapping-Template" title="Link to this term"></a></dt><dd><p>A document that matches terms in a <a class="reference internal" href="#term-Mapped-Spreadsheet"><span class="xref std std-term">Mapped Spreadsheet</span></a> to fields in the
+Specify database.</p>
+</dd>
+<dt id="term-Occurrence">Occurrence<a class="headerlink" href="#term-Occurrence" title="Link to this term"></a></dt><dd><p>An occurrence is a record of a specimen occurrence including metadata about the
+specimen and the spatial location where it was found.</p>
+</dd>
+<dt id="term-Occurrence-Data">Occurrence Data<a class="headerlink" href="#term-Occurrence-Data" title="Link to this term"></a></dt><dd><p>Point data representing specimens collected for a single species or taxon.  Each
+data point
+contains a location, x and y, in some known geographic spatial reference system.</p>
+</dd>
+<dt id="term-Tree">Tree<a class="headerlink" href="#term-Tree" title="Link to this term"></a></dt><dd><p>A Tree is a set of hierarchical data.  Several tables in Specify are defined as
+trees:  Taxonomy, Geography, Storage Location.</p>
+</dd>
+</dl>
 </section>
 
 
