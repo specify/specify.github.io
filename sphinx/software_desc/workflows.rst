@@ -11,34 +11,10 @@ acquired for collecting and cataloging specimens.  Either the Permit or the
 Permit Associated Record can be created first, and either can be linked to an
 existing record.
 
-SCC recommends sending researchers out into the field with a spreadsheet that has a
-"Mapping Template" that matches spreadsheet columns to Specify database fields.  The
-spreadsheet for data entry is referred to as a "Mapped Spreadsheet".
-Mapped Spreadsheets can be created for
-research expeditions, focusing on data collection specific to that field trip.
-Researchers can easily use the spreadsheet in the field to record information about
-specimens, collecting event(s), locality, and more.
+:ref:`WB field collection`<Using the Specify Workbench for Field Collection>
 
-Data entered into a Mapped Spreadsheet can be imported via the Specify Workbench, a
-spreadsheet-based application. In this workflow, the user chooses the correct Mapping
-Template, the uploads the Mapped Spreadsheet to the Workbench. At this stage, the
-Workbench is completely external to the data catalog.  The Workbench contains
-extensive matching and editing features that can be edited to fit user needs.
-The Workbench then performs Data Validation on spreadsheet contents before submitting
-the data for upload to the Data Catalog. 
-
-It allows the user to bring in bulk
-data, match columns to fields in Specify, and perform basic data integrity checks to
-ensure the data matches database requirements (data validity, controlled vocabulary
-matching, and linked record matching, such as Agent or Taxon records).
-
-Alternatively, a researcher could create a custom spreadsheet and simply create a mapping template before importing data to Specify.
-
-Users first validate the spreadsheet data within the Workbench, then upload the verified data to the database.  Users may be assigned different levels of access to the Workbench functionality, such as permission to validate a dataset with the Workbench, or perform the upload, so different people may verify that the data is sound.
-
-Because Specify 7 is an online software, if there is internet access there is the option to create a dataset directly in the Specify Workbench from the field.  This workflow allows researchers to verify data against database requirements on entry.
-
-More information on our Workbench application is available here: https://discourse.specifysoftware.org/t/the-specify-7-workbench/540
+More information on our Workbench application is available here:
+https://discourse.specifysoftware.org/t/the-specify-7-workbench/540
 
 Object entry
 ******************************************
@@ -51,9 +27,45 @@ Each of these approaches to pre-cataloged data has been successfully used by exi
 
 Acquisition and accessioning
 ******************************************
+Specify contains an Accession table for documenting the accession of
+objects and groups of objects.  The Accession table links to the Collection Object
+table and Permit table allowing the user to document metadata about the accession such
+as date, agents involved, and permits included, as well as the objects brought in under
+that Accession.
+
+The Specify Workbench can ingest a large dataset at one time, and can accepted
+pre-assigned Catalog Numbers or automatically assign them.
+
+A status field can be added (Under Registration, Awaiting proof-reading, etc.).
+Users can create an unlimited number of unique label templates for individual or bulk
+printing, then print one or more labels for one or more objects.
+
+With the introduction of our Batch Edit tool, due in the second quarter of 2025, users
+may change the status of many records at a time.
+
+One or more Preparation objects can be assigned to a Collection Objects and Storage
+Location information may be documented for each Preparation.  For example, the Ethanol
+preparation of a specimen may be kept in a different facility than the tissue(s) or
+the skeleton.
+
+
 
 Location and movement control
 ******************************************
+Storage location information is a tree, which is a hierarchical relationship between
+storage values.  Default levels are Building, Collection, Room, Aisle, Cabinet, Shelf,
+Box, Rack, Vial, but users can define what levels they want in their Storage tree.  An
+entire section of the storage location tree may be moved to a different parent location
+(for example, a box may be moved to another shelf) to reduce the possibility of errors.
+Storage locations have names and unique identifiers.
+
+Storage Locations are associated with Preparations.  Each preparation may have a
+different storage location.  A preparation may have a temporary storage location in
+addition to its standard storage location.
+
+The SCC is currently gathering requirements for documenting the cold-chain, including
+the history of where an object has been stored, at what temperature, start and end times, moved-by, and approved-by.
+
 
 Cataloguing
 ******************************************
