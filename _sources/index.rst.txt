@@ -66,6 +66,21 @@ Welcome to Specify Developer documentation!
 
 .. toctree::
    :maxdepth: 1
+   :caption: Specify Software:
+
+   software_desc/glossary
+   software_desc/overview
+   software_desc/membership
+   software_desc/disciplines
+   software_desc/hosting
+   software_desc/hosting_db
+   software_desc/migration
+   software_desc/training
+   software_desc/workbench
+   software_desc/workflows
+
+.. toctree::
+   :maxdepth: 1
    :caption: Misc:
 
    misc/add_new_instance_to_specify_cloud

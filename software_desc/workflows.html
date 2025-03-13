@@ -18,7 +18,9 @@
       <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
     <script src="../_static/js/theme.js"></script>
     <link rel="index" title="Index" href="../genindex.html" />
-    <link rel="search" title="Search" href="../search.html" /> 
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Add new Specify instance to Specify Cloud" href="../misc/add_new_instance_to_specify_cloud.html" />
+    <link rel="prev" title="Specify Workbench" href="workbench.html" /> 
 </head>
 
 <body class="wy-body-for-nav"> 
@@ -94,6 +96,30 @@
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="../testing/pull_requests.html">Pull Request Testing</a></li>
 </ul>
+<p class="caption" role="heading"><span class="caption-text">Specify Software:</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="glossary.html">Glossary</a></li>
+<li class="toctree-l1"><a class="reference internal" href="overview.html">Overview</a></li>
+<li class="toctree-l1"><a class="reference internal" href="membership.html">SCC overview</a></li>
+<li class="toctree-l1"><a class="reference internal" href="disciplines.html">Discipline support</a></li>
+<li class="toctree-l1"><a class="reference internal" href="hosting.html">Specify Cloud Hosting</a></li>
+<li class="toctree-l1"><a class="reference internal" href="migration.html">Data Migration</a></li>
+<li class="toctree-l1"><a class="reference internal" href="training.html">Specify Training</a></li>
+<li class="toctree-l1"><a class="reference internal" href="workbench.html">Specify Workbench</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Common Workflows</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#field-collection-of-specimens">Field collection of specimens</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#object-entry">Object entry</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#acquisition-and-accessioning">Acquisition and accessioning</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#location-and-movement-control">Location and movement control</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#cataloguing">Cataloguing</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#loans-in-borrowing-objects">Loans in (borrowing objects)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#loans-out-lending-objects">Loans out (lending objects)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#use-of-collections">Use of collections</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#condition-checking-and-improvement">Condition checking and improvement</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#deaccessioning-and-disposal">Deaccessioning and disposal</a></li>
+</ul>
+</li>
+</ul>
 <p class="caption" role="heading"><span class="caption-text">Misc:</span></p>
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="../misc/add_new_instance_to_specify_cloud.html">Add new Specify instance to Specify Cloud</a></li>
@@ -140,28 +166,9 @@ to be associated with <strong>Accession</strong>, <strong>Collecting Event</stro
 acquired for collecting and cataloging specimens.  Either the Permit or the
 Permit Associated Record can be created first, and either can be linked to an
 existing record.</p>
-<p>SCC recommends sending researchers out into the field with a spreadsheet that has a
-“Mapping Template” that matches spreadsheet columns to Specify database fields.  The
-spreadsheet for data entry is referred to as a “Mapped Spreadsheet”.
-Mapped Spreadsheets can be created for
-research expeditions, focusing on data collection specific to that field trip.
-Researchers can easily use the spreadsheet in the field to record information about
-specimens, collecting event(s), locality, and more.</p>
-<p>Data entered into a Mapped Spreadsheet can be imported via the Specify Workbench, a
-spreadsheet-based application. In this workflow, the user chooses the correct Mapping
-Template, the uploads the Mapped Spreadsheet to the Workbench. At this stage, the
-Workbench is completely external to the data catalog.  The Workbench contains
-extensive matching and editing features that can be edited to fit user needs.
-The Workbench then performs Data Validation on spreadsheet contents before submitting
-the data for upload to the Data Catalog.</p>
-<p>It allows the user to bring in bulk
-data, match columns to fields in Specify, and perform basic data integrity checks to
-ensure the data matches database requirements (data validity, controlled vocabulary
-matching, and linked record matching, such as Agent or Taxon records).</p>
-<p>Alternatively, a researcher could create a custom spreadsheet and simply create a mapping template before importing data to Specify.</p>
-<p>Users first validate the spreadsheet data within the Workbench, then upload the verified data to the database.  Users may be assigned different levels of access to the Workbench functionality, such as permission to validate a dataset with the Workbench, or perform the upload, so different people may verify that the data is sound.</p>
-<p>Because Specify 7 is an online software, if there is internet access there is the option to create a dataset directly in the Specify Workbench from the field.  This workflow allows researchers to verify data against database requirements on entry.</p>
-<p>More information on our Workbench application is available here: <a class="reference external" href="https://discourse.specifysoftware.org/t/the-specify-7-workbench/540">https://discourse.specifysoftware.org/t/the-specify-7-workbench/540</a></p>
+<p>:ref:<a href="#id1"><span class="problematic" id="id2">`</span></a>WB field collection`&lt;Using the Specify Workbench for Field Collection&gt;</p>
+<p>More information on our Workbench application is available here:
+<a class="reference external" href="https://discourse.specifysoftware.org/t/the-specify-7-workbench/540">https://discourse.specifysoftware.org/t/the-specify-7-workbench/540</a></p>
 </section>
 <section id="object-entry">
 <h2>Object entry<a class="headerlink" href="#object-entry" title="Link to this heading"></a></h2>
@@ -174,9 +181,36 @@ Each of these approaches to pre-cataloged data has been successfully used by exi
 </section>
 <section id="acquisition-and-accessioning">
 <h2>Acquisition and accessioning<a class="headerlink" href="#acquisition-and-accessioning" title="Link to this heading"></a></h2>
+<p>Specify contains an Accession table for documenting the accession of
+objects and groups of objects.  The Accession table links to the Collection Object
+table and Permit table allowing the user to document metadata about the accession such
+as date, agents involved, and permits included, as well as the objects brought in under
+that Accession.</p>
+<p>The Specify Workbench can ingest a large dataset at one time, and can accepted
+pre-assigned Catalog Numbers or automatically assign them.</p>
+<p>A status field can be added (Under Registration, Awaiting proof-reading, etc.).
+Users can create an unlimited number of unique label templates for individual or bulk
+printing, then print one or more labels for one or more objects.</p>
+<p>With the introduction of our Batch Edit tool, due in the second quarter of 2025, users
+may change the status of many records at a time.</p>
+<p>One or more Preparation objects can be assigned to a Collection Objects and Storage
+Location information may be documented for each Preparation.  For example, the Ethanol
+preparation of a specimen may be kept in a different facility than the tissue(s) or
+the skeleton.</p>
 </section>
 <section id="location-and-movement-control">
 <h2>Location and movement control<a class="headerlink" href="#location-and-movement-control" title="Link to this heading"></a></h2>
+<p>Storage location information is a tree, which is a hierarchical relationship between
+storage values.  Default levels are Building, Collection, Room, Aisle, Cabinet, Shelf,
+Box, Rack, Vial, but users can define what levels they want in their Storage tree.  An
+entire section of the storage location tree may be moved to a different parent location
+(for example, a box may be moved to another shelf) to reduce the possibility of errors.
+Storage locations have names and unique identifiers.</p>
+<p>Storage Locations are associated with Preparations.  Each preparation may have a
+different storage location.  A preparation may have a temporary storage location in
+addition to its standard storage location.</p>
+<p>The SCC is currently gathering requirements for documenting the cold-chain, including
+the history of where an object has been stored, at what temperature, start and end times, moved-by, and approved-by.</p>
 </section>
 <section id="cataloguing">
 <h2>Cataloguing<a class="headerlink" href="#cataloguing" title="Link to this heading"></a></h2>
@@ -201,7 +235,10 @@ Each of these approaches to pre-cataloged data has been successfully used by exi
 
            </div>
           </div>
-          <footer>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="workbench.html" class="btn btn-neutral float-left" title="Specify Workbench" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="../misc/add_new_instance_to_specify_cloud.html" class="btn btn-neutral float-right" title="Add new Specify instance to Specify Cloud" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
 
   <hr/>
 

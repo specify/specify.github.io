@@ -6,7 +6,7 @@
   <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Specify Cloud Hosting &mdash; Specify Developer Documentation  documentation</title>
+  <title>Specify Workbench &mdash; Specify Developer Documentation  documentation</title>
       <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=80d5e7a1" />
       <link rel="stylesheet" type="text/css" href="../_static/css/theme.css?v=e59714d7" />
 
@@ -19,8 +19,8 @@
     <script src="../_static/js/theme.js"></script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="Data Migration" href="migration.html" />
-    <link rel="prev" title="Discipline support" href="disciplines.html" /> 
+    <link rel="next" title="Common Workflows" href="workflows.html" />
+    <link rel="prev" title="Specify Training" href="training.html" /> 
 </head>
 
 <body class="wy-body-for-nav"> 
@@ -102,14 +102,13 @@
 <li class="toctree-l1"><a class="reference internal" href="overview.html">Overview</a></li>
 <li class="toctree-l1"><a class="reference internal" href="membership.html">SCC overview</a></li>
 <li class="toctree-l1"><a class="reference internal" href="disciplines.html">Discipline support</a></li>
-<li class="toctree-l1 current"><a class="current reference internal" href="#">Specify Cloud Hosting</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="#database">Database</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#digital-assets">Digital Assets</a></li>
-</ul>
-</li>
+<li class="toctree-l1"><a class="reference internal" href="hosting.html">Specify Cloud Hosting</a></li>
 <li class="toctree-l1"><a class="reference internal" href="migration.html">Data Migration</a></li>
 <li class="toctree-l1"><a class="reference internal" href="training.html">Specify Training</a></li>
-<li class="toctree-l1"><a class="reference internal" href="workbench.html">Specify Workbench</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Specify Workbench</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#field-collection">Field collection</a></li>
+</ul>
+</li>
 <li class="toctree-l1"><a class="reference internal" href="workflows.html">Common Workflows</a></li>
 </ul>
 <p class="caption" role="heading"><span class="caption-text">Misc:</span></p>
@@ -138,9 +137,9 @@
           <div role="navigation" aria-label="Page navigation">
   <ul class="wy-breadcrumbs">
       <li><a href="../index.html" class="icon icon-home" aria-label="Home"></a></li>
-      <li class="breadcrumb-item active">Specify Cloud Hosting</li>
+      <li class="breadcrumb-item active">Specify Workbench</li>
       <li class="wy-breadcrumbs-aside">
-            <a href="../_sources/software_desc/hosting.rst.txt" rel="nofollow"> View page source</a>
+            <a href="../_sources/software_desc/workbench.rst.txt" rel="nofollow"> View page source</a>
       </li>
   </ul>
   <hr/>
@@ -148,83 +147,36 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
              
-  <section id="specify-cloud-hosting">
-<h1>Specify Cloud Hosting<a class="headerlink" href="#specify-cloud-hosting" title="Link to this heading"></a></h1>
-<section id="database">
-<h2>Database<a class="headerlink" href="#database" title="Link to this heading"></a></h2>
-<p>Collection databases within each institution may be organized in different ways
-relative to each other. Research and planning are required to decide on an
-institutional database configuration, and SCC staff will advise on the differences
-between various options. Institutions may choose to combine data from multiple
-collections into a single Specify database, where they can share some data elements. Or
-they may choose to isolate the data of individual collections into discrete databases
-with no data sharing between them. Institutional requirements and preferences inform
-such decisions and affect pricing, data reuse and standardization, data backup regimes,
-user roles and permissions, and more.</p>
-<p>SCC members choose whether to host databases in the SCC Cloud service, or on local
-servers. The Specify Cloud hosting service includes automatic updates of Specify and
-constituent software, daily database backup, and 24/7 server status monitoring.</p>
-<p>As specified in the Specify Consortium Member Agreement, SCC has no legal interest in
-members’ data and abides by any member restrictions on our access for technical support
-purposes.</p>
-<p>SCC will provide full, root, access to the Buyer databases for Buyer member staff.</p>
-<p>Specify Cloud uses Amazon Web Services (AWS) to host databases.</p>
-<p>The Buyer cost for Specify Cloud database hosting will depend on the number of
-independent Specify databases needed. (A single database may include data from one or
-more collections.) SCC currently charges $275 USD/year/database with a $300 one-time
-setup fee. We project cloud hosting costs will increase over the next five years due to
-expected increases in hosting provider (AWS) pricing. Including estimated average
-annual increases in AWS pricing, SCC annual database hosting fees would be as shown.</p>
-<table class="docutils align-default" id="id3">
-<caption><span class="caption-text">Specify Cloud Database Hosting</span><a class="headerlink" href="#id3" title="Link to this table"></a></caption>
-<colgroup>
-<col style="width: 60.0%" />
-<col style="width: 40.0%" />
-</colgroup>
-<thead>
-<tr class="row-odd"><th class="head"><p>Membership Year</p></th>
-<th class="head"><p>Fee per year per database</p></th>
-</tr>
-</thead>
-<tbody>
-<tr class="row-even"><td><p>FY2025</p></td>
-<td><p>$275 USD</p></td>
-</tr>
-<tr class="row-odd"><td><p>FY2026</p></td>
-<td><p>$300 USD</p></td>
-</tr>
-<tr class="row-even"><td><p>FY2027</p></td>
-<td><p>$325 USD</p></td>
-</tr>
-<tr class="row-odd"><td><p>YFY2028</p></td>
-<td><p>$350 USD</p></td>
-</tr>
-<tr class="row-even"><td><p>FY2029</p></td>
-<td><p>$375 USD</p></td>
-</tr>
-<tr class="row-odd"><td><p>Total per database</p></td>
-<td><p>$1625 USD</p></td>
-</tr>
-</tbody>
-</table>
-<p><a href="#id1"><span class="problematic" id="id2">*</span></a>Numbers beyond Year 1 are estimates</p>
-<p>For a nominal cost, the SCC can set up “sandbox” Specify database instances for member
-staff to test migrations, updates, and to practice workflows before opening user access
-to a production database.</p>
-</section>
-<section id="digital-assets">
-<h2>Digital Assets<a class="headerlink" href="#digital-assets" title="Link to this heading"></a></h2>
-<p>Members may choose Specify Cloud to host their digital assets (files linked to database
-records), or if they would prefer to host them themselves. Even if a member chooses
-Specify Cloud hosting for their database, they may self-host collection-linked digital
-assets.</p>
-<p>Amazon’s Simple Storage Service (S3) Standard is used for asset hosting and the S3
-Glacier Deep Archive is employed for asset backups. AWS pricing varies widely based on
-usage, including adding, listing, viewing, querying, and downloading assets.  With very
-large quantities of data, SCC is unable to provide definitive quote for the cost per
-year without information about asset usage levels and desired backup strategy.
-Our cost structure for asset hosting is to pass-through actual AWS S3 charges adding
-7.5% for Specify management and maintenance.</p>
+  <section id="specify-workbench">
+<h1>Specify Workbench<a class="headerlink" href="#specify-workbench" title="Link to this heading"></a></h1>
+<section id="field-collection">
+<span id="wb-field-collection"></span><h2>Field collection<a class="headerlink" href="#field-collection" title="Link to this heading"></a></h2>
+<p>SCC recommends sending researchers out into the field with a spreadsheet that has a
+“Mapping Template” that matches spreadsheet columns to Specify database fields.  Users
+can create Mapping Templates for any combination of data fields to be imported.
+The spreadsheet for data entry is referred to as a “Mapped Spreadsheet”.
+Mapped Spreadsheets can be created for
+research expeditions, focusing on data collection specific to that field trip.
+Researchers can easily use the spreadsheet in the field to record information about
+specimens, collecting event(s), locality, and more.</p>
+<p>Data entered into a Mapped Spreadsheet can be imported via the Specify Workbench, a
+spreadsheet-based application. In this workflow, the user chooses the correct Mapping
+Template, the uploads the Mapped Spreadsheet to the Workbench. At this stage, the
+Workbench is completely external to the data catalog.  The Workbench contains
+extensive matching and editing features that can be edited to fit user needs.
+The Workbench then performs Data Validation on spreadsheet contents before submitting
+the data for upload to the Data Catalog.</p>
+<p>It allows the user to bring in bulk
+data, match columns to fields in Specify, and perform basic data integrity checks to
+ensure the data matches database requirements (data validity, controlled vocabulary
+matching, and linked record matching, such as Agent or Taxon records).</p>
+<p>Users first validate the spreadsheet data within the Workbench, then upload the verified
+data to the database.  Users may be assigned different levels of access to the
+Workbench functionality, such as permission to validate a dataset with the Workbench,
+or to perform the upload, so different people may verify that the data is sound.</p>
+<p>Because Specify 7 is an online software, with internet access, a dataset may be
+created directly in the Specify Workbench from the field.  This workflow allows
+researchers to verify data against database requirements upon entry.</p>
 </section>
 </section>
 
@@ -232,8 +184,8 @@ Our cost structure for asset hosting is to pass-through actual AWS S3 charges ad
            </div>
           </div>
           <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
-        <a href="disciplines.html" class="btn btn-neutral float-left" title="Discipline support" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
-        <a href="migration.html" class="btn btn-neutral float-right" title="Data Migration" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+        <a href="training.html" class="btn btn-neutral float-left" title="Specify Training" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="workflows.html" class="btn btn-neutral float-right" title="Common Workflows" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
     </div>
 
   <hr/>
