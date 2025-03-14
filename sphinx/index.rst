@@ -3,7 +3,7 @@ Welcome to Specify Developer documentation!
 
 .. toctree::
    :maxdepth: 1
-   :caption: Staff Guidelines:
+   :caption: Guidelines:
 
    processes/github_guidelines
 
