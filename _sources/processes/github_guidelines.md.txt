@@ -274,16 +274,15 @@ If you suspect you have discovered an issue in Specify, make sure to:
 
        * **Use git log locally**: Instead of GitHub’s interface, you can filter commits directly in your terminal: git log \--after="YYYY-MM-DD" \--before="YYYY-MM-DD" \--merges
 
-		**Tips 2**
-
-* Checkout a version of specify you suspect or know does not have the bug  
-  * You can checkout a specific tag (i.e., released version of Specify 7\) by \`git checkout tags/\<tag\_name\>\`. For example, \`git checkout tags/v7.9.6.2\`  
-    *  List of all tags: [https://github.com/specify/specify7/tags](https://github.com/specify/specify7/tags)   
-    * Once you've identified a commit/version which doesn't include the bug, you can checkout a commit somewhere in between the known 'bad' and 'good'  commits and determine if the new commit includes the bug or not; repeat this process until the commit which introduced the bug is found  
-      * Git has a built-in for this\! It's called git-bisect: [https://git-scm.com/docs/git-bisect](https://git-scm.com/docs/git-bisect)   
-    * With the commit SHA, open your favorite browser and navigate to [https://github.com/specify/specify7/commit/](https://github.com/specify/specify7/commit/)\<COMMIT\_SHA\>  
-      * For example: [https://github.com/specify/specify7/commit/0fb087e](https://github.com/specify/specify7/commit/0fb087e)  
-      * GitHub will tell you which PR introduced the commit and which tags include the commit
+    * Checkout a version of specify you suspect or know does not have the bug  
+    
+    * You can checkout a specific tag (i.e., released version of Specify 7\) by \`git checkout tags/\<tag\_name\>\`. For example, \`git checkout tags/v7.9.6.2\`  
+        *  List of all tags: [https://github.com/specify/specify7/tags](https://github.com/specify/specify7/tags)   
+        * Once you've identified a commit/version which doesn't include the bug, you can checkout a commit somewhere in between the known 'bad' and 'good'  commits and determine if the new commit includes the bug or not; repeat this process until the commit which introduced the bug is found  
+        * Git has a built-in for this\! It's called git-bisect: [https://git-scm.com/docs/git-bisect](https://git-scm.com/docs/git-bisect)   
+        * With the commit SHA, open your favorite browser and navigate to [https://github.com/specify/specify7/commit/](https://github.com/specify/specify7/commit/)\<COMMIT\_SHA\>  
+        * For example: [https://github.com/specify/specify7/commit/0fb087e](https://github.com/specify/specify7/commit/0fb087e)  
+        * GitHub will tell you which PR introduced the commit and which tags include the commit
 
 ## **Feature Request Guidelines**
 

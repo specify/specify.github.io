@@ -620,34 +620,20 @@ Find out when the bug has started (test previous versions), find when a bug appe
 <p><strong>Tips for Efficiency</strong></p>
 <ul class="simple">
 <li><p><strong>Use git log locally</strong>: Instead of GitHub’s interface, you can filter commits directly in your terminal: git log –after=”YYYY-MM-DD” –before=”YYYY-MM-DD” –merges</p></li>
-</ul>
-<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>**Tips 2**
-</pre></div>
-</div>
-</li>
-</ol>
-<ul class="simple">
-<li><p>Checkout a version of specify you suspect or know does not have the bug</p>
-<ul>
+<li><p>Checkout a version of specify you suspect or know does not have the bug</p></li>
 <li><p>You can checkout a specific tag (i.e., released version of Specify 7) by `git checkout tags/&lt;tag_name&gt;`. For example, `git checkout tags/v7.9.6.2`</p>
 <ul>
 <li><p>List of all tags: <a class="reference external" href="https://github.com/specify/specify7/tags">https://github.com/specify/specify7/tags</a></p></li>
-<li><p>Once you’ve identified a commit/version which doesn’t include the bug, you can checkout a commit somewhere in between the known ‘bad’ and ‘good’  commits and determine if the new commit includes the bug or not; repeat this process until the commit which introduced the bug is found</p>
-<ul>
+<li><p>Once you’ve identified a commit/version which doesn’t include the bug, you can checkout a commit somewhere in between the known ‘bad’ and ‘good’  commits and determine if the new commit includes the bug or not; repeat this process until the commit which introduced the bug is found</p></li>
 <li><p>Git has a built-in for this! It’s called git-bisect: <a class="reference external" href="https://git-scm.com/docs/git-bisect">https://git-scm.com/docs/git-bisect</a></p></li>
-</ul>
-</li>
-<li><p>With the commit SHA, open your favorite browser and navigate to <a class="reference external" href="https://github.com/specify/specify7/commit/">https://github.com/specify/specify7/commit/</a>&lt;COMMIT_SHA&gt;</p>
-<ul>
+<li><p>With the commit SHA, open your favorite browser and navigate to <a class="reference external" href="https://github.com/specify/specify7/commit/">https://github.com/specify/specify7/commit/</a>&lt;COMMIT_SHA&gt;</p></li>
 <li><p>For example: <a class="reference external" href="https://github.com/specify/specify7/commit/0fb087e">https://github.com/specify/specify7/commit/0fb087e</a></p></li>
 <li><p>GitHub will tell you which PR introduced the commit and which tags include the commit</p></li>
 </ul>
 </li>
 </ul>
 </li>
-</ul>
-</li>
-</ul>
+</ol>
 </section>
 </section>
 <section id="feature-request-guidelines">
