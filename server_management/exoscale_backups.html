@@ -177,31 +177,83 @@ upload:<span class="w"> </span><span class="s1">&#39;hello-world.txt&#39;</span>
 <p>Now that this is configured, we can use a script to backup the databases nightly:</p>
 <div class="highlight-sh notranslate"><div class="highlight"><pre><span></span><span class="ch">#!/bin/bash</span>
 
-<span class="c1"># Get the current date in YYYY_mm_dd format</span>
-<span class="nv">current_date</span><span class="o">=</span><span class="k">$(</span>date<span class="w"> </span>+<span class="s2">&quot;%Y_%m_%d&quot;</span><span class="k">)</span>
+<span class="c1"># This script is used to clean up old backups in an S3 bucket based on a retention policy.</span>
+<span class="c1"># The retention policy is as follows:</span>
+<span class="c1">#</span>
+<span class="c1"># - Backups less than a week old are kept.</span>
+<span class="c1"># - Friday backups within the last month are kept.</span>
+<span class="c1"># - The first Friday backup of each month is kept forever.</span>
+<span class="c1"># - All other backups are deleted.</span>
 
-<span class="c1"># Create the date directory in the backup bucket</span>
-<span class="nv">bucket_dir</span><span class="o">=</span><span class="s2">&quot;s3://swiss-backups/</span><span class="si">${</span><span class="nv">current_date</span><span class="si">}</span><span class="s2">&quot;</span>
+<span class="c1"># Set the S3 bucket directory</span>
+<span class="nv">bucket_dir</span><span class="o">=</span><span class="s2">&quot;s3://swiss-backups/&quot;</span>
 
-<span class="c1"># Fetch the list of databases dynamically</span>
-<span class="nv">databases</span><span class="o">=</span><span class="k">$(</span>mysql<span class="w"> </span>-h<span class="w"> </span><span class="m">0</span>.0.0.0<span class="w"> </span>-P<span class="w"> </span><span class="m">3306</span><span class="w"> </span>-uroot<span class="w"> </span>-p<span class="s2">&quot;</span><span class="nv">$MYSQL_ROOT_PASSWORD</span><span class="s2">&quot;</span><span class="w"> </span>-e<span class="w"> </span><span class="s1">&#39;SHOW DATABASES;&#39;</span><span class="w"> </span><span class="p">|</span><span class="w"> </span>grep<span class="w"> </span>-Ev<span class="w"> </span><span class="s1">&#39;^(Database|information_schema|performance_schema|mysql|sys)$&#39;</span><span class="k">)</span>
+<span class="c1"># Get the current date in YYYY-MM-DD format</span>
+<span class="nv">current_date</span><span class="o">=</span><span class="k">$(</span>date<span class="w"> </span>+<span class="s2">&quot;%Y-%m-%d&quot;</span><span class="k">)</span>
 
-<span class="c1"># Loop through each database and perform the backup</span>
-<span class="k">for</span><span class="w"> </span>db<span class="w"> </span><span class="k">in</span><span class="w"> </span><span class="nv">$databases</span><span class="p">;</span><span class="w"> </span><span class="k">do</span>
-<span class="w">  </span><span class="c1"># Create the backup file name for the upload</span>
-<span class="w">  </span><span class="nv">backup_file_name</span><span class="o">=</span><span class="s2">&quot;</span><span class="si">${</span><span class="nv">db</span><span class="si">}</span><span class="s2">_</span><span class="si">${</span><span class="nv">current_date</span><span class="si">}</span><span class="s2">.sql.gz&quot;</span>
+<span class="c1"># Convert the current date to a timestamp</span>
+<span class="nv">current_timestamp</span><span class="o">=</span><span class="k">$(</span>date<span class="w"> </span>-d<span class="w"> </span><span class="s2">&quot;</span><span class="nv">$current_date</span><span class="s2">&quot;</span><span class="w"> </span>+%s<span class="k">)</span>
 
-<span class="w">  </span><span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;Backing up database: </span><span class="nv">$db</span><span class="s2">&quot;</span>
+<span class="c1"># Array to keep track of the first Friday of each month</span>
+<span class="nb">declare</span><span class="w"> </span>-A<span class="w"> </span>first_friday_backups
 
-<span class="w">  </span><span class="c1"># Perform the mysqldump and upload directly to the Exoscale bucket</span>
-<span class="w">  </span>mysqldump<span class="w"> </span>--max-allowed-packet<span class="o">=</span>2G<span class="w"> </span>--single-transaction<span class="w"> </span>-h<span class="w"> </span><span class="m">0</span>.0.0.0<span class="w"> </span>-P<span class="w"> </span><span class="m">3306</span><span class="w"> </span>-uroot<span class="w"> </span>-p<span class="s2">&quot;</span><span class="nv">$MYSQL_ROOT_PASSWORD</span><span class="s2">&quot;</span><span class="w"> </span><span class="s2">&quot;</span><span class="nv">$db</span><span class="s2">&quot;</span><span class="w"> </span><span class="p">|</span><span class="w"> </span>gzip<span class="w"> </span><span class="p">|</span><span class="w"> </span>s3cmd<span class="w"> </span>put<span class="w"> </span>-<span class="w"> </span><span class="s2">&quot;</span><span class="si">${</span><span class="nv">bucket_dir</span><span class="si">}</span><span class="s2">/</span><span class="si">${</span><span class="nv">backup_file_name</span><span class="si">}</span><span class="s2">&quot;</span>
+<span class="c1"># Loop through each backup directory in the S3 bucket</span>
+<span class="k">for</span><span class="w"> </span>backup_dir<span class="w"> </span><span class="k">in</span><span class="w"> </span><span class="k">$(</span>s3cmd<span class="w"> </span>ls<span class="w"> </span><span class="s2">&quot;</span><span class="nv">$bucket_dir</span><span class="s2">&quot;</span><span class="w"> </span><span class="p">|</span><span class="w"> </span>awk<span class="w"> </span><span class="s1">&#39;{print $2}&#39;</span><span class="w"> </span><span class="p">|</span><span class="w"> </span>sed<span class="w"> </span><span class="s1">&#39;s/\/$//&#39;</span><span class="k">)</span><span class="p">;</span><span class="w"> </span><span class="k">do</span>
+<span class="w">  </span><span class="c1"># Extract the date from the directory name</span>
+<span class="w">  </span><span class="nv">backup_date</span><span class="o">=</span><span class="k">$(</span>basename<span class="w"> </span><span class="s2">&quot;</span><span class="nv">$backup_dir</span><span class="s2">&quot;</span><span class="k">)</span>
 
-<span class="w">  </span><span class="c1"># Check if the upload was successful</span>
-<span class="w">  </span><span class="k">if</span><span class="w"> </span><span class="o">[</span><span class="w"> </span><span class="nv">$?</span><span class="w"> </span>-eq<span class="w"> </span><span class="m">0</span><span class="w"> </span><span class="o">]</span><span class="p">;</span><span class="w"> </span><span class="k">then</span>
-<span class="w">    </span><span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;Backup of </span><span class="nv">$db</span><span class="s2"> completed and uploaded successfully to </span><span class="nv">$bucket_dir</span><span class="s2">.&quot;</span>
-<span class="w">  </span><span class="k">else</span>
-<span class="w">    </span><span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;Backup of </span><span class="nv">$db</span><span class="s2"> failed or upload failed.&quot;</span><span class="w"> </span>&gt;<span class="p">&amp;</span><span class="m">2</span>
+<span class="w">  </span><span class="c1"># Convert the backup date to a timestamp</span>
+<span class="w">  </span><span class="c1"># Assuming the backup date format is YYYY-MM-DD or YYYY_MM_DD</span>
+<span class="w">  </span><span class="nv">backup_date_formatted</span><span class="o">=</span><span class="si">${</span><span class="nv">backup_date</span><span class="p">//_/ </span><span class="si">}</span><span class="w">  </span><span class="c1"># Replace underscores with spaces</span>
+<span class="w">  </span><span class="nv">backup_date_formatted</span><span class="o">=</span><span class="si">${</span><span class="nv">backup_date_formatted</span><span class="p">// /-</span><span class="si">}</span><span class="w">  </span><span class="c1"># Replace spaces with hyphens</span>
+<span class="w">  </span><span class="nv">backup_timestamp</span><span class="o">=</span><span class="k">$(</span>date<span class="w"> </span>-d<span class="w"> </span><span class="s2">&quot;</span><span class="nv">$backup_date_formatted</span><span class="s2">&quot;</span><span class="w"> </span>+%s<span class="w"> </span><span class="m">2</span>&gt;/dev/null<span class="k">)</span>
+
+<span class="w">  </span><span class="c1"># Check if the timestamp was successfully created</span>
+<span class="w">  </span><span class="k">if</span><span class="w"> </span><span class="o">[</span><span class="w"> </span>-z<span class="w"> </span><span class="s2">&quot;</span><span class="nv">$backup_timestamp</span><span class="s2">&quot;</span><span class="w"> </span><span class="o">]</span><span class="p">;</span><span class="w"> </span><span class="k">then</span>
+<span class="w">    </span><span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;Skipping invalid date format for backup directory: </span><span class="nv">$backup_dir</span><span class="s2">&quot;</span>
+<span class="w">    </span><span class="k">continue</span>
 <span class="w">  </span><span class="k">fi</span>
+
+<span class="w">  </span><span class="c1"># Calculate the difference in days</span>
+<span class="w">  </span><span class="nv">diff_days</span><span class="o">=</span><span class="k">$((</span><span class="w"> </span><span class="o">(</span><span class="nv">current_timestamp</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="nv">backup_timestamp</span><span class="o">)</span><span class="w"> </span><span class="o">/</span><span class="w"> </span><span class="m">86400</span><span class="w"> </span><span class="k">))</span>
+
+<span class="w">  </span><span class="c1"># Determine the day of the week (1=Monday, ..., 7=Sunday)</span>
+<span class="w">  </span><span class="nv">day_of_week</span><span class="o">=</span><span class="k">$(</span>date<span class="w"> </span>-d<span class="w"> </span><span class="s2">&quot;</span><span class="nv">$backup_date_formatted</span><span class="s2">&quot;</span><span class="w"> </span>+%u<span class="k">)</span>
+
+<span class="w">  </span><span class="c1"># Determine the month and year for the backup date</span>
+<span class="w">  </span><span class="nv">backup_month</span><span class="o">=</span><span class="k">$(</span>date<span class="w"> </span>-d<span class="w"> </span><span class="s2">&quot;</span><span class="nv">$backup_date_formatted</span><span class="s2">&quot;</span><span class="w"> </span>+%Y-%m<span class="k">)</span>
+
+<span class="w">  </span><span class="c1"># Check if the backup is less than a week old</span>
+<span class="w">  </span><span class="k">if</span><span class="w"> </span><span class="o">[</span><span class="w"> </span><span class="s2">&quot;</span><span class="nv">$diff_days</span><span class="s2">&quot;</span><span class="w"> </span>-lt<span class="w"> </span><span class="m">7</span><span class="w"> </span><span class="o">]</span><span class="p">;</span><span class="w"> </span><span class="k">then</span>
+<span class="w">    </span><span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;Keeping backup: </span><span class="nv">$backup_dir</span><span class="s2"> (less than a week old)&quot;</span>
+<span class="w">    </span><span class="k">continue</span>
+<span class="w">  </span><span class="k">fi</span>
+
+<span class="w">  </span><span class="c1"># Check if it&#39;s a Friday backup (day_of_week == 5)</span>
+<span class="w">  </span><span class="k">if</span><span class="w"> </span><span class="o">[</span><span class="w"> </span><span class="s2">&quot;</span><span class="nv">$day_of_week</span><span class="s2">&quot;</span><span class="w"> </span>-eq<span class="w"> </span><span class="m">5</span><span class="w"> </span><span class="o">]</span><span class="p">;</span><span class="w"> </span><span class="k">then</span>
+<span class="w">    </span><span class="c1"># If it&#39;s the first Friday of the month, keep it</span>
+<span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="o">[</span><span class="w"> </span>-z<span class="w"> </span><span class="s2">&quot;</span><span class="si">${</span><span class="nv">first_friday_backups</span><span class="p">[</span><span class="nv">$backup_month</span><span class="p">]</span><span class="si">}</span><span class="s2">&quot;</span><span class="w"> </span><span class="o">]</span><span class="p">;</span><span class="w"> </span><span class="k">then</span>
+<span class="w">      </span>first_friday_backups<span class="o">[</span><span class="nv">$backup_month</span><span class="o">]=</span><span class="s2">&quot;</span><span class="nv">$backup_dir</span><span class="s2">&quot;</span>
+<span class="w">      </span><span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;Keeping first Friday backup: </span><span class="nv">$backup_dir</span><span class="s2">&quot;</span>
+<span class="w">      </span><span class="k">continue</span><span class="w">  </span><span class="c1"># Skip deletion since it&#39;s kept indefinitely</span>
+<span class="w">    </span><span class="k">else</span>
+<span class="w">      </span><span class="c1"># If it&#39;s a Friday backup within the last month, keep it</span>
+<span class="w">      </span><span class="k">if</span><span class="w"> </span><span class="o">[</span><span class="w"> </span><span class="s2">&quot;</span><span class="nv">$diff_days</span><span class="s2">&quot;</span><span class="w"> </span>-lt<span class="w"> </span><span class="m">30</span><span class="w"> </span><span class="o">]</span><span class="p">;</span><span class="w"> </span><span class="k">then</span>
+<span class="w">        </span><span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;Keeping Friday backup: </span><span class="nv">$backup_dir</span><span class="s2"> (within the last month)&quot;</span>
+<span class="w">        </span><span class="k">continue</span><span class="w">  </span><span class="c1"># Skip deletion since it&#39;s kept</span>
+<span class="w">      </span><span class="k">fi</span>
+<span class="w">    </span><span class="k">fi</span>
+<span class="w">  </span><span class="k">fi</span>
+
+<span class="w">  </span><span class="c1"># If none of the conditions are met, delete the backup</span>
+<span class="w">  </span><span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;Deleting backup: </span><span class="nv">$backup_dir</span><span class="s2"> (does not meet retention criteria)&quot;</span>
+<span class="w">  </span>s3cmd<span class="w"> </span>del<span class="w"> </span><span class="s2">&quot;</span><span class="nv">$backup_dir</span><span class="s2">&quot;</span><span class="w"> </span>--recursive
+<span class="k">done</span>
+
+<span class="c1"># Final output of the first Friday backups kept indefinitely</span>
+<span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;First Friday backups kept indefinitely:&quot;</span>
+<span class="k">for</span><span class="w"> </span>backup<span class="w"> </span><span class="k">in</span><span class="w"> </span><span class="s2">&quot;</span><span class="si">${</span><span class="nv">first_friday_backups</span><span class="p">[@]</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">;</span><span class="w"> </span><span class="k">do</span>
+<span class="w">  </span><span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;</span><span class="nv">$backup</span><span class="s2">&quot;</span>
 <span class="k">done</span>
 </pre></div>
 </div>
@@ -257,6 +309,93 @@ ubuntu@sp7cloud-swiss-1:~/.backup$<span class="w"> </span>s3cmd<span class="w"> 
 <span class="m">2024</span>-08-14<span class="w"> </span><span class="m">00</span>:45<span class="w">      </span><span class="m">6450282</span><span class="w">  </span>s3://swiss-backups/2024_08_14/nmb_rinvert_2024_08_14.sql.gz
 <span class="m">2024</span>-08-14<span class="w"> </span><span class="m">00</span>:45<span class="w">     </span><span class="m">22505447</span><span class="w">  </span>s3://swiss-backups/2024_08_14/sp7demofish_swiss_2024_08_14.sql.gz
 ubuntu@sp7cloud-swiss-1:~/.backup$
+</pre></div>
+</div>
+<p>Then the backups are cleaned with another cron job:</p>
+<div class="highlight-sh notranslate"><div class="highlight"><pre><span></span><span class="c1"># m h  dom mon dow   command</span>
+<span class="m">0</span><span class="w"> </span><span class="m">1</span><span class="w"> </span>*<span class="w"> </span>*<span class="w"> </span>*<span class="w"> </span>/home/ubuntu/.backup/cleanup_script.sh
+</pre></div>
+</div>
+<div class="highlight-sh notranslate"><div class="highlight"><pre><span></span><span class="ch">#!/bin/bash</span>
+
+<span class="c1"># This script is used to clean up old backups in an S3 bucket based on a retention policy.</span>
+<span class="c1"># The retention policy is as follows:</span>
+<span class="c1">#</span>
+<span class="c1"># - Backups less than a week old are kept.</span>
+<span class="c1"># - Friday backups within the last month are kept.</span>
+<span class="c1"># - The first Friday backup of each month is kept forever.</span>
+<span class="c1"># - All other backups are deleted.</span>
+
+<span class="c1"># Set the S3 bucket directory</span>
+<span class="nv">bucket_dir</span><span class="o">=</span><span class="s2">&quot;s3://swiss-backups/&quot;</span>
+
+<span class="c1"># Get the current date in YYYY-MM-DD format</span>
+<span class="nv">current_date</span><span class="o">=</span><span class="k">$(</span>date<span class="w"> </span>+<span class="s2">&quot;%Y-%m-%d&quot;</span><span class="k">)</span>
+
+<span class="c1"># Convert the current date to a timestamp</span>
+<span class="nv">current_timestamp</span><span class="o">=</span><span class="k">$(</span>date<span class="w"> </span>-d<span class="w"> </span><span class="s2">&quot;</span><span class="nv">$current_date</span><span class="s2">&quot;</span><span class="w"> </span>+%s<span class="k">)</span>
+
+<span class="c1"># Array to keep track of the first Friday of each month</span>
+<span class="nb">declare</span><span class="w"> </span>-A<span class="w"> </span>first_friday_backups
+
+<span class="c1"># Loop through each backup directory in the S3 bucket</span>
+<span class="k">for</span><span class="w"> </span>backup_dir<span class="w"> </span><span class="k">in</span><span class="w"> </span><span class="k">$(</span>s3cmd<span class="w"> </span>ls<span class="w"> </span><span class="s2">&quot;</span><span class="nv">$bucket_dir</span><span class="s2">&quot;</span><span class="w"> </span><span class="p">|</span><span class="w"> </span>awk<span class="w"> </span><span class="s1">&#39;{print $2}&#39;</span><span class="w"> </span><span class="p">|</span><span class="w"> </span>sed<span class="w"> </span><span class="s1">&#39;s/\/$//&#39;</span><span class="k">)</span><span class="p">;</span><span class="w"> </span><span class="k">do</span>
+<span class="w">  </span><span class="c1"># Extract the date from the directory name</span>
+<span class="w">  </span><span class="nv">backup_date</span><span class="o">=</span><span class="k">$(</span>basename<span class="w"> </span><span class="s2">&quot;</span><span class="nv">$backup_dir</span><span class="s2">&quot;</span><span class="k">)</span>
+
+<span class="w">  </span><span class="c1"># Convert the backup date to a timestamp</span>
+<span class="w">  </span><span class="c1"># Assuming the backup date format is YYYY-MM-DD or YYYY_MM_DD</span>
+<span class="w">  </span><span class="nv">backup_date_formatted</span><span class="o">=</span><span class="si">${</span><span class="nv">backup_date</span><span class="p">//_/ </span><span class="si">}</span><span class="w">  </span><span class="c1"># Replace underscores with spaces</span>
+<span class="w">  </span><span class="nv">backup_date_formatted</span><span class="o">=</span><span class="si">${</span><span class="nv">backup_date_formatted</span><span class="p">// /-</span><span class="si">}</span><span class="w">  </span><span class="c1"># Replace spaces with hyphens</span>
+<span class="w">  </span><span class="nv">backup_timestamp</span><span class="o">=</span><span class="k">$(</span>date<span class="w"> </span>-d<span class="w"> </span><span class="s2">&quot;</span><span class="nv">$backup_date_formatted</span><span class="s2">&quot;</span><span class="w"> </span>+%s<span class="w"> </span><span class="m">2</span>&gt;/dev/null<span class="k">)</span>
+
+<span class="w">  </span><span class="c1"># Check if the timestamp was successfully created</span>
+<span class="w">  </span><span class="k">if</span><span class="w"> </span><span class="o">[</span><span class="w"> </span>-z<span class="w"> </span><span class="s2">&quot;</span><span class="nv">$backup_timestamp</span><span class="s2">&quot;</span><span class="w"> </span><span class="o">]</span><span class="p">;</span><span class="w"> </span><span class="k">then</span>
+<span class="w">    </span><span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;Skipping invalid date format for backup directory: </span><span class="nv">$backup_dir</span><span class="s2">&quot;</span>
+<span class="w">    </span><span class="k">continue</span>
+<span class="w">  </span><span class="k">fi</span>
+
+<span class="w">  </span><span class="c1"># Calculate the difference in days</span>
+<span class="w">  </span><span class="nv">diff_days</span><span class="o">=</span><span class="k">$((</span><span class="w"> </span><span class="o">(</span><span class="nv">current_timestamp</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="nv">backup_timestamp</span><span class="o">)</span><span class="w"> </span><span class="o">/</span><span class="w"> </span><span class="m">86400</span><span class="w"> </span><span class="k">))</span>
+
+<span class="w">  </span><span class="c1"># Determine the day of the week (1=Monday, ..., 7=Sunday)</span>
+<span class="w">  </span><span class="nv">day_of_week</span><span class="o">=</span><span class="k">$(</span>date<span class="w"> </span>-d<span class="w"> </span><span class="s2">&quot;</span><span class="nv">$backup_date_formatted</span><span class="s2">&quot;</span><span class="w"> </span>+%u<span class="k">)</span>
+
+<span class="w">  </span><span class="c1"># Determine the month and year for the backup date</span>
+<span class="w">  </span><span class="nv">backup_month</span><span class="o">=</span><span class="k">$(</span>date<span class="w"> </span>-d<span class="w"> </span><span class="s2">&quot;</span><span class="nv">$backup_date_formatted</span><span class="s2">&quot;</span><span class="w"> </span>+%Y-%m<span class="k">)</span>
+
+<span class="w">  </span><span class="c1"># Check if the backup is less than a week old</span>
+<span class="w">  </span><span class="k">if</span><span class="w"> </span><span class="o">[</span><span class="w"> </span><span class="s2">&quot;</span><span class="nv">$diff_days</span><span class="s2">&quot;</span><span class="w"> </span>-lt<span class="w"> </span><span class="m">7</span><span class="w"> </span><span class="o">]</span><span class="p">;</span><span class="w"> </span><span class="k">then</span>
+<span class="w">    </span><span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;Keeping backup: </span><span class="nv">$backup_dir</span><span class="s2"> (less than a week old)&quot;</span>
+<span class="w">    </span><span class="k">continue</span>
+<span class="w">  </span><span class="k">fi</span>
+
+<span class="w">  </span><span class="c1"># Check if it&#39;s a Friday backup (day_of_week == 5)</span>
+<span class="w">  </span><span class="k">if</span><span class="w"> </span><span class="o">[</span><span class="w"> </span><span class="s2">&quot;</span><span class="nv">$day_of_week</span><span class="s2">&quot;</span><span class="w"> </span>-eq<span class="w"> </span><span class="m">5</span><span class="w"> </span><span class="o">]</span><span class="p">;</span><span class="w"> </span><span class="k">then</span>
+<span class="w">    </span><span class="c1"># If it&#39;s the first Friday of the month, keep it</span>
+<span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="o">[</span><span class="w"> </span>-z<span class="w"> </span><span class="s2">&quot;</span><span class="si">${</span><span class="nv">first_friday_backups</span><span class="p">[</span><span class="nv">$backup_month</span><span class="p">]</span><span class="si">}</span><span class="s2">&quot;</span><span class="w"> </span><span class="o">]</span><span class="p">;</span><span class="w"> </span><span class="k">then</span>
+<span class="w">      </span>first_friday_backups<span class="o">[</span><span class="nv">$backup_month</span><span class="o">]=</span><span class="s2">&quot;</span><span class="nv">$backup_dir</span><span class="s2">&quot;</span>
+<span class="w">      </span><span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;Keeping first Friday backup: </span><span class="nv">$backup_dir</span><span class="s2">&quot;</span>
+<span class="w">      </span><span class="k">continue</span><span class="w">  </span><span class="c1"># Skip deletion since it&#39;s kept indefinitely</span>
+<span class="w">    </span><span class="k">else</span>
+<span class="w">      </span><span class="c1"># If it&#39;s a Friday backup within the last month, keep it</span>
+<span class="w">      </span><span class="k">if</span><span class="w"> </span><span class="o">[</span><span class="w"> </span><span class="s2">&quot;</span><span class="nv">$diff_days</span><span class="s2">&quot;</span><span class="w"> </span>-lt<span class="w"> </span><span class="m">30</span><span class="w"> </span><span class="o">]</span><span class="p">;</span><span class="w"> </span><span class="k">then</span>
+<span class="w">        </span><span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;Keeping Friday backup: </span><span class="nv">$backup_dir</span><span class="s2"> (within the last month)&quot;</span>
+<span class="w">        </span><span class="k">continue</span><span class="w">  </span><span class="c1"># Skip deletion since it&#39;s kept</span>
+<span class="w">      </span><span class="k">fi</span>
+<span class="w">    </span><span class="k">fi</span>
+<span class="w">  </span><span class="k">fi</span>
+
+<span class="w">  </span><span class="c1"># If none of the conditions are met, delete the backup</span>
+<span class="w">  </span><span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;Deleting backup: </span><span class="nv">$backup_dir</span><span class="s2"> (does not meet retention criteria)&quot;</span>
+<span class="w">  </span>s3cmd<span class="w"> </span>del<span class="w"> </span><span class="s2">&quot;</span><span class="nv">$backup_dir</span><span class="s2">&quot;</span><span class="w"> </span>--recursive
+<span class="k">done</span>
+
+<span class="c1"># Final output of the first Friday backups kept indefinitely</span>
+<span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;First Friday backups kept indefinitely:&quot;</span>
+<span class="k">for</span><span class="w"> </span>backup<span class="w"> </span><span class="k">in</span><span class="w"> </span><span class="s2">&quot;</span><span class="si">${</span><span class="nv">first_friday_backups</span><span class="p">[@]</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">;</span><span class="w"> </span><span class="k">do</span>
+<span class="w">  </span><span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;</span><span class="nv">$backup</span><span class="s2">&quot;</span>
+<span class="k">done</span>
 </pre></div>
 </div>
 </section>

@@ -41,31 +41,83 @@ Now that this is configured, we can use a script to backup the databases nightly
 ```sh
 #!/bin/bash
 
-# Get the current date in YYYY_mm_dd format
-current_date=$(date +"%Y_%m_%d")
+# This script is used to clean up old backups in an S3 bucket based on a retention policy.
+# The retention policy is as follows:
+#
+# - Backups less than a week old are kept.
+# - Friday backups within the last month are kept.
+# - The first Friday backup of each month is kept forever.
+# - All other backups are deleted.
 
-# Create the date directory in the backup bucket
-bucket_dir="s3://swiss-backups/${current_date}"
+# Set the S3 bucket directory
+bucket_dir="s3://swiss-backups/"
 
-# Fetch the list of databases dynamically
-databases=$(mysql -h 0.0.0.0 -P 3306 -uroot -p"$MYSQL_ROOT_PASSWORD" -e 'SHOW DATABASES;' | grep -Ev '^(Database|information_schema|performance_schema|mysql|sys)$')
+# Get the current date in YYYY-MM-DD format
+current_date=$(date +"%Y-%m-%d")
 
-# Loop through each database and perform the backup
-for db in $databases; do
-  # Create the backup file name for the upload
-  backup_file_name="${db}_${current_date}.sql.gz"
+# Convert the current date to a timestamp
+current_timestamp=$(date -d "$current_date" +%s)
 
-  echo "Backing up database: $db"
+# Array to keep track of the first Friday of each month
+declare -A first_friday_backups
 
-  # Perform the mysqldump and upload directly to the Exoscale bucket
-  mysqldump --max-allowed-packet=2G --single-transaction -h 0.0.0.0 -P 3306 -uroot -p"$MYSQL_ROOT_PASSWORD" "$db" | gzip | s3cmd put - "${bucket_dir}/${backup_file_name}"
+# Loop through each backup directory in the S3 bucket
+for backup_dir in $(s3cmd ls "$bucket_dir" | awk '{print $2}' | sed 's/\/$//'); do
+  # Extract the date from the directory name
+  backup_date=$(basename "$backup_dir")
 
-  # Check if the upload was successful
-  if [ $? -eq 0 ]; then
-    echo "Backup of $db completed and uploaded successfully to $bucket_dir."
-  else
-    echo "Backup of $db failed or upload failed." >&2
+  # Convert the backup date to a timestamp
+  # Assuming the backup date format is YYYY-MM-DD or YYYY_MM_DD
+  backup_date_formatted=${backup_date//_/ }  # Replace underscores with spaces
+  backup_date_formatted=${backup_date_formatted// /-}  # Replace spaces with hyphens
+  backup_timestamp=$(date -d "$backup_date_formatted" +%s 2>/dev/null)
+
+  # Check if the timestamp was successfully created
+  if [ -z "$backup_timestamp" ]; then
+    echo "Skipping invalid date format for backup directory: $backup_dir"
+    continue
   fi
+
+  # Calculate the difference in days
+  diff_days=$(( (current_timestamp - backup_timestamp) / 86400 ))
+
+  # Determine the day of the week (1=Monday, ..., 7=Sunday)
+  day_of_week=$(date -d "$backup_date_formatted" +%u)
+
+  # Determine the month and year for the backup date
+  backup_month=$(date -d "$backup_date_formatted" +%Y-%m)
+
+  # Check if the backup is less than a week old
+  if [ "$diff_days" -lt 7 ]; then
+    echo "Keeping backup: $backup_dir (less than a week old)"
+    continue
+  fi
+
+  # Check if it's a Friday backup (day_of_week == 5)
+  if [ "$day_of_week" -eq 5 ]; then
+    # If it's the first Friday of the month, keep it
+    if [ -z "${first_friday_backups[$backup_month]}" ]; then
+      first_friday_backups[$backup_month]="$backup_dir"
+      echo "Keeping first Friday backup: $backup_dir"
+      continue  # Skip deletion since it's kept indefinitely
+    else
+      # If it's a Friday backup within the last month, keep it
+      if [ "$diff_days" -lt 30 ]; then
+        echo "Keeping Friday backup: $backup_dir (within the last month)"
+        continue  # Skip deletion since it's kept
+      fi
+    fi
+  fi
+
+  # If none of the conditions are met, delete the backup
+  echo "Deleting backup: $backup_dir (does not meet retention criteria)"
+  s3cmd del "$backup_dir" --recursive
+done
+
+# Final output of the first Friday backups kept indefinitely
+echo "First Friday backups kept indefinitely:"
+for backup in "${first_friday_backups[@]}"; do
+  echo "$backup"
 done
 ```
 
@@ -125,4 +177,94 @@ ubuntu@sp7cloud-swiss-1:~/.backup$ s3cmd ls s3://swiss-backups/2024_08_14/
 2024-08-14 00:45      6450282  s3://swiss-backups/2024_08_14/nmb_rinvert_2024_08_14.sql.gz
 2024-08-14 00:45     22505447  s3://swiss-backups/2024_08_14/sp7demofish_swiss_2024_08_14.sql.gz
 ubuntu@sp7cloud-swiss-1:~/.backup$
+```
+
+Then the backups are cleaned with another cron job:
+
+```sh
+# m h  dom mon dow   command
+0 1 * * * /home/ubuntu/.backup/cleanup_script.sh
+```
+
+```sh
+#!/bin/bash
+
+# This script is used to clean up old backups in an S3 bucket based on a retention policy.
+# The retention policy is as follows:
+#
+# - Backups less than a week old are kept.
+# - Friday backups within the last month are kept.
+# - The first Friday backup of each month is kept forever.
+# - All other backups are deleted.
+
+# Set the S3 bucket directory
+bucket_dir="s3://swiss-backups/"
+
+# Get the current date in YYYY-MM-DD format
+current_date=$(date +"%Y-%m-%d")
+
+# Convert the current date to a timestamp
+current_timestamp=$(date -d "$current_date" +%s)
+
+# Array to keep track of the first Friday of each month
+declare -A first_friday_backups
+
+# Loop through each backup directory in the S3 bucket
+for backup_dir in $(s3cmd ls "$bucket_dir" | awk '{print $2}' | sed 's/\/$//'); do
+  # Extract the date from the directory name
+  backup_date=$(basename "$backup_dir")
+
+  # Convert the backup date to a timestamp
+  # Assuming the backup date format is YYYY-MM-DD or YYYY_MM_DD
+  backup_date_formatted=${backup_date//_/ }  # Replace underscores with spaces
+  backup_date_formatted=${backup_date_formatted// /-}  # Replace spaces with hyphens
+  backup_timestamp=$(date -d "$backup_date_formatted" +%s 2>/dev/null)
+
+  # Check if the timestamp was successfully created
+  if [ -z "$backup_timestamp" ]; then
+    echo "Skipping invalid date format for backup directory: $backup_dir"
+    continue
+  fi
+
+  # Calculate the difference in days
+  diff_days=$(( (current_timestamp - backup_timestamp) / 86400 ))
+
+  # Determine the day of the week (1=Monday, ..., 7=Sunday)
+  day_of_week=$(date -d "$backup_date_formatted" +%u)
+
+  # Determine the month and year for the backup date
+  backup_month=$(date -d "$backup_date_formatted" +%Y-%m)
+
+  # Check if the backup is less than a week old
+  if [ "$diff_days" -lt 7 ]; then
+    echo "Keeping backup: $backup_dir (less than a week old)"
+    continue
+  fi
+
+  # Check if it's a Friday backup (day_of_week == 5)
+  if [ "$day_of_week" -eq 5 ]; then
+    # If it's the first Friday of the month, keep it
+    if [ -z "${first_friday_backups[$backup_month]}" ]; then
+      first_friday_backups[$backup_month]="$backup_dir"
+      echo "Keeping first Friday backup: $backup_dir"
+      continue  # Skip deletion since it's kept indefinitely
+    else
+      # If it's a Friday backup within the last month, keep it
+      if [ "$diff_days" -lt 30 ]; then
+        echo "Keeping Friday backup: $backup_dir (within the last month)"
+        continue  # Skip deletion since it's kept
+      fi
+    fi
+  fi
+
+  # If none of the conditions are met, delete the backup
+  echo "Deleting backup: $backup_dir (does not meet retention criteria)"
+  s3cmd del "$backup_dir" --recursive
+done
+
+# Final output of the first Friday backups kept indefinitely
+echo "First Friday backups kept indefinitely:"
+for backup in "${first_friday_backups[@]}"; do
+  echo "$backup"
+done
 ```
