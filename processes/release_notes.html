@@ -18,7 +18,9 @@
       <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
     <script src="../_static/js/theme.js"></script>
     <link rel="index" title="Index" href="../genindex.html" />
-    <link rel="search" title="Search" href="../search.html" /> 
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="AWS Security" href="../security/aws_security.html" />
+    <link rel="prev" title="Developer Expectations" href="../dev_process/dev_expectations.html" /> 
 </head>
 
 <body class="wy-body-for-nav"> 
@@ -77,12 +79,13 @@
 <li class="toctree-l1"><a class="reference internal" href="../server_management/kuit_ssl_certs.html#specify-ku-edu-ssl-cert-update">specify.ku.edu ssl cert update</a></li>
 </ul>
 <p class="caption" role="heading"><span class="caption-text">Internal Processes:</span></p>
-<ul>
+<ul class="current">
 <li class="toctree-l1"><a class="reference internal" href="../dev_process/specify_processes.html">Specify Development Process</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../dev_process/project_docs.html">Project (Github pages) documentation</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../dev_process/dbgroups.html">Databases with Specific Features</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../dev_process/individualdbs.html">Individual Database Information</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../dev_process/dev_expectations.html">Developer Expectations</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Create Release Notes</a></li>
 </ul>
 <p class="caption" role="heading"><span class="caption-text">Security:</span></p>
 <ul>
@@ -254,7 +257,9 @@ For more information about Specify 7, or about this release, see [<span class="n
 <li><p><strong>Fixed</strong>: Bug fixes that resolve existing issues.</p></li>
 </ol>
 <p>As you visit each link and rename these items, move them under the appropriate heading. Order the items within each heading in descending order of importance so users see the most critical changes first.</p>
-<p>Instead of saying:</p>
+<p>If there are changes that are <strong>completely</strong> internal, these can be ignored and removed from the list, but please ask another staff member if you are unsure.</p>
+<p>Each should be written in present tense (e.g. <code class="docutils literal notranslate"><span class="pre">Fixes</span></code> or <code class="docutils literal notranslate"><span class="pre">Adds</span></code>).</p>
+<p>When renaming each change, instead of saying:</p>
 <ul class="simple">
 <li><p>Add “default” initialize property to QCBX (<a class="reference internal" href="#%5Bhttps://github.com/specify/specify7/pull/6037%5D"><span class="xref myst">#6037</span></a>)</p></li>
 </ul>
@@ -269,13 +274,69 @@ For more information about Specify 7, or about this release, see [<span class="n
 <p>For clarity, if there are two requesting institutions, separate them by adding <code class="docutils literal notranslate"><span class="pre">and</span></code> between them.</p>
 <p>For three or more requesting institutions, use commas before using an and. Oxford comma is needed for Theresa’s approval.</p>
 </li>
+<li><p>Make sure <strong>all</strong> relevant and necessary documentation is written. Once complete, gather the links to this documentation and integrate them via direct links into the release notes.</p></li>
+<li><p>Create the <a class="reference external" href="https://discourse.specifysoftware.org/">Discourse (Community Forum)</a> post for the release. You can use the last release update as a reference, but it should look like this (in Markdown syntax). You can copy this as a starting point.</p>
+<p><strong>If there are special notes</strong>, make sure to include those before the “Release Announcement” primary header.</p>
+<div class="highlight-md notranslate"><div class="highlight"><pre><span></span>![<span class="nt">SpecifyCollectionsConsortium|317x81</span>](<span class="na">upload://oh6shBgn9SAEocJvjf63LyKXJRC</span>)
+
+<span class="gh"># Release Announcement</span>
+
+<span class="gu">## [7.10.2](https://github.com/specify/specify7/compare/v7.10.1...v7.10.2) (15 April 2025)</span>
+
+
+<span class="gu">## Added </span>
+<span class="k">*</span><span class="w"> </span><span class="gs">**Batch Edit**</span>: Support for editing basic fields ([#5417](https://github.com/specify/specify7/pull/5417))
+<span class="k">*</span><span class="w"> </span>Added a &#39;Download&#39; button to record set and query results attachments ([#6052](https://github.com/specify/specify7/pull/6052) – <span class="ge">*Requested by The University of Michigan, Naturhistorisches Museum Bern, Beaty Biodiversity Museum, Agriculture and Agri-Food Canada, Muséum d&#39;Histoire Naturelle Geneva, and Queensland Herbarium*</span>)
+<span class="k">*</span><span class="w"> </span>The [<span class="nt">Form Meta menu</span>](<span class="na">https://discourse.specifysoftware.org/t/form-meta-menu/844</span>) is now accessible when using &quot;View in Forms&quot; ([#5416](https://github.com/specify/specify7/pull/5416))
+<span class="k">*</span><span class="w"> </span>A default value can now be used for a query combo box ([#6037]([https://github.com/specify/specify7/pull/6037]) – <span class="ge">*Requested by South African Institute for Aquatic Biodiversity and The Ohio State University Mollusk Division*</span>)
+<span class="k">*</span><span class="w"> </span>Adds tooltip for required fields in bulk carry forward config ([#6202](https://github.com/specify/specify7/pull/6202))
+<span class="k">*</span><span class="w"> </span> Specify will use the default <span class="sb">`TypeSearches`</span>  when a custom one is not defined for a table ([#6236](https://github.com/specify/specify7/pull/6236))
+<span class="k">*</span><span class="w"> </span>Adds a new <span class="sb">`uniqueIdentifier`</span> field to Storage ([#6249](https://github.com/specify/specify7/pull/6249))
+
+<span class="gu">## Changed</span>
+<span class="k">*</span><span class="w"> </span>Non-default Taxon trees can be deleted if they are not used ([#6186](https://github.com/specify/specify7/pull/6186))
+<span class="k">*</span><span class="w"> </span> Adds modern attachment placeholder icons for video, audio, text, and other attachment filetypes ([#6119](https://github.com/specify/specify7/pull/6119))
+
+
+
+<span class="gu">## Fixed</span>
+<span class="k">*</span><span class="w"> </span>Fixes an issue that caused some WorkBench data sets. ([#6322](https://github.com/specify/specify7/pull/6322))
+<span class="k">*</span><span class="w"> </span>Field formats in the Schema Config utility are selected automatically again ([#6255](https://github.com/specify/specify7/pull/6255))
+<span class="k">*</span><span class="w"> </span>Primary Collection Objects (COs) in a consolidated Collection Object Group  (COG) can no longer be deleted unless another CO is marked as primary ([#6181](https://github.com/specify/specify7/pull/6181))
+<span class="k">*</span><span class="w"> </span>Fixes all cases where table aggregation separators were missing ([#6115](https://github.com/specify/specify7/pull/6115))
+<span class="k">*</span><span class="w"> </span>Fixes all cases where taxon tree structure is invalid due to  accepted names not being designated as accepted  ([#5366](https://github.com/specify/specify7/pull/5366))
+<span class="k">*</span><span class="w"> </span>Fixes all cases where coordinate text fields are empty but decimal coordinate fields contain values ([#5368](https://github.com/specify/specify7/pull/5368) – <span class="ge">*Reported by The University of Michigan, College of Idaho, and several others*</span>)
+<span class="k">*</span><span class="w"> </span>Fixes an issue where the Data Entry screen does not appear in the &#39;Geology&#39; discipline ([#6365](https://github.com/specify/specify7/pull/6365))
+<span class="k">*</span><span class="w"> </span>Fixes an issue where unsaved changes would be lost when toggling the &quot;Use Localized Field Labels&quot; setting in the Form Meta menu 
+
+---
+
+The full changelog is available on [<span class="nt">GitHub</span>](<span class="na">https://github.com/specify/specify7/blob/production/CHANGELOG.md</span>)
+
+For source code go to the [<span class="nt">GitHub Specify 7 repository</span>](<span class="na">http://github.com/specify/specify7/</span>)
+
+For more information about Specify 7, or about this release, see [<span class="nt">Specify 7 | Specify Collections Consortium</span>](<span class="na">https://www.specifysoftware.org/products/specify-7/</span>), or email [<span class="nt">support@specifysoftware.org</span>](<span class="na">mailto:support@specifysoftware.org</span>).
+</pre></div>
+</div>
+</li>
+<li><p>Verify that all links work appropriately and update the <code class="docutils literal notranslate"><span class="pre">CHANGELOG.md</span></code> file in the branch you are publishing a release for.</p>
+<p><img alt="Add to the changelog" src="../_images/changelog_add.png" /></p>
+<p>Verify the change looks good and commit the changes!</p>
+</li>
+<li><p>Once global testing and all other necessary work has been completed, link to the forum post in the description of the release:</p>
+<p><img alt="Create the release" src="../_images/package_release.png" /></p>
+</li>
 </ol>
+<p>🎉</p>
 </section>
 
 
            </div>
           </div>
-          <footer>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="../dev_process/dev_expectations.html" class="btn btn-neutral float-left" title="Developer Expectations" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="../security/aws_security.html" class="btn btn-neutral float-right" title="AWS Security" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
 
   <hr/>
 

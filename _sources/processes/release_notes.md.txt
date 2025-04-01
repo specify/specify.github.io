@@ -40,7 +40,7 @@ These release notes are always packaged in [Markdown format](https://www.markdow
     * Batch Edit: Support for editing basic fields ((#5417)[https://github.com/specify/specify7/pull/5417])
     ```
 
-4. Create a new Markdown document using [VSCode](https://code.visualstudio.com/), [StackEdit](https://stackedit.io/), or a text editor of your choice with real-time Markdown preview. Copy and paste this basic structure into it:
+6. Create a new Markdown document using [VSCode](https://code.visualstudio.com/), [StackEdit](https://stackedit.io/), or a text editor of your choice with real-time Markdown preview. Copy and paste this basic structure into it:
 
     ```md
     ## [7.10.2](https://github.com/specify/specify7/compare/v7.10.1...v7.10.2) (15 April 2025)
@@ -60,7 +60,7 @@ These release notes are always packaged in [Markdown format](https://www.markdow
     For more information about Specify 7, or about this release, see [Specify 7 | Specify Collections Consortium](https://www.specifysoftware.org/products/specify-7/), or email [support@specifysoftware.org](mailto:support@specifysoftware.org).
     ```
 
-9. Add the bullet list of changes you transformed using regex earlier into the newly created document from Step 4. 
+7. Add the bullet list of changes you transformed using regex earlier into the newly created document from Step 4. 
 
     ```md
     ## [7.10.2](https://github.com/specify/specify7/compare/v7.10.1...v7.10.2) (15 April 2025)
@@ -108,7 +108,7 @@ These release notes are always packaged in [Markdown format](https://www.markdow
     For more information about Specify 7, or about this release, see [Specify 7 | Specify Collections Consortium](https://www.specifysoftware.org/products/specify-7/), or email [support@specifysoftware.org](mailto:support@specifysoftware.org).
     ```
 
-10. Update the version number. The example below is accurate for the `v7.10.2` release:
+8. Update the version number. The example below is accurate for the `v7.10.2` release:
 
     ```md
     ## [7.10.2](https://github.com/specify/specify7/compare/v7.10.1...v7.10.2) (15 April 2025)
@@ -118,7 +118,7 @@ These release notes are always packaged in [Markdown format](https://www.markdow
 
     The comparison URL enables users to click on the version and compare all the changes between it and the previous version.
 
-11. Open each PR link in your browser (`Ctrl`+click on each link in a Markdown/GitHub preview) and begin renaming and moving each change under the appropriate subheading.
+9. Open each PR link in your browser (`Ctrl`+click on each link in a Markdown/GitHub preview) and begin renaming and moving each change under the appropriate subheading.
 
     There are three subheading categories:
     1. **Added**: Newly added capabilities.
@@ -127,7 +127,11 @@ These release notes are always packaged in [Markdown format](https://www.markdow
 
     As you visit each link and rename these items, move them under the appropriate heading. Order the items within each heading in descending order of importance so users see the most critical changes first.
 
-    Instead of saying:
+    If there are changes that are **completely** internal, these can be ignored and removed from the list, but please ask another staff member if you are unsure.
+
+    Each should be written in present tense (e.g. `Fixes` or `Adds`).
+
+    When renaming each change, instead of saying:
     
     * Add "default" initialize property to QCBX ([#6037]([https://github.com/specify/specify7/pull/6037]))
 
@@ -142,3 +146,65 @@ These release notes are always packaged in [Markdown format](https://www.markdow
     For clarity, if there are two requesting institutions, separate them by adding `and` between them.
 
     For three or more requesting institutions, use commas before using an and. Oxford comma is needed for Theresa's approval.
+
+11. Make sure **all** relevant and necessary documentation is written. Once complete, gather the links to this documentation and integrate them via direct links into the release notes.
+
+
+12. Create the [Discourse (Community Forum)](https://discourse.specifysoftware.org/) post for the release. You can use the last release update as a reference, but it should look like this (in Markdown syntax). You can copy this as a starting point.
+
+    **If there are special notes**, make sure to include those before the "Release Announcement" primary header.
+
+
+    ```md
+    ![SpecifyCollectionsConsortium|317x81](upload://oh6shBgn9SAEocJvjf63LyKXJRC)
+
+    # Release Announcement
+
+    ## [7.10.2](https://github.com/specify/specify7/compare/v7.10.1...v7.10.2) (15 April 2025)
+
+
+    ## Added 
+    * **Batch Edit**: Support for editing basic fields ([#5417](https://github.com/specify/specify7/pull/5417))
+    * Added a 'Download' button to record set and query results attachments ([#6052](https://github.com/specify/specify7/pull/6052) – *Requested by The University of Michigan, Naturhistorisches Museum Bern, Beaty Biodiversity Museum, Agriculture and Agri-Food Canada, Muséum d'Histoire Naturelle Geneva, and Queensland Herbarium*)
+    * The [Form Meta menu](https://discourse.specifysoftware.org/t/form-meta-menu/844) is now accessible when using "View in Forms" ([#5416](https://github.com/specify/specify7/pull/5416))
+    * A default value can now be used for a query combo box ([#6037]([https://github.com/specify/specify7/pull/6037]) – *Requested by South African Institute for Aquatic Biodiversity and The Ohio State University Mollusk Division*)
+    * Adds tooltip for required fields in bulk carry forward config ([#6202](https://github.com/specify/specify7/pull/6202))
+    *  Specify will use the default `TypeSearches`  when a custom one is not defined for a table ([#6236](https://github.com/specify/specify7/pull/6236))
+    * Adds a new `uniqueIdentifier` field to Storage ([#6249](https://github.com/specify/specify7/pull/6249))
+
+    ## Changed
+    * Non-default Taxon trees can be deleted if they are not used ([#6186](https://github.com/specify/specify7/pull/6186))
+    *  Adds modern attachment placeholder icons for video, audio, text, and other attachment filetypes ([#6119](https://github.com/specify/specify7/pull/6119))
+
+
+
+    ## Fixed
+    * Fixes an issue that caused some WorkBench data sets. ([#6322](https://github.com/specify/specify7/pull/6322))
+    * Field formats in the Schema Config utility are selected automatically again ([#6255](https://github.com/specify/specify7/pull/6255))
+    * Primary Collection Objects (COs) in a consolidated Collection Object Group  (COG) can no longer be deleted unless another CO is marked as primary ([#6181](https://github.com/specify/specify7/pull/6181))
+    * Fixes all cases where table aggregation separators were missing ([#6115](https://github.com/specify/specify7/pull/6115))
+    * Fixes all cases where taxon tree structure is invalid due to  accepted names not being designated as accepted  ([#5366](https://github.com/specify/specify7/pull/5366))
+    * Fixes all cases where coordinate text fields are empty but decimal coordinate fields contain values ([#5368](https://github.com/specify/specify7/pull/5368) – *Reported by The University of Michigan, College of Idaho, and several others*)
+    * Fixes an issue where the Data Entry screen does not appear in the 'Geology' discipline ([#6365](https://github.com/specify/specify7/pull/6365))
+    * Fixes an issue where unsaved changes would be lost when toggling the "Use Localized Field Labels" setting in the Form Meta menu 
+
+    ---
+
+    The full changelog is available on [GitHub](https://github.com/specify/specify7/blob/production/CHANGELOG.md)
+
+    For source code go to the [GitHub Specify 7 repository](http://github.com/specify/specify7/)
+
+    For more information about Specify 7, or about this release, see [Specify 7 | Specify Collections Consortium](https://www.specifysoftware.org/products/specify-7/), or email [support@specifysoftware.org](mailto:support@specifysoftware.org).
+    ```
+
+12. Verify that all links work appropriately and update the `CHANGELOG.md` file in the branch you are publishing a release for.
+
+    ![Add to the changelog](changelog_add.png)
+
+    Verify the change looks good and commit the changes!
+
+13. Once global testing and all other necessary work has been completed, link to the forum post in the description of the release:
+
+    ![Create the release](package_release.png)
+
+🎉
