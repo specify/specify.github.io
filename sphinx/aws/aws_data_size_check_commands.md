@@ -19,7 +19,7 @@ ssh -i ~/specify/keys/specify_ssh_key ubuntu@na-specify7-1.specifycloud.org \
 ```bash
 ssh -i ~/specify/keys/specify_ssh_key ubuntu@na-specify7-1.specifycloud.org \
   "mysql -h specify-cloud-na-db-1.cqvncffkwz9t.us-east-1.rds.amazonaws.com \
-    -umaster -p'thing-park-why-green' \
+    -umaster \
     -e \"SELECT table_schema AS \\\"Database\\\", \
       ROUND(SUM(data_length + index_length)/(1024*1024*1024),2) AS \\\"Size (GB)\\\" \
     FROM information_schema.TABLES \
