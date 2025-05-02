@@ -13,7 +13,7 @@ GROUP BY table_schema;
 
 ```bash
 ssh -i ~/specify/keys/specify_ssh_key ubuntu@na-specify7-1.specifycloud.org \
-  "mysql -h specify-cloud-na-db-1.cqvncffkwz9t.us-east-1.rds.amazonaws.com -umaster -p'thing-park-why-green' -e \"SHOW DATABASES;\""
+  "mysql -h specify-cloud-na-db-1.cqvncffkwz9t.us-east-1.rds.amazonaws.com -umaster -e \"SHOW DATABASES;\""
 ```
 
 ```bash
