@@ -1,3 +1,5 @@
+# Nginx container failing to start error
+
 If the nginx container fails to start, here are some steps.
 
 First I inspected the spcloudservers.json, nginx.conf, and docker-compose.yml files for any issues or misconfigurations.
