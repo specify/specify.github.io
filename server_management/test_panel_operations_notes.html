@@ -1,0 +1,386 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" data-content_root="../">
+<head>
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Test-Panel Operation Notes &mdash; Specify Developer Documentation  documentation</title>
+      <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=80d5e7a1" />
+      <link rel="stylesheet" type="text/css" href="../_static/css/theme.css?v=e59714d7" />
+
+  
+      <script src="../_static/jquery.js?v=5d32c60e"></script>
+      <script src="../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+      <script src="../_static/documentation_options.js?v=5929fcd5"></script>
+      <script src="../_static/doctools.js?v=9bcbadda"></script>
+      <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="../index.html" class="icon icon-home">
+            Specify Developer Documentation
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Guidelines:</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../processes/github_guidelines.html"><strong>GitHub Guidelines and Process</strong></a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Amazon Web Services:</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../aws/aws_automation.html">AWS Automation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../aws/aws_infrastructure_notes.html">AWS Infrastructure Notes</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../aws/aws_specify_asset_server_setup.html">AWS Specify Asset Server Setup</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../aws/aws_specify_cloud_setup.html">Specify Cloud Setup</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../aws/client_migration_notes.html">Digital Ocean to AWS migration</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../aws/ec2_rds_specify7_setup.html">Deploy Specify7 to an EC2 instance</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../aws/specify_cloud_graviton_setup.html">Specify Cloud Graviton Setup</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../aws/remote_db_connection.html">Setup remote database connection to local mysql workbench</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Asset Server:</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../asset_server/asset_config_files.html">Specify 7 Docker Config Example</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../asset_server/asset_server_config.html">Asset Server Configuration</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../asset_server/asset_server_setup.html">EC2 Non-Dockerized Build</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../asset_server/hybrid_asset_server_setup.html">Hybrid Asset Server Setup</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Server Management:</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="managed_servers.html">Updown Monitoring</a></li>
+<li class="toctree-l1"><a class="reference internal" href="managed_servers.html#managed-servers">Managed Servers</a></li>
+<li class="toctree-l1"><a class="reference internal" href="managed_servers.html#accessing-specify-7-deployments">Accessing Specify 7 Deployments</a></li>
+<li class="toctree-l1"><a class="reference internal" href="managed_servers.html#accessing-backups-on-aws-rds">Accessing Backups on AWS RDS</a></li>
+<li class="toctree-l1"><a class="reference internal" href="add_user_to_EC2.html">Server Access Management Policy</a></li>
+<li class="toctree-l1"><a class="reference internal" href="check_asset_usage.html">Check Asset Usage</a></li>
+<li class="toctree-l1"><a class="reference internal" href="exoscale.html">Exoscale Hosted Instances</a></li>
+<li class="toctree-l1"><a class="reference internal" href="exoscale_backups.html">Backups on Exoscale</a></li>
+<li class="toctree-l1"><a class="reference internal" href="kuit_ssl_certs.html">New certificate on biprdsp7wbdb.cc.ku.edu server</a></li>
+<li class="toctree-l1"><a class="reference internal" href="kuit_ssl_certs.html#web-portal-certificate">web-portal certificate</a></li>
+<li class="toctree-l1"><a class="reference internal" href="kuit_ssl_certs.html#specify-ku-edu-ssl-cert-update">specify.ku.edu ssl cert update</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Internal Processes:</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../dev_process/specify_processes.html">Specify Development Process</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../dev_process/project_docs.html">Project (Github pages) documentation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../dev_process/dbgroups.html">Databases with Specific Features</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../dev_process/individualdbs.html">Individual Database Information</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../dev_process/dev_expectations.html">Developer Expectations</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../processes/release_notes.html">Create Release Notes</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Security:</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../security/aws_security.html">AWS Security</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../security/fix_exposed_secret.html">Fix Exposed Secrets</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../security/monitoring.html">Security Monitoring</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Testing:</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../testing/pull_requests.html">Pull Request Testing</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Specify Software:</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../software_desc/glossary.html">Glossary</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../software_desc/overview.html">Overview</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../software_desc/membership.html">SCC overview</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../software_desc/disciplines.html">Discipline support</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../software_desc/hosting.html">Specify Cloud Hosting</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../software_desc/migration.html">Data Migration</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../software_desc/training.html">Specify Training</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../software_desc/workbench.html">Specify Workbench</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../software_desc/workflows.html">Common Workflows</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Misc:</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../misc/add_new_instance_to_specify_cloud.html">Add new Specify instance to Specify Cloud</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../misc/remove_specify_cloud_instance.html">Removing a Specify Cloud Instance</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../misc/documentation.html">Informatics Documentation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../misc/kuit_notes.html">Working with central KU IT</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../misc/specify7_ecs_most-in-one.html">Create a Most-In-One Specify Docker image</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../misc/useful_bash_cmds.html">Useful bash commands</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../misc/vs_code_django_unit_test_debugging_notes.html">VS Code Django Unit Test Debugging</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../misc/branch_from_tag.html">Create a branch from a tagged release</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">Specify Developer Documentation</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../index.html" class="icon icon-home" aria-label="Home"></a></li>
+      <li class="breadcrumb-item active">Test-Panel Operation Notes</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="../_sources/server_management/test_panel_operations_notes.md.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="test-panel-operation-notes">
+<h1>Test-Panel Operation Notes<a class="headerlink" href="#test-panel-operation-notes" title="Link to this heading"></a></h1>
+<p>view nginx file</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>docker<span class="w"> </span><span class="nb">exec</span><span class="w"> </span>-it<span class="w"> </span>specify7-test-panel-panel-1<span class="w"> </span>cat<span class="w"> </span>/home/node/nginx.conf.d/nginx.conf
+</pre></div>
+</div>
+<p>or</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>docker<span class="w"> </span><span class="nb">exec</span><span class="w"> </span>-it<span class="w"> </span>specify7-test-panel-panel-1<span class="w"> </span>cat<span class="w"> </span>/etc/nginx/conf.d/servers/nginx.conf
+</pre></div>
+</div>
+<p>or</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>sudo<span class="w"> </span>vim<span class="w"> </span>/var/lib/docker/volumes/specify7-test-panel_nginx-conf/_data/nginx.conf
+</pre></div>
+</div>
+<p>view currently deployed docker-compose.yml</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>docker<span class="w"> </span><span class="nb">exec</span><span class="w"> </span>-it<span class="w"> </span>specify7-test-panel-panel-1<span class="w"> </span>cat<span class="w"> </span>/home/node/state/docker-compose.yml
+</pre></div>
+</div>
+<p>or</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>sudo<span class="w"> </span>vim<span class="w"> </span>/var/lib/docker/volumes/specify7-test-panel_state/_data/docker-compose.yml
+</pre></div>
+</div>
+<p>view current instance configuration</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>docker<span class="w"> </span><span class="nb">exec</span><span class="w"> </span>-it<span class="w"> </span>specify7-test-panel-panel-1<span class="w"> </span>cat<span class="w"> </span>/home/node/state/configuration.json
+</pre></div>
+</div>
+<p>or</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>sudo<span class="w"> </span>vim<span class="w"> </span>/var/lib/docker/volumes/specify7-test-panel_state/_data/configuration.json
+</pre></div>
+</div>
+<p>Fix SSL cert problem</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>cp<span class="w"> </span>-r<span class="w"> </span>test.specifysystems.org-0001/<span class="w"> </span>test.specifysystems.org/
+</pre></div>
+</div>
+<p>or</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>sudo<span class="w"> </span>cp<span class="w"> </span>-r<span class="w"> </span>/etc/letsencrypt/live/test.specifysystems.org-0001/
+</pre></div>
+</div>
+<p><code class="docutils literal notranslate"><span class="pre">/etc/letsencrypt/live/test.specifysystems.org/</span></code></p>
+<p>Docker build</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">sudo</span> <span class="n">docker</span> <span class="n">compose</span> \
+  <span class="o">-</span><span class="n">f</span> <span class="n">docker</span><span class="o">-</span><span class="n">compose</span><span class="o">.</span><span class="n">yml</span> \
+  <span class="o">-</span><span class="n">f</span> <span class="n">docker</span><span class="o">-</span><span class="n">compose</span><span class="o">.</span><span class="n">production</span><span class="o">.</span><span class="n">yml</span> \
+  <span class="n">up</span> <span class="o">--</span><span class="n">no</span><span class="o">-</span><span class="n">start</span> <span class="o">--</span><span class="n">build</span>
+</pre></div>
+</div>
+<p>or</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">sudo</span> <span class="n">docker</span> <span class="n">compose</span> \
+  <span class="o">-</span><span class="n">f</span> <span class="n">docker</span><span class="o">-</span><span class="n">compose</span><span class="o">.</span><span class="n">yml</span> \
+  <span class="o">-</span><span class="n">f</span> <span class="n">docker</span><span class="o">-</span><span class="n">compose</span><span class="o">.</span><span class="n">production</span><span class="o">.</span><span class="n">yml</span> \
+  <span class="n">build</span>
+</pre></div>
+</div>
+<p>Docker run</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">sudo</span> <span class="n">docker</span> <span class="n">compose</span> \
+  <span class="o">-</span><span class="n">f</span> <span class="n">docker</span><span class="o">-</span><span class="n">compose</span><span class="o">.</span><span class="n">yml</span> \
+  <span class="o">-</span><span class="n">f</span> <span class="n">docker</span><span class="o">-</span><span class="n">compose</span><span class="o">.</span><span class="n">production</span><span class="o">.</span><span class="n">yml</span> \
+  <span class="o">-</span><span class="n">f</span> <span class="o">/</span><span class="n">var</span><span class="o">/</span><span class="n">lib</span><span class="o">/</span><span class="n">docker</span><span class="o">/</span><span class="n">volumes</span><span class="o">/</span><span class="n">specify7</span><span class="o">-</span><span class="n">test</span><span class="o">-</span><span class="n">panel_state</span><span class="o">/</span><span class="n">_data</span><span class="o">/</span><span class="n">docker</span><span class="o">-</span><span class="n">compose</span><span class="o">.</span><span class="n">yml</span> \
+  <span class="n">up</span> <span class="o">--</span><span class="n">remove</span><span class="o">-</span><span class="n">orphans</span> <span class="o">-</span><span class="n">d</span>
+</pre></div>
+</div>
+<p>Restart</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">sudo</span> <span class="n">docker</span> <span class="n">compose</span> <span class="n">down</span><span class="p">;</span> <span class="n">sudo</span> <span class="n">docker</span> <span class="n">compose</span> <span class="o">-</span><span class="n">f</span> <span class="n">docker</span><span class="o">-</span><span class="n">compose</span><span class="o">.</span><span class="n">yml</span> <span class="o">-</span><span class="n">f</span> <span class="n">docker</span><span class="o">-</span><span class="n">compose</span><span class="o">.</span><span class="n">production</span><span class="o">.</span><span class="n">yml</span> <span class="o">-</span><span class="n">f</span> <span class="o">/</span><span class="n">var</span><span class="o">/</span><span class="n">lib</span><span class="o">/</span><span class="n">docker</span><span class="o">/</span><span class="n">volumes</span><span class="o">/</span><span class="n">specify7</span><span class="o">-</span><span class="n">test</span><span class="o">-</span><span class="n">panel_state</span><span class="o">/</span><span class="n">_data</span><span class="o">/</span><span class="n">docker</span><span class="o">-</span><span class="n">compose</span><span class="o">.</span><span class="n">yml</span> <span class="n">up</span> <span class="o">--</span><span class="n">remove</span><span class="o">-</span><span class="n">orphans</span> <span class="o">-</span><span class="n">d</span>
+</pre></div>
+</div>
+<p>Docker stop</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>sudo<span class="w"> </span>docker<span class="w"> </span>stop<span class="w"> </span><span class="k">$(</span>sudo<span class="w"> </span>docker<span class="w"> </span>ps<span class="w"> </span>--all<span class="w"> </span>-q<span class="k">)</span>
+</pre></div>
+</div>
+<p>Full stop, rebuild, and restart</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>sudo<span class="w"> </span>docker<span class="w"> </span>stop<span class="w"> </span><span class="k">$(</span>sudo<span class="w"> </span>docker<span class="w"> </span>ps<span class="w"> </span>--all<span class="w"> </span>-q<span class="k">)</span><span class="p">;</span>
+sudo<span class="w"> </span>docker<span class="w"> </span>rm<span class="w"> </span><span class="k">$(</span>sudo<span class="w"> </span>docker<span class="w"> </span>ps<span class="w"> </span>--all<span class="w"> </span>-q<span class="k">)</span><span class="p">;</span>
+sudo<span class="w"> </span>docker<span class="w"> </span>compose<span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>-f<span class="w"> </span>docker-compose.yml<span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>-f<span class="w"> </span>docker-compose.production.yml<span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>up<span class="w"> </span>--no-start<span class="w"> </span>--build<span class="p">;</span>
+sudo<span class="w"> </span>docker<span class="w"> </span>compose<span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>-f<span class="w"> </span>docker-compose.yml<span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>-f<span class="w"> </span>docker-compose.production.yml<span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>-f<span class="w"> </span>/var/lib/docker/volumes/specify7-test-panel_state/_data/docker-compose.yml<span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>up<span class="w"> </span>--remove-orphans<span class="w"> </span>-d<span class="p">;</span>
+</pre></div>
+</div>
+<p>full stop and restart without rebuild</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>sudo<span class="w"> </span>docker<span class="w"> </span>compose<span class="w"> </span>down<span class="p">;</span>
+sudo<span class="w"> </span>docker<span class="w"> </span>stop<span class="w"> </span><span class="k">$(</span>sudo<span class="w"> </span>docker<span class="w"> </span>ps<span class="w"> </span>--all<span class="w"> </span>-q<span class="k">)</span><span class="p">;</span>
+sudo<span class="w"> </span>docker<span class="w"> </span>rm<span class="w"> </span><span class="k">$(</span>sudo<span class="w"> </span>docker<span class="w"> </span>ps<span class="w"> </span>--all<span class="w"> </span>-q<span class="k">)</span><span class="p">;</span>
+sudo<span class="w"> </span>docker<span class="w"> </span>compose<span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>-f<span class="w"> </span>docker-compose.yml<span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>-f<span class="w"> </span>docker-compose.production.yml<span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>-f<span class="w"> </span>/var/lib/docker/volumes/specify7-test-panel_state/_data/docker-compose.yml<span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>up<span class="w"> </span>--remove-orphans<span class="w"> </span>-d<span class="p">;</span>
+</pre></div>
+</div>
+<p>Check SPECIFY_THICK_CLIENT</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">docker</span> <span class="n">exec</span> <span class="o">-</span><span class="n">it</span> <span class="n">specify7</span><span class="o">-</span><span class="n">test</span><span class="o">-</span><span class="n">panel</span><span class="o">-</span><span class="n">geo20241205</span><span class="o">-</span><span class="n">production</span><span class="o">-</span><span class="mi">2</span><span class="o">-</span><span class="mi">1</span> <span class="n">bash</span>
+<span class="n">ve</span><span class="o">/</span><span class="nb">bin</span><span class="o">/</span><span class="n">python</span> <span class="n">manage</span><span class="o">.</span><span class="n">py</span> <span class="n">shell</span>
+<span class="kn">from</span> <span class="nn">django.conf</span> <span class="kn">import</span> <span class="n">settings</span>
+<span class="n">settings</span><span class="o">.</span><span class="n">SPECIFY_THICK_CLIENT</span>
+</pre></div>
+</div>
+<p>or</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>docker<span class="w"> </span><span class="nb">exec</span><span class="w"> </span>specify7-test-panel-_-1<span class="w"> </span>ve/bin/python<span class="w"> </span>-c<span class="w"> </span><span class="s2">&quot;from django.conf import settings; print(settings.SPECIFY_THICK_CLIENT)&quot;</span>
+</pre></div>
+</div>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>docker<span class="w"> </span><span class="nb">exec</span><span class="w"> </span>-it<span class="w"> </span>specify7-test-panel-&lt;_name&gt;-1<span class="w"> </span>ve/bin/python<span class="w"> </span>-c<span class="w"> </span><span class="s2">&quot;from django.conf import settings; import; if os.path.exists(&#39;/opt/specify7/config&#39;) : settings.SPECIFY_THICK_CLIENT=&#39;/opt/specify7&#39;)</span>
+</pre></div>
+</div>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="ch">#!/bin/bash</span>
+
+<span class="c1"># Get all running container names</span>
+<span class="nv">all_containers</span><span class="o">=</span><span class="k">$(</span>docker<span class="w"> </span>ps<span class="w"> </span>--format<span class="w"> </span><span class="s2">&quot;{{.Names}}&quot;</span><span class="k">)</span>
+
+<span class="c1"># Filter out unwanted containers</span>
+<span class="nv">filtered_containers</span><span class="o">=</span><span class="k">$(</span><span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;</span><span class="nv">$all_containers</span><span class="s2">&quot;</span><span class="w"> </span><span class="p">|</span><span class="w"> </span>grep<span class="w"> </span>-vE<span class="w"> </span><span class="s1">&#39;(panel-panel|redis|nginx)&#39;</span><span class="k">)</span>
+
+<span class="c1"># Loop through filtered containers and execute the command</span>
+<span class="k">while</span><span class="w"> </span><span class="nv">IFS</span><span class="o">=</span><span class="w"> </span><span class="nb">read</span><span class="w"> </span>-r<span class="w"> </span>container_name<span class="p">;</span><span class="w"> </span><span class="k">do</span>
+<span class="w">    </span><span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;Processing container: </span><span class="nv">$container_name</span><span class="s2">&quot;</span>
+<span class="w">    </span>
+<span class="w">    </span><span class="c1"># Execute the command inside the container using multiline syntax</span>
+<span class="w">    </span>docker<span class="w"> </span><span class="nb">exec</span><span class="w"> </span><span class="nv">$container_name</span><span class="w"> </span>ve/bin/python<span class="w"> </span><span class="s">&lt;&lt;EOF</span>
+<span class="s">from django.conf import settings</span>
+<span class="s">import os</span>
+<span class="s">if os.path.exists(&#39;/opt/specify7/config&#39;):</span>
+<span class="s">    settings.SPECIFY_THICK_CLIENT = &#39;/opt/specify7&#39;</span>
+<span class="s">EOF</span>
+<span class="w">    </span>
+<span class="w">    </span><span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;Finished processing </span><span class="nv">$container_name</span><span class="s2">&quot;</span>
+<span class="k">done</span><span class="w"> </span><span class="o">&lt;&lt;&lt;</span><span class="w"> </span><span class="s2">&quot;</span><span class="nv">$filtered_containers</span><span class="s2">&quot;</span>
+
+<span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;All containers processed.&quot;</span>
+</pre></div>
+</div>
+<p>SSL renewal (not sure yet) - need to get ‘etc/letsencrypt/live/test.specifysystems.org’ directory to match /etc/letsencrypt/live/test.specifysystems.org-0001</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>ls<span class="w"> </span>-la<span class="w"> </span>/etc/letsencrypt/live/test.specifysystems.org<span class="p">;</span>
+ls<span class="w"> </span>-la<span class="w"> </span>/etc/letsencrypt/live/test.specifysystems.org-0001<span class="p">;</span>
+ls<span class="w"> </span>-la<span class="w"> </span>/etc/letsencrypt/archive/test.specifysystems.org-0001<span class="p">;</span>
+
+sudo<span class="w"> </span>rm<span class="w"> </span>/etc/letsencrypt/live/test.specifysystems.org-0001/fullchain.pem<span class="p">;</span>
+sudo<span class="w"> </span>ln<span class="w"> </span>-s<span class="w"> </span>/etc/letsencrypt/archive/test.specifysystems.org-0001/fullchain6.pem<span class="w"> </span>/etc/letsencrypt/live/test.specifysystems.org-0001/fullchain.pem<span class="p">;</span>
+
+sudo<span class="w"> </span>rm<span class="w"> </span>/etc/letsencrypt/live/test.specifysystems.org-0001/privkey.pem<span class="p">;</span>
+sudo<span class="w"> </span>ln<span class="w"> </span>-s<span class="w"> </span>/etc/letsencrypt/archive/test.specifysystems.org-0001/privkey6.pem<span class="w"> </span>/etc/letsencrypt/live/test.specifysystems.org-0001/privkey.pem<span class="p">;</span>
+
+sudo<span class="w"> </span>rm<span class="w"> </span>/etc/letsencrypt/live/test.specifysystems.org-0001/chain.pem<span class="p">;</span>
+sudo<span class="w"> </span>ln<span class="w"> </span>-s<span class="w"> </span>/etc/letsencrypt/archive/test.specifysystems.org-0001/chain6.pem<span class="w"> </span>chain.pem<span class="p">;</span>
+
+sudo<span class="w"> </span>rm<span class="w"> </span>/etc/letsencrypt/live/test.specifysystems.org-0001/cert.pem<span class="p">;</span>
+sudo<span class="w"> </span>ln<span class="w"> </span>-s<span class="w"> </span>/etc/letsencrypt/archive/test.specifysystems.org-0001/cert6.pem<span class="w"> </span>cert.pem<span class="p">;</span>
+
+docker<span class="w"> </span><span class="nb">exec</span><span class="w"> </span>-it<span class="w"> </span>specify7-test-panel-nginx-1<span class="w"> </span>nginx<span class="w"> </span>-s<span class="w"> </span>reload<span class="p">;</span>
+</pre></div>
+</div>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="c1"># Change the ssl files nginx points to</span>
+sudo<span class="w"> </span>ln<span class="w"> </span>-sf<span class="w"> </span>/etc/letsencrypt/archive/test.specifysystems.org-0001/cert6.pem<span class="w"> </span>/etc/letsencrypt/live/test.specifysystems.org/cert.pem<span class="p">;</span>
+sudo<span class="w"> </span>ln<span class="w"> </span>-sf<span class="w"> </span>/etc/letsencrypt/archive/test.specifysystems.org-0001/chain6.pem<span class="w"> </span>/etc/letsencrypt/live/test.specifysystems.org/chain.pem<span class="p">;</span>
+sudo<span class="w"> </span>ln<span class="w"> </span>-sf<span class="w"> </span>/etc/letsencrypt/archive/test.specifysystems.org-0001/fullchain6.pem<span class="w"> </span>/etc/letsencrypt/live/test.specifysystems.org/fullchain.pem<span class="p">;</span>
+sudo<span class="w"> </span>ln<span class="w"> </span>-sf<span class="w"> </span>/etc/letsencrypt/archive/test.specifysystems.org-0001/privkey6.pem<span class="w"> </span>/etc/letsencrypt/live/test.specifysystems.org/privkey.pem<span class="p">;</span>
+docker<span class="w"> </span><span class="nb">exec</span><span class="w"> </span>-it<span class="w"> </span>specify7-test-panel-nginx-1<span class="w"> </span>nginx<span class="w"> </span>-s<span class="w"> </span>reload<span class="p">;</span>
+</pre></div>
+</div>
+<section id="check-instance-migration-state">
+<h2>Check instance migration state<a class="headerlink" href="#check-instance-migration-state" title="Link to this heading"></a></h2>
+<p>find container name
+<code class="docutils literal notranslate"><span class="pre">docker</span> <span class="pre">stats</span> <span class="pre">--no-stream</span></code></p>
+<p>bash into container
+<code class="docutils literal notranslate"><span class="pre">docker</span> <span class="pre">exec</span> <span class="pre">-it</span> <span class="pre">&lt;container_name&gt;</span> <span class="pre">bash</span></code></p>
+<p>see migration state
+<code class="docutils literal notranslate"><span class="pre">ve/bin/python</span> <span class="pre">manage.py</span> <span class="pre">showmigrations</span></code></p>
+</section>
+</section>
+<section id="test-static-file-access-for-an-instance">
+<h1>Test static file access for an instance<a class="headerlink" href="#test-static-file-access-for-an-instance" title="Link to this heading"></a></h1>
+<p>Create test config file for an instance:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>touch<span class="w"> </span>config/test.txt<span class="p">;</span>
+<span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;Testing&quot;</span><span class="w"> </span>&gt;<span class="w"> </span>config/test.txt<span class="p">;</span>
+</pre></div>
+</div>
+<p>request:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>curl<span class="w"> </span>https://ojsmnh110242024prod-production.test.specifysystems.org/static/config/icons_datamodel.xml
+
+curl<span class="w"> </span>https://ojsmnh110242024prod-production.test.specifysystems.org/static/config/test.txt
+
+curl<span class="w"> </span>https://ojsmnh110242024prod-production.test.specifysystems.org/static/config/geology/geology.views.xml
+
+curl<span class="w"> </span>https://sandbox-rbge.specifycloud.org/context/view.json?name<span class="o">=</span>CollectionObjectGroup
+</pre></div>
+</div>
+<p>test config</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">ve</span><span class="o">/</span><span class="nb">bin</span><span class="o">/</span><span class="n">python</span> <span class="n">manage</span><span class="o">.</span><span class="n">py</span> <span class="n">shell</span>
+
+<span class="kn">from</span> <span class="nn">django.conf</span> <span class="kn">import</span> <span class="n">settings</span>
+<span class="n">settings</span><span class="o">.</span><span class="n">SPECIFY_CONFIG_DIR</span>
+</pre></div>
+</div>
+<p>view all django. settings</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">django.conf</span> <span class="kn">import</span> <span class="n">settings</span><span class="p">;</span> <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">setting</span><span class="si">}</span><span class="s2">: </span><span class="si">{</span><span class="nb">getattr</span><span class="p">(</span><span class="n">settings</span><span class="p">,</span><span class="w"> </span><span class="n">setting</span><span class="p">)</span><span class="si">}</span><span class="s2">&quot;</span> <span class="k">for</span> <span class="n">setting</span> <span class="ow">in</span> <span class="nb">dir</span><span class="p">(</span><span class="n">settings</span><span class="p">)</span> <span class="k">if</span> <span class="n">setting</span><span class="o">.</span><span class="n">isupper</span><span class="p">()))</span>
+</pre></div>
+</div>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>ve/bin/python<span class="w"> </span>manage.py<span class="w"> </span>shell<span class="w"> </span>-c<span class="w"> </span><span class="s1">&#39;from django.conf import settings; print(&quot;\n&quot;.join(f&quot;{setting}: {getattr(settings, setting)}&quot; for setting in dir(settings) if setting.isupper()))&#39;</span>
+</pre></div>
+</div>
+<p>vim command</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>%s/THICK_CLIENT_LOCATION/SPECIFY_CONFIG_DIR/g
+
+%s/volumes:\n\s\s\s\s\s\s\n/volumes:\n\s\s\s\s\n/g
+	```
+</pre></div>
+</div>
+</section>
+
+
+           </div>
+          </div>
+          <footer>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2024, Specify Team.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>
