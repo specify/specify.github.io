@@ -146,7 +146,8 @@
   <section id="hosting-reports">
 <h1>Hosting Reports<a class="headerlink" href="#hosting-reports" title="Link to this heading"></a></h1>
 <p>Our team generates a “Hosting Report” with database metrics that will be added to the SCC Vault automatically on the 1st and 15th of every month.</p>
-<p>As of 2025-05-13, this is run on the North America report runner EC2 instance.</p>
+<p><a class="reference external" href="https://drive.google.com/drive/folders/1JvmTe6Kn-S05q1jQX9WZmpETvaqUzndw?usp=drive_link">You can view all hosting reports here.</a></p>
+<p>As of 2025-05-13, this is run on the North America report runner EC2 instance using a cronjob.</p>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>HostName<span class="w"> </span>ec2-54-163-71-241.compute-1.amazonaws.com
 User<span class="w"> </span>ubuntu
 </pre></div>
@@ -163,6 +164,7 @@ User<span class="w"> </span>ubuntu
 <li><p><strong>MostCommonCataloger</strong>: Name of the cataloger with the most COs in the collection.</p></li>
 </ul>
 <p>To set this configuration up, you need to clone the <a class="reference external" href="https://github.com/grantfitzsimmons/run_query">github.com/grantfitzsimmons/run_query</a> repository on each server, located in the ~/run_query/ directory. For each, you need to follow the installation instructions to setup the veritual environment, install the requirements, and create an <code class="docutils literal notranslate"><span class="pre">.env</span></code> file. See those instructions in the <a class="reference external" href="https://github.com/grantfitzsimmons/run_query/blob/main/README.md">README.md</a> in that repository.</p>
+<p>To run the <code class="docutils literal notranslate"><span class="pre">orchestration.py</span></code> script on a central system, it must have SSH access into the servers you wish to get reports for. Each system that will have a report generated for it can specify a <code class="docutils literal notranslate"><span class="pre">REGION</span></code> value in the <code class="docutils literal notranslate"><span class="pre">.env</span></code> file. This is used when constructing the report name (e.g. <code class="docutils literal notranslate"><span class="pre">swiss</span></code>, <code class="docutils literal notranslate"><span class="pre">northamerica</span></code>, <code class="docutils literal notranslate"><span class="pre">canada</span></code>, etc). You can read more about this configuration in the <a class="reference external" href="https://github.com/grantfitzsimmons/run_query#run-remotely">“Run Remotely”</a> section of the README.</p>
 </section>
 
 
