@@ -18,7 +18,9 @@
       <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
     <script src="../_static/js/theme.js"></script>
     <link rel="index" title="Index" href="../genindex.html" />
-    <link rel="search" title="Search" href="../search.html" /> 
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Specify Development Process" href="../dev_process/specify_processes.html" />
+    <link rel="prev" title="New certificate on biprdsp7wbdb.cc.ku.edu server" href="kuit_ssl_certs.html" /> 
 </head>
 
 <body class="wy-body-for-nav"> 
@@ -63,7 +65,7 @@
 <li class="toctree-l1"><a class="reference internal" href="../asset_server/hybrid_asset_server_setup.html">Hybrid Asset Server Setup</a></li>
 </ul>
 <p class="caption" role="heading"><span class="caption-text">Server Management:</span></p>
-<ul>
+<ul class="current">
 <li class="toctree-l1"><a class="reference internal" href="managed_servers.html">Updown Monitoring</a></li>
 <li class="toctree-l1"><a class="reference internal" href="managed_servers.html#managed-servers">Managed Servers</a></li>
 <li class="toctree-l1"><a class="reference internal" href="managed_servers.html#accessing-specify-7-deployments">Accessing Specify 7 Deployments</a></li>
@@ -75,6 +77,7 @@
 <li class="toctree-l1"><a class="reference internal" href="kuit_ssl_certs.html">New certificate on biprdsp7wbdb.cc.ku.edu server</a></li>
 <li class="toctree-l1"><a class="reference internal" href="kuit_ssl_certs.html#web-portal-certificate">web-portal certificate</a></li>
 <li class="toctree-l1"><a class="reference internal" href="kuit_ssl_certs.html#specify-ku-edu-ssl-cert-update">specify.ku.edu ssl cert update</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Hosting Reports</a></li>
 </ul>
 <p class="caption" role="heading"><span class="caption-text">Internal Processes:</span></p>
 <ul>
@@ -146,12 +149,6 @@
   <section id="hosting-reports">
 <h1>Hosting Reports<a class="headerlink" href="#hosting-reports" title="Link to this heading"></a></h1>
 <p>Our team generates a “Hosting Report” with database metrics that will be added to the SCC Vault automatically on the 1st and 15th of every month.</p>
-<p><a class="reference external" href="https://drive.google.com/drive/folders/1JvmTe6Kn-S05q1jQX9WZmpETvaqUzndw?usp=drive_link">You can view all hosting reports here.</a></p>
-<p>As of 2025-05-13, this is run on the North America report runner EC2 instance using a cronjob.</p>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>HostName<span class="w"> </span>ec2-54-163-71-241.compute-1.amazonaws.com
-User<span class="w"> </span>ubuntu
-</pre></div>
-</div>
 <p>The column headers for the export are:</p>
 <ul class="simple">
 <li><p><strong>Database</strong>: Name of the database.</p></li>
@@ -163,6 +160,12 @@ User<span class="w"> </span>ubuntu
 <li><p><strong>LatestCollectionObjectCreated</strong>: Date when the last CO was added.</p></li>
 <li><p><strong>MostCommonCataloger</strong>: Name of the cataloger with the most COs in the collection.</p></li>
 </ul>
+<p><a class="reference external" href="https://drive.google.com/drive/folders/1JvmTe6Kn-S05q1jQX9WZmpETvaqUzndw?usp=drive_link">You can view all hosting reports here.</a></p>
+<p>As of 2025-05-13, this is run on the North America report runner EC2 instance using a cronjob.</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>HostName<span class="w"> </span>ec2-54-163-71-241.compute-1.amazonaws.com
+User<span class="w"> </span>ubuntu
+</pre></div>
+</div>
 <p>To set this configuration up, you need to clone the <a class="reference external" href="https://github.com/grantfitzsimmons/run_query">github.com/grantfitzsimmons/run_query</a> repository on each server, located in the ~/run_query/ directory. For each, you need to follow the installation instructions to setup the veritual environment, install the requirements, and create an <code class="docutils literal notranslate"><span class="pre">.env</span></code> file. See those instructions in the <a class="reference external" href="https://github.com/grantfitzsimmons/run_query/blob/main/README.md">README.md</a> in that repository.</p>
 <p>To run the <code class="docutils literal notranslate"><span class="pre">orchestration.py</span></code> script on a central system, it must have SSH access into the servers you wish to get reports for. Each system that will have a report generated for it can specify a <code class="docutils literal notranslate"><span class="pre">REGION</span></code> value in the <code class="docutils literal notranslate"><span class="pre">.env</span></code> file. This is used when constructing the report name (e.g. <code class="docutils literal notranslate"><span class="pre">swiss</span></code>, <code class="docutils literal notranslate"><span class="pre">northamerica</span></code>, <code class="docutils literal notranslate"><span class="pre">canada</span></code>, etc). You can read more about this configuration in the <a class="reference external" href="https://github.com/grantfitzsimmons/run_query#run-remotely">“Run Remotely”</a> section of the README.</p>
 </section>
@@ -170,7 +173,10 @@ User<span class="w"> </span>ubuntu
 
            </div>
           </div>
-          <footer>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="kuit_ssl_certs.html" class="btn btn-neutral float-left" title="New certificate on biprdsp7wbdb.cc.ku.edu server" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="../dev_process/specify_processes.html" class="btn btn-neutral float-right" title="Specify Development Process" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
 
   <hr/>
 

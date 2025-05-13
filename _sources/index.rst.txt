@@ -39,6 +39,7 @@ Welcome to Specify Developer documentation!
    server_management/exoscale
    server_management/exoscale_backups
    server_management/kuit_ssl_certs
+   server_management/reports
 
 .. toctree::
    :maxdepth: 1
