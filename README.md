@@ -4,13 +4,29 @@ This repository contains our internal documentation for Specify Collections Cons
 
 This site uses [Sphinx](https://www.sphinx-doc.org/en/master/) as a framework and is built using `github-pages`. You can view the [deployment history here](https://github.com/specify/specify.github.io/deployments/github-pages).
 
-
-
 ## Contribution Guidelines
 - Do **not commit** sensitive information. This is a public repository.
 - Docs that are useful or relevant to users of Specify should instead be pushed to the [**Speciforum**](discourse.specifysoftware.org), not this repository.
 - Docs added to this repository should be removed from their original location (e.g. Google Drive, ResFS, OneDrive, etc.) after it is committed.
 - Be kind, considerate, and thoughtful.
+
+## Run Locally
+
+To run Sphinx locally, you need to create a Python3 virtual environment, install the requirements, and run `make html`. See below:
+
+```bash
+python3 -m venv venv
+source venv/bin/activate
+pip install -r requirements-docs.txt
+cd sphinx
+make html
+```
+
+Each time you make a change, you'll need to run `make html` again from the `sphinx` directory. You should see a list of warnings in the terminal each time to indicate potential issues in the repository. See below:
+
+```bash
+checking consistency... /Users/g584f396/GitHub/specify.github.io/sphinx/aws/aws_authentication.rst: WARNING: document isn't included in any toctree [toc.not_included]
+```
 
 ## Contribute
 
