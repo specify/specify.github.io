@@ -62,7 +62,7 @@ pytest-django==4.5.2
 ```
 
 docker-compose.yml ->
-```yml
+```yaml
 ports:
   - 3000:3000 # Django Debug
   - 8888:8888 # debugging service (ptvsd)
