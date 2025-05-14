@@ -28,6 +28,9 @@ Each time you make a change, you'll need to run `make html` again from the `sphi
 checking consistency... /Users/g584f396/GitHub/specify.github.io/sphinx/aws/aws_authentication.rst: WARNING: document isn't included in any toctree [toc.not_included]
 ```
 
+You can access it by opening the `index.html` file in your browser (e.g. 
+`file:///Users/g584f396/GitHub/specify.github.io/sphinx/_build/html/index.html`).
+
 ## Contribute
 
 Contribution for this repository is limited only to SCC staff.
