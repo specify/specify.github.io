@@ -202,11 +202,11 @@ pytest-django==4.5.2
 </pre></div>
 </div>
 <p>docker-compose.yml -&gt;</p>
-<div class="highlight-yml notranslate"><div class="highlight"><pre><span></span>ports:
-  - 3000:3000 # Django Debug
-  - 8888:8888 # debugging service (ptvsd)
+<div class="highlight-yaml notranslate"><div class="highlight"><pre><span></span><span class="nt">ports</span><span class="p">:</span>
+<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">3000:3000</span><span class="w"> </span><span class="c1"># Django Debug</span>
+<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">8888:8888</span><span class="w"> </span><span class="c1"># debugging service (ptvsd)</span>
 
-SECRET_KEY=bogus
+<span class="l l-Scalar l-Scalar-Plain">SECRET_KEY=bogus</span>
 </pre></div>
 </div>
 <p>Dockerfile -&gt;</p>

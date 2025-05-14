@@ -180,109 +180,108 @@
 </section>
 <section id="example-docker-compose-yml">
 <h2>Example docker-compose.yml<a class="headerlink" href="#example-docker-compose-yml" title="Link to this heading"></a></h2>
-<div class="highlight-yml notranslate"><div class="highlight"><pre><span></span>version: &#39;3.7&#39;
+<div class="highlight-yaml notranslate"><div class="highlight"><pre><span></span><span class="nt">version</span><span class="p">:</span><span class="w"> </span><span class="s">&#39;3.7&#39;</span>
 
-services:
+<span class="nt">services</span><span class="p">:</span>
 
-  &lt;client_name&gt;:
-    image: specifyconsortium/specify7-service:issue_388
-    command: [&quot;ve/bin/gunicorn&quot;, &quot;-w&quot;, &quot;1&quot;, &quot;--threads&quot;, &quot;5&quot;, &quot;-b&quot;, &quot;0.0.0.0:8000&quot;, &quot;-t&quot;, &quot;300&quot;, &quot;specifyweb_wsgi&quot;]
-    init: true
-    restart: unless-stopped
-    volumes:
-      - &quot;specify6803:/opt/Specify:ro&quot;
-      - &quot;static-files-&lt;client_name&gt;:/volumes/static-files&quot;
+<span class="w">  </span><span class="nt">&lt;client_name&gt;</span><span class="p">:</span>
+<span class="w">    </span><span class="nt">image</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">specifyconsortium/specify7-service:issue_388</span>
+<span class="w">    </span><span class="nt">command</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">[</span><span class="s">&quot;ve/bin/gunicorn&quot;</span><span class="p p-Indicator">,</span><span class="w"> </span><span class="s">&quot;-w&quot;</span><span class="p p-Indicator">,</span><span class="w"> </span><span class="s">&quot;1&quot;</span><span class="p p-Indicator">,</span><span class="w"> </span><span class="s">&quot;--threads&quot;</span><span class="p p-Indicator">,</span><span class="w"> </span><span class="s">&quot;5&quot;</span><span class="p p-Indicator">,</span><span class="w"> </span><span class="s">&quot;-b&quot;</span><span class="p p-Indicator">,</span><span class="w"> </span><span class="s">&quot;0.0.0.0:8000&quot;</span><span class="p p-Indicator">,</span><span class="w"> </span><span class="s">&quot;-t&quot;</span><span class="p p-Indicator">,</span><span class="w"> </span><span class="s">&quot;300&quot;</span><span class="p p-Indicator">,</span><span class="w"> </span><span class="s">&quot;specifyweb_wsgi&quot;</span><span class="p p-Indicator">]</span>
+<span class="w">    </span><span class="nt">init</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">true</span>
+<span class="w">    </span><span class="nt">restart</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">unless-stopped</span>
+<span class="w">    </span><span class="nt">volumes</span><span class="p">:</span>
+<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="s">&quot;specify6803:/opt/Specify:ro&quot;</span>
+<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="s">&quot;static-files-&lt;client_name&gt;:/volumes/static-files&quot;</span>
 
-      - &quot;./settings/&lt;client_name&gt;-settings.py:/opt/specify7/settings/local_specify_settings.py:ro&quot;
+<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="s">&quot;./settings/&lt;client_name&gt;-settings.py:/opt/specify7/settings/local_specify_settings.py:ro&quot;</span>
 
-    env_file: defaults.env
-    environment:
-      - DATABASE_NAME=sandbox_rbge
-      - ASSET_SERVER_COLLECTION=sandbox_rbge
-
-
-  &lt;client_name&gt;-worker:
-    image: specifyconsortium/specify7-service:issue_388
-    command: ve/bin/celery -A specifyweb worker -l INFO --concurrency=1 -Q sandbox_rbge
-    init: true
-    restart: unless-stopped
-    volumes:
-      - &quot;specify6803:/opt/Specify:ro&quot;
-      - &quot;static-files-&lt;client_name&gt;:/volumes/static-files&quot;
-    env_file: defaults.env
-    environment:
-      - DATABASE_NAME=sandbox_rbge
-      - ASSET_SERVER_COLLECTION=sandbox_rbge
+<span class="w">    </span><span class="nt">env_file</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">defaults.env</span>
+<span class="w">    </span><span class="nt">environment</span><span class="p">:</span>
+<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">DATABASE_NAME=sandbox_rbge</span>
+<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">ASSET_SERVER_COLLECTION=sandbox_rbge</span>
 
 
-  specify6800:
-    image: specifyconsortium/specify6-service:6.8.00
-    volumes:
-      - &quot;specify6800:/volumes/Specify&quot;
-
-  specify6801:
-    image: specifyconsortium/specify6-service:6.8.01
-    volumes:
-      - &quot;specify6801:/volumes/Specify&quot;
-
-  specify6803:
-    image: specifyconsortium/specify6-service:6.8.03
-    volumes:
-      - &quot;specify6803:/volumes/Specify&quot;
+<span class="w">  </span><span class="nt">&lt;client_name&gt;-worker</span><span class="p">:</span>
+<span class="w">    </span><span class="nt">image</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">specifyconsortium/specify7-service:issue_388</span>
+<span class="w">    </span><span class="nt">command</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">ve/bin/celery -A specifyweb worker -l INFO --concurrency=1 -Q sandbox_rbge</span>
+<span class="w">    </span><span class="nt">init</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">true</span>
+<span class="w">    </span><span class="nt">restart</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">unless-stopped</span>
+<span class="w">    </span><span class="nt">volumes</span><span class="p">:</span>
+<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="s">&quot;specify6803:/opt/Specify:ro&quot;</span>
+<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="s">&quot;static-files-&lt;client_name&gt;:/volumes/static-files&quot;</span>
+<span class="w">    </span><span class="nt">env_file</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">defaults.env</span>
+<span class="w">    </span><span class="nt">environment</span><span class="p">:</span>
+<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">DATABASE_NAME=sandbox_rbge</span>
+<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">ASSET_SERVER_COLLECTION=sandbox_rbge</span>
 
 
-  nginx:
-    image: nginx
-    restart: unless-stopped
-    ports:
-      - &quot;80:80&quot;
-      - &quot;443:443&quot;
-    volumes:
+<span class="w">  </span><span class="nt">specify6800</span><span class="p">:</span>
+<span class="w">    </span><span class="nt">image</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">specifyconsortium/specify6-service:6.8.00</span>
+<span class="w">    </span><span class="nt">volumes</span><span class="p">:</span>
+<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="s">&quot;specify6800:/volumes/Specify&quot;</span>
 
-      - &quot;static-files-sp7demofish-eu:/volumes/static-files-sp7demofish-eu:ro&quot;
+<span class="w">  </span><span class="nt">specify6801</span><span class="p">:</span>
+<span class="w">    </span><span class="nt">image</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">specifyconsortium/specify6-service:6.8.01</span>
+<span class="w">    </span><span class="nt">volumes</span><span class="p">:</span>
+<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="s">&quot;specify6801:/volumes/Specify&quot;</span>
 
-      - &quot;static-files-rjb-madrid:/volumes/static-files-rjb-madrid:ro&quot;
-
-      - &quot;static-files-mcnb:/volumes/static-files-mcnb:ro&quot;
-
-      - &quot;static-files-herb-rbge:/volumes/static-files-herb-rbge:ro&quot;
-
-      - &quot;static-files-&lt;client_name&gt;:/volumes/static-files-&lt;client_name&gt;:ro&quot;
-
-      - &quot;static-files-cryoarks-test:/volumes/static-files-cryoarks-test:ro&quot;
-
-      - &quot;static-files-eurl:/volumes/static-files-eurl:ro&quot;
+<span class="w">  </span><span class="nt">specify6803</span><span class="p">:</span>
+<span class="w">    </span><span class="nt">image</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">specifyconsortium/specify6-service:6.8.03</span>
+<span class="w">    </span><span class="nt">volumes</span><span class="p">:</span>
+<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="s">&quot;specify6803:/volumes/Specify&quot;</span>
 
 
+<span class="w">  </span><span class="nt">nginx</span><span class="p">:</span>
+<span class="w">    </span><span class="nt">image</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">nginx</span>
+<span class="w">    </span><span class="nt">restart</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">unless-stopped</span>
+<span class="w">    </span><span class="nt">ports</span><span class="p">:</span>
+<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="s">&quot;80:80&quot;</span>
+<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="s">&quot;443:443&quot;</span>
+<span class="w">    </span><span class="nt">volumes</span><span class="p">:</span>
 
-      - &quot;specify6800:/volumes/specify6800:ro&quot;
+<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="s">&quot;static-files-sp7demofish-eu:/volumes/static-files-sp7demofish-eu:ro&quot;</span>
 
-      - &quot;specify6801:/volumes/specify6801:ro&quot;
+<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="s">&quot;static-files-rjb-madrid:/volumes/static-files-rjb-madrid:ro&quot;</span>
 
-      - &quot;specify6803:/volumes/specify6803:ro&quot;
+<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="s">&quot;static-files-mcnb:/volumes/static-files-mcnb:ro&quot;</span>
 
+<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="s">&quot;static-files-herb-rbge:/volumes/static-files-herb-rbge:ro&quot;</span>
 
-      - &quot;./nginx.conf:/etc/nginx/conf.d/default.conf:ro&quot;
-      - &quot;/etc/letsencrypt:/etc/letsencrypt:ro&quot;
-      - &quot;/etc/ssl/certs/dhparam.pem:/etc/ssl/certs/dhparam.pem:ro&quot;
-      - &quot;/var/www:/var/www:ro&quot;
+<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="s">&quot;static-files-&lt;client_name&gt;:/volumes/static-files-&lt;client_name&gt;:ro&quot;</span>
 
-  redis:
-    restart: unless-stopped
-    image: redis:6.0
+<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="s">&quot;static-files-cryoarks-test:/volumes/static-files-cryoarks-test:ro&quot;</span>
 
-volumes:
-
-  specify6800:
-
-  specify6801:
-
-  specify6803:
+<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="s">&quot;static-files-eurl:/volumes/static-files-eurl:ro&quot;</span>
 
 
 
-  static-files-&lt;client_name&gt;:
+<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="s">&quot;specify6800:/volumes/specify6800:ro&quot;</span>
 
+<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="s">&quot;specify6801:/volumes/specify6801:ro&quot;</span>
+
+<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="s">&quot;specify6803:/volumes/specify6803:ro&quot;</span>
+
+
+<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="s">&quot;./nginx.conf:/etc/nginx/conf.d/default.conf:ro&quot;</span>
+<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="s">&quot;/etc/letsencrypt:/etc/letsencrypt:ro&quot;</span>
+<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="s">&quot;/etc/ssl/certs/dhparam.pem:/etc/ssl/certs/dhparam.pem:ro&quot;</span>
+<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="s">&quot;/var/www:/var/www:ro&quot;</span>
+
+<span class="w">  </span><span class="nt">redis</span><span class="p">:</span>
+<span class="w">    </span><span class="nt">restart</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">unless-stopped</span>
+<span class="w">    </span><span class="nt">image</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">redis:6.0</span>
+
+<span class="nt">volumes</span><span class="p">:</span>
+
+<span class="w">  </span><span class="nt">specify6800</span><span class="p">:</span>
+
+<span class="w">  </span><span class="nt">specify6801</span><span class="p">:</span>
+
+<span class="w">  </span><span class="nt">specify6803</span><span class="p">:</span>
+
+
+
+<span class="w">  </span><span class="nt">static-files-&lt;client_name&gt;</span><span class="p">:</span>
 </pre></div>
 </div>
 </section>

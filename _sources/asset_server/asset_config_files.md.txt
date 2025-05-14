@@ -20,7 +20,7 @@ SP7_DEBUG=false
 
 ## Example docker-compose.yml
 
-```yml
+```yaml
 version: '3.7'
 
 services:

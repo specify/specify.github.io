@@ -76,7 +76,6 @@ Welcome to Specify Developer documentation!
    software_desc/membership
    software_desc/disciplines
    software_desc/hosting
-   software_desc/hosting_db
    software_desc/migration
    software_desc/training
    software_desc/workbench
