@@ -34,6 +34,7 @@ Welcome to Specify Developer documentation!
    :caption: Server Management:
 
    server_management/managed_servers
+   server_management/specify_ssh_docker_guide
    server_management/add_user_to_EC2
    server_management/check_asset_usage
    server_management/exoscale

@@ -1,0 +1,335 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" data-content_root="../">
+<head>
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Specify Test Panel User Guide &mdash; Specify Developer Documentation  documentation</title>
+      <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=80d5e7a1" />
+      <link rel="stylesheet" type="text/css" href="../_static/css/theme.css?v=e59714d7" />
+
+  
+      <script src="../_static/jquery.js?v=5d32c60e"></script>
+      <script src="../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+      <script src="../_static/documentation_options.js?v=5929fcd5"></script>
+      <script src="../_static/doctools.js?v=9bcbadda"></script>
+      <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Server Access Management Policy" href="add_user_to_EC2.html" />
+    <link rel="prev" title="Updown Monitoring" href="managed_servers.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="../index.html" class="icon icon-home">
+            Specify Developer Documentation
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Guidelines:</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../processes/github_guidelines.html"><strong>GitHub Guidelines and Process</strong></a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Amazon Web Services:</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../aws/aws_automation.html">AWS Automation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../aws/aws_infrastructure_notes.html">AWS Infrastructure Notes</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../aws/aws_specify_asset_server_setup.html">AWS Specify Asset Server Setup</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../aws/aws_specify_cloud_setup.html">Specify Cloud Setup</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../aws/client_migration_notes.html">Digital Ocean to AWS migration</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../aws/ec2_rds_specify7_setup.html">Deploy Specify7 to an EC2 instance</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../aws/specify_cloud_graviton_setup.html">Specify Cloud Graviton Setup</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../aws/remote_db_connection.html">Setup remote database connection to local mysql workbench</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Asset Server:</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../asset_server/asset_config_files.html">Specify 7 Docker Config Example</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../asset_server/asset_server_config.html">Asset Server Configuration</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../asset_server/asset_server_setup.html">EC2 Non-Dockerized Build</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../asset_server/hybrid_asset_server_setup.html">Hybrid Asset Server Setup</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Server Management:</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="managed_servers.html">Updown Monitoring</a></li>
+<li class="toctree-l1"><a class="reference internal" href="managed_servers.html#managed-servers">Managed Servers</a></li>
+<li class="toctree-l1"><a class="reference internal" href="managed_servers.html#accessing-specify-7-deployments">Accessing Specify 7 Deployments</a></li>
+<li class="toctree-l1"><a class="reference internal" href="managed_servers.html#accessing-backups-on-aws-rds">Accessing Backups on AWS RDS</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Specify Test Panel User Guide</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#create-and-use-ssh-keys-for-the-specify-test-panel">🔑 Create and Use SSH Keys for the Specify Test Panel</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#create-a-directory-for-your-keys">1. <strong>Create a Directory for Your Keys</strong></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#generate-a-new-ssh-key">2. <strong>Generate a New SSH Key</strong></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#verify-key-creation">3. <strong>Verify Key Creation</strong></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#copy-your-public-key">4. <strong>Copy Your Public Key</strong></a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#connect-to-the-test-panel-server">🖥️ Connect to the Test Panel Server</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#docker-view-and-access-running-containers">🐳 Docker: View and Access Running Containers</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#see-all-running-docker-instances">1. <strong>See All Running Docker Instances</strong></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#filter-by-instance-name">2. <strong>Filter by Instance Name</strong></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#access-the-container">3. <strong>Access the Container</strong></a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#django-migrations">🛠️ Django Migrations</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#view-list-of-all-migrations">1. <strong>View List Of All Migrations</strong></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#run-a-migration">2. <strong>Run a Migration</strong></a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="add_user_to_EC2.html">Server Access Management Policy</a></li>
+<li class="toctree-l1"><a class="reference internal" href="check_asset_usage.html">Check Asset Usage</a></li>
+<li class="toctree-l1"><a class="reference internal" href="exoscale.html">Exoscale Hosted Instances</a></li>
+<li class="toctree-l1"><a class="reference internal" href="exoscale_backups.html">Backups on Exoscale</a></li>
+<li class="toctree-l1"><a class="reference internal" href="kuit_ssl_certs.html">New certificate on biprdsp7wbdb.cc.ku.edu server</a></li>
+<li class="toctree-l1"><a class="reference internal" href="kuit_ssl_certs.html#web-portal-certificate">web-portal certificate</a></li>
+<li class="toctree-l1"><a class="reference internal" href="kuit_ssl_certs.html#specify-ku-edu-ssl-cert-update">specify.ku.edu ssl cert update</a></li>
+<li class="toctree-l1"><a class="reference internal" href="reports.html">Hosting Reports</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Internal Processes:</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../dev_process/specify_processes.html">Specify Development Process</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../dev_process/project_docs.html">Project (Github pages) documentation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../dev_process/dbgroups.html">Databases with Specific Features</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../dev_process/individualdbs.html">Individual Database Information</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../dev_process/dev_expectations.html">Developer Expectations</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../processes/release_notes.html">Create Release Notes</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Security:</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../security/aws_security.html">AWS Security</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../security/fix_exposed_secret.html">Fix Exposed Secrets</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../security/monitoring.html">Security Monitoring</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Testing:</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../testing/pull_requests.html">Pull Request Testing</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Specify Software:</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../software_desc/glossary.html">Glossary</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../software_desc/overview.html">Overview</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../software_desc/membership.html">SCC overview</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../software_desc/disciplines.html">Discipline support</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../software_desc/hosting.html">Specify Cloud Hosting</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../software_desc/migration.html">Data Migration</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../software_desc/training.html">Specify Training</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../software_desc/workbench.html">Specify Workbench</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../software_desc/workflows.html">Common Workflows</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Misc:</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../misc/add_new_instance_to_specify_cloud.html">Add new Specify instance to Specify Cloud</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../misc/remove_specify_cloud_instance.html">Removing a Specify Cloud Instance</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../misc/documentation.html">Informatics Documentation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../misc/kuit_notes.html">Working with central KU IT</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../misc/specify7_ecs_most-in-one.html">Create a Most-In-One Specify Docker image</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../misc/useful_bash_cmds.html">Useful bash commands</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../misc/vs_code_django_unit_test_debugging_notes.html">VS Code Django Unit Test Debugging</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../misc/branch_from_tag.html">Create a branch from a tagged release</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">Specify Developer Documentation</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../index.html" class="icon icon-home" aria-label="Home"></a></li>
+      <li class="breadcrumb-item active">Specify Test Panel User Guide</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="../_sources/server_management/specify_ssh_docker_guide.md.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="specify-test-panel-user-guide">
+<h1>Specify Test Panel User Guide<a class="headerlink" href="#specify-test-panel-user-guide" title="Link to this heading"></a></h1>
+<p>This guide summarizes how to work with the <a class="reference external" href="https://github.com/specify/specify7-test-panel">Specify 7 Test Panel</a> as an SSH user.</p>
+<section id="create-and-use-ssh-keys-for-the-specify-test-panel">
+<h2>🔑 Create and Use SSH Keys for the Specify Test Panel<a class="headerlink" href="#create-and-use-ssh-keys-for-the-specify-test-panel" title="Link to this heading"></a></h2>
+<section id="create-a-directory-for-your-keys">
+<h3>1. <strong>Create a Directory for Your Keys</strong><a class="headerlink" href="#create-a-directory-for-your-keys" title="Link to this heading"></a></h3>
+<p>Open your terminal and run:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>mkdir<span class="w"> </span>-p<span class="w"> </span>~/Documents/specify_keys
+<span class="nb">cd</span><span class="w"> </span>~/Documents/specify_keys
+</pre></div>
+</div>
+</section>
+<section id="generate-a-new-ssh-key">
+<h3>2. <strong>Generate a New SSH Key</strong><a class="headerlink" href="#generate-a-new-ssh-key" title="Link to this heading"></a></h3>
+<p>Run the following command to create a secure SSH key:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>ssh-keygen<span class="w"> </span>-t<span class="w"> </span>rsa<span class="w"> </span>-b<span class="w"> </span><span class="m">2048</span>
+</pre></div>
+</div>
+<ul class="simple">
+<li><p>When prompted:<br />
+<strong>Enter file in which to save the key:</strong><br />
+Type: <code class="docutils literal notranslate"><span class="pre">specify_key</span></code> and press <strong>Enter</strong></p></li>
+<li><p>When prompted:<br />
+<strong>Enter passphrase:</strong><br />
+Press <strong>Enter</strong> (leave empty unless you want to secure it with a passphrase)</p></li>
+<li><p>When prompted again:<br />
+<strong>Enter same passphrase again:</strong><br />
+Press <strong>Enter</strong></p></li>
+</ul>
+</section>
+<section id="verify-key-creation">
+<h3>3. <strong>Verify Key Creation</strong><a class="headerlink" href="#verify-key-creation" title="Link to this heading"></a></h3>
+<p>Run:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>ls
+</pre></div>
+</div>
+<p>You should see:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">specify_key</span>
+<span class="n">specify_key</span><span class="o">.</span><span class="n">pub</span>
+</pre></div>
+</div>
+</section>
+<section id="copy-your-public-key">
+<h3>4. <strong>Copy Your Public Key</strong><a class="headerlink" href="#copy-your-public-key" title="Link to this heading"></a></h3>
+<p>Run:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>cat<span class="w"> </span>specify_key.pub
+</pre></div>
+</div>
+<ul class="simple">
+<li><p>Copy the full output.</p></li>
+<li><p>Send this to the person managing the Specify test panel server so they can add your key.</p></li>
+</ul>
+</section>
+</section>
+<hr class="docutils" />
+<section id="connect-to-the-test-panel-server">
+<h2>🖥️ Connect to the Test Panel Server<a class="headerlink" href="#connect-to-the-test-panel-server" title="Link to this heading"></a></h2>
+<p>Once your key has been added, connect by running:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>ssh<span class="w"> </span>-i<span class="w"> </span>~/Documents/specify_keys/specify_key<span class="w"> </span>ubuntu@test.specifysystems.org
+</pre></div>
+</div>
+<blockquote>
+<div><p>Replace the path if your folder or key is named differently.</p>
+</div></blockquote>
+<p>When prompted:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>Are you sure you want to continue connecting (yes/no/[fingerprint])?
+</pre></div>
+</div>
+<p>Type <code class="docutils literal notranslate"><span class="pre">yes</span></code> and press <strong>Enter</strong>.</p>
+<p>You are now connected to the <strong>Specify Test Panel</strong>.</p>
+</section>
+<hr class="docutils" />
+<section id="docker-view-and-access-running-containers">
+<h2>🐳 Docker: View and Access Running Containers<a class="headerlink" href="#docker-view-and-access-running-containers" title="Link to this heading"></a></h2>
+<section id="see-all-running-docker-instances">
+<h3>1. <strong>See All Running Docker Instances</strong><a class="headerlink" href="#see-all-running-docker-instances" title="Link to this heading"></a></h3>
+<p>Run:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>docker<span class="w"> </span>stats<span class="w"> </span>--no-stream
+</pre></div>
+</div>
+</section>
+<section id="filter-by-instance-name">
+<h3>2. <strong>Filter by Instance Name</strong><a class="headerlink" href="#filter-by-instance-name" title="Link to this heading"></a></h3>
+<p>To search for a specific instance, run:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>docker<span class="w"> </span>stats<span class="w"> </span>--no-stream<span class="w"> </span><span class="p">|</span><span class="w"> </span>grep<span class="w"> </span>&lt;instance-name&gt;
+</pre></div>
+</div>
+<p><em>Example:</em></p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>docker<span class="w"> </span>stats<span class="w"> </span>--no-stream<span class="w"> </span><span class="p">|</span><span class="w"> </span>grep<span class="w"> </span>ojsmnh2025-production
+</pre></div>
+</div>
+</section>
+<section id="access-the-container">
+<h3>3. <strong>Access the Container</strong><a class="headerlink" href="#access-the-container" title="Link to this heading"></a></h3>
+<p>Copy the <strong>second column</strong> from the output (example: <code class="docutils literal notranslate"><span class="pre">specify7-test-panel-osjmnh2025-production-2-1</span></code>), then run:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>docker<span class="w"> </span><span class="nb">exec</span><span class="w"> </span>-it<span class="w"> </span>&lt;container-name&gt;<span class="w"> </span>bash
+</pre></div>
+</div>
+<p><em>Example:</em></p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>docker<span class="w"> </span><span class="nb">exec</span><span class="w"> </span>-it<span class="w"> </span>specify7-test-panel-osjmnh2025-production-2-1<span class="w"> </span>bash
+</pre></div>
+</div>
+<p>Now you’re inside the running Docker container.</p>
+</section>
+</section>
+<hr class="docutils" />
+<section id="django-migrations">
+<h2>🛠️ Django Migrations<a class="headerlink" href="#django-migrations" title="Link to this heading"></a></h2>
+<section id="view-list-of-all-migrations">
+<h3>1. <strong>View List Of All Migrations</strong><a class="headerlink" href="#view-list-of-all-migrations" title="Link to this heading"></a></h3>
+<p>Run:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>ve/bin/python<span class="w"> </span>manage.py<span class="w"> </span>showmigrations
+</pre></div>
+</div>
+<ul class="simple">
+<li><p>Migrations that have already run will be marked with <code class="docutils literal notranslate"><span class="pre">[X]</span></code>.</p></li>
+</ul>
+</section>
+<section id="run-a-migration">
+<h3>2. <strong>Run a Migration</strong><a class="headerlink" href="#run-a-migration" title="Link to this heading"></a></h3>
+<p>Run:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>ve/bin/python<span class="w"> </span>manage.py<span class="w"> </span>migrate<span class="w"> </span>&lt;app-name&gt;<span class="w"> </span>&lt;migration-name<span class="w"> </span>or<span class="w"> </span>number&gt;
+</pre></div>
+</div>
+<p><em>Example:</em></p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>ve/bin/python<span class="w"> </span>manage.py<span class="w"> </span>migrate<span class="w"> </span>specify<span class="w"> </span><span class="m">0029</span>
+</pre></div>
+</div>
+</section>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="managed_servers.html" class="btn btn-neutral float-left" title="Updown Monitoring" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="add_user_to_EC2.html" class="btn btn-neutral float-right" title="Server Access Management Policy" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2024, Specify Team.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>
