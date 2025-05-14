@@ -4,7 +4,7 @@ We host sensitive data for various Swiss institutions on a secure cloud service 
 
 The decision to opt for Exoscale was based on a recommendation from Muséum d'histoire naturelle Geneva. Operating from Switzerland, Exoscale makes sure that the data remains securely within the country's borders, meeting the strict data residency requirements in place by the Swiss government.
 
-To learn about the backup process we use on Exoscale, see [this document](/sphinx/server_management/exoscale_backups.md).
+To learn about the backup process we use on Exoscale, see [this document](/server_management/exoscale_backups.md).
 
 At the time of writing this (2024-08-14), we manage two compute instances, both in the Geneva zone, both using the `ubuntu` user as the primary account:
 
