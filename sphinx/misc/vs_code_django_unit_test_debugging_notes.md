@@ -55,7 +55,7 @@ from django.conf import settings
 ```
 
 requirement-testing.txt ->
-```txt
+```text
 debugpy==1.6.5
 pytest==7.2.1
 pytest-django==4.5.2
