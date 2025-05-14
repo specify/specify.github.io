@@ -184,7 +184,7 @@ sudo systemctl restart nginx;
 ```
 
 specify7-django.service
-```service
+```bash
 [Unit]
 Description=Specify 7 Django Server
 Wants=network.target
@@ -200,7 +200,7 @@ WantedBy=multi-user.target
 ```
 
 report-runner.service
-```service
+```bash
 [Unit]
 Description=Specify Report Runner Service
 Wants=network.target

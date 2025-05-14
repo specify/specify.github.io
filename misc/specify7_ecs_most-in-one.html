@@ -332,33 +332,33 @@ sudo<span class="w"> </span>systemctl<span class="w"> </span>restart<span class=
 </pre></div>
 </div>
 <p>specify7-django.service</p>
-<div class="highlight-service notranslate"><div class="highlight"><pre><span></span>[Unit]
-Description=Specify 7 Django Server
-Wants=network.target
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="o">[</span>Unit<span class="o">]</span>
+<span class="nv">Description</span><span class="o">=</span>Specify<span class="w"> </span><span class="m">7</span><span class="w"> </span>Django<span class="w"> </span>Server
+<span class="nv">Wants</span><span class="o">=</span>network.target
 
-[Service]
-User=ubuntu
-WorkingDirectory=/home/ubuntu/specify7
-ExecStart=/home/ubuntu/specify7/ve/bin/gunicorn -w 3 -b 0.0.0.0:8000 -t 300 specifyweb_wsgi
-Restart=always
+<span class="o">[</span>Service<span class="o">]</span>
+<span class="nv">User</span><span class="o">=</span>ubuntu
+<span class="nv">WorkingDirectory</span><span class="o">=</span>/home/ubuntu/specify7
+<span class="nv">ExecStart</span><span class="o">=</span>/home/ubuntu/specify7/ve/bin/gunicorn<span class="w"> </span>-w<span class="w"> </span><span class="m">3</span><span class="w"> </span>-b<span class="w"> </span><span class="m">0</span>.0.0.0:8000<span class="w"> </span>-t<span class="w"> </span><span class="m">300</span><span class="w"> </span>specifyweb_wsgi
+<span class="nv">Restart</span><span class="o">=</span>always
 
-[Install]
-WantedBy=multi-user.target
+<span class="o">[</span>Install<span class="o">]</span>
+<span class="nv">WantedBy</span><span class="o">=</span>multi-user.target
 </pre></div>
 </div>
 <p>report-runner.service</p>
-<div class="highlight-service notranslate"><div class="highlight"><pre><span></span>[Unit]
-Description=Specify Report Runner Service
-Wants=network.target
-ConditionPathExists=/home/ubuntu/report-runner-service
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="o">[</span>Unit<span class="o">]</span>
+<span class="nv">Description</span><span class="o">=</span>Specify<span class="w"> </span>Report<span class="w"> </span>Runner<span class="w"> </span>Service
+<span class="nv">Wants</span><span class="o">=</span>network.target
+<span class="nv">ConditionPathExists</span><span class="o">=</span>/home/ubuntu/report-runner-service
 
-[Service]
-User=ubuntu
-WorkingDirectory=/home/ubuntu/report-runner-service
-ExecStart=/usr/bin/mvn jetty:run
+<span class="o">[</span>Service<span class="o">]</span>
+<span class="nv">User</span><span class="o">=</span>ubuntu
+<span class="nv">WorkingDirectory</span><span class="o">=</span>/home/ubuntu/report-runner-service
+<span class="nv">ExecStart</span><span class="o">=</span>/usr/bin/mvn<span class="w"> </span>jetty:run
 
-[Install]
-Alias=ireportrunner.service
+<span class="o">[</span>Install<span class="o">]</span>
+<span class="nv">Alias</span><span class="o">=</span>ireportrunner.service
 </pre></div>
 </div>
 </section>
