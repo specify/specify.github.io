@@ -169,6 +169,11 @@ User<span class="w"> </span>ubuntu
 </div>
 <p>To set this configuration up, you need to clone the <a class="reference external" href="https://github.com/grantfitzsimmons/run_query">github.com/grantfitzsimmons/run_query</a> repository on each server, located in the ~/run_query/ directory. For each, you need to follow the installation instructions to setup the veritual environment, install the requirements, and create an <code class="docutils literal notranslate"><span class="pre">.env</span></code> file. See those instructions in the <a class="reference external" href="https://github.com/grantfitzsimmons/run_query/blob/main/README.md">README.md</a> in that repository.</p>
 <p>To run the <code class="docutils literal notranslate"><span class="pre">orchestration.py</span></code> script on a central system, it must have SSH access into the servers you wish to get reports for. Each system that will have a report generated for it can specify a <code class="docutils literal notranslate"><span class="pre">REGION</span></code> value in the <code class="docutils literal notranslate"><span class="pre">.env</span></code> file. This is used when constructing the report name (e.g. <code class="docutils literal notranslate"><span class="pre">swiss</span></code>, <code class="docutils literal notranslate"><span class="pre">northamerica</span></code>, <code class="docutils literal notranslate"><span class="pre">canada</span></code>, etc). You can read more about this configuration in the <a class="reference external" href="https://github.com/grantfitzsimmons/run_query#run-remotely">“Run Remotely”</a> section of the README.</p>
+<p>To generate a report on the size of all databases without concern for individual collections, you can switch branches:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>ubuntu:~/run_query$ git switch size
+</pre></div>
+</div>
+<p>After running <code class="docutils literal notranslate"><span class="pre">python3</span> <span class="pre">orchestration.py</span></code>, it will instead generate a report for the region named <code class="docutils literal notranslate"><span class="pre">{region_name}_sizes_{YYYY_MM_DD}.csv</span></code> instead of simply <code class="docutils literal notranslate"><span class="pre">{region_name}_{YYYY_MM_DD}.csv</span></code>.</p>
 </section>
 
 

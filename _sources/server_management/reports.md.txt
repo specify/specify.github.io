@@ -25,6 +25,10 @@ To set this configuration up, you need to clone the [github.com/grantfitzsimmons
 
 To run the `orchestration.py` script on a central system, it must have SSH access into the servers you wish to get reports for. Each system that will have a report generated for it can specify a `REGION` value in the `.env` file. This is used when constructing the report name (e.g. `swiss`, `northamerica`, `canada`, etc). You can read more about this configuration in the ["Run Remotely"](https://github.com/grantfitzsimmons/run_query#run-remotely) section of the README.
 
+To generate a report on the size of all databases without concern for individual collections, you can switch branches:
 
+```
+ubuntu:~/run_query$ git switch size
+```
 
-
+After running `python3 orchestration.py`, it will instead generate a report for the region named `{region_name}_sizes_{YYYY_MM_DD}.csv` instead of simply `{region_name}_{YYYY_MM_DD}.csv`. 
