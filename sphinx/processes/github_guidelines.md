@@ -216,7 +216,7 @@ Requirements should currently be written only by the requirement lead. Testers s
 
 ### **Follow The Template**
 
-Make sure to follow all steps asked of you in the [bug report template](https://github.com/specify/specify7/blob/production/.github/ISSUE_TEMPLATE/bug_report.md).
+Make sure to follow all steps asked of you in the [bug report template](https://github.com/specify/specify7/blob/main/.github/ISSUE_TEMPLATE/bug_report.md).
 
 If you suspect you have discovered an issue in Specify, make sure to:
 
