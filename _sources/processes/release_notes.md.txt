@@ -23,7 +23,7 @@ These release notes are always packaged in [Markdown format](https://www.markdow
 
    **Replace:**
    ```
-   ` \1 ((#\3)[\2])`
+    \1 ([#\3](\2))\n
    ```
 
    ![Regular Expression Replacement](regex_replacement.png)
