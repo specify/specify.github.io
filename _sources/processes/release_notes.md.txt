@@ -53,7 +53,7 @@ These release notes are always packaged in [Markdown format](https://www.markdow
 
     ---
 
-    The full changelog is available on [GitHub](https://github.com/specify/specify7/blob/production/CHANGELOG.md)
+    The full changelog is available on [GitHub](https://github.com/specify/specify7/blob/main/CHANGELOG.md)
 
     For source code go to the [GitHub Specify 7 repository](http://github.com/specify/specify7/)
 
@@ -101,7 +101,7 @@ These release notes are always packaged in [Markdown format](https://www.markdow
     * Add dataentry_task.xml for geology config ([#6365](https://github.com/specify/specify7/pull/6365))
     ---
 
-    The full changelog is available on [GitHub](https://github.com/specify/specify7/blob/production/CHANGELOG.md)
+    The full changelog is available on [GitHub](https://github.com/specify/specify7/blob/main/CHANGELOG.md)
 
     For source code go to the [GitHub Specify 7 repository](http://github.com/specify/specify7/)
 
@@ -190,7 +190,7 @@ These release notes are always packaged in [Markdown format](https://www.markdow
 
     ---
 
-    The full changelog is available on [GitHub](https://github.com/specify/specify7/blob/production/CHANGELOG.md)
+    The full changelog is available on [GitHub](https://github.com/specify/specify7/blob/main/CHANGELOG.md)
 
     For source code go to the [GitHub Specify 7 repository](http://github.com/specify/specify7/)
 
