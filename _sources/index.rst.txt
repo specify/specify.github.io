@@ -17,6 +17,7 @@ Welcome to Specify Developer documentation!
    aws/aws_specify_cloud_setup
    aws/client_migration_notes
    aws/ec2_rds_specify7_setup
+   aws/add_new_instance_to_specify_cloud
    aws/specify_cloud_graviton_setup
    aws/remote_db_connection
 
@@ -85,7 +86,6 @@ Welcome to Specify Developer documentation!
    :maxdepth: 1
    :caption: Misc:
 
-   misc/add_new_instance_to_specify_cloud
    misc/remove_specify_cloud_instance
    misc/documentation
    misc/kuit_notes
