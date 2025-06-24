@@ -176,9 +176,11 @@ Edit the command in the celery worker container config in the docker-compose.yml
 
 Run `docker compose up --build`
 
-Reload the vscode window
+Reload the vscode window (might not need to do)
 
 In the VS Code debugger panel, next to "Run and Debug", select the picklist and select "Run Worker", and press the play button.
 
 The breakpoints you set should now be caught!
+
+Remember that the code in the celery worker container doens't automatically get update, so need to do 'docker compose down' and 'docker compose up' after code changes before you can start debugging again.
 
