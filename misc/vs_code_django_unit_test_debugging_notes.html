@@ -311,9 +311,10 @@ pytest-django==4.5.2
 </pre></div>
 </div>
 <p>Run <code class="docutils literal notranslate"><span class="pre">docker</span> <span class="pre">compose</span> <span class="pre">up</span> <span class="pre">--build</span></code></p>
-<p>Reload the vscode window</p>
+<p>Reload the vscode window (might not need to do)</p>
 <p>In the VS Code debugger panel, next to “Run and Debug”, select the picklist and select “Run Worker”, and press the play button.</p>
 <p>The breakpoints you set should now be caught!</p>
+<p>Remember that the code in the celery worker container doens’t automatically get update, so need to do ‘docker compose down’ and ‘docker compose up’ after code changes before you can start debugging again.</p>
 </section>
 </section>
 
