@@ -294,7 +294,7 @@ pytest-django==4.5.2
 <span class="p">}</span>
 </pre></div>
 </div>
-<p>Edit the command in the celery worker container config in the docker-compose.yml file</p>
+<p>Edit the celery worker container config in the docker-compose.yml file</p>
 <div class="highlight-yaml notranslate"><div class="highlight"><pre><span></span><span class="w">  </span><span class="nt">specify7-worker</span><span class="p">:</span>
 <span class="w">    </span><span class="nt">build</span><span class="p">:</span>
 <span class="w">      </span><span class="nt">context</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">./.</span>
@@ -308,6 +308,8 @@ pytest-django==4.5.2
 <span class="w">    </span><span class="nt">extra_hosts</span><span class="p">:</span>
 <span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="s">&quot;host.docker.internal:host-gateway&quot;</span>
 <span class="w">    </span><span class="nt">env_file</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">.env</span>
+<span class="w">    </span><span class="nt">ports</span><span class="p">:</span>
+<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="s">&quot;3001:3001&quot;</span><span class="w"> </span><span class="c1"># for debugging celery worker</span>
 </pre></div>
 </div>
 <p>Run <code class="docutils literal notranslate"><span class="pre">docker</span> <span class="pre">compose</span> <span class="pre">up</span> <span class="pre">--build</span></code></p>

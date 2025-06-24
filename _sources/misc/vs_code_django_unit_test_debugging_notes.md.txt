@@ -157,7 +157,7 @@ Add the worker debugger config to the .vscode/launch.json file
 }
 ```
 
-Edit the command in the celery worker container config in the docker-compose.yml file
+Edit the celery worker container config in the docker-compose.yml file
 ```yaml
   specify7-worker:
     build:
@@ -172,6 +172,8 @@ Edit the command in the celery worker container config in the docker-compose.yml
     extra_hosts:
       - "host.docker.internal:host-gateway"
     env_file: .env
+    ports:
+      - "3001:3001" # for debugging celery worker
 ```
 
 Run `docker compose up --build`
