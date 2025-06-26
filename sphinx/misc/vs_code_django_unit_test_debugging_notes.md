@@ -120,4 +120,69 @@ For the non-container instance of vscode, the debugger is used at runtime with t
 }
 ```
 
+### Get the VS Code debugger to work with the celery container
+
+Add the worker debugger config to the .vscode/launch.json file
+```json
+{
+  "version": "0.2.0",
+  "configurations": [
+    {
+      "name": "Run Django",
+      "type": "python",
+      "request": "attach",
+      "pathMappings": [
+        {
+          "localRoot": "${workspaceFolder}/specifyweb",
+          "remoteRoot": "/opt/specify7/specifyweb"
+        }
+      ],
+      "port": 3000,
+      "host": "127.0.0.1",
+    },
+    {
+      "name": "Run Worker",
+      "type": "python",
+      "request": "attach",
+      "pathMappings": [
+        {
+          "localRoot": "${workspaceFolder}/specifyweb",
+          "remoteRoot": "/opt/specify7/specifyweb"
+        }
+      ],
+      "port": 3001,
+      "host": "127.0.0.1",
+    }
+  ]
+}
+```
+
+Edit the celery worker container config in the docker-compose.yml file
+```yaml
+  specify7-worker:
+    build:
+      context: ./.
+      target: run-development
+    command: bash -c "ve/bin/python -m debugpy --listen 0.0.0.0:3001 --wait-for-client -m celery -A specifyweb worker -l INFO --concurrency=1 -Q $DATABASE_NAME"
+    init: true
+    volumes:
+      - "./config:/opt/Specify/config:ro"
+      - "static-files:/volumes/static-files"
+      - "./specifyweb:/opt/specify7/specifyweb"
+    extra_hosts:
+      - "host.docker.internal:host-gateway"
+    env_file: .env
+    ports:
+      - "3001:3001" # for debugging celery worker
+```
+
+Run `docker compose up --build`
+
+Reload the vscode window (might not need to do)
+
+In the VS Code debugger panel, next to "Run and Debug", select the picklist and select "Run Worker", and press the play button.
+
+The breakpoints you set should now be caught!
+
+Remember that the code in the celery worker container doens't automatically get update, so need to do 'docker compose down' and 'docker compose up' after code changes before you can start debugging again.
 
