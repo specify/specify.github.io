@@ -6,7 +6,7 @@
   <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Specify Data Migration Workplan &mdash; Specify Developer Documentation  documentation</title>
+  <title>Documentation &mdash; Specify Developer Documentation  documentation</title>
       <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=80d5e7a1" />
       <link rel="stylesheet" type="text/css" href="../_static/css/theme.css?v=e59714d7" />
 
@@ -102,7 +102,7 @@
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="../software_desc/glossary.html">Glossary</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../software_desc/overview.html">Overview</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../software_desc/membership.html">SCC overview</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../software_desc/membership.html">Membership</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../software_desc/disciplines.html">Discipline support</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../software_desc/hosting.html">Specify Cloud Hosting</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../software_desc/migration.html">Data Migration</a></li>
@@ -135,9 +135,9 @@
           <div role="navigation" aria-label="Page navigation">
   <ul class="wy-breadcrumbs">
       <li><a href="../index.html" class="icon icon-home" aria-label="Home"></a></li>
-      <li class="breadcrumb-item active">Specify Data Migration Workplan</li>
+      <li class="breadcrumb-item active">Documentation</li>
       <li class="wy-breadcrumbs-aside">
-            <a href="../_sources/scc_doc/migration_workplan_template.rst.txt" rel="nofollow"> View page source</a>
+            <a href="../_sources/scc_doc/documentation.md.txt" rel="nofollow"> View page source</a>
       </li>
   </ul>
   <hr/>
@@ -145,66 +145,65 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
              
-  <section id="specify-data-migration-workplan">
-<h1>Specify Data Migration Workplan<a class="headerlink" href="#specify-data-migration-workplan" title="Link to this heading"></a></h1>
-<p><strong>Workplan for &lt;name&gt;</strong></p>
-<section id="migration-data-scope">
-<h2>Migration Data Scope<a class="headerlink" href="#migration-data-scope" title="Link to this heading"></a></h2>
+  <section id="documentation">
+<h1>Documentation<a class="headerlink" href="#documentation" title="Link to this heading"></a></h1>
+<p>List of required documentats for the SCC, and process, format, and standard location
+for each.</p>
+<section id="what-and-where">
+<h2>What and Where<a class="headerlink" href="#what-and-where" title="Link to this heading"></a></h2>
+<section id="business-documentation">
+<h3>Business Documentation<a class="headerlink" href="#business-documentation" title="Link to this heading"></a></h3>
+<p>Process</p>
 <ul class="simple">
-<li><p>Database(s):</p></li>
-<li><p>Collections in each:</p></li>
-<li><p>Source data:
-* Format:
-* Size:
-* Collection Objects:
-* Encoding:
-* Original software:</p></li>
+<li><p>Collaborate on creation in Google Docs</p></li>
+<li><p>Export as a PDF, name with date, store <code class="docutils literal notranslate"><span class="pre">here</span>&#160; <span class="pre">&lt;../../formal_docs&gt;</span></code>_</p></li>
+<li><p>Copy to Discourse</p></li>
+</ul>
+<p>Needed docs</p>
+<ul class="simple">
+<li><p>Privacy Policy (Written in 2020.  Time to update/review?)</p></li>
+<li><p>Disaster Recovery Plan</p></li>
+<li><p>Data Recovery Process</p></li>
+<li><p>Business Continuity Plan
+Change Management Plan (beta version available for review Specify Change Management Procedure.docx)
+Terms of Use/Service (written in 2020.  Time to update/review?)
+License</p></li>
 </ul>
 </section>
-<section id="project-timeline">
-<h2>Project Timeline<a class="headerlink" href="#project-timeline" title="Link to this heading"></a></h2>
-<p>All dates are measured from the completion of Decide on Specify Configuration.
-Each task includes estimated hours, translated into available staff days.  Timeframes
-are based on actual hours required for completion.
-<strong>[Edit based on analysis and migration personnel availability]</strong></p>
-<div class="line-block">
-<div class="line">Step | Responsibility | Staff Hours | Staff days | End Date (week/day) |</div>
-<div class="line">:—- | :—: | :—: | :—: | :—: |</div>
-<div class="line">Setup, analysis of source data | SCC | 20 | (3) |  |</div>
-<div class="line">Decide on Specify Configuration | SCC and Client | 2 | (1) |  |</div>
-<div class="line">Map source to Specify schema | SCC | 30 | 4 | 1/4 |</div>
-<div class="line">Review mapping  | Client |  | 5 | 2/4 |</div>
-<div class="line">Modify mapping | SCC | 20 | 3 | 3/2 |</div>
-<div class="line">Create database | SCC | 2 | 1 | 3/3 |</div>
-<div class="line">Prepare Taxon Tree and Upload | SCC | 13 | 2 | 3/5 |</div>
-<div class="line">Map source to Specify tables for Workbench | SCC | 20 | 3 | 4/3 |</div>
-<div class="line">Test sample upload via Workbench | SCC | 4 | 1 | 4/4 |</div>
-<div class="line">Review test sample in Specify instance | Client |  | 5 | 5/4 |</div>
-<div class="line">Cleanup validation errors in Workbench data  | SCC | 30 | 4 | 6/3 |</div>
-<div class="line">Upload test data via Workbench | SCC | 4 | 1 | 6/4 |</div>
-<div class="line">Upload full data via Workbench | SCC | 4 | 1 | 6/5 |</div>
-<div class="line">Create Data Entry forms | SCC | 10 | 2 | 7/2 |</div>
-<div class="line">Map schema tables and fields to UI titles and labels | SCC | 4 | 1 | 7/3 |</div>
-<div class="line">Create and populate the Specify instance | SCC | 4 | 1 | 7/4 |</div>
-<div class="line"><strong>Complete</strong> |  |  | <strong>xx days</strong> | <strong>Week x, Day y</strong> |</div>
-</div>
+<section id="security-documentation">
+<h3>Security Documentation<a class="headerlink" href="#security-documentation" title="Link to this heading"></a></h3>
+<p>HECVAT (Final edit needed)
+Security Incident Response Plan
+VPAT2 (last filled out in 2023 should be reviewed and updated)
+Information Security Policy
+Risk Management Program</p>
 </section>
-<section id="specify-configuration">
-<h2>Specify Configuration<a class="headerlink" href="#specify-configuration" title="Link to this heading"></a></h2>
-<ul class="simple">
-<li><p>Data Division</p></li>
-<li><p>Collections, Disciplines, Divisions, and Types</p></li>
-<li><p>Schema Mapping: Source to Specify</p></li>
-<li><p>CollectingEvent → CollectionObject Relationship</p></li>
-<li><p>PaleoContext → Locality | CollectionEvent | CollectionObject Relationship</p></li>
-<li><p>Collection Relationships</p></li>
-<li><p>Date/Identifier Formatting</p></li>
-</ul>
+<section id="services-agreement-documentation">
+<h3>Services Agreement Documentation<a class="headerlink" href="#services-agreement-documentation" title="Link to this heading"></a></h3>
+<p>Migration Agreement
+: Legal agreement for conversions, to be presented to client for signature, with a
+supplementary <strong>Migration Scope</strong> document.</p>
+<p>Migration Scope
+: Supplementary document containing metadata about migration source data determined by
+Client and SCC developer analyses of source data, including data type, encoding, and<br />
+size, tree requirements, database number and collection types, projected duration,<br />
+and projected cost.  Created from a template for each Data Migration.</p>
+<p>Migration Workplan
+: Document listing source data metadata from <strong>Migration Scope</strong> as well as
+Client database and collection configuration requirements, and timetable based on
+projected time for each step of the migration and developer availability.  Created
+from a template for each Data Migration.</p>
+<p>Hosting Agreement
+: Legal document describing 1) how the SCC enables the Client to remotely access and use
+the Specify software and all its customer data in “Software as a service” mode; and
+2) explicitly identifies the Specify Cloud Service hosting technical support services,
+software maintenance and updates, price, online availability, backup protocols,
+access restrictions, data ownership, and stakeholder responsibilities.</p>
 </section>
-<section id="projected-time-for-data-migration-project">
-<h2>Projected Time for Data Migration Project<a class="headerlink" href="#projected-time-for-data-migration-project" title="Link to this heading"></a></h2>
-<p>xx weeks
-Allows additional time for some unexpected data complexity and staff/client availability.</p>
+<section id="member-agreement-documentation">
+<h3>Member Agreement Documentation<a class="headerlink" href="#member-agreement-documentation" title="Link to this heading"></a></h3>
+<p>Member Agreement</p>
+</section>
 </section>
 </section>
 

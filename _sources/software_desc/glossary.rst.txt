@@ -12,6 +12,11 @@ Specify-defined terms
     define the relationship between a set of points and the environmental values
     at those points.
 
+  Collection Object
+    The primary record for a specimen record.  Many other types of metadata may be
+    attached to a collection object, such as Collector, Date Collected, Collecting
+    Event, Preparation, and more.
+
   Container
     A :term:`Docker` instance which runs as an application on a :term:`Host machine`.
     The Docker container contains all software dependencies required by the programs it

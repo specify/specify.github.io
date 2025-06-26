@@ -1,5 +1,8 @@
-SCC overview
+Membership
 ################
+
+SCC overview
+****************
 
 The Specify Collections Consortium (SCC) is a U.S. not-for-profit organization organized
 under the legal umbrella of the University of Kansas, a public, state university located
@@ -46,6 +49,9 @@ Point Person and act as a
 second level backstop of expertise to accept, research, and resolve complex issues.
 SCC would anticipate that the Point Person, or another delegate employee, would be
 responsible for migrating data from existing legacy systems to Specify databases.
+
+Governmental
+=========================
 
 Founding Partner
 ==================
