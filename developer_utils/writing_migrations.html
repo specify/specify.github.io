@@ -1,0 +1,303 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" data-content_root="../">
+<head>
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Writing Migrations &mdash; Specify Developer Documentation  documentation</title>
+      <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=80d5e7a1" />
+      <link rel="stylesheet" type="text/css" href="../_static/css/theme.css?v=e59714d7" />
+
+  
+      <script src="../_static/jquery.js?v=5d32c60e"></script>
+      <script src="../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+      <script src="../_static/documentation_options.js?v=5929fcd5"></script>
+      <script src="../_static/doctools.js?v=9bcbadda"></script>
+      <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Removing a Specify Cloud Instance" href="../misc/remove_specify_cloud_instance.html" />
+    <link rel="prev" title="Common Workflows" href="../software_desc/workflows.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="../index.html" class="icon icon-home">
+            Specify Developer Documentation
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Guidelines:</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../processes/github_guidelines.html"><strong>GitHub Guidelines and Process</strong></a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Amazon Web Services:</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../aws/aws_automation.html">AWS Automation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../aws/aws_infrastructure_notes.html">AWS Infrastructure Notes</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../aws/aws_specify_asset_server_setup.html">AWS Specify Asset Server Setup</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../aws/aws_specify_cloud_setup.html">Specify Cloud Setup</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../aws/client_migration_notes.html">Digital Ocean to AWS migration</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../aws/ec2_rds_specify7_setup.html">Deploy Specify7 to an EC2 instance</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../aws/add_new_instance_to_specify_cloud.html">Add new Specify instance to Specify Cloud</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../aws/specify_cloud_graviton_setup.html">Specify Cloud Graviton Setup</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../aws/remote_db_connection.html">Setup remote database connection to local mysql workbench</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Asset Server:</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../asset_server/asset_config_files.html">Specify 7 Docker Config Example</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../asset_server/asset_server_config.html">Asset Server Configuration</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../asset_server/asset_server_setup.html">EC2 Non-Dockerized Build</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../asset_server/hybrid_asset_server_setup.html">Hybrid Asset Server Setup</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Server Management:</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../server_management/managed_servers.html">Updown Monitoring</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../server_management/managed_servers.html#managed-servers">Managed Servers</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../server_management/managed_servers.html#accessing-specify-7-deployments">Accessing Specify 7 Deployments</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../server_management/managed_servers.html#accessing-backups-on-aws-rds">Accessing Backups on AWS RDS</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../server_management/specify_ssh_docker_guide.html">Specify Test Panel User Guide</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../server_management/add_user_to_EC2.html">Server Access Management Policy</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../server_management/check_asset_usage.html">Check Asset Usage</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../server_management/exoscale.html">Exoscale Hosted Instances</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../server_management/exoscale_backups.html">Backups on Exoscale</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../server_management/kuit_ssl_certs.html">New certificate on biprdsp7wbdb.cc.ku.edu server</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../server_management/kuit_ssl_certs.html#web-portal-certificate">web-portal certificate</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../server_management/kuit_ssl_certs.html#specify-ku-edu-ssl-cert-update">specify.ku.edu ssl cert update</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../server_management/reports.html">Hosting Reports</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Internal Processes:</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../dev_process/specify_processes.html">Specify Development Process</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../dev_process/project_docs.html">Project (Github pages) documentation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../dev_process/dbgroups.html">Databases with Specific Features</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../dev_process/individualdbs.html">Individual Database Information</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../dev_process/dev_expectations.html">Developer Expectations</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../processes/release_notes.html">Create Release Notes</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Security:</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../security/aws_security.html">AWS Security</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../security/fix_exposed_secret.html">Fix Exposed Secrets</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../security/monitoring.html">Security Monitoring</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Testing:</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../testing/pull_requests.html">Pull Request Testing</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Specify Software:</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../software_desc/glossary.html">Glossary</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../software_desc/overview.html">Overview</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../software_desc/membership.html">Membership</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../software_desc/disciplines.html">Discipline support</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../software_desc/hosting.html">Specify Cloud Hosting</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../software_desc/migration.html">Data Migration</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../software_desc/training.html">Specify Training</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../software_desc/workbench.html">Specify Workbench</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../software_desc/workflows.html">Common Workflows</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Developer Utils:</span></p>
+<ul class="current">
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Writing Migrations</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#adding-a-new-table">Adding a New Table</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#datamodel-py">datamodel.py</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#models-py">models.py</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#types-ts">types.ts</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#models-by-table-id-py">models_by_table_id.py</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#generating-new-migrations">Generating New Migrations</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#update-datamodel-json">Update datamodel.json</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#update-tests">Update tests</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#run-tests">Run tests</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Misc:</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../misc/remove_specify_cloud_instance.html">Removing a Specify Cloud Instance</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../misc/documentation.html">Informatics Documentation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../misc/kuit_notes.html">Working with central KU IT</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../misc/specify7_ecs_most-in-one.html">Create a Most-In-One Specify Docker image</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../misc/useful_bash_cmds.html">Useful bash commands</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../misc/vs_code_django_unit_test_debugging_notes.html">VS Code Django Unit Test Debugging</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../misc/branch_from_tag.html">Create a branch from a tagged release</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">Specify Developer Documentation</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../index.html" class="icon icon-home" aria-label="Home"></a></li>
+      <li class="breadcrumb-item active">Writing Migrations</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="../_sources/developer_utils/writing_migrations.md.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="writing-migrations">
+<h1>Writing Migrations<a class="headerlink" href="#writing-migrations" title="Link to this heading"></a></h1>
+<section id="adding-a-new-table">
+<h2>Adding a New Table<a class="headerlink" href="#adding-a-new-table" title="Link to this heading"></a></h2>
+<p>Before writing the Django migration, you must first modify the following files:</p>
+<section id="datamodel-py">
+<h3>datamodel.py<a class="headerlink" href="#datamodel-py" title="Link to this heading"></a></h3>
+<p>Add your new table and relationships. Follow the capitalization style used in the existing tables closely.<br />
+Each new table increments the <code class="docutils literal notranslate"><span class="pre">tableId</span></code> by 1. Tables exclusive to Specify 7 start at TableID 1000.</p>
+<p>Follow how the id field is capitalized by other tables, otherwise it will show up on schema config.</p>
+</section>
+<section id="models-py">
+<h3>models.py<a class="headerlink" href="#models-py" title="Link to this heading"></a></h3>
+<p>Add class to models.py (<code class="docutils literal notranslate"><span class="pre">specifyweb\specify\models.py</span></code> for most tables, you may put it in a different app if your table fits better there).<br />
+Generally only the first character is capitalized in the class name, but there are some exceptions (probably unintentional). Just keep it consistent with the name you put in models_by_table_id.py later.</p>
+</section>
+<section id="types-ts">
+<h3>types.ts<a class="headerlink" href="#types-ts" title="Link to this heading"></a></h3>
+<p>In: <code class="docutils literal notranslate"><span class="pre">components/DataModel/types.ts</span></code><br />
+Read the comment to regenerate the schema.</p>
+</section>
+<section id="models-by-table-id-py">
+<h3>models_by_table_id.py<a class="headerlink" href="#models-by-table-id-py" title="Link to this heading"></a></h3>
+<p>Add the table name to model_names_by_table_id and model_names_by_app.<br />
+Make sure the capitalization matches what you used on models.py.</p>
+<ul class="simple">
+<li><p>Note: Attachment tables are identified by having exactly “attachment” at the end, no capital.</p></li>
+</ul>
+<p>You may now proceed onto generating the migration.</p>
+</section>
+</section>
+<section id="generating-new-migrations">
+<h2>Generating New Migrations<a class="headerlink" href="#generating-new-migrations" title="Link to this heading"></a></h2>
+<p>Generate the Django migration to create the table (generated from the specification in models.py).<br />
+Run the following command (assuming you’re using docker):<br />
+<code class="docutils literal notranslate"><span class="pre">docker</span> <span class="pre">exec</span> <span class="pre">specify7-specify7-1</span> <span class="pre">ve/bin/python</span> <span class="pre">manage.py</span> <span class="pre">makemigrations</span></code></p>
+<p>Navigate to the newly created file and add extra operations if you need to.<br />
+Edit the generated migration to allow for reverting if you added any additional functionality.</p>
+<p>Additional functionality includes adding the new table to the schema config, which you probably want.<br />
+To add the new table’s fields to the schema config, add something similar to the following:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">MIGRATION_0007_TABLES</span> <span class="o">=</span> <span class="p">[</span>
+    <span class="p">(</span><span class="s1">&#39;SpDataSetAttachment&#39;</span><span class="p">,</span> <span class="s1">&#39;An attachment temporarily associated with a Specify Data Set for use in a WorkBench upload.&#39;</span><span class="p">)</span>
+<span class="p">]</span>
+
+<span class="n">MIGRATION_0007_FIELDS</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="s1">&#39;Spdataset&#39;</span><span class="p">:</span> <span class="p">[</span><span class="s1">&#39;spDataSetAttachments&#39;</span><span class="p">]</span>
+<span class="p">}</span>
+
+<span class="k">def</span> <span class="nf">apply_migration</span><span class="p">(</span><span class="n">apps</span><span class="p">,</span> <span class="n">schema_editor</span><span class="p">):</span>
+    <span class="c1"># Update Schema config</span>
+    <span class="n">Discipline</span> <span class="o">=</span> <span class="n">apps</span><span class="o">.</span><span class="n">get_model</span><span class="p">(</span><span class="s1">&#39;specify&#39;</span><span class="p">,</span> <span class="s1">&#39;Discipline&#39;</span><span class="p">)</span>
+    <span class="k">for</span> <span class="n">discipline</span> <span class="ow">in</span> <span class="n">Discipline</span><span class="o">.</span><span class="n">objects</span><span class="o">.</span><span class="n">all</span><span class="p">():</span> <span class="c1"># New SpDataSetAttachment table</span>
+        <span class="k">for</span> <span class="n">table</span><span class="p">,</span> <span class="n">desc</span> <span class="ow">in</span> <span class="n">MIGRATION_0007_TABLES</span><span class="p">:</span>
+            <span class="n">update_table_schema_config_with_defaults</span><span class="p">(</span><span class="n">table</span><span class="p">,</span> <span class="n">discipline</span><span class="o">.</span><span class="n">id</span><span class="p">,</span> <span class="n">desc</span><span class="p">,</span> <span class="n">apps</span><span class="p">)</span>
+    <span class="k">for</span> <span class="n">discipline</span> <span class="ow">in</span> <span class="n">Discipline</span><span class="o">.</span><span class="n">objects</span><span class="o">.</span><span class="n">all</span><span class="p">():</span> <span class="c1"># New relationship Spdataset -&gt; SpDataSetAttachment</span>
+        <span class="k">for</span> <span class="n">table</span><span class="p">,</span> <span class="n">fields</span> <span class="ow">in</span> <span class="n">MIGRATION_0007_FIELDS</span><span class="o">.</span><span class="n">items</span><span class="p">():</span>
+            <span class="k">for</span> <span class="n">field</span> <span class="ow">in</span> <span class="n">fields</span><span class="p">:</span> 
+                <span class="n">update_table_field_schema_config_with_defaults</span><span class="p">(</span><span class="n">table</span><span class="p">,</span> <span class="n">discipline</span><span class="o">.</span><span class="n">id</span><span class="p">,</span> <span class="n">field</span><span class="p">,</span> <span class="n">apps</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>The following function reverses it:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">revert_migration</span><span class="p">(</span><span class="n">apps</span><span class="p">,</span> <span class="n">schema_editor</span><span class="p">):</span>
+    <span class="c1"># Revert Schema config changes</span>
+    <span class="k">for</span> <span class="n">table</span><span class="p">,</span> <span class="n">_</span> <span class="ow">in</span> <span class="n">MIGRATION_0007_TABLES</span><span class="p">:</span> <span class="c1"># Remove SpDataSetAttachment table</span>
+        <span class="n">revert_table_schema_config</span><span class="p">(</span><span class="n">table</span><span class="p">,</span> <span class="n">apps</span><span class="p">)</span>
+    <span class="k">for</span> <span class="n">table</span><span class="p">,</span> <span class="n">fields</span> <span class="ow">in</span> <span class="n">MIGRATION_0007_FIELDS</span><span class="o">.</span><span class="n">items</span><span class="p">():</span> <span class="c1"># Remove relationship Spdataset -&gt; SpDataSetAttachment</span>
+            <span class="k">for</span> <span class="n">field</span> <span class="ow">in</span> <span class="n">fields</span><span class="p">:</span> 
+                <span class="n">revert_table_field_schema_config</span><span class="p">(</span><span class="n">table</span><span class="p">,</span> <span class="n">field</span><span class="p">,</span> <span class="n">apps</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>This is handled by adding these functions to the operations at the bottom of the file</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">migrations</span><span class="o">.</span><span class="n">RunPython</span><span class="p">(</span><span class="n">apply_migration</span><span class="p">,</span> <span class="n">revert_migration</span><span class="p">,</span> <span class="n">atomic</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+</pre></div>
+</div>
+<section id="update-datamodel-json">
+<h3>Update datamodel.json<a class="headerlink" href="#update-datamodel-json" title="Link to this heading"></a></h3>
+<p>Update datamodel.json.<br />
+Regenerate by going to <code class="docutils literal notranslate"><span class="pre">http://localhost/context/datamodel.json</span></code></p>
+</section>
+<section id="update-tests">
+<h3>Update tests<a class="headerlink" href="#update-tests" title="Link to this heading"></a></h3>
+<p>These front-end tests may now fail:<br />
+<code class="docutils literal notranslate"><span class="pre">\specify7\specifyweb\frontend\js_src\lib\components\DataModel\__tests__\resource.test.ts</span></code></p>
+<p>Follow the instructions in the comment to regenerate uniqueFields.json.</p>
+<div class="highlight-typescript notranslate"><div class="highlight"><pre><span></span><span class="cm">/**</span>
+<span class="cm"> * If this test breaks, uniqueFields.json needs to be regenerated.</span>
+<span class="cm"> * 1. Go to the dev console on the browser</span>
+<span class="cm"> * 2. Run the function _getUniqueFields()</span>
+<span class="cm"> * 3. Paste the text into uniqueFields.json and format with prettier</span>
+<span class="cm"> */</span>
+</pre></div>
+</div>
+<p>Update front-end test snapshots to fix the rest of the tests:<br />
+<code class="docutils literal notranslate"><span class="pre">npm</span> <span class="pre">run</span> <span class="pre">unitTests</span> <span class="pre">--</span> <span class="pre">-u</span></code></p>
+</section>
+<section id="run-tests">
+<h3>Run tests<a class="headerlink" href="#run-tests" title="Link to this heading"></a></h3>
+<p>Run the front-end tests to make sure everything works.<br />
+<code class="docutils literal notranslate"><span class="pre">npm</span> <span class="pre">t</span></code></p>
+</section>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="../software_desc/workflows.html" class="btn btn-neutral float-left" title="Common Workflows" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="../misc/remove_specify_cloud_instance.html" class="btn btn-neutral float-right" title="Removing a Specify Cloud Instance" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2025, Specify Collections Consortium Team.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

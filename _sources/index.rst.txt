@@ -84,6 +84,12 @@ Welcome to Specify Developer documentation!
 
 .. toctree::
    :maxdepth: 1
+   :caption: Developer Utils:
+
+   developer_utils/writing_migrations
+
+.. toctree::
+   :maxdepth: 1
    :caption: Misc:
 
    misc/remove_specify_cloud_instance
