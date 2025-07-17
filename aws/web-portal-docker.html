@@ -1,0 +1,346 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" data-content_root="../">
+<head>
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Web Portal using Docker &mdash; Specify Developer Documentation  documentation</title>
+      <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=80d5e7a1" />
+      <link rel="stylesheet" type="text/css" href="../_static/css/theme.css?v=e59714d7" />
+
+  
+      <script src="../_static/jquery.js?v=5d32c60e"></script>
+      <script src="../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+      <script src="../_static/documentation_options.js?v=5929fcd5"></script>
+      <script src="../_static/doctools.js?v=9bcbadda"></script>
+      <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="../index.html" class="icon icon-home">
+            Specify Developer Documentation
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Guidelines:</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../processes/github_guidelines.html"><strong>GitHub Guidelines and Process</strong></a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Amazon Web Services:</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="aws_automation.html">AWS Automation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="aws_infrastructure_notes.html">AWS Infrastructure Notes</a></li>
+<li class="toctree-l1"><a class="reference internal" href="aws_specify_asset_server_setup.html">AWS Specify Asset Server Setup</a></li>
+<li class="toctree-l1"><a class="reference internal" href="aws_specify_cloud_setup.html">Specify Cloud Setup</a></li>
+<li class="toctree-l1"><a class="reference internal" href="client_migration_notes.html">Digital Ocean to AWS migration</a></li>
+<li class="toctree-l1"><a class="reference internal" href="ec2_rds_specify7_setup.html">Deploy Specify7 to an EC2 instance</a></li>
+<li class="toctree-l1"><a class="reference internal" href="add_new_instance_to_specify_cloud.html">Add new Specify instance to Specify Cloud</a></li>
+<li class="toctree-l1"><a class="reference internal" href="specify_cloud_graviton_setup.html">Specify Cloud Graviton Setup</a></li>
+<li class="toctree-l1"><a class="reference internal" href="remote_db_connection.html">Setup remote database connection to local mysql workbench</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Asset Server:</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../asset_server/asset_config_files.html">Specify 7 Docker Config Example</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../asset_server/asset_server_config.html">Asset Server Configuration</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../asset_server/asset_server_setup.html">EC2 Non-Dockerized Build</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../asset_server/hybrid_asset_server_setup.html">Hybrid Asset Server Setup</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Server Management:</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../server_management/managed_servers.html">Updown Monitoring</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../server_management/managed_servers.html#managed-servers">Managed Servers</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../server_management/managed_servers.html#accessing-specify-7-deployments">Accessing Specify 7 Deployments</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../server_management/managed_servers.html#accessing-backups-on-aws-rds">Accessing Backups on AWS RDS</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../server_management/specify_ssh_docker_guide.html">Specify Test Panel User Guide</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../server_management/add_user_to_EC2.html">Server Access Management Policy</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../server_management/check_asset_usage.html">Check Asset Usage</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../server_management/exoscale.html">Exoscale Hosted Instances</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../server_management/exoscale_backups.html">Backups on Exoscale</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../server_management/kuit_ssl_certs.html">New certificate on biprdsp7wbdb.cc.ku.edu server</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../server_management/kuit_ssl_certs.html#web-portal-certificate">web-portal certificate</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../server_management/kuit_ssl_certs.html#specify-ku-edu-ssl-cert-update">specify.ku.edu ssl cert update</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../server_management/reports.html">Hosting Reports</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Internal Processes:</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../dev_process/specify_processes.html">Specify Development Process</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../dev_process/project_docs.html">Project (Github pages) documentation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../dev_process/dbgroups.html">Databases with Specific Features</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../dev_process/individualdbs.html">Individual Database Information</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../dev_process/dev_expectations.html">Developer Expectations</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../processes/release_notes.html">Create Release Notes</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Security:</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../security/aws_security.html">AWS Security</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../security/fix_exposed_secret.html">Fix Exposed Secrets</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../security/monitoring.html">Security Monitoring</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Testing:</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../testing/pull_requests.html">Pull Request Testing</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Specify Software:</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../software_desc/glossary.html">Glossary</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../software_desc/overview.html">Overview</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../software_desc/membership.html">Membership</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../software_desc/disciplines.html">Discipline support</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../software_desc/hosting.html">Specify Cloud Hosting</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../software_desc/migration.html">Data Migration</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../software_desc/training.html">Specify Training</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../software_desc/workbench.html">Specify Workbench</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../software_desc/workflows.html">Common Workflows</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Developer Utils:</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../developer_utils/writing_migrations.html">Writing Migrations</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Misc:</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../misc/remove_specify_cloud_instance.html">Removing a Specify Cloud Instance</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../misc/documentation.html">Informatics Documentation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../misc/kuit_notes.html">Working with central KU IT</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../misc/specify7_ecs_most-in-one.html">Create a Most-In-One Specify Docker image</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../misc/useful_bash_cmds.html">Useful bash commands</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../misc/vs_code_django_unit_test_debugging_notes.html">VS Code Django Unit Test Debugging</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../misc/branch_from_tag.html">Create a branch from a tagged release</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">Specify Developer Documentation</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../index.html" class="icon icon-home" aria-label="Home"></a></li>
+      <li class="breadcrumb-item active">Web Portal using Docker</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="../_sources/aws/web-portal-docker.md.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="web-portal-using-docker">
+<h1>Web Portal using Docker<a class="headerlink" href="#web-portal-using-docker" title="Link to this heading"></a></h1>
+<p>We are managing our Web Portal instances using a Docker image on EC2.</p>
+<section id="deployment">
+<h2>Deployment<a class="headerlink" href="#deployment" title="Link to this heading"></a></h2>
+<p>You can connect using the <code class="docutils literal notranslate"><span class="pre">ubuntu</span></code> user to the EC2 instance. In the instance, there is a <code class="docutils literal notranslate"><span class="pre">docker-compose.yml</span></code> file.</p>
+<p>This file sets up a Web Portal service that runs on a single container with the following key components:</p>
+<section id="what-it-does">
+<h3>What it does:<a class="headerlink" href="#what-it-does" title="Link to this heading"></a></h3>
+<ul class="simple">
+<li><p>Runs a web portal application in a Docker container named “webportal”</p></li>
+<li><p>Serves web traffic on both HTTP (port 80) and HTTPS (port 443)</p></li>
+<li><p>Manages multiple client portals for different organizations/museums</p></li>
+</ul>
+</section>
+<section id="key-features">
+<h3>Key features:<a class="headerlink" href="#key-features" title="Link to this heading"></a></h3>
+<ul class="simple">
+<li><p>SSL/HTTPS support with Let’s Encrypt certificates</p></li>
+<li><p>Custom configurations for different client portals</p></li>
+<li><p>File exports from Specify databases stored as ZIP files</p></li>
+<li><p>Custom branding with client-specific images and settings</p></li>
+<li><p>Auto-restart if the container fails</p></li>
+</ul>
+</section>
+<section id="volume-mounts">
+<h3>Volume mounts:<a class="headerlink" href="#volume-mounts" title="Link to this heading"></a></h3>
+<p>The container connects several directories from the host machine (under <code class="docutils literal notranslate"><span class="pre">/home/ubuntu/</span></code>):</p>
+<ul class="simple">
+<li><p><strong>Project files</strong> - the main web portal application code</p></li>
+<li><p><strong>SSL certificates</strong> - for HTTPS encryption</p></li>
+<li><p><strong>Client exports</strong> - database exports for each portal (ZIP files)</p></li>
+<li><p><strong>Custom settings</strong> - portal-specific configurations</p></li>
+<li><p><strong>Custom images</strong> - client branding and logos</p></li>
+</ul>
+<p>These should <strong>not</strong> be edited from within the container.</p>
+<div class="highlight-yml notranslate"><div class="highlight"><pre><span></span>services:
+  webportal:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    image: webportal-service:improve-build
+    container_name: webportal
+    ports:
+      - &quot;80:80&quot;
+      - &quot;443:443&quot;
+    volumes:
+      # Project files
+      - ./webportal-installer:/home/specify/webportal-installer
+
+      # SSL and certs
+      - /etc/letsencrypt/live/webportal.specifycloud.org:/etc/nginx/ssl
+      - /etc/letsencrypt:/etc/letsencrypt
+      - /etc/ssl/certs/dhparam.pem:/etc/ssl/certs/dhparam.pem
+
+      # Static content
+      - /var/www:/var/www
+
+      # Specify exports and customizations
+      - ./specify_exports:/home/specify/webportal-installer/specify_exports
+      - ./custom_settings:/home/specify/webportal-installer/custom_settings
+
+      # Custom images
+      - ./custom-images:/home/specify/
+
+    restart: unless-stopped
+</pre></div>
+</div>
+<p>The server structure should look something like this:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>.
+├──<span class="w"> </span>custom-images
+│<span class="w">   </span>├──<span class="w"> </span>custom-images
+│<span class="w">   </span>└──<span class="w"> </span>webportal-installer
+├──<span class="w"> </span>custom_settings
+│<span class="w">   </span>├──<span class="w"> </span>README.md
+│<span class="w">   </span>├──<span class="w"> </span>VIMSWebPortal
+│<span class="w">   </span>├──<span class="w"> </span>bishopmuseum
+│<span class="w">   </span>├──<span class="w"> </span>cryoarks
+│<span class="w">   </span>├──<span class="w"> </span>emoryherbarium
+│<span class="w">   </span>├──<span class="w"> </span>fwrf
+│<span class="w">   </span>├──<span class="w"> </span>fwri
+│<span class="w">   </span>├──<span class="w"> </span>iz
+│<span class="w">   </span>├──<span class="w"> </span>morpaleo
+│<span class="w">   </span>├──<span class="w"> </span>newmexico
+│<span class="w">   </span>├──<span class="w"> </span>os_webportal_mapping
+│<span class="w">   </span>├──<span class="w"> </span>osichthyology
+│<span class="w">   </span>├──<span class="w"> </span>sbmnhiz
+│<span class="w">   </span>├──<span class="w"> </span>shellmuseum
+│<span class="w">   </span>├──<span class="w"> </span>shellmuseum-1
+│<span class="w">   </span>├──<span class="w"> </span>unsmvp
+│<span class="w">   </span>├──<span class="w"> </span>uwfc
+│<span class="w">   </span>├──<span class="w"> </span>webportalfish
+│<span class="w">   </span>└──<span class="w"> </span>wespalcoll
+├──<span class="w"> </span>docker-compose.yml
+├──<span class="w"> </span>git
+│<span class="w">   </span>└──<span class="w"> </span>webportal-installer
+├──<span class="w"> </span>specify_exports
+│<span class="w">   </span>├──<span class="w"> </span>PortalFiles
+│<span class="w">   </span>├──<span class="w"> </span>README
+│<span class="w">   </span>├──<span class="w"> </span>VIMSWebPortal.zip
+│<span class="w">   </span>├──<span class="w"> </span>backup
+│<span class="w">   </span>├──<span class="w"> </span>bishopmuseum.zip
+│<span class="w">   </span>├──<span class="w"> </span>cryoarks.zip
+│<span class="w">   </span>├──<span class="w"> </span>emoryherbarium.zip
+│<span class="w">   </span>├──<span class="w"> </span>fwrf.zip
+│<span class="w">   </span>├──<span class="w"> </span>fwri.zip
+│<span class="w">   </span>├──<span class="w"> </span>iz.zip
+│<span class="w">   </span>├──<span class="w"> </span>morpaleo.zip
+│<span class="w">   </span>├──<span class="w"> </span>newmexico.zip
+│<span class="w">   </span>├──<span class="w"> </span>os_webportal_mapping.zip
+│<span class="w">   </span>├──<span class="w"> </span>osichthyology.zip
+│<span class="w">   </span>├──<span class="w"> </span>sbmnhiz.zip
+│<span class="w">   </span>├──<span class="w"> </span>shellmuseum.zip
+│<span class="w">   </span>├──<span class="w"> </span>uwfc.zip
+│<span class="w">   </span>├──<span class="w"> </span>webportalfish.zip
+│<span class="w">   </span>└──<span class="w"> </span>wespalcoll.zip
+└──<span class="w"> </span>webportal-installer
+<span class="w">    </span>├──<span class="w"> </span>AggregationDoc.txt
+<span class="w">    </span>├──<span class="w"> </span>Dockerfile
+<span class="w">    </span>├──<span class="w"> </span>LICENSE
+<span class="w">    </span>├──<span class="w"> </span>Makefile
+<span class="w">    </span>├──<span class="w"> </span>PortalApp
+<span class="w">    </span>├──<span class="w"> </span>README.md
+<span class="w">    </span>├──<span class="w"> </span>SearchingDoc.txt
+<span class="w">    </span>├──<span class="w"> </span>build
+<span class="w">    </span>├──<span class="w"> </span>custom_settings
+<span class="w">    </span>├──<span class="w"> </span>get_latest_solr_vers.py
+<span class="w">    </span>├──<span class="w"> </span>index_skel.html
+<span class="w">    </span>├──<span class="w"> </span>make_fields_template.py
+<span class="w">    </span>├──<span class="w"> </span>make_fldmodel_json.py
+<span class="w">    </span>├──<span class="w"> </span>make_settings_template.py
+<span class="w">    </span>├──<span class="w"> </span>make_solr_xml.py
+<span class="w">    </span>├──<span class="w"> </span>make_toplevel_index.py
+<span class="w">    </span>├──<span class="w"> </span>no_admin_web.xml
+<span class="w">    </span>├──<span class="w"> </span>patch_schema_xml.py
+<span class="w">    </span>├──<span class="w"> </span>patch_settings_json.py
+<span class="w">    </span>├──<span class="w"> </span>patch_solrconfig_xml.py
+<span class="w">    </span>├──<span class="w"> </span>patch_web_xml.py
+<span class="w">    </span>├──<span class="w"> </span>solr-7.5.0
+<span class="w">    </span>├──<span class="w"> </span>solr-7.5.0.tgz
+<span class="w">    </span>├──<span class="w"> </span>specify_exports
+<span class="w">    </span>├──<span class="w"> </span>webportal-nginx.conf
+<span class="w">    </span>├──<span class="w"> </span>webportal-solr.service
+<span class="w">    </span>└──<span class="w"> </span>with_admin_web.xml
+</pre></div>
+</div>
+</section>
+</section>
+<section id="adding-an-instance">
+<h2>Adding an Instance<a class="headerlink" href="#adding-an-instance" title="Link to this heading"></a></h2>
+<p>Assuming the export made from Specify 6 is named <code class="docutils literal notranslate"><span class="pre">DataExport.zip</span></code> and it is in the current directory:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>scp<span class="w"> </span>./DataExport.zip<span class="w"> </span>webportal:/home/ubuntu/specify_exports/sbmnhiz.zip
+unzip<span class="w"> </span>DataExport.zip
+<span class="nb">cd</span><span class="w"> </span>PortalFiles
+scp<span class="w"> </span>flds.json<span class="w"> </span>webportal:/home/ubuntu/custom_settings/sbmnhiz/fldmodel.json
+cat<span class="w"> </span>PortalInstanceSetting.json
+scp<span class="w"> </span>PortalInstanceSetting.json<span class="w"> </span>webportal:/home/ubuntu/custom_settings/sbmnhiz/settings.json
+</pre></div>
+</div>
+<p>This creates the necessary templates for customizing the fields included in the portal and the custom settings.</p>
+</section>
+<section id="loading-new-data">
+<h2>Loading New Data<a class="headerlink" href="#loading-new-data" title="Link to this heading"></a></h2>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2025, Specify Collections Consortium Team.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>
