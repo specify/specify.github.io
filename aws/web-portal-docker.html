@@ -18,7 +18,9 @@
       <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
     <script src="../_static/js/theme.js"></script>
     <link rel="index" title="Index" href="../genindex.html" />
-    <link rel="search" title="Search" href="../search.html" /> 
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Specify 7 Docker Config Example" href="../asset_server/asset_config_files.html" />
+    <link rel="prev" title="Setup remote database connection to local mysql workbench" href="remote_db_connection.html" /> 
 </head>
 
 <body class="wy-body-for-nav"> 
@@ -45,7 +47,7 @@
 <li class="toctree-l1"><a class="reference internal" href="../processes/github_guidelines.html"><strong>GitHub Guidelines and Process</strong></a></li>
 </ul>
 <p class="caption" role="heading"><span class="caption-text">Amazon Web Services:</span></p>
-<ul>
+<ul class="current">
 <li class="toctree-l1"><a class="reference internal" href="aws_automation.html">AWS Automation</a></li>
 <li class="toctree-l1"><a class="reference internal" href="aws_infrastructure_notes.html">AWS Infrastructure Notes</a></li>
 <li class="toctree-l1"><a class="reference internal" href="aws_specify_asset_server_setup.html">AWS Specify Asset Server Setup</a></li>
@@ -55,6 +57,17 @@
 <li class="toctree-l1"><a class="reference internal" href="add_new_instance_to_specify_cloud.html">Add new Specify instance to Specify Cloud</a></li>
 <li class="toctree-l1"><a class="reference internal" href="specify_cloud_graviton_setup.html">Specify Cloud Graviton Setup</a></li>
 <li class="toctree-l1"><a class="reference internal" href="remote_db_connection.html">Setup remote database connection to local mysql workbench</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Web Portal using Docker</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#deployment">Deployment</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#what-it-does">What it does:</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#key-features">Key features:</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#volume-mounts">Volume mounts:</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#adding-an-instance">Adding an Instance</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#loading-new-data">Loading New Data</a></li>
+</ul>
+</li>
 </ul>
 <p class="caption" role="heading"><span class="caption-text">Asset Server:</span></p>
 <ul>
@@ -318,7 +331,10 @@ scp<span class="w"> </span>PortalInstanceSetting.json<span class="w"> </span>web
 
            </div>
           </div>
-          <footer>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="remote_db_connection.html" class="btn btn-neutral float-left" title="Setup remote database connection to local mysql workbench" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="../asset_server/asset_config_files.html" class="btn btn-neutral float-right" title="Specify 7 Docker Config Example" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
 
   <hr/>
 

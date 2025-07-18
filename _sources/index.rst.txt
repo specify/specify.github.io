@@ -20,6 +20,7 @@ Welcome to Specify Developer documentation!
    aws/add_new_instance_to_specify_cloud
    aws/specify_cloud_graviton_setup
    aws/remote_db_connection
+   aws/web-portal-docker
 
 .. toctree::
    :maxdepth: 1
