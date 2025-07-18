@@ -312,7 +312,7 @@
 </section>
 <section id="adding-an-instance">
 <h2>Adding an Instance<a class="headerlink" href="#adding-an-instance" title="Link to this heading"></a></h2>
-<p>Assuming the export made from Specify 6 is named <code class="docutils literal notranslate"><span class="pre">DataExport.zip</span></code> and it is in the current directory:</p>
+<p>Assuming the export made from Specify 6 is named <code class="docutils literal notranslate"><span class="pre">DataExport.zip</span></code> and it is in the current directory, you can use <code class="docutils literal notranslate"><span class="pre">scp</span></code> or <code class="docutils literal notranslate"><span class="pre">sftp</span></code> to copy the appropriate files to the web portal server. These were the steps I ran on my local machine to add the appropriate configuration files to the <code class="docutils literal notranslate"><span class="pre">webportal</span></code> SSH host:</p>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>scp<span class="w"> </span>./DataExport.zip<span class="w"> </span>webportal:/home/ubuntu/specify_exports/sbmnhiz.zip
 unzip<span class="w"> </span>DataExport.zip
 <span class="nb">cd</span><span class="w"> </span>PortalFiles
@@ -325,6 +325,34 @@ scp<span class="w"> </span>PortalInstanceSetting.json<span class="w"> </span>web
 </section>
 <section id="loading-new-data">
 <h2>Loading New Data<a class="headerlink" href="#loading-new-data" title="Link to this heading"></a></h2>
+<p>Once your export has been added to <code class="docutils literal notranslate"><span class="pre">specify_exports</span></code> and all relevant custom settings have been added, you need to restart the <code class="docutils literal notranslate"><span class="pre">webportal</span></code> service for the changes to be applied.</p>
+<ol class="arabic simple">
+<li><p>Stop the <code class="docutils literal notranslate"><span class="pre">webportal</span></code> service in the <code class="docutils literal notranslate"><span class="pre">~/webportal-installer</span></code> directory</p></li>
+</ol>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>docker<span class="w"> </span>compose<span class="w"> </span>down
+</pre></div>
+</div>
+<ol class="arabic simple" start="2">
+<li><p>Start the <code class="docutils literal notranslate"><span class="pre">webportal</span></code> service again:</p></li>
+</ol>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>docker<span class="w"> </span>compose<span class="w"> </span>up<span class="w"> </span>-d
+</pre></div>
+</div>
+<ol class="arabic simple" start="3">
+<li><p>Once the solr service has started successfully (takes around 180 seconds after container starts), you can enter the container:</p></li>
+</ol>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>docker<span class="w"> </span><span class="nb">exec</span><span class="w"> </span>-it<span class="w"> </span>webportal<span class="w"> </span>/bin/bash
+</pre></div>
+</div>
+<ol class="arabic simple" start="4">
+<li><p>Once there, run <code class="docutils literal notranslate"><span class="pre">make</span> <span class="pre">load-data</span></code> to load data for all Web Portal instances:</p></li>
+</ol>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>make<span class="w"> </span>load-data
+</pre></div>
+</div>
+<ol class="arabic simple" start="5">
+<li><p>Once the data has loaded, exit the container, then verify the data is present on all</p></li>
+</ol>
 </section>
 </section>
 

@@ -146,7 +146,7 @@ The server structure should look something like this:
 
 ## Adding an Instance
 
-Assuming the export made from Specify 6 is named `DataExport.zip` and it is in the current directory:
+Assuming the export made from Specify 6 is named `DataExport.zip` and it is in the current directory, you can use `scp` or `sftp` to copy the appropriate files to the web portal server. These were the steps I ran on my local machine to add the appropriate configuration files to the `webportal` SSH host:
 
 ```bash
 scp ./DataExport.zip webportal:/home/ubuntu/specify_exports/sbmnhiz.zip
@@ -161,3 +161,30 @@ This creates the necessary templates for customizing the fields included in the 
 
 ## Loading New Data
 
+Once your export has been added to `specify_exports` and all relevant custom settings have been added, you need to restart the `webportal` service for the changes to be applied.
+
+1. Stop the `webportal` service in the `~/webportal-installer` directory
+
+```bash
+docker compose down
+```
+
+2. Start the `webportal` service again:
+
+```bash
+docker compose up -d
+```
+
+3. Once the solr service has started successfully (takes around 180 seconds after container starts), you can enter the container:
+
+```bash
+docker exec -it webportal /bin/bash
+```
+
+4. Once there, run `make load-data` to load data for all Web Portal instances:
+
+```bash
+make load-data
+```
+
+5. Once the data has loaded, exit the container, then verify the data is present on all 
