@@ -6,6 +6,7 @@ Welcome to Specify Developer documentation!
    :caption: Guidelines:
 
    processes/github_guidelines
+   processes/support_guidelines
 
 .. toctree::
    :maxdepth: 1

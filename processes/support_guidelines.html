@@ -1,0 +1,291 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" data-content_root="../">
+<head>
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Support Staff Expectations &amp; Best Practices &mdash; Specify Developer Documentation  documentation</title>
+      <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=80d5e7a1" />
+      <link rel="stylesheet" type="text/css" href="../_static/css/theme.css?v=e59714d7" />
+
+  
+      <script src="../_static/jquery.js?v=5d32c60e"></script>
+      <script src="../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+      <script src="../_static/documentation_options.js?v=5929fcd5"></script>
+      <script src="../_static/doctools.js?v=9bcbadda"></script>
+      <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="AWS Automation" href="../aws/aws_automation.html" />
+    <link rel="prev" title="GitHub Guidelines and Process" href="github_guidelines.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="../index.html" class="icon icon-home">
+            Specify Developer Documentation
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Guidelines:</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="github_guidelines.html"><strong>GitHub Guidelines and Process</strong></a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Support Staff Expectations &amp; Best Practices</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#guiding-principles">Guiding Principles</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#message-etiquette">Message Etiquette</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#standard-troubleshooting-workflow">Standard Troubleshooting Workflow</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#handling-common-request-types">Handling Common Request Types</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#when-to-escalate-or-ask-for-help">When to Escalate or Ask for Help</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#requesting-developer-assistance">Requesting Developer Assistance</a></li>
+</ul>
+</li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Amazon Web Services:</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../aws/aws_automation.html">AWS Automation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../aws/aws_infrastructure_notes.html">AWS Infrastructure Notes</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../aws/aws_specify_asset_server_setup.html">AWS Specify Asset Server Setup</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../aws/aws_specify_cloud_setup.html">Specify Cloud Setup</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../aws/client_migration_notes.html">Digital Ocean to AWS migration</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../aws/ec2_rds_specify7_setup.html">Deploy Specify7 to an EC2 instance</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../aws/add_new_instance_to_specify_cloud.html">Add new Specify instance to Specify Cloud</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../aws/specify_cloud_graviton_setup.html">Specify Cloud Graviton Setup</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../aws/remote_db_connection.html">Setup remote database connection to local mysql workbench</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../aws/web-portal-docker.html">Web Portal using Docker</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Asset Server:</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../asset_server/asset_config_files.html">Specify 7 Docker Config Example</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../asset_server/asset_server_config.html">Asset Server Configuration</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../asset_server/asset_server_setup.html">EC2 Non-Dockerized Build</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../asset_server/hybrid_asset_server_setup.html">Hybrid Asset Server Setup</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Server Management:</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../server_management/managed_servers.html">Updown Monitoring</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../server_management/managed_servers.html#managed-servers">Managed Servers</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../server_management/managed_servers.html#accessing-specify-7-deployments">Accessing Specify 7 Deployments</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../server_management/managed_servers.html#accessing-backups-on-aws-rds">Accessing Backups on AWS RDS</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../server_management/specify_ssh_docker_guide.html">Specify Test Panel User Guide</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../server_management/add_user_to_EC2.html">Server Access Management Policy</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../server_management/check_asset_usage.html">Check Asset Usage</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../server_management/exoscale.html">Exoscale Hosted Instances</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../server_management/exoscale_backups.html">Backups on Exoscale</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../server_management/kuit_ssl_certs.html">New certificate on biprdsp7wbdb.cc.ku.edu server</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../server_management/kuit_ssl_certs.html#web-portal-certificate">web-portal certificate</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../server_management/kuit_ssl_certs.html#specify-ku-edu-ssl-cert-update">specify.ku.edu ssl cert update</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../server_management/reports.html">Hosting Reports</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Internal Processes:</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../dev_process/specify_processes.html">Specify Development Process</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../dev_process/project_docs.html">Project (Github pages) documentation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../dev_process/dbgroups.html">Databases with Specific Features</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../dev_process/individualdbs.html">Individual Database Information</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../dev_process/dev_expectations.html">Developer Expectations</a></li>
+<li class="toctree-l1"><a class="reference internal" href="release_notes.html">Create Release Notes</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Security:</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../security/aws_security.html">AWS Security</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../security/fix_exposed_secret.html">Fix Exposed Secrets</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../security/monitoring.html">Security Monitoring</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Testing:</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../testing/pull_requests.html">Pull Request Testing</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Specify Software:</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../software_desc/glossary.html">Glossary</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../software_desc/overview.html">Overview</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../software_desc/membership.html">Membership</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../software_desc/disciplines.html">Discipline support</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../software_desc/hosting.html">Specify Cloud Hosting</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../software_desc/migration.html">Data Migration</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../software_desc/training.html">Specify Training</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../software_desc/workbench.html">Specify Workbench</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../software_desc/workflows.html">Common Workflows</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Developer Utils:</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../developer_utils/writing_migrations.html">Writing Migrations</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Misc:</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../misc/remove_specify_cloud_instance.html">Removing a Specify Cloud Instance</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../misc/documentation.html">Informatics Documentation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../misc/kuit_notes.html">Working with central KU IT</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../misc/specify7_ecs_most-in-one.html">Create a Most-In-One Specify Docker image</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../misc/useful_bash_cmds.html">Useful bash commands</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../misc/vs_code_django_unit_test_debugging_notes.html">VS Code Django Unit Test Debugging</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../misc/branch_from_tag.html">Create a branch from a tagged release</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">Specify Developer Documentation</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../index.html" class="icon icon-home" aria-label="Home"></a></li>
+      <li class="breadcrumb-item active">Support Staff Expectations &amp; Best Practices</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="../_sources/processes/support_guidelines.md.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="support-staff-expectations-best-practices">
+<h1>Support Staff Expectations &amp; Best Practices<a class="headerlink" href="#support-staff-expectations-best-practices" title="Link to this heading"></a></h1>
+<p>Welcome to the Specify Support Team! Your role is vital to our community’s success. This guide outlines our approach to providing timely, effective, and friendly support to all Specify users.</p>
+<section id="guiding-principles">
+<h2>Guiding Principles<a class="headerlink" href="#guiding-principles" title="Link to this heading"></a></h2>
+<ul class="simple">
+<li><p><strong>Empathy First:</strong> Users contact us when they are stuck, confused, or frustrated. Our first job is to listen, acknowledge their problem, and assure them we’re here to help.</p></li>
+<li><p><strong>Be a Guide:</strong> Our goal isn’t just to solve the immediate problem, but to empower our users. Whenever possible, guide them to the answer by linking to documentation, forum posts, or other resources. This helps them learn and become more self-sufficient.</p></li>
+<li><p><strong>Know Our Resources:</strong> The best answers often already exist, and if it doesn’t it should be added here and linked to.<br />
+Before diving deep into a problem, always check our primary knowledge sources:</p>
+<ul>
+<li><p><strong>Community Forum:</strong> <a class="reference external" href="https://discourse.specifysoftware.org/">https://discourse.specifysoftware.org/</a></p></li>
+<li><p><strong>Documentation:</strong> <a class="reference external" href="https://discourse.specifysoftware.org/docs">https://discourse.specifysoftware.org/docs</a></p></li>
+<li><p><strong>“Get Help” User Issues:</strong> <a class="reference external" href="https://discourse.specifysoftware.org/c/get-help/78">https://discourse.specifysoftware.org/c/get-help/78</a></p></li>
+<li><p><strong>GitHub Issues:</strong> <a class="reference external" href="https://github.com/specify/specify7/issues">https://github.com/specify/specify7/issues</a></p></li>
+<li><p><strong>Technical (Internal) Documentation:</strong> <a class="reference external" href="https://specify.github.io/">https://specify.github.io/</a></p></li>
+<li><p><strong>Previous Emails (in support&#64;specifysoftware.org):</strong> <a class="reference external" href="https://mail.google.com/mail/u/0/#all">https://mail.google.com/mail/u/0/#all</a></p></li>
+</ul>
+</li>
+</ul>
+</section>
+<hr class="docutils" />
+<section id="message-etiquette">
+<h2>Message Etiquette<a class="headerlink" href="#message-etiquette" title="Link to this heading"></a></h2>
+<ul class="simple">
+<li><p><strong>Be Professional and Personable:</strong> Maintain a considerate and professional tone, but don’t be afraid to be friendly. We want users to feel like they’re talking to a helpful colleague.</p></li>
+<li><p><strong>Acknowledge Quickly:</strong> If you anticipate taking more than 30 minutes to provide a full response, send a brief reply to let the user know you’ve received their message and are looking into it. This manages expectations and shows we’re responsive.</p></li>
+<li><p><strong>Test, Don’t Guess:</strong> Before proposing a solution (like a query, a data mapping, or a series of steps), test it yourself on a demo or development instance. This ensures your advice is accurate and solves the problem on the first try.</p></li>
+<li><p><strong>Speak the User’s Language:</strong> Avoid using internal database field names. Instead, use the schema captions the user has configured in their views. For example, do not refer to a field as “<code class="docutils literal notranslate"><span class="pre">stationFieldNumber</span></code>” when you could instead refer to it as the caption they have configured, for example “Field Number”.</p></li>
+<li><p><strong>Avoid “Inside Baseball”:</strong> Do not use technical jargon with external users. Be considerate of their experience.</p></li>
+<li><p><strong>Link Generously:</strong> Include links to resources whenever you can. If you mention the Workbench, link to the documentation section on it. If you reference a known issue, link directly to the GitHub issue. This makes it easy for the user to get more context.</p></li>
+</ul>
+</section>
+<hr class="docutils" />
+<section id="standard-troubleshooting-workflow">
+<h2>Standard Troubleshooting Workflow<a class="headerlink" href="#standard-troubleshooting-workflow" title="Link to this heading"></a></h2>
+<p>Following a consistent process ensures we gather all necessary information and solve issues efficiently.</p>
+<ol class="arabic">
+<li><p><strong>Understand the Goal:</strong> First, make sure you understand what the user is <em>trying to achieve</em>. Sometimes the stated problem isn’t the root cause. You can rephrase their goal back to them to confirm: <em>“It sounds like you’re trying to bulk-update storage locations for a set of preparations. Is that correct?”</em></p></li>
+<li><p><strong>Gather Essential Information:</strong> We cannot effectively troubleshoot without context. If the user hasn’t provided it, politely ask for the following:</p>
+<ul class="simple">
+<li><p><strong>Specify 7 Version:</strong> The exact version number (e.g.,<code class="docutils literal notranslate"><span class="pre">v</span> <span class="pre">7.11.0.2</span></code>), found in the <a class="reference external" href="https://discourse.specifysoftware.org/t/user-tools-menu/536#p-810-about-specify-7-19">“About Specify 7” dialog</a>. A guess is not specific enough.</p></li>
+<li><p><strong>System Information:</strong> If there was no crash, ask them to follow these instructions to download their System Information: <a class="reference external" href="https://www.google.com/search?q=https://discourse.specifysoftware.org/t/download-specify-7-system-information/1614">Download Specify 7 System Information</a>.</p></li>
+<li><p><strong>Screenshots or Videos:</strong> A picture is worth a thousand words. A short screen recording is even better.</p></li>
+<li><p><strong>Crash Report:</strong> If the application crashed, ask them to click “Download Error Message” and attach the resulting file.</p></li>
+<li><p><strong>Steps to Reproduce:</strong> Ask for a clear, step-by-step list of actions that led to the issue.</p></li>
+</ul>
+</li>
+<li><p><strong>Reproduce the Issue:</strong> Using the information provided, try to replicate the problem on a test instance. If you can’t reproduce it, the user’s environment or data is likely a key factor.</p>
+<p>If the issue is hyperspecific to a particular database (migration error, strange behavior on certain records, error with a specific record set or WorkBench upload plan), you can refer them to our guide on how to <a class="reference external" href="https://discourse.specifysoftware.org/t/send-a-backup-to-specify/767">Send a Backup to Specify</a>. Once you receive a database, make sure to comply with any and all requests regarding confidentiality and handling.</p>
+<p>Crash reports can be visualized &amp; analyzed using the <a class="reference external" href="https://sp7demofish.specifycloud.org/specify/developer/crash-report-visualizer">Crash Report Visualizer</a> built-in to every Specify 7 instance.</p>
+</li>
+<li><p><strong>Consult Our Resources:</strong> Search the <strong>Speciforum</strong> and <strong>GitHub Issues</strong> to see if this problem has been reported and solved before. Often, another user has faced the same challenge.</p></li>
+<li><p><strong>Formulate and Send the Solution:</strong> Provide clear, step-by-step instructions. Use Markdown formatting like backticks for <code class="docutils literal notranslate"><span class="pre">code</span></code> or navigation paths (<code class="docutils literal notranslate"><span class="pre">Data</span> <span class="pre">&gt;</span> <span class="pre">Records</span> <span class="pre">&gt;</span> <span class="pre">Collection</span> <span class="pre">Object</span></code>), and use numbered lists for sequences of actions. If the answer seems like it will be applicable to others in the future, please create a new topic on the Speciforum in the appropriate documentation category and link to it in your message.</p></li>
+<li><p><strong>Follow Up:</strong> After providing a solution, check back in to ensure it resolved their issue.</p></li>
+</ol>
+</section>
+<hr class="docutils" />
+<section id="handling-common-request-types">
+<h2>Handling Common Request Types<a class="headerlink" href="#handling-common-request-types" title="Link to this heading"></a></h2>
+<ul class="simple">
+<li><p><strong>“How do I…?” Questions:</strong> These are great opportunities to educate. The best first step is to find the relevant section in our documentation at <a class="reference external" href="https://discourse.specifysoftware.org/docs">https://discourse.specifysoftware.org/docs</a> and link the user to it. If the documentation is unclear or missing, answer their question directly and make a note to suggest an improvement to our docs.</p></li>
+<li><p><strong>“I think I found a bug”:</strong> Follow the troubleshooting workflow to reproduce and confirm the behavior. If it’s a known bug, link them to the GitHub issue so they can track its progress. If it’s a new bug, please use the bug report template to gather all the necessary details. Once written up, share a link to this issue with the user and thank them for reporting it.</p></li>
+<li><p><strong>“I have an idea for a new feature”:</strong> The best place for these discussions to start is on the Speciforum (<a class="reference external" href="https://discourse.specifysoftware.org/c/new-features/37">https://discourse.specifysoftware.org/c/new-features/37</a>). This allows the community to weigh in. If the idea is well-received and clearly defined, we can formalize it using the feature request template for GitHub.</p></li>
+</ul>
+</section>
+<hr class="docutils" />
+<section id="when-to-escalate-or-ask-for-help">
+<h2>When to Escalate or Ask for Help<a class="headerlink" href="#when-to-escalate-or-ask-for-help" title="Link to this heading"></a></h2>
+<p>You are not expected to know everything! Please ask for help whenever you are unsure. Escalate an issue if:</p>
+<ul class="simple">
+<li><p>You cannot reproduce a reported bug after a couple of tries.</p></li>
+<li><p>The issue involves server configuration, Docker, or other infrastructure outside the Specify application itself.</p></li>
+<li><p>The user is asking for help with sensitive information like passwords.</p></li>
+<li><p>The user seems frustrated or is having difficulty communicating the problem.</p></li>
+<li><p>The request is about billing, hosting plans, or other consortium services. These should be directed to the main <a class="reference external" href="https://specifysoftware.org">specifysoftware.org</a> website.</p></li>
+</ul>
+</section>
+<hr class="docutils" />
+<section id="requesting-developer-assistance">
+<h2>Requesting Developer Assistance<a class="headerlink" href="#requesting-developer-assistance" title="Link to this heading"></a></h2>
+<p>Sometimes, an issue is a confirmed bug, feature request, or a data move or update that requires code changes to resolve. Once you’ve exhausted other troubleshooting options and confirmed the need for development work, here is the process for escalating:</p>
+<ol class="arabic simple">
+<li><p><strong>Consolidate Your Findings:</strong> Gather all the information you’ve collected, including the bug report or feature request, steps to reproduce, screenshots, and any relevant details from your investigation.</p></li>
+<li><p><strong>Assess the Impact:</strong> Prepare a brief summary that includes the perceived severity of the issue. Consider these questions:</p>
+<ul class="simple">
+<li><p><strong>From the user’s perspective:</strong> How critical is this for their workflow? Is it a minor annoyance or does it block them completely?</p></li>
+<li><p><strong>From our perspective:</strong> Does this issue affect a single user, a whole institution, or all users? Is there a viable workaround they can use in the meantime?</p></li>
+</ul>
+</li>
+<li><p><strong>Contact the Lead Developer:</strong> Send the complete summary and supporting materials to our lead developer, <strong><a class="reference external" href="mailto:caroline&#46;denis&#37;&#52;&#48;specifysoftware&#46;org">Caroline Denis</a></strong>, via Slack. She will assess the request’s priority and determine when developer resources can be assigned to it.</p></li>
+<li><p><strong>Communicate with the User:</strong> Once Caroline provides feedback on the timeline, relay this information back to the user. Let them know when they can expect a resolution, whether it’s in the next patch or a future major release. Keeping them informed is key to managing their expectations.</p></li>
+</ol>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="github_guidelines.html" class="btn btn-neutral float-left" title="GitHub Guidelines and Process" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="../aws/aws_automation.html" class="btn btn-neutral float-right" title="AWS Automation" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2025, Specify Collections Consortium Team.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>
