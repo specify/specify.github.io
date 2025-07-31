@@ -39,6 +39,8 @@ This guide walks you through configuring VS Code to enable Django backend debugg
 
 
 🛠 ### 2. **Required Code & Config Changes**
+
+
 📁 Add .vscode/settings.json:
 ```json
 [
