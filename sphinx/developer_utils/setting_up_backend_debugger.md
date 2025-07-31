@@ -79,6 +79,7 @@ if settings.DEBUG:
 ```
 
 🐳 **In docker-compose.yml, under specify7 service:**
+
 Add the line under commands:
 ```yaml
 specify7:
