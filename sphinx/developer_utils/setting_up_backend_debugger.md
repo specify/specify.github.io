@@ -1,4 +1,4 @@
-# 🐞 Setting Up Backend Debugger in VS Code for Specify 7
+# Setting Up Backend Debugger in VS Code for Specify 7
 This guide walks you through configuring VS Code to enable Django backend debugging in the Specify 7 codebase.
 
 ## ✅ **Prerequisites**
