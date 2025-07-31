@@ -1,13 +1,13 @@
-#🐞 Setting Up Backend Debugger in VS Code for Specify 7
+# 🐞 Setting Up Backend Debugger in VS Code for Specify 7
 This guide walks you through configuring VS Code to enable Django backend debugging in the Specify 7 codebase.
 
-✅ **Prerequisites**
+## ✅ **Prerequisites**
 - VS Code installed
 - Docker and Docker Compose installed
 - Python extension installed in VS Code
 - Your development environment is cloned and running properly
 
-🧰 ### 1. **VS Code Debug Configuration**
+### 🧰 1. **VS Code Debug Configuration**
 - Open VS Code.
 - Click on the Run and Debug icon in the sidebar.
 - Click "Create a launch.json file".
@@ -38,7 +38,7 @@ This guide walks you through configuring VS Code to enable Django backend debugg
 ```
 
 
-🛠 ### 2. **Required Code & Config Changes**
+### 🛠 2. **Required Code & Config Changes**
 
 
 📁 Add .vscode/settings.json:
@@ -119,7 +119,7 @@ Start your development server:  
 docker compose up
 ```
 
-🐞 ### 3. **Running the Debugger**
+### 🐞 3. **Running the Debugger**
 - Put breakpoints in your Django code.
 - In VS Code, open the Run and Debug panel.
 - Select "Run Django" and press the ▶️ Play icon.
