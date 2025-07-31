@@ -144,6 +144,8 @@ Dockerfile
 FROM ubuntu:24.04
 FROM node:18-alpine
 ```
+### 4. **Annexes** 
+
 New dockerfile: 
 ```bash
 # FROM ubuntu:18.04 AS common
