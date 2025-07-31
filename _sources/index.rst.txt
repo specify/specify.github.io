@@ -89,6 +89,7 @@ Welcome to Specify Developer documentation!
    :caption: Developer Utils:
 
    developer_utils/writing_migrations
+   developer_utils/setting_up_backend_debugger
 
 .. toctree::
    :maxdepth: 1
