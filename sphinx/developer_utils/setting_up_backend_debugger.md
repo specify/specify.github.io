@@ -123,7 +123,7 @@ docker compose up
 - Put breakpoints in your Django code.
 - In VS Code, open the Run and Debug panel.
 - Select "Run Django" and press the ▶️ Play icon.
-- Open the app in your browser as usual (e.g. http://localhost:8000) and trigger code paths to hit breakpoints.
+- Open the app in your browser as usual and trigger code paths to hit breakpoints.
 
 🔁 **When Changing Code**
 To reload the debugger:
