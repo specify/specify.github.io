@@ -54,6 +54,7 @@ Welcome to Specify Developer documentation!
    dev_process/dbgroups
    dev_process/individualdbs
    dev_process/dev_expectations
+   dev_process/developeronboarding
    processes/release_notes
 
 .. toctree::
