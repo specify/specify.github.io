@@ -94,6 +94,12 @@ Welcome to Specify Developer documentation!
 
 .. toctree::
    :maxdepth: 1
+   :caption: Technical Decisions:
+
+   technical_decisions/component_extension
+
+.. toctree::
+   :maxdepth: 1
    :caption: Misc:
 
    misc/remove_specify_cloud_instance
