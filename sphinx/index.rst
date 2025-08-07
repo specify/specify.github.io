@@ -10,6 +10,12 @@ Welcome to Specify Developer documentation!
 
 .. toctree::
    :maxdepth: 1
+   :caption: Launching a Release:
+   processes/release_process
+   processes/release_notes
+
+.. toctree::
+   :maxdepth: 1
    :caption: Amazon Web Services:
 
    aws/aws_automation
@@ -55,7 +61,6 @@ Welcome to Specify Developer documentation!
    dev_process/individualdbs
    dev_process/dev_expectations
    dev_process/developeronboarding
-   processes/release_notes
 
 .. toctree::
    :maxdepth: 1
