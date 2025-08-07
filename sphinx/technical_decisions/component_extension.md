@@ -1,4 +1,4 @@
-### Component Extension to Collection Objects
+# Component Extension to Collection Objects
 
 ## Overview
 
