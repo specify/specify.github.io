@@ -98,6 +98,7 @@ Welcome to Specify Developer documentation!
 
    technical_decisions/component_extension
    technical_decisions/batch_edit
+   technical_decisions/cog
 
 .. toctree::
    :maxdepth: 1
