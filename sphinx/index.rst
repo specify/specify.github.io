@@ -97,6 +97,7 @@ Welcome to Specify Developer documentation!
    :caption: Technical Decisions:
 
    technical_decisions/component_extension
+   technical_decisions/batch_edit
 
 .. toctree::
    :maxdepth: 1
