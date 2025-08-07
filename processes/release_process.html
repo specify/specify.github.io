@@ -6,7 +6,7 @@
   <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Developer Expectations &mdash; Specify Developer Documentation  documentation</title>
+  <title>Release Process &mdash; Specify Developer Documentation  documentation</title>
       <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=80d5e7a1" />
       <link rel="stylesheet" type="text/css" href="../_static/css/theme.css?v=e59714d7" />
 
@@ -18,9 +18,7 @@
       <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
     <script src="../_static/js/theme.js"></script>
     <link rel="index" title="Index" href="../genindex.html" />
-    <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="Developer Onboarding – Specify Software" href="developeronboarding.html" />
-    <link rel="prev" title="Individual Database Information" href="individualdbs.html" /> 
+    <link rel="search" title="Search" href="../search.html" /> 
 </head>
 
 <body class="wy-body-for-nav"> 
@@ -44,8 +42,8 @@
         </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
               <p class="caption" role="heading"><span class="caption-text">Guidelines:</span></p>
 <ul>
-<li class="toctree-l1"><a class="reference internal" href="../processes/github_guidelines.html"><strong>GitHub Guidelines and Process</strong></a></li>
-<li class="toctree-l1"><a class="reference internal" href="../processes/support_guidelines.html">Support Staff Expectations &amp; Best Practices</a></li>
+<li class="toctree-l1"><a class="reference internal" href="github_guidelines.html"><strong>GitHub Guidelines and Process</strong></a></li>
+<li class="toctree-l1"><a class="reference internal" href="support_guidelines.html">Support Staff Expectations &amp; Best Practices</a></li>
 </ul>
 <p class="caption" role="heading"><span class="caption-text">Amazon Web Services:</span></p>
 <ul>
@@ -84,23 +82,13 @@
 <li class="toctree-l1"><a class="reference internal" href="../server_management/reports.html">Hosting Reports</a></li>
 </ul>
 <p class="caption" role="heading"><span class="caption-text">Internal Processes:</span></p>
-<ul class="current">
-<li class="toctree-l1"><a class="reference internal" href="specify_processes.html">Specify Development Process</a></li>
-<li class="toctree-l1"><a class="reference internal" href="project_docs.html">Project (Github pages) documentation</a></li>
-<li class="toctree-l1"><a class="reference internal" href="dbgroups.html">Databases with Specific Features</a></li>
-<li class="toctree-l1"><a class="reference internal" href="individualdbs.html">Individual Database Information</a></li>
-<li class="toctree-l1 current"><a class="current reference internal" href="#">Developer Expectations</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="#student-developers">Student developers:</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#staff-and-student-developers">Staff and Student Developers:</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="#planning">Planning</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#support-and-maintenance-tasks">Support and Maintenance Tasks</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#development-tasks">Development Tasks</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#communication">Communication</a></li>
-</ul>
-</li>
-</ul>
-</li>
-<li class="toctree-l1"><a class="reference internal" href="developeronboarding.html">Developer Onboarding – Specify Software</a></li>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../dev_process/specify_processes.html">Specify Development Process</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../dev_process/project_docs.html">Project (Github pages) documentation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../dev_process/dbgroups.html">Databases with Specific Features</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../dev_process/individualdbs.html">Individual Database Information</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../dev_process/dev_expectations.html">Developer Expectations</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../dev_process/developeronboarding.html">Developer Onboarding – Specify Software</a></li>
 </ul>
 <p class="caption" role="heading"><span class="caption-text">Security:</span></p>
 <ul>
@@ -160,9 +148,9 @@
           <div role="navigation" aria-label="Page navigation">
   <ul class="wy-breadcrumbs">
       <li><a href="../index.html" class="icon icon-home" aria-label="Home"></a></li>
-      <li class="breadcrumb-item active">Developer Expectations</li>
+      <li class="breadcrumb-item active">Release Process</li>
       <li class="wy-breadcrumbs-aside">
-            <a href="../_sources/dev_process/dev_expectations.rst.txt" rel="nofollow"> View page source</a>
+            <a href="../_sources/processes/release_process.md.txt" rel="nofollow"> View page source</a>
       </li>
   </ul>
   <hr/>
@@ -170,106 +158,14 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
              
-  <section id="developer-expectations">
-<h1>Developer Expectations<a class="headerlink" href="#developer-expectations" title="Link to this heading"></a></h1>
-<section id="student-developers">
-<h2>Student developers:<a class="headerlink" href="#student-developers" title="Link to this heading"></a></h2>
-<ul class="simple">
-<li><p>Attend student developer meetings.</p></li>
-<li><p>Work in the office at least 50% of the time.</p></li>
-</ul>
-</section>
-<section id="staff-and-student-developers">
-<h2>Staff and Student Developers:<a class="headerlink" href="#staff-and-student-developers" title="Link to this heading"></a></h2>
-<section id="planning">
-<h3>Planning<a class="headerlink" href="#planning" title="Link to this heading"></a></h3>
-<ul class="simple">
-<li><p>This project has many interlocking parts and dependencies, and requires the team to
-work closely together to ensure that dependencies are met in a timely manner.</p></li>
-<li><p>Respect deadlines and complete tasks within the agreed timeframe.</p></li>
-<li><p>Define realistic timelines for new features you accept.</p></li>
-<li><p>Commit to projects that you start working on.</p></li>
-</ul>
-</section>
-<section id="support-and-maintenance-tasks">
-<h3>Support and Maintenance Tasks<a class="headerlink" href="#support-and-maintenance-tasks" title="Link to this heading"></a></h3>
-<ul class="simple">
-<li><p>User issues should be created by the user-support team in the specify-development
-repository.</p></li>
-<li><p>When asked to work on user issues, test panel bugs, etc (anything that is not a part
-of the current milestone):</p>
-<ul>
-<li><p>Ask the requester to create an issue on the specify-development repo or create one
-yourself.  Include details such as requirements, related components and/or database.</p></li>
-<li><p>Assign yourself to it.</p></li>
-<li><p>Verify with your supervisor the priority.</p></li>
-<li><p>Define together a time to work on the new issue.</p></li>
-<li><p>For non-emergency user or user-support requests, we will delay response for at
-least 24 hours to allow users to work out the problem themselves.</p></li>
-<li><p>Follow this procedure even for issues that appear very small and quickly resolved.
-We need to maintain a record of individual member issues and recurring issues,
-allowing us to reconsider problematic design or implementation, fill in
-training or documentation, or reconsider support charges.</p></li>
-</ul>
-</li>
-</ul>
-</section>
-<section id="development-tasks">
-<h3>Development Tasks<a class="headerlink" href="#development-tasks" title="Link to this heading"></a></h3>
-<ul class="simple">
-<li><p>When starting work on an issue/branch, check in even unfinished code changes
-regularly.  Mark as unfinished when applicable.</p></li>
-<li><p>Do not comment on code until you are personally tagged as a reviewer, or the entire
-dev group is tagged.  If new code is added after your review, wait for a new request
-to be sent.</p></li>
-<li><p>Thoroughly test PRs with more general testing procedures before sending for review.
-Do not skip previously-passing tests after changes, as some bugs come back to life.</p></li>
-<li><p>Write detailed instructions for testers, possibly adding to the testing instructions
-after changes.</p></li>
-<li><p>Complete individual PRs to the “request testing” stage before moving on to another
-issue.</p></li>
-<li><p>Respond to requests for changes on PRs as soon as possible, sometimes setting aside
-newer issues or other assigned tasks.</p></li>
-</ul>
-</section>
-<section id="communication">
-<h3>Communication<a class="headerlink" href="#communication" title="Link to this heading"></a></h3>
-<ul class="simple">
-<li><p>Communicate clearly, respectfully, and in a timely manner on all code issues.  Offer
-improvements in code reviews or in meetings, not in isolation.</p></li>
-<li><p>Offer alternate implementation strategies at the appropriate time in the development
-cycle.  Do not disrupt the process after a decision has been made.</p></li>
-<li><p>If you are not sure of the best course of action on a complex issue, call a meeting
-with other developers to talk out the implications of different solutions.</p></li>
-<li><p>If a strategy agreed on by a group proves inadequate, discuss with the group before
-changing course.</p></li>
-<li><p>Meetings with the development group are preferable to extensive discussion on GitHub
-or Slack.  After the meeting, provide an appropriate summary on GitHub.</p></li>
-<li><p>Always write clear and concise summaries of the issues AND the agreed-upon solutions
-on Github or the appropriate platform.</p></li>
-<li><p>When appropriate, fully document the reasoning behind complex decisions in writing.
-This historical record will help our development process in general, so that if we
-choose to modify or refactor something, we do not overlook considerations that went
-into the original design.</p></li>
-<li><p>Act as a mentor to newer (staff or student) developers.  Follow up verbal interaction
-with some type of documentation.  Write an explanatory email or document, as well as
-pointing to any relevant code.</p></li>
-<li><p>Provide adequate written/verbal notice to your supervisor, as well as adding events
-on the shared calendar, before taking vacation time.  Some time periods may not be
-approved (though rarely) if there are important deadlines or meetings for which
-rescheduling is impossible.</p></li>
-</ul>
-</section>
-</section>
+  <section id="release-process">
+<h1>Release Process<a class="headerlink" href="#release-process" title="Link to this heading"></a></h1>
 </section>
 
 
            </div>
           </div>
-          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
-        <a href="individualdbs.html" class="btn btn-neutral float-left" title="Individual Database Information" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
-        <a href="developeronboarding.html" class="btn btn-neutral float-right" title="Developer Onboarding – Specify Software" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
-    </div>
+          <footer>
 
   <hr/>
 
