@@ -105,6 +105,7 @@ Welcome to Specify Developer documentation!
    technical_decisions/component_extension
    technical_decisions/batch_edit
    technical_decisions/cog
+   technical_decisions/extended_age_query
 
 .. toctree::
    :maxdepth: 1
