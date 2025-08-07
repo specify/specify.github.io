@@ -62,6 +62,7 @@ Welcome to Specify Developer documentation!
    dev_process/individualdbs
    dev_process/dev_expectations
    dev_process/developeronboarding
+   dev_process/dev_support_process
 
 .. toctree::
    :maxdepth: 1
