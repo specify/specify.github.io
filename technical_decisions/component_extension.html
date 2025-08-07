@@ -122,14 +122,16 @@
 </ul>
 <p class="caption" role="heading"><span class="caption-text">Technical Decisions:</span></p>
 <ul class="current">
-<li class="toctree-l1 current"><a class="current reference internal" href="#">Component Extension to Collection Objects</a></li>
-<li class="toctree-l1"><a class="reference internal" href="#overview">Overview</a></li>
-<li class="toctree-l1"><a class="reference internal" href="#background-and-motivation">Background and Motivation</a></li>
-<li class="toctree-l1"><a class="reference internal" href="#component-extension-goals">Component Extension Goals</a></li>
-<li class="toctree-l1"><a class="reference internal" href="#key-functional-benefits">Key Functional Benefits</a></li>
-<li class="toctree-l1"><a class="reference internal" href="#technical-scope-and-implementation-summary">Technical Scope and Implementation Summary</a></li>
-<li class="toctree-l1"><a class="reference internal" href="#conclusion">Conclusion</a></li>
-<li class="toctree-l1"><a class="reference internal" href="#why-components-were-not-implemented-as-child-collection-objects">Why Components Were Not Implemented as Child Collection Objects</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Component Extension to Collection Objects</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#overview">Overview</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#background-and-motivation">Background and Motivation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#component-extension-goals">Component Extension Goals</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#key-functional-benefits">Key Functional Benefits</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#technical-scope-and-implementation-summary">Technical Scope and Implementation Summary</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#conclusion">Conclusion</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#why-components-were-not-implemented-as-child-collection-objects">Why Components Were Not Implemented as Child Collection Objects</a></li>
+</ul>
+</li>
 <li class="toctree-l1"><a class="reference internal" href="batch_edit.html">Batch Edit</a></li>
 <li class="toctree-l1"><a class="reference internal" href="cog.html">Technical Justification: Collection Object Groups (COG) Design &amp; Implementation</a></li>
 </ul>
@@ -170,14 +172,13 @@
              
   <section id="component-extension-to-collection-objects">
 <h1>Component Extension to Collection Objects<a class="headerlink" href="#component-extension-to-collection-objects" title="Link to this heading"></a></h1>
-</section>
 <section id="overview">
-<h1>Overview<a class="headerlink" href="#overview" title="Link to this heading"></a></h1>
+<h2>Overview<a class="headerlink" href="#overview" title="Link to this heading"></a></h2>
 <p>The Component extension enhances the existing Collection Object (CO) data structure by introducing
 a flexible and structured way to manage sub-elements of a CO—such as rocks, fossils, and minerals—within a one-to-many relationship. This feature directly addresses the slow and cumbersome data entry process associated with the current Collection Object Group system, simplifies the entry of sub-objects, reduces time spent on repetitive tasks, and responds to feedback received from domain experts and partner institutions.</p>
 </section>
 <section id="background-and-motivation">
-<h1>Background and Motivation<a class="headerlink" href="#background-and-motivation" title="Link to this heading"></a></h1>
+<h2>Background and Motivation<a class="headerlink" href="#background-and-motivation" title="Link to this heading"></a></h2>
 <p>Following concerns raised in correspondence and during meetings about inefficiencies in the current data entry process, we developed the Component extension to streamline workflows and reduce redundancy. The existing Collection Object Group (COG) model remains available and continues to be the appropriate tool for representing more complex specimen relationships where full object-level modeling is required. Users reported difficulties such as:</p>
 <ul class="simple">
 <li><p>Repetitive entry of the same data across COs within a COG</p></li>
@@ -187,7 +188,7 @@ a flexible and structured way to manage sub-elements of a CO—such as rocks, fo
 </ul>
 </section>
 <section id="component-extension-goals">
-<h1>Component Extension Goals<a class="headerlink" href="#component-extension-goals" title="Link to this heading"></a></h1>
+<h2>Component Extension Goals<a class="headerlink" href="#component-extension-goals" title="Link to this heading"></a></h2>
 <p>The Component extension is designed to:</p>
 <ul class="simple">
 <li><p>Provide a way to represent identifiable parts of a CO without elevating each to a member of a COG.</p></li>
@@ -197,7 +198,7 @@ a flexible and structured way to manage sub-elements of a CO—such as rocks, fo
 </ul>
 </section>
 <section id="key-functional-benefits">
-<h1>Key Functional Benefits<a class="headerlink" href="#key-functional-benefits" title="Link to this heading"></a></h1>
+<h2>Key Functional Benefits<a class="headerlink" href="#key-functional-benefits" title="Link to this heading"></a></h2>
 <ol class="arabic simple">
 <li><p>Simplified Data Entry</p></li>
 </ol>
@@ -229,7 +230,7 @@ a flexible and structured way to manage sub-elements of a CO—such as rocks, fo
 </ul>
 </section>
 <section id="technical-scope-and-implementation-summary">
-<h1>Technical Scope and Implementation Summary<a class="headerlink" href="#technical-scope-and-implementation-summary" title="Link to this heading"></a></h1>
+<h2>Technical Scope and Implementation Summary<a class="headerlink" href="#technical-scope-and-implementation-summary" title="Link to this heading"></a></h2>
 <ul class="simple">
 <li><p><strong>New Component Table</strong> : One-to-many relationship from Collection Object.</p></li>
 <li><p><strong>Key Fields</strong>:</p>
@@ -261,11 +262,11 @@ a flexible and structured way to manage sub-elements of a CO—such as rocks, fo
 </ul>
 </section>
 <section id="conclusion">
-<h1>Conclusion<a class="headerlink" href="#conclusion" title="Link to this heading"></a></h1>
+<h2>Conclusion<a class="headerlink" href="#conclusion" title="Link to this heading"></a></h2>
 <p>The Component extension represents a direct response to user feedback and solves real problems encountered in managing complex specimens. It simplifies workflows, improves data consistency, and enhances querying capabilities.</p>
 </section>
 <section id="why-components-were-not-implemented-as-child-collection-objects">
-<h1>Why Components Were Not Implemented as Child Collection Objects<a class="headerlink" href="#why-components-were-not-implemented-as-child-collection-objects" title="Link to this heading"></a></h1>
+<h2>Why Components Were Not Implemented as Child Collection Objects<a class="headerlink" href="#why-components-were-not-implemented-as-child-collection-objects" title="Link to this heading"></a></h2>
 <p>We chose not to implement Components as child Collection Objects within the existing CO table using a parent-child relationship. While this approach was initially considered, we determined it introduced too many usability, structural, and performance drawbacks that outweighed its potential benefits. Key reasons for this decision include:</p>
 <ul class="simple">
 <li><p><strong>Determination View Limitation</strong>: The determination relationship could not support a Query Combo Box (QCBX) in this setup and would have required a subview, reducing usability and flexibility.</p></li>
@@ -276,6 +277,7 @@ a flexible and structured way to manage sub-elements of a CO—such as rocks, fo
 <li><p><strong>WorkBench Complexity</strong>: Data entry in WorkBench would have been significantly more difficult, requiring multiple columns to represent nested parent-child relationships.</p></li>
 <li><p><strong>Limited Benefit</strong>: The only clear advantage of this model was the potential for hierarchical nesting of children, which did not justify the additional complexity introduced.</p></li>
 </ul>
+</section>
 </section>
 
 
