@@ -63,6 +63,7 @@ Welcome to Specify Developer documentation!
    dev_process/dev_expectations
    dev_process/developeronboarding
    dev_process/dev_support_process
+   dev_process/release_process_timeline
 
 .. toctree::
    :maxdepth: 1
