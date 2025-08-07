@@ -1,4 +1,4 @@
-# Technical Justification: Collection Object Groups (COG) Design & Implementation
+# Collection Object Groups (COG) Design & Implementation
 
 ## Purpose and Context
 
