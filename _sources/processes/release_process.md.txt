@@ -29,5 +29,13 @@ The subject for the email should be formatted like this, replacing the Specify 7
 
 Once this is done, add all relevant [Google Groups](https://groups.google.com/) to the recipients list (in To:). For example, if this update is only for the US region of Specify Cloud, we can email `specify-cloud-us@specifysoftware.org`. If it applies to all regions, we can include these as additional recipients.
 
+```
+"Specify Cloud (US)" <specify-cloud-us@specifysoftware.org>, "Specify Cloud (BR)" <specify-cloud-br@specifysoftware.org>, "Specify Cloud (CA)" <specify-cloud-ca@specifysoftware.org>, "Specify Cloud (CH)" <specify-cloud-ch@specifysoftware.org>, "Specify Cloud (EU)" <specify-cloud-eu@specifysoftware.org>, "Specify Cloud (IL)" <specify-cloud-il@specifysoftware.org>
+```
+
 ![Select Specify Cloud regions](update_process/specifycloudemail.png)
+
+These are all visible in Google Groups:
+
+![Region Groups](update_process/regiongroups.png)
 
