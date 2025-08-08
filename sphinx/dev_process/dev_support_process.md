@@ -13,6 +13,7 @@ Developer support will be available at the following times:
 
 1. Send a request to **Caroline** on Slack describing the issue.
 2. Once approved, the **Customer Service requester** creates a GitHub issue in the `specify-development` repo and adds it to the **current milestone**. (The pr might be done in one of the other repo, i.e: web-asset-server, linked to the root issue).
+3. Customer Service requester adds the issue to the Asana project **Dev Support** (Specify: assignee, due date, GitHub link).
 4. The assigned developer will:
    - Handle the request on their support day.
    - Provide a brief summary of how the issue was resolved.
