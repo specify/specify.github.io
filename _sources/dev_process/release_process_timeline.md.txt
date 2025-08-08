@@ -14,13 +14,13 @@ All future updates will follow a standardized release process:
 ## Timeline: Testing + Update
 
 ### Week 1
-- **Monday–Friday**: General testing begins and is completed by **Friday**.
+- **Monday–Friday**: Internal testing begins and is completed by **Friday**.
 - **Friday**: KU test instances are updated to the latest version.
-- **Friday Night**: Open testing week begins (email notification is sent).
+- **Friday Night**: Global testing week begins (email notification is sent).
 
 ### Week 2
 - **Wednesday**: Release announcement email is sent to users, including downtime window.
-- **Friday Night**: Open testing week ends.
+- **Friday Night**: Global testing week ends.
 - **Saturday or Sunday**: Production update is performed during the confirmed 12-hour window.  
   > During this time, **Specify will be inaccessible for up to 12 hours**.  
   > All hosted instances will be updated simultaneously. Institutions that do not wish to be updated must wait for the next release cycle.
@@ -32,11 +32,11 @@ All future updates will follow a standardized release process:
 
 | Week | Day              | Activity                                                                 |
 |------|------------------|--------------------------------------------------------------------------|
-| 1    | Monday            | General testing starts                                                  |
-| 1    | Friday            | General testing completed                                               |
+| 1    | Monday            | Internal testing starts                                                  |
+| 1    | Friday            | Internal testing completed                                               |
 | 1    | Friday            | KU test instances updated to latest version                             |
-| 1    | Friday Night      | Open testing week begins (email sent)                                   |
+| 1    | Friday Night      | Global testing week begins (email sent)                                   |
 | 2    | Wednesday         | Release announcement + downtime email sent to users                     |
-| 2    | Friday Night      | Open testing week ends                                                  |
+| 2    | Friday Night      | Global testing week ends                                                  |
 | 2    | Saturday/Sunday   | Production update (Specify inaccessible for up to 12 hours)             |
 | 2    | Monday            | Follow-up email confirming successful update                            |
