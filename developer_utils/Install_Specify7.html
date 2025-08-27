@@ -198,7 +198,7 @@ Ubuntu/Debian: <code class="docutils literal notranslate"><span class="pre">sudo
 <h2>3) Check out the requested tag<a class="headerlink" href="#check-out-the-requested-tag" title="Link to this heading"></a></h2>
 <p>Open a terminal in VS Code (or any shell) and run:</p>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="nb">cd</span><span class="w"> </span>specify7
-git<span class="w"> </span>checkout<span class="w"> </span>tags/v7.8.6
+git<span class="w"> </span>checkout<span class="w"> </span>tags/v7.11.1
 </pre></div>
 </div>
 </section>
@@ -226,11 +226,7 @@ pip3<span class="w"> </span>install<span class="w"> </span>--upgrade<span class=
 <hr class="docutils" />
 <section id="get-a-seed-database">
 <h2>5) Get a seed database<a class="headerlink" href="#get-a-seed-database" title="Link to this heading"></a></h2>
-<p>Download a database from the Specify test panel. Prefer:</p>
-<ul class="simple">
-<li><p><code class="docutils literal notranslate"><span class="pre">ciscollections_2025_02_10_4__2025_08_22</span></code></p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">KUBirds_2024_06_06_2_2025_08_05</span></code></p></li>
-</ul>
+<p>Download a database from the Specify test panel.</p>
 <p>Then:</p>
 <ol class="arabic">
 <li><p>Open the downloaded <code class="docutils literal notranslate"><span class="pre">.sql</span></code> in an editor.</p></li>
@@ -258,7 +254,7 @@ pip3<span class="w"> </span>install<span class="w"> </span>--upgrade<span class=
 <ul class="simple">
 <li><p><strong>Server Host:</strong> <code class="docutils literal notranslate"><span class="pre">localhost</span></code></p></li>
 <li><p><strong>Port:</strong> <code class="docutils literal notranslate"><span class="pre">3306</span></code></p></li>
-<li><p><strong>Database:</strong> <code class="docutils literal notranslate"><span class="pre">ciscollections_2025_02_10_4__2025_08_22</span></code> <em>(or the DB you downloaded)</em></p></li>
+<li><p><strong>Database:</strong> <code class="docutils literal notranslate"><span class="pre">DATABASE_NAME</span></code></p></li>
 <li><p><strong>Show all databases:</strong> ✅ checked</p></li>
 <li><p><strong>Username:</strong> <code class="docutils literal notranslate"><span class="pre">root</span></code></p></li>
 <li><p><strong>Password:</strong> your root password (must match <code class="docutils literal notranslate"><span class="pre">MYSQL_ROOT_PASSWORD</span></code> below)</p></li>
@@ -296,7 +292,7 @@ MASTER_PASSWORD=master_pw_here
 </ul>
 <p>Login:</p>
 <ul class="simple">
-<li><p><strong>Username:</strong> <code class="docutils literal notranslate"><span class="pre">spadmin</span></code></p></li>
+<li><p><strong>Username:</strong> i.e <code class="docutils literal notranslate"><span class="pre">spadmin</span></code></p></li>
 <li><p><strong>Password:</strong> <code class="docutils literal notranslate"><span class="pre">testuser</span></code></p></li>
 </ul>
 <p>Select any collection from the drop-down.</p>
