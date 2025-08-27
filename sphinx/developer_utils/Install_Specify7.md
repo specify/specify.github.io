@@ -29,7 +29,7 @@ Open a terminal in VS Code (or any shell) and run:
 
 ```bash
 cd specify7
-git checkout tags/v7.8.6
+git checkout tags/v7.11.1
 ```
 
 ---
@@ -57,9 +57,7 @@ pip3 install --upgrade -r requirements.txt
 
 ## 5) Get a seed database
 
-Download a database from the Specify test panel. Prefer:
-- `ciscollections_2025_02_10_4__2025_08_22`
-- `KUBirds_2024_06_06_2_2025_08_05`
+Download a database from the Specify test panel.
 
 Then:
 
@@ -85,7 +83,7 @@ Fill exactly:
 
 - **Server Host:** `localhost`  
 - **Port:** `3306`  
-- **Database:** `ciscollections_2025_02_10_4__2025_08_22` *(or the DB you downloaded)*  
+- **Database:** `DATABASE_NAME` 
 - **Show all databases:** ✅ checked  
 - **Username:** `root`  
 - **Password:** your root password (must match `MYSQL_ROOT_PASSWORD` below)
@@ -127,7 +125,7 @@ Open the app:
 
 Login:
 
-- **Username:** `spadmin`  
+- **Username:** i.e `spadmin`
 - **Password:** `testuser`
 
 Select any collection from the drop-down.
