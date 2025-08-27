@@ -97,7 +97,8 @@ Fill exactly:
 Click **Test Connection** (optional) → **Finish**.
 
 > Screenshot included in this repo-friendly path:
->
+> <img width="558" height="326" alt="Main Advanced Driver properties" src="https://github.com/user-attachments/assets/66bf0913-5dd2-46d3-b27c-eb7ac74f6f35" />
+
 > ![DBeaver connection settings](docs/dbeaver-connection.png)
 
 ---
