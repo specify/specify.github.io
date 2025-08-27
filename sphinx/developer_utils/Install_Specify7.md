@@ -1,9 +1,5 @@
 # Installing Specify 7 Locally
 
-Everything in one place so you can paste straight into GitHub.
-
----
-
 ## 1) Install required software
 
 - VS Code IDE  
