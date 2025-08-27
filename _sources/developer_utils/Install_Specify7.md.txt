@@ -128,7 +128,7 @@ Open the app:
 Login:
 
 - **Username:** `spadmin`  
-- **Password:** `test user`
+- **Password:** `testuser`
 
 Select any collection from the drop-down.
 
