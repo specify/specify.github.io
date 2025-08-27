@@ -99,6 +99,7 @@ Welcome to Specify Developer documentation!
 
    developer_utils/writing_migrations
    developer_utils/setting_up_backend_debugger
+   developer_utils/Install_Specify7
 
 .. toctree::
    :maxdepth: 1
