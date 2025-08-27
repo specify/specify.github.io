@@ -1,0 +1,392 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" data-content_root="../">
+<head>
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Installing Specify 7 Locally &mdash; Specify Developer Documentation  documentation</title>
+      <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=80d5e7a1" />
+      <link rel="stylesheet" type="text/css" href="../_static/css/theme.css?v=e59714d7" />
+
+  
+      <script src="../_static/jquery.js?v=5d32c60e"></script>
+      <script src="../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+      <script src="../_static/documentation_options.js?v=5929fcd5"></script>
+      <script src="../_static/doctools.js?v=9bcbadda"></script>
+      <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="../index.html" class="icon icon-home">
+            Specify Developer Documentation
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Guidelines:</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../processes/github_guidelines.html"><strong>GitHub Guidelines and Process</strong></a></li>
+<li class="toctree-l1"><a class="reference internal" href="../processes/support_guidelines.html">Support Staff Expectations &amp; Best Practices</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Launching a Release:</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../processes/release_process.html">Release Process for Hosted Users</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../processes/release_notes.html">Create Release Notes</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Amazon Web Services:</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../aws/aws_automation.html">AWS Automation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../aws/aws_infrastructure_notes.html">AWS Infrastructure Notes</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../aws/aws_specify_asset_server_setup.html">AWS Specify Asset Server Setup</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../aws/aws_specify_cloud_setup.html">Specify Cloud Setup</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../aws/client_migration_notes.html">Digital Ocean to AWS migration</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../aws/ec2_rds_specify7_setup.html">Deploy Specify7 to an EC2 instance</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../aws/add_new_instance_to_specify_cloud.html">Add new Specify instance to Specify Cloud</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../aws/specify_cloud_graviton_setup.html">Specify Cloud Graviton Setup</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../aws/remote_db_connection.html">Setup remote database connection to local mysql workbench</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../aws/web-portal-docker.html">Web Portal using Docker</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Asset Server:</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../asset_server/asset_config_files.html">Specify 7 Docker Config Example</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../asset_server/asset_server_config.html">Asset Server Configuration</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../asset_server/asset_server_setup.html">EC2 Non-Dockerized Build</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../asset_server/hybrid_asset_server_setup.html">Hybrid Asset Server Setup</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Server Management:</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../server_management/managed_servers.html">Updown Monitoring</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../server_management/managed_servers.html#managed-servers">Managed Servers</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../server_management/managed_servers.html#accessing-specify-7-deployments">Accessing Specify 7 Deployments</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../server_management/managed_servers.html#accessing-backups-on-aws-rds">Accessing Backups on AWS RDS</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../server_management/specify_ssh_docker_guide.html">Specify Test Panel User Guide</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../server_management/add_user_to_EC2.html">Server Access Management Policy</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../server_management/check_asset_usage.html">Check Asset Usage</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../server_management/exoscale.html">Exoscale Hosted Instances</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../server_management/exoscale_backups.html">Backups on Exoscale</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../server_management/kuit_ssl_certs.html">New certificate on biprdsp7wbdb.cc.ku.edu server</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../server_management/kuit_ssl_certs.html#web-portal-certificate">web-portal certificate</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../server_management/kuit_ssl_certs.html#specify-ku-edu-ssl-cert-update">specify.ku.edu ssl cert update</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../server_management/reports.html">Hosting Reports</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Internal Processes:</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../dev_process/specify_processes.html">Specify Development Process</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../dev_process/project_docs.html">Project (Github pages) documentation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../dev_process/dbgroups.html">Databases with Specific Features</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../dev_process/individualdbs.html">Individual Database Information</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../dev_process/dev_expectations.html">Developer Expectations</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../dev_process/developeronboarding.html">Developer Onboarding – Specify Software</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../dev_process/dev_support_process.html">Dev Support Process</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../dev_process/release_process_timeline.html">Release Process and Timeline</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Security:</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../security/aws_security.html">AWS Security</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../security/fix_exposed_secret.html">Fix Exposed Secrets</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../security/monitoring.html">Security Monitoring</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Testing:</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../testing/pull_requests.html">Pull Request Testing</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Specify Software:</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../software_desc/glossary.html">Glossary</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../software_desc/overview.html">Overview</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../software_desc/membership.html">Membership</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../software_desc/disciplines.html">Discipline support</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../software_desc/hosting.html">Specify Cloud Hosting</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../software_desc/migration.html">Data Migration</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../software_desc/training.html">Specify Training</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../software_desc/workbench.html">Specify Workbench</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../software_desc/workflows.html">Common Workflows</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Developer Utils:</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="writing_migrations.html">Writing Migrations</a></li>
+<li class="toctree-l1"><a class="reference internal" href="setting_up_backend_debugger.html">Setting Up Backend Debugger in VS Code for Specify 7</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Technical Decisions:</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../technical_decisions/component_extension.html">Component Extension to Collection Objects</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../technical_decisions/batch_edit.html">Batch Edit</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../technical_decisions/cog.html">Collection Object Groups (COG) Design &amp; Implementation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../technical_decisions/extended_age_query.html">Extended Age Query (EAQ) Design &amp; Implementation</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Misc:</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../misc/remove_specify_cloud_instance.html">Removing a Specify Cloud Instance</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../misc/documentation.html">Informatics Documentation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../misc/kuit_notes.html">Working with central KU IT</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../misc/specify7_ecs_most-in-one.html">Create a Most-In-One Specify Docker image</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../misc/useful_bash_cmds.html">Useful bash commands</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../misc/vs_code_django_unit_test_debugging_notes.html">VS Code Django Unit Test Debugging</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../misc/branch_from_tag.html">Create a branch from a tagged release</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">Specify Developer Documentation</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../index.html" class="icon icon-home" aria-label="Home"></a></li>
+      <li class="breadcrumb-item active">Installing Specify 7 Locally</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="../_sources/developer_utils/Install_Specify7.md.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="installing-specify-7-locally">
+<h1>Installing Specify 7 Locally<a class="headerlink" href="#installing-specify-7-locally" title="Link to this heading"></a></h1>
+<p>Everything in one place so you can paste straight into GitHub.</p>
+<hr class="docutils" />
+<section id="install-required-software">
+<h2>1) Install required software<a class="headerlink" href="#install-required-software" title="Link to this heading"></a></h2>
+<ul class="simple">
+<li><p>VS Code IDE</p></li>
+<li><p>DBeaver CE</p></li>
+<li><p>Docker + Docker Compose (plugin)</p></li>
+<li><p>Git</p></li>
+<li><p>(Optional) MySQL via CLI</p></li>
+</ul>
+<blockquote>
+<div><p><strong>Optional MySQL via CLI:</strong> only if you want a local server outside Docker.<br />
+macOS (Homebrew): <code class="docutils literal notranslate"><span class="pre">brew</span> <span class="pre">install</span> <span class="pre">mysql</span></code><br />
+Ubuntu/Debian: <code class="docutils literal notranslate"><span class="pre">sudo</span> <span class="pre">apt-get</span> <span class="pre">update</span> <span class="pre">&amp;&amp;</span> <span class="pre">sudo</span> <span class="pre">apt-get</span> <span class="pre">install</span> <span class="pre">-y</span> <span class="pre">mysql-server</span></code></p>
+</div></blockquote>
+</section>
+<hr class="docutils" />
+<section id="clone-the-specify-7-repo">
+<h2>2) Clone the Specify 7 repo<a class="headerlink" href="#clone-the-specify-7-repo" title="Link to this heading"></a></h2>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>git<span class="w"> </span>clone<span class="w"> </span>https://github.com/specify/specify7.git
+</pre></div>
+</div>
+<blockquote>
+<div><p><code class="docutils literal notranslate"><span class="pre">git</span> <span class="pre">clone</span></code> checks out the <strong>main</strong> branch by default.</p>
+</div></blockquote>
+</section>
+<hr class="docutils" />
+<section id="check-out-the-requested-tag">
+<h2>3) Check out the requested tag<a class="headerlink" href="#check-out-the-requested-tag" title="Link to this heading"></a></h2>
+<p>Open a terminal in VS Code (or any shell) and run:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="nb">cd</span><span class="w"> </span>specify7
+git<span class="w"> </span>checkout<span class="w"> </span>tags/v7.8.6
+</pre></div>
+</div>
+</section>
+<hr class="docutils" />
+<section id="python-virtual-environment-dependencies">
+<h2>4) Python virtual environment + dependencies<a class="headerlink" href="#python-virtual-environment-dependencies" title="Link to this heading"></a></h2>
+<p>Set up a Python venv and install dependencies:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="c1"># Create a venv</span>
+python3<span class="w"> </span>-m<span class="w"> </span>venv<span class="w"> </span>specify7/ve
+
+<span class="c1"># Activate it (macOS/Linux)</span>
+<span class="nb">source</span><span class="w"> </span>specify7/ve/bin/activate
+<span class="c1"># On Windows (PowerShell) use:</span>
+<span class="c1"># .\specify7\ve\Scripts\Activate.ps1</span>
+
+<span class="c1"># Install deps</span>
+pip3<span class="w"> </span>install<span class="w"> </span>wheel
+pip3<span class="w"> </span>install<span class="w"> </span>--upgrade<span class="w"> </span>-r<span class="w"> </span>requirements.txt
+</pre></div>
+</div>
+<blockquote>
+<div><p>The app runs in Docker. This venv is just for helper scripts.</p>
+</div></blockquote>
+</section>
+<hr class="docutils" />
+<section id="get-a-seed-database">
+<h2>5) Get a seed database<a class="headerlink" href="#get-a-seed-database" title="Link to this heading"></a></h2>
+<p>Download a database from the Specify test panel. Prefer:</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">ciscollections_2025_02_10_4__2025_08_22</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">KUBirds_2024_06_06_2_2025_08_05</span></code></p></li>
+</ul>
+<p>Then:</p>
+<ol class="arabic">
+<li><p>Open the downloaded <code class="docutils literal notranslate"><span class="pre">.sql</span></code> in an editor.</p></li>
+<li><p><strong>Remove</strong> the line:</p>
+<div class="highlight-sql notranslate"><div class="highlight"><pre><span></span><span class="n">USE</span><span class="w"> </span><span class="k">database</span><span class="w"> </span><span class="s1">&#39;db_name&#39;</span><span class="p">;</span>
+</pre></div>
+</div>
+</li>
+<li><p>Save the file.</p></li>
+<li><p>Move it into the repo under:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">seed_database</span><span class="o">/</span>
+</pre></div>
+</div>
+</li>
+</ol>
+<blockquote>
+<div><p>Removing <code class="docutils literal notranslate"><span class="pre">USE</span> <span class="pre">...;</span></code> avoids importing into the wrong DB name.</p>
+</div></blockquote>
+</section>
+<hr class="docutils" />
+<section id="configure-dbeaver-mysql-mariadb">
+<h2>6) Configure DBeaver (MySQL/MariaDB)<a class="headerlink" href="#configure-dbeaver-mysql-mariadb" title="Link to this heading"></a></h2>
+<p>In <strong>DBeaver</strong>: <strong>Database → New Connection → MySQL</strong> (or <strong>MariaDB</strong>).</p>
+<p>Fill exactly:</p>
+<ul class="simple">
+<li><p><strong>Server Host:</strong> <code class="docutils literal notranslate"><span class="pre">localhost</span></code></p></li>
+<li><p><strong>Port:</strong> <code class="docutils literal notranslate"><span class="pre">3306</span></code></p></li>
+<li><p><strong>Database:</strong> <code class="docutils literal notranslate"><span class="pre">ciscollections_2025_02_10_4__2025_08_22</span></code> <em>(or the DB you downloaded)</em></p></li>
+<li><p><strong>Show all databases:</strong> ✅ checked</p></li>
+<li><p><strong>Username:</strong> <code class="docutils literal notranslate"><span class="pre">root</span></code></p></li>
+<li><p><strong>Password:</strong> your root password (must match <code class="docutils literal notranslate"><span class="pre">MYSQL_ROOT_PASSWORD</span></code> below)</p></li>
+</ul>
+<p>Click <strong>Test Connection</strong> (optional) → <strong>Finish</strong>.</p>
+<blockquote>
+<div><p>Screenshot included in this repo-friendly path:</p>
+<p><img alt="DBeaver connection settings" src="developer_utils/docs/dbeaver-connection.png" /></p>
+</div></blockquote>
+</section>
+<hr class="docutils" />
+<section id="edit-the-project-env">
+<h2>7) Edit the project <code class="docutils literal notranslate"><span class="pre">.env</span></code><a class="headerlink" href="#edit-the-project-env" title="Link to this heading"></a></h2>
+<p>Open the project’s <code class="docutils literal notranslate"><span class="pre">.env</span></code> and set:</p>
+<div class="highlight-dotenv notranslate"><div class="highlight"><pre><span></span>MYSQL_ROOT_PASSWORD=root_pw_here
+DATABASE_NAME=db_name_downloaded_locally
+MASTER_NAME=master_name_here
+MASTER_PASSWORD=master_pw_here
+</pre></div>
+</div>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">DATABASE_NAME</span></code> must match the seed DB you intend to use (e.g., <code class="docutils literal notranslate"><span class="pre">ciscollections_2025_02_10_4__2025_08_22</span></code>).</p></li>
+<li><p>Save the file.</p></li>
+</ul>
+</section>
+<hr class="docutils" />
+<section id="run-specify-7">
+<h2>8) Run Specify 7<a class="headerlink" href="#run-specify-7" title="Link to this heading"></a></h2>
+<p>From the repo root:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>docker<span class="w"> </span>compose<span class="w"> </span>up<span class="w"> </span>--build
+</pre></div>
+</div>
+<p>Open the app:</p>
+<ul class="simple">
+<li><p>http://localhost/specify</p></li>
+</ul>
+<p>Login:</p>
+<ul class="simple">
+<li><p><strong>Username:</strong> <code class="docutils literal notranslate"><span class="pre">spadmin</span></code></p></li>
+<li><p><strong>Password:</strong> <code class="docutils literal notranslate"><span class="pre">test</span> <span class="pre">user</span></code></p></li>
+</ul>
+<p>Select any collection from the drop-down.</p>
+</section>
+<hr class="docutils" />
+<section id="troubleshooting">
+<h2>9) Troubleshooting<a class="headerlink" href="#troubleshooting" title="Link to this heading"></a></h2>
+<section id="access-denied-db-not-found-after-docker-compose-up-build">
+<h3>Access denied / DB not found after <code class="docutils literal notranslate"><span class="pre">docker</span> <span class="pre">compose</span> <span class="pre">up</span> <span class="pre">--build</span></code><a class="headerlink" href="#access-denied-db-not-found-after-docker-compose-up-build" title="Link to this heading"></a></h3>
+<p>Do this:</p>
+<ol class="arabic">
+<li><p>In Docker Desktop, delete all containers and images related to this project.</p></li>
+<li><p>Prune old images/volumes:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="c1"># CAUTION: removes unused images/volumes. You will lose local DB volumes.</span>
+docker<span class="w"> </span>image<span class="w"> </span>prune<span class="w"> </span>-a
+docker<span class="w"> </span>volume<span class="w"> </span>prune<span class="w"> </span>-a
+</pre></div>
+</div>
+</li>
+<li><p>Rebuild:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>docker<span class="w"> </span>compose<span class="w"> </span>up<span class="w"> </span>--build
+</pre></div>
+</div>
+</li>
+<li><p>If needed, verify inside the DB container:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="c1"># In Docker Desktop: open the &#39;mariadb&#39; container → Exec → bash</span>
+bash
+mysql<span class="w"> </span>-uroot<span class="w"> </span>-proot<span class="w">     </span><span class="c1"># replace &#39;root&#39; with your actual MYSQL_ROOT_PASSWORD</span>
+SHOW<span class="w"> </span>DATABASES<span class="p">;</span>
+USE<span class="w"> </span>db_name<span class="p">;</span><span class="w">            </span><span class="c1"># use the same name you set in DATABASE_NAME</span>
+</pre></div>
+</div>
+</li>
+<li><p>Back in VS Code terminal, you can re-run:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>docker<span class="w"> </span>compose<span class="w"> </span>up<span class="w"> </span>--build
+</pre></div>
+</div>
+</li>
+</ol>
+</section>
+<section id="dbeaver-shows-unknown-database">
+<h3>DBeaver shows “Unknown database”<a class="headerlink" href="#dbeaver-shows-unknown-database" title="Link to this heading"></a></h3>
+<ul class="simple">
+<li><p>Ensure the <strong>Database</strong> field equals your <code class="docutils literal notranslate"><span class="pre">.env</span></code> <code class="docutils literal notranslate"><span class="pre">DATABASE_NAME</span></code>.</p></li>
+<li><p>Confirm the <code class="docutils literal notranslate"><span class="pre">.sql</span></code> file didn’t have a <code class="docutils literal notranslate"><span class="pre">USE</span> <span class="pre">...;</span></code> line.</p></li>
+<li><p>Make sure the <code class="docutils literal notranslate"><span class="pre">.sql</span></code> was placed in <code class="docutils literal notranslate"><span class="pre">seed_database/</span></code> before the first run.</p></li>
+</ul>
+</section>
+</section>
+<hr class="docutils" />
+<section id="notes">
+<h2>10) Notes<a class="headerlink" href="#notes" title="Link to this heading"></a></h2>
+<ul class="simple">
+<li><p>App URL: http://localhost/specify</p></li>
+<li><p>Repo: https://github.com/specify/specify7</p></li>
+<li><p>Common test login: <code class="docutils literal notranslate"><span class="pre">spadmin</span></code> / <code class="docutils literal notranslate"><span class="pre">test</span> <span class="pre">user</span></code></p></li>
+<li><p>If you installed a local MySQL server instead of Docker, mirror the same credentials and DB name in DBeaver and <code class="docutils literal notranslate"><span class="pre">.env</span></code>.</p></li>
+</ul>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2025, Specify Collections Consortium Team.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>
