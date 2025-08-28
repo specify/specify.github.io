@@ -196,16 +196,21 @@
 <li><p>Git</p></li>
 <li><p>(Optional) MariaDB/MySQL client-only CLI (no server)</p></li>
 </ul>
-<blockquote>
-<div><p><strong>Optional MySQL via CLI:</strong> only if you want a local server outside Docker.<br />
-macOS (Homebrew):
-‘’’bash
-brew install mysql
-echo ‘export PATH=”/opt/homebrew/opt/mysql-client/bin:$PATH”’ &gt;&gt; ~/.zshrc &amp;&amp; source ~/.zshrc
-‘’’<br />
-Ubuntu/Debian: <code class="docutils literal notranslate"><span class="pre">sudo</span> <span class="pre">apt-get</span> <span class="pre">update</span> <span class="pre">&amp;&amp;</span> <span class="pre">sudo</span> <span class="pre">apt-get</span> <span class="pre">install</span> <span class="pre">-y</span> <span class="pre">mysql-server</span></code>
-(Do NOT install or start a local server. We’ll run the DB in Docker.)</p>
-</div></blockquote>
+<p><strong>Install client only (no server):</strong></p>
+<ul>
+<li><p><strong>macOS (Homebrew):</strong></p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>brew<span class="w"> </span>install<span class="w"> </span>mysql-client
+<span class="nb">echo</span><span class="w"> </span><span class="s1">&#39;export PATH=&quot;/opt/homebrew/opt/mysql-client/bin:$PATH&quot;&#39;</span><span class="w"> </span>&gt;&gt;<span class="w"> </span>~/.zshrc<span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span><span class="nb">source</span><span class="w"> </span>~/.zshrc
+</pre></div>
+</div>
+</li>
+<li><p><strong>Ubuntu/Debian:</strong></p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>sudo<span class="w"> </span>apt-get<span class="w"> </span>update<span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span>sudo<span class="w"> </span>apt-get<span class="w"> </span>install<span class="w"> </span>-y<span class="w"> </span>mariadb-client
+</pre></div>
+</div>
+</li>
+</ul>
+<p><em>(Do NOT install or start a local server. We’ll run the DB in Docker.)</em></p>
 </section>
 <hr class="docutils" />
 <section id="clone-the-specify-7-repo">
