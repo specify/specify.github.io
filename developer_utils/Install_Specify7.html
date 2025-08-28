@@ -198,8 +198,11 @@
 </ul>
 <blockquote>
 <div><p><strong>Optional MySQL via CLI:</strong> only if you want a local server outside Docker.<br />
-macOS (Homebrew): <code class="docutils literal notranslate"><span class="pre">brew</span> <span class="pre">install</span> <span class="pre">mysql</span></code>
-‘echo ‘export PATH=”/opt/homebrew/opt/mysql-client/bin:$PATH”’ &gt;&gt; ~/.zshrc &amp;&amp; source ~/.zshrc’<br />
+macOS (Homebrew):
+‘’’bash
+brew install mysql
+echo ‘export PATH=”/opt/homebrew/opt/mysql-client/bin:$PATH”’ &gt;&gt; ~/.zshrc &amp;&amp; source ~/.zshrc
+‘’’<br />
 Ubuntu/Debian: <code class="docutils literal notranslate"><span class="pre">sudo</span> <span class="pre">apt-get</span> <span class="pre">update</span> <span class="pre">&amp;&amp;</span> <span class="pre">sudo</span> <span class="pre">apt-get</span> <span class="pre">install</span> <span class="pre">-y</span> <span class="pre">mysql-server</span></code>
 (Do NOT install or start a local server. We’ll run the DB in Docker.)</p>
 </div></blockquote>
