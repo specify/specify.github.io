@@ -6,11 +6,13 @@
 - DBeaver CE  
 - Docker + Docker Compose (plugin)  
 - Git  
-- (Optional) MySQL via CLI
+- (Optional) MariaDB/MySQL client-only CLI (no server)
 
 > **Optional MySQL via CLI:** only if you want a local server outside Docker.  
-> macOS (Homebrew): `brew install mysql`  
+> macOS (Homebrew): `brew install mysql`
+> 'echo 'export PATH="/opt/homebrew/opt/mysql-client/bin:$PATH"' >> ~/.zshrc && source ~/.zshrc'  
 > Ubuntu/Debian: `sudo apt-get update && sudo apt-get install -y mysql-server`
+> (Do NOT install or start a local server. We’ll run the DB in Docker.)
 
 ---
 
@@ -90,10 +92,6 @@ Fill exactly:
 
 Click **Test Connection** (optional) → **Finish**.
 
-> Screenshot included in this repo-friendly path:
->
-> <img width="558" height="326" alt="Main Advanced Driver properties" src="https://github.com/user-attachments/assets/66bf0913-5dd2-46d3-b27c-eb7ac74f6f35" />
-
 
 ## 7) Edit the project `.env`
 
@@ -106,7 +104,7 @@ MASTER_NAME=master_name_here
 MASTER_PASSWORD=master_pw_here
 ```
 
-- `DATABASE_NAME` must match the seed DB you intend to use (e.g., `ciscollections_2025_02_10_4__2025_08_22`).  
+- `DATABASE_NAME` must match the seed DB you intend to use.  
 - Save the file.
 
 ---
