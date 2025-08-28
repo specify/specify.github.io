@@ -8,14 +8,17 @@
 - Git  
 - (Optional) MariaDB/MySQL client-only CLI (no server)
 
-> **Optional MySQL via CLI:** only if you want a local server outside Docker.  
-> macOS (Homebrew):
-'''bash
-    brew install mysql
-    echo 'export PATH="/opt/homebrew/opt/mysql-client/bin:$PATH"' >> ~/.zshrc && source ~/.zshrc
-'''  
-> Ubuntu/Debian: `sudo apt-get update && sudo apt-get install -y mysql-server`
-> (Do NOT install or start a local server. We’ll run the DB in Docker.)
+**Install client only (no server):**  
+- **macOS (Homebrew):**
+  ```bash
+  brew install mysql-client
+  echo 'export PATH="/opt/homebrew/opt/mysql-client/bin:$PATH"' >> ~/.zshrc && source ~/.zshrc
+  ```
+- **Ubuntu/Debian:**
+  ```bash
+  sudo apt-get update && sudo apt-get install -y mariadb-client
+  ```
+*(Do NOT install or start a local server. We’ll run the DB in Docker.)*
 
 ---
 
