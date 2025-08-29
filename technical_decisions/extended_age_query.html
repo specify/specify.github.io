@@ -185,18 +185,34 @@
 </section>
 <section id="core-logic-filtering-criteria">
 <h2>Core Logic &amp; Filtering Criteria<a class="headerlink" href="#core-logic-filtering-criteria" title="Link to this heading"></a></h2>
-<ul class="simple">
+<ul>
 <li><p><strong>Numeric-Based Logic</strong><br />
 EAQ exclusively uses numerical start and end values; no names are directly used for computation—names are converted into numeric ranges by the system.</p></li>
 <li><p><strong>Valid Periods Only</strong><br />
 Only Chronostratigraphy nodes from the <code class="docutils literal notranslate"><span class="pre">GeologicTimePeriod</span></code> table with valid <code class="docutils literal notranslate"><span class="pre">StartPeriod</span></code> and <code class="docutils literal notranslate"><span class="pre">EndPeriod</span></code> values (where StartPeriod &gt; EndPeriod) are considered for queries.</p></li>
 <li><p><strong>Range Calculation</strong><br />
 The query computes its range using:</p>
-<ul>
+<ul class="simple">
 <li><p><strong>Lowest</strong> <code class="docutils literal notranslate"><span class="pre">EndPeriod</span></code> across relevant nodes</p></li>
 <li><p><strong>Highest</strong> <code class="docutils literal notranslate"><span class="pre">StartPeriod</span></code> across relevant nodes<br />
 Because MYA increases into the past, higher StartPeriod means older boundary.</p></li>
 </ul>
+</li>
+<li><p><strong>Strictness in Range Calculations</strong></p>
+<ul class="simple">
+<li><p>an age query start period <code class="docutils literal notranslate"><span class="pre">x</span></code></p></li>
+<li><p>an age query end period <code class="docutils literal notranslate"><span class="pre">y</span></code></p></li>
+<li><p>with constraint that <code class="docutils literal notranslate"><span class="pre">x</span> <span class="pre">&gt;=</span> <span class="pre">y</span></code></p></li>
+<li><p>for each collection object, a meta start period <code class="docutils literal notranslate"><span class="pre">a</span></code> is decided, and a meta end period <code class="docutils literal notranslate"><span class="pre">b</span></code> is decided.</p></li>
+<li><p>with constraint that <code class="docutils literal notranslate"><span class="pre">a</span> <span class="pre">&gt;=</span> <span class="pre">b</span></code></p></li>
+</ul>
+<p>Strict Filter: (full overlap, a-b is within x-y)
+<code class="docutils literal notranslate"><span class="pre">a</span> <span class="pre">&lt;=</span> <span class="pre">x</span></code> and <code class="docutils literal notranslate"><span class="pre">b</span> <span class="pre">&gt;=</span> <span class="pre">y</span></code></p>
+<p>Non-Strict Filter: (partial age range overlap, any overlap so x-y can be within a-b or a-b can be within x-y)
+(<code class="docutils literal notranslate"> <span class="pre">a&lt;=</span> <span class="pre">x</span></code> and <code class="docutils literal notranslate"><span class="pre">a</span> <span class="pre">&gt;=</span> <span class="pre">y</span></code>) or (<code class="docutils literal notranslate"><span class="pre">b</span> <span class="pre">&lt;=</span> <span class="pre">x</span></code> and <code class="docutils literal notranslate"><span class="pre">b</span> <span class="pre">&gt;=</span> <span class="pre">y</span></code>) or (<code class="docutils literal notranslate"><span class="pre">a</span> <span class="pre">&gt;=</span> <span class="pre">x</span></code> and <code class="docutils literal notranslate"><span class="pre">b</span> <span class="pre">&lt;=</span> <span class="pre">y</span></code>)</p>
+<p>This is omitting the complication of uncertainty values.
+The meta age range for each collection object should appear in the age column of the query results.
+The “Any” age query bug is being push to a later issue. For now, do a Age Range query from “13800” to “0” to get all COs with age data (query all of time, the age of the universe</p>
 </li>
 </ul>
 </section>
@@ -232,6 +248,182 @@ Computes a range using: AbsoluteAge + AgeUncertainty to AbsoluteAge – AgeUncer
 <li><p><strong>Paleo Context</strong><br />
 Bound by <code class="docutils literal notranslate"><span class="pre">ChronosStratID</span></code> (and optionally <code class="docutils literal notranslate"><span class="pre">ChronosStratEndID</span></code>). The system determines the widest combined range across both IDs using start/end values.</p></li>
 </ul>
+<p><strong>Table paths from CollectionObject to Absoluteage or GeologicTimePeriod</strong></p>
+<table class="docutils align-default">
+<thead>
+<tr class="row-odd"><th class="head"><p>table_path_1</p></th>
+<th class="head"><p>table_path_2</p></th>
+<th class="head"><p>table_path_3</p></th>
+<th class="head"><p>table_path_4</p></th>
+<th class="head"><p>table_path_5</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>collectionobject</p></td>
+<td><p>absoluteage</p></td>
+<td><p></p></td>
+<td><p></p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-odd"><td><p>collectionobject</p></td>
+<td><p>relativeage</p></td>
+<td><p>chronostrat</p></td>
+<td><p></p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-even"><td><p>collectionobject</p></td>
+<td><p>paleocontext</p></td>
+<td><p>chronostrat</p></td>
+<td><p></p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-odd"><td><p>collectionobject</p></td>
+<td><p>collectionevent</p></td>
+<td><p>paleocontext</p></td>
+<td><p>chronostrat</p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-even"><td><p>collectionobject</p></td>
+<td><p>collectionevent</p></td>
+<td><p>locality</p></td>
+<td><p>paleocontext</p></td>
+<td><p>chronostrat</p></td>
+</tr>
+</tbody>
+</table>
+<p><strong>Field Paths from CollectionObject to Absoluteage or GeologicTimePeriod</strong></p>
+<table class="docutils align-default">
+<thead>
+<tr class="row-odd"><th class="head"><p>field_path_1</p></th>
+<th class="head"><p>field_path_2</p></th>
+<th class="head"><p>field_path_3</p></th>
+<th class="head"><p>field_path_4</p></th>
+<th class="head"><p>field_path_5</p></th>
+<th class="head"><p>field_path_6</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>collectionobject</p></td>
+<td><p>absoluteage</p></td>
+<td><p>absoluteage</p></td>
+<td><p></p></td>
+<td><p></p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-odd"><td><p>collectionobject</p></td>
+<td><p>relativeage</p></td>
+<td><p>agename</p></td>
+<td><p>startperiod</p></td>
+<td><p></p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-even"><td><p>collectionobject</p></td>
+<td><p>relativeage</p></td>
+<td><p>agename</p></td>
+<td><p>endperiod</p></td>
+<td><p></p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-odd"><td><p>collectionobject</p></td>
+<td><p>relativeage</p></td>
+<td><p>agenameend</p></td>
+<td><p>startperiod</p></td>
+<td><p></p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-even"><td><p>collectionobject</p></td>
+<td><p>relativeage</p></td>
+<td><p>agenameend</p></td>
+<td><p>endperiod</p></td>
+<td><p></p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-odd"><td><p>collectionobject</p></td>
+<td><p>paleocontext</p></td>
+<td><p>chronosstrat</p></td>
+<td><p>startperiod</p></td>
+<td><p></p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-even"><td><p>collectionobject</p></td>
+<td><p>paleocontext</p></td>
+<td><p>chronosstrat</p></td>
+<td><p>endperiod</p></td>
+<td><p></p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-odd"><td><p>collectionobject</p></td>
+<td><p>paleocontext</p></td>
+<td><p>chronosstratend</p></td>
+<td><p>startperiod</p></td>
+<td><p></p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-even"><td><p>collectionobject</p></td>
+<td><p>paleocontext</p></td>
+<td><p>chronosstratend</p></td>
+<td><p>endperiod</p></td>
+<td><p></p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-odd"><td><p>collectionobject</p></td>
+<td><p>collectingevent</p></td>
+<td><p>paleocontext</p></td>
+<td><p>chronosstrat</p></td>
+<td><p>startperiod</p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-even"><td><p>collectionobject</p></td>
+<td><p>collectingevent</p></td>
+<td><p>paleocontext</p></td>
+<td><p>chronosstrat</p></td>
+<td><p>endperiod</p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-odd"><td><p>collectionobject</p></td>
+<td><p>collectingevent</p></td>
+<td><p>paleocontext</p></td>
+<td><p>chronosstratend</p></td>
+<td><p>startperiod</p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-even"><td><p>collectionobject</p></td>
+<td><p>collectingevent</p></td>
+<td><p>paleocontext</p></td>
+<td><p>chronosstratend</p></td>
+<td><p>endperiod</p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-odd"><td><p>collectionobject</p></td>
+<td><p>collectingevent</p></td>
+<td><p>locality</p></td>
+<td><p>paleocontext</p></td>
+<td><p>chronosstrat</p></td>
+<td><p>startperiod</p></td>
+</tr>
+<tr class="row-even"><td><p>collectionobject</p></td>
+<td><p>collectingevent</p></td>
+<td><p>locality</p></td>
+<td><p>paleocontext</p></td>
+<td><p>chronosstrat</p></td>
+<td><p>endperiod</p></td>
+</tr>
+<tr class="row-odd"><td><p>collectionobject</p></td>
+<td><p>collectingevent</p></td>
+<td><p>locality</p></td>
+<td><p>paleocontext</p></td>
+<td><p>chronosstratend</p></td>
+<td><p>startperiod</p></td>
+</tr>
+<tr class="row-even"><td><p>collectionobject</p></td>
+<td><p>collectingevent</p></td>
+<td><p>locality</p></td>
+<td><p>paleocontext</p></td>
+<td><p>chronosstratend</p></td>
+<td><p>endperiod</p></td>
+</tr>
+</tbody>
+</table>
 <p>These three contexts are searched independently according to their respective logic.</p>
 </section>
 <section id="mvp-scope">
