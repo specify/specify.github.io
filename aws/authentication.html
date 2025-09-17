@@ -49,18 +49,15 @@
 </ul>
 <p class="caption" role="heading"><span class="caption-text">Launching a Release:</span></p>
 <ul>
-<li class="toctree-l1"><a class="reference internal" href="../processes/release_process.html">Release Process for Hosted Users</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../processes/release_notes.html">Create Release Notes</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../processes/create_release_notes.html">Create Release Notes</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../processes/release_process_for_hosted_users.html">Release Process for Hosted Users</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../processes/support_guidelines.html">Support Staff Expectations &amp; Best Practices</a></li>
 </ul>
 <p class="caption" role="heading"><span class="caption-text">Amazon Web Services:</span></p>
 <ul class="current">
 <li class="toctree-l1"><a class="reference internal" href="add_new_instance_to_specify_cloud.html">Add new instance to Specify Cloud</a></li>
 <li class="toctree-l1"><a class="reference internal" href="asset_server_setup.html">Asset Server Setup</a></li>
 <li class="toctree-l1 current"><a class="current reference internal" href="#">Authentication</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="#notes-to-be-organized-and-completed">Notes to be Organized and Completed</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="#id1">Authentication</a></li>
-</ul>
-</li>
 <li class="toctree-l2"><a class="reference internal" href="#allow-s3-access-from-ec2-instance">Allow S3 access from EC2 instance</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#troubleshooting">Troubleshooting</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="#ec2-slowly-or-never-responds">EC2 slowly or never responds</a></li>
@@ -68,6 +65,10 @@
 </ul>
 </li>
 <li class="toctree-l2"><a class="reference internal" href="#questions-remaining">Questions remaining</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#notes-to-be-organized-and-completed">Notes to be Organized and Completed</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#id1">Authentication</a></li>
+</ul>
+</li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="automation_todo.html">Automation TODO</a></li>
@@ -180,7 +181,7 @@
       <li><a href="../index.html" class="icon icon-home" aria-label="Home"></a></li>
       <li class="breadcrumb-item active">Authentication</li>
       <li class="wy-breadcrumbs-aside">
-            <a href="../_sources/aws/authentication.rst.txt" rel="nofollow"> View page source</a>
+            <a href="../_sources/aws/authentication.md.txt" rel="nofollow"> View page source</a>
       </li>
   </ul>
   <hr/>
@@ -190,6 +191,47 @@
              
   <section id="authentication">
 <h1>Authentication<a class="headerlink" href="#authentication" title="Link to this heading"></a></h1>
+<section id="allow-s3-access-from-ec2-instance">
+<h2>Allow S3 access from EC2 instance<a class="headerlink" href="#allow-s3-access-from-ec2-instance" title="Link to this heading"></a></h2>
+<ul class="simple">
+<li><p>Create a role for the instance, with permissions for whatever it will use (i.e.
+read/write for specific bucket folders,  read secret, Redshift, etc):
+AmazonRedshiftAllCommandsFullAccess, AmazonS3ReadOnlyAccess, SecretsManagerReadWrite</p></li>
+<li><p>Assign that role to the instance</p></li>
+</ul>
+<p>https://repost.aws/knowledge-center/ec2-instance-access-s3-bucket</p>
+</section>
+<section id="troubleshooting">
+<h2>Troubleshooting<a class="headerlink" href="#troubleshooting" title="Link to this heading"></a></h2>
+<section id="ec2-slowly-or-never-responds">
+<h3>EC2 slowly or never responds<a class="headerlink" href="#ec2-slowly-or-never-responds" title="Link to this heading"></a></h3>
+<p>“EBS throughput is under-provisioned””</p>
+<p>EC2 instance cannot send out the data fast enough. Often happens with several EBS
+volumes, and together they can accept data faster than the EC2 instance can transmit it.</p>
+<p>https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ebs-optimized.html</p>
+<p>In the AWS console, on the EC2 instance page, “AWS Compute Optimizer”, near the warning
+“Under-provisioned”, click “View detail” to display a window with recommended changes,
+along with graphs demonstrating the difference in CPU and cost.</p>
+<p>For the spnet_dev machine, this error appeared after I raised the EBS volume from 8 Gb
+to 30 Gb.  I chose t3.micro, which showed differences (changes necessary) in Hypervisor,
+Storage interface, and Network interface.</p>
+<p>https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/resize-limitations.html</p>
+</section>
+<section id="ec2-stops-responding-during-docker-compose">
+<h3>EC2 stops responding during docker compose<a class="headerlink" href="#ec2-stops-responding-during-docker-compose" title="Link to this heading"></a></h3>
+<p>=&gt; [front-end base-front-end 4/6] RUN npm install</p>
+</section>
+</section>
+<section id="questions-remaining">
+<h2>Questions remaining<a class="headerlink" href="#questions-remaining" title="Link to this heading"></a></h2>
+<ul class="simple">
+<li><p>Roles for “workload”</p></li>
+<li><p>Travis: How to assign broad privileges to a process, run it, then identify the minimum
+privileges it needs?</p></li>
+<li><p>Temporary access roles vs static</p></li>
+<li><p>Access Control ???</p></li>
+</ul>
+</section>
 <section id="notes-to-be-organized-and-completed">
 <h2>Notes to be Organized and Completed<a class="headerlink" href="#notes-to-be-organized-and-completed" title="Link to this heading"></a></h2>
 <section id="id1">
@@ -225,7 +267,7 @@ parameters, up to 10k, less than 4k,</p>
 <li><p>Identities = AWS resources (EC2 instance, lambda functions)</p></li>
 <li><p>Secrets for roles/identities for initiating contact/processes</p>
 <ul>
-<li><p><a class="reference external" href="https://docs.aws.amazon.com/secretsmanager/latest/userguide/hardcoded.html">https://docs.aws.amazon.com/secretsmanager/latest/userguide/hardcoded.html</a></p></li>
+<li><p>https://docs.aws.amazon.com/secretsmanager/latest/userguide/hardcoded.html</p></li>
 <li><p>APIkey/secret, user/password, private key, token, certificate …</p></li>
 <li><p>Create a role to manage the secrets</p></li>
 <li><p>Create a role to retrieve secrets - grant the role permission to access only select
@@ -234,48 +276,6 @@ secrets, give that role to the code/process of interest</p></li>
 </li>
 </ul>
 </section>
-</section>
-<section id="allow-s3-access-from-ec2-instance">
-<h2>Allow S3 access from EC2 instance<a class="headerlink" href="#allow-s3-access-from-ec2-instance" title="Link to this heading"></a></h2>
-<ul class="simple">
-<li><p>Create a role for the instance, with permissions for whatever it will use (i.e.
-read/write for specific bucket folders,  read secret, Redshift, etc):
-AmazonRedshiftAllCommandsFullAccess, AmazonS3ReadOnlyAccess, SecretsManagerReadWrite</p></li>
-<li><p>Assign that role to the instance</p></li>
-<li></li>
-</ul>
-<p><a class="reference external" href="https://repost.aws/knowledge-center/ec2-instance-access-s3-bucket">https://repost.aws/knowledge-center/ec2-instance-access-s3-bucket</a></p>
-</section>
-<section id="troubleshooting">
-<h2>Troubleshooting<a class="headerlink" href="#troubleshooting" title="Link to this heading"></a></h2>
-<section id="ec2-slowly-or-never-responds">
-<h3>EC2 slowly or never responds<a class="headerlink" href="#ec2-slowly-or-never-responds" title="Link to this heading"></a></h3>
-<p>“EBS throughput is under-provisioned””</p>
-<p>EC2 instance cannot send out the data fast enough. Often happens with several EBS
-volumes, and together they can accept data faster than the EC2 instance can transmit it.</p>
-<p><a class="reference external" href="https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ebs-optimized.html">https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ebs-optimized.html</a></p>
-<p>In the AWS console, on the EC2 instance page, “AWS Compute Optimizer”, near the warning
-“Under-provisioned”, click “View detail” to display a window with recommended changes,
-along with graphs demonstrating the difference in CPU and cost.</p>
-<p>For the spnet_dev machine, this error appeared after I raised the EBS volume from 8 Gb
-to 30 Gb.  I chose t3.micro, which showed differences (changes necessary) in Hypervisor,
-Storage interface, and Network interface.</p>
-<p><a class="reference external" href="https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/resize-limitations.html">https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/resize-limitations.html</a></p>
-</section>
-<section id="ec2-stops-responding-during-docker-compose">
-<h3>EC2 stops responding during docker compose<a class="headerlink" href="#ec2-stops-responding-during-docker-compose" title="Link to this heading"></a></h3>
-<p>=&gt; [front-end base-front-end 4/6] RUN npm install</p>
-</section>
-</section>
-<section id="questions-remaining">
-<h2>Questions remaining<a class="headerlink" href="#questions-remaining" title="Link to this heading"></a></h2>
-<ul class="simple">
-<li><p>Roles for “workload”</p></li>
-<li><p>Travis: How to assign broad privileges to a process, run it, then identify the minimum
-privileges it needs?</p></li>
-<li><p>Temporary access roles vs static</p></li>
-<li><p>Access Control ???</p></li>
-</ul>
 </section>
 </section>
 

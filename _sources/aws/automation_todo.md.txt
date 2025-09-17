@@ -1,19 +1,15 @@
-Automation TODO
-#####################
+# Automation TODO
 
-TODO:
-======
+## TODO:
 
 * triggering processes in Redshift, Glue, instantiating EC2 instances, etc
 * Logging of multi-resource workflows to debug problems - may be simple, but any tips
   would be appreciated
 
 
-Notes to be Organized and Completed
----------------------------------------
+## Notes to be Organized and Completed
 
-Automation
-.....................
+### Automation
 
 * Initiate a stored procedure in Redshift and pass it a parameters
 * Billing and Cost management - Cost Explorer
@@ -23,9 +19,7 @@ Automation
 * https://aws.amazon.com/blogs/big-data/building-an-event-driven-application-with-aws-lambda-and-the-amazon-redshift-data-api/
 
 
-
-Logging
-................
+### Logging
 
 * Cloudtrail monitoring - can do your work, then it will tell you what permissions
   you’ve been using, control - log in , log out, authentication, administrative, action,
