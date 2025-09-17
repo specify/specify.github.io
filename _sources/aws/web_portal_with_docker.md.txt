@@ -1,4 +1,4 @@
-# Web Portal using Docker
+# Web Portal with Docker
 
 We are managing our Web Portal instances using a Docker image on EC2.
 

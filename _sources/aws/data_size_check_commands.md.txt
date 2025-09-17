@@ -1,4 +1,4 @@
-# AWS Data Size Check Commands
+# Data Size Check Commands
 
 commands to get the database sizes:
 ```sql

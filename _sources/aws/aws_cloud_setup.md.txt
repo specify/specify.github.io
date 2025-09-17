@@ -1,4 +1,4 @@
-# Specify Cloud Setup
+# AWS Cloud Setup
 
 ## Setup Aurora MySQL Database
 TODO

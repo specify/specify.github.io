@@ -19,16 +19,19 @@ Welcome to Specify Developer documentation!
    :maxdepth: 1
    :caption: Amazon Web Services:
 
-   aws/aws_automation
-   aws/aws_infrastructure_notes
-   aws/aws_specify_asset_server_setup
-   aws/aws_specify_cloud_setup
-   aws/client_migration_notes
-   aws/ec2_rds_specify7_setup
    aws/add_new_instance_to_specify_cloud
+   aws/asset_server_setup
+   aws/authentication
+   aws/automation_todo
+   aws/aws_cloud_setup
+   aws/connect_to_remote_cloud_database
+   aws/data_size_check_commands
+   aws/deploy_specify7_to_EC2
+   aws/infrastructure_notes
+   aws/rds_backup_setup
+   aws/s3_asset_server
    aws/specify_cloud_graviton_setup
-   aws/remote_db_connection
-   aws/web-portal-docker
+   aws/web_portal_with_docker
 
 .. toctree::
    :maxdepth: 1
@@ -122,6 +125,11 @@ Welcome to Specify Developer documentation!
    misc/vs_code_django_unit_test_debugging_notes
    misc/branch_from_tag
 
+.. toctree::
+   :maxdepth: 1
+   :caption: History:
+
+   history/digital_ocean_to_aws_migration
 
 
 Indices and tables

@@ -6,7 +6,7 @@
   <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>AWS S3 Asset Server &mdash; Specify Developer Documentation  documentation</title>
+  <title>Authentication &mdash; Specify Developer Documentation  documentation</title>
       <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=80d5e7a1" />
       <link rel="stylesheet" type="text/css" href="../_static/css/theme.css?v=e59714d7" />
 
@@ -18,7 +18,9 @@
       <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
     <script src="../_static/js/theme.js"></script>
     <link rel="index" title="Index" href="../genindex.html" />
-    <link rel="search" title="Search" href="../search.html" /> 
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Automation TODO" href="automation_todo.html" />
+    <link rel="prev" title="Asset Server Setup" href="asset_server_setup.html" /> 
 </head>
 
 <body class="wy-body-for-nav"> 
@@ -51,17 +53,32 @@
 <li class="toctree-l1"><a class="reference internal" href="../processes/release_notes.html">Create Release Notes</a></li>
 </ul>
 <p class="caption" role="heading"><span class="caption-text">Amazon Web Services:</span></p>
-<ul>
-<li class="toctree-l1"><a class="reference internal" href="aws_automation.html">AWS Automation</a></li>
-<li class="toctree-l1"><a class="reference internal" href="aws_infrastructure_notes.html">AWS Infrastructure Notes</a></li>
-<li class="toctree-l1"><a class="reference internal" href="aws_specify_asset_server_setup.html">AWS Specify Asset Server Setup</a></li>
-<li class="toctree-l1"><a class="reference internal" href="aws_specify_cloud_setup.html">Specify Cloud Setup</a></li>
-<li class="toctree-l1"><a class="reference internal" href="client_migration_notes.html">Digital Ocean to AWS migration</a></li>
-<li class="toctree-l1"><a class="reference internal" href="ec2_rds_specify7_setup.html">Deploy Specify7 to an EC2 instance</a></li>
-<li class="toctree-l1"><a class="reference internal" href="add_new_instance_to_specify_cloud.html">Add new Specify instance to Specify Cloud</a></li>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="add_new_instance_to_specify_cloud.html">Add new instance to Specify Cloud</a></li>
+<li class="toctree-l1"><a class="reference internal" href="asset_server_setup.html">Asset Server Setup</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Authentication</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#notes-to-be-organized-and-completed">Notes to be Organized and Completed</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#id1">Authentication</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#allow-s3-access-from-ec2-instance">Allow S3 access from EC2 instance</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#troubleshooting">Troubleshooting</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#ec2-slowly-or-never-responds">EC2 slowly or never responds</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#ec2-stops-responding-during-docker-compose">EC2 stops responding during docker compose</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#questions-remaining">Questions remaining</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="automation_todo.html">Automation TODO</a></li>
+<li class="toctree-l1"><a class="reference internal" href="aws_cloud_setup.html">AWS Cloud Setup</a></li>
+<li class="toctree-l1"><a class="reference internal" href="connect_to_remote_cloud_database.html">Connect to remote cloud database</a></li>
+<li class="toctree-l1"><a class="reference internal" href="data_size_check_commands.html">Data Size Check Commands</a></li>
+<li class="toctree-l1"><a class="reference internal" href="deploy_specify7_to_EC2.html">Deploy Specify7 to EC2</a></li>
+<li class="toctree-l1"><a class="reference internal" href="infrastructure_notes.html">Infrastructure Notes</a></li>
+<li class="toctree-l1"><a class="reference internal" href="s3_asset_server.html">S3 Asset Server</a></li>
 <li class="toctree-l1"><a class="reference internal" href="specify_cloud_graviton_setup.html">Specify Cloud Graviton Setup</a></li>
-<li class="toctree-l1"><a class="reference internal" href="remote_db_connection.html">Setup remote database connection to local mysql workbench</a></li>
-<li class="toctree-l1"><a class="reference internal" href="web-portal-docker.html">Web Portal using Docker</a></li>
+<li class="toctree-l1"><a class="reference internal" href="web_portal_with_docker.html">Web Portal with Docker</a></li>
 </ul>
 <p class="caption" role="heading"><span class="caption-text">Asset Server:</span></p>
 <ul>
@@ -142,6 +159,10 @@
 <li class="toctree-l1"><a class="reference internal" href="../misc/vs_code_django_unit_test_debugging_notes.html">VS Code Django Unit Test Debugging</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../misc/branch_from_tag.html">Create a branch from a tagged release</a></li>
 </ul>
+<p class="caption" role="heading"><span class="caption-text">History:</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../history/digital_ocean_to_aws_migration.html">Digital Ocean to AWS migration</a></li>
+</ul>
 
         </div>
       </div>
@@ -157,9 +178,9 @@
           <div role="navigation" aria-label="Page navigation">
   <ul class="wy-breadcrumbs">
       <li><a href="../index.html" class="icon icon-home" aria-label="Home"></a></li>
-      <li class="breadcrumb-item active">AWS S3 Asset Server</li>
+      <li class="breadcrumb-item active">Authentication</li>
       <li class="wy-breadcrumbs-aside">
-            <a href="../_sources/aws/aws_s3_asset_server.md.txt" rel="nofollow"> View page source</a>
+            <a href="../_sources/aws/authentication.rst.txt" rel="nofollow"> View page source</a>
       </li>
   </ul>
   <hr/>
@@ -167,86 +188,104 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
              
-  <section id="aws-s3-asset-server">
-<h1>AWS S3 Asset Server<a class="headerlink" href="#aws-s3-asset-server" title="Link to this heading"></a></h1>
-<section id="here-are-the-s3-buckets-for-each-of-the-asset-regions">
-<h2>Here are the S3 Buckets for each of the Asset Regions:<a class="headerlink" href="#here-are-the-s3-buckets-for-each-of-the-asset-regions" title="Link to this heading"></a></h2>
+  <section id="authentication">
+<h1>Authentication<a class="headerlink" href="#authentication" title="Link to this heading"></a></h1>
+<section id="notes-to-be-organized-and-completed">
+<h2>Notes to be Organized and Completed<a class="headerlink" href="#notes-to-be-organized-and-completed" title="Link to this heading"></a></h2>
+<section id="id1">
+<h3>Authentication<a class="headerlink" href="#id1" title="Link to this heading"></a></h3>
 <ul class="simple">
-<li><p>us: s3://sp-assets-us/</p></li>
-<li><p>ca: s3://sp-assets-ca/</p></li>
-<li><p>eu: s3://sp-assets-eu/</p></li>
-<li><p>il: s3://sp-assets-il/</p></li>
-<li><p>br: s3://sp-assets-br/</p></li>
+<li><p>Give EC2 instance a role, access to S3, etc, NOT an AWS key, pass instance profile
+(contains role, role contains privileges. Role must have permission to read secret)</p></li>
+<li><p>Role, create</p>
+<ul>
+<li><p>What kind of thing, service, i.e. EC2, lambda, SAML assertion?</p></li>
+<li><p>What permissions?  Can use or edit AWS managed permissions policy, What can it do,
+JSON defines,</p></li>
+<li><p>Trust relationship, AssumeRole</p></li>
+<li><p>User can get roles through Group or permission/policy document directly</p></li>
+<li><p>Access Advisor - see what has been used or not, and pare down the permissions</p></li>
+</ul>
+</li>
+<li><p>Security group (ports, inbound, outbound)</p>
+<ul>
+<li><p>Can include all traffic from another SG, need to do that for both SGs</p></li>
+</ul>
+</li>
+<li><p>Parameter store (cheaper) stores less secret info, define config for a project,
+need read parameter policy on the role using it, no additional charge for standard
+parameters, up to 10k, less than 4k,</p>
+<ul>
+<li><p>Secure parameters , will encrypt them, can use KMS key, need to add to your policy doc</p></li>
+<li><p>Can make public parameters</p></li>
+</ul>
+</li>
+<li><p>Secrets - 0.40/mo per secret 0.05/10,000 accesses</p></li>
+<li><p>Temporary credentials with IAM Roles?  Vs Access keys for long-term access?</p></li>
+<li><p>Identities = AWS resources (EC2 instance, lambda functions)</p></li>
+<li><p>Secrets for roles/identities for initiating contact/processes</p>
+<ul>
+<li><p><a class="reference external" href="https://docs.aws.amazon.com/secretsmanager/latest/userguide/hardcoded.html">https://docs.aws.amazon.com/secretsmanager/latest/userguide/hardcoded.html</a></p></li>
+<li><p>APIkey/secret, user/password, private key, token, certificate …</p></li>
+<li><p>Create a role to manage the secrets</p></li>
+<li><p>Create a role to retrieve secrets - grant the role permission to access only select
+secrets, give that role to the code/process of interest</p></li>
+</ul>
+</li>
 </ul>
 </section>
-<section id="backup-locations">
-<h2>Backup Locations:<a class="headerlink" href="#backup-locations" title="Link to this heading"></a></h2>
+</section>
+<section id="allow-s3-access-from-ec2-instance">
+<h2>Allow S3 access from EC2 instance<a class="headerlink" href="#allow-s3-access-from-ec2-instance" title="Link to this heading"></a></h2>
 <ul class="simple">
-<li><p>us: s3://sp-assets-na-snaphots/</p></li>
-<li><p>ca: s3://sp-assets-ca-snaphot/</p></li>
-<li><p>eu: s3://sp-assets-eu-snaphot/</p></li>
-<li><p>il: s3://sp-assets-il-snaphot/</p></li>
-<li><p>br: s3://specify-cloud-rds-backups-br/asset-backups/</p></li>
+<li><p>Create a role for the instance, with permissions for whatever it will use (i.e.
+read/write for specific bucket folders,  read secret, Redshift, etc):
+AmazonRedshiftAllCommandsFullAccess, AmazonS3ReadOnlyAccess, SecretsManagerReadWrite</p></li>
+<li><p>Assign that role to the instance</p></li>
+<li></li>
 </ul>
+<p><a class="reference external" href="https://repost.aws/knowledge-center/ec2-instance-access-s3-bucket">https://repost.aws/knowledge-center/ec2-instance-access-s3-bucket</a></p>
 </section>
-<section id="aws-s3-sync-commands-for-backup-cronjobs">
-<h2>AWS S3 Sync Commands for Backup Cronjobs:<a class="headerlink" href="#aws-s3-sync-commands-for-backup-cronjobs" title="Link to this heading"></a></h2>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>aws<span class="w"> </span>s3<span class="w"> </span>sync<span class="w"> </span>s3://sp-assets-us<span class="w"> </span>s3://sp-assets-na-snapshots<span class="w"> </span>--size-only<span class="w"> </span>--only-show-errors<span class="p">;</span>
-aws<span class="w"> </span>s3<span class="w"> </span>sync<span class="w"> </span>s3://sp-assets-ca<span class="w"> </span>s3://sp-assets-ca-snapshot<span class="w"> </span>--size-only<span class="w"> </span>--only-show-errors<span class="p">;</span>
-aws<span class="w"> </span>s3<span class="w"> </span>sync<span class="w"> </span>s3://sp-assets-eu<span class="w"> </span>s3://sp-assets-eu-snapshot<span class="w"> </span>--size-only<span class="w"> </span>--only-show-errors<span class="p">;</span>
-aws<span class="w"> </span>s3<span class="w"> </span>sync<span class="w"> </span>s3://sp-assets-il<span class="w"> </span>s3://specify-cloud-rds-backups-il/asset-backups<span class="w"> </span>--size-only<span class="w"> </span>--only-show-errors<span class="p">;</span>
-aws<span class="w"> </span>s3<span class="w"> </span>sync<span class="w"> </span>s3://sp-assets-br<span class="w"> </span>s3://specify-cloud-rds-backups-br/asset-backups<span class="w"> </span>--size-only<span class="w"> </span>--only-show-errors<span class="p">;</span>
-</pre></div>
-</div>
+<section id="troubleshooting">
+<h2>Troubleshooting<a class="headerlink" href="#troubleshooting" title="Link to this heading"></a></h2>
+<section id="ec2-slowly-or-never-responds">
+<h3>EC2 slowly or never responds<a class="headerlink" href="#ec2-slowly-or-never-responds" title="Link to this heading"></a></h3>
+<p>“EBS throughput is under-provisioned””</p>
+<p>EC2 instance cannot send out the data fast enough. Often happens with several EBS
+volumes, and together they can accept data faster than the EC2 instance can transmit it.</p>
+<p><a class="reference external" href="https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ebs-optimized.html">https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ebs-optimized.html</a></p>
+<p>In the AWS console, on the EC2 instance page, “AWS Compute Optimizer”, near the warning
+“Under-provisioned”, click “View detail” to display a window with recommended changes,
+along with graphs demonstrating the difference in CPU and cost.</p>
+<p>For the spnet_dev machine, this error appeared after I raised the EBS volume from 8 Gb
+to 30 Gb.  I chose t3.micro, which showed differences (changes necessary) in Hypervisor,
+Storage interface, and Network interface.</p>
+<p><a class="reference external" href="https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/resize-limitations.html">https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/resize-limitations.html</a></p>
 </section>
-<section id="user-s3-buckets">
-<h2>User S3 Buckets:<a class="headerlink" href="#user-s3-buckets" title="Link to this heading"></a></h2>
-<p>The user needs to have an AWS account, then create and upload data to their S3 bucket.</p>
-<p>Give the user the follow bucket policy to give Specify and the asset server access to the user’s S3 bucket.</p>
-<div class="highlight-json notranslate"><div class="highlight"><pre><span></span><span class="p">{</span>
-<span class="w">  </span><span class="nt">&quot;Version&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;2012-10-17&quot;</span><span class="p">,</span>
-<span class="w">  </span><span class="nt">&quot;Statement&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
-<span class="w">    </span><span class="p">{</span>
-<span class="w">      </span><span class="nt">&quot;Sid&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;AllowExternalAccountAccess&quot;</span><span class="p">,</span>
-<span class="w">      </span><span class="nt">&quot;Effect&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Allow&quot;</span><span class="p">,</span>
-<span class="w">      </span><span class="nt">&quot;Principal&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
-<span class="w">        </span><span class="nt">&quot;AWS&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;arn:aws:iam::321942852011:user/specify.dev&quot;</span>
-<span class="w">      </span><span class="p">},</span>
-<span class="w">      </span><span class="nt">&quot;Action&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
-<span class="w">        </span><span class="s2">&quot;s3:GetObject&quot;</span><span class="p">,</span>
-<span class="w">        </span><span class="s2">&quot;s3:PutObject&quot;</span><span class="p">,</span>
-<span class="w">        </span><span class="s2">&quot;s3:DeleteObject&quot;</span><span class="p">,</span>
-<span class="w">        </span><span class="s2">&quot;s3:ListBucket&quot;</span>
-<span class="w">      </span><span class="p">],</span>
-<span class="w">      </span><span class="nt">&quot;Resource&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
-<span class="w">        </span><span class="s2">&quot;arn:aws:s3:::&lt;BucketName&gt;&quot;</span><span class="p">,</span>
-<span class="w">        </span><span class="s2">&quot;arn:aws:s3:::&lt;BucketName&gt;/*&quot;</span>
-<span class="w">      </span><span class="p">]</span>
-<span class="w">    </span><span class="p">}</span>
-<span class="w">  </span><span class="p">]</span>
-<span class="p">}</span>
-</pre></div>
-</div>
-<p>This gives the specify developer AWS user access to the user’s S3 bucket, so that the asset server can user the data.  The user can just give access to particular path in their S# bucket if they want.  We also need to make sure that the path they tell us to use is formatted correctly, with an originals and thumbnails directory with the correct file types in each.  The last thing to do is to add the S3 path for the client in the settings.py file in the server.</p>
+<section id="ec2-stops-responding-during-docker-compose">
+<h3>EC2 stops responding during docker compose<a class="headerlink" href="#ec2-stops-responding-during-docker-compose" title="Link to this heading"></a></h3>
+<p>=&gt; [front-end base-front-end 4/6] RUN npm install</p>
 </section>
-<section id="user-asset-uploading-without-a-user-s3-bucket">
-<h2>User Asset Uploading Without a User S3 Bucket:<a class="headerlink" href="#user-asset-uploading-without-a-user-s3-bucket" title="Link to this heading"></a></h2>
-<p>If the wants to upload assets directly to the asset server, then uploading over ssh is used.  First an linux user is setup for the client with their ssh keys added.  Second, a s3fs mount is created for that user.  The s3fs mount is mounted as “attachments” in the user’s home directory.  The mount will point to the path to the user’s folder in S3.  This is so that the user can only access the S3 path in the bucket that is associated with that user.</p>
-<p>If a user wants regular backups available to them, a cronjob can be setup to do daily backups, which the user can fetch over ssh via a command like ‘scp’, ‘sftp’, or ‘rsync’.  A command like this can be used in a cronjob to create a tarball:</p>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="m">0</span><span class="w"> </span><span class="m">3</span><span class="w"> </span>*<span class="w"> </span>*<span class="w"> </span><span class="m">0</span><span class="w"> </span>tar<span class="w"> </span>-cJf<span class="w"> </span>/home/user/user-assets.tar.xz<span class="w"> </span>-C<span class="w"> </span>/home/ubuntu/attachments<span class="w"> </span>user<span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span>chown<span class="w"> </span>user:user<span class="w"> </span>/home/user/user-assets.tar.xz
-</pre></div>
-</div>
 </section>
-<section id="s3-attachments">
-<h2>S3 Attachments<a class="headerlink" href="#s3-attachments" title="Link to this heading"></a></h2>
-<p>The current asset server is configured to use the AWS S3 API commands to add, get, and delete assets located in S3.  This reduces storage cost compared to EFS, and is faster to run compared to s3fs.  Future development should be to make this universal, so to work on both a local file system, and on S3, and let each client define the setup in the settings file.</p>
+<section id="questions-remaining">
+<h2>Questions remaining<a class="headerlink" href="#questions-remaining" title="Link to this heading"></a></h2>
+<ul class="simple">
+<li><p>Roles for “workload”</p></li>
+<li><p>Travis: How to assign broad privileges to a process, run it, then identify the minimum
+privileges it needs?</p></li>
+<li><p>Temporary access roles vs static</p></li>
+<li><p>Access Control ???</p></li>
+</ul>
 </section>
 </section>
 
 
            </div>
           </div>
-          <footer>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="asset_server_setup.html" class="btn btn-neutral float-left" title="Asset Server Setup" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="automation_todo.html" class="btn btn-neutral float-right" title="Automation TODO" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
 
   <hr/>
 

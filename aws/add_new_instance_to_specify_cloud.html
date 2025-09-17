@@ -6,7 +6,7 @@
   <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Add new Specify instance to Specify Cloud &mdash; Specify Developer Documentation  documentation</title>
+  <title>Add new instance to Specify Cloud &mdash; Specify Developer Documentation  documentation</title>
       <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=80d5e7a1" />
       <link rel="stylesheet" type="text/css" href="../_static/css/theme.css?v=e59714d7" />
 
@@ -19,8 +19,8 @@
     <script src="../_static/js/theme.js"></script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="Specify Cloud Graviton Setup" href="specify_cloud_graviton_setup.html" />
-    <link rel="prev" title="Deploy Specify7 to an EC2 instance" href="ec2_rds_specify7_setup.html" /> 
+    <link rel="next" title="Asset Server Setup" href="asset_server_setup.html" />
+    <link rel="prev" title="Create Release Notes" href="../processes/release_notes.html" /> 
 </head>
 
 <body class="wy-body-for-nav"> 
@@ -54,21 +54,23 @@
 </ul>
 <p class="caption" role="heading"><span class="caption-text">Amazon Web Services:</span></p>
 <ul class="current">
-<li class="toctree-l1"><a class="reference internal" href="aws_automation.html">AWS Automation</a></li>
-<li class="toctree-l1"><a class="reference internal" href="aws_infrastructure_notes.html">AWS Infrastructure Notes</a></li>
-<li class="toctree-l1"><a class="reference internal" href="aws_specify_asset_server_setup.html">AWS Specify Asset Server Setup</a></li>
-<li class="toctree-l1"><a class="reference internal" href="aws_specify_cloud_setup.html">Specify Cloud Setup</a></li>
-<li class="toctree-l1"><a class="reference internal" href="client_migration_notes.html">Digital Ocean to AWS migration</a></li>
-<li class="toctree-l1"><a class="reference internal" href="ec2_rds_specify7_setup.html">Deploy Specify7 to an EC2 instance</a></li>
-<li class="toctree-l1 current"><a class="current reference internal" href="#">Add new Specify instance to Specify Cloud</a><ul>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Add new instance to Specify Cloud</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="#example-for">Example for <dbname></a></li>
 <li class="toctree-l2"><a class="reference internal" href="#misc">Misc</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#troubleshooting">Troubleshooting</a></li>
 </ul>
 </li>
+<li class="toctree-l1"><a class="reference internal" href="asset_server_setup.html">Asset Server Setup</a></li>
+<li class="toctree-l1"><a class="reference internal" href="authentication.html">Authentication</a></li>
+<li class="toctree-l1"><a class="reference internal" href="automation_todo.html">Automation TODO</a></li>
+<li class="toctree-l1"><a class="reference internal" href="aws_cloud_setup.html">AWS Cloud Setup</a></li>
+<li class="toctree-l1"><a class="reference internal" href="connect_to_remote_cloud_database.html">Connect to remote cloud database</a></li>
+<li class="toctree-l1"><a class="reference internal" href="data_size_check_commands.html">Data Size Check Commands</a></li>
+<li class="toctree-l1"><a class="reference internal" href="deploy_specify7_to_EC2.html">Deploy Specify7 to EC2</a></li>
+<li class="toctree-l1"><a class="reference internal" href="infrastructure_notes.html">Infrastructure Notes</a></li>
+<li class="toctree-l1"><a class="reference internal" href="s3_asset_server.html">S3 Asset Server</a></li>
 <li class="toctree-l1"><a class="reference internal" href="specify_cloud_graviton_setup.html">Specify Cloud Graviton Setup</a></li>
-<li class="toctree-l1"><a class="reference internal" href="remote_db_connection.html">Setup remote database connection to local mysql workbench</a></li>
-<li class="toctree-l1"><a class="reference internal" href="web-portal-docker.html">Web Portal using Docker</a></li>
+<li class="toctree-l1"><a class="reference internal" href="web_portal_with_docker.html">Web Portal with Docker</a></li>
 </ul>
 <p class="caption" role="heading"><span class="caption-text">Asset Server:</span></p>
 <ul>
@@ -149,6 +151,10 @@
 <li class="toctree-l1"><a class="reference internal" href="../misc/vs_code_django_unit_test_debugging_notes.html">VS Code Django Unit Test Debugging</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../misc/branch_from_tag.html">Create a branch from a tagged release</a></li>
 </ul>
+<p class="caption" role="heading"><span class="caption-text">History:</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../history/digital_ocean_to_aws_migration.html">Digital Ocean to AWS migration</a></li>
+</ul>
 
         </div>
       </div>
@@ -164,7 +170,7 @@
           <div role="navigation" aria-label="Page navigation">
   <ul class="wy-breadcrumbs">
       <li><a href="../index.html" class="icon icon-home" aria-label="Home"></a></li>
-      <li class="breadcrumb-item active">Add new Specify instance to Specify Cloud</li>
+      <li class="breadcrumb-item active">Add new instance to Specify Cloud</li>
       <li class="wy-breadcrumbs-aside">
             <a href="../_sources/aws/add_new_instance_to_specify_cloud.md.txt" rel="nofollow"> View page source</a>
       </li>
@@ -174,8 +180,8 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
              
-  <section id="add-new-specify-instance-to-specify-cloud">
-<h1>Add new Specify instance to Specify Cloud<a class="headerlink" href="#add-new-specify-instance-to-specify-cloud" title="Link to this heading"></a></h1>
+  <section id="add-new-instance-to-specify-cloud">
+<h1>Add new instance to Specify Cloud<a class="headerlink" href="#add-new-instance-to-specify-cloud" title="Link to this heading"></a></h1>
 <section id="example-for">
 <h2>Example for <dbname><a class="headerlink" href="#example-for" title="Link to this heading"></a></h2>
 <ol class="arabic">
@@ -298,8 +304,8 @@ sudo<span class="w"> </span>docker<span class="w"> </span><span class="nb">exec<
            </div>
           </div>
           <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
-        <a href="ec2_rds_specify7_setup.html" class="btn btn-neutral float-left" title="Deploy Specify7 to an EC2 instance" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
-        <a href="specify_cloud_graviton_setup.html" class="btn btn-neutral float-right" title="Specify Cloud Graviton Setup" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+        <a href="../processes/release_notes.html" class="btn btn-neutral float-left" title="Create Release Notes" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="asset_server_setup.html" class="btn btn-neutral float-right" title="Asset Server Setup" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
     </div>
 
   <hr/>

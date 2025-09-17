@@ -1,4 +1,4 @@
-# Deploy Specify7 to an EC2 instance
+# Deploy Specify7 to EC2
 
 These are the detailed instructions to get Specify7 up and running on an EC2 instance.  
 This is a temporary solution for deployment, with an ECS solution coming in the future.  

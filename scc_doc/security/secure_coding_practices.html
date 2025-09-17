@@ -6,7 +6,7 @@
   <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Specify Data Migration Scope &mdash; Specify Developer Documentation  documentation</title>
+  <title>Secure Coding Practices &mdash; Specify Developer Documentation  documentation</title>
       <link rel="stylesheet" type="text/css" href="../../_static/pygments.css?v=80d5e7a1" />
       <link rel="stylesheet" type="text/css" href="../../_static/css/theme.css?v=e59714d7" />
 
@@ -163,9 +163,9 @@
           <div role="navigation" aria-label="Page navigation">
   <ul class="wy-breadcrumbs">
       <li><a href="../../index.html" class="icon icon-home" aria-label="Home"></a></li>
-      <li class="breadcrumb-item active">Specify Data Migration Scope</li>
+      <li class="breadcrumb-item active">Secure Coding Practices</li>
       <li class="wy-breadcrumbs-aside">
-            <a href="../../_sources/scc_doc/template/migration_scope_template.md.txt" rel="nofollow"> View page source</a>
+            <a href="../../_sources/scc_doc/security/secure_coding_practices.md.txt" rel="nofollow"> View page source</a>
       </li>
   </ul>
   <hr/>
@@ -173,48 +173,22 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
              
-  <section id="specify-data-migration-scope">
-<h1>Specify Data Migration Scope<a class="headerlink" href="#specify-data-migration-scope" title="Link to this heading"></a></h1>
-<p>The projected cost is based on the following agreed upon Migration Data metadata.</p>
-<section id="organization-name">
-<h2>Organization Name<a class="headerlink" href="#organization-name" title="Link to this heading"></a></h2>
+  <section id="secure-coding-practices">
+<h1>Secure Coding Practices<a class="headerlink" href="#secure-coding-practices" title="Link to this heading"></a></h1>
+<section id="dependency-scanning-and-secret-detection">
+<h2>Dependency scanning and secret detection:<a class="headerlink" href="#dependency-scanning-and-secret-detection" title="Link to this heading"></a></h2>
+<p>We use GitGuardian to automatically detect secrets and credentials in the codebase
+before they reach production.</p>
 </section>
-<section id="validity-of-quote">
-<h2>Validity of Quote<a class="headerlink" href="#validity-of-quote" title="Link to this heading"></a></h2>
+<section id="access-control-enforcement">
+<h2>Access control enforcement:<a class="headerlink" href="#access-control-enforcement" title="Link to this heading"></a></h2>
+<p>Specify implements role-based access control (RBAC) to protect sensitive operations and
+data.</p>
 </section>
-<section id="projected-number-of-databases">
-<h2>Projected Number of Databases<a class="headerlink" href="#projected-number-of-databases" title="Link to this heading"></a></h2>
-</section>
-<section id="projected-number-of-collections">
-<h2>Projected Number of Collections<a class="headerlink" href="#projected-number-of-collections" title="Link to this heading"></a></h2>
-</section>
-<section id="original-data-format">
-<h2>Original Data Format<a class="headerlink" href="#original-data-format" title="Link to this heading"></a></h2>
-</section>
-<section id="source-data-file-format">
-<h2>Source Data File Format<a class="headerlink" href="#source-data-file-format" title="Link to this heading"></a></h2>
-</section>
-<section id="encoding">
-<h2>Encoding<a class="headerlink" href="#encoding" title="Link to this heading"></a></h2>
-</section>
-<section id="database-size">
-<h2>Database Size<a class="headerlink" href="#database-size" title="Link to this heading"></a></h2>
-</section>
-<section id="collection-object-record-count">
-<h2>Collection Object Record Count<a class="headerlink" href="#collection-object-record-count" title="Link to this heading"></a></h2>
-</section>
-<section id="taxon-tree-requirements">
-<h2>Taxon Tree Requirements<a class="headerlink" href="#taxon-tree-requirements" title="Link to this heading"></a></h2>
-</section>
-<section id="projected-cost">
-<h2>Projected Cost<a class="headerlink" href="#projected-cost" title="Link to this heading"></a></h2>
-<p>$ xxxx USD at $40/hr for xxx hours of work.  For every hour over xxx that is required,
-there will be a $50 additional fee.</p>
-</section>
-<section id="projected-time-for-data-migration-project">
-<h2>Projected Time for Data Migration Project<a class="headerlink" href="#projected-time-for-data-migration-project" title="Link to this heading"></a></h2>
-<p>xx weeks (A more detailed timeline will be provided in the Specify Data Migration
-Workplan)</p>
+<section id="regular-reviews-and-manual-code-audits">
+<h2>Regular reviews and manual code audits:<a class="headerlink" href="#regular-reviews-and-manual-code-audits" title="Link to this heading"></a></h2>
+<p>Security-sensitive parts of the system are reviewed by senior developers, although
+we do not yet have automated static analysis or a formal secure code review policy.</p>
 </section>
 </section>
 
