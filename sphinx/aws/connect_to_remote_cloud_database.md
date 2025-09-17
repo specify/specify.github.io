@@ -1,6 +1,8 @@
-# Setup remote database connection to local mysql workbench
+# Connect to remote cloud database
 
-Help clients setup remote database connection to local mysql workbench with an ssh tunnel. There are slightly different parameters for Mac and Windows machines. This is because the parameters have changed slightly since moving from digital ocean to aws.
+Help clients setup remote database connection to local mysql workbench with an ssh 
+tunnel. There are slightly different parameters for Mac and Windows machines. This is 
+because the parameters have changed slightly since moving from digital ocean to aws.
 
 The port forwarding command that needs to be used is
 `ssh -L 3308:<db_host_ip>:3306 <linux_username>@na-db-1.specifycloud.org -i <path_to_ssh_key>`

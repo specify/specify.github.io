@@ -1,4 +1,4 @@
-**AWS RDS Backup Setup**
+**RDS Backup Setup**
 
 These are instructions to setup the RDS backup script for each region, along with Cloud Watch logging, and SNS (Simple Notification System) notifications via email of errors in the backup process.
 

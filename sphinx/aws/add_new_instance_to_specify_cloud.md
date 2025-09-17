@@ -1,4 +1,4 @@
-# Add new Specify instance to Specify Cloud
+# Add new instance to Specify Cloud
 
 ## Example for <dbname>
 

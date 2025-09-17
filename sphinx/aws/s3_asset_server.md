@@ -1,4 +1,4 @@
-# AWS S3 Asset Server
+# S3 Asset Server
 
 ### Here are the S3 Buckets for each of the Asset Regions:
 - us: s3://sp-assets-us/

@@ -1,4 +1,4 @@
-# AWS Specify Asset Server Setup
+# Asset Server Setup
 
 ## EC2 Non-Dockerized Build
 
