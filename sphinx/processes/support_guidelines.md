@@ -80,11 +80,11 @@ You are not expected to know everything\! Please ask for help whenever you are u
 
 ## Requesting Developer Assistance
 
-Sometimes, an issue is a confirmed bug, feature request, or a data move or update that requires code changes to resolve. Once you've exhausted other troubleshooting options and confirmed the need for development work, here is the process for escalating:
+When an issue is a confirmed bug, a complex data update, or a feature request that requires code changes, it needs to be escalated for development. Once you have exhausted other troubleshooting options and confirmed the need for developer intervention, please follow this process:
 
-1. **Consolidate Your Findings:** Gather all the information you've collected, including the bug report or feature request, steps to reproduce, screenshots, and any relevant details from your investigation.  
-2. **Assess the Impact:** Prepare a brief summary that includes the perceived severity of the issue. Consider these questions:  
-   * **From the user's perspective:** How critical is this for their workflow? Is it a minor annoyance or does it block them completely?  
-   * **From our perspective:** Does this issue affect a single user, a whole institution, or all users? Is there a viable workaround they can use in the meantime?  
-3. **Contact the Lead Developer:** Send the complete summary and supporting materials to our lead developer, **[Caroline Denis](mailto:caroline.denis@specifysoftware.org)**, via Slack. She will assess the request's priority and determine when developer resources can be assigned to it.  
-4. **Communicate with the User:** Once Caroline provides feedback on the timeline, relay this information back to the user. Let them know when they can expect a resolution, whether it's in the next patch or a future major release. Keeping them informed is key to managing their expectations.
+1.  **Consolidate Your Findings:** Gather all the information you've collected into a single summary. This must include the original user report, a link to the bug/feature ticket, steps to reproduce, screenshots, crash reports, and any relevant details from your investigation.
+2.  **Assess the Impact:** Prepare a brief analysis of the issue's severity. Your summary should answer:
+    * **User Perspective:** How critical is this for their workflow? Is it a minor annoyance or does it block them completely? Is there a workaround?
+    * **SCC Perspective:** Does this issue affect a single user, an entire institution, or all users?
+3.  **Escalate for Tasking:** Send the complete summary and support materials to the Technical Support Manager (Grant). He will review the materials, create a formal task in our project management system (Asana), and assign it to the IT Support developer for development and resolution.
+4.  **Communicate with the User:** Once the task has been prioritized, relay the expected timeline for a resolution back to the user. Keep them informed of any significant progress or changes.
