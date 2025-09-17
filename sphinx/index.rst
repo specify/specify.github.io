@@ -11,9 +11,11 @@ Welcome to Specify Developer documentation!
 .. toctree::
    :maxdepth: 1
    :caption: Launching a Release:
-   
-   processes/release_process
-   processes/release_notes
+
+   processes/github_guidelines_and_processes
+   processes/create_release_notes
+   processes/release_process_for_hosted_users
+   processes/support_guidelines
 
 .. toctree::
    :maxdepth: 1
