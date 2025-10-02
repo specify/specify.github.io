@@ -1,5 +1,8 @@
 # Specify Internal Documentation
 
+This repository is now ARCHIVED.  All documentation here is now available to SCC staff on the Speciforum.
+
+
 This repository contains our internal documentation for Specify Collections Consortium staff.
 
 This site uses [Sphinx](https://www.sphinx-doc.org/en/master/) as a framework and is built using `github-pages`. You can view the [deployment history here](https://github.com/specify/specify.github.io/deployments/github-pages).
